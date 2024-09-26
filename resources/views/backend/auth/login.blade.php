@@ -68,10 +68,10 @@
             </form>
             @if(!env('USER_VERIFIED'))
             <!-- This three button for demo only-->
-            <button type="submit" class="btn btn-success admin-btn">LogIn as Admin</button>
+            {{-- <button type="submit" class="btn btn-success admin-btn">LogIn as Admin</button>
             <button type="submit" class="btn btn-info staff-btn">LogIn as Staff</button>
             <button type="submit" class="btn btn-dark customer-btn">LogIn as Customer</button>
-            <br><br>
+            <br><br> --}}
             @endif
             <a href="{{ route('password.request') }}" class="forgot-pass">{{trans('file.Forgot Password?')}}</a>
             <p class="register-section">{{trans('file.Do not have an account?')}}</p>

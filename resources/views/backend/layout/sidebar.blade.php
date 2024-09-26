@@ -600,7 +600,4 @@
                     @endif
                 </ul>
             </li>
-            @if(Auth::user()->role_id != 5)
-            <li><a target="_blank" href="{{url('/documentation')}}"> <i class="dripicons-information"></i><span>{{trans('file.Documentation')}}</span></a></li>
-            @endif
         </ul>

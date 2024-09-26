@@ -404,7 +404,11 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-12">
-              <p>&copy; {{$general_setting->site_title}} | {{trans('file.Developed')}} {{trans('file.By')}} <span class="external">{{$general_setting->developed_by}}</span> | V {{env('VERSION')}}</p>
+              <p>&copy; {{$general_setting->site_title}} | {{trans('file.Developed')}} {{trans('file.By')}} <span class="external">
+                saifuldeveloper
+
+                {{-- {{$general_setting->developed_by}} --}}
+              </span> {{env('VERSION')}}</p>
             </div>
           </div>
         </div>

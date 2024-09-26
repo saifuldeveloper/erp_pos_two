@@ -59,8 +59,6 @@ class CurrencyController extends Controller
 
     public function destroy($id)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
         Currency::find($id)->update(['is_active' => false]);
         cache()->forget('currency');
         return redirect()->back()->with('message', 'Currency deleted successfully');

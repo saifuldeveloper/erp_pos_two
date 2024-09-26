@@ -1,5 +1,9 @@
 <?php
 
+use Database\Seeders\PermissionsTableSeeder;
+use Database\Seeders\RoleHasPermissionsTableSeeder;
+use Database\Seeders\RolesTableSeeder;
+use Database\Seeders\UsersTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([CountriesTableSeeder::class]);
+        // $this->call([CountriesTableSeeder::class]);
+        $this->call(RolesTableSeeder::class);
+        $this->call(PermissionsTableSeeder::class);
+        $this->call(RoleHasPermissionsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
     }
 }
