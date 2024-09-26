@@ -11,10 +11,20 @@
                 $stock_count_active = $role_has_permissions_list->where('name', 'stock_count')->first();
 
                 $adjustment_active = $role_has_permissions_list->where('name', 'adjustment')->first();
+
+                $brand_permission_active = $role_has_permissions_list->where('name', 'brand')->first();
+
+                $unit_permission_active = $role_has_permissions_list->where('name', 'unit')->first();
             ?>
             @if($category_permission_active || $index_permission_active || $print_barcode_active || $stock_count_active || $adjustment_active)
             <li><a href="#product" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-list"></i><span>{{__('file.product')}}</span><span></a>
             <ul id="product" class="collapse list-unstyled ">
+                @if($brand_permission_active)
+                <li id="brand-menu"><a href="{{route('brand.index')}}">{{trans('file.Brand')}}</a></li>
+                @endif
+                @if($unit_permission_active)
+                <li id="unit-menu"><a href="{{route('unit.index')}}">{{trans('file.Unit')}}</a></li>
+                @endif
                 @if($category_permission_active)
                 <li id="category-menu"><a href="{{route('category.index')}}">{{__('file.category')}}</a></li>
                 @endif
@@ -501,11 +511,6 @@
                         $warehouse_permission_active = $role_has_permissions_list->where('name', 'warehouse')->first();
 
                         $customer_group_permission_active = $role_has_permissions_list->where('name', 'customer_group')->first();
-
-                        $brand_permission_active = $role_has_permissions_list->where('name', 'brand')->first();
-
-                        $unit_permission_active = $role_has_permissions_list->where('name', 'unit')->first();
-
                         $currency_permission_active = $role_has_permissions_list->where('name', 'currency')->first();
 
                         $tax_permission_active = $role_has_permissions_list->where('name', 'tax')->first();
@@ -560,12 +565,6 @@
                     <li id="table-menu"><a href="{{route('tables.index')}}">{{trans('file.Tables')}}</a></li>
                     @if($customer_group_permission_active)
                     <li id="customer-group-menu"><a href="{{route('customer_group.index')}}">{{trans('file.Customer Group')}}</a></li>
-                    @endif
-                    @if($brand_permission_active)
-                    <li id="brand-menu"><a href="{{route('brand.index')}}">{{trans('file.Brand')}}</a></li>
-                    @endif
-                    @if($unit_permission_active)
-                    <li id="unit-menu"><a href="{{route('unit.index')}}">{{trans('file.Unit')}}</a></li>
                     @endif
                     @if($currency_permission_active)
                     <li id="currency-menu"><a href="{{route('currency.index')}}">{{trans('file.Currency')}}</a></li>
