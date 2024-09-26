@@ -1,5 +1,7 @@
 <?php
 
+use Database\Seeders\CurrenciesTableSeeder;
+use Database\Seeders\GeneralSettingsTableSeeder;
 use Database\Seeders\PermissionsTableSeeder;
 use Database\Seeders\RoleHasPermissionsTableSeeder;
 use Database\Seeders\RolesTableSeeder;
@@ -20,5 +22,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(RoleHasPermissionsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(CurrenciesTableSeeder::class);
+        $this->call(GeneralSettingsTableSeeder::class);
+       
     }
 }

@@ -27,8 +27,6 @@ class SettingController extends Controller
 
     public function emptyDatabase()
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
         //clearing all the cached queries
         $this->cacheForget('biller_list');
         $this->cacheForget('brand_list');
@@ -75,9 +73,6 @@ class SettingController extends Controller
 
     public function generalSettingStore(Request $request)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-
         $this->validate($request, [
             'site_logo' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
         ]);
@@ -139,9 +134,6 @@ class SettingController extends Controller
 
     public function superadminGeneralSettingStore(Request $request)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-
         $this->validate($request, [
             'site_logo' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
             'og_image' => 'image|mimes:jpg,jpeg,png|max:100000',
@@ -211,9 +203,6 @@ class SettingController extends Controller
 
     public function superadminMailSettingStore(Request $request)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-
         $data = $request->all();
         $mail_setting = MailSetting::latest()->first();
         if(!$mail_setting)
@@ -249,9 +238,7 @@ class SettingController extends Controller
 
     public function backup()
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-
+    
         // Database configuration
         $host = env('DB_HOST');
         $username = env('DB_USERNAME');
@@ -361,9 +348,6 @@ class SettingController extends Controller
 
     public function mailSettingStore(Request $request)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-
         $data = $request->all();
         $mail_setting = MailSetting::latest()->first();
         if(!$mail_setting)
@@ -387,9 +371,6 @@ class SettingController extends Controller
 
     public function smsSettingStore(Request $request)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-
         $data = $request->all();
         //writting bulksms info in .env file
         $path = app()->environmentFilePath();
@@ -490,9 +471,6 @@ class SettingController extends Controller
 
     public function posSettingStore(Request $request)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-
         $data = $request->all();
 
         if(isset($data['options'])){
