@@ -297,6 +297,9 @@
                         <a href="{{ url('language_switch/en') }}" class="btn btn-link"> English</a>
                         </li>
                         <li>
+                        <a href="{{ url('language_switch/bn') }}" class="btn btn-link"> বাংলা</a>
+                        </li>
+                        {{-- <li>
                         <a href="{{ url('language_switch/es') }}" class="btn btn-link"> Español</a>
                         </li>
                         <li>
@@ -349,7 +352,7 @@
                         </li>
                         <li>
                           <a href="{{ url('language_switch/swahili') }}" class="btn btn-link"> Swahili</a>
-                        </li>
+                        </li> --}}
                     </ul>
             </li>
             <li class="nav-item">
