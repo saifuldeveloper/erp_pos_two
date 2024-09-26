@@ -102,6 +102,121 @@
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-md-4 mt-4">
+              <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h4>{{trans('file.Assets')}}</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                      <tbody>
+                        <tr>
+                          <th>Item Stock Value</th>
+                          <th>:</th>
+                          <th class="text-right">{{ number_format((float)$assets['total_stock_value'], 2, '.', '') }}</th>
+                        </tr>
+                        <tr>
+                          <th>Receivable Customer Due</th>
+                          <th>:</th>
+                          <th class="text-right">{{ number_format((float)$assets['total_due'], 2, '.', '') }}</th>
+                        </tr>
+                        <tr>
+                          <th>Total Account Balance</th>
+                          <th>:</th>
+                          <th class="text-right">{{ number_format((float)$assets['total_current_balance'], 2, '.', '') }}</th>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>Total Assets</th>
+                          <th>:</th>
+                          <th class="text-right text-success">{{ number_format((float)array_sum($assets->toArray()), 2, '.', '') }}</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-4 mt-4">
+              <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h4>{{trans('file.Liabilities')}}</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                      <tbody>
+                        <tr>
+                          <th>Supplier Due</th>
+                          <th>:</th>
+                          <th class="text-right">{{ number_format((float)$liability['total_due'], 2, '.', '') }}</th>
+                        </tr>
+                        <tr>
+                          <th>Customer Advance</th>
+                          <th>:</th>
+                          <th class="text-right">{{ number_format((float)$liability['customer_advance'], 2, '.', '') }}</th>
+                        </tr>
+                        <tr>
+                          <th></th>
+                          <th>:</th>
+                          <th class="text-right"></th>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>Total Liabilities</th>
+                          <th>:</th>
+                          <th class="text-right text-warning">{{ number_format((float)array_sum($liability->toArray()), 2, '.', '') }}</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 mt-4">
+              <div class="card">
+                <div class="card-header d-flex align-items-center">
+                  <h4>{{trans('file.Cash In/Out')}}</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                      <tbody>
+                        <tr>
+                          <th>Total Cash In</th>
+                          <th>:</th>
+                          <th class="text-right">{{ number_format((float)$cash['in'], 2, '.', '') }}</th>
+                        </tr>
+                        <tr>
+                          <th>Total Cash Out</th>
+                          <th>:</th>
+                          <th class="text-right">{{ number_format((float)$cash['out'], 2, '.', '') }}</th>
+                        </tr>
+                        <tr>
+                          <th></th>
+                          <th>:</th>
+                          <th class="text-right"></th>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <th>Current Balance</th>
+                          <th>:</th>
+                          <th class="text-right text-success">{{ number_format((float)$cash['in'] - $cash['out'], 2, '.', '') }}</th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
             </div>
             @endif
             @php
