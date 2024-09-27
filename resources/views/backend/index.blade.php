@@ -61,30 +61,63 @@
             @if($revenue_profit_summary)
             <div class="col-md-12 form-group">
               <div class="row">
-                <!-- Count item widget-->
-                <div class="col-sm-3">
+               <!-- Count item widget-->
+                <div class="col-sm-2">
                   <div class="wrapper count-title">
-                    <div class="icon"><i class="dripicons-graph-bar" style="color: #733686"></i></div>
+                    <div class="icon"><i class="fa fa-users" aria-hidden="true" style="color: #ff8040"></i></div>
                     <div>
-                        <div class="count-number revenue-data">{{number_format((float)$revenue,$general_setting->decimal, '.', '')}}</div>
-                        <div class="name"><strong style="color: #733686">{{ trans('file.revenue') }}</strong></div>
+                        <div class="count-number">{{ $customers}}</div>
+                        <div class="name"><strong style="color: #ff8040">{{ trans('file.total Customer') }}</strong></div>
                     </div>
                   </div>
                 </div>
                 <!-- Count item widget-->
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                   <div class="wrapper count-title">
-                    <div class="icon"><i class="dripicons-return" style="color: #ff8952"></i></div>
+                    <div class="icon"><i class="fa fa-truck" aria-hidden="true" style="color: #008080"></i></div>
+                    <div>
+                        <div class="count-number">{{ $suppliers }}</div>
+                        <div class="name"><strong style="color: #008080">{{ trans('file.total supplier') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-signal" aria-hidden="true" style="color: #733686"></i></div>
+                    <div>
+                        <div class="count-number revenue-data">{{number_format((float)$revenue,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #733686">{{ trans('file.total sale') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+
+                 <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-undo" aria-hidden="true" style="color: #ff8952"></i></div>
                     <div>
                         <div class="count-number return-data">{{number_format((float)$return,$general_setting->decimal, '.', '')}}</div>
                         <div class="name"><strong style="color: #ff8952">{{trans('file.Sale Return')}}</strong></div>
                     </div>
                   </div>
                 </div>
-                <!-- Count item widget-->
-                <div class="col-sm-3">
+
+                 <!-- Count item widget-->
+                <div class="col-sm-2">
                   <div class="wrapper count-title">
-                    <div class="icon"><i class="dripicons-media-loop" style="color: #00c689"></i></div>
+                    <div class="icon"><i class="fa fa-shopping-cart" aria-hidden="true" style="color: #8000ff"></i></div>
+                    <div>
+                        <div class="count-number purchase-data">{{number_format((float)$purchase,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #8000ff">{{ trans('file.total purchase') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-repeat" aria-hidden="true" style="color: #00c689"></i></div>
                     <div>
                         <div class="count-number purchase_return-data">{{number_format((float)$purchase_return,$general_setting->decimal, '.', '')}}</div>
                         <div class="name"><strong style="color: #00c689">{{trans('file.Purchase Return')}}</strong></div>
@@ -92,12 +125,66 @@
                   </div>
                 </div>
                 <!-- Count item widget-->
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                   <div class="wrapper count-title">
-                    <div class="icon"><i class="dripicons-trophy" style="color: #297ff9"></i></div>
+                    <div class="icon"><i class="fa fa-money" aria-hidden="true" style="color: #008000"></i></div>
                     <div>
-                        <div class="count-number profit-data">{{number_format((float)$profit,$general_setting->decimal, '.', '')}}</div>
-                        <div class="name"><strong style="color: #297ff9">{{trans('file.profit')}}</strong></div>
+                        <div class="count-number sale_paid-data">{{number_format((float)$sale_paid,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #008000">{{ trans('file.total paid') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-money" aria-hidden="true" style="color: #ff0000"></i></div>
+                    <div>
+                        <div class="count-number sale_due-data">{{number_format((float)$sale_due,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #ff0000">{{ trans('file.total due') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+                 <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-money" aria-hidden="true" style="color: #0080c0"></i></div>
+                    <div>
+                        <div class="count-number due_payement_received">{{number_format((float)$due_payment_received,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #0080c0">{{ trans('file.total due rcv') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-cart-plus" aria-hidden="true" style="color: #008000"></i></div>
+                    <div>
+                        <div class="count-number purchase_paid">{{number_format((float)$purchase_paid,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #008000">{{ trans('file.total purchase paid') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true" style="color: #800000"></i></div>
+                    <div>
+                        <div class="count-number purchase_due">{{number_format((float)$purchase_due,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #800000">{{ trans('file.total purchase due') }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+               
+                <!-- Count item widget-->
+                <div class="col-sm-2">
+                  <div class="wrapper count-title">
+                    <div class="icon"><i class="fa fa-trophy" aria-hidden="true" style="color: #297ff9"></i></div>
+                    <div>
+                        <div class="count-number expense-data">{{number_format((float)$expense,$general_setting->decimal, '.', '')}}</div>
+                        <div class="name"><strong style="color: #297ff9">{{trans('file.total expense')}}</strong></div>
                     </div>
                   </div>
                 </div>
@@ -646,6 +733,38 @@
         $('.purchase_return-data').hide();
         $('.purchase_return-data').html(parseFloat(data[3]).toFixed({{$general_setting->decimal}}));
         $('.purchase_return-data').show(500);
+
+         $('.expense-data').hide();
+        $('.expense-data').html(parseFloat(data[4]).toFixed({{$general_setting->decimal}}));
+        $('.expense-data').show(500);
+
+        $('.salary-data').hide();
+        $('.salary-data').html(parseFloat(data[5]).toFixed({{$general_setting->decimal}}));
+        $('.salary-data').show(500);
+
+        $('.purchase-data').hide();
+        $('.purchase-data').html(parseFloat(data[6]).toFixed({{$general_setting->decimal}}));
+        $('.purchase-data').show(500);
+
+        $('.sale_due-data').hide();
+        $('.sale_due-data').html(parseFloat(data[7]).toFixed({{$general_setting->decimal}}));
+        $('.sale_due-data').show(500);
+
+        $('.sale_paid-data').hide();
+        $('.sale_paid-data').html(parseFloat(data[8]).toFixed({{$general_setting->decimal}}));
+        $('.sale_paid-data').show(500);
+
+        $('.due_payement_received').hide();
+        $('.due_payement_received').html(parseFloat(data[9]).toFixed({{$general_setting->decimal}}));
+        $('.due_payement_received').show(500);
+
+        $('.purchase_due').hide();
+        $('.purchase_due').html(parseFloat(data[10]).toFixed({{$general_setting->decimal}}));
+        $('.purchase_due').show(500);
+
+        $('.purchase_paid').hide();
+        $('.purchase_paid').html(parseFloat(data[11]).toFixed({{$general_setting->decimal}}));
+        $('.purchase_paid').show(500);
     }
 </script>
 @endpush
