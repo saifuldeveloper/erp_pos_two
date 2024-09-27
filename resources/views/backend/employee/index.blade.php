@@ -45,7 +45,7 @@
                     <td>{{$key}}</td>
                     @if($employee->image)
                     <td>
-                        <img src="{{url('images/employee',$employee->image)}}" height="80" width="80">
+                        <img src="{{url('public/images/employee',$employee->image)}}" height="80" width="80">
                     </td>
                     @else
                     <td>No Image</td>
