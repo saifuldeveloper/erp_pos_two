@@ -12,7 +12,7 @@ use App\Models\Expense;
 use App\Models\Payroll;
 use App\Models\Quotation;
 use App\Models\Payment;
-use App\Models\Account;
+use App\Models\Supplier;
 use App\Models\Product_Sale;
 use App\Models\Customer;
 use App\Models\Product;
@@ -117,12 +117,24 @@ class HomeController extends Controller
                 ->get();
             $product_cost = $this->calculateAverageCOGS($product_sale_data);
             $revenue = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - shipping_cost'));
+            $sale_due = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
+            $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
+                ->where('payments.user_id', Auth::id())
+                ->whereRaw('payments.created_at > sales.created_at')
+                ->whereDate('payments.created_at', '>=', $start_date)
+                ->whereDate('payments.created_at', '<=', $end_date)
+                ->sum('payments.amount');
             $return = Returns::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('grand_total');
             $purchase_return = ReturnPurchase::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('grand_total');
             $revenue = $revenue - $return;
             $purchase = Purchase::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('grand_total');
+            $purchase_paid = Purchase::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $purchase_due = Purchase::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
+
             $profit = $revenue + $purchase_return - $product_cost;
             $expense = Expense::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('amount');
+            $salary = Payroll::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('amount');
         } else {
             $product_sale_data = Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
                 ->select(DB::raw('product_sales.product_id, product_sales.product_batch_id, product_sales.sale_unit_id, sum(product_sales.qty) as sold_qty, sum(product_sales.return_qty) as return_qty, sum(product_sales.total) as sold_amount'))
@@ -132,14 +144,26 @@ class HomeController extends Controller
                 ->get();
             $product_cost = $this->calculateAverageCOGS($product_sale_data);
             $revenue = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - shipping_cost'));
+            $sale_due = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
+            $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
+                ->whereRaw('payments.created_at > sales.created_at')
+                ->whereDate('payments.created_at', '>=', $start_date)
+                ->whereDate('payments.created_at', '<=', $end_date)
+                ->sum('payments.amount');
             $return = Returns::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
             $purchase_return = ReturnPurchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
             $revenue = $revenue - $return;
             $purchase = Purchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
+            $purchase_paid = Purchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $purchase_due = Purchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
             $profit = $revenue + $purchase_return - $product_cost;
             $expense = Expense::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('amount');
+            $salary = Payroll::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('amount');
         }
 
+        $customers = Customer::where('is_active', 1)->count();
+        $suppliers = Supplier::where('is_active', 1)->count();
         //cash flow of last 6 months
         $start = strtotime(date('Y-m-01', strtotime('-6 month', strtotime(date('Y-m-d')))));
         $end = strtotime(date('Y-m-' . date('t', mktime(0, 0, 0, date("m"), 1, date("Y")))));
@@ -222,7 +246,7 @@ class HomeController extends Controller
         } else {
             $autoUpdateData = $alertBugEnable = $alertVersionUpgradeEnable = '';
         }
-        return view('backend.index', compact('assets', 'liability', 'cash', 'revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'alertBugEnable', 'alertVersionUpgradeEnable'));
+        return view('backend.index', compact('purchase_paid', 'purchase_due', 'due_payment_received', 'sale_due', 'sale_paid', 'salary', 'customers', 'suppliers', 'cash', 'liability', 'assets', 'revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'alertBugEnable', 'alertVersionUpgradeEnable'));
     }
 
     public function yearlyBestSellingPrice()
@@ -338,15 +362,37 @@ class HomeController extends Controller
             DB::reconnect();
             $product_cost = $this->calculateAverageCOGS($product_sale_data);
             $revenue = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->where('user_id', Auth::id())->sum(DB::raw('grand_total - shipping_cost'));
+            $sale_due = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
+            $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
+                ->where('payments.user_id', Auth::id())
+                ->whereRaw('payments.created_at > sales.created_at')
+                ->whereDate('payments.created_at', '>=', $start_date)
+                ->whereDate('payments.created_at', '<=', $end_date)
+                ->sum('payments.amount');
             $return = Returns::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->where('user_id', Auth::id())->sum('grand_total');
             $purchase_return = ReturnPurchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->where('user_id', Auth::id())->sum('grand_total');
+            $purchase = Purchase::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('grand_total');
+            $purchase_paid = Purchase::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $purchase_due = Purchase::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
+
             $revenue -= $return;
             $profit = $revenue + $purchase_return - $product_cost;
+            $expense = Expense::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('amount');
+            $salary = Payroll::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('amount');
 
             $data[0] = $revenue;
             $data[1] = $return;
             $data[2] = $profit;
             $data[3] = $purchase_return;
+            $data[4] = $expense;
+            $data[5] = $salary;
+            $data[6] = $purchase;
+            $data[7] = $sale_due;
+            $data[8] = $sale_paid;
+            $data[9] = $due_payment_received;
+            $data[10] = $purchase_due;
+            $data[11] = $purchase_paid;
         } else {
             config()->set('database.connections.mysql.strict', false);
             DB::reconnect();
@@ -360,15 +406,35 @@ class HomeController extends Controller
             DB::reconnect();
             $product_cost = $this->calculateAverageCOGS($product_sale_data);
             $revenue = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - shipping_cost'));
+            $sale_due = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
+            $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
+                ->whereRaw('payments.created_at > sales.created_at')
+                ->whereDate('payments.created_at', '>=', $start_date)
+                ->whereDate('payments.created_at', '<=', $end_date)
+                ->sum('payments.amount');
             $return = Returns::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
             $purchase_return = ReturnPurchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
+            $purchase = Purchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
+            $purchase_paid = Purchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
+            $purchase_due = Purchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum(DB::raw('grand_total - paid_amount'));
             $revenue -= $return;
             $profit = $revenue + $purchase_return - $product_cost;
+            $expense = Expense::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('amount');
+            $salary = Payroll::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('amount');
 
             $data[0] = $revenue;
             $data[1] = $return;
             $data[2] = $profit;
             $data[3] = $purchase_return;
+            $data[4] = $expense;
+            $data[5] = $salary;
+            $data[6] = $purchase;
+            $data[7] = $sale_due;
+            $data[8] = $sale_paid;
+            $data[9] = $due_payment_received;
+            $data[10] = $purchase_due;
+            $data[11] = $purchase_paid;
         }
         return $data;
     }
