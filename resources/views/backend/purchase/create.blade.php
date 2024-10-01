@@ -631,8 +631,8 @@
                         cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
                     }
                     else {
-                        cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" disabled/></td>';
-                        cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" disabled/></td>';
+                        cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]"/></td>';
+                        cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]"/></td>';
                     }
 
                     cols += '<td class="net_unit_cost"></td>';
