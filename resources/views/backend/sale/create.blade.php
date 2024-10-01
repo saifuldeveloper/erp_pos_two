@@ -95,7 +95,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group">
                                             <label>{{trans('file.Currency')}} *</label>
                                             <select name="currency_id" id="currency" class="form-control selectpicker" data-toggle="tooltip" title="" data-original-title="Sale currency">
@@ -104,8 +104,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div> 
-                                    <div class="col-md-2">
+                                    </div>  --}}
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group mb-0">
                                             <label>{{trans('file.Exchange Rate')}} *</label>
                                         </div>
@@ -115,7 +115,7 @@
                                                 <span class="input-group-text" data-toggle="tooltip" title="" data-original-title="currency exchange rate">i</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12">
