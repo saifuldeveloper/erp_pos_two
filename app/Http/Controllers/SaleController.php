@@ -1522,6 +1522,15 @@ class SaleController extends Controller
         $product[] = $lims_product_data->is_variant;
         $product[] = $qty;
         
+        if($lims_product_data->is_batch != null)
+        {
+            $batches = ProductBatch::where('product_id', $lims_product_data->id)
+            ->select('id','batch_no', 'expired_date', 'qty')
+            ->get();
+
+            $product[] = $batches;
+        }
+
         return $product;
 
     }

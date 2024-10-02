@@ -922,6 +922,7 @@ function productSearch(data) {
             data: data
         },
         success: function(data) {
+            console.log(data);
             var flag = 1;
             if (pre_qty > 0) {
                 var qty = data[15];
@@ -945,15 +946,31 @@ function productSearch(data) {
                 temp_unit_name = (data[6]).split(',');
                 cols += '<td>' + data[0] + '<button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button></td>';
                 cols += '<td>' + data[1] + '</td>';
-                cols += '<td><input type="text" class="form-control qty" name="qty[]" value="'+data[15]+'" required/></td>';
-                if(data[12]) {
-                    cols += '<td><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
-                    cols += '<td class="expired-date">'+expired_date[pos]+'</td>';
+                
+                if (data[16] !== null && Array.isArray(data[16]) && data[16].length > 0) {
+                    cols += '<td><input type="text" class="form-control qty" readonly name="qty[]" value="'+data[15]+'" required/></td>';
+                    cols += '<td><select class="form-control product_batch" name="product_batch_id[]" required><option value="">Select Batch</option>';
+                        $.each(data[16], function(key, value) {
+                        cols += '<option value="'+value.id+'" data-qty="'+value.qty+'" ' + 
+                                (value.qty == 0 || value.expired_date < new Date().toISOString().split('T')[0] ? 'disabled' : '') + 
+                                '>'+value.batch_no+' (Qty: '+value.qty+', Expired Date: '+value.expired_date+')</option>';
+                    });
+                    cols += '</select></td>';
+
+                } else {
+                    cols += '<td><input type="text" class="form-control qty" name="qty[]" value="'+data[15]+'" required/></td>';
+                    cols += '<td><input type="text" class="form-control product-unit" disabled placeholder="No batch available"/></td>';
                 }
-                else {
-                    cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
-                    cols += '<td class="expired-date">N/A</td>';
-                }
+
+
+                // if(data[12]) {
+                //     cols += '<td><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
+                //     cols += '<td class="expired-date">'+expired_date[pos]+'</td>';
+                // }
+                // else {
+                //     cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
+                //     cols += '<td class="expired-date">N/A</td>';
+                // }
 
                 cols += '<td class="net_unit_price"></td>';
                 cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
@@ -997,6 +1014,17 @@ function productSearch(data) {
         }
     });
 }
+
+$(document).on('change', '.product_batch', function() {
+    var qtyInput = $(this).closest('tr').find('.qty');
+    var qty = $(this).find(':selected').data('qty');
+    if($(this).val() != null) {
+        qtyInput.removeAttr('readonly');\
+    }
+    else {
+        qtyInput.attr('readonly', true);
+    }
+});
 
 function edit()
 {
