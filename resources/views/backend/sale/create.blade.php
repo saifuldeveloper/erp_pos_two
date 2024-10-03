@@ -959,7 +959,7 @@ function productSearch(data) {
 
                 } else {
                     cols += '<td><input type="text" class="form-control qty" name="qty[]" value="'+data[15]+'" required/></td>';
-                    cols += '<td><input type="text" class="form-control product-unit" disabled placeholder="No batch available"/></td>';
+                    cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
                 }
 
 
@@ -1019,7 +1019,7 @@ $(document).on('change', '.product_batch', function() {
     var qtyInput = $(this).closest('tr').find('.qty');
     var qty = $(this).find(':selected').data('qty');
     if($(this).val() != null) {
-        qtyInput.removeAttr('readonly');\
+        qtyInput.removeAttr('readonly');
     }
     else {
         qtyInput.attr('readonly', true);
