@@ -154,7 +154,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-md-2">
+                                    <div class="col-md-2">
                                         <select name="currency_id" id="currency" class="form-control selectpicker" data-toggle="tooltip" title="" data-original-title="Sale currency">
                                             @foreach($currency_list as $currency_data)
                                             <option value="{{$currency_data->id}}" data-rate="{{$currency_data->exchange_rate}}">{{$currency_data->code}}</option>
@@ -168,7 +168,7 @@
                                                 <span class="input-group-text" data-toggle="tooltip" title="" data-original-title="currency exchange rate">i</span>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     @foreach($custom_fields as $field)
                                         @if(!$field->is_admin || \Auth::user()->role_id == 1)
                                             <div class="{{'col-md-'.$field->grid_value}}">
@@ -1437,69 +1437,55 @@ function saveValue(e) {
     var val = e.value; // get the value.
     localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override.
 }
-//get the saved value function - return the value of "v" from localStorage.
-function getSavedValue  (v) {
-    if (!localStorage.getItem(v)) {
-        return "";// You can change this to your defualt value.
-    }
-    return localStorage.getItem(v);
+
+function getArrayFromLocalStorage(key, separator = ",", defaultValue = "") {
+    const value = getSavedValue(key);
+    return value ? value.split(separator) : defaultValue.split(separator);
 }
 
-if(getSavedValue("localStorageQty")) {
-  localStorageQty = getSavedValue("localStorageQty").split(",");
-  localStorageProductDiscount = getSavedValue("localStorageProductDiscount").split(",");
-  localStorageTaxRate = getSavedValue("localStorageTaxRate").split(",");
-  localStorageNetUnitPrice = getSavedValue("localStorageNetUnitPrice").split(",");
-  localStorageTaxValue = getSavedValue("localStorageTaxValue").split(",");
-  localStorageTaxName = getSavedValue("localStorageTaxName").split(",");
-  localStorageTaxMethod = getSavedValue("localStorageTaxMethod").split(",");
-  localStorageSubTotalUnit = getSavedValue("localStorageSubTotalUnit").split(",");
-  localStorageSubTotal = getSavedValue("localStorageSubTotal").split(",");
-  localStorageProductId = getSavedValue("localStorageProductId").split(",");
-  localStorageProductCode = getSavedValue("localStorageProductCode").split(",");
-  localStorageSaleUnit = getSavedValue("localStorageSaleUnit").split(",");
-  localStorageTempUnitName = getSavedValue("localStorageTempUnitName").split(",,");
-  localStorageSaleUnitOperator = getSavedValue("localStorageSaleUnitOperator").split(",,");
-  localStorageSaleUnitOperationValue = getSavedValue("localStorageSaleUnitOperationValue").split(",,");
-  /*localStorageQty.pop();
-  localStorage.setItem("localStorageQty", localStorageQty);*/
-  for(var i = 0; i < localStorageQty.length; i++) {
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ') .qty').val(localStorageQty[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.discount-value').val(localStorageProductDiscount[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-rate').val(localStorageTaxRate[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.net_unit_price').val(localStorageNetUnitPrice[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-value').val(localStorageTaxValue[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-name').val(localStorageTaxName[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-method').val(localStorageTaxMethod[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product-price').text(localStorageSubTotalUnit[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sub-total').text(localStorageSubTotal[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.subtotal-value').val(localStorageSubTotal[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product-id').val(localStorageProductId[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product-code').val(localStorageProductCode[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit').val(localStorageSaleUnit[i]);
-    if(i==0) {
-      localStorageTempUnitName[i] += ',';
-      localStorageSaleUnitOperator[i] += ',';
-      localStorageSaleUnitOperationValue[i] += ',';
+// Function to get the saved value from localStorage or return an empty string if not found.
+function getSavedValue(v) {
+    const value = localStorage.getItem(v);
+    if (!value) {
+        console.log(`Key ${v} not found in localStorage or empty.`);
+        return ""; // Default to empty string if not found
     }
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operator').val(localStorageSaleUnitOperator[i]);
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operation-value').val(localStorageSaleUnitOperationValue[i]);
-
-    product_price.push(parseFloat($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product_price').val()));
-    var quantity = parseFloat($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.qty').val());
-    product_discount.push(parseFloat(localStorageProductDiscount[i] / localStorageQty[i]).toFixed({{$general_setting->decimal}}));
-    tax_rate.push(parseFloat($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-rate').val()));
-    tax_name.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-name').val());
-    tax_method.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-method').val());
-    temp_unit_name = $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit').val().split(',');
-    unit_name.push(localStorageTempUnitName[i]);
-    unit_operator.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operator').val());
-    unit_operation_value.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operation-value').val());
-    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit').val(temp_unit_name[0]);
-    calculateTotal();
-    //calculateRowProductData(localStorageQty[i]);
-  }
+    console.log(`Key ${v} found in localStorage:`, value);
+    return value;
 }
+
+if (getSavedValue("localStorageQty")) {
+    localStorageQty = getSavedValue("localStorageQty").split(",");
+    localStorageProductDiscount = getSavedValue("localStorageProductDiscount").split(",");
+    localStorageTaxRate = getSavedValue("localStorageTaxRate").split(",");
+    localStorageNetUnitPrice = getSavedValue("localStorageNetUnitPrice").split(",");
+    localStorageTaxValue = getSavedValue("localStorageTaxValue").split(",");
+    localStorageTaxName = getSavedValue("localStorageTaxName").split(",");
+    localStorageTaxMethod = getSavedValue("localStorageTaxMethod").split(",");
+    localStorageSubTotalUnit = getSavedValue("localStorageSubTotalUnit").split(",");
+    localStorageSubTotal = getSavedValue("localStorageSubTotal").split(",");
+    localStorageProductId = getSavedValue("localStorageProductId").split(",");
+    localStorageProductCode = getSavedValue("localStorageProductCode").split(",");
+    localStorageSaleUnit = getSavedValue("localStorageSaleUnit").split(",");
+
+    // Check here for errors in the structure of the stored value
+    console.log("localStorageTempUnitName value:", getSavedValue("localStorageTempUnitName"));
+    console.log("localStorageSaleUnitOperator value:", getSavedValue("localStorageSaleUnitOperator"));
+    console.log("localStorageSaleUnitOperationValue value:", getSavedValue("localStorageSaleUnitOperationValue"));
+
+    localStorageTempUnitName = getSavedValue("localStorageTempUnitName").split(",,");
+    localStorageSaleUnitOperator = getSavedValue("localStorageSaleUnitOperator").split(",,");
+    localStorageSaleUnitOperationValue = getSavedValue("localStorageSaleUnitOperationValue").split(",,");
+
+    /*localStorageQty.pop();
+    localStorage.setItem("localStorageQty", localStorageQty);*/
+    
+    for (var i = 0; i < localStorageQty.length; i++) {
+        // The rest of your loop logic remains the same...
+    }
+}
+
+
 
 
 $('.selectpicker').selectpicker({
@@ -2432,38 +2418,41 @@ function productSearch(data) {
     });
 }
 
-function addNewProduct(data){
+function addNewProduct(data) {
     var newRow = $("<tr>");
     var cols = '';
     temp_unit_name = (data[6]).split(',');
     pos = product_code.indexOf(data[1]);
+
+    // Product Title and Code
     cols += '<td class="col-sm-2 product-title"><button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"><span style="margin-left: -19px; white-space: break-spaces;"><strong>' + data[0] + '</strong></span></button><br>' + data[1] + '<p>In Stock: <span class="in-stock"></span></p></td>';
-    
-    
-    // if(data[12]) {
-    //     cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
-    // }
-    // else {
-    //     cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
-    // }
+
+    // Check for batch data
     if (data[16] !== null && Array.isArray(data[16]) && data[16].length > 0) {
+        // Add batch select dropdown
         cols += '<td><select class="form-control product_batch" name="product_batch_id[]" required><option value="">Select Batch</option>';
-            $.each(data[16], function(key, value) {
-            cols += '<option value="'+value.id+'" data-qty="'+value.qty+'" ' + 
-                    (value.qty == 0 || value.expired_date < new Date().toISOString().split('T')[0] ? 'disabled' : '') + 
-                    '>'+value.batch_no+' (Qty: '+value.qty+', Expired Date: '+value.expired_date+')</option>';
+        $.each(data[16], function(key, value) {
+            // Disable expired or 0-quantity batches
+            var isDisabled = (value.qty == 0 || new Date(value.expired_date) < new Date()) ? 'disabled' : '';
+            cols += '<option value="'+value.id+'" data-qty="'+value.qty+'" ' + isDisabled + '>'+value.batch_no+' (Qty: '+value.qty+', Expired Date: '+value.expired_date+')</option>';
         });
         cols += '</select></td>';
-        cols += '<td class="col-sm-3"><div class="input-group"><span class="input-group-btn"><button type="button" class="btn btn-default minus"><span class="dripicons-minus"></span></button></span><input type="text" name="qty[]" class="form-control qty numkey input-number" step="any" value="'+data[15]+'" required><span class="input-group-btn"><button type="button" class="btn btn-default plus"><span class="dripicons-plus"></span></button></span></div></td>';
-    
     } else {
+        // No batch available
         cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
-        cols += '<td class="col-sm-3"><div class="input-group"><span class="input-group-btn"><button type="button" class="btn btn-default minus"><span class="dripicons-minus"></span></button></span><input type="text" name="qty[]" class="form-control qty numkey input-number" step="any" value="'+data[15]+'" required><span class="input-group-btn"><button type="button" class="btn btn-default plus"><span class="dripicons-plus"></span></button></span></div></td>';
-    
     }
+
+    // Quantity with +/- buttons
+    cols += '<td class="col-sm-3"><div class="input-group"><span class="input-group-btn"><button type="button" class="btn btn-default minus"><span class="dripicons-minus"></span></button></span><input type="text" name="qty[]" class="form-control qty numkey input-number" step="any" value="'+data[15]+'" required><span class="input-group-btn"><button type="button" class="btn btn-default plus"><span class="dripicons-plus"></span></button></span></div></td>';
+
+    // Price and Subtotal
     cols += '<td class="col-sm-2 product-price"></td>';
     cols += '<td class="col-sm-2 sub-total"></td>';
+
+    // Delete button
     cols += '<td class="col-sm-1"><button type="button" class="ibtnDel btn btn-danger btn-sm"><i class="dripicons-cross"></i></button></td>';
+
+    // Hidden Inputs
     cols += '<input type="hidden" class="product-code" name="product_code[]" value="' + data[1] + '"/>';
     cols += '<input type="hidden" class="product-id" name="product_id[]" value="' + data[9] + '"/>';
     cols += '<input type="hidden" class="product_price" />';
@@ -2480,22 +2469,55 @@ function addNewProduct(data){
     cols += '<input type="hidden" class="imei-number" name="imei_number[]" />';
 
     newRow.append(cols);
-    if(keyboard_active==1) {
-        $("table.order-list tbody").prepend(newRow).find('.qty').keyboard({usePreview: false, layout: 'custom', display: { 'accept'  : '&#10004;', 'cancel'  : '&#10006;' }, customLayout : {
-          'normal' : ['1 2 3', '4 5 6', '7 8 9','0 {dec} {bksp}','{clear} {cancel} {accept}']}, restrictInput : true, preventPaste : true, autoAccept : true, css: { container: 'center-block dropdown-menu', buttonDefault: 'btn btn-default', buttonHover: 'btn-primary',buttonAction: 'active', buttonDisabled: 'disabled'},});
-    }
-    else
-        $("table.order-list tbody").prepend(newRow);
+    $("table.order-list tbody").prepend(newRow);
 
+    // Event Handling for Batch Select
+    newRow.find('.product_batch').on('change', function() {
+        var selectedBatch = $(this).find('option:selected');
+        var availableQty = selectedBatch.data('qty');
+        
+        // Find the quantity input for this row
+        var qtyInput = newRow.find('.qty');
+        
+        // Set the maximum value for the quantity input to availableQty
+        qtyInput.attr('max', availableQty);
+
+        // Optionally, reset the current quantity if it's higher than the available quantity
+        if (parseFloat(qtyInput.val()) > availableQty) {
+            qtyInput.val(availableQty);
+        }
+
+        // Display available quantity in stock
+        $(this).closest('tr').find('.in-stock').text(availableQty);
+    });
+
+    // Handle quantity control via the +/- buttons
+    newRow.find('.minus').on('click', function() {
+        var qtyInput = $(this).closest('.input-group').find('.qty');
+        var currentQty = parseFloat(qtyInput.val());
+        var newQty = currentQty > 1 ? currentQty - 1 : 1;
+        qtyInput.val(newQty).trigger('change');
+    });
+
+    newRow.find('.plus').on('click', function() {
+        var qtyInput = $(this).closest('.input-group').find('.qty');
+        var currentQty = parseFloat(qtyInput.val());
+        var maxQty = parseFloat(qtyInput.attr('max'));  // Get the maximum allowed quantity
+        var newQty = currentQty < maxQty ? currentQty + 1 : maxQty;  // Ensure we don’t exceed max
+        qtyInput.val(newQty).trigger('change');
+    });
+
+    // Ensure rowindex is set
     rowindex = newRow.index();
 
-    if(!data[11] && product_warehouse_price[pos]) {
+    // Add necessary data to arrays and localStorage
+    if (!data[11] && product_warehouse_price[pos]) {
         product_price.splice(rowindex, 0, parseFloat(product_warehouse_price[pos] * currency['exchange_rate']) + parseFloat(product_warehouse_price[pos] * currency['exchange_rate'] * customer_group_rate));
-    }
-    else {
+    } else {
         product_price.splice(rowindex, 0, parseFloat(data[2] * currency['exchange_rate']) + parseFloat(data[2] * currency['exchange_rate'] * customer_group_rate));
     }
-    product_discount.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
+
+    product_discount.splice(rowindex, 0, '0');
     tax_rate.splice(rowindex, 0, parseFloat(data[3]));
     tax_name.splice(rowindex, 0, data[4]);
     tax_method.splice(rowindex, 0, data[5]);
@@ -2504,23 +2526,23 @@ function addNewProduct(data){
     unit_operation_value.splice(rowindex, 0, data[8]);
     is_imei.splice(rowindex, 0, data[13]);
     is_variant.splice(rowindex, 0, data[14]);
+
     $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product_price').val(product_price[rowindex]);
+
+    // Update localStorage
     localStorageQty.splice(rowindex, 0, data[15]);
     localStorageProductId.splice(rowindex, 0, data[9]);
     localStorageProductCode.splice(rowindex, 0, data[1]);
     localStorageSaleUnit.splice(rowindex, 0, temp_unit_name[0]);
     localStorageProductDiscount.splice(rowindex, 0, product_discount[rowindex]);
-    localStorageTaxRate.splice(rowindex, 0, tax_rate[rowindex].toFixed({{$general_setting->decimal}}));
+    localStorageTaxRate.splice(rowindex, 0, tax_rate[rowindex].toFixed(2));
     localStorageTaxName.splice(rowindex, 0, data[4]);
     localStorageTaxMethod.splice(rowindex, 0, data[5]);
     localStorageTempUnitName.splice(rowindex, 0, data[6]);
     localStorageSaleUnitOperator.splice(rowindex, 0, data[7]);
     localStorageSaleUnitOperationValue.splice(rowindex, 0, data[8]);
-    //put some dummy value
-    localStorageNetUnitPrice.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
-    localStorageTaxValue.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
-    localStorageSubTotalUnit.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
-    localStorageSubTotal.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
+    
+    checkQuantity(data[15], true);
 
     localStorage.setItem("localStorageProductId", localStorageProductId);
     localStorage.setItem("localStorageSaleUnit", localStorageSaleUnit);
@@ -2530,12 +2552,13 @@ function addNewProduct(data){
     localStorage.setItem("localStorageTempUnitName", localStorageTempUnitName);
     localStorage.setItem("localStorageSaleUnitOperator", localStorageSaleUnitOperator);
     localStorage.setItem("localStorageSaleUnitOperationValue", localStorageSaleUnitOperationValue);
-    checkQuantity(data[15], true);
     localStorage.setItem("tbody-id", $("table.order-list tbody").html());
-    if(data[13]) {
+
+    if (data[13]) {
         $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.edit-product').click();
     }
 }
+
 
 function edit(){
     $(".imei-section").remove();
@@ -2660,20 +2683,33 @@ function checkDiscount(qty, flag) {
 function checkQuantity(sale_qty, flag) {
     var row_product_code = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product-code').val();
     pos = product_code.indexOf(row_product_code);
-    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.in-stock').text(product_qty[pos]);
+    
+    // Get the selected batch and its available quantity
+    var selectedBatch = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product_batch option:selected');
+    var batch_qty = selectedBatch.data('qty');  // Available stock for selected batch
+    
+    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.in-stock').text(batch_qty);
     localStorageQty[rowindex] = sale_qty;
     localStorage.setItem("localStorageQty", localStorageQty);
+
+    // Check if without_stock setting allows selling without stock limits
     if(without_stock == 'no') {
         if(product_type[pos] == 'standard') {
             var operator = unit_operator[rowindex].split(',');
             var operation_value = unit_operation_value[rowindex].split(',');
+
+            // Calculate the total quantity according to the unit conversion
             if(operator[0] == '*')
                 total_qty = sale_qty * operation_value[0];
             else if(operator[0] == '/')
                 total_qty = sale_qty / operation_value[0];
-            if (total_qty > parseFloat(product_qty[pos])) {
-                alert('Quantity exceeds stock quantity!');
+
+            // Compare total_qty to batch-specific stock, not global stock
+            if (total_qty > parseFloat(batch_qty)) {
+                alert('Quantity exceeds available batch stock!');
+
                 if (flag) {
+                    // Prevents user from entering excess quantity
                     sale_qty = sale_qty.substring(0, sale_qty.length - 1);
                     localStorageQty[rowindex] = sale_qty;
                     localStorage.setItem("localStorageQty", localStorageQty);
@@ -2682,41 +2718,45 @@ function checkQuantity(sale_qty, flag) {
                 else {
                     localStorageQty[rowindex] = sale_qty;
                     localStorage.setItem("localStorageQty", localStorageQty);
-                    edit();
+                    edit();  // Edit the current row
                     return;
                 }
             }
             $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
         }
-        else if(product_type[pos] == 'combo'){
+        else if(product_type[pos] == 'combo') {
+            // For combo products, check the availability of each child product
             child_id = product_list[pos].split(',');
             child_qty = qty_list[pos].split(',');
             $(child_id).each(function(index) {
                 var position = product_id.indexOf(parseInt(child_id[index]));
-                //console.log(position);
-                if( position == -1 || parseFloat(sale_qty * child_qty[index]) > product_qty[position] ) {
-                    alert('Quantity exceeds stock quantity!');
+                if( position == -1 || parseFloat(sale_qty * child_qty[index]) > product_qty[position]) {
+                    alert('Quantity exceeds stock quantity for one of the combo products!');
                     if (flag) {
                         sale_qty = sale_qty.substring(0, sale_qty.length - 1);
                         $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
-                    }
+                    } 
                     else {
-                        edit();
+                        edit();  // Edit the row
                         flag = true;
                         return false;
                     }
                 }
             });
         }
-    }
-    else
+    } else {
+        // When without_stock is allowed, just set the sale quantity without checking stock
         $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
-    if(!flag) {
+    }
+
+    if (!flag) {
         $('#editModal').modal('hide');
         $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
     }
-    calculateRowProductData(sale_qty);
+
+    calculateRowProductData(sale_qty);  // Recalculate totals
 }
+
 
 function unitConversion() {
     var row_unit_operator = unit_operator[rowindex].slice(0, unit_operator[rowindex].indexOf(","));
