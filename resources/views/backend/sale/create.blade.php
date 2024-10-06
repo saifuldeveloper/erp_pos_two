@@ -95,7 +95,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group">
                                             <label>{{trans('file.Currency')}} *</label>
                                             <select name="currency_id" id="currency" class="form-control selectpicker" data-toggle="tooltip" title="" data-original-title="Sale currency">
@@ -104,8 +104,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div> 
-                                    <div class="col-md-2">
+                                    </div>  --}}
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group mb-0">
                                             <label>{{trans('file.Exchange Rate')}} *</label>
                                         </div>
@@ -115,7 +115,7 @@
                                                 <span class="input-group-text" data-toggle="tooltip" title="" data-original-title="currency exchange rate">i</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12">
@@ -922,6 +922,7 @@ function productSearch(data) {
             data: data
         },
         success: function(data) {
+            console.log(data);
             var flag = 1;
             if (pre_qty > 0) {
                 var qty = data[15];
@@ -945,15 +946,31 @@ function productSearch(data) {
                 temp_unit_name = (data[6]).split(',');
                 cols += '<td>' + data[0] + '<button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button></td>';
                 cols += '<td>' + data[1] + '</td>';
-                cols += '<td><input type="text" class="form-control qty" name="qty[]" value="'+data[15]+'" required/></td>';
-                if(data[12]) {
-                    cols += '<td><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
-                    cols += '<td class="expired-date">'+expired_date[pos]+'</td>';
+                
+                if (data[16] !== null && Array.isArray(data[16]) && data[16].length > 0) {
+                    cols += '<td><input type="text" class="form-control qty" readonly name="qty[]" value="'+data[15]+'" required/></td>';
+                    cols += '<td><select class="form-control product_batch" name="product_batch_id[]" required><option value="">Select Batch</option>';
+                        $.each(data[16], function(key, value) {
+                        cols += '<option value="'+value.id+'" data-qty="'+value.qty+'" ' + 
+                                (value.qty == 0 || value.expired_date < new Date().toISOString().split('T')[0] ? 'disabled' : '') + 
+                                '>'+value.batch_no+' (Qty: '+value.qty+', Expired Date: '+value.expired_date+')</option>';
+                    });
+                    cols += '</select></td>';
+
+                } else {
+                    cols += '<td><input type="text" class="form-control qty" name="qty[]" value="'+data[15]+'" required/></td>';
+                    cols += '<td><input type="text" class="form-control product-unit" name="product_batch_id[]" disabled placeholder="No batch available"/></td>';
                 }
-                else {
-                    cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
-                    cols += '<td class="expired-date">N/A</td>';
-                }
+
+
+                // if(data[12]) {
+                //     cols += '<td><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
+                //     cols += '<td class="expired-date">'+expired_date[pos]+'</td>';
+                // }
+                // else {
+                //     cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
+                //     cols += '<td class="expired-date">N/A</td>';
+                // }
 
                 cols += '<td class="net_unit_price"></td>';
                 cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
@@ -973,6 +990,32 @@ function productSearch(data) {
                 newRow.append(cols);
                 $("table.order-list tbody").prepend(newRow);
                 rowindex = newRow.index();
+
+                // Inside success function, after appending new row
+                newRow.find('.product_batch').on('change', function() {
+                    var selectedOption = $(this).find('option:selected');
+                    var batchQty = parseFloat(selectedOption.data('qty'));  // Get batch-specific qty
+                    var inputQtyField = $(this).closest('tr').find('.qty'); // Locate the corresponding qty input field
+
+                    // Update qty input field max attribute and reset the value if it exceeds the new limit
+                    inputQtyField.attr('max', batchQty);
+                    
+                    // Check if current quantity exceeds the new batch limit
+                    if (parseFloat(inputQtyField.val()) > batchQty) {
+                        inputQtyField.val(batchQty);  // Restrict to available quantity
+                        alert('Selected batch has only ' + batchQty + ' items available!');
+                    }
+
+                    // Re-attach the input event listener to dynamically check the new batch limits
+                    inputQtyField.off('input').on('input', function() {
+                        var enteredQty = parseFloat($(this).val());
+                        if (enteredQty > batchQty) {
+                            alert('Selected batch has only ' + batchQty + ' items available!');
+                            $(this).val(batchQty);  // Restrict to available quantity
+                        }
+                    });
+                });
+
 
                 if(!data[11] && product_warehouse_price[pos]) {
                     product_price.splice(rowindex, 0, parseFloat(product_warehouse_price[pos] * currency['exchange_rate']) + parseFloat(product_warehouse_price[pos] * currency['exchange_rate'] * customer_group_rate));
@@ -997,6 +1040,17 @@ function productSearch(data) {
         }
     });
 }
+
+$(document).on('change', '.product_batch', function() {
+    var qtyInput = $(this).closest('tr').find('.qty');
+    var qty = $(this).find(':selected').data('qty');
+    if($(this).val() != null) {
+        qtyInput.removeAttr('readonly');
+    }
+    else {
+        qtyInput.attr('readonly', true);
+    }
+});
 
 function edit()
 {
@@ -1063,40 +1117,51 @@ function checkDiscount(qty, flag) {
 }
 
 function checkQuantity(sale_qty, flag) {
-    var row_product_code = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('td:nth-child(2)').text();
-    pos = product_code.indexOf(row_product_code);
+    var row = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')');
+    var row_product_code = row.find('td:nth-child(2)').text();
+    var pos = product_code.indexOf(row_product_code);
+    
+    // Get batch-specific quantity if a batch is selected
+    var selectedBatch = row.find('.product_batch option:selected');
+    var batchQty = parseFloat(selectedBatch.data('qty'));
+
     if(without_stock == 'no') {
-        if(product_type[pos] == 'standard'){
+        if (batchQty && sale_qty > batchQty) {
+            alert('Quantity exceeds batch quantity!');
+            sale_qty = batchQty;
+            row.find('.qty').val(batchQty);
+            return;
+        }
+
+        if(product_type[pos] == 'standard') {
             var operator = unit_operator[rowindex].split(',');
             var operation_value = unit_operation_value[rowindex].split(',');
-            if(operator[0] == '*')
+            if (operator[0] == '*') {
                 total_qty = sale_qty * operation_value[0];
-            else if(operator[0] == '/')
+            } else if (operator[0] == '/') {
                 total_qty = sale_qty / operation_value[0];
+            }
             if (total_qty > parseFloat(product_qty[pos])) {
                 alert('Quantity exceeds stock quantity!');
                 if (flag) {
                     sale_qty = sale_qty.substring(0, sale_qty.length - 1);
-                    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
-                }
-                else {
+                    row.find('.qty').val(sale_qty);
+                } else {
                     edit();
                     return;
                 }
             }
-        }
-        else if(product_type[pos] == 'combo'){
+        } else if (product_type[pos] == 'combo') {
             child_id = product_list[pos].split(',');
             child_qty = qty_list[pos].split(',');
             $(child_id).each(function(index) {
                 var position = product_id.indexOf(parseInt(child_id[index]));
-                if( position == -1 || parseFloat(sale_qty * child_qty[index]) > product_qty[position] ) {
+                if (position == -1 || parseFloat(sale_qty * child_qty[index]) > product_qty[position]) {
                     alert('Quantity exceeds stock quantity!');
                     if (flag) {
                         sale_qty = sale_qty.substring(0, sale_qty.length - 1);
-                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
-                    }
-                    else {
+                        row.find('.qty').val(sale_qty);
+                    } else {
                         edit();
                         flag = true;
                         return false;
@@ -1106,12 +1171,13 @@ function checkQuantity(sale_qty, flag) {
         }
     }
 
-    if(!flag){
+    if (!flag) {
         $('#editModal').modal('hide');
-        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
+        row.find('.qty').val(sale_qty);
     }
     calculateRowProductData(sale_qty);
 }
+
 
 function calculateRowProductData(quantity) {
     if(product_type[pos] == 'standard')

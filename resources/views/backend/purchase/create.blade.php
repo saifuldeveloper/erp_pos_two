@@ -64,7 +64,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group">
                                             <label>{{trans('file.Currency')}} *</label>
                                             <select name="currency_id" id="currency-id" class="form-control selectpicker" data-toggle="tooltip" title="">
@@ -84,7 +84,7 @@
                                                 <span class="input-group-text" data-toggle="tooltip" title="" data-original-title="currency exchange rate">i</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     @foreach($custom_fields as $field)
                                         @if(!$field->is_admin || \Auth::user()->role_id == 1)
                                             <div class="{{'col-md-'.$field->grid_value}}">
