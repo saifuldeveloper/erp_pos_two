@@ -44,5 +44,8 @@ class DatabaseSeeder extends Seeder
             UnitsTableSeeder::class,
             WarehousesTableSeeder::class,
         ]);
+        $this->call(BrandsTableSeeder::class);
+        $this->call(UnitsTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
     }
 }

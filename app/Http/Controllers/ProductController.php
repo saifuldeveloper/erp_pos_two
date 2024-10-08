@@ -239,14 +239,14 @@ class ProductController extends Controller
                                 <input type="hidden" name="product_id" value="' . $product->id . '" />
                                 <button type="submit" class="btn btn-link"><i class="dripicons-checklist"></i> ' . trans("file.Product History") . '</button>
                             </li>' . \Form::close();
-                if (in_array("print_barcode", $request['all_permission'])) {
-                    $product_info = $product->code . ' (' . $product->name . ')';
-                    $nestedData['options'] .= \Form::open(["route" => "product.printBarcode", "method" => "GET"]) . '
-                        <li>
-                            <input type="hidden" name="data" value="' . $product_info . '" />
-                            <button type="submit" class="btn btn-link"><i class="dripicons-print"></i> ' . trans("file.print_barcode") . '</button>
-                        </li>' . \Form::close();
-                }
+                // if (in_array("print_barcode", $request['all_permission'])) {
+                //     $product_info = $product->code . ' (' . $product->name . ')';
+                //     $nestedData['options'] .= \Form::open(["route" => "product.printBarcode", "method" => "GET"]) . '
+                //         <li>
+                //             <input type="hidden" name="data" value="' . $product_info . '" />
+                //             <button type="submit" class="btn btn-link"><i class="dripicons-print"></i> ' . trans("file.print_barcode") . '</button>
+                //         </li>' . \Form::close();
+                // }
                 if (in_array("products-delete", $request['all_permission']))
                     $nestedData['options'] .= \Form::open(["route" => ["products.destroy", $product->id], "method" => "DELETE"]) . '
                             <li>

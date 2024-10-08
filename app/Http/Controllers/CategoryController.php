@@ -203,8 +203,7 @@ class CategoryController extends Controller
 
     public function update(Request $request)
     {
-        if(!env('USER_VERIFIED'))
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
+
         
         $this->validate($request,[
             'name' => [

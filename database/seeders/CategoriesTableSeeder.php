@@ -22,8 +22,8 @@ class CategoriesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Electronics',
-                'image' => NULL,
+                'name' => 'লে',
+                'image' => '20241008042953.jpg',
                 'parent_id' => NULL,
                 'is_active' => 1,
                 'created_at' => NULL,
@@ -32,8 +32,28 @@ class CategoriesTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'name' => 'Apparels',
-                'image' => NULL,
+                'name' => 'সু',
+                'image' => '20241008043138.png',
+                'parent_id' => NULL,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'জে',
+                'image' => '20241008042657.jpg',
+                'parent_id' => NULL,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'বেবি',
+                'image' => '20241008042833.png',
                 'parent_id' => NULL,
                 'is_active' => 1,
                 'created_at' => NULL,

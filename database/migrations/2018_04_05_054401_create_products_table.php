@@ -12,14 +12,14 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->string('type');
-            $table->string('barcode_symbology');
+            $table->string('type')->nullable();
+            $table->string('barcode_symbology')->nullable();
             $table->integer('brand_id')->nullable();
             $table->integer('category_id');
             $table->integer('unit_id');
             $table->integer('purchase_unit_id');
             $table->integer('sale_unit_id');
-            $table->double('cost');
+            $table->double('cost')->nullable();
             $table->double('price');
             $table->double('qty')->nullable();
             $table->double('alert_quantity')->nullable();
