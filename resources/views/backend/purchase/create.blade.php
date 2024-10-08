@@ -73,7 +73,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-2">
                                         <div class="form-group mb-0">
                                             <label>{{trans('file.Exchange Rate')}} *</label>
@@ -431,7 +431,7 @@
                 $productArray[] = htmlspecialchars($product->item_code) . '|' . preg_replace('/[\n\r]/', "<br>", htmlspecialchars($product->name));
             ?>
         @endforeach
-        
+
         <?php
             echo  '"'.implode('","', $productArray).'"';
         ?>
@@ -599,6 +599,7 @@
                 data: data
             },
             success: function(data) {
+                console.log(data);
                 var flag = 1;
                 $(".product-code").each(function(i) {
                     if ($(this).val() == data[1]) {
@@ -631,8 +632,8 @@
                         cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
                     }
                     else {
-                        cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]"/></td>';
-                        cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]"/></td>';
+                        cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
+                        cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
                     }
 
                     cols += '<td class="net_unit_cost"></td>';

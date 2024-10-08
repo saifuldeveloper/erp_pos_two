@@ -1012,7 +1012,7 @@ class SaleController extends Controller
                 ['products.is_active', true],
                 ['product_warehouse.warehouse_id', $id]
             ]);
-        } 
+        }
         $lims_product_warehouse_data = $query->whereNull('product_warehouse.variant_id')
                                         ->whereNull('product_warehouse.product_batch_id')
                                         ->select('product_warehouse.*',  'products.is_embeded')
@@ -1524,7 +1524,7 @@ class SaleController extends Controller
         $product[] = $lims_product_data->is_imei;
         $product[] = $lims_product_data->is_variant;
         $product[] = $qty;
-        
+
         if($lims_product_data->is_batch != null)
         {
             $batches = ProductBatch::where('product_id', $lims_product_data->id)

@@ -160,7 +160,7 @@
                                             <option value="{{$currency_data->id}}" data-rate="{{$currency_data->exchange_rate}}">{{$currency_data->code}}</option>
                                             @endforeach
                                         </select>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-2">
                                         <div class="form-group d-flex">
                                             <input class="form-control" type="text" id="exchange_rate" name="exchange_rate" value="{{$currency->exchange_rate}}">
@@ -1400,7 +1400,7 @@ $('#currency').change(function(){
         currencyChange = true;
         checkDiscount($(this).val(), true);
         couponDiscount();
-    }); 
+    });
 });
 
 var localStorageQty = [];
@@ -1479,7 +1479,7 @@ if (getSavedValue("localStorageQty")) {
 
     /*localStorageQty.pop();
     localStorage.setItem("localStorageQty", localStorageQty);*/
-    
+
     for (var i = 0; i < localStorageQty.length; i++) {
         // The rest of your loop logic remains the same...
     }
@@ -2471,25 +2471,24 @@ function addNewProduct(data) {
     newRow.append(cols);
     $("table.order-list tbody").prepend(newRow);
 
-    // Event Handling for Batch Select
     newRow.find('.product_batch').on('change', function() {
-        var selectedBatch = $(this).find('option:selected');
-        var availableQty = selectedBatch.data('qty');
-        
-        // Find the quantity input for this row
-        var qtyInput = newRow.find('.qty');
-        
-        // Set the maximum value for the quantity input to availableQty
-        qtyInput.attr('max', availableQty);
+    var selectedOption = $(this).find('option:selected');
+    var batchQty = parseFloat(selectedOption.data('qty')) || 0;  // Ensure numeric batch quantity
+    var inputQtyField = $(this).closest('tr').find('.qty'); // Locate the corresponding qty input field
 
-        // Optionally, reset the current quantity if it's higher than the available quantity
-        if (parseFloat(qtyInput.val()) > availableQty) {
-            qtyInput.val(availableQty);
-        }
+    inputQtyField.attr('max', batchQty); // Update the max attribute
 
-        // Display available quantity in stock
-        $(this).closest('tr').find('.in-stock').text(availableQty);
+    // Check the current quantity against the new batch limit
+    var currentQty = parseFloat(inputQtyField.val()) || 0; // Ensure numeric quantity
+    checkQuantity(currentQty, true, batchQty);
+
+    // Re-attach the input event listener to check new batch limits
+    inputQtyField.off('input').on('input', function() {
+        var enteredQty = parseFloat($(this).val()) || 0; // Ensure numeric input
+        checkQuantity(enteredQty, false, batchQty);
     });
+});
+
 
     // Handle quantity control via the +/- buttons
     newRow.find('.minus').on('click', function() {
@@ -2541,7 +2540,7 @@ function addNewProduct(data) {
     localStorageTempUnitName.splice(rowindex, 0, data[6]);
     localStorageSaleUnitOperator.splice(rowindex, 0, data[7]);
     localStorageSaleUnitOperationValue.splice(rowindex, 0, data[8]);
-    
+
     checkQuantity(data[15], true);
 
     localStorage.setItem("localStorageProductId", localStorageProductId);
@@ -2680,82 +2679,74 @@ function checkDiscount(qty, flag) {
     localStorage.setItem("tbody-id", $("table.order-list tbody").html());
 }
 
-function checkQuantity(sale_qty, flag) {
-    var row_product_code = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product-code').val();
-    pos = product_code.indexOf(row_product_code);
-    
-    // Get the selected batch and its available quantity
-    var selectedBatch = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product_batch option:selected');
-    var batch_qty = selectedBatch.data('qty');  // Available stock for selected batch
-    
-    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.in-stock').text(batch_qty);
-    localStorageQty[rowindex] = sale_qty;
-    localStorage.setItem("localStorageQty", localStorageQty);
+function checkQuantity(sale_qty, flag, batchQty) {
+    var row = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')');
+    var row_product_code = row.find('td:nth-child(2)').text();
+    var pos = product_code.indexOf(row_product_code);
 
-    // Check if without_stock setting allows selling without stock limits
-    if(without_stock == 'no') {
-        if(product_type[pos] == 'standard') {
-            var operator = unit_operator[rowindex].split(',');
-            var operation_value = unit_operation_value[rowindex].split(',');
+    // Ensure sale_qty is a number
+    sale_qty = parseFloat(sale_qty) || 0;
 
-            // Calculate the total quantity according to the unit conversion
-            if(operator[0] == '*')
+    if (without_stock == 'no') {
+        // Check against batch quantity if provided
+        batchQty = parseFloat(batchQty) || 0;
+        if (batchQty && sale_qty > batchQty) {
+            alert('Quantity exceeds batch quantity of ' + batchQty + '!');
+            sale_qty = batchQty; // Adjust sale_qty to batchQty
+            row.find('.qty').val(sale_qty);
+        } else if (product_type[pos] == 'standard') {
+            var operator = unit_operator[rowindex] ? unit_operator[rowindex].split(',') : [''];
+            var operation_value = unit_operation_value[rowindex] ? unit_operation_value[rowindex].split(',') : ['1']; // Default to 1
+
+            operation_value[0] = parseFloat(operation_value[0]) || 1;
+
+            if (operator[0] == '*') {
                 total_qty = sale_qty * operation_value[0];
-            else if(operator[0] == '/')
+            } else if (operator[0] == '/') {
                 total_qty = sale_qty / operation_value[0];
+            }
 
-            // Compare total_qty to batch-specific stock, not global stock
-            if (total_qty > parseFloat(batch_qty)) {
-                alert('Quantity exceeds available batch stock!');
+            total_qty = parseFloat(total_qty) || 0; // Ensure total_qty is a number
 
+            if (total_qty > parseFloat(product_qty[pos]) || 0) {
+                alert('Quantity exceeds stock quantity!');
                 if (flag) {
-                    // Prevents user from entering excess quantity
                     sale_qty = sale_qty.substring(0, sale_qty.length - 1);
-                    localStorageQty[rowindex] = sale_qty;
-                    localStorage.setItem("localStorageQty", localStorageQty);
-                    checkQuantity(sale_qty, true);
-                } 
-                else {
-                    localStorageQty[rowindex] = sale_qty;
-                    localStorage.setItem("localStorageQty", localStorageQty);
-                    edit();  // Edit the current row
+                    row.find('.qty').val(sale_qty);
+                } else {
+                    edit();
                     return;
                 }
             }
-            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
-        }
-        else if(product_type[pos] == 'combo') {
-            // For combo products, check the availability of each child product
-            child_id = product_list[pos].split(',');
-            child_qty = qty_list[pos].split(',');
+        } else if (product_type[pos] == 'combo') {
+            child_id = product_list[pos] ? product_list[pos].split(',') : [];
+            child_qty = qty_list[pos] ? qty_list[pos].split(',') : [];
+
             $(child_id).each(function(index) {
                 var position = product_id.indexOf(parseInt(child_id[index]));
-                if( position == -1 || parseFloat(sale_qty * child_qty[index]) > product_qty[position]) {
-                    alert('Quantity exceeds stock quantity for one of the combo products!');
+                if (position == -1 || parseFloat(sale_qty * child_qty[index]) > parseFloat(product_qty[position])) {
+                    alert('Quantity exceeds stock quantity!');
                     if (flag) {
                         sale_qty = sale_qty.substring(0, sale_qty.length - 1);
-                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
-                    } 
-                    else {
-                        edit();  // Edit the row
+                        row.find('.qty').val(sale_qty);
+                    } else {
+                        edit();
                         flag = true;
                         return false;
                     }
                 }
             });
         }
-    } else {
-        // When without_stock is allowed, just set the sale quantity without checking stock
-        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
     }
 
     if (!flag) {
         $('#editModal').modal('hide');
-        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
+        row.find('.qty').val(sale_qty);
     }
 
-    calculateRowProductData(sale_qty);  // Recalculate totals
+    calculateRowProductData(sale_qty);
 }
+
 
 
 function unitConversion() {
