@@ -124,7 +124,7 @@
   </head>
 
   <body class="@if($theme == 'dark')dark-mode dripicons-brightness-low @endif  @if(Route::current()->getName() == 'sale.pos') pos-page @endif" onload="myFunction()">
-    <div id="loader"></div>
+    <div id="loader" class="d-none"></div>
       <!-- Side Navbar -->
       <nav class="side-navbar">
         <span class="brand-big">
@@ -344,7 +344,7 @@
       @endif
 
 
-      <div style="display:none" id="content" class="animate-bottom">
+      <div style="display:none" id="content" class="">
             @include('includes.session_message')
             @yield('content')
       </div>
@@ -380,7 +380,7 @@
                                 <input type="hidden" name="sender_id" value="{{\Auth::id()}}">
                               <label>{{trans('file.User')}} *</label>
                               <select id="receiver_id" name="receiver_id" class="selectpicker form-control" required data-live-search="true" data-live-search-style="begins" title="Select user...">
-                                  
+
                               </select>
                           </div>
                           <div class="col-md-4 form-group">
@@ -441,7 +441,7 @@
                       </div>
                       @endif
 
-                       
+
                   @if(isset($general_setting->modules) && in_array('ecommerce', explode(',', $general_setting->modules)))
                       <div class="col-md-12 mt-3">
                           <h6><strong>{{ __('For Website') }}</strong></h6>
@@ -451,14 +451,14 @@
                       <div class="col-md-6 form-group">
                           <label>{{ __('Icon') }} (SVG format)</label>
                           <input type="file" name="icon" class="form-control">
-                      </div> 
+                      </div>
                       <div class="col-md-6 form-group">
                           <br>
                           <input type="checkbox" name="featured" id="featured" value="1"> <label>{{ __('List on category dropdown') }}</label>
                       </div>
                       @endif
                   </div>
-                  
+
                   @if(isset($general_setting->modules) && in_array('ecommerce', explode(',', $general_setting->modules)))
                   <div class="row">
                       <div class="col-md-12 mt-3">
@@ -993,7 +993,7 @@
       }
 
       function myFunction() {
-          setTimeout(showPage, 100);
+          setTimeout(showPage, 0);
       }
 
       function showPage() {
@@ -1066,7 +1066,7 @@
             $('#notification-modal').modal();
           }
         });
-        
+
       });
 
       $("a#add-account").click(function(e){
@@ -1133,7 +1133,7 @@
             $('#warehouse-modal').modal();
           }
         });
-        
+
       });
 
       $("a#user-report-link").click(function(e){
@@ -1150,7 +1150,7 @@
             $('#user-modal').modal();
           }
         });
-        
+
       });
 
       $("a#customer-report-link").click(function(e){
@@ -1199,7 +1199,7 @@
             $('#supplier-modal').modal();
           }
         });
-        
+
       });
 
       $("a#due-report-link").click(function(e){
