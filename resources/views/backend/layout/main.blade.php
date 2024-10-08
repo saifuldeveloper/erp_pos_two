@@ -299,60 +299,6 @@
                         <li>
                         <a href="{{ url('language_switch/bn') }}" class="btn btn-link"> বাংলা</a>
                         </li>
-                        {{-- <li>
-                        <a href="{{ url('language_switch/es') }}" class="btn btn-link"> Español</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/ar') }}" class="btn btn-link"> عربى</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/id') }}" class="btn btn-link"> Bahasa</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/ms') }}" class="btn btn-link"> Malay</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/s_chinese') }}" class="btn btn-link">中国人</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/t_chinese') }}" class="btn btn-link">中國人</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/pt_BR') }}" class="btn btn-link"> Portuguese</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/fr') }}" class="btn btn-link"> Français</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/de') }}" class="btn btn-link"> Deutsche</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/hi') }}" class="btn btn-link"> हिंदी</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/vi') }}" class="btn btn-link"> Tiếng Việt</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/ru') }}" class="btn btn-link"> русский</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/bg') }}" class="btn btn-link"> български</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/tr') }}" class="btn btn-link"> Türk</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/it') }}" class="btn btn-link"> Italiano</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/nl') }}" class="btn btn-link"> Nederlands</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/lao') }}" class="btn btn-link"> Lao</a>
-                        </li>
-                        <li>
-                          <a href="{{ url('language_switch/swahili') }}" class="btn btn-link"> Swahili</a>
-                        </li> --}}
                     </ul>
             </li>
             <li class="nav-item">
@@ -371,14 +317,14 @@
                     <a href="{{url('my-transactions/'.date('Y').'/'.date('m'))}}"><i class="dripicons-swap"></i> {{trans('file.My Transaction')}}</a>
                     </li>
                     @if(Auth::user()->role_id != 5)
-                    <li>
+                    {{-- <li>
                     <a href="{{url('holidays/my-holiday/'.date('Y').'/'.date('m'))}}"><i class="dripicons-vibrate"></i> {{trans('file.My Holiday')}}</a>
                     </li>
                     @endif
                     @if($empty_database_permission_active)
                     <li>
                     <a onclick="return confirm('Are you sure want to delete? If you do this all of your data will be lost.')" href="{{route('setting.emptyDatabase')}}"><i class="dripicons-stack"></i> {{trans('file.Empty Database')}}</a>
-                    </li>
+                    </li> --}}
                     @endif
                     <li>
                     <a href="{{ route('logout') }}"

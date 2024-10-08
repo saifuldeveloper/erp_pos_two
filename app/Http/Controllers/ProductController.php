@@ -999,9 +999,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-        if (!env('USER_VERIFIED')) {
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-        } else {
+     
             $this->validate($request, [
                 'name' => [
                     'max:255',
@@ -1209,7 +1207,7 @@ class ProductController extends Controller
             $this->cacheForget('product_list_with_variant');
             \Session::flash('edit_message', 'Product updated successfully');
         }
-    }
+
 
     public function generateCode()
     {

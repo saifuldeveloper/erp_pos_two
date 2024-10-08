@@ -307,14 +307,14 @@ nav.navbar a.menu-btn i[class*="icon-"] {
     color: #d0d2d6;
 }
 .side-navbar li a i {
-    color: #0c7cf3;
+    color: #ff8366;
     font-size: 15px;
     line-height: 10px;
     margin-right: 10px;
     width: 20px;
 }
 .dark-mode .side-navbar li a i {
-    color: #0c7cf3;
+    color: #ff8366;
 }
 .side-navbar li a i.icon {
     font-size: 24px;
@@ -342,7 +342,7 @@ nav.navbar a.menu-btn i[class*="icon-"] {
 }
 .dark-mode .side-navbar li ul {
     background: #283046;
-    border: 1px solid #0c7cf3;
+    border: 1px solid #ff8366;
 }
 .side-navbar li ul li a {
     color: #7d7d7d;
@@ -1304,7 +1304,7 @@ button {
 .btn-default {
     color: color-yiq(#ced4da);
     background-color: #ced4da;
-    border-color: #0c7cf3;
+    border-color: #ff8366;
 }
 .btn-default:hover {
     color: color-yiq(#b8c1ca);
@@ -1312,8 +1312,8 @@ button {
     border-color: #b1bbc4;
 }
 .dark-mode .btn-default {
-    color: #0c7cf3;
-    border-color: #0c7cf3;
+    color: #ff8366;
+    border-color: #ff8366;
 }
 .bootstrap-select .btn-default {
     border: none;
@@ -2124,7 +2124,7 @@ a > code {
     color: #d0d2d6;
 }
 .dark-mode .right-sidebar a i {
-    color: #0c7cf3;
+    color: #ff8366;
 }
 .right-sidebar.open {
     visibility: visible;

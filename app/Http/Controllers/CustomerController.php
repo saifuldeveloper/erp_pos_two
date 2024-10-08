@@ -114,6 +114,7 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'phone_number' => [
                 'max:255',
