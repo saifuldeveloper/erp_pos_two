@@ -128,24 +128,24 @@
                                             <span class="validation-msg"></span>
                                         </div>
                                     </div>
+                                    <div class="col-md-4 form-group">
+                                        <label>{{ trans('file.Product Unit') }} *</strong> </label>
+                                        <div class="input-group">
+                                            <select required class="form-control selectpicker" name="unit_id">
+                                                <option value="" disabled selected>Select Product Unit...
+                                                </option>
+                                                @foreach ($lims_unit_list as $unit)
+                                                    @if ($unit->base_unit == null)
+                                                        <option value="{{ $unit->id }}">
+                                                            {{ $unit->unit_name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <span class="validation-msg"></span>
+                                    </div>
                                     <div id="unit" class="col-md-12">
                                         <div class="row ">
-                                            <div class="col-md-4 form-group">
-                                                <label>{{ trans('file.Product Unit') }} *</strong> </label>
-                                                <div class="input-group">
-                                                    <select required class="form-control selectpicker" name="unit_id">
-                                                        <option value="" disabled selected>Select Product Unit...
-                                                        </option>
-                                                        @foreach ($lims_unit_list as $unit)
-                                                            @if ($unit->base_unit == null)
-                                                                <option value="{{ $unit->id }}">
-                                                                    {{ $unit->unit_name }}</option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <span class="validation-msg"></span>
-                                            </div>
                                             <div class="col-md-4">
                                                 <label>{{ trans('file.Sale Unit') }}</strong> </label>
                                                 <div class="input-group">
@@ -162,17 +162,24 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div id="alert-qty" class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>{{ trans('file.Alert Quantity') }}</strong> </label>
+                                                    <input type="number" name="alert_quantity" class="form-control"
+                                                        step="any">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div id="cost" class="col-md-4">
+                                    {{-- <div id="cost" class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Cost') }} *</strong> </label>
                                             <input type="number" name="cost" required class="form-control"
                                                 step="any">
                                             <span class="validation-msg"></span>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    </div> --}}
+                                    {{-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Price') }} *</strong> </label>
                                             <input type="number" name="price" required class="form-control"
@@ -183,8 +190,8 @@
                                             <input type="hidden" name="qty"
                                                 value="{{ number_format(0, $general_setting->decimal, '.', '') }}">
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    </div> --}}
+                                    {{-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Daily Sale Objective') }}</strong></label> <i
                                                 class="dripicons-question" data-toggle="tooltip"
@@ -192,14 +199,8 @@
                                             <input type="number" name="daily_sale_objective" class="form-control"
                                                 step="any">
                                         </div>
-                                    </div>
-                                    <div id="alert-qty" class="col-md-4">
-                                        <div class="form-group">
-                                            <label>{{ trans('file.Alert Quantity') }}</strong> </label>
-                                            <input type="number" name="alert_quantity" class="form-control"
-                                                step="any">
-                                        </div>
-                                    </div>
+                                    </div> --}}
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Tax') }}</strong> </label>
@@ -302,7 +303,7 @@
                                             </div>
                                         @endif
                                     @endforeach
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <div class="form-group mt-3">
                                             <input type="checkbox" name="is_initial_stock" value="1">&nbsp;
                                             <label>{{ trans('file.Initial Stock') }}</label>
@@ -310,7 +311,7 @@
                                                 {{ trans('file.This feature will not work for product with variants and batches') }}
                                             </p>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-4">
                                         <div class="form-group mt-3">
                                             <input type="checkbox" name="featured" value="1">&nbsp;
@@ -319,15 +320,15 @@
                                                 {{ trans('file.Featured product will be displayed in POS') }}</p>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <div class="form-group mt-3">
                                             <input type="checkbox" name="is_embeded" value="1">&nbsp;
                                             <label>{{ trans('file.Embedded Barcode') }} <i class="dripicons-question"
                                                     data-toggle="tooltip"
                                                     title="{{ trans('file.Check this if this product will be used in weight scale machine.') }}"></i></label>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6" id="initial-stock-section">
+                                    </div> --}}
+                                    {{-- <div class="col-md-6" id="initial-stock-section">
                                         <div class="table-responsive ml-2">
                                             <table class="table table-hover">
                                                 <thead>
@@ -351,7 +352,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Image') }}</strong> </label> <i
@@ -435,10 +436,10 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 mt-3" id="batch-option">
+                                    {{-- <div class="col-md-12 mt-3" id="batch-option">
                                         <h5><input name="is_batch" type="checkbox" id="is-batch" value="1">&nbsp;
                                             {{ trans('file.This product has batch and expired date') }}</h5>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-12 mt-3" id="imei-option">
                                         <h5><input name="is_imei" type="checkbox" id="is-imei" value="1">&nbsp;
                                             {{ trans('file.This product has IMEI or Serial numbers') }}</h5>
@@ -536,22 +537,22 @@
         $("ul#product").addClass("show");
         $("ul#product #product-create-menu").addClass("active");
 
-        @if (config('database.connections.saleprosaas_landlord'))
-            numberOfProduct = <?php echo json_encode($numberOfProduct); ?>;
-            $.ajax({
-                type: 'GET',
-                async: false,
-                url: '{{ route('package.fetchData', $general_setting->package_id) }}',
-                success: function(data) {
-                    if (data['number_of_product'] > 0 && data['number_of_product'] <= numberOfProduct) {
-                        localStorage.setItem("message",
-                            "You don't have permission to create another product as you already exceed the limit! Subscribe to another package if you wants more!"
-                            );
-                        location.href = "{{ route('products.index') }}";
-                    }
-                }
-            });
-        @endif
+        //@if (config('database.connections.saleprosaas_landlord'))
+            // numberOfProduct = <?php echo json_encode($numberOfProduct); ?>;
+            // $.ajax({
+            //     type: 'GET',
+            //     async: false,
+            //     url: '{{ route('package.fetchData', $general_setting->package_id) }}',
+            //     success: function(data) {
+            //         if (data['number_of_product'] > 0 && data['number_of_product'] <= numberOfProduct) {
+            //             localStorage.setItem("message",
+            //                 "You don't have permission to create another product as you already exceed the limit! Subscribe to another package if you wants more!"
+            //                 );
+            //             location.href = "{{ route('products.index') }}";
+            //         }
+            //     }
+            // });
+        //@endif
 
         $("#digital").hide();
         $("#combo").hide();
