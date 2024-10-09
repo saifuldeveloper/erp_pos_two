@@ -10,11 +10,17 @@
 @if(session()->has('not_permitted'))
   <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
+
+@if (session()->has('clearLocalStorage'))
+    <script>
+        localStorage.clear();
+    </script>
+@endif
 <!-- Side Navbar -->
 <nav class="side-navbar shrink">
     <span class="brand-big">
         @if($general_setting->site_logo)
-        <a href="{{url('/')}}"><img src="{{url('public/logo', $general_setting->site_logo)}}" width="115"></a>
+        <a href="{{url('/')}}"><img src="{{url('logo', $general_setting->site_logo)}}" width="115"></a>
         @else
         <a href="{{url('/')}}"><h1 class="d-inline">{{$general_setting->site_title}}</h1></a>
         @endif
@@ -101,7 +107,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             @if($lims_pos_setting_data)
                                             <input type="hidden" name="biller_id_hidden" value="{{$lims_pos_setting_data->biller_id}}">
@@ -113,7 +119,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             @if($lims_pos_setting_data)
                                             <input type="hidden" name="customer_id_hidden" value="{{$lims_pos_setting_data->customer_id}}">
@@ -134,7 +140,7 @@
                                                     <option value="{{$customer->id}}">{{$customer->name . ' (' . $customer->phone_number . ')'}}</option>
                                                 @endforeach
                                                 </select>
-                                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addCustomer"><i class="dripicons-plus"></i></button>
+                                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" title="Add Customer (Alt + C)" accesskey="c" data-target="#addCustomer"><i class="dripicons-plus"></i></button>
                                                 @else
                                                 <?php
                                                   $deposit = [];
@@ -154,7 +160,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-md-2">
+                                    <div class="col-md-2">
                                         <select name="currency_id" id="currency" class="form-control selectpicker" data-toggle="tooltip" title="" data-original-title="Sale currency">
                                             @foreach($currency_list as $currency_data)
                                             <option value="{{$currency_data->id}}" data-rate="{{$currency_data->exchange_rate}}">{{$currency_data->code}}</option>
@@ -168,7 +174,7 @@
                                                 <span class="input-group-text" data-toggle="tooltip" title="" data-original-title="currency exchange rate">i</span>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     @foreach($custom_fields as $field)
                                         @if(!$field->is_admin || \Auth::user()->role_id == 1)
                                             <div class="{{'col-md-'.$field->grid_value}}">
@@ -221,7 +227,7 @@
                                     @endforeach
                                     <div class="col-md-12">
                                         <div class="search-box form-group">
-                                            <input type="text" name="product_code_name" id="lims_productcodeSearch" placeholder="Scan/Search product by name/code" class="form-control"  />
+                                            <input type="text" name="product_code_name" id="lims_productcodeSearch" accesskey="s" title="Scan/Search product (Alt + s)" placeholder="Scan/Search product by name/code" class="form-control"  />
                                         </div>
                                     </div>
                                 </div>
@@ -410,6 +416,15 @@
                                                 @if($lims_reward_point_setting_data && $lims_reward_point_setting_data->is_active)
                                                 <option value="7">Points</option>
                                                 @endif
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12 mt-3">
+                                            <input type="hidden" id="account_id" name="acc_id">
+                                            <label>Select Account</label>
+                                            <select name="acc_id_select" id="acc_id_select" class="form-control selectpicker">
+                                                @foreach($accounts as $account)
+                                                <option @if($account->is_default) selected @endif value="{{$account->id}}">{{$account->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12 mt-3">
@@ -780,7 +795,7 @@
                             @foreach($lims_brand_list as $brand)
                             @if($brand->image)
                                 <div class="col-md-3 brand-img text-center" data-brand="{{$brand->id}}">
-                                    <img  src="{{url('public/images/brand',$brand->image)}}" />
+                                    <img  src="{{url('images/brand',$brand->image)}}" />
                                     <p class="text-center">{{$brand->title}}</p>
                                 </div>
                             @else
@@ -817,12 +832,12 @@
                             <tbody>
                             @for ($i=0; $i < ceil($product_number/5); $i++)
                                 <tr>
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[0+$i*5]->name}}" data-product ="{{$lims_product_list[0+$i*5]->code . ' (' . $lims_product_list[0+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[0+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[0+$i*5]->name}}" data-product ="{{$lims_product_list[0+$i*5]->code . ' (' . $lims_product_list[0+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[0+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[0+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[0+$i*5]->code}}</span>
                                     </td>
                                     @if(!empty($lims_product_list[1+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[1+$i*5]->name}}" data-product ="{{$lims_product_list[1+$i*5]->code . ' (' . $lims_product_list[1+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[1+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[1+$i*5]->name}}" data-product ="{{$lims_product_list[1+$i*5]->code . ' (' . $lims_product_list[1+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[1+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[1+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[1+$i*5]->code}}</span>
                                     </td>
@@ -830,7 +845,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[2+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[2+$i*5]->name}}" data-product ="{{$lims_product_list[2+$i*5]->code . ' (' . $lims_product_list[2+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[2+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[2+$i*5]->name}}" data-product ="{{$lims_product_list[2+$i*5]->code . ' (' . $lims_product_list[2+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[2+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[2+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[2+$i*5]->code}}</span>
                                     </td>
@@ -838,7 +853,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[3+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[3+$i*5]->name}}" data-product ="{{$lims_product_list[3+$i*5]->code . ' (' . $lims_product_list[3+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[3+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[3+$i*5]->name}}" data-product ="{{$lims_product_list[3+$i*5]->code . ' (' . $lims_product_list[3+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[3+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[3+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[3+$i*5]->code}}</span>
                                     </td>
@@ -846,7 +861,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[4+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[4+$i*5]->name}}" data-product ="{{$lims_product_list[4+$i*5]->code . ' (' . $lims_product_list[4+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[4+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[4+$i*5]->name}}" data-product ="{{$lims_product_list[4+$i*5]->code . ' (' . $lims_product_list[4+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[4+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[4+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[4+$i*5]->code}}</span>
                                     </td>
@@ -942,13 +957,14 @@
                             <label>{{trans('file.Email')}}</label>
                             <input type="text" name="email" placeholder="example@example.com" class="form-control">
                         </div>
+
                         <div class="form-group">
-                            <label>{{trans('file.Address')}} </label>
-                            <input type="text" name="address" required class="form-control">
+                            <label>{{trans('file.Address')}}</label>
+                            <input type="text" name="address" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>{{trans('file.City')}}</label>
-                            <input type="text" name="city" required class="form-control">
+                            <input type="text" name="city" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="pos" value="1">
@@ -1437,55 +1453,69 @@ function saveValue(e) {
     var val = e.value; // get the value.
     localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override.
 }
-
-function getArrayFromLocalStorage(key, separator = ",", defaultValue = "") {
-    const value = getSavedValue(key);
-    return value ? value.split(separator) : defaultValue.split(separator);
-}
-
-// Function to get the saved value from localStorage or return an empty string if not found.
-function getSavedValue(v) {
-    const value = localStorage.getItem(v);
-    if (!value) {
-        console.log(`Key ${v} not found in localStorage or empty.`);
-        return ""; // Default to empty string if not found
+//get the saved value function - return the value of "v" from localStorage.
+function getSavedValue  (v) {
+    if (!localStorage.getItem(v)) {
+        return "";// You can change this to your defualt value.
     }
-    console.log(`Key ${v} found in localStorage:`, value);
-    return value;
+    return localStorage.getItem(v);
 }
 
-if (getSavedValue("localStorageQty")) {
-    localStorageQty = getSavedValue("localStorageQty").split(",");
-    localStorageProductDiscount = getSavedValue("localStorageProductDiscount").split(",");
-    localStorageTaxRate = getSavedValue("localStorageTaxRate").split(",");
-    localStorageNetUnitPrice = getSavedValue("localStorageNetUnitPrice").split(",");
-    localStorageTaxValue = getSavedValue("localStorageTaxValue").split(",");
-    localStorageTaxName = getSavedValue("localStorageTaxName").split(",");
-    localStorageTaxMethod = getSavedValue("localStorageTaxMethod").split(",");
-    localStorageSubTotalUnit = getSavedValue("localStorageSubTotalUnit").split(",");
-    localStorageSubTotal = getSavedValue("localStorageSubTotal").split(",");
-    localStorageProductId = getSavedValue("localStorageProductId").split(",");
-    localStorageProductCode = getSavedValue("localStorageProductCode").split(",");
-    localStorageSaleUnit = getSavedValue("localStorageSaleUnit").split(",");
-
-    // Check here for errors in the structure of the stored value
-    console.log("localStorageTempUnitName value:", getSavedValue("localStorageTempUnitName"));
-    console.log("localStorageSaleUnitOperator value:", getSavedValue("localStorageSaleUnitOperator"));
-    console.log("localStorageSaleUnitOperationValue value:", getSavedValue("localStorageSaleUnitOperationValue"));
-
-    localStorageTempUnitName = getSavedValue("localStorageTempUnitName").split(",,");
-    localStorageSaleUnitOperator = getSavedValue("localStorageSaleUnitOperator").split(",,");
-    localStorageSaleUnitOperationValue = getSavedValue("localStorageSaleUnitOperationValue").split(",,");
-
-    /*localStorageQty.pop();
-    localStorage.setItem("localStorageQty", localStorageQty);*/
-
-    for (var i = 0; i < localStorageQty.length; i++) {
-        // The rest of your loop logic remains the same...
+if(getSavedValue("localStorageQty")) {
+  localStorageQty = getSavedValue("localStorageQty").split(",");
+  localStorageProductDiscount = getSavedValue("localStorageProductDiscount").split(",");
+  localStorageTaxRate = getSavedValue("localStorageTaxRate").split(",");
+  localStorageNetUnitPrice = getSavedValue("localStorageNetUnitPrice").split(",");
+  localStorageTaxValue = getSavedValue("localStorageTaxValue").split(",");
+  localStorageTaxName = getSavedValue("localStorageTaxName").split(",");
+  localStorageTaxMethod = getSavedValue("localStorageTaxMethod").split(",");
+  localStorageSubTotalUnit = getSavedValue("localStorageSubTotalUnit").split(",");
+  localStorageSubTotal = getSavedValue("localStorageSubTotal").split(",");
+  localStorageProductId = getSavedValue("localStorageProductId").split(",");
+  localStorageProductCode = getSavedValue("localStorageProductCode").split(",");
+  localStorageSaleUnit = getSavedValue("localStorageSaleUnit").split(",");
+  localStorageTempUnitName = getSavedValue("localStorageTempUnitName").split(",,");
+  localStorageSaleUnitOperator = getSavedValue("localStorageSaleUnitOperator").split(",,");
+  localStorageSaleUnitOperationValue = getSavedValue("localStorageSaleUnitOperationValue").split(",,");
+  /*localStorageQty.pop();
+  localStorage.setItem("localStorageQty", localStorageQty);*/
+  for(var i = 0; i < localStorageQty.length; i++) {
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ') .qty').val(localStorageQty[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.discount-value').val(localStorageProductDiscount[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-rate').val(localStorageTaxRate[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.net_unit_price').val(localStorageNetUnitPrice[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-value').val(localStorageTaxValue[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-name').val(localStorageTaxName[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-method').val(localStorageTaxMethod[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product-price').text(localStorageSubTotalUnit[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sub-total').text(localStorageSubTotal[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.subtotal-value').val(localStorageSubTotal[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product-id').val(localStorageProductId[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product-code').val(localStorageProductCode[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit').val(localStorageSaleUnit[i]);
+    if(i==0) {
+      localStorageTempUnitName[i] += ',';
+      localStorageSaleUnitOperator[i] += ',';
+      localStorageSaleUnitOperationValue[i] += ',';
     }
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operator').val(localStorageSaleUnitOperator[i]);
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operation-value').val(localStorageSaleUnitOperationValue[i]);
+
+    product_price.push(parseFloat($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.product_price').val()));
+    var quantity = parseFloat($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.qty').val());
+    product_discount.push(parseFloat(localStorageProductDiscount[i] / localStorageQty[i]).toFixed({{$general_setting->decimal}}));
+    tax_rate.push(parseFloat($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-rate').val()));
+    tax_name.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-name').val());
+    tax_method.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.tax-method').val());
+    temp_unit_name = $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit').val().split(',');
+    unit_name.push(localStorageTempUnitName[i]);
+    unit_operator.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operator').val());
+    unit_operation_value.push($('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit-operation-value').val());
+    $('table.order-list tbody tr:nth-child(' + (i + 1) + ')').find('.sale-unit').val(temp_unit_name[0]);
+    calculateTotal();
+    //calculateRowProductData(localStorageQty[i]);
+  }
 }
-
-
 
 
 $('.selectpicker').selectpicker({
@@ -1852,10 +1882,15 @@ function populateProduct(data) {
     if (Object.keys(data).length != 0) {
         $.each(data['name'], function(index) {
             var product_info = data['code'][index]+' (' + data['name'][index] + ')';
-            if(index % 5 == 0 && index != 0)
-                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+data['image'][index]+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+            if(data['image'][index])
+                image = data['image'][index];
             else
-                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+data['image'][index]+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+                image = 'zummXD2dvAtI.png';
+            if(index % 5 == 0 && index != 0) {
+                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+            }
+            else
+                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
         });
 
         if(data['name'].length % 5){
@@ -2261,6 +2296,11 @@ $("#point-btn").on("click",function() {
     pointCalculation();
 });
 
+$("#acc_id_select").on("change", function() {
+    var id = $(this).val();
+    $('#account_id').val(id);
+});
+
 $('select[name="paid_by_id_select"]').on("change", function() {
     var id = $(this).val();
     $(".payment-form").off("submit");
@@ -2418,41 +2458,22 @@ function productSearch(data) {
     });
 }
 
-function addNewProduct(data) {
+function addNewProduct(data){
     var newRow = $("<tr>");
     var cols = '';
     temp_unit_name = (data[6]).split(',');
     pos = product_code.indexOf(data[1]);
-
-    // Product Title and Code
     cols += '<td class="col-sm-2 product-title"><button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"><span style="margin-left: -19px; white-space: break-spaces;"><strong>' + data[0] + '</strong></span></button><br>' + data[1] + '<p>In Stock: <span class="in-stock"></span></p></td>';
-
-    // Check for batch data
-    if (data[16] !== null && Array.isArray(data[16]) && data[16].length > 0) {
-        // Add batch select dropdown
-        cols += '<td><select class="form-control product_batch" name="product_batch_id[]" required><option value="">Select Batch</option>';
-        $.each(data[16], function(key, value) {
-            // Disable expired or 0-quantity batches
-            var isDisabled = (value.qty == 0 || new Date(value.expired_date) < new Date()) ? 'disabled' : '';
-            cols += '<option value="'+value.id+'" data-qty="'+value.qty+'" ' + isDisabled + '>'+value.batch_no+' (Qty: '+value.qty+', Expired Date: '+value.expired_date+')</option>';
-        });
-        cols += '</select></td>';
-    } else {
-        // No batch available
+    if(data[12]) {
+        cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
+    }
+    else {
         cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
     }
-
-    // Quantity with +/- buttons
-    cols += '<td class="col-sm-3"><div class="input-group"><span class="input-group-btn"><button type="button" class="btn btn-default minus"><span class="dripicons-minus"></span></button></span><input type="text" name="qty[]" class="form-control qty numkey input-number" step="any" value="'+data[15]+'" required><span class="input-group-btn"><button type="button" class="btn btn-default plus"><span class="dripicons-plus"></span></button></span></div></td>';
-
-    // Price and Subtotal
     cols += '<td class="col-sm-2 product-price"></td>';
+    cols += '<td class="col-sm-3"><div class="input-group"><span class="input-group-btn"><button type="button" class="btn btn-default minus"><span class="dripicons-minus"></span></button></span><input type="text" name="qty[]" class="form-control qty numkey input-number" step="any" value="'+data[15]+'" required><span class="input-group-btn"><button type="button" class="btn btn-default plus"><span class="dripicons-plus"></span></button></span></div></td>';
     cols += '<td class="col-sm-2 sub-total"></td>';
-
-    // Delete button
     cols += '<td class="col-sm-1"><button type="button" class="ibtnDel btn btn-danger btn-sm"><i class="dripicons-cross"></i></button></td>';
-
-    // Hidden Inputs
     cols += '<input type="hidden" class="product-code" name="product_code[]" value="' + data[1] + '"/>';
     cols += '<input type="hidden" class="product-id" name="product_id[]" value="' + data[9] + '"/>';
     cols += '<input type="hidden" class="product_price" />';
@@ -2469,54 +2490,22 @@ function addNewProduct(data) {
     cols += '<input type="hidden" class="imei-number" name="imei_number[]" />';
 
     newRow.append(cols);
-    $("table.order-list tbody").prepend(newRow);
+    if(keyboard_active==1) {
+        $("table.order-list tbody").prepend(newRow).find('.qty').keyboard({usePreview: false, layout: 'custom', display: { 'accept'  : '&#10004;', 'cancel'  : '&#10006;' }, customLayout : {
+          'normal' : ['1 2 3', '4 5 6', '7 8 9','0 {dec} {bksp}','{clear} {cancel} {accept}']}, restrictInput : true, preventPaste : true, autoAccept : true, css: { container: 'center-block dropdown-menu', buttonDefault: 'btn btn-default', buttonHover: 'btn-primary',buttonAction: 'active', buttonDisabled: 'disabled'},});
+    }
+    else
+        $("table.order-list tbody").prepend(newRow);
 
-    newRow.find('.product_batch').on('change', function() {
-    var selectedOption = $(this).find('option:selected');
-    var batchQty = parseFloat(selectedOption.data('qty')) || 0;  // Ensure numeric batch quantity
-    var inputQtyField = $(this).closest('tr').find('.qty'); // Locate the corresponding qty input field
-
-    inputQtyField.attr('max', batchQty); // Update the max attribute
-
-    // Check the current quantity against the new batch limit
-    var currentQty = parseFloat(inputQtyField.val()) || 0; // Ensure numeric quantity
-    checkQuantity(currentQty, true, batchQty);
-
-    // Re-attach the input event listener to check new batch limits
-    inputQtyField.off('input').on('input', function() {
-        var enteredQty = parseFloat($(this).val()) || 0; // Ensure numeric input
-        checkQuantity(enteredQty, false, batchQty);
-    });
-});
-
-
-    // Handle quantity control via the +/- buttons
-    newRow.find('.minus').on('click', function() {
-        var qtyInput = $(this).closest('.input-group').find('.qty');
-        var currentQty = parseFloat(qtyInput.val());
-        var newQty = currentQty > 1 ? currentQty - 1 : 1;
-        qtyInput.val(newQty).trigger('change');
-    });
-
-    newRow.find('.plus').on('click', function() {
-        var qtyInput = $(this).closest('.input-group').find('.qty');
-        var currentQty = parseFloat(qtyInput.val());
-        var maxQty = parseFloat(qtyInput.attr('max'));  // Get the maximum allowed quantity
-        var newQty = currentQty < maxQty ? currentQty + 1 : maxQty;  // Ensure we don’t exceed max
-        qtyInput.val(newQty).trigger('change');
-    });
-
-    // Ensure rowindex is set
     rowindex = newRow.index();
 
-    // Add necessary data to arrays and localStorage
-    if (!data[11] && product_warehouse_price[pos]) {
+    if(!data[11] && product_warehouse_price[pos]) {
         product_price.splice(rowindex, 0, parseFloat(product_warehouse_price[pos] * currency['exchange_rate']) + parseFloat(product_warehouse_price[pos] * currency['exchange_rate'] * customer_group_rate));
-    } else {
+    }
+    else {
         product_price.splice(rowindex, 0, parseFloat(data[2] * currency['exchange_rate']) + parseFloat(data[2] * currency['exchange_rate'] * customer_group_rate));
     }
-
-    product_discount.splice(rowindex, 0, '0');
+    product_discount.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
     tax_rate.splice(rowindex, 0, parseFloat(data[3]));
     tax_name.splice(rowindex, 0, data[4]);
     tax_method.splice(rowindex, 0, data[5]);
@@ -2525,23 +2514,23 @@ function addNewProduct(data) {
     unit_operation_value.splice(rowindex, 0, data[8]);
     is_imei.splice(rowindex, 0, data[13]);
     is_variant.splice(rowindex, 0, data[14]);
-
     $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product_price').val(product_price[rowindex]);
-
-    // Update localStorage
     localStorageQty.splice(rowindex, 0, data[15]);
     localStorageProductId.splice(rowindex, 0, data[9]);
     localStorageProductCode.splice(rowindex, 0, data[1]);
     localStorageSaleUnit.splice(rowindex, 0, temp_unit_name[0]);
     localStorageProductDiscount.splice(rowindex, 0, product_discount[rowindex]);
-    localStorageTaxRate.splice(rowindex, 0, tax_rate[rowindex].toFixed(2));
+    localStorageTaxRate.splice(rowindex, 0, tax_rate[rowindex].toFixed({{$general_setting->decimal}}));
     localStorageTaxName.splice(rowindex, 0, data[4]);
     localStorageTaxMethod.splice(rowindex, 0, data[5]);
     localStorageTempUnitName.splice(rowindex, 0, data[6]);
     localStorageSaleUnitOperator.splice(rowindex, 0, data[7]);
     localStorageSaleUnitOperationValue.splice(rowindex, 0, data[8]);
-
-    checkQuantity(data[15], true);
+    //put some dummy value
+    localStorageNetUnitPrice.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
+    localStorageTaxValue.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
+    localStorageSubTotalUnit.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
+    localStorageSubTotal.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
 
     localStorage.setItem("localStorageProductId", localStorageProductId);
     localStorage.setItem("localStorageSaleUnit", localStorageSaleUnit);
@@ -2551,13 +2540,12 @@ function addNewProduct(data) {
     localStorage.setItem("localStorageTempUnitName", localStorageTempUnitName);
     localStorage.setItem("localStorageSaleUnitOperator", localStorageSaleUnitOperator);
     localStorage.setItem("localStorageSaleUnitOperationValue", localStorageSaleUnitOperationValue);
+    checkQuantity(data[15], true);
     localStorage.setItem("tbody-id", $("table.order-list tbody").html());
-
-    if (data[13]) {
+    if(data[13]) {
         $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.edit-product').click();
     }
 }
-
 
 function edit(){
     $(".imei-section").remove();
@@ -2679,57 +2667,50 @@ function checkDiscount(qty, flag) {
     localStorage.setItem("tbody-id", $("table.order-list tbody").html());
 }
 
-function checkQuantity(sale_qty, flag, batchQty) {
-    var row = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')');
-    var row_product_code = row.find('td:nth-child(2)').text();
-    var pos = product_code.indexOf(row_product_code);
-
-    // Ensure sale_qty is a number
-    sale_qty = parseFloat(sale_qty) || 0;
-
-    if (without_stock == 'no') {
-        // Check against batch quantity if provided
-        batchQty = parseFloat(batchQty) || 0;
-        if (batchQty && sale_qty > batchQty) {
-            alert('Quantity exceeds batch quantity of ' + batchQty + '!');
-            sale_qty = batchQty; // Adjust sale_qty to batchQty
-            row.find('.qty').val(sale_qty);
-        } else if (product_type[pos] == 'standard') {
-            var operator = unit_operator[rowindex] ? unit_operator[rowindex].split(',') : [''];
-            var operation_value = unit_operation_value[rowindex] ? unit_operation_value[rowindex].split(',') : ['1']; // Default to 1
-
-            operation_value[0] = parseFloat(operation_value[0]) || 1;
-
-            if (operator[0] == '*') {
+function checkQuantity(sale_qty, flag) {
+    var row_product_code = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product-code').val();
+    pos = product_code.indexOf(row_product_code);
+    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.in-stock').text(product_qty[pos]);
+    localStorageQty[rowindex] = sale_qty;
+    localStorage.setItem("localStorageQty", localStorageQty);
+    if(without_stock == 'no') {
+        if(product_type[pos] == 'standard') {
+            var operator = unit_operator[rowindex].split(',');
+            var operation_value = unit_operation_value[rowindex].split(',');
+            if(operator[0] == '*')
                 total_qty = sale_qty * operation_value[0];
-            } else if (operator[0] == '/') {
+            else if(operator[0] == '/')
                 total_qty = sale_qty / operation_value[0];
-            }
-
-            total_qty = parseFloat(total_qty) || 0; // Ensure total_qty is a number
-
-            if (total_qty > parseFloat(product_qty[pos]) || 0) {
+            if (total_qty > parseFloat(product_qty[pos])) {
                 alert('Quantity exceeds stock quantity!');
                 if (flag) {
                     sale_qty = sale_qty.substring(0, sale_qty.length - 1);
-                    row.find('.qty').val(sale_qty);
-                } else {
+                    localStorageQty[rowindex] = sale_qty;
+                    localStorage.setItem("localStorageQty", localStorageQty);
+                    checkQuantity(sale_qty, true);
+                }
+                else {
+                    localStorageQty[rowindex] = sale_qty;
+                    localStorage.setItem("localStorageQty", localStorageQty);
                     edit();
                     return;
                 }
             }
-        } else if (product_type[pos] == 'combo') {
-            child_id = product_list[pos] ? product_list[pos].split(',') : [];
-            child_qty = qty_list[pos] ? qty_list[pos].split(',') : [];
-
+            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
+        }
+        else if(product_type[pos] == 'combo'){
+            child_id = product_list[pos].split(',');
+            child_qty = qty_list[pos].split(',');
             $(child_id).each(function(index) {
                 var position = product_id.indexOf(parseInt(child_id[index]));
-                if (position == -1 || parseFloat(sale_qty * child_qty[index]) > parseFloat(product_qty[position])) {
+                //console.log(position);
+                if( position == -1 || parseFloat(sale_qty * child_qty[index]) > product_qty[position] ) {
                     alert('Quantity exceeds stock quantity!');
                     if (flag) {
                         sale_qty = sale_qty.substring(0, sale_qty.length - 1);
-                        row.find('.qty').val(sale_qty);
-                    } else {
+                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
+                    }
+                    else {
                         edit();
                         flag = true;
                         return false;
@@ -2738,16 +2719,14 @@ function checkQuantity(sale_qty, flag, batchQty) {
             });
         }
     }
-
-    if (!flag) {
+    else
+        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
+    if(!flag) {
         $('#editModal').modal('hide');
-        row.find('.qty').val(sale_qty);
+        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.qty').val(sale_qty);
     }
-
     calculateRowProductData(sale_qty);
 }
-
-
 
 function unitConversion() {
     var row_unit_operator = unit_operator[rowindex].slice(0, unit_operator[rowindex].indexOf(","));

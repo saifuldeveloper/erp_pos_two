@@ -396,7 +396,8 @@ class SaleController extends Controller
             $numberOfInvoice = Sale::count();
             $custom_fields = CustomField::where('belongs_to', 'sale')->get();
             $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
-            return view('backend.sale.create',compact('currency_list', 'lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_tax_list', 'lims_reward_point_setting_data','options', 'numberOfInvoice', 'custom_fields', 'lims_customer_group_all'));
+            $accounts = Account::where('is_active', true)->get();
+            return view('backend.sale.create',compact('currency_list','accounts', 'lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_tax_list', 'lims_reward_point_setting_data','options', 'numberOfInvoice', 'custom_fields', 'lims_customer_group_all'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -1159,6 +1160,7 @@ class SaleController extends Controller
         $product_data = [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id, $expired_date, $is_embeded];
         return $product_data;
     }
+
 
     public function posSale()
     {
