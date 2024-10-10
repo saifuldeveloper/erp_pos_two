@@ -67,6 +67,7 @@
                                             </div>
                                         </div>
                                     </div> --}}
+                                    <input type="hidden" name="barcode_symbology" value="C128">
                                     <div id="digital" class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Attach File') }} *</strong> </label>
@@ -179,7 +180,7 @@
                                                 step="any">
                                         </div>
                                     </div>
-                                    {{-- <div class="col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Price') }} *</strong> </label>
                                             <input type="number" name="price" required class="form-control"
@@ -190,7 +191,7 @@
                                             <input type="hidden" name="qty"
                                                 value="{{ number_format(0, $general_setting->decimal, '.', '') }}">
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     {{-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Daily Sale Objective') }}</strong></label> <i
@@ -1456,10 +1457,11 @@
                                 contentType: false,
                                 processData: false,
                                 success: function(response) {
-                                    //console.log(response);
+                                    console.log(response);
                                     location.href = '../products';
                                 },
                                 error: function(response) {
+                                    console.log(response);
                                     if (response.responseJSON.errors.name) {
                                         $("#name-error").text(response.responseJSON.errors
                                             .name);

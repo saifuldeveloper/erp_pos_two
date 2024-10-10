@@ -155,6 +155,7 @@
                                                         <th>{{trans('file.Quantity')}}</th>
                                                         <th class="recieved-product-qty d-none">{{trans('file.Recieved')}}</th>
                                                         <th>{{trans('file.Net Unit Cost')}}</th>
+                                                        <th>{{trans('file.Selling Price')}}</th>
                                                         <th>{{trans('file.Discount')}}</th>
                                                         <th>{{trans('file.Tax')}}</th>
                                                         <th>{{trans('file.Subtotal')}}</th>
@@ -167,6 +168,7 @@
                                                     <th colspan="2">{{trans('file.Total')}}</th>
                                                     <th id="total-qty">0</th>
                                                     <th class="recieved-product-qty d-none"></th>
+                                                    <th></th>
                                                     <th></th>
                                                     <th id="total-discount">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
                                                     <th id="total-tax">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
@@ -631,8 +633,8 @@
                     //     cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
                     //     cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
                     // }
-
                     cols += '<td class="net_unit_cost"></td>';
+                    cols += '<td><input type="text" pattern="^[0-9]+" class="form-control" name="selling_price[]" value="' + data[12] + '"/></td>';
                     cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
                     cols += '<td class="tax"></td>';
                     cols += '<td class="sub-total"></td>';
