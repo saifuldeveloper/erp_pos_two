@@ -84,7 +84,7 @@
                                     <strong><input type="checkbox" name="price" checked/> {{trans('file.Price')}}</strong>&nbsp;
                                     <strong><input type="checkbox" name="promo_price"/> {{trans('file.Promotional Price')}}</strong>
                                 </div>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-md-4">
                                         <label><strong>Paper Size *</strong></label>
                                         <select class="form-control" name="paper_size" required id="paper-size">
@@ -94,7 +94,7 @@
                                             <option value="18">18 mm (0.7 inch)</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group mt-3">
                                     <input type="submit" value="{{trans('file.submit')}}" class="btn btn-primary" id="submit-button">
                                 </div>
@@ -198,8 +198,9 @@
     });
 
     $("#submit-button").on("click", function(event) {
-        paper_size = ($("#paper-size").val());
-        if(paper_size != "0") {
+        // paper_size = ($("#paper-size").val());
+        paper_size = 36;
+        // if(paper_size != "0") {
             var product_name = [];
             var code = [];
             var price = [];
@@ -283,9 +284,9 @@
             htmltext += '</table">';
             $('#label-content').html(htmltext);
             $('#print-barcode').modal('show');
-        }
-        else
-            alert('Please select paper size');
+        // }
+        // else
+        //     alert('Please select paper size');
     });
 
     /*$("#print-btn").on("click", function(){
