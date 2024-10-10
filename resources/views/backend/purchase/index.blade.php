@@ -134,7 +134,7 @@
                 <thead>
                     <th>#</th>
                     <th>{{trans('file.product')}}</th>
-                    <th>{{trans('file.Batch No')}}</th>
+                    {{-- <th>{{trans('file.Batch No')}}</th> --}}
                     <th>Qty</th>
                     <th>{{trans('file.Unit Cost')}}</th>
                     <th>{{trans('file.Tax')}}</th>
@@ -771,14 +771,14 @@
                 var tax_rate = data[4];
                 var discount = data[5];
                 var subtotal = data[6];
-                var batch_no = data[7];
+                //var batch_no = data[7];
                 var newBody = $("<tbody>");
                 $.each(name_code, function(index) {
                     var newRow = $("<tr>");
                     var cols = '';
                     cols += '<td><strong>' + (index+1) + '</strong></td>';
                     cols += '<td>' + name_code[index] + '</td>';
-                    cols += '<td>' + batch_no[index] + '</td>';
+                    //cols += '<td>' + batch_no[index] + '</td>';
                     cols += '<td>' + qty[index] + ' ' + unit_code[index] + '</td>';
                     cols += '<td>' + (subtotal[index] / qty[index]) + '</td>';
                     cols += '<td>' + tax[index] + '(' + tax_rate[index] + '%)' + '</td>';
