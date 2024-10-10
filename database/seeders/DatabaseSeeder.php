@@ -3,6 +3,7 @@
 use Database\Seeders\CurrenciesTableSeeder;
 use Database\Seeders\GeneralSettingsTableSeeder;
 use Database\Seeders\PermissionsTableSeeder;
+use Database\Seeders\PosSettingTableSeeder;
 use Database\Seeders\RoleHasPermissionsTableSeeder;
 use Database\Seeders\RolesTableSeeder;
 use Database\Seeders\UsersTableSeeder;
@@ -43,10 +44,8 @@ class DatabaseSeeder extends Seeder
             SuppliersTableSeeder::class,
             UnitsTableSeeder::class,
             WarehousesTableSeeder::class,
+            PosSettingTableSeeder::class
         ]);
-        $this->call(BrandsTableSeeder::class);
-        $this->call(UnitsTableSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(PosSettingTableSeeder::class);
+
     }
 }

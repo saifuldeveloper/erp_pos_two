@@ -746,11 +746,11 @@
     }
 
     function purchaseDetails(purchase){
-        var htmltext = '<strong>{{trans("file.Date")}}: </strong>'+purchase[0]+'<br><strong>{{trans("file.reference")}}: </strong>'+purchase[1]+'<br><strong>{{trans("file.Purchase Status")}}: </strong>'+purchase[2]+'<br><strong>{{trans("file.Currency")}}: </strong>'+purchase[26];
-        if(purchase[27])
-            htmltext += '<br><strong>{{trans("file.Exchange Rate")}}: </strong>'+purchase[27]+'<br>';
-        else
-            htmltext += '<br><strong>{{trans("file.Exchange Rate")}}: </strong>N/A<br>';
+        var htmltext = '<strong>{{trans("file.Date")}}: </strong>'+purchase[0]+'<br><strong>{{trans("file.reference")}}: </strong>'+purchase[1]+'<br><strong>{{trans("file.Purchase Status")}}: </strong>'+purchase[2]+'<br>';
+        // if(purchase[27])
+        //     htmltext += '<br><strong>{{trans("file.Exchange Rate")}}: </strong>'+purchase[27]+'<br>';
+        // else
+        //     htmltext += '<br><strong>{{trans("file.Exchange Rate")}}: </strong>N/A<br>';
         if(purchase[25])
             htmltext += '<strong>{{trans("file.Attach Document")}}: </strong><a href="documents/purchase/'+purchase[25]+'">Download</a><br>';
         htmltext += '<br><div class="row"><div class="col-md-6"><strong>{{trans("file.From")}}:</strong><br>'+purchase[4]+'<br>'+purchase[5]+'<br>'+purchase[6]+'</div><div class="col-md-6"><div class="float-right"><strong>{{trans("file.To")}}:</strong><br>'+purchase[7]+'<br>'+purchase[8]+'<br>'+purchase[9]+'<br>'+purchase[10]+'<br>'+purchase[11]+'<br>'+purchase[12]+'</div></div></div>';
