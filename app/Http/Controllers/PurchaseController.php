@@ -166,7 +166,7 @@ class PurchaseController extends Controller
                             ['purchases.user_id', Auth::id()],
                             ['purchases.' . $field_name, 'LIKE', "%{$search}%"]
                         ]);
-                }      
+                }
                 $purchases = $q->select('purchases.*')->get();
                 $totalFiltered = $q->count();
             }
@@ -394,11 +394,13 @@ class PurchaseController extends Controller
         $product[] = $lims_product_data->id;
         $product[] = $lims_product_data->is_batch;
         $product[] = $lims_product_data->is_imei;
+        $product[] = $lims_product_data->price;
         return $product;
     }
 
     public function store(Request $request)
     {
+        //dd($request->all());
         $data = $request->except('document');
         //return dd($data);
         $data['user_id'] = Auth::id();
@@ -452,10 +454,11 @@ class PurchaseController extends Controller
         $product_code = $data['product_code'];
         $qty = $data['qty'];
         $recieved = $data['recieved'];
-        $batch_no = $data['batch_no'];
-        $expired_date = $data['expired_date'];
+        $batch_no = $data['batch_no'] ?? [];
+        $expired_date = $data['expired_date'] ?? [];
         $purchase_unit = $data['purchase_unit'];
         $net_unit_cost = $data['net_unit_cost'];
+        $selling_price = $data['selling_price'];
         $discount = $data['discount'];
         $tax_rate = $data['tax_rate'];
         $tax = $data['tax'];
@@ -474,28 +477,28 @@ class PurchaseController extends Controller
             $lims_product_data = Product::find($id);
             $price = $lims_product_data->price;
             //dealing with product barch
-            if($batch_no[$i]) {
-                $product_batch_data = ProductBatch::where([
-                                        ['product_id', $lims_product_data->id],
-                                        ['batch_no', $batch_no[$i]]
-                                    ])->first();
-                if($product_batch_data) {
-                    $product_batch_data->expired_date = $expired_date[$i];
-                    $product_batch_data->qty += $quantity;
-                    $product_batch_data->save();
-                }
-                else {
-                    $product_batch_data = ProductBatch::create([
-                                            'product_id' => $lims_product_data->id,
-                                            'batch_no' => $batch_no[$i],
-                                            'expired_date' => $expired_date[$i],
-                                            'qty' => $quantity
-                                        ]);
-                }
-                $product_purchase['product_batch_id'] = $product_batch_data->id;
-            }
-            else
-                $product_purchase['product_batch_id'] = null;
+            // if($batch_no[$i]) {
+            //     $product_batch_data = ProductBatch::where([
+            //                             ['product_id', $lims_product_data->id],
+            //                             ['batch_no', $batch_no[$i]]
+            //                         ])->first();
+            //     if($product_batch_data) {
+            //         $product_batch_data->expired_date = $expired_date[$i];
+            //         $product_batch_data->qty += $quantity;
+            //         $product_batch_data->save();
+            //     }
+            //     else {
+            //         $product_batch_data = ProductBatch::create([
+            //                                 'product_id' => $lims_product_data->id,
+            //                                 'batch_no' => $batch_no[$i],
+            //                                 'expired_date' => $expired_date[$i],
+            //                                 'qty' => $quantity
+            //                             ]);
+            //     }
+            //     $product_purchase['product_batch_id'] = $product_batch_data->id;
+            // }
+            // else
+            $product_purchase['product_batch_id'] = null;
 
             if($lims_product_data->is_variant) {
                 $lims_product_variant_data = ProductVariant::select('id', 'variant_id', 'qty')->FindExactProductWithCode($lims_product_data->id, $product_code[$i])->first();
@@ -543,12 +546,12 @@ class PurchaseController extends Controller
             //add quantity to warehouse
             if ($lims_product_warehouse_data) {
                 $lims_product_warehouse_data->qty = $lims_product_warehouse_data->qty + $quantity;
-                $lims_product_warehouse_data->product_batch_id = $product_purchase['product_batch_id'];
+                $lims_product_warehouse_data->product_batch_id = $product_purchase['product_batch_id'] ?? null;
             }
             else {
                 $lims_product_warehouse_data = new Product_Warehouse();
                 $lims_product_warehouse_data->product_id = $id;
-                $lims_product_warehouse_data->product_batch_id = $product_purchase['product_batch_id'];
+                $lims_product_warehouse_data->product_batch_id = $product_purchase['product_batch_id'] ?? null;
                 $lims_product_warehouse_data->warehouse_id = $data['warehouse_id'];
                 $lims_product_warehouse_data->qty = $quantity;
                 if($price)
@@ -572,6 +575,7 @@ class PurchaseController extends Controller
             $product_purchase['recieved'] = $recieved[$i];
             $product_purchase['purchase_unit_id'] = $lims_purchase_unit_data->id;
             $product_purchase['net_unit_cost'] = $net_unit_cost[$i];
+            $product_purchase['selling_price'] = $selling_price[$i];
             $product_purchase['discount'] = $discount[$i];
             $product_purchase['tax_rate'] = $tax_rate[$i];
             $product_purchase['tax'] = $tax[$i];
@@ -970,7 +974,7 @@ class PurchaseController extends Controller
                                                     ->first();
                         if($lims_product_warehouse_data)
                             $price = $lims_product_warehouse_data->price;
-                            
+
                         $lims_product_warehouse_data = Product_Warehouse::where([
                             ['product_id', $pro_id],
                             ['product_batch_id', $product_purchase['product_batch_id'] ],

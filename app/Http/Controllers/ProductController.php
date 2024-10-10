@@ -321,6 +321,8 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
+        //return response()->json($request->all());
         $this->validate($request, [
             'code' => [
                 'max:255',
@@ -999,7 +1001,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-     
+
             $this->validate($request, [
                 'name' => [
                     'max:255',
