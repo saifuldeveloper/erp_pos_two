@@ -154,8 +154,6 @@
                                                         <th>{{trans('file.Code')}}</th>
                                                         <th>{{trans('file.Quantity')}}</th>
                                                         <th class="recieved-product-qty d-none">{{trans('file.Recieved')}}</th>
-                                                        <th>{{trans('file.Batch No')}}</th>
-                                                        <th>{{trans('file.Expired Date')}}</th>
                                                         <th>{{trans('file.Net Unit Cost')}}</th>
                                                         <th>{{trans('file.Discount')}}</th>
                                                         <th>{{trans('file.Tax')}}</th>
@@ -169,8 +167,6 @@
                                                     <th colspan="2">{{trans('file.Total')}}</th>
                                                     <th id="total-qty">0</th>
                                                     <th class="recieved-product-qty d-none"></th>
-                                                    <th></th>
-                                                    <th></th>
                                                     <th></th>
                                                     <th id="total-discount">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
                                                     <th id="total-tax">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
@@ -627,14 +623,14 @@
                         cols += '<td class="recieved-product-qty"><input type="number" class="form-control recieved" name="recieved[]" value="1" step="any"/></td>';
                     else
                         cols += '<td class="recieved-product-qty d-none"><input type="number" class="form-control recieved" name="recieved[]" value="0" step="any"/></td>';
-                    if(data[10]) {
-                        cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
-                        cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
-                    }
-                    else {
-                        cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
-                        cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
-                    }
+                    // if(data[10]) {
+                    //     cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
+                    //     cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
+                    // }
+                    // else {
+                    //     cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
+                    //     cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
+                    // }
 
                     cols += '<td class="net_unit_cost"></td>';
                     cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
