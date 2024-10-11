@@ -35,7 +35,7 @@ class Common
             \App::setLocale($_COOKIE['language']);
         }
         else {
-            \App::setLocale('en');
+            \App::setLocale('bn');
         }
         //setting theme
         if(isset($_COOKIE['theme'])) {

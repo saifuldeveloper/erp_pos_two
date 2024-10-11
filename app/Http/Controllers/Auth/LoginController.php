@@ -48,7 +48,7 @@ class LoginController extends Controller
         if(isset($_COOKIE['language']))
             \App::setLocale($_COOKIE['language']);
         else
-            \App::setLocale('en');
+            \App::setLocale('bn');
         //getting theme
         if(isset($_COOKIE['theme']))
             $theme = $_COOKIE['theme'];
