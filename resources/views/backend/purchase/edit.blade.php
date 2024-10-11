@@ -740,14 +740,14 @@ function productSearch(data) {
                     cols += '<td class="recieved-product-qty"><input type="number" class="form-control recieved" name="recieved[]" value="1" step="any"/></td>';
                 else
                     cols += '<td class="recieved-product-qty d-none"><input type="number" class="form-control recieved" name="recieved[]" value="0" step="any"/></td>';
-                if(data[10]) {
-                    cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
-                    cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
-                }
-                else {
-                    cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" disabled/></td>';
-                    cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" disabled/></td>';
-                }
+                // if(data[10]) {
+                //     cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
+                //     cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
+                // }
+                // else {
+                //     cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" disabled/></td>';
+                //     cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" disabled/></td>';
+                // }
                 cols += '<td class="net_unit_cost"></td>';
                 cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
                 cols += '<td class="tax"></td>';

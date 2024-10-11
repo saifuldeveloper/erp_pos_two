@@ -361,7 +361,10 @@ class SaleController extends Controller
             "recordsFiltered" => intval($totalFiltered),
             "data"            => $data
         );
+
+        dd(json_encode($json_data));
         echo json_encode($json_data);
+
     }
 
     public function create()
@@ -533,7 +536,7 @@ class SaleController extends Controller
             $mail_data['paid_amount'] = $lims_sale_data->paid_amount;
 
             $product_id = $data['product_id'];
-            $product_batch_id = $data['product_batch_id'];
+            $product_batch_id = $data['product_batch_id'] ?? null; 
             $imei_number = $data['imei_number'];
             $product_code = $data['product_code'];
             $qty = $data['qty'];
@@ -1868,7 +1871,7 @@ class SaleController extends Controller
         $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
         $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'];
+        $product_batch_id = $data['product_batch_id'] ?? null; 
         $product_code = $data['product_code'];
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];
