@@ -773,9 +773,9 @@
                             @foreach($lims_category_list as $category)
                             <div class="col-md-3 category-img text-center" data-category="{{$category->id}}">
                                 @if($category->image)
-                                    <img  src="{{url('images/category', $category->image)}}" />
+                                    <img  src="{{url('public/images/category', $category->image)}}" />
                                 @else
-                                    <img  src="{{url('images/product/zummXD2dvAtI.png')}}" />
+                                    <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
                                 @endif
                                 <p class="text-center">{{$category->name}}</p>
                             </div>
@@ -795,12 +795,12 @@
                             @foreach($lims_brand_list as $brand)
                             @if($brand->image)
                                 <div class="col-md-3 brand-img text-center" data-brand="{{$brand->id}}">
-                                    <img  src="{{url('images/brand',$brand->image)}}" />
+                                    <img  src="{{url('public/images/brand',$brand->image)}}" />
                                     <p class="text-center">{{$brand->title}}</p>
                                 </div>
                             @else
                                 <div class="col-md-3 brand-img" data-brand="{{$brand->id}}">
-                                    <img  src="{{url('images/product/zummXD2dvAtI.png')}}" />
+                                    <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
                                     <p class="text-center">{{$brand->title}}</p>
                                 </div>
                             @endif
@@ -1887,10 +1887,10 @@ function populateProduct(data) {
             else
                 image = 'zummXD2dvAtI.png';
             if(index % 5 == 0 && index != 0) {
-                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
             }
             else
-                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
         });
 
         if(data['name'].length % 5){
