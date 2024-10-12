@@ -122,6 +122,8 @@ class SaleController extends Controller
             foreach($custom_fields as $fieldName) {
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
+
+
             return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission','options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list'));
         }
         else
@@ -361,8 +363,6 @@ class SaleController extends Controller
             "recordsFiltered" => intval($totalFiltered),
             "data"            => $data
         );
-
-        dd(json_encode($json_data));
         echo json_encode($json_data);
 
     }
