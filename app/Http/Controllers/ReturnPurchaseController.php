@@ -432,7 +432,7 @@ class ReturnPurchaseController extends Controller
 
         $product_id = $data['is_return'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'];
+        $product_batch_id = $data['product_batch_id'] ?? null; 
         $product_code = $data['product_code'];
         $qty = $data['qty'];
         $purchase_unit = $data['purchase_unit'];
@@ -706,7 +706,7 @@ class ReturnPurchaseController extends Controller
 
         $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'];
+        $product_batch_id = $data['product_batch_id'] ?? null; 
         $product_code = $data['product_code'];
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];

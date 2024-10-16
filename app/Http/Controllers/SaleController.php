@@ -122,6 +122,8 @@ class SaleController extends Controller
             foreach($custom_fields as $fieldName) {
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
+
+
             return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission','options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list'));
         }
         else
@@ -362,6 +364,7 @@ class SaleController extends Controller
             "data"            => $data
         );
         echo json_encode($json_data);
+
     }
 
     public function create()
@@ -533,7 +536,7 @@ class SaleController extends Controller
             $mail_data['paid_amount'] = $lims_sale_data->paid_amount;
 
             $product_id = $data['product_id'];
-            $product_batch_id = $data['product_batch_id'];
+            $product_batch_id = $data['product_batch_id'] ?? null; 
             $imei_number = $data['imei_number'];
             $product_code = $data['product_code'];
             $qty = $data['qty'];
@@ -598,9 +601,9 @@ class SaleController extends Controller
                         $lims_product_variant_data = ProductVariant::select('id', 'variant_id', 'qty')->FindExactProductWithCode($id, $product_code[$i])->first();
                         $product_sale['variant_id'] = $lims_product_variant_data->variant_id;
                     }
-                    if($lims_product_data->is_batch && $product_batch_id[$i]) {
-                        $product_sale['product_batch_id'] = $product_batch_id[$i];
-                    }
+                    // if($lims_product_data->is_batch && $product_batch_id[$i]) {
+                    //     $product_sale['product_batch_id'] = $product_batch_id[$i];
+                    // }
 
                     if($data['sale_status'] == 1) {
                         if($lims_sale_unit_data->operator == '*')
@@ -616,16 +619,16 @@ class SaleController extends Controller
                             $lims_product_variant_data->save();
                             $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($id, $lims_product_variant_data->variant_id, $data['warehouse_id'])->first();
                         }
-                        elseif($product_batch_id[$i]) {
-                            $lims_product_warehouse_data = Product_Warehouse::where([
-                                ['product_batch_id', $product_batch_id[$i] ],
-                                ['warehouse_id', $data['warehouse_id'] ]
-                            ])->first();
-                            $lims_product_batch_data = ProductBatch::find($product_batch_id[$i]);
-                            //deduct product batch quantity
-                            $lims_product_batch_data->qty -= $quantity;
-                            $lims_product_batch_data->save();
-                        }
+                        // elseif($product_batch_id[$i]) {
+                        //     $lims_product_warehouse_data = Product_Warehouse::where([
+                        //         ['product_batch_id', $product_batch_id[$i] ],
+                        //         ['warehouse_id', $data['warehouse_id'] ]
+                        //     ])->first();
+                        //     $lims_product_batch_data = ProductBatch::find($product_batch_id[$i]);
+                        //     //deduct product batch quantity
+                        //     $lims_product_batch_data->qty -= $quantity;
+                        //     $lims_product_batch_data->save();
+                        // }
                         else {
                             $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($id, $data['warehouse_id'])->first();
                         }
@@ -1868,7 +1871,7 @@ class SaleController extends Controller
         $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
         $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'];
+        $product_batch_id = $data['product_batch_id'] ?? null; 
         $product_code = $data['product_code'];
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];

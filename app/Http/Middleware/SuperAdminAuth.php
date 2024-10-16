@@ -22,9 +22,9 @@ class SuperAdminAuth
         if(Auth::check()) {
             if(isset($_COOKIE['language'])) {
                 \App::setLocale($_COOKIE['language']);
-            } 
+            }
             else {
-                \App::setLocale('en');
+                \App::setLocale('bn');
             }
             //setting theme
             if(isset($_COOKIE['theme'])) {
@@ -33,7 +33,7 @@ class SuperAdminAuth
             else {
                 View::share('theme', 'light');
             }
-            //get general setting value        
+            //get general setting value
             $general_setting = DB::table('general_settings')->latest()->first();
             $default_language = DB::table('languages')->where('is_default', true)->first();
             if($default_language)

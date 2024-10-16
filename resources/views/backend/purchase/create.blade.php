@@ -637,9 +637,16 @@
                         cols += '<td class="recieved-product-qty"><input type="number" class="form-control recieved" name="recieved[]" value="1" step="any"/></td>';
                     else
                         cols += '<td class="recieved-product-qty d-none"><input type="number" class="form-control recieved" name="recieved[]" value="0" step="any"/></td>';
+                    if(data[10]) {
+                        cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
+                        cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
+                    }
+                    else {
+                        cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
+                        cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
+                    }
 
-                    cols += '<td class=""><input type="text" class="form-control net_unit_cost" name="net_unit_cost[]" step="any"/></td>';
-                    cols += '<td class="selling_price"><input type="text" class="form-control selling_price" name="selling_price[]" step="any"/></td>';
+                    cols += '<td class="net_unit_cost"></td>';
                     cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
                     cols += '<td class="tax"></td>';
                     cols += '<td class="sub-total"></td>';

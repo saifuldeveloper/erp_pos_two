@@ -346,7 +346,7 @@ class QuotationController extends Controller
             $mail_data['grand_total'] = $lims_quotation_data->grand_total;
         }
         $product_id = $data['product_id'];
-        $product_batch_id = $data['product_batch_id'];
+        $product_batch_id = $data['product_batch_id'] ?? null;
         $product_code = $data['product_code'];
         $qty = $data['qty'];
         $sale_unit = $data['sale_unit'];
@@ -383,7 +383,7 @@ class QuotationController extends Controller
                 $mail_data['products'][$i] = $lims_product_data->name;
             $product_quotation['quotation_id'] = $lims_quotation_data->id ;
             $product_quotation['product_id'] = $id;
-            $product_quotation['product_batch_id'] = $product_batch_id[$i];
+            $product_quotation['product_batch_id'] = $product_batch_id[$i] ?? null;
             $product_quotation['qty'] = $mail_data['qty'][$i] = $qty[$i];
             $product_quotation['sale_unit_id'] = $sale_unit_id;
             $product_quotation['net_unit_price'] = $net_unit_price[$i];
@@ -745,7 +745,7 @@ class QuotationController extends Controller
             $mail_data['grand_total'] = $data['grand_total'];
         }
         $product_id = $data['product_id'];
-        $product_batch_id = $data['product_batch_id'];
+        $product_batch_id = $data['product_batch_id'] ?? null;
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];
         $sale_unit = $data['sale_unit'];
@@ -785,7 +785,7 @@ class QuotationController extends Controller
                 $mail_data['unit'][$i] = '';
             $input['quotation_id'] = $id;
             $input['product_id'] = $pro_id;
-            $input['product_batch_id'] = $product_batch_id[$i];
+            $input['product_batch_id'] = $product_batch_id[$i] ?? null;
             $input['qty'] = $mail_data['qty'][$i] = $qty[$i];
             $input['sale_unit_id'] = $sale_unit_id;
             $input['net_unit_price'] = $net_unit_price[$i];
