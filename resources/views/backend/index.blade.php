@@ -200,24 +200,24 @@
                     <table class="table table-bordered table-striped">
                       <tbody>
                         <tr>
-                          <th>Item Stock Value</th>
+                          <th>{{trans('file.item stock value')}}</th>
                           <th>:</th>
                           <th class="text-right">{{ number_format((float)$assets['total_stock_value'], 2, '.', '') }}</th>
                         </tr>
                         <tr>
-                          <th>Receivable Customer Due</th>
+                          <th>{{trans('file.receiveable customer due')}}</th>
                           <th>:</th>
                           <th class="text-right">{{ number_format((float)$assets['total_due'], 2, '.', '') }}</th>
                         </tr>
                         <tr>
-                          <th>Total Account Balance</th>
+                          <th>{{trans('file.total accounts balance')}}</th>
                           <th>:</th>
                           <th class="text-right">{{ number_format((float)$assets['total_current_balance'], 2, '.', '') }}</th>
                         </tr>
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>Total Assets</th>
+                          <th>{{trans('file.total assets')}}</th>
                           <th>:</th>
                           <th class="text-right text-success">{{ number_format((float)array_sum($assets->toArray()), 2, '.', '') }}</th>
                         </tr>
@@ -238,12 +238,12 @@
                     <table class="table table-bordered table-striped">
                       <tbody>
                         <tr>
-                          <th>Supplier Due</th>
+                          <th>{{trans('file.supplier due')}}</th>
                           <th>:</th>
                           <th class="text-right">{{ number_format((float)$liability['total_due'], 2, '.', '') }}</th>
                         </tr>
                         <tr>
-                          <th>Customer Advance</th>
+                          <th>{{trans('file.customer advance')}}</th>
                           <th>:</th>
                           <th class="text-right">{{ number_format((float)$liability['customer_advance'], 2, '.', '') }}</th>
                         </tr>
@@ -255,7 +255,7 @@
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>Total Liabilities</th>
+                          <th>{{trans('file.total liabilities')}}</th>
                           <th>:</th>
                           <th class="text-right text-warning">{{ number_format((float)array_sum($liability->toArray()), 2, '.', '') }}</th>
                         </tr>
@@ -276,12 +276,12 @@
                     <table class="table table-bordered table-striped">
                       <tbody>
                         <tr>
-                          <th>Total Cash In</th>
+                          <th>{{trans('file.total cashin')}}</th>
                           <th>:</th>
                           <th class="text-right">{{ number_format((float)$cash['in'], 2, '.', '') }}</th>
                         </tr>
                         <tr>
-                          <th>Total Cash Out</th>
+                          <th>{{trans('file.total cashout')}}</th>
                           <th>:</th>
                           <th class="text-right">{{ number_format((float)$cash['out'], 2, '.', '') }}</th>
                         </tr>
@@ -293,7 +293,7 @@
                       </tbody>
                       <tfoot>
                         <tr>
-                          <th>Current Balance</th>
+                          <th>{{trans('file.Current Balance')}}</th>
                           <th>:</th>
                           <th class="text-right text-success">{{ number_format((float)$cash['in'] - $cash['out'], 2, '.', '') }}</th>
                         </tr>

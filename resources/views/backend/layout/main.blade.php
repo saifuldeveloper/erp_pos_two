@@ -3,63 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    @if(!config('database.connections.saleprosaas_landlord'))
-    <link rel="icon" type="image/png" href="{{url('public/logo', $general_setting->site_logo)}}" />
-    <title>{{$general_setting->site_title}}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="manifest" href="{{url('manifest.json')}}">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="<?php echo asset('vendor/bootstrap/css/bootstrap.min.css') ?>" type="text/css">
-    <link rel="preload" href="<?php echo asset('vendor/bootstrap-toggle/css/bootstrap-toggle.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/bootstrap-toggle/css/bootstrap-toggle.min.css') ?>" rel="stylesheet"></noscript>
-    <link rel="preload" href="<?php echo asset('vendor/bootstrap/css/bootstrap-datepicker.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="<?php echo asset('vendor/jquery-timepicker/jquery.timepicker.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/jquery-timepicker/jquery.timepicker.min.css') ?>" rel="stylesheet"></noscript>
-    <link rel="preload" href="<?php echo asset('vendor/bootstrap/css/awesome-bootstrap-checkbox.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/bootstrap/css/awesome-bootstrap-checkbox.css') ?>" rel="stylesheet"></noscript>
-    <link rel="preload" href="<?php echo asset('vendor/bootstrap/css/bootstrap-select.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/bootstrap/css/bootstrap-select.min.css') ?>" rel="stylesheet"></noscript>
-    <!-- Font Awesome CSS-->
-    <link rel="preload" href="<?php echo asset('vendor/font-awesome/css/font-awesome.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet"></noscript>
-    <!-- Drip icon font-->
-    <link rel="preload" href="<?php echo asset('vendor/dripicons/webfont.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/dripicons/webfont.css') ?>" rel="stylesheet"></noscript>
-
-    <!-- jQuery Circle-->
-    <link rel="preload" href="<?php echo asset('css/grasp_mobile_progress_circle-1.0.0.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('css/grasp_mobile_progress_circle-1.0.0.min.css') ?>" rel="stylesheet"></noscript>
-    <!-- Custom Scrollbar-->
-    <link rel="preload" href="<?php echo asset('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css') ?>" rel="stylesheet"></noscript>
-
-    @if(Route::current()->getName() != '/')
-    <!-- date range stylesheet-->
-    <link rel="preload" href="<?php echo asset('vendor/daterange/css/daterangepicker.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/daterange/css/daterangepicker.min.css') ?>" rel="stylesheet"></noscript>
-    <!-- table sorter stylesheet-->
-    <link rel="preload" href="<?php echo asset('vendor/datatable/dataTables.bootstrap4.min.css') ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="<?php echo asset('vendor/datatable/dataTables.bootstrap4.min.css') ?>" rel="stylesheet"></noscript>
-    <link rel="preload" href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://cdn.datatables.net/fixedheader/3.1.6/css/fixedHeader.bootstrap.min.css" rel="stylesheet"></noscript>
-    <link rel="preload" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet"></noscript>
-    @endif
-
-    <link rel="stylesheet" href="<?php echo asset('css/style.default.css') ?>" id="theme-stylesheet" type="text/css">
-    <link rel="stylesheet" href="<?php echo asset('css/dropzone.css') ?>">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="<?php echo asset('css/custom-'.$general_setting->theme) ?>" type="text/css" id="custom-style">
-
-    @if( Config::get('app.locale') == 'ar' || $general_setting->is_rtl)
-      <!-- RTL css -->
-      <link rel="stylesheet" href="<?php echo asset('vendor/bootstrap/css/bootstrap-rtl.min.css') ?>" type="text/css">
-      <link rel="stylesheet" href="<?php echo asset('css/custom-rtl.css') ?>" type="text/css" id="custom-style">
-    @endif
-    @else
     <link rel="icon" type="image/png" href="{{url('../../logo', $general_setting->site_logo)}}" />
     <title>{{$general_setting->site_title}}</title>
     <meta name="description" content="">
@@ -116,7 +59,6 @@
       <link rel="stylesheet" href="<?php echo asset('../../vendor/bootstrap/css/bootstrap-rtl.min.css') ?>" type="text/css">
       <link rel="stylesheet" href="<?php echo asset('../../css/custom-rtl.css') ?>" type="text/css" id="custom-style">
     @endif
-    @endif
     <!-- Google fonts - Roboto -->
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:400,500,700" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css?family=Nunito:400,500,700" rel="stylesheet"></noscript>
@@ -124,7 +66,7 @@
   </head>
 
   <body class="@if($theme == 'dark')dark-mode dripicons-brightness-low @endif  @if(Route::current()->getName() == 'sale.pos') pos-page @endif" onload="myFunction()">
-    <div id="loader"></div>
+    <div id="loader" class="d-none"></div>
       <!-- Side Navbar -->
       <nav class="side-navbar">
         <span class="brand-big">
@@ -299,60 +241,6 @@
                         <li>
                         <a href="{{ url('language_switch/bn') }}" class="btn btn-link"> বাংলা</a>
                         </li>
-                        {{-- <li>
-                        <a href="{{ url('language_switch/es') }}" class="btn btn-link"> Español</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/ar') }}" class="btn btn-link"> عربى</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/id') }}" class="btn btn-link"> Bahasa</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/ms') }}" class="btn btn-link"> Malay</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/s_chinese') }}" class="btn btn-link">中国人</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/t_chinese') }}" class="btn btn-link">中國人</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/pt_BR') }}" class="btn btn-link"> Portuguese</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/fr') }}" class="btn btn-link"> Français</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/de') }}" class="btn btn-link"> Deutsche</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/hi') }}" class="btn btn-link"> हिंदी</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/vi') }}" class="btn btn-link"> Tiếng Việt</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/ru') }}" class="btn btn-link"> русский</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/bg') }}" class="btn btn-link"> български</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/tr') }}" class="btn btn-link"> Türk</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/it') }}" class="btn btn-link"> Italiano</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/nl') }}" class="btn btn-link"> Nederlands</a>
-                        </li>
-                        <li>
-                        <a href="{{ url('language_switch/lao') }}" class="btn btn-link"> Lao</a>
-                        </li>
-                        <li>
-                          <a href="{{ url('language_switch/swahili') }}" class="btn btn-link"> Swahili</a>
-                        </li> --}}
                     </ul>
             </li>
             <li class="nav-item">
@@ -371,14 +259,14 @@
                     <a href="{{url('my-transactions/'.date('Y').'/'.date('m'))}}"><i class="dripicons-swap"></i> {{trans('file.My Transaction')}}</a>
                     </li>
                     @if(Auth::user()->role_id != 5)
-                    <li>
+                    {{-- <li>
                     <a href="{{url('holidays/my-holiday/'.date('Y').'/'.date('m'))}}"><i class="dripicons-vibrate"></i> {{trans('file.My Holiday')}}</a>
                     </li>
                     @endif
                     @if($empty_database_permission_active)
                     <li>
                     <a onclick="return confirm('Are you sure want to delete? If you do this all of your data will be lost.')" href="{{route('setting.emptyDatabase')}}"><i class="dripicons-stack"></i> {{trans('file.Empty Database')}}</a>
-                    </li>
+                    </li> --}}
                     @endif
                     <li>
                     <a href="{{ route('logout') }}"
@@ -398,7 +286,7 @@
       @endif
 
 
-      <div style="display:none" id="content" class="animate-bottom">
+      <div style="display:none" id="content" class="">
             @include('includes.session_message')
             @yield('content')
       </div>
@@ -434,7 +322,7 @@
                                 <input type="hidden" name="sender_id" value="{{\Auth::id()}}">
                               <label>{{trans('file.User')}} *</label>
                               <select id="receiver_id" name="receiver_id" class="selectpicker form-control" required data-live-search="true" data-live-search-style="begins" title="Select user...">
-                                  
+
                               </select>
                           </div>
                           <div class="col-md-4 form-group">
@@ -495,7 +383,7 @@
                       </div>
                       @endif
 
-                       
+
                   @if(isset($general_setting->modules) && in_array('ecommerce', explode(',', $general_setting->modules)))
                       <div class="col-md-12 mt-3">
                           <h6><strong>{{ __('For Website') }}</strong></h6>
@@ -505,14 +393,14 @@
                       <div class="col-md-6 form-group">
                           <label>{{ __('Icon') }} (SVG format)</label>
                           <input type="file" name="icon" class="form-control">
-                      </div> 
+                      </div>
                       <div class="col-md-6 form-group">
                           <br>
                           <input type="checkbox" name="featured" id="featured" value="1"> <label>{{ __('List on category dropdown') }}</label>
                       </div>
                       @endif
                   </div>
-                  
+
                   @if(isset($general_setting->modules) && in_array('ecommerce', explode(',', $general_setting->modules)))
                   <div class="row">
                       <div class="col-md-12 mt-3">
@@ -886,64 +774,7 @@
       </div>
       <!-- end supplier modal -->
     </div>
-    @if(!config('database.connections.saleprosaas_landlord'))
-        <script type="text/javascript" src="<?php echo asset('vendor/jquery/jquery.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/jquery/jquery-ui.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/jquery/bootstrap-datepicker.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/jquery/jquery.timepicker.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/popper.js/umd/popper.min.js') ?>">
-        </script>
-        <script type="text/javascript" src="<?php echo asset('vendor/bootstrap/js/bootstrap.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/bootstrap-toggle/js/bootstrap-toggle.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/bootstrap/js/bootstrap-select.min.js') ?>"></script>
-        @if(Route::current()->getName() == 'sale.pos')
-        <script type="text/javascript" src="<?php echo asset('vendor/keyboard/js/jquery.keyboard.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/keyboard/js/jquery.keyboard.extension-autocomplete.js') ?>"></script>
-        @endif
-        <script type="text/javascript" src="<?php echo asset('js/grasp_mobile_progress_circle-1.0.0.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/jquery.cookie/jquery.cookie.js') ?>">
-        </script>
-        <script type="text/javascript" src="<?php echo asset('vendor/chart.js/Chart.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('js/charts-custom.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/jquery-validation/jquery.validate.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')?>"></script>
-        @if( Config::get('app.locale') == 'ar' || $general_setting->is_rtl)
-          <script type="text/javascript" src="<?php echo asset('js/front_rtl.js') ?>"></script>
-        @else
-          <script type="text/javascript" src="<?php echo asset('js/front.js') ?>"></script>
-        @endif
 
-        @if(Route::current()->getName() != '/')
-        <script type="text/javascript" src="<?php echo asset('vendor/daterange/js/moment.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/daterange/js/knockout-3.4.2.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/daterange/js/daterangepicker.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('js/dropzone.js') ?>"></script>
-
-        <!-- table sorter js-->
-        @if( Config::get('app.locale') == 'ar')
-            <script type="text/javascript" src="<?php echo asset('vendor/datatable/pdfmake_arabic.min.js') ?>"></script>
-            <script type="text/javascript" src="<?php echo asset('vendor/datatable/vfs_fonts_arabic.js') ?>"></script>
-        @else
-            <script type="text/javascript" src="<?php echo asset('vendor/datatable/pdfmake.min.js') ?>"></script>
-            <script type="text/javascript" src="<?php echo asset('vendor/datatable/vfs_fonts.js') ?>"></script>
-        @endif
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/jquery.dataTables.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/dataTables.bootstrap4.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/dataTables.buttons.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/jszip.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/buttons.bootstrap4.min.js') ?>">"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/buttons.colVis.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/buttons.html5.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/buttons.printnew.js') ?>"></script>
-
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/sum().js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('vendor/datatable/dataTables.checkboxes.min.js') ?>"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-        @endif
-    @else
         <script type="text/javascript" src="<?php echo asset('../../vendor/jquery/jquery.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo asset('../../vendor/jquery/jquery-ui.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo asset('../../vendor/jquery/bootstrap-datepicker.min.js') ?>"></script>
@@ -996,7 +827,6 @@
         <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
         @endif
-    @endif
     @stack('scripts')
     <script>
         if ('serviceWorker' in navigator ) {
@@ -1047,7 +877,7 @@
       }
 
       function myFunction() {
-          setTimeout(showPage, 100);
+          setTimeout(showPage, 0);
       }
 
       function showPage() {
@@ -1120,7 +950,7 @@
             $('#notification-modal').modal();
           }
         });
-        
+
       });
 
       $("a#add-account").click(function(e){
@@ -1187,7 +1017,7 @@
             $('#warehouse-modal').modal();
           }
         });
-        
+
       });
 
       $("a#user-report-link").click(function(e){
@@ -1204,7 +1034,7 @@
             $('#user-modal').modal();
           }
         });
-        
+
       });
 
       $("a#customer-report-link").click(function(e){
@@ -1253,7 +1083,7 @@
             $('#supplier-modal').modal();
           }
         });
-        
+
       });
 
       $("a#due-report-link").click(function(e){

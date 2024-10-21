@@ -10,11 +10,17 @@
 @if(session()->has('not_permitted'))
   <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
+
+@if (session()->has('clearLocalStorage'))
+    <script>
+        localStorage.clear();
+    </script>
+@endif
 <!-- Side Navbar -->
 <nav class="side-navbar shrink">
     <span class="brand-big">
         @if($general_setting->site_logo)
-        <a href="{{url('/')}}"><img src="{{url('public/logo', $general_setting->site_logo)}}" width="115"></a>
+        <a href="{{url('/')}}"><img src="{{url('logo', $general_setting->site_logo)}}" width="115"></a>
         @else
         <a href="{{url('/')}}"><h1 class="d-inline">{{$general_setting->site_title}}</h1></a>
         @endif
@@ -101,7 +107,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             @if($lims_pos_setting_data)
                                             <input type="hidden" name="biller_id_hidden" value="{{$lims_pos_setting_data->biller_id}}">
@@ -113,7 +119,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             @if($lims_pos_setting_data)
                                             <input type="hidden" name="customer_id_hidden" value="{{$lims_pos_setting_data->customer_id}}">
@@ -134,7 +140,7 @@
                                                     <option value="{{$customer->id}}">{{$customer->name . ' (' . $customer->phone_number . ')'}}</option>
                                                 @endforeach
                                                 </select>
-                                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#addCustomer"><i class="dripicons-plus"></i></button>
+                                                <button type="button" class="btn btn-default btn-sm" data-toggle="modal" title="Add Customer (Alt + C)" accesskey="c" data-target="#addCustomer"><i class="dripicons-plus"></i></button>
                                                 @else
                                                 <?php
                                                   $deposit = [];
@@ -154,13 +160,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         <select name="currency_id" id="currency" class="form-control selectpicker" data-toggle="tooltip" title="" data-original-title="Sale currency">
                                             @foreach($currency_list as $currency_data)
                                             <option value="{{$currency_data->id}}" data-rate="{{$currency_data->exchange_rate}}">{{$currency_data->code}}</option>
                                             @endforeach
                                         </select>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-2">
                                         <div class="form-group d-flex">
                                             <input class="form-control" type="text" id="exchange_rate" name="exchange_rate" value="{{$currency->exchange_rate}}">
@@ -168,7 +174,7 @@
                                                 <span class="input-group-text" data-toggle="tooltip" title="" data-original-title="currency exchange rate">i</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     @foreach($custom_fields as $field)
                                         @if(!$field->is_admin || \Auth::user()->role_id == 1)
                                             <div class="{{'col-md-'.$field->grid_value}}">
@@ -221,7 +227,7 @@
                                     @endforeach
                                     <div class="col-md-12">
                                         <div class="search-box form-group">
-                                            <input type="text" name="product_code_name" id="lims_productcodeSearch" placeholder="Scan/Search product by name/code" class="form-control"  />
+                                            <input type="text" name="product_code_name" id="lims_productcodeSearch" accesskey="s" title="Scan/Search product (Alt + s)" placeholder="Scan/Search product by name/code" class="form-control"  />
                                         </div>
                                     </div>
                                 </div>
@@ -231,7 +237,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="col-sm-2">{{trans('file.product')}}</th>
-                                                    <th class="col-sm-2">{{trans('file.Batch No')}}</th>
+                                                    {{-- <th class="col-sm-2">{{trans('file.Batch No')}}</th> --}}
                                                     <th class="col-sm-2">{{trans('file.Price')}}</th>
                                                     <th class="col-sm-3">{{trans('file.Quantity')}}</th>
                                                     <th class="col-sm-3">{{trans('file.Subtotal')}}</th>
@@ -410,6 +416,15 @@
                                                 @if($lims_reward_point_setting_data && $lims_reward_point_setting_data->is_active)
                                                 <option value="7">Points</option>
                                                 @endif
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12 mt-3">
+                                            <input type="hidden" id="account_id" name="acc_id">
+                                            <label>Select Account</label>
+                                            <select name="acc_id_select" id="acc_id_select" class="form-control selectpicker">
+                                                @foreach($accounts as $account)
+                                                <option @if($account->is_default) selected @endif value="{{$account->id}}">{{$account->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-md-12 mt-3">
@@ -758,9 +773,9 @@
                             @foreach($lims_category_list as $category)
                             <div class="col-md-3 category-img text-center" data-category="{{$category->id}}">
                                 @if($category->image)
-                                    <img  src="{{url('images/category', $category->image)}}" />
+                                    <img  src="{{url('public/images/category', $category->image)}}" />
                                 @else
-                                    <img  src="{{url('images/product/zummXD2dvAtI.png')}}" />
+                                    <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
                                 @endif
                                 <p class="text-center">{{$category->name}}</p>
                             </div>
@@ -785,7 +800,7 @@
                                 </div>
                             @else
                                 <div class="col-md-3 brand-img" data-brand="{{$brand->id}}">
-                                    <img  src="{{url('images/product/zummXD2dvAtI.png')}}" />
+                                    <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
                                     <p class="text-center">{{$brand->title}}</p>
                                 </div>
                             @endif
@@ -817,12 +832,12 @@
                             <tbody>
                             @for ($i=0; $i < ceil($product_number/5); $i++)
                                 <tr>
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[0+$i*5]->name}}" data-product ="{{$lims_product_list[0+$i*5]->code . ' (' . $lims_product_list[0+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[0+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[0+$i*5]->name}}" data-product ="{{$lims_product_list[0+$i*5]->code . ' (' . $lims_product_list[0+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[0+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[0+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[0+$i*5]->code}}</span>
                                     </td>
                                     @if(!empty($lims_product_list[1+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[1+$i*5]->name}}" data-product ="{{$lims_product_list[1+$i*5]->code . ' (' . $lims_product_list[1+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[1+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[1+$i*5]->name}}" data-product ="{{$lims_product_list[1+$i*5]->code . ' (' . $lims_product_list[1+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[1+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[1+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[1+$i*5]->code}}</span>
                                     </td>
@@ -830,7 +845,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[2+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[2+$i*5]->name}}" data-product ="{{$lims_product_list[2+$i*5]->code . ' (' . $lims_product_list[2+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[2+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[2+$i*5]->name}}" data-product ="{{$lims_product_list[2+$i*5]->code . ' (' . $lims_product_list[2+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[2+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[2+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[2+$i*5]->code}}</span>
                                     </td>
@@ -838,7 +853,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[3+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[3+$i*5]->name}}" data-product ="{{$lims_product_list[3+$i*5]->code . ' (' . $lims_product_list[3+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[3+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[3+$i*5]->name}}" data-product ="{{$lims_product_list[3+$i*5]->code . ' (' . $lims_product_list[3+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[3+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[3+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[3+$i*5]->code}}</span>
                                     </td>
@@ -846,7 +861,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[4+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[4+$i*5]->name}}" data-product ="{{$lims_product_list[4+$i*5]->code . ' (' . $lims_product_list[4+$i*5]->name . ')'}}"><img  src="{{url('public/images/product',$lims_product_list[4+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[4+$i*5]->name}}" data-product ="{{$lims_product_list[4+$i*5]->code . ' (' . $lims_product_list[4+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[4+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[4+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[4+$i*5]->code}}</span>
                                     </td>
@@ -935,20 +950,21 @@
                             <input type="text" name="customer_name" required class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>{{trans('file.Email')}}</label>
-                            <input type="text" name="email" placeholder="example@example.com" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label>{{trans('file.Phone Number')}} *</label>
                             <input type="text" name="phone_number" required class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>{{trans('file.Address')}} *</label>
-                            <input type="text" name="address" required class="form-control">
+                            <label>{{trans('file.Email')}}</label>
+                            <input type="text" name="email" placeholder="example@example.com" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>{{trans('file.Address')}}</label>
+                            <input type="text" name="address" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>{{trans('file.City')}} *</label>
-                            <input type="text" name="city" required class="form-control">
+                            <label>{{trans('file.City')}}</label>
+                            <input type="text" name="city" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="hidden" name="pos" value="1">
@@ -1400,7 +1416,7 @@ $('#currency').change(function(){
         currencyChange = true;
         checkDiscount($(this).val(), true);
         couponDiscount();
-    }); 
+    });
 });
 
 var localStorageQty = [];
@@ -1866,10 +1882,15 @@ function populateProduct(data) {
     if (Object.keys(data).length != 0) {
         $.each(data['name'], function(index) {
             var product_info = data['code'][index]+' (' + data['name'][index] + ')';
-            if(index % 5 == 0 && index != 0)
-                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+data['image'][index]+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+            if(data['image'][index])
+                image = data['image'][index];
             else
-                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="images/product/'+data['image'][index]+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+                image = 'zummXD2dvAtI.png';
+            if(index % 5 == 0 && index != 0) {
+                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+            }
+            else
+                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
         });
 
         if(data['name'].length % 5){
@@ -2275,6 +2296,11 @@ $("#point-btn").on("click",function() {
     pointCalculation();
 });
 
+$("#acc_id_select").on("change", function() {
+    var id = $(this).val();
+    $('#account_id').val(id);
+});
+
 $('select[name="paid_by_id_select"]').on("change", function() {
     var id = $(this).val();
     $(".payment-form").off("submit");
@@ -2438,12 +2464,12 @@ function addNewProduct(data){
     temp_unit_name = (data[6]).split(',');
     pos = product_code.indexOf(data[1]);
     cols += '<td class="col-sm-2 product-title"><button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"><span style="margin-left: -19px; white-space: break-spaces;"><strong>' + data[0] + '</strong></span></button><br>' + data[1] + '<p>In Stock: <span class="in-stock"></span></p></td>';
-    if(data[12]) {
-        cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
-    }
-    else {
-        cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
-    }
+    // if(data[12]) {
+    //     cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
+    // }
+    // else {
+    //     cols += '<td class="col-sm-2"><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
+    // }
     cols += '<td class="col-sm-2 product-price"></td>';
     cols += '<td class="col-sm-3"><div class="input-group"><span class="input-group-btn"><button type="button" class="btn btn-default minus"><span class="dripicons-minus"></span></button></span><input type="text" name="qty[]" class="form-control qty numkey input-number" step="any" value="'+data[15]+'" required><span class="input-group-btn"><button type="button" class="btn btn-default plus"><span class="dripicons-plus"></span></button></span></div></td>';
     cols += '<td class="col-sm-2 sub-total"></td>';
@@ -2662,7 +2688,7 @@ function checkQuantity(sale_qty, flag) {
                     localStorageQty[rowindex] = sale_qty;
                     localStorage.setItem("localStorageQty", localStorageQty);
                     checkQuantity(sale_qty, true);
-                } 
+                }
                 else {
                     localStorageQty[rowindex] = sale_qty;
                     localStorage.setItem("localStorageQty", localStorageQty);

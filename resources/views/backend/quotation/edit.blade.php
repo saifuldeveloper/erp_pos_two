@@ -87,7 +87,6 @@
                                                     <tr>
                                                         <th>{{trans('file.name')}}</th>
                                                         <th>{{trans('file.Code')}}</th>
-                                                        <th>{{trans('file.Batch No')}}</th>
                                                         <th>{{trans('file.Quantity')}}</th>
                                                         <th>{{trans('file.Net Unit Price')}}</th>
                                                         <th>{{trans('file.Discount')}}</th>
@@ -166,17 +165,6 @@
                                                     ?>
                                                         <td>{{$product_data->name}} <button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button> </td>
                                                         <td>{{$product_data->code}}</td>
-                                                        @if($product_batch_data)
-                                                        <td>
-                                                            <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="{{$product_quotation->product_batch_id}}">
-                                                            <input type="text" class="form-control batch-no" name="batch_no[]" value="{{$product_batch_data->batch_no}}" required/>
-                                                        </td>
-                                                        @else
-                                                        <td>
-                                                            <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="">
-                                                            <input type="text" class="form-control batch-no" name="batch_no[]" value="" disabled />
-                                                        </td>
-                                                        @endif
                                                         <td><input type="number" class="form-control qty" name="qty[]" value="{{$product_quotation->qty}}" step="any" required/></td>
                                                         <td class="net_unit_price">{{ number_format((float)$product_quotation->net_unit_price, $general_setting->decimal, '.', '')}} </td>
                                                         <td class="discount">{{ number_format((float)$product_quotation->discount, $general_setting->decimal, '.', '')}}</td>
@@ -206,7 +194,6 @@
                                                 </tbody>
                                                 <tfoot class="tfoot active">
                                                     <th colspan="2">{{trans('file.Total')}}</th>
-                                                    <th></th>
                                                     <th id="total-qty">{{$lims_quotation_data->total_qty}}</th>
                                                     <th></th>
                                                     <th id="total-discount">{{ number_format((float)$lims_quotation_data->total_discount, $general_setting->decimal, '.', '')}}</th>
@@ -727,10 +714,6 @@ function productSearch(data) {
                 temp_unit_name = (data[6]).split(',');
                 cols += '<td>' + data[0] + '<button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button></td>';
                 cols += '<td>' + data[1] + '</td>';
-                if(data[12])
-                    cols += '<td><input type="text" class="form-control batch-no" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
-                else
-                    cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
                 cols += '<td><input type="number" class="form-control qty" name="qty[]" value="1" step="any" required/></td>';
                 cols += '<td class="net_unit_price"></td>';
                 cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';

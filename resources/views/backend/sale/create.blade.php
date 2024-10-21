@@ -95,7 +95,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         <div class="form-group">
                                             <label>{{trans('file.Currency')}} *</label>
                                             <select name="currency_id" id="currency" class="form-control selectpicker" data-toggle="tooltip" title="" data-original-title="Sale currency">
@@ -104,7 +104,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-2">
                                         <div class="form-group mb-0">
                                             <label>{{trans('file.Exchange Rate')}} *</label>
@@ -115,7 +115,7 @@
                                                 <span class="input-group-text" data-toggle="tooltip" title="" data-original-title="currency exchange rate">i</span>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12">
@@ -136,8 +136,8 @@
                                                         <th>{{trans('file.name')}}</th>
                                                         <th>{{trans('file.Code')}}</th>
                                                         <th>{{trans('file.Quantity')}}</th>
-                                                        <th>{{trans('file.Batch No')}}</th>
-                                                        <th>{{trans('file.Expired Date')}}</th>
+                                                        {{-- <th>{{trans('file.Batch No')}}</th>
+                                                        <th>{{trans('file.Expired Date')}}</th> --}}
                                                         <th>{{trans('file.Net Unit Price')}}</th>
                                                         <th>{{trans('file.Discount')}}</th>
                                                         <th>{{trans('file.Tax')}}</th>
@@ -150,8 +150,8 @@
                                                 <tfoot class="tfoot active">
                                                     <th colspan="2">{{trans('file.Total')}}</th>
                                                     <th id="total-qty">0</th>
-                                                    <th></th>
-                                                    <th></th>
+                                                    {{-- <th></th>
+                                                    <th></th> --}}
                                                     <th></th>
                                                     <th id="total-discount">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
                                                     <th id="total-tax">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
@@ -318,6 +318,16 @@
                                 </div>
                                 <div id="payment">
                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Select Account</label>
+                                                <select name="acc_id" class="form-control selectpicker">
+                                                    @foreach($accounts as $account)
+                                                    <option @if($account->is_default) selected @endif value="{{$account->id}}">{{$account->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>{{trans('file.Paid By')}}</label>
@@ -496,10 +506,10 @@
         </div>
     </div>
     <!-- add customer modal -->
-    <div id="addCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+   <div id="addCustomer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
         <div role="document" class="modal-dialog">
           <div class="modal-content">
-            {!! Form::open(['route' => 'customer.store', 'method' => 'post', 'files' => true, 'id' => 'customer-form']) !!}
+            {!! Form::open(['route' => 'customer.store', 'method' => 'post', 'files' => true]) !!}
             <div class="modal-header">
               <h5 id="exampleModalLabel" class="modal-title">{{trans('file.Add Customer')}}</h5>
               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
@@ -519,24 +529,25 @@
                     <input type="text" name="customer_name" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{trans('file.Email')}}</label>
-                    <input type="text" name="email" placeholder="example@example.com" class="form-control">
-                </div>
-                <div class="form-group">
                     <label>{{trans('file.Phone Number')}} *</label>
                     <input type="text" name="phone_number" required class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{trans('file.Address')}} *</label>
-                    <input type="text" name="address" required class="form-control">
+                    <label>{{trans('file.Email')}}</label>
+                    <input type="text" name="email" placeholder="example@example.com" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>{{trans('file.Address')}}</label>
+                    <input type="text" name="address" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>{{trans('file.City')}} *</label>
-                    <input type="text" name="city" required class="form-control">
+                    <label>{{trans('file.City')}}</label>
+                    <input type="text" name="city" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="pos" value="1">
-                    <button type="button" class="btn btn-primary customer-submit-btn">{{trans('file.submit')}}</button>
+                <input type="hidden" name="pos" value="1">
+                  <input type="submit" value="{{trans('file.submit')}}" class="btn btn-primary">
                 </div>
             </div>
             {{ Form::close() }}
@@ -601,7 +612,7 @@
             }
         });
     @endif
-    
+
     @if($lims_pos_setting_data)
         var public_key = <?php echo json_encode($lims_pos_setting_data->stripe_public_key) ?>;
     @endif
@@ -620,7 +631,7 @@
             rowindex = index;
             currencyChange = true;
             checkDiscount($(this).val(), true);
-        }); 
+        });
     });
 
     $('.customer-submit-btn').on("click", function() {
@@ -946,14 +957,14 @@ function productSearch(data) {
                 cols += '<td>' + data[0] + '<button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button></td>';
                 cols += '<td>' + data[1] + '</td>';
                 cols += '<td><input type="text" class="form-control qty" name="qty[]" value="'+data[15]+'" required/></td>';
-                if(data[12]) {
-                    cols += '<td><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
-                    cols += '<td class="expired-date">'+expired_date[pos]+'</td>';
-                }
-                else {
-                    cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
-                    cols += '<td class="expired-date">N/A</td>';
-                }
+                // if(data[12]) {
+                //     cols += '<td><input type="text" class="form-control batch-no" value="'+batch_no[pos]+'" required/> <input type="hidden" class="product-batch-id" name="product_batch_id[]" value="'+product_batch_id[pos]+'"/> </td>';
+                //     cols += '<td class="expired-date">'+expired_date[pos]+'</td>';
+                // }
+                // else {
+                //     cols += '<td><input type="text" class="form-control batch-no" disabled/> <input type="hidden" class="product-batch-id" name="product_batch_id[]"/> </td>';
+                //     cols += '<td class="expired-date">N/A</td>';
+                // }
 
                 cols += '<td class="net_unit_price"></td>';
                 cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
@@ -1316,7 +1327,7 @@ $('select[name="paid_by_id"]').on("change", function() {
     }
     else if (id == 3) {
         @if($lims_pos_setting_data && (strlen($lims_pos_setting_data->stripe_public_key)>0) && (strlen($lims_pos_setting_data->stripe_secret_key )>0))
-            $.getScript( "../public/vendor/stripe/checkout.js" );
+            $.getScript( "../vendor/stripe/checkout.js" );
             $(".card-element").show();
             $(".card-errors").show();
         @endif

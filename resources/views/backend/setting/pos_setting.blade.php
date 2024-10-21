@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <h4><strong>Stripe</strong></h4>
                                 </div>
@@ -117,9 +117,9 @@
                                         <input type="text" name="stripe_secret_key" class="form-control" value="@if($lims_pos_setting_data){{$lims_pos_setting_data->stripe_secret_key}}@endif" />
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
+                            </div> --}}
+                            {{-- <hr> --}}
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     <h4><strong>Paypal</strong></h4>
                                 </div>
@@ -141,8 +141,8 @@
                                         <input type="password" name="paypal_password" class="form-control" value="@if($lims_pos_setting_data){{$lims_pos_setting_data->paypal_live_api_password}}@endif" />
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
+                            </div> --}}
+                            {{-- <hr> --}}
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <h4><strong>Payment Options</strong></h4>
@@ -184,23 +184,23 @@
                                         <label class="mt-2"><strong>Gift Card</strong></label>
                                     </div>
 
-                                    <div class="form-group d-inline">
+                                    {{-- <div class="form-group d-inline">
                                         @if(in_array("deposit",$options))
                                         <input class="mt-2" type="checkbox" name="options[]" value="deposit" checked>
                                         @else
                                         <input class="mt-2" type="checkbox" name="options[]" value="deposit">
                                         @endif
                                         <label class="mt-2"><strong>Deposit</strong></label>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="form-group d-inline">
+                                    {{-- <div class="form-group d-inline">
                                         @if(in_array("paypal",$options))
                                         <input class="mt-2" type="checkbox" name="options[]" value="paypal" checked>
                                         @else
                                         <input class="mt-2" type="checkbox" name="options[]" value="paypal">
                                         @endif
                                         <label class="mt-2"><strong>Paypal</strong></label>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="form-group mt-3">

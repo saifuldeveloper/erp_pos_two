@@ -85,7 +85,7 @@
                 <li id="sale-list-menu"><a href="{{route('sales.index')}}">{{trans('file.Sale List')}}</a></li>
                 <li><a href="{{route('sale.pos')}}">POS</a></li>
                 <li id="sale-create-menu"><a href="{{route('sales.create')}}">{{trans('file.Add Sale')}}</a></li>
-                <li id="sale-import-menu"><a href="{{url('sales/sale_by_csv')}}">{{trans('file.Import Sale By CSV')}}</a></li>
+                {{-- <li id="sale-import-menu"><a href="{{url('sales/sale_by_csv')}}">{{trans('file.Import Sale By CSV')}}</a></li> --}}
                 @endif
 
                 @if($gift_card_permission_active)
@@ -94,10 +94,10 @@
                 @if($coupon_permission_active)
                 <li id="coupon-menu"><a href="{{route('coupons.index')}}">{{trans('file.Coupon List')}}</a> </li>
                 @endif
-                <li id="courier-menu"><a href="{{route('couriers.index')}}">{{trans('file.Courier List')}}</a> </li>
+                {{-- <li id="courier-menu"><a href="{{route('couriers.index')}}">{{trans('file.Courier List')}}</a> </li>
                 @if($delivery_permission_active)
                 <li id="delivery-menu"><a href="{{route('delivery.index')}}">{{trans('file.Delivery List')}}</a></li>
-                @endif
+                @endif --}}
             </ul>
             </li>
             @endif
@@ -220,15 +220,15 @@
                 @if($index_employee_active)
                 <li id="employee-menu"><a href="{{route('employees.index')}}">{{trans('file.Employee')}}</a></li>
                 @endif
-                @if($attendance_active)
+                {{-- @if($attendance_active)
                 <li id="attendance-menu"><a href="{{route('attendance.index')}}">{{trans('file.Attendance')}}</a></li>
-                @endif
+                @endif --}}
                 @if($payroll_active)
                 <li id="payroll-menu"><a href="{{route('payroll.index')}}">{{trans('file.Payroll')}}</a></li>
                 @endif
-                @if($holiday_active)
+                {{-- @if($holiday_active)
                 <li id="holiday-menu"><a href="{{route('holidays.index')}}">{{trans('file.Holiday')}}</a></li>
-                @endif
+                @endif --}}
             </ul>
             </li>
             @endif
@@ -539,9 +539,9 @@
                     ?>
                     @if($role->id <= 2)
                     <li id="role-menu"><a href="{{route('role.index')}}">{{trans('file.Role Permission')}}</a></li>
-                    @if($custom_field_permission_active)
+                    {{-- @if($custom_field_permission_active)
                     <li id="custom-field-list-menu"><a href="{{route('custom-fields.index')}}">{{trans('file.Custom Field List')}}</a></li>
-                    @endif
+                    @endif --}}
                     @endif
                     @if($discount_plan_permission_active)
                     <li id="discount-plan-list-menu"><a href="{{route('discount-plans.index')}}">{{trans('file.Discount Plan')}}</a></li>
@@ -549,7 +549,7 @@
                     @if($discount_permission_active)
                     <li id="discount-list-menu"><a href="{{route('discounts.index')}}">{{trans('file.Discount')}}</a></li>
                     @endif
-                    @if($all_notification_permission_active)
+                    {{-- @if($all_notification_permission_active)
                     <li id="notification-list-menu">
                         <a href="{{route('notifications.index')}}">{{trans('file.All Notification')}}</a>
                     </li>
@@ -558,7 +558,7 @@
                     <li id="notification-menu">
                     <a href="" id="send-notification">{{trans('file.Send Notification')}}</a>
                     </li>
-                    @endif
+                    @endif --}}
                     @if($warehouse_permission_active)
                     <li id="warehouse-menu"><a href="{{route('warehouse.index')}}">{{trans('file.Warehouse')}}</a></li>
                     @endif
@@ -566,37 +566,37 @@
                     @if($customer_group_permission_active)
                     <li id="customer-group-menu"><a href="{{route('customer_group.index')}}">{{trans('file.Customer Group')}}</a></li>
                     @endif
-                    @if($currency_permission_active)
+                    {{-- @if($currency_permission_active)
                     <li id="currency-menu"><a href="{{route('currency.index')}}">{{trans('file.Currency')}}</a></li>
-                    @endif
+                    @endif --}}
                     @if($tax_permission_active)
                     <li id="tax-menu"><a href="{{route('tax.index')}}">{{trans('file.Tax')}}</a></li>
                     @endif
                     <li id="user-menu"><a href="{{route('user.profile', ['id' => Auth::id()])}}">{{trans('file.User Profile')}}</a></li>
-                    @if($create_sms_permission_active)
+                    {{-- @if($create_sms_permission_active)
                     <li id="create-sms-menu"><a href="{{route('setting.createSms')}}">{{trans('file.Create SMS')}}</a></li>
-                    @endif
-                    @if($backup_database_permission_active)
+                    @endif --}}
+                    {{-- @if($backup_database_permission_active)
                     <li><a href="{{route('setting.backup')}}">{{trans('file.Backup Database')}}</a></li>
-                    @endif
+                    @endif --}}
                     @if($general_setting_permission_active)
                     <li id="general-setting-menu"><a href="{{route('setting.general')}}">{{trans('file.General Setting')}}</a></li>
                     @endif
-                    @if($mail_setting_permission_active)
+                    {{-- @if($mail_setting_permission_active)
                     <li id="mail-setting-menu"><a href="{{route('setting.mail')}}">{{trans('file.Mail Setting')}}</a></li>
                     @endif
                     @if($reward_point_setting_permission_active)
                     <li id="reward-point-setting-menu"><a href="{{route('setting.rewardPoint')}}">{{trans('file.Reward Point Setting')}}</a></li>
-                    @endif
-                    @if($sms_setting_permission_active)
+                    @endif --}}
+                    {{-- @if($sms_setting_permission_active)
                     <li id="sms-setting-menu"><a href="{{route('setting.sms')}}">{{trans('file.SMS Setting')}}</a></li>
-                    @endif
+                    @endif --}}
                     @if($pos_setting_permission_active)
                     <li id="pos-setting-menu"><a href="{{route('setting.pos')}}">POS {{trans('file.settings')}}</a></li>
                     @endif
-                    @if($hrm_setting_permission_active)
+                    {{-- @if($hrm_setting_permission_active)
                     <li id="hrm-setting-menu"><a href="{{route('setting.hrm')}}"> {{trans('file.HRM Setting')}}</a></li>
-                    @endif
+                    @endif --}}
                 </ul>
             </li>
         </ul>

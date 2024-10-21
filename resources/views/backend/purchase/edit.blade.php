@@ -99,7 +99,7 @@
                                                         @endforeach
                                                     @elseif($field->type == 'radio_button')
                                                         <br>
-                                                        <?php 
+                                                        <?php
                                                         $option_values = explode(",", $field->option_value);
                                                         ?>
                                                         @foreach($option_values as $value)
@@ -151,8 +151,8 @@
                                                         <th>{{trans('file.Code')}}</th>
                                                         <th>{{trans('file.Quantity')}}</th>
                                                         <th class="recieved-product-qty d-none">{{trans('file.Recieved')}}</th>
-                                                        <th>{{trans('file.Batch No')}}</th>
-                                                        <th>{{trans('file.Expired Date')}}</th>
+                                                        {{-- <th>{{trans('file.Batch No')}}</th>
+                                                        <th>{{trans('file.Expired Date')}}</th> --}}
                                                         <th>{{trans('file.Net Unit Cost')}}</th>
                                                         <th>{{trans('file.Discount')}}</th>
                                                         <th>{{trans('file.Tax')}}</th>
@@ -216,7 +216,7 @@
                                                         <td>{{$product_data->code}}</td>
                                                         <td><input type="number" class="form-control qty" name="qty[]" value="{{$product_purchase->qty}}" step="any" required /></td>
                                                         <td class="recieved-product-qty d-none"><input type="number" class="form-control recieved" name="recieved[]" value="{{$product_purchase->recieved}}" step="any"/></td>
-                                                        @if($product_purchase->product_batch_id)
+                                                        {{-- @if($product_purchase->product_batch_id)
                                                         <td>
                                                             <input type="hidden" name="product_batch_id[]" value="{{$product_purchase->product_batch_id}}">
                                                             <input type="text" class="form-control batch-no" name="batch_no[]" value="{{$product_batch_data->batch_no}}" required/>
@@ -232,7 +232,7 @@
                                                         <td>
                                                             <input type="text" class="form-control expired-date" name="expired_date[]" disabled />
                                                         </td>
-                                                        @endif
+                                                        @endif --}}
                                                         <td class="net_unit_cost">{{ number_format((float)$product_purchase->net_unit_cost, $general_setting->decimal, '.', '')}} </td>
                                                         <td class="discount">{{ number_format((float)$product_purchase->discount, $general_setting->decimal, '.', '')}}</td>
                                                         <td class="tax">{{ number_format((float)$product_purchase->tax, $general_setting->decimal, '.', '')}}</td>
@@ -263,8 +263,8 @@
                                                 <tfoot class="tfoot active">
                                                     <th colspan="2">{{trans('file.Total')}}</th>
                                                     <th id="total-qty">{{$lims_purchase_data->total_qty}}</th>
-                                                    <th></th>
-                                                    <th></th>
+                                                    {{-- <th></th>
+                                                    <th></th> --}}
                                                     <th></th>
                                                     <th class="recieved-product-qty d-none"></th>
                                                     <th id="total-discount">{{ number_format((float)$lims_purchase_data->total_discount, $general_setting->decimal, '.', '')}}</th>
@@ -740,14 +740,14 @@ function productSearch(data) {
                     cols += '<td class="recieved-product-qty"><input type="number" class="form-control recieved" name="recieved[]" value="1" step="any"/></td>';
                 else
                     cols += '<td class="recieved-product-qty d-none"><input type="number" class="form-control recieved" name="recieved[]" value="0" step="any"/></td>';
-                if(data[10]) {
-                    cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
-                    cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
-                }
-                else {
-                    cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" disabled/></td>';
-                    cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" disabled/></td>';
-                }
+                // if(data[10]) {
+                //     cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
+                //     cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
+                // }
+                // else {
+                //     cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" disabled/></td>';
+                //     cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" disabled/></td>';
+                // }
                 cols += '<td class="net_unit_cost"></td>';
                 cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
                 cols += '<td class="tax"></td>';

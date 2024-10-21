@@ -1,6 +1,6 @@
 .login-page .logo span,
 .register-page .logo span {
-    color: #7c5cc4;
+    color: #ff8366;
 }
 
 .login-page a.forgot-pass,
@@ -8,7 +8,7 @@
 .register-page a.forgot-pass,
 .register-page a.signup {
     font-size: 0.8em;
-    color: #7c5cc4;
+    color: #ff8366;
 }
 
 .login-page,
@@ -105,7 +105,7 @@
 .register-page a.forgot-pass:hover,
 .register-page a.signup:focus,
 .register-page a.signup:hover {
-	color: #66b0ff;
+	color: #ff8366;
 	text-decoration: none
 }
 
@@ -209,18 +209,18 @@ input.input-material~label.error {
 }
 
 input.input-material:focus {
-    border-color: #7c5cc4;
+    border-color: #ff8366;
     outline: none;
 }
 
 input.input-material~label.active {
     font-size: 0.8em;
     top: -10px;
-    color: #7c5cc4;
+    color: #ff8366;
 }
 
 input.form-control-custom:checked+label::before {
-    background: #7c5cc4 !important;
+    background: #ff8366 !important;
 }
 
 .btn {
@@ -241,14 +241,14 @@ input.form-control-custom:checked+label::before {
 
 
 .btn-primary {
-    color: color-yiq(#7c5cc4);
-    background-color: #7c5cc4;
-    border-color: #7c5cc4;
+    color: color-yiq(#ff8366);
+    background-color: #ff8366;
+    border-color: #ff8366;
 }
 
 .btn-primary:hover {
-    background-color: #6244a6;
-    border-color: #6244a6;
+    background-color: #ff8366;
+    border-color: #ff8366;
 }
 
 .btn-success {

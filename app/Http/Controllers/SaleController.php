@@ -122,6 +122,8 @@ class SaleController extends Controller
             foreach($custom_fields as $fieldName) {
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
+
+
             return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission','options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list'));
         }
         else
@@ -362,6 +364,7 @@ class SaleController extends Controller
             "data"            => $data
         );
         echo json_encode($json_data);
+
     }
 
     public function create()
@@ -396,7 +399,8 @@ class SaleController extends Controller
             $numberOfInvoice = Sale::count();
             $custom_fields = CustomField::where('belongs_to', 'sale')->get();
             $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
-            return view('backend.sale.create',compact('currency_list', 'lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_tax_list', 'lims_reward_point_setting_data','options', 'numberOfInvoice', 'custom_fields', 'lims_customer_group_all'));
+            $accounts = Account::where('is_active', true)->get();
+            return view('backend.sale.create',compact('currency_list','accounts', 'lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_tax_list', 'lims_reward_point_setting_data','options', 'numberOfInvoice', 'custom_fields', 'lims_customer_group_all'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -532,7 +536,7 @@ class SaleController extends Controller
             $mail_data['paid_amount'] = $lims_sale_data->paid_amount;
 
             $product_id = $data['product_id'];
-            $product_batch_id = $data['product_batch_id'];
+            $product_batch_id = $data['product_batch_id'] ?? null; 
             $imei_number = $data['imei_number'];
             $product_code = $data['product_code'];
             $qty = $data['qty'];
@@ -597,9 +601,9 @@ class SaleController extends Controller
                         $lims_product_variant_data = ProductVariant::select('id', 'variant_id', 'qty')->FindExactProductWithCode($id, $product_code[$i])->first();
                         $product_sale['variant_id'] = $lims_product_variant_data->variant_id;
                     }
-                    if($lims_product_data->is_batch && $product_batch_id[$i]) {
-                        $product_sale['product_batch_id'] = $product_batch_id[$i];
-                    }
+                    // if($lims_product_data->is_batch && $product_batch_id[$i]) {
+                    //     $product_sale['product_batch_id'] = $product_batch_id[$i];
+                    // }
 
                     if($data['sale_status'] == 1) {
                         if($lims_sale_unit_data->operator == '*')
@@ -615,16 +619,16 @@ class SaleController extends Controller
                             $lims_product_variant_data->save();
                             $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($id, $lims_product_variant_data->variant_id, $data['warehouse_id'])->first();
                         }
-                        elseif($product_batch_id[$i]) {
-                            $lims_product_warehouse_data = Product_Warehouse::where([
-                                ['product_batch_id', $product_batch_id[$i] ],
-                                ['warehouse_id', $data['warehouse_id'] ]
-                            ])->first();
-                            $lims_product_batch_data = ProductBatch::find($product_batch_id[$i]);
-                            //deduct product batch quantity
-                            $lims_product_batch_data->qty -= $quantity;
-                            $lims_product_batch_data->save();
-                        }
+                        // elseif($product_batch_id[$i]) {
+                        //     $lims_product_warehouse_data = Product_Warehouse::where([
+                        //         ['product_batch_id', $product_batch_id[$i] ],
+                        //         ['warehouse_id', $data['warehouse_id'] ]
+                        //     ])->first();
+                        //     $lims_product_batch_data = ProductBatch::find($product_batch_id[$i]);
+                        //     //deduct product batch quantity
+                        //     $lims_product_batch_data->qty -= $quantity;
+                        //     $lims_product_batch_data->save();
+                        // }
                         else {
                             $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($id, $data['warehouse_id'])->first();
                         }
@@ -1012,7 +1016,7 @@ class SaleController extends Controller
                 ['products.is_active', true],
                 ['product_warehouse.warehouse_id', $id]
             ]);
-        } 
+        }
         $lims_product_warehouse_data = $query->whereNull('product_warehouse.variant_id')
                                         ->whereNull('product_warehouse.product_batch_id')
                                         ->select('product_warehouse.*',  'products.is_embeded')
@@ -1160,6 +1164,7 @@ class SaleController extends Controller
         return $product_data;
     }
 
+
     public function posSale()
     {
         $role = Role::find(Auth::user()->role_id);
@@ -1256,7 +1261,10 @@ class SaleController extends Controller
             $currency_list = Currency::where('is_active', true)->get();
             $numberOfInvoice = Sale::count();
             $custom_fields = CustomField::where('belongs_to', 'sale')->get();
-            return view('backend.sale.pos', compact('currency_list','role','all_permission', 'lims_customer_list', 'lims_customer_group_all', 'lims_warehouse_list', 'lims_reward_point_setting_data', 'lims_product_list', 'product_number', 'lims_tax_list', 'lims_biller_list', 'lims_pos_setting_data', 'options', 'lims_brand_list', 'lims_category_list', 'lims_table_list', 'recent_sale', 'recent_draft', 'lims_coupon_list', 'flag', 'numberOfInvoice', 'custom_fields'));
+
+            $accounts = Account::where('is_active' , true)->get();
+
+            return view('backend.sale.pos', compact('accounts', 'currency_list','role','all_permission', 'lims_customer_list', 'lims_customer_group_all', 'lims_warehouse_list', 'lims_reward_point_setting_data', 'lims_product_list', 'product_number', 'lims_tax_list', 'lims_biller_list', 'lims_pos_setting_data', 'options', 'lims_brand_list', 'lims_category_list', 'lims_table_list', 'recent_sale', 'recent_draft', 'lims_coupon_list', 'flag', 'numberOfInvoice', 'custom_fields'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -1521,6 +1529,16 @@ class SaleController extends Controller
         $product[] = $lims_product_data->is_imei;
         $product[] = $lims_product_data->is_variant;
         $product[] = $qty;
+
+        if($lims_product_data->is_batch != null)
+        {
+            $batches = ProductBatch::where('product_id', $lims_product_data->id)
+            ->select('id','batch_no', 'expired_date', 'qty')
+            ->get();
+
+            $product[] = $batches;
+        }
+
         return $product;
 
     }
@@ -1853,7 +1871,7 @@ class SaleController extends Controller
         $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
         $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'];
+        $product_batch_id = $data['product_batch_id'] ?? null; 
         $product_code = $data['product_code'];
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];

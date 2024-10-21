@@ -1282,4 +1282,14 @@ return [
 	"total due rcv" => "মোট বকেয়া আদায়",
 	"total expense" => "মোট খরচ",
 	"total salary" => "মোট বেতন",
+    "item stock value" => "আইটেম স্টক ভ্যালু",
+    "receiveable customer due" => "প্রাপ্য বকেয়া",
+    "total accounts balance" => "সমস্ত একাউন্টের হিসাব",
+    "total assets" => "সমস্ত সম্পদ",
+    "supplier due" => "সাপ্লায়ার বকেয়া",
+    "customer advance" => "ক্রেতার অগ্রীম",
+    "total liabilities" => "সমস্ত দায়",
+    "total cashin" => "সমস্ত ক্যাশ ইন",
+    "total cashout" => "সমস্ত ক্যাশ আউট",
+    "current balance" > "বর্তমান হিসাব"
 ];

@@ -1389,4 +1389,13 @@ return [
 	"total paid" => "Total Paid",
 	"total due" => "Total Due",
 	"total due rcv" => "Total Due Receive",
+    "item stock value" => "Item Stock Value",
+    "receiveable customer due" => "Receivable Customer Due",
+    "total accounts balance" => "Total Accounts Balance",
+    "total assets" => "Total Assets",
+    "supplier due" => "Supplier Due",
+    "customer advance" => "Customer Advance",
+    "total liabilities" => "Total Liabilities",
+    "total cashin" => "Total Cash in",
+    "total cashout" => "Total Cash Out",
 ];

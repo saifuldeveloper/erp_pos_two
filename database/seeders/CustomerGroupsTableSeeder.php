@@ -22,20 +22,20 @@ class CustomerGroupsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'General',
+                'name' => 'General Customer',
                 'percentage' => '0',
                 'is_active' => 1,
-                'created_at' => '2024-09-28 04:16:09',
-                'updated_at' => '2024-09-28 04:16:09',
+                'created_at' => '2024-10-07 20:06:18',
+                'updated_at' => '2024-10-07 20:06:18',
             ),
             1 => 
             array (
                 'id' => 2,
-                'name' => 'Whole Sale',
-                'percentage' => '10',
+                'name' => 'wholesale Customer',
+                'percentage' => '0',
                 'is_active' => 1,
-                'created_at' => '2024-09-28 04:16:22',
-                'updated_at' => '2024-09-28 04:16:22',
+                'created_at' => '2024-10-07 20:06:37',
+                'updated_at' => '2024-10-07 20:06:37',
             ),
         ));
         

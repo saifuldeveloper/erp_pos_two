@@ -485,12 +485,12 @@ class SettingController extends Controller
         $pos_setting->warehouse_id = $data['warehouse_id'];
         $pos_setting->biller_id = $data['biller_id'];
         $pos_setting->product_number = $data['product_number'];
-        $pos_setting->stripe_public_key = $data['stripe_public_key'];
-        $pos_setting->stripe_secret_key = $data['stripe_secret_key'];
-        $pos_setting->paypal_live_api_username = $data['paypal_username'];
-        $pos_setting->paypal_live_api_password = $data['paypal_password'];
-        $pos_setting->paypal_live_api_secret = $data['paypal_signature'];
-        $pos_setting->payment_options = $options;
+        // $pos_setting->stripe_public_key = $data['stripe_public_key'];
+        // $pos_setting->stripe_secret_key = $data['stripe_secret_key'];
+        // $pos_setting->paypal_live_api_username = $data['paypal_username'];
+        // $pos_setting->paypal_live_api_password = $data['paypal_password'];
+        // $pos_setting->paypal_live_api_secret = $data['paypal_signature'];
+        // $pos_setting->payment_options = $options;
         $pos_setting->invoice_option = $data['invoice_size'];
         if(!isset($data['keybord_active']))
             $pos_setting->keybord_active = false;

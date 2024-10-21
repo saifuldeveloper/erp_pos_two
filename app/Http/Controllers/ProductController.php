@@ -239,14 +239,14 @@ class ProductController extends Controller
                                 <input type="hidden" name="product_id" value="' . $product->id . '" />
                                 <button type="submit" class="btn btn-link"><i class="dripicons-checklist"></i> ' . trans("file.Product History") . '</button>
                             </li>' . \Form::close();
-                if (in_array("print_barcode", $request['all_permission'])) {
-                    $product_info = $product->code . ' (' . $product->name . ')';
-                    $nestedData['options'] .= \Form::open(["route" => "product.printBarcode", "method" => "GET"]) . '
-                        <li>
-                            <input type="hidden" name="data" value="' . $product_info . '" />
-                            <button type="submit" class="btn btn-link"><i class="dripicons-print"></i> ' . trans("file.print_barcode") . '</button>
-                        </li>' . \Form::close();
-                }
+                // if (in_array("print_barcode", $request['all_permission'])) {
+                //     $product_info = $product->code . ' (' . $product->name . ')';
+                //     $nestedData['options'] .= \Form::open(["route" => "product.printBarcode", "method" => "GET"]) . '
+                //         <li>
+                //             <input type="hidden" name="data" value="' . $product_info . '" />
+                //             <button type="submit" class="btn btn-link"><i class="dripicons-print"></i> ' . trans("file.print_barcode") . '</button>
+                //         </li>' . \Form::close();
+                // }
                 if (in_array("products-delete", $request['all_permission']))
                     $nestedData['options'] .= \Form::open(["route" => ["products.destroy", $product->id], "method" => "DELETE"]) . '
                             <li>
@@ -321,6 +321,8 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
+        //return response()->json($request->all());
         $this->validate($request, [
             'code' => [
                 'max:255',
@@ -999,9 +1001,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-        if (!env('USER_VERIFIED')) {
-            return redirect()->back()->with('not_permitted', 'This feature is disable for demo!');
-        } else {
+
             $this->validate($request, [
                 'name' => [
                     'max:255',
@@ -1209,7 +1209,7 @@ class ProductController extends Controller
             $this->cacheForget('product_list_with_variant');
             \Session::flash('edit_message', 'Product updated successfully');
         }
-    }
+
 
     public function generateCode()
     {
