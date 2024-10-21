@@ -32,6 +32,7 @@ use App\Http\Controllers\DeveloperSectionController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\DiscountPlanController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ErpPosOneController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GiftCardController;
@@ -605,5 +606,11 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 	Route::resource('custom-fields', CustomFieldController::class);
 
 	Route::post('woocommerce-install', [AddonInstallController::class,'woocommerceInstall'])->name('woocommerce.install');
+
+
+    Route::controller(ErpPosOneController::class)->group(function () {
+        Route::get('/get-products', 'getProducts')->name('get-products');
+        Route::post('/product-approved', 'productApproved')->name('product-approved');
+    });
 });
 
