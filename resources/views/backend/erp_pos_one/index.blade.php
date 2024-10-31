@@ -1,5 +1,6 @@
 @extends('backend.layout.main')
 @section('content')
+    <div id="message"></div>
     <section>
         <div class="container-fluid">
             <div class="card">
@@ -68,7 +69,14 @@
                         _token: "{{ csrf_token() }}"
                     },
                     success: function(response) {
-                        console.log(response);
+                        if (response.status) {
+                            console.log(response.message);
+
+                            $('#message').html('');
+                            $('#message').html(
+                                '<div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                response.message + '</div>');
+                        }
                     }
                 });
             });
