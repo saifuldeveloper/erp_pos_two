@@ -48,7 +48,11 @@ class ErpPosOneController extends Controller
             ]);
 
             if ($response->status() == 200) {
-                return response()->json(['status' => 'success', 'message' => 'Product approved successfully']);
+                if ($request->is_approved == 'true') {
+                    return response()->json(['status' => 'success', 'message' => 'Product approved successfully']);
+                } else {
+                    return response()->json(['status' => 'success', 'message' => 'Product disapproved successfully']);
+                }
             } else {
                 abort(404);
             }

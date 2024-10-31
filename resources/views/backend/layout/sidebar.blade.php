@@ -47,6 +47,8 @@
                 @if($stock_count_active)
                 <li id="stock-count-menu"><a href="{{route('stock-count.index')}}">{{trans('file.Stock Count')}}</a></li>
                 @endif
+                {{-- অভিযাত্রী প্রোডাক্ট --}}
+                <li id="product-import-menu"><a href="{{route('get-products')}}">অভিযাত্রী প্রোডাক্ট</a></li>
             </ul>
             </li>
             @endif
@@ -69,9 +71,9 @@
             @endif
             <?php
                 $sale_index_permission_active = $role_has_permissions_list->where('name', 'sales-index')->first();
-        
+
                 $gift_card_permission_active = $role_has_permissions_list->where('name', 'gift_card')->first();
-        
+
                 $coupon_permission_active = $role_has_permissions_list->where('name', 'coupon')->first();
 
                 $delivery_permission_active = $role_has_permissions_list->where('name', 'delivery')->first();
@@ -201,11 +203,11 @@
             @endif
             <?php
                 $department_active = $role_has_permissions_list->where('name', 'department')->first();
-                
+
                 $index_employee_active = $role_has_permissions_list->where('name', 'employees-index')->first();
-                
+
                 $attendance_active = $role_has_permissions_list->where('name', 'attendance')->first();
-                
+
                 $payroll_active = $role_has_permissions_list->where('name', 'payroll')->first();
 
                 $holiday_active = $role_has_permissions_list->where('name', 'holiday')->first();
@@ -239,9 +241,9 @@
                 $customer_index_permission_active = $role_has_permissions_list->where('name', 'customers-index')->first();
 
                 $biller_index_permission_active = $role_has_permissions_list->where('name', 'billers-index')->first();
-                    
+
                 $supplier_index_permission_active = $role_has_permissions_list->where('name', 'suppliers-index')->first();
-                    
+
             ?>
             @if($user_index_permission_active || $customer_index_permission_active || $biller_index_permission_active || $supplier_index_permission_active)
             <li><a href="#people" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-user"></i><span>{{trans('file.People')}}</span></a>
@@ -317,7 +319,7 @@
                 $sale_report_chart_active = $role_has_permissions_list->where('name', 'sale-report-chart')->first();
 
                 $payment_report_active = $role_has_permissions_list->where('name', 'payment-report')->first();
-                
+
                 $product_expiry_report_active = $role_has_permissions_list->where('name', 'product-expiry-report')->first();
 
                 $product_qty_alert_active = $role_has_permissions_list->where('name', 'product-qty-alert')->first();
