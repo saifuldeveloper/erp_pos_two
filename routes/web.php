@@ -611,6 +611,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
     Route::controller(ErpPosOneController::class)->group(function () {
         Route::get('/get-products', 'getProducts')->name('get-products');
         Route::post('/product-approved', 'productApproved')->name('product-approved');
+        Route::get('/get-invoices', 'getInvoices')->name('get-invoices');
     });
 });
 

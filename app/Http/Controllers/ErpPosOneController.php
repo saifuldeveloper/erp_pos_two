@@ -60,4 +60,24 @@ class ErpPosOneController extends Controller
             return $e->getMessage();
         }
     }
+
+    //getInvoices
+    public function getInvoices()
+    {
+        try {
+            $response = Http::withHeaders([
+                'secret_key' => $this->secret_key,
+            ])->get($this->base_url . '/api/v1/get-invoices');
+
+            if ($response->status() == 200) {
+                $result = $response->json();
+                $invoices = $result['invoices'];
+                return response()->json($invoices);
+            } else {
+                abort(404);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }
