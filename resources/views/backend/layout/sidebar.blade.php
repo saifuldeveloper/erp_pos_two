@@ -48,7 +48,7 @@
                 <li id="stock-count-menu"><a href="{{route('stock-count.index')}}">{{trans('file.Stock Count')}}</a></li>
                 @endif
                 {{-- অভিযাত্রী প্রোডাক্ট --}}
-                <li id="product-import-menu"><a href="{{route('get-products')}}">অভিযাত্রী প্রোডাক্ট</a></li>
+                <li id="product-import-menu"><a href="{{route('get-products')}}">{{trans('file.Avijatri Product')}}</a></li>
             </ul>
             </li>
             @endif
@@ -337,7 +337,7 @@
                 $supplier_due_report_active = $role_has_permissions_list->where('name', 'supplier-due-report')->first();
 
             ?>
-            @if($profit_loss_active || $best_seller_active || $warehouse_report_active || $warehouse_stock_report_active || $product_report_active || $daily_sale_active || $monthly_sale_active || $daily_purchase_active || $monthly_purchase_active || $purchase_report_active || $sale_report_active || $sale_report_chart_active || $payment_report_active || $product_expiry_report_active || $product_qty_alert_active || $dso_report_active || $user_report_active || $customer_report_active || $supplier_report_active || $due_report_active || $supplier_due_report_active)
+            {{-- @if($profit_loss_active || $best_seller_active || $warehouse_report_active || $warehouse_stock_report_active || $product_report_active || $daily_sale_active || $monthly_sale_active || $daily_purchase_active || $monthly_purchase_active || $purchase_report_active || $sale_report_active || $sale_report_chart_active || $payment_report_active || $product_expiry_report_active || $product_qty_alert_active || $dso_report_active || $user_report_active || $customer_report_active || $supplier_report_active || $due_report_active || $supplier_due_report_active)
             <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-document-remove"></i><span>{{trans('file.Reports')}}</span></a>
             <ul id="report" class="collapse list-unstyled ">
                 @if($profit_loss_active)
@@ -489,7 +489,7 @@
                 @endif
             </ul>
             </li>
-            @endif
+            @endif --}}
             {{-- @if(!config('database.connections.saleprosaas_landlord'))
             <li><a href="{{url('addon-list')}}" id="addon-list"> <i class="dripicons-flag"></i><span>{{trans('file.Addons')}}</span></a></li>
             @if (\Schema::hasColumn('products', 'woocommerce_product_id'))

@@ -1,5 +1,6 @@
 <?php
 return [
+	'Avijatri Product' => 'Avijatri Product',
 	'dashboard' => 'Dashboard',
 	'language' => 'Language',
 	'Languages' => 'Languages',

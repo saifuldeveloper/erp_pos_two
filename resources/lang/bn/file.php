@@ -1291,5 +1291,6 @@ return [
     "total liabilities" => "সমস্ত দায়",
     "total cashin" => "সমস্ত ক্যাশ ইন",
     "total cashout" => "সমস্ত ক্যাশ আউট",
-    "current balance" > "বর্তমান হিসাব"
+    "current balance" > "বর্তমান হিসাব",
+	'Avijatri Product' => 'অভিযাত্রী প্রোডাক্ট',
 ];
