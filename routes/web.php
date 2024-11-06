@@ -15,6 +15,7 @@ use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AddonInstallController;
 use App\Http\Controllers\AdjustmentController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AvijatriController;
 use App\Http\Controllers\BillerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CashRegisterController;
@@ -32,7 +33,6 @@ use App\Http\Controllers\DeveloperSectionController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\DiscountPlanController;
 use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\ErpPosOneController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GiftCardController;
@@ -608,7 +608,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 	Route::post('woocommerce-install', [AddonInstallController::class,'woocommerceInstall'])->name('woocommerce.install');
 
 
-    Route::controller(ErpPosOneController::class)->group(function () {
+    Route::controller(AvijatriController::class)->group(function () {
         Route::get('/get-products', 'getProducts')->name('get-products');
         Route::post('/product-approved', 'productApproved')->name('product-approved');
         Route::get('/get-invoices', 'getInvoices')->name('get-invoices');
