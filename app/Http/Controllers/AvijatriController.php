@@ -6,33 +6,27 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit;
+use App\Services\AvijatriService;
 use Keygen\Keygen;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class AvijatriController extends Controller
 {
-    private $secret_key;
-    private $base_url;
+    protected $avijatriService;
 
-    public function __construct()
+    public function __construct(AvijatriService $avijatriService)
     {
-        $this->secret_key = env('RETAIL_SECRET_KEY');
-        $this->base_url = env('RETAIL_BASE_URL');
+        $this->avijatriService = $avijatriService;
     }
 
     public function getProducts()
     {
         try {
-            $response = Http::withHeaders([
-                'secret_key' => $this->secret_key,
-            ])->get($this->base_url . '/api/v1/get-assigned-shoes');
+            $response = $this->avijatriService->getAssignedShoes();
 
             if ($response->status() == 200) {
-                $result = $response->json();
-                $products = $result['retail_store']['retail_store_shoes'];
-                // return response()->json($products);
-                return view('backend.erp_pos_one.index', compact('products'));
+                $products = $response->json()['retail_store']['retail_store_shoes'];
+                return view('backend.avijatri.index', compact('products'));
             } else {
                 abort(404);
             }
@@ -41,23 +35,14 @@ class AvijatriController extends Controller
         }
     }
 
-    // productApproved
     public function productApproved(Request $request)
     {
         try {
-            $response = Http::withHeaders([
-                'secret_key' => $this->secret_key,
-            ])->post($this->base_url . '/api/v1/product-approved', [
-                'id' => $request->id,
-                'is_approved' => $request->is_approved == 'true' ? 1 : 0,
-            ]);
+            $response = $this->avijatriService->approveProduct($request->id, $request->is_approved == 'true');
 
             if ($response->status() == 200) {
-                if ($request->is_approved == 'true') {
-                    return response()->json(['status' => 'success', 'message' => 'Product approved successfully']);
-                } else {
-                    return response()->json(['status' => 'success', 'message' => 'Product disapproved successfully']);
-                }
+                $message = $request->is_approved == 'true' ? 'Product approved successfully' : 'Product disapproved successfully';
+                return response()->json(['status' => 'success', 'message' => $message]);
             } else {
                 abort(404);
             }
@@ -66,25 +51,51 @@ class AvijatriController extends Controller
         }
     }
 
-    //getInvoices
     public function getInvoices()
     {
         try {
-            $response = Http::withHeaders([
-                'secret_key' => $this->secret_key,
-            ])->get($this->base_url . '/api/v1/get-invoices');
+            $response = $this->avijatriService->getInvoices();
 
             if ($response->status() == 200) {
-                $result = $response->json();
-                $invoices = $result['invoices'];
-                // return response()->json($invoices);
+                $invoices = $response->json()['invoices'];
+                return view('backend.avijatri.invoices', compact('invoices'));
+            } else {
+                abort(404);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 
-                foreach ($invoices as $invoice) {
-                    foreach ($invoice['invoice_entries'] as $invoice_entry) {
-                        $this->productStore($invoice_entry['shoe']);
-                    }
-                    
+    public function getInvoice($id)
+    {
+        try {
+            $response = $this->avijatriService->getInvoice($id);
+
+            if ($response->status() == 200) {
+                $invoice = $response->json()['invoice'];
+                return response()->json($invoice);
+                // return view('backend.avijatri.invoice', compact('invoice'));
+            } else {
+                abort(404);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function invoiceApprove($id)
+    {
+        try {
+            $response = $this->avijatriService->approveInvoice($id);
+
+            if ($response->status() == 200) {
+                $invoice = $response->json()['invoice'];
+                foreach ($invoice['invoice_entries'] as $entry) {
+                    Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
                 }
+                //invoiceStore($invoice);
+                return redirect()->route('get-invoices.index');
             } else {
                 abort(404);
             }
@@ -99,34 +110,15 @@ class AvijatriController extends Controller
         $parent_id = null;
         $category_id = null;
         $unit_id = Unit::first()->id;
-        if ($shoe['category']['parent']) {
-            $existParentCategory = Category::where('name', $shoe['category']['parent']['name'])->first();
-            if ($existParentCategory) {
-                $parent_id = $existParentCategory->id;
-            } else {
-                $category = new Category();
-                $category->name = $shoe['category']['parent']['name'];
-                $category->is_active = 1;
-                $category->save();
-                $parent_id = $category->id;
-            }
-        }
 
-        $existCategory = Category::where('name', $shoe['category']['name'])->first();
-        if ($existCategory) {
-            $category_id = $existCategory->id;
-        } else {
-            $category = new Category();
-            $category->name = $shoe['category']['name'];
-            $category->parent_id = $parent_id;
-            $category->is_active = 1;
-            $category->save();
-            $category_id = $category->id;
+        if ($shoe['category']['parent']) {
+            $parent_id = $this->categoryStore($shoe['category']['parent']);
         }
+        $category_id = $this->categoryStore($shoe['category'], $parent_id);
 
         $product = new Product();
         $product->name = $shoe['id'];
-        $product->code = Keygen::numeric(8)->generate();
+        $product->code = $shoe['id'];
         $product->type = null;
         $product->barcode_symbology = null;
         $product->brand_id = $brand_id;
@@ -149,5 +141,25 @@ class AvijatriController extends Controller
         $product->product_details = null;
         $product->is_active = 1;
         $product->save();
+    }
+
+    public function categoryStore($shoeCategory, $parent_id = null)
+    {
+        $existCategory = Category::where('name', $shoeCategory['name'])->first();
+        if ($existCategory) {
+            return $existCategory->id;
+        } else {
+            $category = new Category();
+            $category->name = $shoeCategory['name'];
+            $category->parent_id = $parent_id;
+            $category->is_active = 1;
+            $category->save();
+            return $category->id;
+        }
+    }
+
+    public function invoiceStore($invoice)
+    {
+        //
     }
 }
