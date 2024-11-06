@@ -38,4 +38,21 @@ class AvijatriService
             'secret_key' => $this->secret_key,
         ])->get($this->base_url . '/get-invoices');
     }
+
+    public function getInvoice($invoiceId)
+    {
+        return Http::withHeaders([
+            'secret_key' => $this->secret_key,
+        ])->get($this->base_url . '/get-invoice/' . $invoiceId);
+    }
+
+    public function approveInvoice($invoiceId)
+    {
+        return Http::withHeaders([
+            'secret_key' => $this->secret_key,
+        ])->post($this->base_url . '/invoice-approved', [
+            'id' => $invoiceId,
+            'retail_store_status' => 'Approved',
+        ]);
+    }
 }

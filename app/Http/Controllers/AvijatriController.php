@@ -9,7 +9,6 @@ use App\Models\Unit;
 use App\Services\AvijatriService;
 use Keygen\Keygen;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
 class AvijatriController extends Controller
 {
@@ -27,7 +26,7 @@ class AvijatriController extends Controller
 
             if ($response->status() == 200) {
                 $products = $response->json()['retail_store']['retail_store_shoes'];
-                return view('backend.erp_pos_one.index', compact('products'));
+                return view('backend.avijatri.index', compact('products'));
             } else {
                 abort(404);
             }
@@ -59,12 +58,44 @@ class AvijatriController extends Controller
 
             if ($response->status() == 200) {
                 $invoices = $response->json()['invoices'];
-                return response()->json($invoices);
-                foreach ($invoices as $invoice) {
-                    foreach ($invoice['invoice_entries'] as $entry) {
-                        $this->productStore($entry['shoe']);
-                    }
+                return view('backend.avijatri.invoices', compact('invoices'));
+            } else {
+                abort(404);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function getInvoice($id)
+    {
+        try {
+            $response = $this->avijatriService->getInvoice($id);
+
+            if ($response->status() == 200) {
+                $invoice = $response->json()['invoice'];
+                return response()->json($invoice);
+                // return view('backend.avijatri.invoice', compact('invoice'));
+            } else {
+                abort(404);
+            }
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function invoiceApprove($id)
+    {
+        try {
+            $response = $this->avijatriService->approveInvoice($id);
+
+            if ($response->status() == 200) {
+                $invoice = $response->json()['invoice'];
+                foreach ($invoice['invoice_entries'] as $entry) {
+                    Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
                 }
+                //invoiceStore($invoice);
+                return redirect()->route('get-invoices.index');
             } else {
                 abort(404);
             }
@@ -79,34 +110,15 @@ class AvijatriController extends Controller
         $parent_id = null;
         $category_id = null;
         $unit_id = Unit::first()->id;
-        if ($shoe['category']['parent']) {
-            $existParentCategory = Category::where('name', $shoe['category']['parent']['name'])->first();
-            if ($existParentCategory) {
-                $parent_id = $existParentCategory->id;
-            } else {
-                $category = new Category();
-                $category->name = $shoe['category']['parent']['name'];
-                $category->is_active = 1;
-                $category->save();
-                $parent_id = $category->id;
-            }
-        }
 
-        $existCategory = Category::where('name', $shoe['category']['name'])->first();
-        if ($existCategory) {
-            $category_id = $existCategory->id;
-        } else {
-            $category = new Category();
-            $category->name = $shoe['category']['name'];
-            $category->parent_id = $parent_id;
-            $category->is_active = 1;
-            $category->save();
-            $category_id = $category->id;
+        if ($shoe['category']['parent']) {
+            $parent_id = $this->categoryStore($shoe['category']['parent']);
         }
+        $category_id = $this->categoryStore($shoe['category'], $parent_id);
 
         $product = new Product();
         $product->name = $shoe['id'];
-        $product->code = Keygen::numeric(8)->generate();
+        $product->code = $shoe['id'];
         $product->type = null;
         $product->barcode_symbology = null;
         $product->brand_id = $brand_id;
@@ -129,5 +141,25 @@ class AvijatriController extends Controller
         $product->product_details = null;
         $product->is_active = 1;
         $product->save();
+    }
+
+    public function categoryStore($shoeCategory, $parent_id = null)
+    {
+        $existCategory = Category::where('name', $shoeCategory['name'])->first();
+        if ($existCategory) {
+            return $existCategory->id;
+        } else {
+            $category = new Category();
+            $category->name = $shoeCategory['name'];
+            $category->parent_id = $parent_id;
+            $category->is_active = 1;
+            $category->save();
+            return $category->id;
+        }
+    }
+
+    public function invoiceStore($invoice)
+    {
+        //
     }
 }
