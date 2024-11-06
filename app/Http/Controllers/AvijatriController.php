@@ -6,32 +6,27 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit;
+use App\Services\AvijatriService;
 use Keygen\Keygen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class AvijatriController extends Controller
 {
-    private $secret_key;
-    private $base_url;
+    protected $avijatriService;
 
-    public function __construct()
+    public function __construct(AvijatriService $avijatriService)
     {
-        $this->secret_key = env('RETAIL_SECRET_KEY');
-        $this->base_url = env('RETAIL_BASE_URL');
+        $this->avijatriService = $avijatriService;
     }
 
     public function getProducts()
     {
         try {
-            $response = Http::withHeaders([
-                'secret_key' => $this->secret_key,
-            ])->get($this->base_url . '/api/v1/get-assigned-shoes');
+            $response = $this->avijatriService->getAssignedShoes();
 
             if ($response->status() == 200) {
-                $result = $response->json();
-                $products = $result['retail_store']['retail_store_shoes'];
-                // return response()->json($products);
+                $products = $response->json()['retail_store']['retail_store_shoes'];
                 return view('backend.erp_pos_one.index', compact('products'));
             } else {
                 abort(404);
@@ -41,23 +36,14 @@ class AvijatriController extends Controller
         }
     }
 
-    // productApproved
     public function productApproved(Request $request)
     {
         try {
-            $response = Http::withHeaders([
-                'secret_key' => $this->secret_key,
-            ])->post($this->base_url . '/api/v1/product-approved', [
-                'id' => $request->id,
-                'is_approved' => $request->is_approved == 'true' ? 1 : 0,
-            ]);
+            $response = $this->avijatriService->approveProduct($request->id, $request->is_approved == 'true');
 
             if ($response->status() == 200) {
-                if ($request->is_approved == 'true') {
-                    return response()->json(['status' => 'success', 'message' => 'Product approved successfully']);
-                } else {
-                    return response()->json(['status' => 'success', 'message' => 'Product disapproved successfully']);
-                }
+                $message = $request->is_approved == 'true' ? 'Product approved successfully' : 'Product disapproved successfully';
+                return response()->json(['status' => 'success', 'message' => $message]);
             } else {
                 abort(404);
             }
@@ -66,24 +52,18 @@ class AvijatriController extends Controller
         }
     }
 
-    //getInvoices
     public function getInvoices()
     {
         try {
-            $response = Http::withHeaders([
-                'secret_key' => $this->secret_key,
-            ])->get($this->base_url . '/api/v1/get-invoices');
+            $response = $this->avijatriService->getInvoices();
 
             if ($response->status() == 200) {
-                $result = $response->json();
-                $invoices = $result['invoices'];
-                // return response()->json($invoices);
-
+                $invoices = $response->json()['invoices'];
+                return response()->json($invoices);
                 foreach ($invoices as $invoice) {
-                    foreach ($invoice['invoice_entries'] as $invoice_entry) {
-                        $this->productStore($invoice_entry['shoe']);
+                    foreach ($invoice['invoice_entries'] as $entry) {
+                        $this->productStore($entry['shoe']);
                     }
-                    
                 }
             } else {
                 abort(404);
