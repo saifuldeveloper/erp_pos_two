@@ -39,11 +39,21 @@
                                     <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default"
                                         user="menu">
                                         <li>
-                                            <a class="btn btn-link" href="{{ route('invoice.approve', $invoice['id']) }}">
-                                                <i class="dripicons-checkmark"></i>
-                                                Approve
+                                            <a class="btn btn-link"
+                                                href="{{ route('invoice.show', $invoice['id']) }}">
+                                                <i class="dripicons-preview"></i>
+                                                View
                                             </a>
                                         </li>
+                                        @if ($invoice['retail_store_status'] == 'Pending')
+                                            <li>
+                                                <a class="btn btn-link"
+                                                    href="{{ route('invoice.approve', $invoice['id']) }}">
+                                                    <i class="dripicons-checkmark"></i>
+                                                    Approve
+                                                </a>
+                                            </li>
+                                        @endif
                                         <li class="divider"></li>
                                     </ul>
                                 </div>

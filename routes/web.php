@@ -611,8 +611,8 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
     Route::controller(AvijatriController::class)->group(function () {
         Route::get('/get-products', 'getProducts')->name('get-products');
         Route::post('/product-approved', 'productApproved')->name('product-approved');
-        Route::get('/get-invoices', 'getInvoices')->name('get-invoices.index');
-        Route::get('/get-invoice/{id}', 'getInvoice')->name('get-invoice');
+        Route::get('/invoices', 'invoices')->name('invoices.index');
+        Route::get('/invoice/{id}', 'invoice')->name('invoice.show');
         Route::get('/invoice-approve/{id}', 'invoiceApprove')->name('invoice.approve');
     });
 });
