@@ -32,7 +32,7 @@ return [
 
     'avijatri' => [
         'secret_key' => env('RETAIL_SECRET_KEY'),
-        'base_url' => env('RETAIL_BASE_URL') . '/api/v1',
+        'base_url' => env('RETAIL_BASE_URL'),
     ],
 
 ];
