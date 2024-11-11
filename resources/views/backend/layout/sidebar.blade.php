@@ -338,10 +338,10 @@
                 $supplier_due_report_active = $role_has_permissions_list->where('name', 'supplier-due-report')->first();
 
             ?>
-            {{-- @if($profit_loss_active || $best_seller_active || $warehouse_report_active || $warehouse_stock_report_active || $product_report_active || $daily_sale_active || $monthly_sale_active || $daily_purchase_active || $monthly_purchase_active || $purchase_report_active || $sale_report_active || $sale_report_chart_active || $payment_report_active || $product_expiry_report_active || $product_qty_alert_active || $dso_report_active || $user_report_active || $customer_report_active || $supplier_report_active || $due_report_active || $supplier_due_report_active)
+            @if($profit_loss_active || $best_seller_active || $warehouse_report_active || $warehouse_stock_report_active || $product_report_active || $daily_sale_active || $monthly_sale_active || $daily_purchase_active || $monthly_purchase_active || $purchase_report_active || $sale_report_active || $sale_report_chart_active || $payment_report_active || $product_expiry_report_active || $product_qty_alert_active || $dso_report_active || $user_report_active || $customer_report_active || $supplier_report_active || $due_report_active || $supplier_due_report_active)
             <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-document-remove"></i><span>{{trans('file.Reports')}}</span></a>
             <ul id="report" class="collapse list-unstyled ">
-                @if($profit_loss_active)
+                {{-- @if($profit_loss_active)
                 <li id="profit-loss-report-menu">
                 {!! Form::open(['route' => 'report.profitLoss', 'method' => 'post', 'id' => 'profitLoss-report-form']) !!}
                 <input type="hidden" name="start_date" value="{{date('Y-m').'-'.'01'}}" />
@@ -349,12 +349,12 @@
                 <a id="profitLoss-link" href="">{{trans('file.Summary Report')}}</a>
                 {!! Form::close() !!}
                 </li>
-                @endif
-                @if($best_seller_active)
+                @endif --}}
+                {{-- @if($best_seller_active)
                 <li id="best-seller-report-menu">
                 <a href="{{url('report/best_seller')}}">{{trans('file.Best Seller')}}</a>
                 </li>
-                @endif
+                @endif --}}
                 @if($product_report_active)
                 <li id="product-report-menu">
                 {!! Form::open(['route' => 'report.product', 'method' => 'get', 'id' => 'product-report-form']) !!}
@@ -385,7 +385,7 @@
                 <a href="{{url('report/monthly_purchase/'.date('Y'))}}">{{trans('file.Monthly Purchase')}}</a>
                 </li>
                 @endif
-                @if($sale_report_active)
+                {{-- @if($sale_report_active)
                 <li id="sale-report-menu">
                 {!! Form::open(['route' => 'report.sale', 'method' => 'post', 'id' => 'sale-report-form']) !!}
                 <input type="hidden" name="start_date" value="{{date('Y-m').'-'.'01'}}" />
@@ -405,7 +405,7 @@
                     <a id="sale-report-chart-link" href="">{{trans('file.Sale Report Chart')}}</a>
                     {!! Form::close() !!}
                 </li>
-                @endif
+                @endif --}}
                 @if($payment_report_active)
                 <li id="payment-report-menu">
                 {!! Form::open(['route' => 'report.paymentByDate', 'method' => 'post', 'id' => 'payment-report-form']) !!}
@@ -415,7 +415,7 @@
                 {!! Form::close() !!}
                 </li>
                 @endif
-                @if($purchase_report_active)
+                {{-- @if($purchase_report_active)
                 <li id="purchase-report-menu">
                 {!! Form::open(['route' => 'report.purchase', 'method' => 'post', 'id' => 'purchase-report-form']) !!}
                 <input type="hidden" name="start_date" value="{{date('Y-m').'-'.'01'}}" />
@@ -424,17 +424,17 @@
                 <a id="purchase-report-link" href="">{{trans('file.Purchase Report')}}</a>
                 {!! Form::close() !!}
                 </li>
-                @endif
-                @if($customer_report_active)
+                @endif --}}
+                {{-- @if($customer_report_active)
                 <li id="customer-report-menu">
                 <a id="customer-report-link" href="">{{trans('file.Customer Report')}}</a>
                 </li>
-                @endif
-                @if($customer_report_active)
+                @endif --}}
+                {{-- @if($customer_report_active)
                 <li id="customer-report-menu">
                     <a id="customer-group-report-link" href="">{{trans('file.Customer Group Report')}}</a>
                 </li>
-                @endif
+                @endif --}}
                 @if($due_report_active)
                 <li id="due-report-menu">
                     {!! Form::open(['route' => 'report.customerDueByDate', 'method' => 'post', 'id' => 'customer-due-report-form']) !!}
@@ -463,7 +463,7 @@
                 <a id="warehouse-report-link" href="">{{trans('file.Warehouse Report')}}</a>
                 </li>
                 @endif
-                @if($warehouse_stock_report_active)
+                {{-- @if($warehouse_stock_report_active)
                 <li id="warehouse-stock-report-menu">
                 <a href="{{route('report.warehouseStock')}}">{{trans('file.Warehouse Stock Chart')}}</a>
                 </li>
@@ -472,13 +472,13 @@
                 <li id="productExpiry-report-menu">
                 <a href="{{route('report.productExpiry')}}">{{trans('file.Product Expiry Report')}}</a>
                 </li>
-                @endif
+                @endif --}}
                 @if($product_qty_alert_active)
                 <li id="qtyAlert-report-menu">
                 <a href="{{route('report.qtyAlert')}}">{{trans('file.Product Quantity Alert')}}</a>
                 </li>
                 @endif
-                @if($dso_report_active)
+                {{-- @if($dso_report_active)
                 <li id="daily-sale-objective-menu">
                     <a href="{{route('report.dailySaleObjective')}}">{{trans('file.Daily Sale Objective Report')}}</a>
                 </li>
@@ -487,10 +487,10 @@
                 <li id="user-report-menu">
                 <a id="user-report-link" href="">{{trans('file.User Report')}}</a>
                 </li>
-                @endif
+                @endif --}}
             </ul>
             </li>
-            @endif --}}
+            @endif
             {{-- @if(!config('database.connections.saleprosaas_landlord'))
             <li><a href="{{url('addon-list')}}" id="addon-list"> <i class="dripicons-flag"></i><span>{{trans('file.Addons')}}</span></a></li>
             @if (\Schema::hasColumn('products', 'woocommerce_product_id'))

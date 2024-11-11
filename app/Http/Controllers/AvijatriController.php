@@ -57,7 +57,6 @@ class AvijatriController extends Controller
     {
         try {
             $response = $this->avijatriService->invoices();
-
             if ($response->status() == 200) {
                 $invoices = $response->json()['invoices'];
                 return view('backend.avijatri.invoices', compact('invoices'));

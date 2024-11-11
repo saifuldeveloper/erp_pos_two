@@ -54,10 +54,10 @@
                                     <label>{{trans('file.City')}}</label>
                                     <input type="text" name="city" class="form-control">
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>{{trans('file.Country')}}</label>
                                     <input type="text" name="country" class="form-control">
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label>{{trans('file.Staff Id')}}</label>
                                     <input type="text" name="staff_id" class="form-control">

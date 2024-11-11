@@ -87,7 +87,7 @@
                                     <input type="text" name="city" required class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <div class="form-group">
                                     <label>{{trans('file.State')}}</label>
                                     <input type="text" name="state" class="form-control">
@@ -104,7 +104,7 @@
                                     <label>{{trans('file.Country')}}</label>
                                     <input type="text" name="country" class="form-control">
                                 </div>
-                            </div>
+                            </div> --}}
                             @foreach($custom_fields as $field)
                                 @if(!$field->is_admin || \Auth::user()->role_id == 1)
                                     <div class="{{'col-md-'.$field->grid_value}}">
