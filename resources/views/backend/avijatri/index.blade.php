@@ -31,8 +31,11 @@
                                             </td>
                                             <td>{{ $product['shoe']['id'] }}</td>
                                             <td>
-                                                <img src="{{ $product['shoe']['image_url'] }}" alt="image"
-                                                    style="width: 50px; height: 50px;">
+                                                <a href="javascript:void(0)" data-toggle="modal"
+                                                    data-target="#productImage{{ $product['shoe']['id'] }}">
+                                                    <img src="{{ $product['shoe']['image_url'] }}" alt="image"
+                                                        style="width: 50px; height: 50px;">
+                                                </a>
                                             </td>
                                             <td>{{ $product['shoe']['category']['full_name'] }}</td>
                                             <td>{{ $product['shoe']['color']['name'] }}</td>
@@ -44,6 +47,26 @@
                                                 @endif
                                             </td>
                                         </tr>
+                                        <div class="modal fade" id="productImage{{ $product['shoe']['id'] }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            {{ $product['shoe']['id'] . ' - ' . $product['shoe']['category']['full_name'] }}
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true" class="text-dark">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="{{ $product['shoe']['image_url'] }}" alt="image"
+                                                            style="width: 100%; height: 100%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
                                 </tbody>
                             </table>
