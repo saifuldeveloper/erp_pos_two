@@ -11,6 +11,7 @@ use App\Models\Unit;
 use App\Models\Warehouse;
 use App\Services\AvijatriService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AvijatriController extends Controller
 {
@@ -121,6 +122,18 @@ class AvijatriController extends Controller
         }
         $category_id = $this->categoryStore($shoe['category'], $parent_id);
 
+        $image_name = null;
+        if (isset($shoe['image_url']) && !empty($shoe['image_url'])) {
+            $imageUrl = $shoe['image_url'];
+            $imageName = basename($imageUrl);
+            $imagePath = public_path('public/images/product/' . $imageName);
+            if (!File::exists(public_path('public/images/product'))) {
+                File::makeDirectory(public_path('images/product'), 0755, true);
+            }
+            file_put_contents($imagePath, file_get_contents($imageUrl));
+            $image_name = $imageName;
+        }
+
         $product = new Product();
         $product->name = $shoe['id'];
         $product->code = $shoe['id'];
@@ -141,7 +154,7 @@ class AvijatriController extends Controller
         $product->last_date = null;
         $product->tax_id = null;
         $product->tax_method = 1;
-        $product->image = null;
+        $product->image = $image_name;
         $product->featured = null;
         $product->product_details = null;
         $product->is_active = 1;
