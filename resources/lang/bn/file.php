@@ -5,6 +5,7 @@ return [
 	"dashboard" => "ড্যাশবোর্ড",
 
 	"language" => "ভাষা",
+	'Avijatri Purchase'=> 'অভিযাত্রী ক্রয়',
 
 	"revenue" => "রাজস্ব",
 

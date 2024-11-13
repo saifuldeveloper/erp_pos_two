@@ -59,7 +59,7 @@
             <li><a href="#purchase" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-card"></i><span>{{trans('file.Purchase')}}</span></a>
             <ul id="purchase" class="collapse list-unstyled ">
                 <li id="purchase-list-menu"><a href="{{route('purchases.index')}}">{{trans('file.Purchase List')}}</a></li>
-                <li id="purchase-list-menu"><a href="{{route('invoices.index')}}">Avijatri Purchase</a></li>
+                <li id="purchase-list-menu"><a href="{{route('invoices.index')}}">{{trans('file.Avijatri Purchase')}}</a></li>
                 <?php
                 $add_permission_active = $role_has_permissions_list->where('name', 'purchases-add')->first();
                 ?>
@@ -435,7 +435,7 @@
                     <a id="customer-group-report-link" href="">{{trans('file.Customer Group Report')}}</a>
                 </li>
                 @endif --}}
-                @if($due_report_active)
+                {{-- @if($due_report_active)
                 <li id="due-report-menu">
                     {!! Form::open(['route' => 'report.customerDueByDate', 'method' => 'post', 'id' => 'customer-due-report-form']) !!}
                     <input type="hidden" name="start_date" value="{{date('Y-m-d', strtotime('-1 year'))}}" />
@@ -457,7 +457,7 @@
                     <a id="supplier-due-report-link" href="">{{trans('file.Supplier Due Report')}}</a>
                     {!! Form::close() !!}
                 </li>
-                @endif
+                @endif --}}
                 @if($warehouse_report_active)
                 <li id="warehouse-report-menu">
                 <a id="warehouse-report-link" href="">{{trans('file.Warehouse Report')}}</a>
