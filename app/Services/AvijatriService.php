@@ -12,7 +12,7 @@ class AvijatriService
     public function __construct()
     {
         $this->secret_key = config('services.avijatri.secret_key');
-        $this->base_url = config('services.avijatri.base_url'). '/api/v1';
+        $this->base_url = config('services.avijatri.base_url') . '/api/v1';
     }
 
     public function getAssignedShoes()
@@ -22,13 +22,15 @@ class AvijatriService
         ])->get($this->base_url . '/get-assigned-shoes');
     }
 
-    public function approveProduct($id, $isApproved)
+    public function approveProduct($request)
     {
         return Http::withHeaders([
             'secret_key' => $this->secret_key,
         ])->post($this->base_url . '/product-approved', [
-            'id' => $id,
-            'is_approved' => $isApproved ? 1 : 0,
+            'id' => $request->id,
+            'is_approved' => $request->is_approved,
+            'quantity' => $request->quantity,
+            'note' => $request->note,
         ]);
     }
 
