@@ -22,9 +22,9 @@ class SuppliersTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Masud Razoan',
+                'name' => 'Avijatry',
                 'image' => NULL,
-                'company_name' => 'IT park',
+                'company_name' => 'Avijatry',
                 'vat_number' => NULL,
                 'email' => 'masud@gmail.com',
                 'phone_number' => '987654321',

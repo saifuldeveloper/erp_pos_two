@@ -89,11 +89,13 @@
                                 </li>
                                 <li class="divider"></li>
                                 @if(in_array("suppliers-delete", $all_permission))
+                                @if($supplier->id !==1)
                                 {{ Form::open(['route' => ['supplier.destroy', $supplier->id], 'method' => 'DELETE'] ) }}
                                 <li>
                                     <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
                                 </li>
                                 {{ Form::close() }}
+                                @endif
                                 @endif
                             </ul>
                         </div>

@@ -18,28 +18,28 @@
 <section>
     <div class="container-fluid">
         <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-info"><i class="dripicons-plus"></i> {{trans('file.Add Unit')}}</a>&nbsp;
-        <a href="#" data-toggle="modal" data-target="#importUnit" class="btn btn-primary"><i class="dripicons-copy"></i> {{trans('file.Import Unit')}}</a>
+        {{-- <a href="#" data-toggle="modal" data-target="#importUnit" class="btn btn-primary"><i class="dripicons-copy"></i> {{trans('file.Import Unit')}}</a> --}}
     </div>
     <div class="table-responsive">
         <table id="unit-table" class="table">
             <thead>
                 <tr>
-                    <th class="not-exported"></th>
-                    <th>{{trans('file.Code')}}</th>
-                    <th>{{trans('file.name')}}</th>
-                    <th>{{trans('file.Base Unit')}}</th>
+                    <th class="not-exported" width="15%">#</th>
+                    {{-- <th>{{trans('file.Code')}}</th> --}}
+                    <th width="50%">{{trans('file.name')}}</th>
+                    {{-- <th>{{trans('file.Base Unit')}}</th>
                     <th>{{trans('file.Operator')}}</th>
-                    <th>{{trans('file.Operation Value')}}</th>
+                    <th>{{trans('file.Operation Value')}}</th> --}}
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($lims_unit_all as $key=>$unit)
                 <tr data-id="{{$unit->id}}">
-                    <td>{{$key}}</td>
-                    <td>{{ $unit->unit_code }}</td>
+                    <td>{{$key +1 }}</td>
+                    {{-- <td>{{ $unit->unit_code }}</td> --}}
                     <td>{{ $unit->unit_name }}</td>
-                    @if($unit->base_unit)
+                    {{-- @if($unit->base_unit)
                         <?php $base_unit = DB::table('units')->where('id', $unit->base_unit)->first(); ?>
                         <td>{{ $base_unit->unit_name }}</td>
                     @else
@@ -54,7 +54,7 @@
                         <td>{{ $unit->operation_value }}</td>
                     @else
                         <td>N/A</td>
-                    @endif
+                    @endif --}}
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}
@@ -92,17 +92,17 @@
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
             </div>
             <div class="modal-body">
-                <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
+                {{-- <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p> --}}
                 <form>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                     <label>{{trans('file.Code')}} *</label>
                     {{Form::text('unit_code',null,array('required' => 'required', 'class' => 'form-control'))}}
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label>{{trans('file.name')}} *</label>
                         {{Form::text('unit_name',null,array('required' => 'required', 'class' => 'form-control'))}}
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>{{trans('file.Base Unit')}}</label>
                         <select class="form-control selectpicker" id="base_unit_create" name="base_unit">
                             <option value="">No Base Unit</option>
@@ -118,7 +118,7 @@
                     </div>
                     <div class="form-group operation_value">
                         <label>{{trans('file.Operation Value')}}</label><input type="number" name="operation_value" placeholder="Enter operation value" class="form-control" step="any"/>
-                    </div>
+                    </div> --}}
                     <input type="submit" value="{{trans('file.submit')}}" class="btn btn-primary">
             </form>
         </div>
@@ -136,18 +136,17 @@
           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
         </div>
         <div class="modal-body">
-          <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
             <form>
                 <input type="hidden" name="unit_id">
-                <div class="form-group">
+                {{-- <div class="form-group">
                 <label>{{trans('file.Code')}} *</label>
                 {{Form::text('unit_code',null,array('required' => 'required', 'class' => 'form-control'))}}
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label>{{trans('file.name')}} *</label>
                     {{Form::text('unit_name',null,array('required' => 'required', 'class' => 'form-control'))}}
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label>{{trans('file.Base Unit')}}</label>
                     <select class="form-control selectpicker" id="base_unit_edit" name="base_unit">
                         <option value="">No Base Unit</option>
@@ -163,7 +162,7 @@
                 </div>
                 <div class="form-group operation_value">
                     <label>{{trans('file.Operation Value')}}</label><input type="number" name="operation_value" placeholder="Enter operation value" class="form-control" step="any"/>
-                </div>
+                </div> --}}
                 <input type="submit" value="{{trans('file.submit')}}" class="btn btn-primary">
             </form>
         </div>
@@ -265,6 +264,7 @@
 
     $( "#select_all" ).on( "change", function() {
         if ($(this).is(':checked')) {
+            
             $("tbody input[type='checkbox']").prop('checked', true);
         }
         else {
@@ -337,20 +337,20 @@
                 "orderable": false,
                 'targets': [0, 6]
             },
-            {
-                'render': function(data, type, row, meta){
-                    if(type === 'display'){
-                        data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
-                    }
+            // {
+            //     'render': function(data, type, row, meta){
+            //         if(type === 'display'){
+            //             data = '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>';
+            //         }
 
-                   return data;
-                },
-                'checkboxes': {
-                   'selectRow': true,
-                   'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
-                },
-                'targets': [0]
-            }
+            //        return data;
+            //     },
+            //     'checkboxes': {
+            //        'selectRow': true,
+            //        'selectAllRender': '<div class="checkbox"><input type="checkbox" class="dt-checkboxes"><label></label></div>'
+            //     },
+            //     'targets': [0]
+            // }
         ],
         'select': { style: 'multi',  selector: 'td:first-child'},
         'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],

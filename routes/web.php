@@ -15,6 +15,7 @@ use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AddonInstallController;
 use App\Http\Controllers\AdjustmentController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AvijatriController;
 use App\Http\Controllers\BillerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CashRegisterController;
@@ -605,5 +606,14 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 	Route::resource('custom-fields', CustomFieldController::class);
 
 	Route::post('woocommerce-install', [AddonInstallController::class,'woocommerceInstall'])->name('woocommerce.install');
+
+
+    Route::controller(AvijatriController::class)->group(function () {
+        Route::get('/get-products', 'getProducts')->name('get-products');
+        Route::post('/product-approved', 'productApproved')->name('product-approved');
+        Route::get('/invoices', 'invoices')->name('invoices.index');
+        Route::get('/invoice/{id}', 'invoice')->name('invoice.show');
+        Route::get('/invoice-approve/{id}', 'invoiceApprove')->name('invoice.approve');
+    });
 });
 

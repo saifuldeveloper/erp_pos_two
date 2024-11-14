@@ -24,7 +24,7 @@ class BillersTableSeeder extends Seeder
                 'id' => 1,
                 'name' => 'Sazzad',
                 'image' => NULL,
-                'company_name' => 'apple store',
+                'company_name' => 'Avijatry store',
                 'vat_number' => NULL,
                 'email' => 'sazzad@gmail.com',
                 'phone_number' => '78945612',

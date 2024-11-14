@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'avijatri' => [
+        'secret_key' => env('RETAIL_SECRET_KEY'),
+        'base_url' => env('RETAIL_BASE_URL'),
+    ],
+
 ];
