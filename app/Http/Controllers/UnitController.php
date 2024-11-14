@@ -42,10 +42,10 @@ class UnitController extends Controller
         ]);
         $input = $request->all();
         $input['is_active'] = true;
-        if(!$input['base_unit']){
-            $input['operator'] = '*';
-            $input['operation_value'] = 1;
-        }
+        // if(!$input['base_unit']){
+        //     $input['operator'] = '*';
+        //     $input['operation_value'] = 1;
+        // }
         Unit::create($input);
         return redirect('unit');
     }
@@ -82,10 +82,10 @@ class UnitController extends Controller
         ]);
 
         $input = $request->all();
-        if(!$input['base_unit']){
-            $input['operator'] = '*';
-            $input['operation_value'] = 1;
-        }
+        // if(!$input['base_unit']){
+        //     $input['operator'] = '*';
+        //     $input['operation_value'] = 1;
+        // }
         $lims_unit_data = Unit::where('id',$input['unit_id'])->first();
         $lims_unit_data->update($input);
         return redirect('unit');

@@ -310,7 +310,7 @@
               $cash_flow = $role_has_permissions_list->where('name', 'cash_flow')->first();
             @endphp
             @if($cash_flow)
-            <div class="col-md-7 mt-4">
+            <div class="col-md-12 mt-4">
               <div class="card line-chart-example">
                 <div class="card-header d-flex align-items-center">
                   <h4>{{trans('file.Cash Flow')}}</h4>
@@ -324,7 +324,7 @@
             @php
               $monthly_summary = $role_has_permissions_list->where('name', 'monthly_summary')->first();
             @endphp
-            @if($monthly_summary)
+            {{-- @if($monthly_summary)
             <div class="col-md-5 mt-4">
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
@@ -335,13 +335,13 @@
                 </div>
               </div>
             </div>
-            @endif
+            @endif --}}
           </div>
         </div>
 
         <div class="container-fluid">
           <div class="row">
-            @php
+            {{-- @php
               $yearly_report = $role_has_permissions_list->where('name', 'yearly_report')->first();
             @endphp
             @if($yearly_report)
@@ -355,8 +355,8 @@
                 </div>
               </div>
             </div>
-            @endif
-            <div class="col-md-7">
+            @endif --}}
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h4>{{trans('file.Recent Transaction')}}</h4>
@@ -452,7 +452,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-5">
+            {{-- <div class="col-md-5">
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h4>{{trans('file.Best Seller').' '.date('F')}}</h4>
@@ -474,8 +474,8 @@
                     </table>
                   </div>
               </div>
-            </div>
-            <div class="col-md-6">
+            </div> --}}
+            {{-- <div class="col-md-6">
               <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h4>{{trans('file.Best Seller').' '.date('Y'). '('.trans('file.qty').')'}}</h4>
@@ -520,7 +520,7 @@
                     </table>
                   </div>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </section>
