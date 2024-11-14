@@ -33,7 +33,7 @@
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Name') }} *</strong> </label>
                                             <input type="text" name="name" class="form-control" id="name"
-                                                aria-describedby="name" required>
+                                                aria-describedby="name" >
                                             <span class="validation-msg" id="name-error"></span>
                                         </div>
                                     </div>
@@ -538,22 +538,22 @@
         $("ul#product").addClass("show");
         $("ul#product #product-create-menu").addClass("active");
 
-        @if (config('database.connections.saleprosaas_landlord'))
-            numberOfProduct = <?php echo json_encode($numberOfProduct); ?>;
-            $.ajax({
-                type: 'GET',
-                async: false,
-                url: '{{ route('package.fetchData', $general_setting->package_id) }}',
-                success: function(data) {
-                    if (data['number_of_product'] > 0 && data['number_of_product'] <= numberOfProduct) {
-                        localStorage.setItem("message",
-                            "You don't have permission to create another product as you already exceed the limit! Subscribe to another package if you wants more!"
-                            );
-                        location.href = "{{ route('products.index') }}";
-                    }
-                }
-            });
-        @endif
+        // @if (config('database.connections.saleprosaas_landlord'))
+        //     numberOfProduct = <?php echo json_encode($numberOfProduct); ?>;
+        //     $.ajax({
+        //         type: 'GET',
+        //         async: false,
+        //         url: '{{ route('package.fetchData', $general_setting->package_id) }}',
+        //         success: function(data) {
+        //             if (data['number_of_product'] > 0 && data['number_of_product'] <= numberOfProduct) {
+        //                 localStorage.setItem("message",
+        //                     "You don't have permission to create another product as you already exceed the limit! Subscribe to another package if you wants more!"
+        //                     );
+        //                 location.href = "{{ route('products.index') }}";
+        //             }
+        //         }
+        //     });
+        // @endif
 
         $("#digital").hide();
         $("#combo").hide();
