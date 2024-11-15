@@ -35,7 +35,8 @@
                         @if ($category_permission_active)
                             <li id="category-menu"><a href="{{ route('category.index') }}">{{ __('file.category') }}</a>
                             </li>
-                            
+                            <li id="category-menu"><a href="{{ route('category.index') }}">{{ __('file.parentCategory') }}</a>
+                            </li>
                         @endif
                         @if ($index_permission_active)
                             <li id="product-list-menu"><a
