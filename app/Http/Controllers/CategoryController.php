@@ -79,9 +79,11 @@ class CategoryController extends Controller
                 $nestedData['key'] = $key;
 
                 if($category->image)
-                    $nestedData['name'] = '<img src="'.url('public/images/category', $category->image).'" height="80" width="80">'.$category->name;
+                    // $nestedData['name'] = '<img src="'.url('public/images/category', $category->image).'" height="80" width="80">'.$category->name;
+                    $nestedData['name'] = $category->name;
                 else
-                    $nestedData['name'] = '<img src="'.url('public/images/zummXD2dvAtI.png').'" height="80" width="80">'.$category->name;
+                    // $nestedData['name'] = '<img src="'.url('public/images/zummXD2dvAtI.png').'" height="80" width="80">'.$category->name;
+                    $nestedData['name'] = $category->name;
 
                 if($category->parent_id)
                     $nestedData['parent_id'] = Category::find($category->parent_id)->name;

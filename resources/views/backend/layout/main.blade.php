@@ -358,16 +358,15 @@
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
               </div>
               <div class="modal-body">
-                <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                   <div class="row">
                       <div class="col-md-6 form-group">
                           <label>{{trans('file.name')}} *</label>
                           {{Form::text('name',null,array('required' => 'required', 'class' => 'form-control', 'placeholder' => 'Type category name...'))}}
                       </div>
-                      <div class="col-md-6 form-group">
+                      {{-- <div class="col-md-6 form-group">
                           <label>{{trans('file.Image')}}</label>
                           <input type="file" name="image" class="form-control">
-                      </div>
+                      </div> --}}
                       <div class="col-md-6 form-group">
                           <label>{{trans('file.Parent Category')}}</label>
                           <select name="parent_id" class="form-control selectpicker" id="parent">

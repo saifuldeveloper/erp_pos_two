@@ -41,11 +41,10 @@ class AvijatriController extends Controller
     public function productApproved(Request $request)
     {
         try {
-            $response = $this->avijatriService->approveProduct($request->id, $request->is_approved == 'true');
-
+            $response = $this->avijatriService->approveProduct($request);
             if ($response->status() == 200) {
-                $message = $request->is_approved == 'true' ? 'Product approved successfully' : 'Product disapproved successfully';
-                return response()->json(['status' => 'success', 'message' => $message]);
+                $message = $request->is_approved == '1' ? 'Product approved successfully' : 'Product disapproved successfully';
+                return redirect()->route('get-products')->with('success', $message);
             } else {
                 abort(404);
             }

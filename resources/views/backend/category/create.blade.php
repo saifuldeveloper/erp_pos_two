@@ -21,10 +21,10 @@
     <section>
         <div class="container-fluid">
             <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#category-modal"><i
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#category-modal"><i
                     class="dripicons-plus"></i> {{ trans('file.Add Category') }}</button>&nbsp;
-            <button class="btn btn-primary" data-toggle="modal" data-target="#importCategory"><i class="dripicons-copy"></i>
-                {{ trans('file.Import Category') }}</button>
+            {{-- <button class="btn btn-info" data-toggle="modal" data-target="#importCategory"><i class="dripicons-copy"></i>
+                {{ trans('file.Import Category') }}</button> --}}
         </div>
         <div class="table-responsive">
             <table id="category-table" class="table" style="width: 100%">
@@ -55,18 +55,16 @@
                             aria-hidden="true"><i class="dripicons-cross"></i></span></button>
                 </div>
                 <div class="modal-body">
-                    <p class="italic">
-                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small></p>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.name') }} *</label>
                             {{ Form::text('name', null, ['required' => 'required', 'class' => 'form-control']) }}
                         </div>
                         <input type="hidden" name="category_id">
-                        <div class="col-md-6 form-group">
+                        {{-- <div class="col-md-6 form-group">
                             <label>{{ trans('file.Image') }}</label>
                             <input type="file" name="image" class="form-control">
-                        </div>
+                        </div> --}}
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Parent Category') }}</label>
                             <select name="parent_id" class="form-control selectpicker" id="parent">
@@ -76,46 +74,9 @@
                                 @endforeach
                             </select>
                         </div>
-                        @if (\Schema::hasColumn('categories', 'woocommerce_category_id'))
-                            <div class="col-md-6 form-group mt-4">
-                                <h5><input name="is_sync_disable" type="checkbox" id="is_sync_disable" value="1">&nbsp;
-                                    {{ trans('file.Disable Woocommerce Sync') }}</h5>
-                            </div>
-                        @endif
-                        @if (isset($general_setting->modules) && in_array('ecommerce', explode(',', $general_setting->modules)))
-                            <div class="col-md-12 mt-3">
-                                <h6><strong>{{ __('For Website') }}</strong></h6>
-                                <hr>
-                            </div>
 
-                            <div class="col-md-6 form-group">
-                                <label>{{ __('Icon') }} (SVG format)</label>
-                                <input type="file" name="icon" class="form-control">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <br>
-                                <input type="checkbox" name="featured" id="featured" value="1">
-                                <label>{{ __('List on category dropdown') }}</label>
-                            </div>
-                        @endif
                     </div>
-                    @if (isset($general_setting->modules) && in_array('ecommerce', explode(',', $general_setting->modules)))
-                        <div class="row">
-                            <div class="col-md-12 mt-3">
-                                <h6><strong>{{ __('For SEO') }}</strong></h6>
-                                <hr>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>{{ __('Meta Title') }}</label>
-                                {{ Form::text('page_title', null, ['class' => 'form-control', 'placeholder' => 'Meta Title...']) }}
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <label>{{ __('Meta Description') }}</label>
-                                {{ Form::text('short_description', null, ['class' => 'form-control', 'placeholder' => 'Meta Description...']) }}
-                            </div>
-                        </div>
-                    @endif
-
+                
                     <div class="form-group">
                         <input type="submit" value="{{ trans('file.submit') }}" class="btn btn-primary">
                     </div>
@@ -137,7 +98,8 @@
                 </div>
                 <div class="modal-body">
                     <p class="italic">
-                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small></p>
+                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
+                    </p>
                     <p>{{ trans('file.The correct column order is') }} (name*, parent_category)
                         {{ trans('file.and you must follow this') }}.</p>
                     <div class="row">
@@ -171,7 +133,7 @@
         function confirmDelete() {
             if (confirm(
                     "If you delete category all products under this category will also be deleted. Are you sure want to delete?"
-                    )) {
+                )) {
                 return true;
             }
             return false;
@@ -331,7 +293,7 @@
                             });
                             if (category_id.length && confirm(
                                     "If you delete category all products under this category will also be deleted. Are you sure want to delete?"
-                                    )) {
+                                )) {
                                 $.ajax({
                                     type: 'POST',
                                     url: 'category/deletebyselection',
