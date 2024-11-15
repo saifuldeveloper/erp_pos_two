@@ -39,7 +39,9 @@ return [
 
 	"name" => "নাম",
 
-	"submit" => "জমা দিন",
+	"Submit" => "জমা দিন",
+
+    "Select Custom Date" => "তারিখ নির্বাচন করুন",
 
 	"update" => "আপডেট করুন",
 

@@ -45,17 +45,29 @@
             @endphp
             @if($revenue_profit_summary)
             <div class="filter-toggle btn-group">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" id="customDateDropdown" style="border-radius-top-right: 0; border-radius-bottom-right: 0; " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{trans('file.Select Custom Date')}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <input type="text" id="customStartDate" name="customStartDate" class="form-control date" value="{{date('01-m-Y')}}" placeholder="Choose start date"/>
+                    <input type="text" id="customEndDate" name="customEndDate" class="form-control date mt-1" value="{{date('d-m-Y')}}" placeholder="Choose end date"/>
+                  <div class="dropdown-divider"></div>
+                  <button class="btn btn-primary" type="button"  id="customDateFilter">{{trans('file.Submit')}}</button>
+                </div>
+              </div>
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y-m-d')}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.Today')}}</button>
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y-m-d', strtotime(' -7 day'))}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.Last 7 Days')}}</button>
               <button class="btn btn-secondary date-btn active" data-start_date="{{date('Y').'-'.date('m').'-'.'01'}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.This Month')}}</button>
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y').'-01'.'-01'}}" data-end_date="{{date('Y').'-12'.'-31'}}">{{trans('file.This Year')}}</button>
             </div>
+            <input type="text" id="custom-date-range" style="display: none;">
             @endif
           </div>
         </div>
       </div>
       <!-- Counts Section -->
-      <section class="dashboard-counts"> 
+      <section class="dashboard-counts">
         <div class="container-fluid">
           <div class="row">
             @if($revenue_profit_summary)
@@ -113,7 +125,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- Count item widget-->
                 <div class="col-sm-2">
                   <div class="wrapper count-title">
@@ -155,7 +167,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- Count item widget-->
                 <div class="col-sm-2">
                   <div class="wrapper count-title">
@@ -177,7 +189,7 @@
                     </div>
                   </div>
                 </div>
-               
+
                 <!-- Count item widget-->
                 <div class="col-sm-2">
                   <div class="wrapper count-title">
@@ -227,7 +239,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="col-md-4 mt-4">
               <div class="card">
                 <div class="card-header d-flex align-items-center">
@@ -666,16 +678,16 @@
         //extract the parts of the date
         const day = date.getDate();
         const month = date.getMonth() + 1;
-        const year = date.getFullYear();    
+        const year = date.getFullYear();
         //replace the month
-        format = format.replace("m", month.toString().padStart(2,"0"));        
+        format = format.replace("m", month.toString().padStart(2,"0"));
         //replace the year
         format = format.replace("Y", year.toString());
         //replace the day
         format = format.replace("d", day.toString().padStart(2,"0"));
         return format;
     }
-    
+
 
     $(document).ready(function(){
       $.ajax({
@@ -716,6 +728,18 @@
             dashboardFilter(data);
         });
     });
+
+    $("#customDateFilter").on("click", function() {
+        $(".date-btn").removeClass("active");
+        $("customDateDropdown").addClass("active");
+        var start_date = $("#customStartDate").val();
+        var end_date = $("#customEndDate").val();
+        $.get('dashboard-filter/' + start_date + '/' + end_date, function(data) {
+            //console.log(data);
+            dashboardFilter(data);
+        });
+    });
+
 
     function dashboardFilter(data){
         $('.revenue-data').hide();

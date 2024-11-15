@@ -780,6 +780,7 @@ return [
 	"Open Graph Description" => "Open Graph Description",
 	"Icon" => "Icon",
 	"Submit" => "Submit",
+    "Select Custom Date" => "Select Custom Date",
 	"Link" => "Link",
 	"Update Social" => "Update Social",
 	"Received Amount" => "Received Amount",
