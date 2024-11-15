@@ -41,6 +41,8 @@ return [
 
 	"submit" => "জমা দিন",
 
+    "Select Custom Date" => "তারিখ নির্বাচন করুন",
+
 	"update" => "আপডেট করুন",
 
 	"The field labels marked with * are required input fields" => "তারকা (*) চিহ্নিত ক্ষেত্রগুলি প্রয়োজনীয় ইনপুট ক্ষেত্রগুলি",

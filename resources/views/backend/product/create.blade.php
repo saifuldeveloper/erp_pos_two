@@ -163,24 +163,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="cost" class="col-md-4">
-                                                <div class="form-group">
-                                                    <label>{{ trans('file.Product Cost') }} *</strong> </label>
-                                                    <input type="number" name="cost" required class="form-control"
-                                                        step="any">
-                                                    <span class="validation-msg"></span>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div id="alert-qty" class="col-md-4">
+                                    <div id="cost" class="col-md-4">
                                         <div class="form-group">
-                                            <label>{{ trans('file.Alert Quantity') }}</strong> </label>
-                                            <input type="number" name="alert_quantity" class="form-control"
+                                            <label>{{ trans('file.Product Cost') }} *</strong> </label>
+                                            <input type="number" name="cost" required class="form-control"
                                                 step="any">
+                                            <span class="validation-msg"></span>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    </div> --}}
+                                    {{-- <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Price') }} *</strong> </label>
                                             <input type="number" name="price" required class="form-control"
@@ -192,7 +185,7 @@
                                                 value="{{ number_format(0, $general_setting->decimal, '.', '') }}">
                                         </div>
                                     </div>
-                                    {{-- <div class="col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Daily Sale Objective') }}</strong></label> <i
                                                 class="dripicons-question" data-toggle="tooltip"
@@ -328,7 +321,7 @@
                                                     data-toggle="tooltip"
                                                     title="{{ trans('file.Check this if this product will be used in weight scale machine.') }}"></i></label>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="col-md-6" id="initial-stock-section">
                                         <div class="table-responsive ml-2">
                                             <table class="table table-hover">
@@ -353,7 +346,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Image') }}</strong> </label> <i
