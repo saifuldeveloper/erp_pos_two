@@ -191,7 +191,7 @@ class CategoryController extends Controller
 
         DB::table('categories')->insert($lims_category_data);
         $this->cacheForget('category_list');
-        return redirect('category')->with('message', 'Category inserted successfully');
+        return redirect()->back()->with('message', 'Category inserted successfully');
     }
 
     public function edit($id)
@@ -206,7 +206,7 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
 
-        
+
         $this->validate($request,[
             'name' => [
                 'max:255',
@@ -236,7 +236,7 @@ class CategoryController extends Controller
                 $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
                 $image->move('public/images/category', $imageName);
             }
-            Image::make('public/images/category/'. $imageName)->fit(100, 100)->save(); 
+            Image::make('public/images/category/'. $imageName)->fit(100, 100)->save();
             $input['image'] = $imageName;
         }
 
@@ -257,7 +257,7 @@ class CategoryController extends Controller
                 $iconName = $this->getTenantId() . '_' . $iconName . '.' . $ext;
                 $icon->move('public/images/category/icons/', $iconName);
             }
-            Image::make('public/images/category/icons/'. $iconName)->fit(100, 100)->save();            
+            Image::make('public/images/category/icons/'. $iconName)->fit(100, 100)->save();
             $input['icon'] = $iconName;
         }
         if(!isset($request->featured) && \Schema::hasColumn('categories', 'featured') ){
@@ -267,8 +267,19 @@ class CategoryController extends Controller
             $input['is_sync_disable'] = null;
 
         DB::table('categories')->where('id', $request->category_id)->update($input);
-        
-        return redirect('category')->with('message', 'Category updated successfully');
+
+        return redirect()->back()->with('message', 'Category updated successfully');
+    }
+
+    public function parentCategory()
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if($role->hasPermissionTo('category')) {
+            $parents = Category::where('parent_id', null)->where('is_active', 1)->select('id', 'name')->get();
+            return view('backend.parent_category.create', compact('parents'));
+        }
+        else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function import(Request $request)
@@ -350,6 +361,6 @@ class CategoryController extends Controller
 
         $lims_category_data->save();
         $this->cacheForget('category_list');
-        return redirect('category')->with('not_permitted', 'Category deleted successfully');
+        return redirect()->back()->with('not_permitted', 'Category deleted successfully');
     }
 }

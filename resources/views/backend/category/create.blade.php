@@ -76,7 +76,7 @@
                         </div>
 
                     </div>
-                
+
                     <div class="form-group">
                         <input type="submit" value="{{ trans('file.submit') }}" class="btn btn-primary">
                     </div>
@@ -147,6 +147,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        
         $(document).on("click", ".open-EditCategoryDialog", function() {
             $("#editModal input[name='is_sync_disable']").prop("checked", false);
             $("#editModal input[name='featured']").prop("checked", false);

@@ -192,6 +192,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::post('category/import', 'import')->name('category.import');
         Route::post('category/deletebyselection', 'deleteBySelection');
         Route::post('category/category-data', 'categoryData');
+        Route::get('parent-category', 'parentCategory')->name('category.parent');
     });
 	Route::resource('category', CategoryController::class);
 
