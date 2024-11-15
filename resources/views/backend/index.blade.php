@@ -53,7 +53,7 @@
                     <input type="text" id="customStartDate" name="customStartDate" class="form-control date" value="{{date('01-m-Y')}}" placeholder="Choose start date"/>
                     <input type="text" id="customEndDate" name="customEndDate" class="form-control date mt-1" value="{{date('d-m-Y')}}" placeholder="Choose end date"/>
                   <div class="dropdown-divider"></div>
-                  <button class="btn btn-primary" type="button"  id="customDateFilter">{{trans('file.Submit')}}</button>
+                  <button class="btn btn-primary" type="button"  id="customDateFilter">{{trans('file.submit')}}</button>
                 </div>
               </div>
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y-m-d')}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.Today')}}</button>

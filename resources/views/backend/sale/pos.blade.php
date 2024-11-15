@@ -364,6 +364,9 @@
                         <div class="column-5">
                             <button style="background-color: #ffc107;" type="button" class="btn btn-sm btn-custom" data-toggle="modal" data-target="#recentTransaction"><i class="dripicons-clock"></i> {{trans('file.Recent Transaction')}}</button>
                         </div>
+                        <div class="column-5">
+                            <button style="background-color: #ffc107;" type="button" class="btn btn-sm btn-custom" data-toggle="modal" data-target="#draftListModal"><i class="dripicons-clock"></i> {{trans('file.Draft')}}</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -988,9 +991,6 @@
                           <li class="nav-item">
                             <a class="nav-link active" href="#sale-latest" role="tab" data-toggle="tab">{{trans('file.Sale')}}</a>
                           </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="#draft-latest" role="tab" data-toggle="tab">{{trans('file.Draft')}}</a>
-                          </li>
                         </ul>
                         <div class="tab-content">
                           <div role="tabpanel" class="tab-pane show active" id="sale-latest">
@@ -1031,7 +1031,28 @@
                                 </table>
                               </div>
                           </div>
-                          <div role="tabpanel" class="tab-pane fade" id="draft-latest">
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Draft List modal -->
+            <div id="draftListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                <div role="document" class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 id="exampleModalLabel" class="modal-title">{{trans('file.Draft')}} <div class="badge badge-primary">{{trans('file.latest')}} 10</div></h5>
+                      <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="nav nav-tabs" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#draft-latest" role="tab" data-toggle="tab">{{trans('file.Draft')}}</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content">
+                          <div role="tabpanel" class="tab-pane show active" id="draft-latest">
                               <div class="table-responsive">
                                 <table class="table">
                                   <thead>

@@ -2,19 +2,19 @@
             <li><a href="{{ url('/dashboard') }}"> <i
                         class="dripicons-meter"></i><span>{{ __('file.dashboard') }}</span></a></li>
             <?php
-            
+
             $index_permission_active = $role_has_permissions_list->where('name', 'products-index')->first();
-            
+
             $category_permission_active = $role_has_permissions_list->where('name', 'category')->first();
-            
+
             $print_barcode_active = $role_has_permissions_list->where('name', 'print_barcode')->first();
-            
+
             $stock_count_active = $role_has_permissions_list->where('name', 'stock_count')->first();
-            
+
             $adjustment_active = $role_has_permissions_list->where('name', 'adjustment')->first();
-            
+
             $brand_permission_active = $role_has_permissions_list->where('name', 'brand')->first();
-            
+
             $unit_permission_active = $role_has_permissions_list->where('name', 'unit')->first();
             ?>
             @if (
@@ -35,6 +35,7 @@
                         @if ($category_permission_active)
                             <li id="category-menu"><a href="{{ route('category.index') }}">{{ __('file.category') }}</a>
                             </li>
+                            
                         @endif
                         @if ($index_permission_active)
                             <li id="product-list-menu"><a
@@ -89,13 +90,13 @@
             @endif
             <?php
             $sale_index_permission_active = $role_has_permissions_list->where('name', 'sales-index')->first();
-            
+
             $gift_card_permission_active = $role_has_permissions_list->where('name', 'gift_card')->first();
-            
+
             $coupon_permission_active = $role_has_permissions_list->where('name', 'coupon')->first();
-            
+
             $delivery_permission_active = $role_has_permissions_list->where('name', 'delivery')->first();
-            
+
             $sale_add_permission_active = $role_has_permissions_list->where('name', 'sales-add')->first();
             ?>
             @if (
@@ -193,7 +194,7 @@
 
             <?php
             $sale_return_index_permission_active = $role_has_permissions_list->where('name', 'returns-index')->first();
-            
+
             $purchase_return_index_permission_active = $role_has_permissions_list->where('name', 'purchase-return-index')->first();
             ?>
             @if ($sale_return_index_permission_active || $purchase_return_index_permission_active)
@@ -213,13 +214,13 @@
             @endif
             <?php
             $index_permission_active = $role_has_permissions_list->where('name', 'account-index')->first();
-            
+
             $money_transfer_permission_active = $role_has_permissions_list->where('name', 'money-transfer')->first();
-            
+
             $balance_sheet_permission_active = $role_has_permissions_list->where('name', 'balance-sheet')->first();
-            
+
             $account_statement_permission_active = $role_has_permissions_list->where('name', 'account-statement')->first();
-            
+
             ?>
             @if (
                 $index_permission_active ||
@@ -253,13 +254,13 @@
             @endif
             <?php
             $department_active = $role_has_permissions_list->where('name', 'department')->first();
-            
+
             $index_employee_active = $role_has_permissions_list->where('name', 'employees-index')->first();
-            
+
             $attendance_active = $role_has_permissions_list->where('name', 'attendance')->first();
-            
+
             $payroll_active = $role_has_permissions_list->where('name', 'payroll')->first();
-            
+
             $holiday_active = $role_has_permissions_list->where('name', 'holiday')->first();
             ?>
 
@@ -289,15 +290,15 @@
                 </li>
             @endif
             <?php
-            
+
             $user_index_permission_active = $role_has_permissions_list->where('name', 'users-index')->first();
-            
+
             $customer_index_permission_active = $role_has_permissions_list->where('name', 'customers-index')->first();
-            
+
             $biller_index_permission_active = $role_has_permissions_list->where('name', 'billers-index')->first();
-            
+
             $supplier_index_permission_active = $role_has_permissions_list->where('name', 'suppliers-index')->first();
-            
+
             ?>
             @if (
                 $user_index_permission_active ||
@@ -356,49 +357,49 @@
             @endif
 
             <?php
-            
+
             $profit_loss_active = $role_has_permissions_list->where('name', 'profit-loss')->first();
-            
+
             $best_seller_active = $role_has_permissions_list->where('name', 'best-seller')->first();
-            
+
             $warehouse_report_active = $role_has_permissions_list->where('name', 'warehouse-report')->first();
-            
+
             $warehouse_stock_report_active = $role_has_permissions_list->where('name', 'warehouse-stock-report')->first();
-            
+
             $product_report_active = $role_has_permissions_list->where('name', 'product-report')->first();
-            
+
             $daily_sale_active = $role_has_permissions_list->where('name', 'daily-sale')->first();
-            
+
             $monthly_sale_active = $role_has_permissions_list->where('name', 'monthly-sale')->first();
-            
+
             $daily_purchase_active = $role_has_permissions_list->where('name', 'daily-purchase')->first();
-            
+
             $monthly_purchase_active = $role_has_permissions_list->where('name', 'monthly-purchase')->first();
-            
+
             $purchase_report_active = $role_has_permissions_list->where('name', 'purchase-report')->first();
-            
+
             $sale_report_active = $role_has_permissions_list->where('name', 'sale-report')->first();
-            
+
             $sale_report_chart_active = $role_has_permissions_list->where('name', 'sale-report-chart')->first();
-            
+
             $payment_report_active = $role_has_permissions_list->where('name', 'payment-report')->first();
-            
+
             $product_expiry_report_active = $role_has_permissions_list->where('name', 'product-expiry-report')->first();
-            
+
             $product_qty_alert_active = $role_has_permissions_list->where('name', 'product-qty-alert')->first();
-            
+
             $dso_report_active = $role_has_permissions_list->where('name', 'dso-report')->first();
-            
+
             $user_report_active = $role_has_permissions_list->where('name', 'user-report')->first();
-            
+
             $customer_report_active = $role_has_permissions_list->where('name', 'customer-report')->first();
-            
+
             $supplier_report_active = $role_has_permissions_list->where('name', 'supplier-report')->first();
-            
+
             $due_report_active = $role_has_permissions_list->where('name', 'due-report')->first();
-            
+
             $supplier_due_report_active = $role_has_permissions_list->where('name', 'supplier-due-report')->first();
-            
+
             ?>
             @if (
                 $profit_loss_active ||
@@ -590,36 +591,36 @@
                 <ul id="setting" class="collapse list-unstyled ">
                     <?php
                     $all_notification_permission_active = $role_has_permissions_list->where('name', 'all_notification')->first();
-                    
+
                     $send_notification_permission_active = $role_has_permissions_list->where('name', 'send_notification')->first();
-                    
+
                     $warehouse_permission_active = $role_has_permissions_list->where('name', 'warehouse')->first();
-                    
+
                     $customer_group_permission_active = $role_has_permissions_list->where('name', 'customer_group')->first();
                     $currency_permission_active = $role_has_permissions_list->where('name', 'currency')->first();
-                    
+
                     $tax_permission_active = $role_has_permissions_list->where('name', 'tax')->first();
-                    
+
                     $general_setting_permission_active = $role_has_permissions_list->where('name', 'general_setting')->first();
-                    
+
                     $backup_database_permission_active = $role_has_permissions_list->where('name', 'backup_database')->first();
-                    
+
                     $mail_setting_permission_active = $role_has_permissions_list->where('name', 'mail_setting')->first();
-                    
+
                     $sms_setting_permission_active = $role_has_permissions_list->where('name', 'sms_setting')->first();
-                    
+
                     $create_sms_permission_active = $role_has_permissions_list->where('name', 'create_sms')->first();
-                    
+
                     $pos_setting_permission_active = $role_has_permissions_list->where('name', 'pos_setting')->first();
-                    
+
                     $hrm_setting_permission_active = $role_has_permissions_list->where('name', 'hrm_setting')->first();
-                    
+
                     $reward_point_setting_permission_active = $role_has_permissions_list->where('name', 'reward_point_setting')->first();
-                    
+
                     $discount_plan_permission_active = $role_has_permissions_list->where('name', 'discount_plan')->first();
-                    
+
                     $discount_permission_active = $role_has_permissions_list->where('name', 'discount')->first();
-                    
+
                     $custom_field_permission_active = $role_has_permissions_list->where('name', 'custom_field')->first();
                     ?>
                     @if ($role->id <= 2)
