@@ -85,7 +85,7 @@ class AvijatriController extends Controller
         }
     }
 
-    public function invoiceApprove($id)
+    public function invoiceApprove(Request $request, $id)
     {
         try {
             $response = $this->avijatriService->invoice($id);
@@ -94,7 +94,7 @@ class AvijatriController extends Controller
                 foreach ($invoice['invoice_entries'] as $entry) {
                     Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
                 }
-                Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice);
+                Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice, $request);
             } else {
                 abort(404);
             }
@@ -176,7 +176,7 @@ class AvijatriController extends Controller
         }
     }
 
-    public function invoiceStore($invoice)
+    public function invoiceStore($invoice, $request)
     {
         $purchase = new Purchase();
         $purchase->reference_no = 'avijatry-' . $invoice['id'];
@@ -196,6 +196,7 @@ class AvijatriController extends Controller
         $purchase->paid_amount = $invoice['total_payment'];
         $purchase->status = 1;
         $purchase->payment_status = 1;
+        $purchase->note = $request->note;
         $purchase->save();
 
         foreach ($invoice['invoice_entries'] as $entry) {
@@ -203,7 +204,7 @@ class AvijatriController extends Controller
             $purchase->productPurchases()->create([
                 'product_id' => $product->id,
                 'qty' => $entry['count'],
-                'recieved' => $entry['count'],
+                'recieved' => $request->received_quantity[$product->code],
                 'purchase_unit_id' => $product->unit_id,
                 'net_unit_cost' => $product->cost,
                 'selling_price' => $product->price,

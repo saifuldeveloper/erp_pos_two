@@ -59,16 +59,6 @@
                                                                     View
                                                                 </a>
                                                             </li>
-                                                            @if ($invoice['retail_store_status'] == 'Pending')
-                                                                <li>
-                                                                    <a class="btn btn-link"
-                                                                        href="{{ route('invoice.approve', $invoice['id']) }}">
-                                                                        <i class="dripicons-checkmark"></i>
-                                                                        Approve
-                                                                    </a>
-                                                                </li>
-                                                            @endif
-                                                            <li class="divider"></li>
                                                         </ul>
                                                     </div>
                                                 </td>

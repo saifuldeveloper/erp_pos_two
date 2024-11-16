@@ -613,7 +613,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::post('/product-approved', 'productApproved')->name('product-approved');
         Route::get('/invoices', 'invoices')->name('invoices.index');
         Route::get('/invoice/{id}', 'invoice')->name('invoice.show');
-        Route::get('/invoice-approve/{id}', 'invoiceApprove')->name('invoice.approve');
+        Route::post('/invoice-approve/{id}', 'invoiceApprove')->name('invoice.approve');
     });
 });
 
