@@ -58,7 +58,7 @@
       <div class="modal-content">
         {!! Form::open(['route' => 'category.store', 'method' => 'post', 'files' => true]) !!}
         <div class="modal-header">
-          <h5 id="exampleModalLabel" class="modal-title">{{trans('file.Add Brand')}}</h5>
+          <h5 id="exampleModalLabel" class="modal-title">{{trans('file.Add Parent Category')}}</h5>
           <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
         </div>
         <div class="modal-body">
