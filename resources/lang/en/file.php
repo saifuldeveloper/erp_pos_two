@@ -92,7 +92,7 @@ return [
 	'Note' => 'Note',
 	'Items' => 'Items',
 	'Total' => 'Total',
-	'Recieved' => 'Received',
+	'Received' => 'Received',
 	'Upload CSV File' => 'Upload CSV File',
 	'Download Sample File' => 'Download Sample File',
 	'Sample File' => 'Sample File',
