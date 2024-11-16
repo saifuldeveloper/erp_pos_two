@@ -575,6 +575,8 @@ return [
 
 	"Add Category" => "ক্যাটাগরি যোগ করুন",
 
+	"Add Parent Category" => "প্রধান ক্যাটাগরি যোগ করুন",
+
 	"Import Category" => "ক্যাটাগরি আমদানি",
 
 	"Parent Category" => "প্রধান ক্যাটাগরি",
@@ -858,6 +860,8 @@ return [
 	"Sent" => "প্রেরিত",
 
 	"Draft" => "খসড়া",
+
+    "DraftList" => "খসড়া তালিকা",
 
 	"Stock Value by Price" => "মূল্য অনুসারে স্টকের মান",
 

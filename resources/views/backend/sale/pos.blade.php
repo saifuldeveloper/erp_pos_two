@@ -365,7 +365,7 @@
                             <button style="background-color: #ffc107;" type="button" class="btn btn-sm btn-custom" data-toggle="modal" data-target="#recentTransaction"><i class="dripicons-clock"></i> {{trans('file.Recent Transaction')}}</button>
                         </div>
                         <div class="column-5">
-                            <button style="background-color: #ffc107;" type="button" class="btn btn-sm btn-custom" data-toggle="modal" data-target="#draftListModal"><i class="dripicons-clock"></i> {{trans('file.Draft')}}</button>
+                            <button style="background-color: #ffc107;" type="button" class="btn btn-sm btn-custom" data-toggle="modal" data-target="#draftListModal"><i class="dripicons-clock"></i> {{trans('file.DraftList')}}</button>
                         </div>
                     </div>
                 </div>
@@ -1042,7 +1042,7 @@
                 <div role="document" class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 id="exampleModalLabel" class="modal-title">{{trans('file.Draft')}} <div class="badge badge-primary">{{trans('file.latest')}} 10</div></h5>
+                      <h5 id="exampleModalLabel" class="modal-title">{{trans('file.DraftList')}} <div class="badge badge-primary">{{trans('file.latest')}} 10</div></h5>
                       <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
                     </div>
                     <div class="modal-body">
