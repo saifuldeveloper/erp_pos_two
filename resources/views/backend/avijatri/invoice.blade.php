@@ -16,7 +16,7 @@
                 <strong>Date: </strong>
                 {{ Carbon\Carbon::parse($invoice['created_at'])->format('d-m-Y') }}<br>
                 <strong>Reference:</strong>
-                {{ 'avi-' . $invoice['id'] }}<br>
+                {{ 'avijatry-' . $invoice['id'] }}<br>
                 <strong>Purchase Status: </strong>
                 {{ $invoice['retail_store_status'] }}<br><br>
                 <div class="row">

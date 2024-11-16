@@ -26,15 +26,16 @@ class AvijatriController extends Controller
     {
         try {
             $response = $this->avijatriService->getAssignedShoes();
-
             if ($response->status() == 200) {
+                $retailStore = $response->json()['retail_store'];
                 $products = $response->json()['retail_store']['retail_store_shoes'];
-                return view('backend.avijatri.index', compact('products'));
             } else {
-                abort(404);
+                $retailStore = [];
+                $products = [];
             }
+            return view('backend.avijatri.index', compact('products', 'retailStore'));
         } catch (\Exception $e) {
-            return $e->getMessage();
+            abort(404);
         }
     }
 
@@ -59,10 +60,10 @@ class AvijatriController extends Controller
             $response = $this->avijatriService->invoices();
             if ($response->status() == 200) {
                 $invoices = $response->json()['invoices'];
-                return view('backend.avijatri.invoices', compact('invoices'));
             } else {
-                abort(404);
+                $invoices = 'API error';
             }
+            return view('backend.avijatri.invoices', compact('invoices'));
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -93,7 +94,7 @@ class AvijatriController extends Controller
                 foreach ($invoice['invoice_entries'] as $entry) {
                     Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
                 }
-                Purchase::where('reference_no', 'avi-' . $id)->first() ?: $this->invoiceStore($invoice);
+                Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice);
             } else {
                 abort(404);
             }
@@ -178,7 +179,7 @@ class AvijatriController extends Controller
     public function invoiceStore($invoice)
     {
         $purchase = new Purchase();
-        $purchase->reference_no = 'avi-' . $invoice['id'];
+        $purchase->reference_no = 'avijatry-' . $invoice['id'];
         $purchase->user_id = auth()->user()->id;
         $purchase->warehouse_id = Warehouse::first()->id;
         $purchase->supplier_id = null;
@@ -189,8 +190,8 @@ class AvijatriController extends Controller
         $purchase->total_cost = $invoice['total_amount'];
         $purchase->order_tax_rate = 0;
         $purchase->order_tax = 0;
-        $purchase->order_discount = 0;
-        $purchase->shipping_cost = 0;
+        $purchase->order_discount = $invoice['discount'];
+        $purchase->shipping_cost = $invoice['transport'];
         $purchase->grand_total = $invoice['total_receivable'];
         $purchase->paid_amount = $invoice['total_payment'];
         $purchase->status = 1;
