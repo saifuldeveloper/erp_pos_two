@@ -9,7 +9,7 @@
                     </div>
                 @else
                     <div class="card-header mt-2">
-                        <h3 class="text-center"> Avijaatri Invoices </h3>
+                        <h3 class="text-center"> Avijatry Invoices </h3>
                     </div>
                     <div class="card-body">
                         <div class="row">

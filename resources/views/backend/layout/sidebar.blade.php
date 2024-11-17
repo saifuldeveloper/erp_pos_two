@@ -64,7 +64,7 @@
                         @endif
                         {{-- অভিযাত্রী প্রোডাক্ট --}}
                         <li id="product-import-menu"><a
-                                href="{{ route('get-products') }}">{{ trans('file.Avijatri Product') }}</a></li>
+                                href="{{ route('get-products') }}">{{ trans('file.Avijatry Product') }}</a></li>
                     </ul>
                 </li>
             @endif
@@ -78,7 +78,7 @@
                         <li id="purchase-list-menu"><a
                                 href="{{ route('purchases.index') }}">{{ trans('file.Purchase List') }}</a></li>
                         <li id="purchase-list-menu"><a
-                                href="{{ route('invoices.index') }}">{{ trans('file.Avijatri Purchase') }}</a></li>
+                                href="{{ route('invoices.index') }}">{{ trans('file.Avijatry Purchase') }}</a></li>
                         <?php
                         $add_permission_active = $role_has_permissions_list->where('name', 'purchases-add')->first();
                         ?>
