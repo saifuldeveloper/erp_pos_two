@@ -48,13 +48,27 @@
                     <input type="hidden" name="invoice_id" value="{{ $invoice['id'] }}">
                     <tbody>
                         @forelse ($invoice['invoice_entries'] as $key => $entry)
+                            @if ($purchase)
+                                @php
+                                    $product = App\Models\Product::where('code', $entry['shoe']['id'])->first();
+                                    $productPurchase = $purchase->productPurchases
+                                        ->where('product_id', $product->id)
+                                        ->first();
+                                @endphp
+                            @else
+                                @php
+                                    $productPurchase = null;
+                                @endphp
+                            @endif
                             <tr>
                                 <td><strong>{{ $key + 1 }}</strong></td>
                                 <td>{{ $entry['shoe']['id'] }} [{{ $entry['shoe']['id'] }}]</td>
                                 <td>{{ $entry['count'] }} Pair</td>
                                 <td>
                                     <input type="number" name="received_quantity[{{ $entry['shoe']['id'] }}]"
-                                        class="form-control" value="{{ $entry['count'] }}">
+                                        class="form-control"
+                                        value="{{ $productPurchase ? $productPurchase->recieved : $entry['count'] }}"
+                                        required min="0">
                                 </td>
                                 <td>{{ $entry['shoe']['retail_price'] }}</td>
                                 <td>0(0%)</td>
@@ -101,7 +115,7 @@
                             {{-- write note here --}}
                             <td colspan="8">
                                 <label for="note">Note:</label>
-                                <textarea name="note" id="note" class="form-control" rows="2" placeholder="Write note here..."></textarea>
+                                <textarea name="note" id="note" class="form-control" rows="2" placeholder="Write note here...">{{ $purchase->note ?? '' }}</textarea>
                             </td>
                         </tr>
                         <tr class="text-center">

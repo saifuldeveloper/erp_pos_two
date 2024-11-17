@@ -7,25 +7,26 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Product_Warehouse;
 use App\Models\Purchase;
+use App\Models\Supplier;
 use App\Models\Unit;
 use App\Models\Warehouse;
-use App\Services\AvijatriService;
+use App\Services\AvijatryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class AvijatriController extends Controller
+class AvijatryController extends Controller
 {
-    protected $avijatriService;
+    protected $avijatryService;
 
-    public function __construct(AvijatriService $avijatriService)
+    public function __construct(AvijatryService $avijatryService)
     {
-        $this->avijatriService = $avijatriService;
+        $this->avijatryService = $avijatryService;
     }
 
     public function getProducts()
     {
         try {
-            $response = $this->avijatriService->getAssignedShoes();
+            $response = $this->avijatryService->getAssignedShoes();
             if ($response->status() == 200) {
                 $retailStore = $response->json()['retail_store'];
                 $products = $response->json()['retail_store']['retail_store_shoes'];
@@ -33,7 +34,7 @@ class AvijatriController extends Controller
                 $retailStore = [];
                 $products = [];
             }
-            return view('backend.avijatri.index', compact('products', 'retailStore'));
+            return view('backend.avijatry.index', compact('products', 'retailStore'));
         } catch (\Exception $e) {
             abort(404);
         }
@@ -42,7 +43,7 @@ class AvijatriController extends Controller
     public function productApproved(Request $request)
     {
         try {
-            $response = $this->avijatriService->approveProduct($request);
+            $response = $this->avijatryService->approveProduct($request);
             if ($response->status() == 200) {
                 $message = $request->is_approved == '1' ? 'Product approved successfully' : 'Product disapproved successfully';
                 return redirect()->route('get-products')->with('success', $message);
@@ -57,13 +58,13 @@ class AvijatriController extends Controller
     public function invoices()
     {
         try {
-            $response = $this->avijatriService->invoices();
+            $response = $this->avijatryService->invoices();
             if ($response->status() == 200) {
                 $invoices = $response->json()['invoices'];
             } else {
                 $invoices = 'API error';
             }
-            return view('backend.avijatri.invoices', compact('invoices'));
+            return view('backend.avijatry.invoices', compact('invoices'));
         } catch (\Exception $e) {
             return $e->getMessage();
         }
@@ -72,11 +73,12 @@ class AvijatriController extends Controller
     public function invoice($id)
     {
         try {
-            $response = $this->avijatriService->invoice($id);
+            $purchase = Purchase::where('reference_no', 'avijatry-' . $id)->first();
+            $response = $this->avijatryService->invoice($id);
 
             if ($response->status() == 200) {
                 $invoice = $response->json()['invoice'];
-                return view('backend.avijatri.invoice', compact('invoice'));
+                return view('backend.avijatry.invoice', compact('invoice', 'purchase'));
             } else {
                 abort(404);
             }
@@ -88,18 +90,23 @@ class AvijatriController extends Controller
     public function invoiceApprove(Request $request, $id)
     {
         try {
-            $response = $this->avijatriService->invoice($id);
+            $response = $this->avijatryService->invoice($id);
             if ($response->status() == 200) {
                 $invoice = $response->json()['invoice'];
                 foreach ($invoice['invoice_entries'] as $entry) {
                     Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
                 }
-                Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice, $request);
+                // Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice, $request);
+                $purchase = Purchase::where('reference_no', 'avijatry-' . $id)->first();
+                $ret = [];
+                if (!$purchase) {
+                    $ret = $this->invoiceStore($invoice, $request);
+                }
             } else {
                 abort(404);
             }
 
-            $response = $this->avijatriService->approveInvoice($id);
+            $response = $this->avijatryService->approveInvoice($id, $ret);
             if ($response->status() == 200) {
                 return redirect()->route('invoices.index');
             } else {
@@ -112,7 +119,7 @@ class AvijatriController extends Controller
 
     public function productStore($shoe)
     {
-        $brand_id = Brand::where('title', 'Avijatri')->first()->id;
+        $brand_id = Brand::where('title', 'Avijatry')->first()->id;
         $parent_id = null;
         $category_id = null;
         $unit_id = Unit::first()->id;
@@ -182,7 +189,7 @@ class AvijatriController extends Controller
         $purchase->reference_no = 'avijatry-' . $invoice['id'];
         $purchase->user_id = auth()->user()->id;
         $purchase->warehouse_id = Warehouse::first()->id;
-        $purchase->supplier_id = null;
+        $purchase->supplier_id = Supplier::where('name', 'Avijatry')->first()->id;
         $purchase->item = count($invoice['invoice_entries']);
         $purchase->total_qty = $invoice['total_pairs'];
         $purchase->total_discount = $invoice['discount'];
@@ -213,15 +220,17 @@ class AvijatriController extends Controller
                 'tax' => 0,
                 'total' => $entry['total_price'],
             ]);
-            $product->qty += $entry['count'];
+            $product->qty += $request->received_quantity[$product->code];
             $product->save();
 
             $productWarehouse = new Product_Warehouse();
             $productWarehouse->product_id = $product->id;
             $productWarehouse->warehouse_id = Warehouse::first()->id;
-            $productWarehouse->qty = $entry['count'];
+            $productWarehouse->qty = $request->received_quantity[$product->code];
             $productWarehouse->price = $product->cost;
             $productWarehouse->save();
+
+            return $request->all();
         }
     }
 }

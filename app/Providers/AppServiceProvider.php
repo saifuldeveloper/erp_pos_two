@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use DB;
 use Illuminate\Support\Facades\URL;
-use App\Services\AvijatriService;
+use App\Services\AvijatryService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(AvijatriService::class, function ($app) {
-            return new AvijatriService();
+        $this->app->singleton(AvijatryService::class, function ($app) {
+            return new AvijatryService();
         });
     }
 
