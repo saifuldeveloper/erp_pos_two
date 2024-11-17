@@ -58,7 +58,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                       <div class="form-group">
-                                          <input type="text" name="created_at" class="form-control date" placeholder="Choose date" onkeyup='saveValue(this);'/>
+                                          <input type="text" name="created_at" class="form-control date" value="{{date('d-m-Y')}}" placeholder="Choose date" onkeyup='saveValue(this);'/>
                                       </div>
                                     </div>
                                     <div class="col-md-3">
@@ -773,7 +773,7 @@
                             </div>
                         </div>
                         <div class="row ml-2 mt-3">
-                    
+
                             @foreach($lims_category_list as $category)
                             <div class="col-md-3 category-img text-center" data-category="{{$category->id}}">
                                 {{-- @if(@$category->image)
