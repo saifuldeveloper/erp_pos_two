@@ -48,13 +48,15 @@ class AvijatriService
         ])->get($this->base_url . '/invoice/' . $invoiceId);
     }
 
-    public function approveInvoice($invoiceId)
+    public function approveInvoice($invoiceId, $ret)
     {
         return Http::withHeaders([
             'secret_key' => $this->secret_key,
         ])->post($this->base_url . '/invoice-approved', [
             'id' => $invoiceId,
             'retail_store_status' => 'Approved',
+            'retail_store_remarks' => $ret['note'],
+            'retail_store_received_quantity' => $ret['received_quantity'],
         ]);
     }
 }
