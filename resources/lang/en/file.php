@@ -1,7 +1,7 @@
 <?php
 return [
-	'Avijatri Product' => 'Avijatri Product',
-	'Avijatri Purchase' => 'Avijatry Purchase',
+	'Avijatry Product' => 'Avijatry Product',
+	'Avijatry Purchase' => 'Avijatry Purchase',
 	'dashboard' => 'Dashboard',
 	'language' => 'Language',
 	'Languages' => 'Languages',

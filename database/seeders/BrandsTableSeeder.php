@@ -14,21 +14,21 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('brands')->delete();
-        
+
         \DB::table('brands')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
-                'title' => 'Avijatri',
+                'title' => 'Avijatry',
                 'image' => '20241007040713.png',
                 'is_active' => 1,
                 'created_at' => '2024-10-07 16:07:13',
                 'updated_at' => '2024-10-07 16:07:13',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'title' => 'Apex',
@@ -37,7 +37,7 @@ class BrandsTableSeeder extends Seeder
                 'created_at' => '2024-10-07 16:07:26',
                 'updated_at' => '2024-10-07 16:07:26',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'title' => 'Bata',
@@ -46,7 +46,7 @@ class BrandsTableSeeder extends Seeder
                 'created_at' => '2024-10-07 16:08:16',
                 'updated_at' => '2024-10-07 16:08:16',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'title' => 'Lotto',
@@ -56,7 +56,7 @@ class BrandsTableSeeder extends Seeder
                 'updated_at' => '2024-10-07 16:08:29',
             ),
         ));
-        
-        
+
+
     }
 }

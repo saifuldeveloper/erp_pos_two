@@ -4,15 +4,15 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 
-class AvijatriService
+class AvijatryService
 {
     protected $secret_key;
     protected $base_url;
 
     public function __construct()
     {
-        $this->secret_key = config('services.avijatri.secret_key');
-        $this->base_url = config('services.avijatri.base_url') . '/api/v1';
+        $this->secret_key = config('services.avijatry.secret_key');
+        $this->base_url = config('services.avijatry.base_url') . '/api/v1';
     }
 
     public function getAssignedShoes()
