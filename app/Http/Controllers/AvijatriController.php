@@ -72,11 +72,12 @@ class AvijatriController extends Controller
     public function invoice($id)
     {
         try {
+            $purchase = Purchase::where('reference_no', 'avijatry-' . $id)->first();
             $response = $this->avijatriService->invoice($id);
 
             if ($response->status() == 200) {
                 $invoice = $response->json()['invoice'];
-                return view('backend.avijatri.invoice', compact('invoice'));
+                return view('backend.avijatri.invoice', compact('invoice', 'purchase'));
             } else {
                 abort(404);
             }
@@ -94,12 +95,17 @@ class AvijatriController extends Controller
                 foreach ($invoice['invoice_entries'] as $entry) {
                     Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
                 }
-                Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice, $request);
+                // Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice, $request);
+                $purchase = Purchase::where('reference_no', 'avijatry-' . $id)->first();
+                $ret = [];
+                if (!$purchase) {
+                    $ret = $this->invoiceStore($invoice, $request);
+                }
             } else {
                 abort(404);
             }
 
-            $response = $this->avijatriService->approveInvoice($id);
+            $response = $this->avijatriService->approveInvoice($id, $ret);
             if ($response->status() == 200) {
                 return redirect()->route('invoices.index');
             } else {
@@ -213,15 +219,17 @@ class AvijatriController extends Controller
                 'tax' => 0,
                 'total' => $entry['total_price'],
             ]);
-            $product->qty += $entry['count'];
+            $product->qty += $request->received_quantity[$product->code];
             $product->save();
 
             $productWarehouse = new Product_Warehouse();
             $productWarehouse->product_id = $product->id;
             $productWarehouse->warehouse_id = Warehouse::first()->id;
-            $productWarehouse->qty = $entry['count'];
+            $productWarehouse->qty = $request->received_quantity[$product->code];
             $productWarehouse->price = $product->cost;
             $productWarehouse->save();
+
+            return $request->all();
         }
     }
 }
