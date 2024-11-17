@@ -853,6 +853,8 @@ return [
 
 	"Received" => "প্রাপ্ত",
 
+    "Selling Price" => "বিক্রয়ের মূল্য",
+
 	"Ordered" => "অর্ডার",
 
 	"No Tax" => "কোন কর নেই",
