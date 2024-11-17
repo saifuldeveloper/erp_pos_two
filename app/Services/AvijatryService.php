@@ -55,8 +55,8 @@ class AvijatryService
         ])->post($this->base_url . '/invoice-approved', [
             'id' => $invoiceId,
             'retail_store_status' => 'Approved',
-            'retail_store_remarks' => $ret['note'],
-            'retail_store_received_quantity' => $ret['received_quantity'],
+            'retail_store_remarks' => $ret['note'] ?? '',
+            'retail_store_received_quantity' => $ret['received_quantity'] ?? [],
         ]);
     }
 }
