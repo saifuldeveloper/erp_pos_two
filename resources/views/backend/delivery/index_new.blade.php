@@ -192,7 +192,7 @@
                         <input type="text" name="delivered_by" class="form-control">
                     </div>
                     <div class="col-md-6 mt-2 form-group">
-                        <label>{{trans('file.Recieved By')}}</label>
+                        <label>{{trans('file.Received By')}}</label>
                         <input type="text" name="recieved_by" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">

@@ -44,7 +44,7 @@
                                         <div class="form-group">
                                             <label>{{trans('file.Purchase Status')}}</label>
                                             <select name="status" class="form-control">
-                                                <option value="1">{{trans('file.Recieved')}}</option>
+                                                <option value="1">{{trans('file.Received')}}</option>
                                                 <option value="2">{{trans('file.Partial')}}</option>
                                                 <option value="3">{{trans('file.Pending')}}</option>
                                                 <option value="4">{{trans('file.Ordered')}}</option>
@@ -83,7 +83,7 @@
                                                         <th>{{trans('file.Batch No')}}</th>
                                                         <th>{{trans('file.Expired Date')}}</th>
                                                         <th>{{trans('file.Quantity')}}</th>
-                                                        <th class="recieved-product-qty d-none">{{trans('file.Recieved')}}</th>
+                                                        <th class="recieved-product-qty d-none">{{trans('file.Received')}}</th>
                                                         <th>{{trans('file.Net Unit Cost')}}</th>
                                                         <th>{{trans('file.Discount')}}</th>
                                                         <th>{{trans('file.Tax')}}</th>

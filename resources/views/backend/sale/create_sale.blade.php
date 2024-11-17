@@ -1192,7 +1192,7 @@
                                 <div class="col-md-10">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label>{{trans('file.Recieved Amount')}} *</label>
+                                            <label>{{trans('file.Received Amount')}} *</label>
                                             <input type="text" name="paying_amount" class="form-control numkey"  step="any">
                                         </div>
                                         <div class="col-md-3">

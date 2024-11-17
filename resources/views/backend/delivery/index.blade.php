@@ -31,7 +31,7 @@
                                     ->where('sales.id', $delivery->sale_id)
                                     ->select('sales.reference_no','customers.name', 'customers.phone_number', 'customers.city', 'sales.grand_total')
                                     ->get();
-                                    
+
                     $product_names = DB::table('sales')
                                         ->join('product_sales', 'sales.id', '=', 'product_sales.sale_id')
                                         ->join('products', 'products.id', '=', 'product_sales.product_id')
@@ -184,7 +184,7 @@
                         <input type="text" name="delivered_by" class="form-control">
                     </div>
                     <div class="col-md-6 mt-2 form-group">
-                        <label>{{trans('file.Recieved By')}}</label>
+                        <label>{{trans('file.Received By')}}</label>
                         <input type="text" name="recieved_by" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">

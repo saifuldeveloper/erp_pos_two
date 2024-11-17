@@ -38,7 +38,7 @@
                         <label><strong>{{trans('file.Purchase Status')}}</strong></label>
                         <select id="purchase-status" class="form-control" name="purchase_status">
                             <option value="0">{{trans('file.All')}}</option>
-                            <option value="1">{{trans('file.Recieved')}}</option>
+                            <option value="1">{{trans('file.Received')}}</option>
                             <option value="2">{{trans('file.Partial')}}</option>
                             <option value="3">{{trans('file.Pending')}}</option>
                             <option value="4">{{trans('file.Ordered')}}</option>
@@ -188,7 +188,7 @@
                     <div class="row">
                         <input type="hidden" name="balance">
                         <div class="col-md-6">
-                            <label>{{trans('file.Recieved Amount')}} *</label>
+                            <label>{{trans('file.Received Amount')}} *</label>
                             <input type="text" name="paying_amount" class="form-control numkey"  step="any" required>
                         </div>
                         <div class="col-md-6">
@@ -256,7 +256,7 @@
                 {!! Form::open(['route' => 'purchase.update-payment', 'method' => 'post', 'class' => 'payment-form' ]) !!}
                     <div class="row">
                         <div class="col-md-6">
-                            <label>{{trans('file.Recieved Amount')}} *</label>
+                            <label>{{trans('file.Received Amount')}} *</label>
                             <input type="text" name="edit_paying_amount" class="form-control numkey"  step="any" required>
                         </div>
                         <div class="col-md-6">
