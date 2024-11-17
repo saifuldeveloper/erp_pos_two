@@ -23,6 +23,8 @@ class UnitsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'unit_name' => 'Pair',
+                'operator' => '*',
+                'operation_value' => 1,
                 'base_unit' => NULL,
                 'is_active' => 1,
                 'created_at' => '2024-10-07 16:12:13',
