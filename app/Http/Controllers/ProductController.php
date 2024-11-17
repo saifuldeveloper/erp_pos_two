@@ -308,7 +308,10 @@ class ProductController extends Controller
             $lims_product_list_without_variant = $this->productWithoutVariant();
             $lims_product_list_with_variant = $this->productWithVariant();
             $lims_brand_list = Brand::where('is_active', true)->get();
-            $lims_category_list = Category::where('is_active', true)->get();
+            $lims_category_list = Category::where('is_active', 1)
+                ->whereNotNull('parent_id')
+                ->with('parent')
+                ->get();
             $lims_unit_list = Unit::where('is_active', true)->get();
             $lims_tax_list = Tax::where('is_active', true)->get();
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
@@ -321,8 +324,8 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
-        //return response()->json($request->all());
+        $category = Category::with('parent')->find($request->category_id);
+        $new_name = $category->parent->name . '-' . $category->name;
         $this->validate($request, [
             'code' => [
                 'max:255',
@@ -330,12 +333,12 @@ class ProductController extends Controller
                     return $query->where('is_active', 1);
                 }),
             ],
-            'name' => [
-                'max:255',
-                Rule::unique('products')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ]
+            // 'name' => [
+            //     'max:255',
+            //     Rule::unique('products')->where(function ($query) {
+            //         return $query->where('is_active', 1);
+            //     }),
+            // ]
         ]);
         $data = $request->except('image', 'file');
 
@@ -345,7 +348,8 @@ class ProductController extends Controller
         } else {
             $data['variant_option'] = $data['variant_value'] = null;
         }
-        $data['name'] = preg_replace('/[\n\r]/', "<br>", htmlspecialchars(trim($data['name'])));
+        //$data['name'] = preg_replace('/[\n\r]/', "<br>", htmlspecialchars(trim($data['name'])));
+        $data['name'] = $new_name;
         $data['slug'] = Str::slug($data['name'], '-');
         $data['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '', $data['slug']);
         $data['slug'] = str_replace('\/', '/', $data['slug']);

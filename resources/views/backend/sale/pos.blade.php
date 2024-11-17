@@ -773,14 +773,15 @@
                             </div>
                         </div>
                         <div class="row ml-2 mt-3">
+                    
                             @foreach($lims_category_list as $category)
                             <div class="col-md-3 category-img text-center" data-category="{{$category->id}}">
-                                @if($category->image)
-                                    <img  src="{{url('public/images/category', $category->image)}}" />
+                                {{-- @if(@$category->image)
+                                    <img  src="{{url('public/images/category', @$category->image)}}" />
                                 @else
                                     <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
-                                @endif
-                                <p class="text-center">{{$category->name}}</p>
+                                @endif --}}
+                                <p class="text-center">{{$category->parent->name.'-'.$category->name }}</p>
                             </div>
                             @endforeach
                         </div>

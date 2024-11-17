@@ -69,7 +69,7 @@
                             <label>{{ trans('file.Parent Category') }}</label>
                             <select name="parent_id" class="form-control selectpicker" id="parent">
                                 <option value="">No {{ trans('file.parent') }}</option>
-                                @foreach ($categories_list as $category)
+                                @foreach ($parents as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
