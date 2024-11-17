@@ -23,8 +23,9 @@ class CategoryController extends Controller
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
+        $parents = Category::where('parent_id', null)->where('is_active', 1)->select('id', 'name')->get();
         if($role->hasPermissionTo('category')) {
-            return view('backend.category.create');
+            return view('backend.category.create',compact('parents'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -39,7 +40,7 @@ class CategoryController extends Controller
             4=> 'is_active',
         );
 
-        $totalData = DB::table('categories')->where('is_active', true)->count();
+        $totalData = DB::table('categories')->where('is_active', true)->whereNotNull('parent_id')->count();
         $totalFiltered = $totalData;
 
         if($request->input('length') != -1)
@@ -54,6 +55,7 @@ class CategoryController extends Controller
                         ->where('is_active', true)
                         ->limit($limit)
                         ->orderBy($order,$dir)
+                        ->whereNotNull('parent_id')
                         ->get();
         else
         {
@@ -63,12 +65,14 @@ class CategoryController extends Controller
                             ['is_active', true]
                         ])->offset($start)
                         ->limit($limit)
+                        ->whereNotNull('parent_id')
                         ->orderBy($order,$dir)->get();
 
             $totalFiltered = Category::where([
                             ['name','LIKE',"%{$search}%"],
                             ['is_active', true]
-                        ])->count();
+                        ])
+                        ->whereNotNull('parent_id')->count();
         }
         $data = array();
         if(!empty($categories))

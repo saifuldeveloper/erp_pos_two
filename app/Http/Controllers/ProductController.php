@@ -308,7 +308,7 @@ class ProductController extends Controller
             $lims_product_list_without_variant = $this->productWithoutVariant();
             $lims_product_list_with_variant = $this->productWithVariant();
             $lims_brand_list = Brand::where('is_active', true)->get();
-            $lims_category_list = Category::where('is_active', true)
+            $lims_category_list = Category::where('is_active', 1)
                 ->whereNotNull('parent_id')
                 ->with('parent')
                 ->get();

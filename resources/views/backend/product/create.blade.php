@@ -29,6 +29,22 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>{{ trans('file.category') }} *</strong> </label>
+                                            <div class="input-group">
+                                                <select name="category_id" required class="selectpicker form-control"
+                                                    data-live-search="true" data-live-search-style="begins"
+                                                    title="Select Category...">
+                                                  
+                                                    @foreach ($lims_category_list as $category)
+                                                        <option value="{{ $category->id }}">{{$category->parent->name.'-'.$category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <span class="validation-msg"></span>
+                                        </div>
+                                    </div>
                                     {{-- <div class="col-md-4">
                                         <div class="form-group ">
                                             <label>{{ trans('file.Product Name') }} *</strong> </label>
@@ -114,21 +130,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>{{ trans('file.category') }} *</strong> </label>
-                                            <div class="input-group">
-                                                <select name="category_id" required class="selectpicker form-control"
-                                                    data-live-search="true" data-live-search-style="begins"
-                                                    title="Select Category...">
-                                                    @foreach ($lims_category_list as $category)
-                                                        <option value="{{ $category->id }}">{{$category->parent->name.'-'.$category->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <span class="validation-msg"></span>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-md-4 form-group">
                                         <label>{{ trans('file.Product Unit') }} *</strong> </label>
                                         <div class="input-group">
