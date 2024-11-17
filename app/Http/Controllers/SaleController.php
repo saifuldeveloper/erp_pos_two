@@ -1232,9 +1232,14 @@ class SaleController extends Controller
             $lims_brand_list = Cache::remember('brand_list', 60*60*24*30, function () {
                 return Brand::where('is_active',true)->get();
             });
-            $lims_category_list = Cache::remember('category_list', 60*60*24*30, function () {
-                return Category::where('is_active',true)->get();
-            });
+            // $lims_category_list = Cache::remember('category_list', 60*60*24*30, function () {
+                $lims_category_list= Category::where('is_active', 1)
+                ->whereNotNull('parent_id')
+                ->with('parent')
+                ->get();
+            // });
+     
+
             $lims_table_list = Cache::remember('table_list', 60*60*24*30, function () {
                 return Table::where('is_active',true)->get();
             });
@@ -1296,7 +1301,10 @@ class SaleController extends Controller
             $product_number = count($lims_product_list);
             $lims_pos_setting_data = PosSetting::latest()->first();
             $lims_brand_list = Brand::where('is_active',true)->get();
-            $lims_category_list = Category::where('is_active',true)->get();
+            $lims_category_list  = Category::where('is_active', 1)
+            ->whereNotNull('parent_id')
+            ->with('parent')
+            ->get();
             $lims_coupon_list = Coupon::where('is_active',true)->get();
 
             $currency_list = Currency::where('is_active', true)->get();
