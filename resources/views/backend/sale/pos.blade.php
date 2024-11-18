@@ -241,7 +241,7 @@
                                                     <th class="col-sm-2">{{trans('file.Price')}}</th>
                                                     <th class="col-sm-3">{{trans('file.Quantity')}}</th>
                                                     <th class="col-sm-3">{{trans('file.Subtotal')}}</th>
-                                                    <th class="col-sm-2">{{trans('file.Action')}}</th>
+                                                    <th class="col-sm-2">{{trans('file.action')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tbody-id">

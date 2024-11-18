@@ -436,6 +436,7 @@ return [
 	"This Month" => "এই মাসে",
 
 	"This Year" => "এই বছর",
+	"Cash" =>"নগদ",
 
 	"Cash in Hand" => "হাতে নগদ",
 
@@ -1050,6 +1051,7 @@ return [
 	"Tax Number" => "ট্যাক্স নাম্বার",
 
 	"Holiday" => "ছুটি",
+	"Cancel"=>"বাতিল করুন",
 
 	"Add Holiday" => "ছুটি যোগ করুন",
 
