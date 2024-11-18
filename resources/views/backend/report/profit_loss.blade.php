@@ -88,7 +88,7 @@
         </div>
         <div class="row mt-2">
             <div class="col-md-4">
-                <div class="card"> 
+                <div class="card">
                     <div class="card-body">
 
                         <h3><i class="fa fa-money"></i> {{trans('file.profit')}} / {{trans('file.Loss')}}</h3>
@@ -140,7 +140,7 @@
                         <hr>
                         <div class="mt-3">
                             <p class="mt-2">{{trans('file.Amount')}} <span class="float-right"> {{number_format((float)$payment_recieved, $general_setting->decimal, '.', '')}}</span></p>
-                            <p class="mt-2">{{trans('file.Recieved')}} <span class="float-right">{{$payment_recieved_number}}</span></p>
+                            <p class="mt-2">{{trans('file.Received')}} <span class="float-right">{{$payment_recieved_number}}</span></p>
                             <p class="mt-2">Cash <span class="float-right">{{number_format((float)$cash_payment_sale, $general_setting->decimal, '.', '')}}</span></p>
                             <p class="mt-2">Cheque <span class="float-right">{{number_format((float)$cheque_payment_sale, $general_setting->decimal, '.', '')}}</span></p>
                             <p class="mt-2">Credit Card <span class="float-right">{{number_format((float)$credit_card_payment_sale, $general_setting->decimal, '.', '')}}</span></p>
@@ -159,7 +159,7 @@
                         <hr>
                         <div class="mt-3">
                             <p class="mt-2">{{trans('file.Amount')}} <span class="float-right"> {{number_format((float)$payment_sent, $general_setting->decimal, '.', '')}}</span></p>
-                            <p class="mt-2">{{trans('file.Recieved')}} <span class="float-right">{{$payment_sent_number}}</span></p>
+                            <p class="mt-2">{{trans('file.Received')}} <span class="float-right">{{$payment_sent_number}}</span></p>
                             <p class="mt-2">Cash <span class="float-right">{{number_format((float)$cash_payment_purchase, $general_setting->decimal, '.', '')}}</span></p>
                             <p class="mt-2">Cheque <span class="float-right">{{number_format((float)$cheque_payment_purchase, $general_setting->decimal, '.', '')}}</span></p>
                             <p class="mt-2">Credit Card <span class="float-right">{{number_format((float)$credit_card_payment_purchase, $general_setting->decimal, '.', '')}}</span></p>
@@ -202,7 +202,7 @@
                         <h3><i class="fa fa-dollar"></i> {{trans('file.Cash in Hand')}}</h3>
                         <hr>
                         <div class="mt-3">
-                            <p class="mt-2">{{trans('file.Recieved')}} <span class="float-right"> {{number_format((float)($payment_recieved), $general_setting->decimal, '.', '')}}</span></p>
+                            <p class="mt-2">{{trans('file.Received')}} <span class="float-right"> {{number_format((float)($payment_recieved), $general_setting->decimal, '.', '')}}</span></p>
                             <p class="mt-2">{{trans('file.Sent')}} <span class="float-right">- {{number_format((float)($payment_sent), $general_setting->decimal, '.', '')}}</span></p>
                             <p class="mt-2">{{trans('file.Sale Return')}} <span class="float-right">- {{number_format((float)$return[0]->grand_total, $general_setting->decimal, '.', '')}}</span></p>
                             <p class="mt-2">{{trans('file.Purchase Return')}} <span class="float-right"> {{number_format((float)$purchase_return[0]->grand_total, $general_setting->decimal, '.', '')}}</span></p>

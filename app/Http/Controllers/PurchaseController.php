@@ -199,8 +199,8 @@ class PurchaseController extends Controller
                 }
                 $nestedData['supplier'] = $supplier->name;
                 if($purchase->status == 1){
-                    $nestedData['purchase_status'] = '<div class="badge badge-success">'.trans('file.Recieved').'</div>';
-                    $purchase_status = trans('file.Recieved');
+                    $nestedData['purchase_status'] = '<div class="badge badge-success">'.trans('file.Received').'</div>';
+                    $purchase_status = trans('file.Received');
                 }
                 elseif($purchase->status == 2){
                     $nestedData['purchase_status'] = '<div class="badge badge-success">'.trans('file.Partial').'</div>';

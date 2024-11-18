@@ -58,7 +58,7 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                       <div class="form-group">
-                                          <input type="text" name="created_at" class="form-control date" placeholder="Choose date" onkeyup='saveValue(this);'/>
+                                          <input type="text" name="created_at" class="form-control date" value="{{date('d-m-Y')}}" placeholder="Choose date" onkeyup='saveValue(this);'/>
                                       </div>
                                     </div>
                                     <div class="col-md-3">
@@ -241,6 +241,7 @@
                                                     <th class="col-sm-2">{{trans('file.Price')}}</th>
                                                     <th class="col-sm-3">{{trans('file.Quantity')}}</th>
                                                     <th class="col-sm-3">{{trans('file.Subtotal')}}</th>
+                                                    <th class="col-sm-2">{{trans('file.Action')}}</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="tbody-id">
@@ -383,7 +384,7 @@
                                 <div class="col-md-10">
                                     <div class="row">
                                         <div class="col-md-3 mt-1">
-                                            <label>{{trans('file.Recieved Amount')}} *</label>
+                                            <label>{{trans('file.Received Amount')}} *</label>
                                             <input type="text" name="paying_amount" class="form-control numkey" required step="any">
                                         </div>
                                         <div class="col-md-3 mt-1">
@@ -773,7 +774,7 @@
                             </div>
                         </div>
                         <div class="row ml-2 mt-3">
-                    
+
                             @foreach($lims_category_list as $category)
                             <div class="col-md-3 category-img text-center" data-category="{{$category->id}}">
                                 {{-- @if(@$category->image)
@@ -2494,8 +2495,8 @@ function addNewProduct(data){
     // }
     cols += '<td class="col-sm-2 product-price"></td>';
     cols += '<td class="col-sm-3"><div class="input-group"><span class="input-group-btn"><button type="button" class="btn btn-default minus"><span class="dripicons-minus"></span></button></span><input type="text" name="qty[]" class="form-control qty numkey input-number" step="any" value="'+data[15]+'" required><span class="input-group-btn"><button type="button" class="btn btn-default plus"><span class="dripicons-plus"></span></button></span></div></td>';
-    cols += '<td class="col-sm-2 sub-total"></td>';
-    cols += '<td class="col-sm-1"><button type="button" class="ibtnDel btn btn-danger btn-sm"><i class="dripicons-cross"></i></button></td>';
+    cols += '<td class="col-sm-3 sub-total"></td>';
+    cols += '<td class="col-sm-2"><button type="button" class="ibtnDel btn btn-danger btn-sm"><i class="dripicons-cross"></i></button></td>';
     cols += '<input type="hidden" class="product-code" name="product_code[]" value="' + data[1] + '"/>';
     cols += '<input type="hidden" class="product-id" name="product_id[]" value="' + data[9] + '"/>';
     cols += '<input type="hidden" class="product_price" />';

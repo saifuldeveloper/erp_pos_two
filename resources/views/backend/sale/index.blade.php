@@ -202,7 +202,7 @@
                     <div class="row">
                         <input type="hidden" name="balance">
                         <div class="col-md-6">
-                            <label>{{trans('file.Recieved Amount')}} *</label>
+                            <label>{{trans('file.Received Amount')}} *</label>
                             <input type="text" name="paying_amount" class="form-control numkey" step="any" required>
                         </div>
                         <div class="col-md-6">
@@ -304,7 +304,7 @@
                 {!! Form::open(['route' => 'sale.update-payment', 'method' => 'post', 'class' => 'payment-form' ]) !!}
                     <div class="row">
                         <div class="col-md-6">
-                            <label>{{trans('file.Recieved Amount')}} *</label>
+                            <label>{{trans('file.Received Amount')}} *</label>
                             <input type="text" name="edit_paying_amount" class="form-control numkey"  step="any" required>
                         </div>
                         <div class="col-md-6">
@@ -422,7 +422,7 @@
                         <input type="text" name="delivered_by" class="form-control">
                     </div>
                     <div class="col-md-6 mt-2 form-group">
-                        <label>{{trans('file.Recieved By')}} </label>
+                        <label>{{trans('file.Received By')}} </label>
                         <input type="text" name="recieved_by" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
@@ -486,7 +486,7 @@
         columns.push({"data": field_name[i]});
     }
     columns.push({"data": "options"});
-    
+
     @if($lims_pos_setting_data)
         var public_key = <?php echo json_encode($lims_pos_setting_data->stripe_public_key) ?>;
     @endif

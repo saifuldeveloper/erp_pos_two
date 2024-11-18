@@ -19,7 +19,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{trans('file.Date')}}</label>
-                                            <input type="text" name="created_at" class="form-control date" placeholder="Choose date"/>
+                                            <input type="text" name="created_at" class="form-control date" value="{{date('d-m-Y')}}" placeholder="Choose date"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -46,7 +46,7 @@
                                         <div class="form-group">
                                             <label>{{trans('file.Purchase Status')}}</label>
                                             <select name="status" class="form-control">
-                                                <option value="1">{{trans('file.Recieved')}}</option>
+                                                <option value="1">{{trans('file.Received')}}</option>
                                                 <option value="2">{{trans('file.Partial')}}</option>
                                                 <option value="3">{{trans('file.Pending')}}</option>
                                                 <option value="4">{{trans('file.Ordered')}}</option>
@@ -153,9 +153,9 @@
                                                         <th>{{trans('file.name')}}</th>
                                                         <th>{{trans('file.Code')}}</th>
                                                         <th>{{trans('file.Quantity')}}</th>
-                                                        <th class="recieved-product-qty d-none">{{trans('file.Recieved')}}</th>
+                                                        <th class="recieved-product-qty d-none">{{trans('file.Received')}}</th>
                                                         <th>{{trans('file.Net Unit Cost')}}</th>
-                                                        <th>{{trans('file.Selling Price')}}</th>
+                                                        {{-- <th>{{trans('file.Selling Price')}}</th> --}}
                                                         <th>{{trans('file.Discount')}}</th>
                                                         <th>{{trans('file.Tax')}}</th>
                                                         <th>{{trans('file.Subtotal')}}</th>
@@ -169,7 +169,7 @@
                                                     <th id="total-qty">0</th>
                                                     <th class="recieved-product-qty d-none"></th>
                                                     <th></th>
-                                                    <th></th>
+                                                    {{-- <th></th> --}}
                                                     <th id="total-discount">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
                                                     <th id="total-tax">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
                                                     <th id="total">{{number_format(0, $general_setting->decimal, '.', '')}}</th>
@@ -637,16 +637,16 @@
                         cols += '<td class="recieved-product-qty"><input type="number" class="form-control recieved" name="recieved[]" value="1" step="any"/></td>';
                     else
                         cols += '<td class="recieved-product-qty d-none"><input type="number" class="form-control recieved" name="recieved[]" value="0" step="any"/></td>';
-                    if(data[10]) {
-                        cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
-                        cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
-                    }
-                    else {
-                        cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
-                        cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
-                    }
+                    // if(data[10]) {
+                    //     cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
+                    //     cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
+                    // }
+                    // else {
+                    //     cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
+                    //     cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
+                    // }
 
-                    cols += '<td class="net_unit_cost"></td>';
+                    cols += '<td class="net_unit_cost">'+data[2]+'</td>';
                     cols += '<td class="discount">{{number_format(0, $general_setting->decimal, '.', '')}}</td>';
                     cols += '<td class="tax"></td>';
                     cols += '<td class="sub-total"></td>';
@@ -655,7 +655,7 @@
                     cols += '<input type="hidden" class="product-id" name="product_id[]" value="' + data[9] + '"/>';
                     cols += '<input type="hidden" class="purchase-unit" name="purchase_unit[]" value="' + temp_unit_name[0] + '"/>';
                     cols += '<input type="hidden" class="buying_price" name="net_unit_cost[]" />';
-                    cols += '<input type="hidden" class="selling_price" name="selling_price[]" />';
+                    cols += '<input type="hidden" class="selling_price" name="selling_price[]" value="' + data[12] + '" />';
                     cols += '<input type="hidden" class="discount-value" name="discount[]" />';
                     cols += '<input type="hidden" class="tax-rate" name="tax_rate[]" value="' + data[3] + '"/>';
                     cols += '<input type="hidden" class="tax-value" name="tax[]" />';
