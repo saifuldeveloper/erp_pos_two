@@ -80,7 +80,7 @@
                                             <label>{{trans('file.Warehouse')}} *</label>
                                             <select required name="warehouse_id" id="warehouse_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select warehouse...">
                                                 @foreach($lims_warehouse_list as $warehouse)
-                                                <option value="{{$warehouse->id}}" {{ $warehouse->is_default ? 'selected' : '' }}>{{$warehouse->name}}</option>
+                                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

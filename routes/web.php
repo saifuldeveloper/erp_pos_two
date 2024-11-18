@@ -60,6 +60,7 @@ use App\Http\Controllers\TransferController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\WasteController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -299,6 +300,13 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::get('sales/check-discount', 'checkDiscount');
     });
     Route::resource('sales', SaleController::class);
+
+    Route::controller(WasteController::class)->group(function () {
+        Route::get('wastes', 'index')->name('waste.index');
+        Route::get('wastes/data', 'wastedata')->name('waste.wastedata');
+        Route::get('receiver-list/{type}', 'getReceiverList')->name('waste.getReceiverList');
+        Route::post('waste/store', 'store')->name('waste.store');
+    });
 
 
     Route::controller(DeliveryController::class)->group(function () {

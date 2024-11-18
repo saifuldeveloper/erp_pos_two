@@ -1405,4 +1405,11 @@ return [
     "total liabilities" => "Total Liabilities",
     "total cashin" => "Total Cash in",
     "total cashout" => "Total Cash Out",
+
+    "Waste List" => "Waste List",
+    "Add Waste" => "Add Waste",
+    "Receiver Type" => "Receiver Type",
+    "Receiver" => "Receiver",
+    "Select One" => "Select One",
+    "Not Found" => "Not Found",
 ];
