@@ -1304,4 +1304,10 @@ return [
     "total cashout" => "সমস্ত ক্যাশ আউট",
     "current balance" > "বর্তমান হিসাব",
 	'Avijatry Product' => 'অভিযাত্রী প্রোডাক্ট',
+    "Waste List" => "জোলাপ তালিকা",
+    "Add Waste" => "জোলাপ যোগ করুন",
+    "Receiver Type" => "প্রাপকের ধরন",
+    "Receiver" => "প্রাপক",
+    "Select One" => "একটি নির্বাচন করুন",
+    "Not Found" => "পাওয়া যায়নি",
 ];

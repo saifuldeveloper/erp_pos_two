@@ -1141,7 +1141,7 @@
 								                </div>
 								            </div>
 								        </span>
-								        <span>
+								        {{-- <span>
 						                    <div aria-checked="false" aria-disabled="false">
 						                    	<div class="checkbox">
 							                    	@if(in_array("dso-report", $all_permission))
@@ -1152,7 +1152,7 @@
 													<label for="dso-report" class="padding05">{{trans('file.Daily Sale Objective Report')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-								        </span>
+								        </span> --}}
 						                <span>
 						                    <div aria-checked="false" aria-disabled="false">
 						                    	<div class="checkbox">
@@ -1338,7 +1338,7 @@
 								                </div>
 								            </div>
 						                </span>
-						                <span>
+						                {{-- <span>
 								            <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
 							                    	@if(in_array("currency", $all_permission))
@@ -1349,7 +1349,7 @@
 								                    <label for="currency" class="padding05">{{trans('file.Currency')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-						                </span>
+						                </span> --}}
 						                <span>
 								            <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
@@ -1362,7 +1362,7 @@
 								                </div>
 								            </div>
 						                </span>
-						                <span>
+						                {{-- <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
 							                    	@if(in_array("backup_database", $all_permission))
@@ -1373,7 +1373,7 @@
 								                    <label for="backup_database" class="padding05">{{trans('file.Backup Database')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-						                </span>
+						                </span> --}}
 						            	<span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
@@ -1386,7 +1386,7 @@
 								                </div>
 								            </div>
 						                </span>
-						                <span>
+						                {{-- <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
 							                    	@if(in_array("mail_setting", $all_permission))
@@ -1397,8 +1397,8 @@
 								                    <label for="mail_setting" class="padding05">{{trans('file.Mail Setting')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-						                </span>
-						                <span>
+						                </span> --}}
+						                {{-- <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
 							                    	@if(in_array("sms_setting", $all_permission))
@@ -1409,8 +1409,8 @@
 								                    <label for="sms_setting" class="padding05">{{trans('file.SMS Setting')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-						                </span>
-						                <span>
+						                </span> --}}
+						                {{-- <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
 							                    	@if(in_array("create_sms", $all_permission))
@@ -1421,7 +1421,7 @@
 								                    <label for="create_sms" class="padding05">{{trans('file.Create SMS')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-						                </span>
+						                </span> --}}
 						                <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
@@ -1446,7 +1446,7 @@
 								                </div>
 								            </div>
 						                </span>
-						                <span>
+						                {{-- <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
 							                    	@if(in_array("reward_point_setting", $all_permission))
@@ -1457,7 +1457,7 @@
 								                    <label for="reward_point_setting" class="padding05">{{trans('file.Reward Point Setting')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-						                </span>
+						                </span> --}}
 						            </td>
 						        </tr>
 						        <tr>
@@ -1559,7 +1559,7 @@
 								                </div>
 								            </div>
 						                </span>
-						                <span>
+						                {{-- <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
 							                    	@if(in_array("empty_database", $all_permission))
@@ -1570,7 +1570,7 @@
 								                    <label for="empty_database" class="padding05">{{trans('file.Empty Database')}} &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
-						                </span>
+						                </span> --}}
 						                <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">

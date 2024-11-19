@@ -470,6 +470,7 @@
                                     <button class="btn btn-block btn-primary qc-btn sound-btn" data-amount="20" type="button">20</button>
                                     <button class="btn btn-block btn-primary qc-btn sound-btn" data-amount="50" type="button">50</button>
                                     <button class="btn btn-block btn-primary qc-btn sound-btn" data-amount="100" type="button">100</button>
+                                    <button class="btn btn-block btn-primary qc-btn sound-btn" data-amount="200" type="button">200</button>
                                     <button class="btn btn-block btn-primary qc-btn sound-btn" data-amount="500" type="button">500</button>
                                     <button class="btn btn-block btn-primary qc-btn sound-btn" data-amount="1000" type="button">1000</button>
                                     <button class="btn btn-block btn-danger qc-btn sound-btn" data-amount="0" type="button">{{trans('file.Clear')}}</button>
