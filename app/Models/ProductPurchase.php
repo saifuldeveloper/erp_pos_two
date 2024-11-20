@@ -24,4 +24,14 @@ class ProductPurchase extends Model
         "tax",
         "total"
     ];
+
+    public function purchase()
+    {
+        return $this->belongsTo('App\Models\Purchase');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }

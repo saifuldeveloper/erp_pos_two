@@ -233,6 +233,7 @@ return [
 	'Import Sale' => 'Import Sale',
 	'Sale Status' => 'Sale Status',
 	'Payment Status' => 'Payment Status',
+    'Brand' => 'Brand',
 	'Generate Invoice' => 'Generate Invoice',
 	'Add Payment' => 'Add Payment',
 	'View Payment' => 'View Payment',

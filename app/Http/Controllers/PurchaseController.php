@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Unit;
 use App\Models\Tax;
 use App\Models\Account;
+use App\Models\Brand;
 use App\Models\Purchase;
 use App\Models\ProductPurchase;
 use App\Models\Product_Warehouse;
@@ -61,6 +62,10 @@ class PurchaseController extends Controller
                 $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d') )))));
                 $ending_date = date("Y-m-d");
             }
+            if($request->input('brand_id'))
+                $brand_id = $request->input('brand_id');
+            else
+                $brand_id = 0;
             $permissions = Role::findByName($role->name)->permissions;
             foreach ($permissions as $permission)
                 $all_permission[] = $permission->name;
@@ -77,7 +82,8 @@ class PurchaseController extends Controller
             foreach($custom_fields as $fieldName) {
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
-            return view('backend.purchase.index', compact( 'lims_account_list', 'lims_warehouse_list', 'all_permission', 'lims_pos_setting_data', 'warehouse_id', 'starting_date', 'ending_date', 'purchase_status', 'payment_status', 'custom_fields', 'field_name'));
+            $lims_brand_list = Brand::where('is_active', true)->get();
+            return view('backend.purchase.index', compact( 'lims_account_list', 'lims_warehouse_list', 'all_permission', 'lims_pos_setting_data', 'warehouse_id', 'starting_date', 'ending_date', 'purchase_status', 'payment_status','brand_id', 'custom_fields', 'field_name', 'lims_brand_list'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -95,6 +101,7 @@ class PurchaseController extends Controller
         $warehouse_id = $request->input('warehouse_id');
         $purchase_status = $request->input('purchase_status');
         $payment_status = $request->input('payment_status');
+        $brand_id = $request->input('brand_id');
 
         $q = Purchase::whereDate('created_at', '>=' ,$request->input('starting_date'))->whereDate('created_at', '<=' ,$request->input('ending_date'));
         if(Auth::user()->role_id > 2 && config('staff_access') == 'own')
@@ -140,6 +147,11 @@ class PurchaseController extends Controller
                 $q = $q->where('status', $purchase_status);
             if($payment_status)
                 $q = $q->where('payment_status', $payment_status);
+            if($brand_id){
+                $q = $q->whereHas('productPurchases.product', function($query) use ($brand_id) {
+                    $query->where('brand_id', $brand_id);
+                });
+            }
             $purchases = $q->get();
         }
         else
