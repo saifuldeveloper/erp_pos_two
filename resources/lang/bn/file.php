@@ -460,6 +460,8 @@ return [
 
 	"Payment Status" => "পরিশোধের অবস্থা",
 
+    "Brand" => "ব্র্যান্ড",
+
 	"Generate Invoice" => "চালান তৈরি করুন",
 
 	"Add Payment" => "পেমেন্ট যোগ করুন",
