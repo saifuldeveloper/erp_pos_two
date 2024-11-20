@@ -203,42 +203,40 @@ class ReportController extends Controller
     public function dailySale($year, $month)
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('daily-sale')){
+        if ($role->hasPermissionTo('daily-sale')) {
             $start = 1;
             $number_of_day = date('t', mktime(0, 0, 0, $month, 1, $year));
-            while($start <= $number_of_day)
-            {
-                if($start < 10)
-                    $date = $year.'-'.$month.'-0'.$start;
+            while ($start <= $number_of_day) {
+                if ($start < 10)
+                    $date = $year . '-' . $month . '-0' . $start;
                 else
-                    $date = $year.'-'.$month.'-'.$start;
-                $query1 = array(
-                    'SUM(total_discount) AS total_discount',
-                    'SUM(order_discount) AS order_discount',
-                    'SUM(total_tax) AS total_tax',
-                    'SUM(order_tax) AS order_tax',
-                    'SUM(shipping_cost) AS shipping_cost',
-                    'SUM(grand_total) AS grand_total'
-                );
-                $sale_data = Sale::whereDate('created_at', $date)->selectRaw(implode(',', $query1))->get();
-                $total_discount[$start] = $sale_data[0]->total_discount;
-                $order_discount[$start] = $sale_data[0]->order_discount;
-                $total_tax[$start] = $sale_data[0]->total_tax;
-                $order_tax[$start] = $sale_data[0]->order_tax;
-                $shipping_cost[$start] = $sale_data[0]->shipping_cost;
-                $grand_total[$start] = $sale_data[0]->grand_total;
+                    $date = $year . '-' . $month . '-' . $start;
+                $sale_data = Sale::with('productSales.product.brand')
+                    ->whereDate('created_at', $date)
+                    ->get();
+                $grand_total[$start] = 0;
+                $brand_total[$start] = [];
+                foreach ($sale_data as $sale) {
+                    $grand_total[$start] += $sale->grand_total;
+                    foreach ($sale->productSales as $productSale) {
+                        $brand_name = $productSale->product->brand->title ?? 'Unknown';
+                        if (!isset($brand_total[$start][$brand_name])) {
+                            $brand_total[$start][$brand_name] = 0;
+                        }
+                        $brand_total[$start][$brand_name] += $productSale->total;
+                    }
+                }
                 $start++;
             }
-            $start_day = date('w', strtotime($year.'-'.$month.'-01')) + 1;
-            $prev_year = date('Y', strtotime('-1 month', strtotime($year.'-'.$month.'-01')));
-            $prev_month = date('m', strtotime('-1 month', strtotime($year.'-'.$month.'-01')));
-            $next_year = date('Y', strtotime('+1 month', strtotime($year.'-'.$month.'-01')));
-            $next_month = date('m', strtotime('+1 month', strtotime($year.'-'.$month.'-01')));
+            $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
+            $prev_year = date('Y', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
+            $prev_month = date('m', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
+            $next_year = date('Y', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
+            $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $warehouse_id = 0;
-            return view('backend.report.daily_sale', compact('total_discount','order_discount', 'total_tax', 'order_tax', 'shipping_cost', 'grand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
-        }
-        else
+            return view('backend.report.daily_sale', compact('grand_total', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
+        } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
