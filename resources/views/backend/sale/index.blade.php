@@ -16,7 +16,7 @@
             </div>
             {!! Form::open(['route' => 'sales.index', 'method' => 'get']) !!}
             <div class="row ml-1 mt-2">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label><strong>{{trans('file.Date')}}</strong></label>
                         <input type="text" class="daterangepicker-field form-control" value="{{$starting_date}} To {{$ending_date}}" required />
@@ -24,7 +24,7 @@
                         <input type="hidden" name="ending_date" value="{{$ending_date}}" />
                     </div>
                 </div>
-                <div class="col-md-3 @if(\Auth::user()->role_id > 2){{'d-none'}}@endif">
+                <div class="col-md-2 @if(\Auth::user()->role_id > 2){{'d-none'}}@endif">
                     <div class="form-group">
                         <label><strong>{{trans('file.Warehouse')}}</strong></label>
                         <select id="warehouse_id" name="warehouse_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" >
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label><strong>{{trans('file.Sale Status')}}</strong></label>
                         <select id="sale-status" class="form-control" name="sale_status">
@@ -46,7 +46,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         <label><strong>{{trans('file.Payment Status')}}</strong></label>
                         <select id="payment-status" class="form-control" name="payment_status">
@@ -58,9 +58,20 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-2 mt-3">
+                <div class="col-md-2">
                     <div class="form-group">
-                        <button class="btn btn-primary" id="filter-btn" type="submit">{{trans('file.submit')}}</button>
+                        <label><strong>{{trans('file.Brand')}}</strong></label>
+                        <select id="brand_id" class="form-control" name="brand_id">
+                            <option value="0">{{trans('file.All')}}</option>
+                            @foreach($lims_brand_list as $brand)
+                                <option value="{{$brand->id}}">{{$brand->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2 mt-4">
+                    <div class="form-group">
+                        <button class="btn btn-primary w-100" id="filter-btn" type="submit">{{trans('file.submit')}}</button>
                     </div>
                 </div>
             </div>
@@ -501,6 +512,7 @@
     var warehouse_id = <?php echo json_encode($warehouse_id); ?>;
     var sale_status = <?php echo json_encode($sale_status); ?>;
     var payment_status = <?php echo json_encode($payment_status); ?>;
+    var brand_id = <?php echo json_encode($brand_id); ?>;
     var balance = <?php echo json_encode($balance) ?>;
     var expired_date = <?php echo json_encode($expired_date) ?>;
     var current_date = <?php echo json_encode(date("Y-m-d")) ?>;
@@ -522,6 +534,7 @@
     $("#warehouse_id").val(warehouse_id);
     $("#sale-status").val(sale_status);
     $("#payment-status").val(payment_status);
+    $("#brand_id").val(brand_id);
 
     $(".daterangepicker-field").daterangepicker({
       callback: function(startDate, endDate, period){
@@ -866,7 +879,8 @@
                 ending_date: ending_date,
                 warehouse_id: warehouse_id,
                 sale_status: sale_status,
-                payment_status: payment_status
+                payment_status: payment_status,
+                brand_id: brand_id,
             },
             dataType: "json",
             type:"post"
