@@ -253,21 +253,20 @@ class ReportController extends Controller
                 $date = $year.'-'.$month.'-0'.$start;
             else
                 $date = $year.'-'.$month.'-'.$start;
-            $query1 = array(
-                'SUM(total_discount) AS total_discount',
-                'SUM(order_discount) AS order_discount',
-                'SUM(total_tax) AS total_tax',
-                'SUM(order_tax) AS order_tax',
-                'SUM(shipping_cost) AS shipping_cost',
-                'SUM(grand_total) AS grand_total'
-            );
-            $sale_data = Sale::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', $date)->selectRaw(implode(',', $query1))->get();
-            $total_discount[$start] = $sale_data[0]->total_discount;
-            $order_discount[$start] = $sale_data[0]->order_discount;
-            $total_tax[$start] = $sale_data[0]->total_tax;
-            $order_tax[$start] = $sale_data[0]->order_tax;
-            $shipping_cost[$start] = $sale_data[0]->shipping_cost;
-            $grand_total[$start] = $sale_data[0]->grand_total;
+            $sale_data = Sale::with('productSales.product.brand')->where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', $date)->get();
+            $grand_total[$start] = 0;
+            $brand_total[$start] = [];
+            foreach($sale_data as $sale)
+            {
+                $grand_total[$start] += $sale->grand_total;
+                foreach($sale->productSales as $productSale)
+                {
+                    $brand_name = $productSale->product->brand->title ?? 'Unknown';
+                    if(!isset($brand_total[$start][$brand_name]))
+                        $brand_total[$start][$brand_name] = 0;
+                    $brand_total[$start][$brand_name] += $productSale->total;
+                }
+            }
             $start++;
         }
         $start_day = date('w', strtotime($year.'-'.$month.'-01')) + 1;
@@ -277,7 +276,7 @@ class ReportController extends Controller
         $next_month = date('m', strtotime('+1 month', strtotime($year.'-'.$month.'-01')));
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $warehouse_id = $data['warehouse_id'];
-        return view('backend.report.daily_sale', compact('total_discount','order_discount', 'total_tax', 'order_tax', 'shipping_cost', 'grand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.daily_sale', compact('grand_total', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
 
     }
 
