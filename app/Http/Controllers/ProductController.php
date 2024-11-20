@@ -1184,7 +1184,10 @@ class ProductController extends Controller
 
     public function generateCode()
     {
-        $id = Keygen::numeric(8)->generate();
+
+        $id = Product::getNextId();
+
+        // $id = Keygen::numeric(8)->generate();
         return $id;
     }
 

@@ -52,8 +52,8 @@ class RolesTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 5,
-                'name' => 'Customer',
-                'description' => 'Customers can access their own data',
+                'name' => 'Billers',
+                'description' => 'Billerss can access their own data',
                 'is_active' => 1,
                 'created_at' => '2020-11-05 11:43:16',
                 'updated_at' => '2020-11-15 05:24:15',
