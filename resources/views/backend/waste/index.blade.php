@@ -17,14 +17,10 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('waste.create') }}" class="btn btn-info add-sale-btn">
-                <i class="dripicons-plus"></i>
-                {{ trans('file.Add Waste') }}
-            </a>
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table id="wasteTable" class="table table-striped table-hover">
+                        <table id="wasteTable" class="table table-striped table-hover" style="width:100% !important;">
                             <thead>
                                 <tr>
                                     <th>{{ trans('file.Date') }}</th>
@@ -88,9 +84,9 @@
 
 @push('scripts')
     <script type="text/javascript">
-        $("ul#sale").siblings('a').attr('aria-expanded', 'true');
-        $("ul#sale").addClass("show");
-        $("ul#sale #waste-list-menu").addClass("active");
+        $("ul#waste").siblings('a').attr('aria-expanded', 'true');
+        $("ul#waste").addClass("show");
+        $("ul#waste #waste-list-menu").addClass("active");
 
         $(document).ready(function() {
             $('#wasteTable').DataTable({
@@ -119,9 +115,35 @@
                     {
                         data: 'id',
                         render: function(data, type, row) {
-                            return `<button class="btn btn-sm btn-primary view-waste" data-id="${data}" data-toggle="modal" data-target="#view-waste-${data}">
-                                <i class="fa fa-eye"></i>
-                                </button>`;
+                            return `<div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ trans('file.action') }}
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+                                <li>
+                                    <a class="open-EditbrandDialog btn btn-link" href="{{ url('wastes') }}/${data}/edit">
+                                        <i class="dripicons-document-edit"></i>
+                                        {{ trans('file.edit') }}
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="btn btn-link" href="javascript:void(0)" data-toggle="modal" data-target="#view-waste-${data}">
+                                        <i class="dripicons-preview"></i>
+                                        {{ trans('file.View') }}
+                                    </a>
+                                </li>
+                                <form action="{{ url('wastes') }}/${data}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <li class="divider"></li>
+                                <li>
+                                    <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure want to delete?')"><i class="dripicons-trash"></i> {{ trans('file.delete') }}</button>
+                                </li>
+                                </form>
+                            </ul>
+                        </div>`;
                         }
                     }
                 ],
@@ -178,7 +200,6 @@
                     },
                 ],
             });
-
         });
     </script>
 @endpush

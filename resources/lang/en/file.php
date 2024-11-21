@@ -1406,9 +1406,10 @@ return [
     "total liabilities" => "Total Liabilities",
     "total cashin" => "Total Cash in",
     "total cashout" => "Total Cash Out",
-
+    "Waste" => "Waste",
     "Waste List" => "Waste List",
     "Add Waste" => "Add Waste",
+    "Edit Waste" => "Edit Waste",
     "Receiver Type" => "Receiver Type",
     "Receiver" => "Receiver",
     "Select One" => "Select One",

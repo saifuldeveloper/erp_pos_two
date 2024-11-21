@@ -35,7 +35,8 @@
                         @if ($category_permission_active)
                             <li id="category-menu"><a href="{{ route('category.index') }}">{{ __('file.category') }}</a>
                             </li>
-                            <li id="parent-menu"><a href="{{ route('category.parent') }}">{{ __('file.Parent Category') }}</a>
+                            <li id="parent-menu"><a
+                                    href="{{ route('category.parent') }}">{{ __('file.Parent Category') }}</a>
                             </li>
                         @endif
                         @if ($index_permission_active)
@@ -114,8 +115,6 @@
                             <li><a href="{{ route('sale.pos') }}">POS</a></li>
                             <li id="sale-create-menu"><a
                                     href="{{ route('sales.create') }}">{{ trans('file.Add Sale') }}</a></li>
-                            <li id="waste-list-menu"><a
-                                href="{{ route('waste.index') }}">{{ trans('file.Waste List') }}</a></li>
                             {{-- <li id="sale-import-menu"><a href="{{url('sales/sale_by_csv')}}">{{trans('file.Import Sale By CSV')}}</a></li> --}}
                         @endif
 
@@ -135,7 +134,20 @@
                     </ul>
                 </li>
             @endif
-
+            <li>
+                <a href="#waste" aria-expanded="false" data-toggle="collapse">
+                    <i class="dripicons-trash"></i>
+                    <span>{{ trans('file.Waste') }}</span>
+                </a>
+                <ul id="waste" class="collapse list-unstyled ">
+                    <li id="waste-list-menu">
+                        <a href="{{ route('waste.index') }}">{{ trans('file.Waste List') }}</a>
+                    </li>
+                    <li id="waste-create-menu">
+                        <a href="{{ route('waste.create') }}">{{ trans('file.Add Waste') }}</a>
+                    </li>
+                </ul>
+            </li>
             <?php
             $index_permission_active = $role_has_permissions_list->where('name', 'expenses-index')->first();
             ?>

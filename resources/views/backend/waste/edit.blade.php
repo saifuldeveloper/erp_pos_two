@@ -10,13 +10,13 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h4>{{ trans('file.Add Waste') }}</h4>
+                            <h4>{{ trans('file.Edit Waste') }}</h4>
                         </div>
                         <div class="card-body">
                             <p class="italic">
                                 <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
                             </p>
-                            {!! Form::open(['route' => 'waste.store', 'method' => 'POST', 'id' => 'waste-form']) !!}
+                            {!! Form::model($waste, ['route' => ['waste.update', $waste->id], 'method' => 'PUT', 'id' => 'waste-form']) !!}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
@@ -27,10 +27,18 @@
                                                     class="selectpicker form-control">
                                                     <option selected disabled value="">{{ trans('file.Select One') }}
                                                     </option>
-                                                    <option value="supplier">{{ trans('file.Supplier') }}</option>
-                                                    <option value="customer">{{ trans('file.customer') }}</option>
-                                                    <option value="biller">{{ trans('file.Biller') }}</option>
-                                                    <option value="employee">{{ trans('file.Employee') }}</option>
+                                                    <option value="supplier"
+                                                        {{ $waste->receiver_type == 'supplier' ? 'selected' : '' }}>
+                                                        {{ trans('file.Supplier') }}</option>
+                                                    <option value="customer"
+                                                        {{ $waste->receiver_type == 'customer' ? 'selected' : '' }}>
+                                                        {{ trans('file.customer') }}</option>
+                                                    <option value="biller"
+                                                        {{ $waste->receiver_type == 'biller' ? 'selected' : '' }}>
+                                                        {{ trans('file.Biller') }}</option>
+                                                    <option value="employee"
+                                                        {{ $waste->receiver_type == 'employee' ? 'selected' : '' }}>
+                                                        {{ trans('file.Employee') }}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -40,13 +48,19 @@
                                                 <select name="receiver_id" id="receiver_id"
                                                     class="selectpicker form-control" data-live-search="true"
                                                     data-live-search-style="begins" title="Select receiver...">
+                                                    @foreach ($receivers as $receiver)
+                                                        <option value="{{ $receiver->id }}-{{ $receiver->name }}"
+                                                            {{ $waste->receiver_id == $receiver->id ? 'selected' : '' }}>
+                                                            {{ $receiver->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>{{ trans('file.Note') }}</label>
-                                                <input type="text" name="note" class="form-control">
+                                                <input type="text" name="note" class="form-control"
+                                                    value="{{ $waste->note }}">
                                             </div>
                                         </div>
                                     </div>
@@ -78,14 +92,44 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($waste->items as $item)
+                                                            <tr>
+                                                                <td>{{ $item->product->name }}</td>
+                                                                <td>{{ $item->product->code }}</td>
+                                                                <td><input type="number" class="form-control qty"
+                                                                        name="product[{{ $loop->index }}][qty]"
+                                                                        min="1" value="{{ $item->qty }}"
+                                                                        required /></td>
+                                                                <td class="unit_price">{{ $item->product->price }}</td>
+                                                                <td class="sub-total">
+                                                                    {{ $item->qty * $item->product->price }}</td>
+                                                                <td><button type="button"
+                                                                        class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button>
+                                                                </td>
+                                                                <input type="hidden" class="product-code"
+                                                                    name="product[{{ $loop->index }}][code]"
+                                                                    value="{{ $item->product->code }}" />
+                                                                <input type="hidden" class="product-id"
+                                                                    name="product[{{ $loop->index }}][product_id]"
+                                                                    value="{{ $item->product->id }}" />
+                                                                <input type="hidden" class="unit_price"
+                                                                    name="product[{{ $loop->index }}][unit_price]"
+                                                                    value="{{ $item->product->price }}" />
+                                                                <input type="hidden" class="subtotal-value"
+                                                                    name="product[{{ $loop->index }}][subtotal]"
+                                                                    value="{{ $item->qty * $item->product->price }}" />
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                     <tfoot class="tfoot active">
                                                         <th colspan="2">{{ trans('file.Total') }}</th>
-                                                        <th id="total-qty">0</th>
+                                                        <th id="total-qty">{{ $waste->items->sum('qty') }}</th>
                                                         <th></th>
-                                                        <input type="hidden" name="total">
+                                                        <input type="hidden" name="total"
+                                                            value="{{ $waste->total_price }}">
                                                         <th id="total">
-                                                            {{ number_format(0, $general_setting->decimal, '.', '') }}</th>
+                                                            {{ number_format($waste->total_price, $general_setting->decimal, '.', '') }}
+                                                        </th>
                                                         <th><i class="dripicons-trash"></i></th>
                                                     </tfoot>
                                                 </table>
@@ -111,7 +155,7 @@
     <script type="text/javascript">
         $("ul#waste").siblings('a').attr('aria-expanded', 'true');
         $("ul#waste").addClass("show");
-        $("ul#waste #waste-create-menu").addClass("active");
+        $("ul#waste #waste-list-menu").addClass("active");
         $('#receiver_type').on('change', function() {
             var type = $(this).val();
             $.get('{{ route('waste.getReceiverList', ':type') }}'.replace(':type', type), function(data) {
@@ -119,7 +163,6 @@
                 $('.selectpicker').selectpicker('refresh');
             });
         });
-
 
         $('#lims_productcodeSearch').on('input', function() {
             var receiver_type = $('#receiver_type').val();
@@ -136,7 +179,6 @@
         });
 
         var data = @json($products);
-        // console.log(data); // $products = [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id, $expired_date, $is_embeded];
         var lims_product_array = [];
         product_code = data[0];
         product_name = data[1];
@@ -159,7 +201,7 @@
         });
 
         var lims_productcodeSearch = $('#lims_productcodeSearch');
-        var index = 0;
+        var index = {{ $waste->items->count() }};
 
         lims_productcodeSearch.autocomplete({
             source: function(request, response) {
