@@ -1,82 +1,100 @@
 @extends('backend.layout.main') @section('content')
-
-@section('content')
-@if(session()->has('not_permitted'))
-  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
-@endif
-
-<section class="forms">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header d-flex align-items-center" id="waste-header">
-                        <a href="#" class="btn btn-primary collapsed float-right" data-toggle="collapse" data-target="#waste-form" aria-expanded="false">{{ trans('file.Add Waste')}} <i class="dripicons-plus"></i></a>
-                    </div>
-                    <div class="collapse" id="waste-form">
+    @if (session()->has('not_permitted'))
+        <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert"
+                aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
+    @endif
+    <section class="forms">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <h4>{{ trans('file.Add Waste') }}</h4>
+                        </div>
                         <div class="card-body">
-                            <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
+                            <p class="italic">
+                                <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
+                            </p>
                             {!! Form::open(['route' => 'waste.store', 'method' => 'POST', 'id' => 'waste-form']) !!}
-                            @csrf
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>{{ trans('file.Receiver Type') }} *</label>
+                                                <select name="receiver_type" id="receiver_type"
+                                                    class="selectpicker form-control">
+                                                    <option selected disabled value="">{{ trans('file.Select One') }}
+                                                    </option>
+                                                    <option value="supplier">{{ trans('file.Supplier') }}</option>
+                                                    <option value="customer">{{ trans('file.customer') }}</option>
+                                                    <option value="biller">{{ trans('file.Biller') }}</option>
+                                                    <option value="employee">{{ trans('file.Employee') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group" id="receiverList">
+                                                <label>{{ trans('file.Receiver') }} *</label>
+                                                <select name="receiver_id" id="receiver_id"
+                                                    class="selectpicker form-control" data-live-search="true"
+                                                    data-live-search-style="begins" title="Select receiver...">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ trans('file.Note') }}</label>
+                                                <input type="text" name="note" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <label>{{ trans('file.Select Product') }}</label>
+                                            <div class="search-box input-group">
+                                                <button type="button" class="btn btn-secondary btn-lg"><i
+                                                        class="fa fa-barcode"></i></button>
+                                                <input type="text" name="product_code_name" id="lims_productcodeSearch"
+                                                    placeholder="Please type product code and select..."
+                                                    class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-md-12">
+                                            <h5>{{ trans('file.Order Table') }} *</h5>
+                                            <div class="table-responsive mt-3">
+                                                <table id="myTable" class="table table-hover order-list">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>{{ trans('file.name') }}</th>
+                                                            <th>{{ trans('file.Code') }}</th>
+                                                            <th>{{ trans('file.Quantity') }}</th>
+                                                            <th>{{ trans('file.Net Unit Price') }}</th>
+                                                            <th>{{ trans('file.Subtotal') }}</th>
+                                                            <th><i class="dripicons-trash"></i></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                    <tfoot class="tfoot active">
+                                                        <th colspan="2">{{ trans('file.Total') }}</th>
+                                                        <th id="total-qty">0</th>
+                                                        <th></th>
+                                                        <input type="hidden" name="total">
+                                                        <th id="total">
+                                                            {{ number_format(0, $general_setting->decimal, '.', '') }}</th>
+                                                        <th><i class="dripicons-trash"></i></th>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
-                                        <label>{{trans('file.Receiver Type')}} *</label>
-                                        <select name="receiver_type" id="receiver_type" class="selectpicker form-control">
-                                            <option selected disabled value="">{{ trans('file.Select One') }}</option>
-                                            <option value="supplier">{{ trans('file.Supplier') }}</option>
-                                            <option value="customer">{{ trans('file.customer') }}</option>
-                                            <option value="biller">{{ trans('file.Biller') }}</option>
-                                            <option value="employee">{{ trans('file.Employee') }}</option>
-                                        </select>
+                                        <input type="submit" value="{{ trans('file.submit') }}" class="btn btn-primary"
+                                            id="submit-button">
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group" id="receiverList">
-                                        <label>{{trans('file.Receiver')}} *</label>
-                                        <select name="receiver_id" id="receiver_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select receiver...">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>{{trans('file.Product')}} *</label>
-                                        <select name="product_id" id="product_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select product...">
-                                            @foreach ($products as $product)
-                                                <option data-price="{{$product->price}}" data-qty="{{$product->qty}}" value="{{$product->id}}">{{$product->name .'- '.$product->code}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>{{trans('file.Quantity')}} *</label>
-                                        <input type="number" name="quantity" id="quantity" min="1" max="" value="1" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>{{trans('file.Unit Price')}} *</label>
-                                        <input type="text" name="amount" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>{{trans('file.Total')}} *</label>
-                                        <input type="text" name="total" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{trans('file.Note')}}</label>
-                                        <input type="text" name="note" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mt-3">
-                                    <div class="form-group">
-                                        <button type="submit" id="submit-btn" class="btn btn-primary">{{trans('file.submit')}}</button>
-                                    </div>
-
                                 </div>
                             </div>
                             {!! Form::close() !!}
@@ -85,38 +103,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table id="wasteTable" class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>{{ trans('file.Date') }}</th>
-                                <th>{{ trans('file.Receiver Type') }}</th>
-                                <th>{{ trans('file.Receiver') }}</th>
-                                <th>{{ trans('file.Product') }}</th>
-                                <th>{{ trans('file.Quantity') }}</th>
-                                <th>{{ trans('file.Amount') }}</th>
-                                <th>{{ trans('file.Total') }}</th>
-                                <th class="not-exported">{{ trans('file.action') }}</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+    </section>
 @endsection
 
 @push('scripts')
-<script type="text/javascript">
-    $("ul#sale").siblings('a').attr('aria-expanded','true');
-    $("ul#sale").addClass("show");
-    $("ul#sale #waste-list-menu").addClass("active");
-
-    $(document).ready(function() {
+    <script type="text/javascript">
+        $("ul#sale").siblings('a').attr('aria-expanded', 'true');
+        $("ul#sale").addClass("show");
+        $("ul#sale #sale-create-menu").addClass("active");
         $('#receiver_type').on('change', function() {
             var type = $(this).val();
             $.get('receiver-list/' + type, function(data) {
@@ -125,99 +119,211 @@
             });
         });
 
-        $('#product_id').on('change', function() {
-            var price = $('option:selected', this).data('price');
-            var qty = $('option:selected', this).data('qty');
-            $('input[name="amount"]').val(price);
-            $('input[name="quantity"]').attr('max', qty);
-            calculateTotal();
+
+        $('#lims_productcodeSearch').on('input', function() {
+            var receiver_type = $('#receiver_type').val();
+            var receiver_id = $('#receiver_id').val();
+            temp_data = $('#lims_productcodeSearch').val();
+            if (!receiver_type) {
+                $('#lims_productcodeSearch').val(temp_data.substring(0, temp_data.length - 1));
+                alert('Please select Receiver Type!');
+            } else if (!receiver_id) {
+                $('#lims_productcodeSearch').val(temp_data.substring(0, temp_data.length - 1));
+                alert('Please select Receiver!');
+            }
+
         });
 
-        function calculateTotal() {
-            var quantity = $('input[name="quantity"]').val();
-            var amount = $('input[name="amount"]').val();
-            var total = parseFloat(quantity) * parseFloat(amount);
-            $('input[name="total"]').val(total);
+        var data = @json($products);
+        // console.log(data); // $products = [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id, $expired_date, $is_embeded];
+        var lims_product_array = [];
+        product_code = data[0];
+        product_name = data[1];
+        product_qty = data[2];
+        product_type = data[3];
+        product_id = data[4];
+        product_list = data[5];
+        qty_list = data[6];
+        product_warehouse_price = data[7];
+        batch_no = data[8];
+        product_batch_id = data[9];
+        expired_date = data[10];
+        is_embeded = data[11];
+        $.each(product_code, function(index) {
+            if (is_embeded[index])
+                lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')|' + is_embeded[
+                    index]);
+            else
+                lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')');
+        });
+
+        var lims_productcodeSearch = $('#lims_productcodeSearch');
+        var index = 0;
+
+        lims_productcodeSearch.autocomplete({
+            source: function(request, response) {
+                var matcher = new RegExp(".?" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                response($.grep(lims_product_array, function(item) {
+                    return matcher.test(item);
+                }));
+            },
+            response: function(event, ui) {
+                if (ui.content.length == 1) {
+                    var data = ui.content[0].value;
+                    $(this).autocomplete("close");
+                    productSearch(data);
+                } else if (ui.content.length == 0 && $('#lims_productcodeSearch').val().length == 13) {
+                    productSearch($('#lims_productcodeSearch').val() + '|' + 1);
+                }
+            },
+            select: function(event, ui) {
+                var data = ui.item.value;
+                productSearch(data);
+            }
+        });
+
+        function productSearch(data) {
+            var product_info = data.split(" ");
+            var code = product_info[0];
+            var pre_qty = 0;
+            $(".product-code").each(function(i) {
+                if ($(this).val() == code) {
+                    rowindex = i;
+                    pre_qty = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val();
+                }
+            });
+            data += '?' + $('#customer_id').val() + '?' + (parseFloat(pre_qty) + 1);
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('product_sale.search') }}',
+                data: {
+                    data: data
+                },
+                success: function(data) {
+                    var flag = 1;
+                    if (pre_qty > 0) {
+                        var qty = data[15];
+                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(qty);
+                        var unit_price = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) +
+                                ') .unit_price')
+                            .text();
+                        var sub_total = qty * unit_price;
+                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .sub-total').text(
+                            sub_total.toFixed(2));
+                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .subtotal-value').val(
+                            sub_total.toFixed(2));
+                        var total_qty = 0;
+                        var total = 0;
+                        $(".qty").each(function() {
+                            total_qty += parseFloat($(this).val());
+                        });
+                        $("#total-qty").text(total_qty);
+                        $(".subtotal-value").each(function() {
+                            total += parseFloat($(this).val());
+                        });
+                        $("#total").text(total.toFixed(2));
+                        $('input[name="total"]').val(total.toFixed(2));
+                        pos = product_code.indexOf(data[1]);
+                        flag = 0;
+                    }
+                    $("input[name='product_code_name']").val('');
+                    if (flag) {
+                        var newRow = $("<tr>");
+                        var cols = '';
+                        pos = product_code.indexOf(data[1]);
+                        temp_unit_name = (data[6]).split(',');
+                        cols += '<td>' + data[0] + '</td>';
+                        cols += '<td>' + data[1] + '</td>';
+                        cols +=
+                            '<td><input type="number" class="form-control qty" name="product[' + index +
+                            '][qty]" min="1" value="' +
+                            data[
+                                15] + '" required/></td>';
+
+                        cols += '<td class="unit_price">' + data[2] + '</td>';
+                        cols += '<td class="sub-total">' + data[2] + '</td>';
+                        cols +=
+                            '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button></td>';
+                        cols +=
+                            '<input type="hidden" class="product-code" name="product[' + index +
+                            '][code]" value="' +
+                            data[1] + '"/>';
+                        cols +=
+                            '<input type="hidden" class="product-id" name="product[' + index +
+                            '][product_id]" value="' +
+                            data[
+                                9] + '"/>';
+                        cols +=
+                            '<input type="hidden" class="unit_price" name="product[' + index +
+                            '][unit_price]" value="' +
+                            data[2] + '"/>';
+                        cols +=
+                            '<input type="hidden" class="subtotal-value" name="product[' + index +
+                            '][subtotal]" value="' +
+                            data[2] + '"/>';
+
+                        newRow.append(cols);
+                        $("table.order-list tbody").prepend(newRow);
+                        rowindex = newRow.index();
+                        if (data[13]) {
+                            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find(
+                                '.edit-product').click();
+                        }
+
+                        var total_qty = 0;
+                        var total = 0;
+                        $(".qty").each(function() {
+                            total_qty += parseFloat($(this).val());
+                        });
+                        $("#total-qty").text(total_qty);
+                        $(".subtotal-value").each(function() {
+                            total += parseFloat($(this).val());
+                        });
+                        $("#total").text(total.toFixed(2));
+                        $('input[name="total"]').val(total.toFixed(2));
+                        index++;
+
+                    }
+                }
+            });
         }
 
-        $('#quantity, #amount').on('change', calculateTotal);
+        //quantity change
+        $(document).on('change keyup', '.qty', function() {
+            var qty = $(this).val();
+            var unit_price = $(this).closest('tr').find('.unit_price').text();
+            var sub_total = qty * unit_price;
+            $(this).closest('tr').find('.sub-total').text(sub_total.toFixed(2));
+            $(this).closest('tr').find('.subtotal-value').val(sub_total.toFixed(2));
+            var total_qty = 0;
+            var total = 0;
+            $(".qty").each(function() {
+                total_qty += parseFloat($(this).val());
+            });
+            $("#total-qty").text(total_qty);
+            $(".subtotal-value").each(function() {
+                total += parseFloat($(this).val());
+            });
+            $("#total").text(total.toFixed(2));
+            $('input[name="total"]').val(total.toFixed(2));
+        });
 
-        $('#wasteTable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: {
-            url: '{{ route('waste.wastedata') }}',
-            type: 'GET'
-        },
-        columns: [
-            { data: 'date', render: function(data, type, row) { return data ? moment(data).format('DD-MM-YYYY') : ''; } }, // তারিখ
-            { data: 'receiver_type' }, // Receiver Type
-            { data: 'receiver_name' }, // Receiver ID
-            { data: 'product_info' }, // Product Name + Code
-            { data: 'qty' }, // Quantity
-            { data: 'unit_price' }, // Unit Price
-            { data: 'total_price', render: $.fn.dataTable.render.number(',', '.', 2, '৳') }, // Total Price
-            {
-                data: 'id',
-                render: function(data, type, row) {
-                    return `<button class="btn btn-sm btn-primary edit-btn" data-id="${data}">Edit</button>
-                            <button class="btn btn-sm btn-danger delete-btn" data-id="${data}">Delete</button>`;
-                }
-            }
-        ],
-        'language': {
-
-            'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
-             "info":      '<small>{{trans("file.Showing")}} _START_ - _END_ (_TOTAL_)</small>',
-            "search":  '{{trans("file.Search")}}',
-            'paginate': {
-                    'previous': '<i class="dripicons-chevron-left"></i>',
-                    'next': '<i class="dripicons-chevron-right"></i>'
-            }
-        },
-        'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        dom: '<"row"lfB>rtip',
-        rowId: 'ObjectID',
-        buttons: [
-            {
-                extend: 'pdf',
-                text: '<i title="export to pdf" class="fa fa-file-pdf-o"></i>',
-                exportOptions: {
-                    columns: ':visible:Not(.not-exported)',
-                    rows: ':visible'
-                },
-
-            },
-            {
-                extend: 'excel',
-                text: '<i title="export to excel" class="dripicons-document-new"></i>',
-                exportOptions: {
-                    columns: ':visible:Not(.not-exported)',
-                    rows: ':visible'
-                },
-
-            },
-            {
-                extend: 'csv',
-                text: '<i title="export to csv" class="fa fa-file-text-o"></i>',
-                exportOptions: {
-                    columns: ':visible:Not(.not-exported)',
-                    rows: ':visible'
-                },
-
-            },
-            {
-                extend: 'print',
-                text: '<i title="print" class="fa fa-print"></i>',
-                exportOptions: {
-                    columns: ':visible:Not(.not-exported)',
-                    rows: ':visible'
-                },
-            },
-        ],
-    });
-
-    });
-
-</script>
+        //delete row
+        $(document).on('click', '.ibtnDel', function() {
+            var row = $(this).closest('tr');
+            row.remove();
+            var total_qty = 0;
+            var total = 0;
+            $(".qty").each(function() {
+                total_qty += parseFloat($(this).val());
+            });
+            $("#total-qty").text(total_qty);
+            $(".subtotal-value").each(function() {
+                total += parseFloat($(this).val());
+            });
+            $("#total").text(total.toFixed(2));
+            $('input[name="total"]').val(total.toFixed(2));
+        });
+    </script>
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 @endpush

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Biller;
+use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Product;
@@ -10,7 +11,6 @@ use App\Models\Supplier;
 use App\Models\Waste;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class WasteController extends Controller
@@ -18,35 +18,19 @@ class WasteController extends Controller
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('sales-index'))
-        {
-            $products = DB::table('products')->where('qty', '>', 0)->where('is_active', true)
-            ->select('id', 'name', 'code', 'price', 'qty')
-            ->get();
-
-            return view('backend.waste.create', compact('products'));
+        if ($role->hasPermissionTo('sales-index')) {
+            $wastes = Waste::all();
+            return view('backend.waste.index', compact('wastes'));
         }
     }
 
-    public function wastedata(Request $request){
+    public function wastedata(Request $request)
+    {
 
-        $columns = ['date', 'receiver_type', 'receiver_id', 'product_info', 'qty', 'unit_price', 'total_price'];
+        $columns = ['date', 'receiver_type', 'receiver_id', 'total_price'];
 
-        $query = DB::table('wastes')
-            ->join('products', 'products.id', '=', 'wastes.product_id')
-            ->select(
-                'wastes.id',
-                'wastes.created_at as date',
-                'wastes.receiver_type',
-                'wastes.receiver_name',
-                'products.name as product_name',
-                'products.code as product_code',
-                DB::raw("CONCAT(products.name, ' (', products.code, ')') as product_info"),
-                'wastes.qty',
-                'wastes.unit_price',
-                'wastes.total_price',
-                'wastes.status'
-            );
+        $query = Waste::with('items.product')
+            ->select('wastes.id', 'wastes.created_at as date', 'wastes.receiver_type', 'wastes.receiver_name', 'wastes.total_price', 'wastes.status');
 
 
         if ($search = $request->input('search')['value']) {
@@ -79,6 +63,31 @@ class WasteController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('sales-index')) {
+            $lims_product_data = Product::where('is_active', true)->get();
+            foreach ($lims_product_data as $product) {
+                $product_qty[] = $product->qty;
+                $product_code[] =  $product->code;
+                $product_name[] = $product->name;
+                $product_type[] = $product->type;
+                $product_id[] = $product->id;
+                $product_list[] = $product->product_list;
+                $qty_list[] = $product->qty_list;
+                $product_price[] = $product->price;
+                $batch_no[] = null;
+                $product_batch_id[] = null;
+                $expired_date[] = null;
+                $is_embeded[] = 0;
+            }
+            $products = [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id, $expired_date, $is_embeded];
+            $currency_list = Currency::where('is_active', true)->get();
+            return view('backend.waste.create', compact('products', 'currency_list'));
+        }
+    }
+
     public function getReceiverList($type)
     {
         switch ($type) {
@@ -108,28 +117,26 @@ class WasteController extends Controller
         }
 
         return view('backend.waste.receiverlist', compact('receivers'));
-
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
-
         $waste = new Waste();
-        $waste->receiver_type = $data['receiver_type'];
-        list($receiverId, $receiverName) = explode('-', $data['receiver_id']);
-        $waste->receiver_id = $receiverId;
-        $waste->receiver_name = $receiverName;
-        $waste->product_id = $data['product_id'];
-        $waste->qty = $data['quantity'];
-        $waste->unit_price = $data['amount'];
-        $waste->total_price = $data['total'];
-        $waste->note = $data['note'];
+        $waste->receiver_type = $request->receiver_type;
+        $waste->receiver_id = explode('-', $request->receiver_id)[0];
+        $waste->receiver_name = explode('-', $request->receiver_id)[1];
+        $waste->note = $request->note;
+        $waste->total_price = $request->total;
         $waste->save();
-        if ($waste->save()) {
-            $product = Product::find($data['product_id']);
-            $product->qty = $product->qty - $data['quantity'];
-            $product->save();
+
+        $waste->items()->createMany($request->product);
+
+        if ($waste) {
+            foreach ($request->product as $data) {
+                $product = Product::find($data['product_id']);
+                $product->qty -= $data['qty'];
+                $product->save();
+            }
         }
 
         return redirect()->route('waste.index');

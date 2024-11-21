@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('wastes', function (Blueprint $table) {
+        Schema::create('waste_items', function (Blueprint $table) {
             $table->id();
-            $table->string('receiver_type');
-            $table->integer('receiver_id');
-            $table->string('receiver_name')->nullable();
-            $table->string('note')->nullable();
-            $table->decimal('total_price', 10, 2);
-            $table->boolean('status')->default(true);
+            $table->unsignedBigInteger('waste_id');
+            $table->unsignedBigInteger('product_id');
+            $table->integer('qty');
+            $table->double('unit_price');
+            $table->double('subtotal');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('wastes');
+        Schema::dropIfExists('waste_items');
     }
 };
