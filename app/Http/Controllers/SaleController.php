@@ -94,6 +94,11 @@ class SaleController extends Controller
             else
                 $payment_status = 0;
 
+            if($request->input('brand_id'))
+                $brand_id = $request->input('brand_id');
+            else
+                $brand_id = 0;
+
             if($request->input('starting_date')) {
                 $starting_date = $request->input('starting_date');
                 $ending_date = $request->input('ending_date');
@@ -123,8 +128,8 @@ class SaleController extends Controller
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
 
-
-            return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission','options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list'));
+            $lims_brand_list = Brand::where('is_active', true)->get();
+            return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission','options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list', 'lims_brand_list', 'brand_id'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -142,6 +147,7 @@ class SaleController extends Controller
         $warehouse_id = $request->input('warehouse_id');
         $sale_status = $request->input('sale_status');
         $payment_status = $request->input('payment_status');
+        $brand_id = $request->input('brand_id');
 
         $q = Sale::whereDate('created_at', '>=' ,$request->input('starting_date'))->whereDate('created_at', '<=' ,$request->input('ending_date'));
 
@@ -186,6 +192,12 @@ class SaleController extends Controller
                 $q = $q->where('sale_status', $sale_status);
             if($payment_status)
                 $q = $q->where('payment_status', $payment_status);
+            if($brand_id)
+            {
+                $q = $q->whereHas('productSales.product', function($query) use ($brand_id) {
+                    $query->where('brand_id', $brand_id);
+                });
+            }
             $sales = $q->get();
         }
         else
@@ -536,7 +548,7 @@ class SaleController extends Controller
             $mail_data['paid_amount'] = $lims_sale_data->paid_amount;
 
             $product_id = $data['product_id'];
-            $product_batch_id = $data['product_batch_id'] ?? null; 
+            $product_batch_id = $data['product_batch_id'] ?? null;
             $imei_number = $data['imei_number'];
             $product_code = $data['product_code'];
             $qty = $data['qty'];
@@ -1238,7 +1250,7 @@ class SaleController extends Controller
                 ->with('parent')
                 ->get();
             // });
-     
+
 
             $lims_table_list = Cache::remember('table_list', 60*60*24*30, function () {
                 return Table::where('is_active',true)->get();
@@ -1879,7 +1891,7 @@ class SaleController extends Controller
         $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
         $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null; 
+        $product_batch_id = $data['product_batch_id'] ?? null;
         $product_code = $data['product_code'];
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];

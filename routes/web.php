@@ -303,8 +303,9 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 
     Route::controller(WasteController::class)->group(function () {
         Route::get('wastes', 'index')->name('waste.index');
+        Route::get('wastes/create', 'create')->name('waste.create');
         Route::get('wastes/data', 'wastedata')->name('waste.wastedata');
-        Route::get('receiver-list/{type}', 'getReceiverList')->name('waste.getReceiverList');
+        Route::get('wastes/receiver-list/{type}', 'getReceiverList')->name('waste.getReceiverList');
         Route::post('waste/store', 'store')->name('waste.store');
     });
 
