@@ -68,6 +68,19 @@ class WasteController extends Controller
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('sales-index')) {
             $lims_product_data = Product::where('is_active', true)->get();
+            $product_qty = [];
+            $product_code = [];
+            $product_name = [];
+            $product_type = [];
+            $product_id = [];
+            $product_list = [];
+            $qty_list = [];
+            $product_price = [];
+            $batch_no = [];
+            $product_batch_id = [];
+            $expired_date = [];
+            $is_embeded = [];
+
             foreach ($lims_product_data as $product) {
                 $product_qty[] = $product->qty;
                 $product_code[] =  $product->code;
@@ -83,8 +96,7 @@ class WasteController extends Controller
                 $is_embeded[] = 0;
             }
             $products = [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id, $expired_date, $is_embeded];
-            $currency_list = Currency::where('is_active', true)->get();
-            return view('backend.waste.create', compact('products', 'currency_list'));
+            return view('backend.waste.create', compact('products'));
         }
     }
 
@@ -138,6 +150,120 @@ class WasteController extends Controller
                 $product->save();
             }
         }
+
+        return redirect()->route('waste.index');
+    }
+
+    public function edit($id)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('sales-index')) {
+            $waste = Waste::with('items.product')->find($id);
+            $lims_product_data = Product::where('is_active', true)->get();
+            $product_qty = [];
+            $product_code = [];
+            $product_name = [];
+            $product_type = [];
+            $product_id = [];
+            $product_list = [];
+            $qty_list = [];
+            $product_price = [];
+            $batch_no = [];
+            $product_batch_id = [];
+            $expired_date = [];
+            $is_embeded = [];
+
+            foreach ($lims_product_data as $product) {
+                $product_qty[] = $product->qty;
+                $product_code[] =  $product->code;
+                $product_name[] = $product->name;
+                $product_type[] = $product->type;
+                $product_id[] = $product->id;
+                $product_list[] = $product->product_list;
+                $qty_list[] = $product->qty_list;
+                $product_price[] = $product->price;
+                $batch_no[] = null;
+                $product_batch_id[] = null;
+                $expired_date[] = null;
+                $is_embeded[] = 0;
+            }
+            $products = [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id, $expired_date, $is_embeded];
+
+            switch ($waste->receiver_type) {
+                case 'employee':
+                    $receivers = Employee::where('is_active', true)
+                        ->select('id', 'name')
+                        ->get();
+                    break;
+                case 'customer':
+                    $receivers = Customer::where('is_active', true)
+                        ->select('id', 'name')
+                        ->get();
+                    break;
+                case 'supplier':
+                    $receivers = Supplier::where('is_active', true)
+                        ->select('id', 'name')
+                        ->get();
+                    break;
+                case 'biller':
+                    $receivers = Biller::where('is_active', true)
+                        ->select('id', 'name')
+                        ->get();
+                    break;
+                default:
+                    $receivers = [];
+                    break;
+            }
+
+            return view('backend.waste.edit', compact('waste', 'products', 'receivers'));
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $waste = Waste::find($id);
+        $waste->receiver_type = $request->receiver_type;
+        $waste->receiver_id = explode('-', $request->receiver_id)[0];
+        $waste->receiver_name = explode('-', $request->receiver_id)[1];
+        $waste->note = $request->note;
+        $waste->total_price = $request->total;
+        $waste->save();
+
+        if ($waste) {
+            foreach ($waste->items as $data) {
+                $product = Product::find($data->product_id);
+                $product->qty += $data->qty;
+                $product->save();
+            }
+        }
+
+        $waste->items()->delete();
+        $waste->items()->createMany($request->product);
+
+        if ($waste) {
+            foreach ($request->product as $data) {
+                $product = Product::find($data['product_id']);
+                $product->qty -= $data['qty'];
+                $product->save();
+            }
+        }
+
+        return redirect()->route('waste.index');
+    }
+
+    public function destroy($id)
+    {
+        $waste = Waste::find($id);
+        if ($waste) {
+            foreach ($waste->items as $data) {
+                $product = Product::find($data->product_id);
+                $product->qty += $data->qty;
+                $product->save();
+            }
+        }
+
+        $waste->items()->delete();
+        $waste->delete();
 
         return redirect()->route('waste.index');
     }
