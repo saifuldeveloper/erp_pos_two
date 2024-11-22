@@ -47,12 +47,21 @@
                                         if ($i > $number_of_day) {
                                             break;
                                         }
+                                        $url = route('sales.index', ['starting_date' => $year . '-' . $month . '-' . $i, 'ending_date' => $year . '-' . $month . '-' . $i]);
 
                                         if ($flag) {
                                             if ($year . '-' . $month . '-' . $i == date('Y') . '-' . date('m') . '-' . (int) date('d')) {
-                                                echo '<td><p style="color:red"><strong>' . $i . '</strong></p>';
+                                                echo '<td>
+                                                        <a href="' . $url . '" target="_blank">
+                                                            <p style="color:red">
+                                                                <strong>' . $i . '</strong>
+                                                            </p>';
                                             } else {
-                                                echo '<td><p><strong>' . $i . '</strong></p>';
+                                                echo '<td>
+                                                        <a href="' . $url . '" target="_blank">
+                                                            <p>
+                                                                <strong>' . $i . '</strong>
+                                                            </p>';
                                             }
 
                                             if ($brand_total[$i]) {
@@ -63,13 +72,21 @@
                                             if ($grand_total[$i]) {
                                                 echo '<strong>' . trans('file.grand total') . ' : </strong><span>' . $grand_total[$i] . '</span><br><br>';
                                             }
-                                            echo '</td>';
+                                            echo '</a></td>';
                                             $i++;
                                         } elseif ($j == $start_day) {
                                             if ($year . '-' . $month . '-' . $i == date('Y') . '-' . date('m') . '-' . (int) date('d')) {
-                                                echo '<td><p style="color:red"><strong>' . $i . '</strong></p>';
+                                                echo '<td>
+                                                    <a href="' . $url . '" target="_blank">
+                                                        <p style="color:red">
+                                                            <strong>' . $i . '</strong>
+                                                        </p>';
                                             } else {
-                                                echo '<td><p><strong>' . $i . '</strong></p>';
+                                                echo '<td>
+                                                    <a href="' . $url . '" target="_blank">
+                                                        <p>
+                                                            <strong>' . $i . '</strong>
+                                                        </p>';
                                             }
 
                                             if ($brand_total[$i]) {
@@ -80,7 +97,7 @@
                                             if ($grand_total[$i]) {
                                                 echo '<strong>' . trans('file.grand total') . ' : </strong><span>' . $grand_total[$i] . '</span><br><br>';
                                             }
-                                            echo '</td>';
+                                            echo '</a></td>';
                                             $flag = 1;
                                             $i++;
                                             continue;
