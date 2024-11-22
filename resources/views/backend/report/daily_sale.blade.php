@@ -34,7 +34,7 @@
                                     <td><strong>Monday</strong></td>
                                     <td><strong>Tuesday</strong></td>
                                     <td><strong>Wednesday</strong></td>
-                                    <td><strong>Thrusday</strong></td>
+                                    <td><strong>Thursday</strong></td>
                                     <td><strong>Friday</strong></td>
                                     <td><strong>Saturday</strong></td>
                                 </tr>
