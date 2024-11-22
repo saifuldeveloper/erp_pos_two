@@ -24,88 +24,86 @@
 						    </tr>
 						</thead>
 					    <tbody>
-						    <tr>
-							    <td><strong>Sunday</strong></td>
-							    <td><strong>Monday</strong></td>
-							    <td><strong>Tuesday</strong></td>
-							    <td><strong>Wednesday</strong></td>
-							    <td><strong>Thrusday</strong></td>
-							    <td><strong>Friday</strong></td>
-							    <td><strong>Saturday</strong></td>
-						    </tr>
-						    <?php
-						    	$i = 1;
-						    	$flag = 0;
-						    	while ($i <= $number_of_day) {
-						    		echo '<tr>';
-						    		for($j=1 ; $j<=7 ; $j++){
-						    			if($i > $number_of_day)
-						    				break;
+                            <tr>
+                                <td><strong>Sunday</strong></td>
+                                <td><strong>Monday</strong></td>
+                                <td><strong>Tuesday</strong></td>
+                                <td><strong>Wednesday</strong></td>
+                                <td><strong>Thursday</strong></td>
+                                <td><strong>Friday</strong></td>
+                                <td><strong>Saturday</strong></td>
+                            </tr>
+                            <?php
+                            $i = 1;
+                            $flag = 0;
+                            while ($i <= $number_of_day) {
+                                echo '<tr>';
+                                for ($j = 1; $j <= 7; $j++) {
+                                    if ($i > $number_of_day) {
+                                        break;
+                                    }
+                                    $url = route('purchases.index', ['starting_date' => $year . '-' . $month . '-' . $i, 'ending_date' => $year . '-' . $month . '-' . $i]);
 
-						    			if($flag){
-						    				if($year.'-'.$month.'-'.$i == date('Y').'-'.date('m').'-'.(int)date('d'))
-						    					echo '<td><p style="color:red"><strong>'.$i.'</strong></p>';
-						    				else
-						    					echo '<td><p><strong>'.$i.'</strong></p>';
+                                    if ($flag) {
+                                        if ($year . '-' . $month . '-' . $i == date('Y') . '-' . date('m') . '-' . (int) date('d')) {
+                                            echo '<td>
+                                                    <a href="' . $url . '" target="_blank">
+                                                        <p style="color:red">
+                                                            <strong>' . $i . '</strong>
+                                                        </p>';
+                                        } else {
+                                            echo '<td>
+                                                    <a href="' . $url . '" target="_blank">
+                                                        <p>
+                                                            <strong>' . $i . '</strong>
+                                                        </p>';
+                                        }
 
-						    				if($total_discount[$i]){
-						    					echo '<strong>'.trans("file.Product Discount").'</strong><br><span>'.$total_discount[$i].'</span><br><br>';
-						    				}
-						    				if($order_discount[$i]){
-						    					echo '<strong>'.trans("file.Order Discount").'</strong><br><span>'.$order_discount[$i].'</span><br><br>';
-						    				}
-						    				if($total_tax[$i]){
-						    					echo '<strong>'.trans("file.Product Tax").'</strong><br><span>'.$total_tax[$i].'</span><br><br>';
-						    				}
-						    				if($order_tax[$i]){
-						    					echo '<strong>'.trans("file.Order Tax").'</strong><br><span>'.$order_tax[$i].'</span><br><br>';
-						    				}
-						    				if($shipping_cost[$i]){
-						    					echo '<strong>'.trans("file.Shipping Cost").'</strong><br><span>'.$shipping_cost[$i].'</span><br><br>';
-						    				}
-						    				if($grand_total[$i]){
-						    					echo '<strong>'.trans("file.grand total").'</strong><br><span>'.$grand_total[$i].'</span><br><br>';
-						    				}
-						    				echo '</td>';
-						    				$i++;
-						    			}
-						    			elseif($j == $start_day){
-						    				if($year.'-'.$month.'-'.$i == date('Y').'-'.date('m').'-'.(int)date('d'))
-						    					echo '<td><p style="color:red"><strong>'.$i.'</strong></p>';
-						    				else
-						    					echo '<td><p><strong>'.$i.'</strong></p>';
+                                        if ($brand_total[$i]) {
+                                            foreach ($brand_total[$i] as $key => $value) {
+                                                echo '<strong>' . $key . ' : </strong><span>' . $value . '</span><br>';
+                                            }
+                                        }
+                                        if ($grand_total[$i]) {
+                                            echo '<strong>' . trans('file.grand total') . ' : </strong><span>' . $grand_total[$i] . '</span><br><br>';
+                                        }
+                                        echo '</a></td>';
+                                        $i++;
+                                    } elseif ($j == $start_day) {
+                                        if ($year . '-' . $month . '-' . $i == date('Y') . '-' . date('m') . '-' . (int) date('d')) {
+                                            echo '<td>
+                                                <a href="' . $url . '" target="_blank">
+                                                    <p style="color:red">
+                                                        <strong>' . $i . '</strong>
+                                                    </p>';
+                                        } else {
+                                            echo '<td>
+                                                <a href="' . $url . '" target="_blank">
+                                                    <p>
+                                                        <strong>' . $i . '</strong>
+                                                    </p>';
+                                        }
 
-						    				if($total_discount[$i]){
-						    					echo '<strong>'.trans("file.Product Discount").'</strong><br><span>'.$total_discount[$i].'</span><br><br>';
-						    				}
-						    				if($order_discount[$i]){
-						    					echo '<strong>'.trans("file.Order Discount").'</strong><br><span>'.$order_discount[$i].'</span><br><br>';
-						    				}
-						    				if($total_tax[$i]){
-						    					echo '<strong>'.trans("file.Product Tax").'</strong><br><span>'.$total_tax[$i].'</span><br><br>';
-						    				}
-						    				if($order_tax[$i]){
-						    					echo '<strong>'.trans("file.Order Tax").'</strong><br><span>'.$order_tax[$i].'</span><br><br>';
-						    				}
-						    				if($shipping_cost[$i]){
-						    					echo '<strong>'.trans("file.Shipping Cost").'</strong><br><span>'.$shipping_cost[$i].'</span><br><br>';
-						    				}
-						    				if($grand_total[$i]){
-						    					echo '<strong>'.trans("file.grand total").'</strong><br><span>'.$grand_total[$i].'</span><br><br>';
-						    				}
-						    				echo '</td>';
-						    				$flag = 1;
-						    				$i++;
-						    				continue;
-						    			}
-						    			else {
-						    				echo '<td></td>';
-						    			}
-						    		}
-						    	    echo '</tr>';
-						    	}
-						    ?>
-					    </tbody>
+                                        if ($brand_total[$i]) {
+                                            foreach ($brand_total[$i] as $key => $value) {
+                                                echo '<strong>' . $key . ' : </strong><span>' . $value . '</span><br>';
+                                            }
+                                        }
+                                        if ($grand_total[$i]) {
+                                            echo '<strong>' . trans('file.grand total') . ' : </strong><span>' . $grand_total[$i] . '</span><br><br>';
+                                        }
+                                        echo '</a></td>';
+                                        $flag = 1;
+                                        $i++;
+                                        continue;
+                                    } else {
+                                        echo '<td></td>';
+                                    }
+                                }
+                                echo '</tr>';
+                            }
+                            ?>
+                        </tbody>
 					</table>
 				</div>
 			</div>
