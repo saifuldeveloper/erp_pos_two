@@ -455,27 +455,29 @@ class ReportController extends Controller
                 $start_date = $year . '-'. date('m', $start).'-'.'01';
                 $end_date = $year . '-'. date('m', $start).'-'.'31';
 
-                $query1 = array(
-                    'SUM(total_discount) AS total_discount',
-                    'SUM(order_discount) AS order_discount',
-                    'SUM(total_tax) AS total_tax',
-                    'SUM(order_tax) AS order_tax',
-                    'SUM(shipping_cost) AS shipping_cost',
-                    'SUM(grand_total) AS grand_total'
-                );
-                $purchase_data = Purchase::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query1))->get();
+                $purchase_data = Purchase::with('productPurchases.product.brand')
+                ->whereDate('created_at', '>=' , $start_date)
+                ->whereDate('created_at', '<=' , $end_date)
+                ->get();
 
-                $total_discount[] = number_format((float)$purchase_data[0]->total_discount, config('decimal'), '.', '');
-                $order_discount[] = number_format((float)$purchase_data[0]->order_discount, config('decimal'), '.', '');
-                $total_tax[] = number_format((float)$purchase_data[0]->total_tax, config('decimal'), '.', '');
-                $order_tax[] = number_format((float)$purchase_data[0]->order_tax, config('decimal'), '.', '');
-                $shipping_cost[] = number_format((float)$purchase_data[0]->shipping_cost, config('decimal'), '.', '');
-                $grand_total[] = number_format((float)$purchase_data[0]->grand_total, config('decimal'), '.', '');
+                $grand_total[] = $purchase_data->sum('grand_total');
+                $brand_total[] = [];
+                foreach($purchase_data as $purchase)
+                {
+                    foreach($purchase->productPurchases as $productPurchase)
+                    {
+                        $brand_name = $productPurchase->product->brand->title ?? 'Unknown';
+                        if(!isset($brand_total[date('m', strtotime($purchase->created_at))][$brand_name]))
+                            $brand_total[date('m', strtotime($purchase->created_at))][$brand_name] = 0;
+                        $brand_total[date('m', strtotime($purchase->created_at))][$brand_name] += $productPurchase->total;
+                    }
+                }
+
                 $start = strtotime("+1 month", $start);
             }
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $warehouse_id = 0;
-            return view('backend.report.monthly_purchase', compact('year', 'total_discount', 'order_discount', 'total_tax', 'order_tax', 'shipping_cost', 'grand_total', 'lims_warehouse_list', 'warehouse_id'));
+            return view('backend.report.monthly_purchase', compact('year', 'grand_total', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -494,27 +496,30 @@ class ReportController extends Controller
             $start_date = $year . '-'. date('m', $start).'-'.'01';
             $end_date = $year . '-'. date('m', $start).'-'.'31';
 
-            $query1 = array(
-                'SUM(total_discount) AS total_discount',
-                'SUM(order_discount) AS order_discount',
-                'SUM(total_tax) AS total_tax',
-                'SUM(order_tax) AS order_tax',
-                'SUM(shipping_cost) AS shipping_cost',
-                'SUM(grand_total) AS grand_total'
-            );
-            $purchase_data = Purchase::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query1))->get();
+            $purchase_data = Purchase::with('productPurchases.product.brand')
+            ->where('warehouse_id', $data['warehouse_id'])
+            ->whereDate('created_at', '>=' , $start_date)
+            ->whereDate('created_at', '<=' , $end_date)
+            ->get();
 
-            $total_discount[] = number_format((float)$purchase_data[0]->total_discount, config('decimal'), '.', '');
-            $order_discount[] = number_format((float)$purchase_data[0]->order_discount, config('decimal'), '.', '');
-            $total_tax[] = number_format((float)$purchase_data[0]->total_tax, config('decimal'), '.', '');
-            $order_tax[] = number_format((float)$purchase_data[0]->order_tax, config('decimal'), '.', '');
-            $shipping_cost[] = number_format((float)$purchase_data[0]->shipping_cost, config('decimal'), '.', '');
-            $grand_total[] = number_format((float)$purchase_data[0]->grand_total, config('decimal'), '.', '');
+            $grand_total[] = $purchase_data->sum('grand_total');
+            $brand_total[] = [];
+            foreach($purchase_data as $purchase)
+            {
+                foreach($purchase->productPurchases as $productPurchase)
+                {
+                    $brand_name = $productPurchase->product->brand->title ?? 'Unknown';
+                    if(!isset($brand_total[date('m', strtotime($purchase->created_at))][$brand_name]))
+                        $brand_total[date('m', strtotime($purchase->created_at))][$brand_name] = 0;
+                    $brand_total[date('m', strtotime($purchase->created_at))][$brand_name] += $productPurchase->total;
+                }
+            }
+
             $start = strtotime("+1 month", $start);
         }
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $warehouse_id = $data['warehouse_id'];
-        return view('backend.report.monthly_purchase', compact('year', 'total_discount', 'order_discount', 'total_tax', 'order_tax', 'shipping_cost', 'grand_total', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.monthly_purchase', compact('year', 'grand_total', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function bestSeller()
