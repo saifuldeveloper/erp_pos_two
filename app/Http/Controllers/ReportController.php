@@ -374,28 +374,27 @@ class ReportController extends Controller
                 $start_date = $year . '-'. date('m', $start).'-'.'01';
                 $end_date = $year . '-'. date('m', $start).'-'.'31';
 
-                $temp_total_discount = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('total_discount');
-                $total_discount[] = number_format((float)$temp_total_discount, config('decimal'), '.', '');
-
-                $temp_order_discount = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('order_discount');
-                $order_discount[] = number_format((float)$temp_order_discount, config('decimal'), '.', '');
-
-                $temp_total_tax = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('total_tax');
-                $total_tax[] = number_format((float)$temp_total_tax, config('decimal'), '.', '');
-
-                $temp_order_tax = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('order_tax');
-                $order_tax[] = number_format((float)$temp_order_tax, config('decimal'), '.', '');
-
-                $temp_shipping_cost = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('shipping_cost');
-                $shipping_cost[] = number_format((float)$temp_shipping_cost, config('decimal'), '.', '');
-
-                $temp_total = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('grand_total');
-                $total[] = number_format((float)$temp_total, config('decimal'), '.', '');
+                $sale_data = Sale::with('productSales.product.brand')
+                ->whereDate('created_at', '>=' , $start_date)
+                ->whereDate('created_at', '<=' , $end_date)
+                ->get();
+                $grand_total[] = $sale_data->sum('grand_total');
+                $brand_total[] = [];
+                foreach($sale_data as $sale)
+                {
+                    foreach($sale->productSales as $productSale)
+                    {
+                        $brand_name = $productSale->product->brand->title ?? 'Unknown';
+                        if(!isset($brand_total[date('m', strtotime($sale->created_at))][$brand_name]))
+                            $brand_total[date('m', strtotime($sale->created_at))][$brand_name] = 0;
+                        $brand_total[date('m', strtotime($sale->created_at))][$brand_name] += $productSale->total;
+                    }
+                }
                 $start = strtotime("+1 month", $start);
             }
             $lims_warehouse_list = Warehouse::where('is_active',true)->get();
             $warehouse_id = 0;
-            return view('backend.report.monthly_sale', compact('year', 'total_discount', 'order_discount', 'total_tax', 'order_tax', 'shipping_cost', 'total', 'lims_warehouse_list', 'warehouse_id'));
+            return view('backend.report.monthly_sale', compact('year', 'grand_total','brand_total', 'lims_warehouse_list', 'warehouse_id'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -414,28 +413,29 @@ class ReportController extends Controller
             $start_date = $year . '-'. date('m', $start).'-'.'01';
             $end_date = $year . '-'. date('m', $start).'-'.'31';
 
-            $temp_total_discount = Sale::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('total_discount');
-            $total_discount[] = number_format((float)$temp_total_discount, config('decimal'), '.', '');
+            $sale_data = Sale::with('productSales.product.brand')
+            ->where('warehouse_id', $data['warehouse_id'])
+            ->whereDate('created_at', '>=' , $start_date)
+            ->whereDate('created_at', '<=' , $end_date)
+            ->get();
+            $grand_total[] = $sale_data->sum('grand_total');
+            $brand_total[] = [];
+            foreach($sale_data as $sale)
+            {
+                foreach($sale->productSales as $productSale)
+                {
+                    $brand_name = $productSale->product->brand->title ?? 'Unknown';
+                    if(!isset($brand_total[date('m', strtotime($sale->created_at))][$brand_name]))
+                        $brand_total[date('m', strtotime($sale->created_at))][$brand_name] = 0;
+                    $brand_total[date('m', strtotime($sale->created_at))][$brand_name] += $productSale->total;
+                }
+            }
 
-            $temp_order_discount = Sale::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('order_discount');
-            $order_discount[] = number_format((float)$temp_order_discount, config('decimal'), '.', '');
-
-            $temp_total_tax = Sale::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('total_tax');
-            $total_tax[] = number_format((float)$temp_total_tax, config('decimal'), '.', '');
-
-            $temp_order_tax = Sale::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('order_tax');
-            $order_tax[] = number_format((float)$temp_order_tax, config('decimal'), '.', '');
-
-            $temp_shipping_cost = Sale::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('shipping_cost');
-            $shipping_cost[] = number_format((float)$temp_shipping_cost, config('decimal'), '.', '');
-
-            $temp_total = Sale::where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('grand_total');
-            $total[] = number_format((float)$temp_total, config('decimal'), '.', '');
             $start = strtotime("+1 month", $start);
         }
         $lims_warehouse_list = Warehouse::where('is_active',true)->get();
         $warehouse_id = $data['warehouse_id'];
-        return view('backend.report.monthly_sale', compact('year', 'total_discount', 'order_discount', 'total_tax', 'order_tax', 'shipping_cost', 'total', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.monthly_sale', compact('year', 'grand_total','brand_total', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function monthlyPurchase($year)
