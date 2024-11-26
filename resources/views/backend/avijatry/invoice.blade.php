@@ -68,7 +68,7 @@
                                     <input type="number" name="received_quantity[{{ $entry['shoe']['id'] }}]"
                                         class="form-control"
                                         value="{{ $productPurchase ? $productPurchase->recieved : $entry['count'] }}"
-                                        required min="0">
+                                        required min="0" max="{{ $entry['count'] }}">
                                 </td>
                                 <td>{{ $entry['shoe']['retail_price'] }}</td>
                                 <td>0(0%)</td>
@@ -122,6 +122,8 @@
                             <td colspan="8">
                                 @if ($invoice['retail_store_status'] == 'Pending')
                                     <button type="submit" class="btn btn-success">Approve</button>
+                                @else
+                                    <button type="submit" class="btn btn-success">Update</button>
                                 @endif
                                 <a href="{{ route('invoices.index') }}" class="btn btn-danger">Back</a>
                             </td>
