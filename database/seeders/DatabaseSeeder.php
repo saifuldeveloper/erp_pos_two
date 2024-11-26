@@ -47,5 +47,6 @@ class DatabaseSeeder extends Seeder
             PosSettingTableSeeder::class
         ]);
 
+        $this->call(HrmSettingsTableSeeder::class);
     }
 }

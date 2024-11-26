@@ -126,13 +126,15 @@ class AvijatryController extends Controller
         $category_id = $this->categoryStore($shoe['category'], $parent_id);
 
         $image_name = null;
+    
         if (isset($shoe['image_url']) && !empty($shoe['image_url'])) {
             $imageUrl = $shoe['image_url'];
             $imageName = basename($imageUrl);
-            $imagePath = public_path('public/images/product/' . $imageName);
-            if (!File::exists(public_path('public/images/product'))) {
-                File::makeDirectory(public_path('images/product'), 0755, true);
+            $directory = public_path('images/product');
+            if (!File::exists($directory)) {
+                File::makeDirectory($directory, 0755, true); 
             }
+            $imagePath = $directory . '/' . $imageName;
             file_put_contents($imagePath, file_get_contents($imageUrl));
             $image_name = $imageName;
         }
