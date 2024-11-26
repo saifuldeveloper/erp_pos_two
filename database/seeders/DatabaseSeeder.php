@@ -2,6 +2,7 @@
 
 use Database\Seeders\CurrenciesTableSeeder;
 use Database\Seeders\GeneralSettingsTableSeeder;
+use Database\Seeders\HrmSettingsTableSeeder;
 use Database\Seeders\PermissionsTableSeeder;
 use Database\Seeders\PosSettingTableSeeder;
 use Database\Seeders\RoleHasPermissionsTableSeeder;
@@ -44,7 +45,8 @@ class DatabaseSeeder extends Seeder
             SuppliersTableSeeder::class,
             UnitsTableSeeder::class,
             WarehousesTableSeeder::class,
-            PosSettingTableSeeder::class
+            PosSettingTableSeeder::class,
+            HrmSettingsTableSeeder::class
         ]);
 
         $this->call(HrmSettingsTableSeeder::class);
