@@ -96,12 +96,8 @@ class AvijatryController extends Controller
                 foreach ($invoice['invoice_entries'] as $entry) {
                     Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
                 }
-                // Purchase::where('reference_no', 'avijatry-' . $id)->first() ?: $this->invoiceStore($invoice, $request);
-                $purchase = Purchase::where('reference_no', 'avijatry-' . $id)->first();
                 $ret = [];
-                if (!$purchase) {
-                    $ret = $this->invoiceStore($invoice, $request);
-                }
+                $ret = $this->invoiceStore($invoice, $request);
             } else {
                 abort(404);
             }
@@ -185,7 +181,10 @@ class AvijatryController extends Controller
 
     public function invoiceStore($invoice, $request)
     {
-        $purchase = new Purchase();
+        $purchase = Purchase::where('reference_no', 'avijatry-' . $invoice['id'])->first();
+        if (!$purchase) {
+            $purchase = new Purchase();
+        }
         $purchase->reference_no = 'avijatry-' . $invoice['id'];
         $purchase->user_id = auth()->user()->id;
         $purchase->warehouse_id = Warehouse::first()->id;
@@ -205,11 +204,16 @@ class AvijatryController extends Controller
         $purchase->payment_status = 1;
         $purchase->note = $request->note;
         $purchase->save();
-
         foreach ($invoice['invoice_entries'] as $entry) {
             $product = Product::where('code', $entry['shoe']['id'])->first();
-            $purchase->productPurchases()->create([
+            $previous_received_qty = $purchase->productPurchases()->where('product_id', $product->id)->first();
+            if ($previous_received_qty) {
+                $product->qty -= $previous_received_qty->recieved;
+                $product->save();
+            }
+            $purchase->productPurchases()->updateOrCreate([
                 'product_id' => $product->id,
+            ], [
                 'qty' => $entry['count'],
                 'recieved' => $request->received_quantity[$product->code],
                 'purchase_unit_id' => $product->unit_id,
@@ -220,17 +224,18 @@ class AvijatryController extends Controller
                 'tax' => 0,
                 'total' => $entry['total_price'],
             ]);
+
             $product->qty += $request->received_quantity[$product->code];
             $product->save();
 
-            $productWarehouse = new Product_Warehouse();
-            $productWarehouse->product_id = $product->id;
-            $productWarehouse->warehouse_id = Warehouse::first()->id;
-            $productWarehouse->qty = $request->received_quantity[$product->code];
-            $productWarehouse->price = $product->cost;
-            $productWarehouse->save();
-
-            return $request->all();
+            $productWarehouse = Product_Warehouse::updateOrCreate([
+                'product_id' => $product->id,
+                'warehouse_id' => Warehouse::first()->id,
+            ], [
+                'qty' => $request->received_quantity[$product->code],
+                'price' => $product->cost,
+            ]);
         }
+        return $request->all();
     }
 }
