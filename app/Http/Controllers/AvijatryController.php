@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\GiftReceive;
 use App\Models\Product;
 use App\Models\Product_Warehouse;
 use App\Models\Purchase;
@@ -101,7 +102,6 @@ class AvijatryController extends Controller
             } else {
                 abort(404);
             }
-
             $response = $this->avijatryService->approveInvoice($id, $ret);
             if ($response->status() == 200) {
                 return redirect()->route('invoices.index');
@@ -126,13 +126,13 @@ class AvijatryController extends Controller
         $category_id = $this->categoryStore($shoe['category'], $parent_id);
 
         $image_name = null;
-    
+
         if (isset($shoe['image_url']) && !empty($shoe['image_url'])) {
             $imageUrl = $shoe['image_url'];
             $imageName = basename($imageUrl);
             $directory = public_path('images/product');
             if (!File::exists($directory)) {
-                File::makeDirectory($directory, 0755, true); 
+                File::makeDirectory($directory, 0755, true);
             }
             $imagePath = $directory . '/' . $imageName;
             file_put_contents($imagePath, file_get_contents($imageUrl));
@@ -237,6 +237,21 @@ class AvijatryController extends Controller
                 'qty' => $request->received_quantity[$product->code],
                 'price' => $product->cost,
             ]);
+
+            if ($invoice['gift_transactions']) {
+                foreach ($invoice['gift_transactions'] as $gift_transaction) {
+                    $giftReceive = GiftReceive::where('purchase_id', $purchase->id)->where('gift_transaction_id', $gift_transaction['id'])->first();
+                    if (!$giftReceive) {
+                        $giftReceive = new GiftReceive();
+                    }
+                    $giftReceive->purchase_id = $purchase->id;
+                    $giftReceive->gift_transaction_id = $gift_transaction['id'];
+                    $giftReceive->name = $gift_transaction['gift']['name'];
+                    $giftReceive->quantity = $gift_transaction['count'];
+                    $giftReceive->quantity_received = $request->gift_quantity_received[$gift_transaction['id']];
+                    $giftReceive->save();
+                }
+            }
         }
         return $request->all();
     }

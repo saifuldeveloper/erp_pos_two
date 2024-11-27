@@ -109,10 +109,40 @@
                             <td colspan="7"><strong>Due:</strong></td>
                             <td>{{ $invoice['total_receivable'] - $invoice['total_payment'] }}</td>
                         </tr>
+                        @if ($invoice['gift_transactions'])
+                            <tr class="text-center">
+                                <th colspan="8">Gift Details</th>
+                            </tr>
+                            <tr>
+                                <th colspan="6">Gift</th>
+                                <th>Qty</th>
+                                <th>Qty Received</th>
+                            </tr>
+                            @foreach ($invoice['gift_transactions'] as $gift_transaction)
+                                @php
+                                    if ($purchase) {
+                                        $gift = \App\Models\GiftReceive::where('purchase_id', $purchase->id)
+                                            ->where('gift_transaction_id', $gift_transaction['id'])
+                                            ->first();
+                                    } else {
+                                        $gift = null;
+                                    }
+                                @endphp
+                                <tr>
+                                    <td colspan="6">{{ $gift_transaction['gift']['name'] }}</td>
+                                    <td>{{ $gift_transaction['count'] }}</td>
+                                    <td>
+                                        <input type="number" name="gift_quantity_received[{{ $gift_transaction['id'] }}]"
+                                            class="form-control" required min="0"
+                                            max="{{ $gift_transaction['count'] }}"
+                                            value="{{ $gift ? $gift->quantity_received : $gift_transaction['count'] }}">
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                     <tfoot>
                         <tr>
-                            {{-- write note here --}}
                             <td colspan="8">
                                 <label for="note">Note:</label>
                                 <textarea name="note" id="note" class="form-control" rows="2" placeholder="Write note here...">{{ $purchase->note ?? '' }}</textarea>
