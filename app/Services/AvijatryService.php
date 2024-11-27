@@ -57,6 +57,7 @@ class AvijatryService
             'retail_store_status' => 'Approved',
             'retail_store_remarks' => $ret['note'] ?? '',
             'retail_store_received_quantity' => $ret['received_quantity'] ?? [],
+            'gift_receives' => $ret['gift_quantity_received'] ?? [],
         ]);
     }
 }
