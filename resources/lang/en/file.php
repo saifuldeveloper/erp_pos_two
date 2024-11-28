@@ -869,6 +869,7 @@ return [
 	"Buy Now" => "Buy Now",
 	"Install" => "Install",
 	"Staff Id" => "Staff Id",
+    "Salary" => "Salary",
 	"Import CSV file (Device)" => "Import CSV file (Device)",
 	"Attendance Device Date Format" => "Attendance Device Date Format",
 	"Upload File" => "Upload File",

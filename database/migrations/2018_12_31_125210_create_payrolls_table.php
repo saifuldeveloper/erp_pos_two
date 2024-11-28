@@ -19,6 +19,7 @@ class CreatePayrollsTable extends Migration
             $table->integer('employee_id');
             $table->integer('account_id');
             $table->integer('user_id');
+            $table->double('salary');
             $table->double('amount');
             $table->string('paying_method');
             $table->text('note')->nullable();

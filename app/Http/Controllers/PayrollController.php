@@ -51,7 +51,7 @@ class PayrollController extends Controller
         $data['reference_no'] = 'payroll-' . date("Ymd") . '-'. date("his");
         $data['user_id'] = Auth::id();
         Payroll::create($data);
-        $message = 'Payroll creared succesfully';
+        $message = 'Payroll created successfully';
         //collecting mail data
         $lims_employee_data = Employee::find($data['employee_id']);
         $mail_data['reference_no'] = $data['reference_no'];
