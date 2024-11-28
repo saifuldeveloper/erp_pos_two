@@ -181,7 +181,7 @@ class ProductController extends Controller
                 $product_image = htmlspecialchars($product_image[0]);
                 if ($product_image && $product_image != 'zummXD2dvAtI.png') {
                     if (file_exists("public/images/product/small/" . $product_image))
-                    $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';  
+                    $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
                         // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
                     else
                     $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
@@ -967,7 +967,10 @@ class ProductController extends Controller
             $lims_product_list_without_variant = $this->productWithoutVariant();
             $lims_product_list_with_variant = $this->productWithVariant();
             $lims_brand_list = Brand::where('is_active', true)->get();
-            $lims_category_list = Category::where('is_active', true)->get();
+            $lims_category_list = Category::where('is_active', 1)
+                ->whereNotNull('parent_id')
+                ->with('parent')
+                ->get();
             $lims_unit_list = Unit::where('is_active', true)->get();
             $lims_tax_list = Tax::where('is_active', true)->get();
             $lims_product_data = Product::where('id', $id)->first();
