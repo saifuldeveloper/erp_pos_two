@@ -147,7 +147,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
+
         $(document).on("click", ".open-EditCategoryDialog", function() {
             $("#editModal input[name='is_sync_disable']").prop("checked", false);
             $("#editModal input[name='featured']").prop("checked", false);
@@ -155,6 +155,8 @@
             var id = $(this).data('id').toString();
             url = url.concat(id).concat("/edit");
             $.get(url, function(data) {
+                console.log(data);
+
                 $("#editModal input[name='name']").val(data['name']);
                 $("#editModal select[name='parent_id']").val(data['parent_id']);
                 $("#editModal input[name='category_id']").val(data['id']);

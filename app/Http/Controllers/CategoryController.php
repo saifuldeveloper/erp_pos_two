@@ -202,8 +202,8 @@ class CategoryController extends Controller
     {
         $lims_category_data = DB::table('categories')->where('id', $id)->first();
         $lims_parent_data = DB::table('categories')->where('id', $lims_category_data->parent_id)->first();
-        if($lims_parent_data)
-            $lims_category_data['parent'] = $lims_parent_data['name'];
+        // if($lims_parent_data)
+        //     $lims_category_data['parent'] = $lims_parent_data->name;
         return $lims_category_data;
     }
 
