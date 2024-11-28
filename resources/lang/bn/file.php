@@ -207,6 +207,8 @@ return [
 
 	"Staff" => "স্টাফ",
 
+    "Salary" => "বেতন",
+
 	"Quotation" => "কোটেশন",
 
 	"Create" => "তৈরি করুন",
