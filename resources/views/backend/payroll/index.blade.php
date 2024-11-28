@@ -11,8 +11,49 @@
     @endif
     <section>
         <div class="container-fluid">
-            <button class="btn btn-info" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i>
-                {{ trans('file.Add Payroll') }} </button>
+            <div class="card">
+                <div class="card-header mt-2">
+                    <h3 class="text-center">{{ trans('file.Salary') }}</h3>
+                </div>
+                {!! Form::open(['route' => 'payroll.index', 'method' => 'get']) !!}
+                <div class="row ml-1 mt-2">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label><strong>{{ trans('file.Employee') }}</strong></label>
+                            <select id="employee_id" name="employee_id" class="form-control selectpicker"
+                                data-live-search="true" data-live-search-style="begins" title="Select Employee...">
+                                <option value="0">{{ trans('file.All') }}</option>
+                                @foreach ($lims_employee_list as $employee)
+                                    <option value="{{ $employee->id }}"
+                                        {{ $employee->id == $employee_id ? 'selected' : '' }}>
+                                        {{ $employee->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label><strong>{{ trans('file.Date') }}</strong></label>
+                            <input type="text" class="daterangepicker-field form-control"
+                                value="{{ $starting_date }} To {{ $ending_date }}" required />
+                            <input type="hidden" name="starting_date" value="{{ $starting_date }}" />
+                            <input type="hidden" name="ending_date" value="{{ $ending_date }}" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-4">
+                        <div class="form-group">
+                            <button class="btn btn-primary w-100" id="filter-btn"
+                                type="submit">{{ trans('file.submit') }}</button>
+                        </div>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </div>
+            <div class="container-fluid">
+                <button class="btn btn-info" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i>
+                    {{ trans('file.Add Payroll') }} </button>
+            </div>
         </div>
         <div class="table-responsive">
             <table id="payroll-table" class="table">
@@ -79,7 +120,8 @@
                                         {{ Form::open(['route' => ['payroll.destroy', $payroll->id], 'method' => 'DELETE']) }}
                                         <li>
                                             <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i
-                                                    class="dripicons-trash"></i> {{ trans('file.delete') }}</button>
+                                                    class="dripicons-trash"></i>
+                                                {{ trans('file.delete') }}</button>
                                         </li>
                                         {{ Form::close() }}
                                     </ul>
@@ -264,6 +306,17 @@
 
         var payroll_id = [];
         var user_verified = <?php echo json_encode(env('USER_VERIFIED')); ?>;
+
+        $(".daterangepicker-field").daterangepicker({
+            callback: function(startDate, endDate, period) {
+                var starting_date = startDate.format('YYYY-MM-DD');
+                var ending_date = endDate.format('YYYY-MM-DD');
+                var title = starting_date + ' To ' + ending_date;
+                $(this).val(title);
+                $('input[name="starting_date"]').val(starting_date);
+                $('input[name="ending_date"]').val(ending_date);
+            }
+        });
 
         $.ajaxSetup({
             headers: {
