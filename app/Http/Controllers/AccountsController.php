@@ -62,12 +62,12 @@ class AccountsController extends Controller
 
     public function makeDefault($id)
     {
-        $lims_account_data = Account::where('is_default', true)->first();
-        $lims_account_data->is_default = false;
+        $lims_account_data = Account::where('is_default', 1)->first();
+        $lims_account_data->is_default = null;
         $lims_account_data->save();
 
         $lims_account_data = Account::find($id);
-        $lims_account_data->is_default = true;
+        $lims_account_data->is_default = 1;
         $lims_account_data->save();
 
         return 'Account set as default successfully';

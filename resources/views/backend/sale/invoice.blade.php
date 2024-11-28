@@ -95,7 +95,7 @@
     <div id="receipt-data">
         <div class="centered">
             @if($general_setting->site_logo)
-                <img src="{{url('logo', $general_setting->site_logo)}}" height="42" width="50" style="margin:10px 0;">
+                <img src="{{url('logo', $general_setting->site_logo)}}" height="50" width="50" style="margin:10px 0;">
             @endif
 
             <h2>{{$lims_biller_data->company_name}}</h2>

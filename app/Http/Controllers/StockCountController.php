@@ -21,7 +21,11 @@ class StockCountController extends Controller
         if( $role->hasPermissionTo('stock_count') ) {
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $lims_brand_list = Brand::where('is_active', true)->get();
-            $lims_category_list = Category::where('is_active', true)->get();
+            // $lims_category_list = Category::where('is_active', true)->get();
+            $lims_category_list = Category::where('is_active', 1)
+            ->whereNotNull('parent_id')
+            ->with('parent')
+            ->get();
             $general_setting = DB::table('general_settings')->latest()->first();
             if(Auth::user()->role_id > 2 && $general_setting->staff_access == 'own')
                 $lims_stock_count_all = StockCount::orderBy('id', 'desc')->where('user_id', Auth::id())->get();
