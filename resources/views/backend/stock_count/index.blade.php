@@ -142,9 +142,9 @@
                 <div class="col-md-6 form-group" id="category">
                     <label>{{trans('file.category')}}</label>
                     <select name="category_id[]" id="category_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Category..." multiple>
-                        @foreach($lims_category_list as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
+                        @foreach ($lims_category_list as $category)
+                        <option value="{{ $category->id }}">{{$category->parent->name.'-'.$category->name }}</option>
+                    @endforeach
                     </select>
                 </div>
                 <div class="col-md-6 form-group" id="brand">

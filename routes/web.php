@@ -547,7 +547,8 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 
 	//accounting routes
     Route::controller(AccountsController::class)->group(function () {
-        Route::get('make-default/{id}', 'makeDefault');
+        Route::get('accounts/make-default/{id}',  'makeDefault')->name('accounts.makeDefault');
+        
         Route::get('balancesheet', 'balanceSheet')->name('accounts.balancesheet');
         Route::post('account-statement', 'accountStatement')->name('accounts.statement');
         Route::get('accounts/all', 'accountsAll')->name('account.all');
