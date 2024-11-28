@@ -36,7 +36,7 @@
                                                 <select name="category_id" required class="selectpicker form-control"
                                                     data-live-search="true" data-live-search-style="begins"
                                                     title="Select Category...">
-                                                  
+
                                                     @foreach ($lims_category_list as $category)
                                                         <option value="{{ $category->id }}">{{$category->parent->name.'-'.$category->name }}</option>
                                                     @endforeach
@@ -84,7 +84,7 @@
                                         </div>
                                     </div> --}}
                                     <input type="hidden" name="barcode_symbology" value="C128">
-                                    <div id="digital" class="col-md-4">
+                                    {{-- <div id="digital" class="col-md-4">
                                         <div class="form-group">
                                             <label>{{ trans('file.Attach File') }} *</strong> </label>
                                             <div class="input-group">
@@ -92,7 +92,7 @@
                                             </div>
                                             <span class="validation-msg"></span>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div id="combo" class="col-md-9 mb-1">
                                         <label>{{ trans('file.add_product') }}</label>
                                         <div class="search-box input-group mb-3">
@@ -130,7 +130,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-4 form-group">
                                         <label>{{ trans('file.Product Unit') }} *</strong> </label>
                                         <div class="input-group">
