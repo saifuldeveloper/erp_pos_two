@@ -34,10 +34,10 @@ class CategoryController extends Controller
     public function categoryData(Request $request)
     {
         $columns = array(
-            0 =>'id',
-            2 =>'name',
-            3=> 'parent_id',
-            4=> 'is_active',
+            1 =>'name',
+            2 => 'parent_id',
+            3 => 'number_of_product',
+            4 => 'stock_qty',
         );
 
         $totalData = DB::table('categories')->where('is_active', true)->whereNotNull('parent_id')->count();
@@ -50,30 +50,54 @@ class CategoryController extends Controller
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
-        if(empty($request->input('search.value')))
-            $categories = Category::offset($start)
-                        ->where('is_active', true)
-                        ->limit($limit)
-                        ->orderBy($order,$dir)
-                        ->whereNotNull('parent_id')
-                        ->get();
-        else
-        {
+        if (empty($request->input('search.value'))) {
+            if ($order == 'number_of_product') {
+                $categories = Category::withCount(['product' => function ($query) {
+                        $query->where('is_active', true);
+                    }])
+                    ->where('is_active', true)
+                    ->whereNotNull('parent_id')
+                    ->orderBy('product_count', $dir)
+                    ->offset($start)
+                    ->limit($limit)
+                    ->get();
+            } elseif ($order == 'stock_qty') {
+                $categories = Category::selectRaw('categories.*,
+                    (SELECT SUM(qty) FROM products WHERE products.category_id = categories.id AND products.is_active = 1) AS stock_qty')
+                    ->where('is_active', true)
+                    ->orderBy('stock_qty', $dir)
+                    ->whereNotNull('parent_id')
+                    ->offset($start)
+                    ->limit($limit)
+                    ->get();
+            } else {
+                $categories = Category::offset($start)
+                    ->where('is_active', true)
+                    ->limit($limit)
+                    ->orderBy($order, $dir)
+                    ->whereNotNull('parent_id')
+                    ->get();
+            }
+        } else {
             $search = $request->input('search.value');
-            $categories =  Category::where([
-                            ['name', 'LIKE', "%{$search}%"],
-                            ['is_active', true]
-                        ])->offset($start)
-                        ->limit($limit)
-                        ->whereNotNull('parent_id')
-                        ->orderBy($order,$dir)->get();
+            $categories = Category::where([
+                    ['name', 'LIKE', "%{$search}%"],
+                    ['is_active', true],
+                ])
+                ->whereNotNull('parent_id')
+                ->orderBy($order, $dir)
+                ->offset($start)
+                ->limit($limit)
+                ->get();
 
             $totalFiltered = Category::where([
-                            ['name','LIKE',"%{$search}%"],
-                            ['is_active', true]
-                        ])
-                        ->whereNotNull('parent_id')->count();
+                    ['name', 'LIKE', "%{$search}%"],
+                    ['is_active', true],
+                ])
+                ->whereNotNull('parent_id')
+                ->count();
         }
+
         $data = array();
         if(!empty($categories))
         {
