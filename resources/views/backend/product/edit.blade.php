@@ -28,11 +28,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 d-none">
                                     <div class="form-group">
                                         <label>{{trans('file.Product Name')}} *</strong> </label>
                                         <input type="text" name="name" value="{{$lims_product_data->name}}" required class="form-control">
                                         <span class="validation-msg" id="name-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="hidden" name="category" value="{{$lims_product_data->category_id}}">
+                                        <label>{{trans('file.category')}} *</strong> </label>
+                                        <div class="input-group">
+                                          <select name="category_id" required class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Category...">
+                                            @foreach($lims_category_list as $category)
+                                                <option value="{{$category->id}}">{{$category->parent->name.'-'.$category->name}}</option>
+                                            @endforeach
+                                          </select>
+                                      </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -63,7 +76,7 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                <div id="digital" class="col-md-4">
+                                {{-- <div id="digital" class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Attach File')}}</strong> </label>
                                         <div class="input-group">
@@ -71,7 +84,7 @@
                                         </div>
                                         <span class="validation-msg"></span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div id="combo" class="col-md-9 mb-1">
                                     <label>{{trans('file.add_product')}}</label>
                                     <div class="search-box input-group mb-3">
@@ -135,33 +148,21 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <input type="hidden" name="category" value="{{$lims_product_data->category_id}}">
-                                        <label>{{trans('file.category')}} *</strong> </label>
-                                        <div class="input-group">
-                                          <select name="category_id" required class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Category...">
-                                            @foreach($lims_category_list as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-                                            @endforeach
-                                          </select>
-                                      </div>
-                                    </div>
+                                    <label>{{trans('file.Product Unit')}} *</strong> </label>
+                                    <div class="input-group">
+                                      <select required class="form-control selectpicker" data-live-search="true" data-live-search-style="begins" title="Select unit..." name="unit_id">
+                                        @foreach($lims_unit_list as $unit)
+                                            @if($unit->base_unit==null)
+                                                <option value="{{$unit->id}}">{{$unit->unit_name}}</option>
+                                            @endif
+                                        @endforeach
+                                      </select>
+                                      <input type="hidden" name="unit" value="{{ $lims_product_data->unit_id}}">
+                                  </div>
                                 </div>
-                                <div id="unit" class="col-md-12">
+                                <div id="unit" class="col-md-12 d-none">
                                     <div class="row ">
-                                        <div class="col-md-4">
-                                                <label>{{trans('file.Product Unit')}} *</strong> </label>
-                                                <div class="input-group">
-                                                  <select required class="form-control selectpicker" data-live-search="true" data-live-search-style="begins" title="Select unit..." name="unit_id">
-                                                    @foreach($lims_unit_list as $unit)
-                                                        @if($unit->base_unit==null)
-                                                            <option value="{{$unit->id}}">{{$unit->unit_name}}</option>
-                                                        @endif
-                                                    @endforeach
-                                                  </select>
-                                                  <input type="hidden" name="unit" value="{{ $lims_product_data->unit_id}}">
-                                              </div>
-                                        </div>
+
                                         <div class="col-md-4">
                                                 <label>{{trans('file.Sale Unit')}}</strong> </label>
                                                 <div class="input-group">
@@ -199,12 +200,12 @@
                                         <input type="hidden" name="qty" value="{{ $lims_product_data->qty }}" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Daily Sale Objective')}}</strong> </label>
                                         <input type="number" name="daily_sale_objective" class="form-control" step="any" value="{{$lims_product_data->daily_sale_objective}}">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div id="alert-qty" class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Alert Quantity')}}</strong> </label>
@@ -259,7 +260,7 @@
                                                     @endforeach
                                                 @elseif($field->type == 'radio_button')
                                                     <br>
-                                                    <?php 
+                                                    <?php
                                                     $option_values = explode(",", $field->option_value);
                                                     ?>
                                                     @foreach($option_values as $value)
@@ -1458,7 +1459,7 @@
             var myDropzone = this;
             $('#submit-btn').on("click", function (e) {
                 e.preventDefault();
-                $(this).attr('disabled','true').html('<span class="spinner-border text-light" role="status"></span> {{trans("file.Saving")}}...');
+                //$(this).attr('disabled','true').html('<span class="spinner-border text-light" role="status"></span> {{trans("file.Saving")}}...');
                 if ( $("#product-form").valid() && validate() ) {
                     tinyMCE.triggerSave();
                     if(myDropzone.getAcceptedFiles().length) {
@@ -1471,9 +1472,9 @@
                         $.each(data, function (key, el) {
                             formData.append(el.name, el.value);
                         });
-                        var file = $('#file')[0].files;
-                        if(file.length > 0)
-                            formData.append('file',file[0]);
+                        // var file = $('#file')[0].files;
+                        // if(file.length > 0)
+                        //     formData.append('file',file[0]);
                         $.ajax({
                             type:'POST',
                             url:'../update',
