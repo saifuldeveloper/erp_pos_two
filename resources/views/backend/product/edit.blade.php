@@ -1472,9 +1472,9 @@
                         $.each(data, function (key, el) {
                             formData.append(el.name, el.value);
                         });
-                        // var file = $('#file')[0].files;
-                        // if(file.length > 0)
-                        //     formData.append('file',file[0]);
+                        var file = $('#file')[0].files;
+                        if(file.length > 0)
+                            formData.append('file',file[0]);
                         $.ajax({
                             type:'POST',
                             url:'../update',

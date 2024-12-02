@@ -156,6 +156,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::get('products/getdata/{id}/{variant_id}', 'getData');
         Route::get('products/product_warehouse/{id}', 'productWarehouseData');
         Route::get('products/print_barcode','printBarcode')->name('product.printBarcode');
+        Route::post('products/print_page','printBarcodePage')->name('product.printBarcode.page');
         Route::get('products/lims_product_search', 'limsProductSearch')->name('product.search');
         Route::post('products/deletebyselection', 'deleteBySelection');
         Route::post('products/update', 'updateProduct');
