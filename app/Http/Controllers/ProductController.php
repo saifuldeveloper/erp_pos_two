@@ -181,12 +181,12 @@ class ProductController extends Controller
                 $product_image = htmlspecialchars($product_image[0]);
                 if ($product_image && $product_image != 'zummXD2dvAtI.png') {
                     if (file_exists("public/images/product/small/" . $product_image))
-                    $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
-                        // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
+                        $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
+                    // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
                     else
-                    $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
+                        $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
 
-                        // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
+                    // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
                 } else
                     $nestedData['image'] = '<img src="images/zummXD2dvAtI.png" height="80" width="80">';
                 $nestedData['name'] = $product->name;
@@ -1291,7 +1291,51 @@ class ProductController extends Controller
         $lims_product_list_without_variant = $this->productWithoutVariant();
         $lims_product_list_with_variant = $this->productWithVariant();
 
-        return view('backend.product.print_barcode', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'preLoadedproduct'));
+        return view('backend.product.print_barcode_custom_desing', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'preLoadedproduct'));
+    }
+
+    public function printBarcodePage(Request $request)
+    {
+        $productCodes = $request->code;
+        $products = [];
+        $print_qty = $request->qty;
+
+        $lims_product_data = Product::whereIn('code', $productCodes)
+            ->where('is_active', true)
+            ->get();
+
+        $lims_variant_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
+            ->select('products.*', 'product_variants.item_code', 'product_variants.variant_id', 'product_variants.additional_price')
+            ->whereIn('product_variants.item_code', $productCodes)
+            ->get();
+
+
+        $all_products = $lims_product_data->merge($lims_variant_data);
+
+        foreach ($all_products as $key => $product_data) {
+            $variant_id = $product_data->variant_id ?? '';
+            $additional_price = $product_data->additional_price ?? 0;
+
+
+            $qty = isset($print_qty[$key]) ? $print_qty[$key] : 1;
+
+            $product = [];
+            $product['name'] = $product_data->name;
+            $product['code'] = $product_data->is_variant ? $product_data->item_code : $product_data->code;
+            $product['price'] = $product_data->price + $additional_price;
+            $product['barcode'] = DNS1D::getBarcodePNG($product_data->code, $product_data->barcode_symbology);
+            $product['promotion_price'] = $product_data->promotion_price;
+            $product['currency'] = config('currency');
+            $product['currency_position'] = config('currency_position');
+            $product['id'] = $product_data->id;
+            $product['varient_id'] = $variant_id;
+            $product['count'] = $qty;
+
+            $products[] = $product;
+        }
+
+        return view('backend.product.print_page', compact('products'));
+
     }
 
     public function productWithoutVariant()
