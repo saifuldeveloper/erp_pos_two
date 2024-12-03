@@ -35,7 +35,8 @@
 
         .box_stiker {
             /* height: 35mm; */
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            padding-left: 3mm;
         }
 
         .box_header {
@@ -85,7 +86,7 @@
         }
 
         .shoe_body {
-            width: 45mm;
+            width: 44mm;
             float: right;
         }
 
@@ -97,15 +98,15 @@
         .shoe_size {
             font-size: 12px;
             font-weight: bold;
-            width: 33.33%
+            width: 40%
         }
 
         .shoe_qrcode {
-            width: 33.33%
+            width: 15%
         }
 
         .shoe_price {
-            width: 33.33%
+            width: 45%
         }
 
         .shoe_barcode_top {
@@ -114,7 +115,8 @@
 
         .shoe_barcode_top_category {
             width: 50%;
-            text-align: left
+            text-align: left;
+            font-size: 9px;
         }
 
         .shoe_barcode_top_color {
@@ -191,7 +193,7 @@
 </head>
 
 <body>
-    <button class="print-button">Print</button>
+    {{-- <button class="print-button">Print</button> --}}
     @foreach ($products as $entry)
         <div class="barcode">
 
@@ -202,7 +204,7 @@
                 <div class="barcode-col {{ $i % 2 == 0 ? 'barcode-left' : 'barcode-right' }}">
                     <div class="box_stiker">
                         <div class="box_header">
-                            <div class="box_memo_no"><span style="font-weight: bolder">Memo-10</span></div>
+                            <div class="box_memo_no"><span style="font-weight: bolder">M-1</span></div>
                             <div class="box_logo"></div>
                         </div>
                         <div class="box_middle">
@@ -225,7 +227,7 @@
                                 alt="barcode" style="width: 95%;height: 8mm"><br>
 
                             <div class="footer" style="text-align: center;margin-top: -7px; font-size:20px;">
-                                <p class="shoe-id">{{ $entry['code'] }}</p>
+                                <p class="shoe-id" style="font-size:21px;">{{ $entry['code'] }}</p>
                             </div>
                         </div>
                     </div>
@@ -234,7 +236,9 @@
                         <div class="shoe_logo"></div>
                         <div class="shoe_body">
                             <div class="shoe_header">
-                                <div class="shoe_size">{{ @$entry->variant_size }}</div>
+                                <div class="shoe_size"><span style="font-size: 17px">{{ @$entry->variant_size }}</span>
+                                    <span>m-10</span>
+                                </div>
                                 <div class="shoe_qrcode">
                                     <img src="data:image/png;base64,{{ DNS2D::getBarcodePNG($entry['code'], 'QRCODE') }}"
                                         alt="barcode" style="height:5mm;">
@@ -248,10 +252,10 @@
                             </div>
                             <div class="shoe_barcode">
                                 <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($entry['code'], 'C39') }}"
-                                    alt="barcode" style="width: 95%;height: 4mm"><br>
+                                    alt="barcode" style="width: 95%;height: 5mm"><br>
                             </div>
                             <div class="shoe_footer">
-                                <p class="shoe-id" style="font-size: 9px">{{ $entry['code'] }}</p>
+                                <b><p class="shoe-id" style="font-size: 9px">{{ $entry['code'] }}</p></b>
                             </div>
 
                         </div>
