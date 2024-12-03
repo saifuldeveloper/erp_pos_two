@@ -196,6 +196,7 @@
         <div class="barcode">
 
   
+            {{-- @dd($entry); --}}
 
             @for ($i = 0; $i < $entry['count']; $i++)
                 <div class="barcode-col {{ $i % 2 == 0 ? 'barcode-left' : 'barcode-right' }}">
@@ -205,19 +206,19 @@
                             <div class="box_logo"></div>
                         </div>
                         <div class="box_middle">
-                            <div class="box_size">40</div>
+                            <div class="box_size">{{ @$entry['variant_size'] }}</div>
                             <div class="box_qr_code"> <img
                                     src="data:image/png;base64,{{ DNS2D::getBarcodePNG($entry['code'], 'QRCODE') }}"
                                     alt="barcode" style="height:6mm; width:6mm"></div>
-                            <div class="box_price"><span>MRP</span><b style="font-size:17px">899</b></div>
+                            <div class="box_price"><span>MRP</span><b style="font-size:17px">{{ @$entry['price'] }}</b></div>
                         </div>
 
                         <div class="box_bercode">
                             <div class="box_barcode_top">
                                 <div class="box_barcode_top_category">
-                                    ladis
+                                    {{ @$entry['name'] }}
                                 </div>
-                                <div class="box_barcode_top_color">red</div>
+                                <div class="box_barcode_top_color">   {{ @$entry['varient_color'] }}</div>
                             </div>
 
                             <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($entry['code'], 'C39') }}"
@@ -233,16 +234,16 @@
                         <div class="shoe_logo"></div>
                         <div class="shoe_body">
                             <div class="shoe_header">
-                                <div class="shoe_size">40</div>
+                                <div class="shoe_size">{{ @$entry->variant_size }}</div>
                                 <div class="shoe_qrcode">
                                     <img src="data:image/png;base64,{{ DNS2D::getBarcodePNG($entry['code'], 'QRCODE') }}"
                                         alt="barcode" style="height:5mm;">
                                 </div>
-                                <div class="shoe_price">MRP <b style="font-size: 17px;">30</b></div>
+                                <div class="shoe_price">MRP <b style="font-size: 17px;">{{ @$entry['price'] }}</b></div>
                             </div>
                             <div class="shoe_barcode_top">
-                                <div class="shoe_barcode_top_category">red</div>
-                                <div class="shoe_barcode_top_color">red</div>
+                                <div class="shoe_barcode_top_category"> {{ @$entry['name'] }}</div>
+                                <div class="shoe_barcode_top_color"> {{ @$entry['varient_color'] }}</div>
 
                             </div>
                             <div class="shoe_barcode">
