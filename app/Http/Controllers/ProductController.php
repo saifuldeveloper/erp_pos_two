@@ -1315,8 +1315,6 @@ class ProductController extends Controller
         foreach ($all_products as $key => $product_data) {
             $variant_id = $product_data->variant_id ?? '';
             $additional_price = $product_data->additional_price ?? 0;
-
-
             $qty = isset($print_qty[$key]) ? $print_qty[$key] : 1;
 
             $product = [];
@@ -1329,8 +1327,12 @@ class ProductController extends Controller
             $product['currency_position'] = config('currency_position');
             $product['id'] = $product_data->id;
             $product['varient_id'] = $variant_id;
-            $product['count'] = $qty;
 
+            $variant_name = Variant::find($variant_id)->name ?? null;
+            $variant_parts = explode('/', $variant_name);
+            $product['varient_color'] = explode('/', $variant_name)[0];
+            $product['variant_size'] = isset($variant_parts[1]) ? $variant_parts[1] : null;
+            $product['count'] = $qty;
             $products[] = $product;
         }
 
