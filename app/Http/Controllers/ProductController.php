@@ -1310,7 +1310,7 @@ class ProductController extends Controller
             ->get();
 
 
-        $all_products = $lims_product_data->merge($lims_variant_data);
+            $all_products = $lims_product_data->concat($lims_variant_data);
 
         foreach ($all_products as $key => $product_data) {
             $variant_id = $product_data->variant_id ?? '';
