@@ -194,13 +194,14 @@
 
 <body>
     {{-- <button class="print-button">Print</button> --}}
-    @foreach ($products as $entry)
-        <div class="barcode">
-
-  
+    <div class="barcode">
+        @php
+            $i = 0;
+        @endphp
+        @foreach ($products as $entry)
             {{-- @dd($entry); --}}
 
-            @for ($i = 0; $i < $entry['count']; $i++)
+            @while ($entry['count']--)
                 <div class="barcode-col {{ $i % 2 == 0 ? 'barcode-left' : 'barcode-right' }}">
                     <div class="box_stiker">
                         <div class="box_header">
@@ -212,7 +213,8 @@
                             <div class="box_qr_code"> <img
                                     src="data:image/png;base64,{{ DNS2D::getBarcodePNG($entry['code'], 'QRCODE') }}"
                                     alt="barcode" style="height:6mm; width:6mm"></div>
-                            <div class="box_price"><span>MRP</span><b style="font-size:17px">{{ @$entry['price'] }}</b></div>
+                            <div class="box_price"><span>MRP</span><b style="font-size:17px">{{ @$entry['price'] }}</b>
+                            </div>
                         </div>
 
                         <div class="box_bercode">
@@ -220,7 +222,7 @@
                                 <div class="box_barcode_top_category">
                                     {{ @$entry['name'] }}
                                 </div>
-                                <div class="box_barcode_top_color">   {{ @$entry['varient_color'] }}</div>
+                                <div class="box_barcode_top_color"> {{ @$entry['varient_color'] }}</div>
                             </div>
 
                             <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($entry['code'], 'C39') }}"
@@ -243,7 +245,8 @@
                                     <img src="data:image/png;base64,{{ DNS2D::getBarcodePNG($entry['code'], 'QRCODE') }}"
                                         alt="barcode" style="height:5mm;">
                                 </div>
-                                <div class="shoe_price">MRP <b style="font-size: 17px;">{{ @$entry['price'] }}</b></div>
+                                <div class="shoe_price">MRP <b style="font-size: 17px;">{{ @$entry['price'] }}</b>
+                                </div>
                             </div>
                             <div class="shoe_barcode_top">
                                 <div class="shoe_barcode_top_category"> {{ @$entry['name'] }}</div>
@@ -255,7 +258,9 @@
                                     alt="barcode" style="width: 95%;height: 5mm"><br>
                             </div>
                             <div class="shoe_footer">
-                                <b><p class="shoe-id" style="font-size: 9px">{{ $entry['code'] }}</p></b>
+                                <b>
+                                    <p class="shoe-id" style="font-size: 9px">{{ $entry['code'] }}</p>
+                                </b>
                             </div>
 
                         </div>
@@ -263,9 +268,12 @@
 
                     </div>
                 </div>
-            @endfor
-        </div>
-    @endforeach
+                @php
+                    $i++;
+                @endphp
+            @endwhile
+        @endforeach
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
