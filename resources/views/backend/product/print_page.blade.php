@@ -205,7 +205,7 @@
                 <div class="barcode-col {{ $i % 2 == 0 ? 'barcode-left' : 'barcode-right' }}">
                     <div class="box_stiker">
                         <div class="box_header">
-                            <div class="box_memo_no"><span style="font-weight: bolder">M-1</span></div>
+                            {{-- <div class="box_memo_no"><span style="font-weight: bolder">M-1</span></div> --}}
                             <div class="box_logo"></div>
                         </div>
                         <div class="box_middle">
@@ -239,7 +239,7 @@
                         <div class="shoe_body">
                             <div class="shoe_header">
                                 <div class="shoe_size"><span style="font-size: 17px">{{ @$entry->variant_size }}</span>
-                                    <span>m-10</span>
+                                    <span>{{ @$entry['variant_size'] }}</span>
                                 </div>
                                 <div class="shoe_qrcode">
                                     <img src="data:image/png;base64,{{ DNS2D::getBarcodePNG($entry['code'], 'QRCODE') }}"
