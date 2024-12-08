@@ -36,7 +36,7 @@
                                                 <select name="category_id" required class="selectpicker form-control"
                                                     data-live-search="true" data-live-search-style="begins"
                                                     title="Select Category...">
-                                                  
+
                                                     @foreach ($lims_category_list as $category)
                                                         <option value="{{ $category->id }}">{{$category->parent->name.'-'.$category->name }}</option>
                                                     @endforeach
@@ -130,7 +130,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-md-4 form-group">
                                         <label>{{ trans('file.Product Unit') }} *</strong> </label>
                                         <div class="input-group">
@@ -698,7 +698,11 @@
                     var newBody = $("<tbody>");
                     for (i = 0; i < combinations.length; i++) {
                         var variant_name = combinations[i];
-                        var item_code = variant_name + '-' + $("#code").val();
+                        var all_variants = variant_name.split('/');
+                        for (var j = 0; j < all_variants.length; j++) {
+                            all_variants[j] = all_variants[j].charAt(0);
+                        }
+                        var item_code = all_variants.join('/') + '-' + $("#code").val();
                         var newRow = $("<tr>");
                         var cols = '';
                         cols += '<td class="variant-name">' + variant_name +
