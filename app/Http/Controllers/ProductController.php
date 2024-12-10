@@ -1285,13 +1285,13 @@ class ProductController extends Controller
     public function printBarcode(Request $request)
     {
         if ($request->input('data'))
-            $preLoadedproduct = $this->limsProductSearch($request);
+            $preLoadedproducts = $this->limsProductSearch($request);
         else
-            $preLoadedproduct = null;
+            $preLoadedproducts = null;
         $lims_product_list_without_variant = $this->productWithoutVariant();
         $lims_product_list_with_variant = $this->productWithVariant();
 
-        return view('backend.product.print_barcode_custom_desing', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'preLoadedproduct'));
+        return view('backend.product.print_barcode_custom_desing', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'preLoadedproducts'));
     }
 
     public function printBarcodePage(Request $request)
@@ -1310,7 +1310,7 @@ class ProductController extends Controller
             ->get();
 
 
-            $all_products = $lims_product_data->concat($lims_variant_data);
+        $all_products = $lims_product_data->concat($lims_variant_data);
 
         foreach ($all_products as $key => $product_data) {
             $variant_id = $product_data->variant_id ?? '';
@@ -1337,7 +1337,6 @@ class ProductController extends Controller
         }
 
         return view('backend.product.print_page', compact('products'));
-
     }
 
     public function productWithoutVariant()
@@ -1359,37 +1358,39 @@ class ProductController extends Controller
     {
         $product_code = explode("(", $request['data']);
         $product_code[0] = rtrim($product_code[0], " ");
-        $lims_product_data = Product::where([
+        $product = Product::where([
             ['code', $product_code[0]],
             ['is_active', true]
         ])->first();
-        if (!$lims_product_data) {
+        if ($product) {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
                 ->select('products.*', 'product_variants.item_code', 'product_variants.variant_id', 'product_variants.additional_price')
-                ->where('product_variants.item_code', $product_code[0])
-                ->first();
-
-            $variant_id = $lims_product_data->variant_id;
-            $additional_price = $lims_product_data->additional_price;
-        } else {
-            $variant_id = '';
-            $additional_price = 0;
+                ->where('product_variants.product_id', $product->id)
+                ->get();
+            if ($lims_product_data->isEmpty()) {
+                $lims_product_data = Product::where('id', $product->id)->get();
+            }
         }
-        $product[] = $lims_product_data->name;
-        if ($lims_product_data->is_variant)
-            $product[] = $lims_product_data->item_code;
-        else
-            $product[] = $lims_product_data->code;
+        $products = [];
+        foreach ($lims_product_data as $key => $product_data) {
+            $variant_id = $product_data->variant_id ?? '';
+            $additional_price = $product_data->additional_price ?? 0;
 
-        $product[] = $lims_product_data->price + $additional_price;
-        $product[] = DNS1D::getBarcodePNG($lims_product_data->code, $lims_product_data->barcode_symbology);
-        $product[] = $lims_product_data->promotion_price;
-        $product[] = config('currency');
-        $product[] = config('currency_position');
-        $product[] = $lims_product_data->qty;
-        $product[] = $lims_product_data->id;
-        $product[] = $variant_id;
-        return $product;
+            $product = [];
+            $product[] = $product_data->name;
+            $product[] = $product_data->is_variant ? $product_data->item_code : $product_data->code;
+            $product[] = $product_data->price + $additional_price;
+            $product[] = DNS1D::getBarcodePNG($product_data->code, $product_data->barcode_symbology);
+            $product[] = $product_data->promotion_price;
+            $product[] = config('currency');
+            $product[] = config('currency_position');
+            $product[] = $product_data->qty;
+            $product[] = $product_data->id;
+            $product[] = $variant_id;
+
+            $products[] = $product;
+        }
+        return $products;
     }
 
     /*public function getBarcode()
@@ -1593,6 +1594,5 @@ class ProductController extends Controller
         $this->cacheForget('product_list');
         $this->cacheForget('product_list_with_variant');
         return redirect('products')->with('message', 'Product deleted successfully');
-
     }
 }

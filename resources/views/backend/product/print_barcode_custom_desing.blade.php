@@ -5,12 +5,12 @@
     @endif
     <style>
         /*.barcodelist {
-                max-width: 378px;
-                text-align: center;
-            }
-            .barcodelist img {
-                max-width: 150px;
-            }*/
+                        max-width: 378px;
+                        text-align: center;
+                    }
+                    .barcodelist img {
+                        max-width: 150px;
+                    }*/
 
         @media print {
             * {
@@ -71,55 +71,59 @@
                                     </div>
                                     <form action="{{ route('product.printBarcode.page') }}" method="POST">
                                         @csrf
-                                    <div class="row mt-3">
-                                       
-                                        <div class="col-md-12">
-                                            <div class="table-responsive mt-3">
-                                                <table id="myTable" class="table table-hover order-list">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>{{ trans('file.name') }}</th>
-                                                            <th>{{ trans('file.Code') }}</th>
-                                                            <th>{{ trans('file.Quantity') }}</th>
-                                                            <th><i class="dripicons-trash"></i></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                       
-                                                        @if ($preLoadedproduct)
-                                                            <tr data-imagedata="{{ $preLoadedproduct[3] }}"
-                                                                data-price="{{ $preLoadedproduct[2] }}"
-                                                                data-promo-price="{{ $preLoadedproduct[4] }}"
-                                                                data-currency="{{ $preLoadedproduct[5] }}"
-                                                                data-currency-position="{{ $preLoadedproduct[6] }}">
-                                                                <td>{{ $preLoadedproduct[0] }}</td>
-                                                                <td class="product-code">{{ $preLoadedproduct[1] }}
-                                                                </td>
-                                                                <input type="hidden" name="code[]" value="{{ $preLoadedproduct[1] }}">
-                                                                <td><input type="number" class="form-control qty"
-                                                                        name="qty[]" value="1" /></td>
-                                                                <td><button type="button"
-                                                                        class="ibtnDel btn btn-md btn-danger">Delete</button>
-                                                                </td>
+                                        <div class="row mt-3">
+
+                                            <div class="col-md-12">
+                                                <div class="table-responsive mt-3">
+                                                    <table id="myTable" class="table table-hover order-list">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>{{ trans('file.name') }}</th>
+                                                                <th>{{ trans('file.Code') }}</th>
+                                                                <th>{{ trans('file.Quantity') }}</th>
+                                                                <th><i class="dripicons-trash"></i></th>
                                                             </tr>
-                                                        @endif
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            @if ($preLoadedproducts)
+                                                                @foreach ($preLoadedproducts as $preLoadedproduct)
+                                                                    <tr data-imagedata="{{ $preLoadedproduct[3] }}"
+                                                                        data-price="{{ $preLoadedproduct[2] }}"
+                                                                        data-promo-price="{{ $preLoadedproduct[4] }}"
+                                                                        data-currency="{{ $preLoadedproduct[5] }}"
+                                                                        data-currency-position="{{ $preLoadedproduct[6] }}">
+                                                                        <td>{{ $preLoadedproduct[0] }}</td>
+                                                                        <td class="product-code">{{ $preLoadedproduct[1] }}
+                                                                        </td>
+                                                                        <input type="hidden" name="code[]"
+                                                                            value="{{ $preLoadedproduct[1] }}">
+                                                                        <td><input type="number" class="form-control qty"
+                                                                                name="qty[]" value="1" /></td>
+                                                                        <td><button type="button"
+                                                                                class="ibtnDel btn btn-md btn-danger">Delete</button>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            @endif
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group mt-2" style="display: none">
-                                        <strong>{{ trans('file.Print') }}: </strong>&nbsp;
-                                        <strong><input type="checkbox" name="name" checked />
-                                            {{ trans('file.Product Name') }}</strong>&nbsp;
-                                        <strong><input type="checkbox" name="price" checked />
-                                            {{ trans('file.Price') }}</strong>&nbsp;
-                                        <strong><input type="checkbox" name="promo_price" />
-                                            {{ trans('file.Promotional Price') }}</strong>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <input type="submit" value="{{ trans('file.submit') }}" class="btn btn-primary">
-                                    </div>
+                                        <div class="form-group mt-2" style="display: none">
+                                            <strong>{{ trans('file.Print') }}: </strong>&nbsp;
+                                            <strong><input type="checkbox" name="name" checked />
+                                                {{ trans('file.Product Name') }}</strong>&nbsp;
+                                            <strong><input type="checkbox" name="price" checked />
+                                                {{ trans('file.Price') }}</strong>&nbsp;
+                                            <strong><input type="checkbox" name="promo_price" />
+                                                {{ trans('file.Promotional Price') }}</strong>
+                                        </div>
+                                        <div class="form-group mt-3">
+                                            <input type="submit" value="{{ trans('file.submit') }}"
+                                                class="btn btn-primary">
+                                        </div>
                                     </form>
                                 </div>
 
@@ -192,7 +196,7 @@
                     },
                     success: function(data) {
 
-                
+
                         console.log(data);
                         var flag = 1;
                         $(".product-code").each(function() {
@@ -211,9 +215,11 @@
                             cols += '<td>' + data[0] + '</td>';
                             cols += '<td class="product-code">' + data[1] + '</td>';
 
-                            cols += '<input type="hidden" class="form-control qty" name="code[]" value="' + data[1] + '" />';
                             cols +=
-                            
+                                '<input type="hidden" class="form-control qty" name="code[]" value="' +
+                                data[1] + '" />';
+                            cols +=
+
                                 '<td><input type="number" class="form-control qty" name="qty[]" value="1" /></td>';
                             cols +=
                                 '<td><button type="button" class="ibtnDel btn btn-md btn-danger">Delete</button></td>';
