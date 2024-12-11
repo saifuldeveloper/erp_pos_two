@@ -1472,7 +1472,7 @@
                         $.each(data, function (key, el) {
                             formData.append(el.name, el.value);
                         });
-                        var file = $('#file')[0].files;
+                        var file = $('#file')[0] ? $('#file')[0].files : [];
                         if(file.length > 0)
                             formData.append('file',file[0]);
                         $.ajax({
@@ -1505,7 +1505,7 @@
                 $.each(data, function (key, el) {
                     formData.append(el.name, el.value);
                 });
-                var file = $('#file')[0].files;
+                var file = $('#file')[0] ? $('#file')[0].files : [];
                 if(file.length > 0)
                     formData.append('file',file[0]);
             });
