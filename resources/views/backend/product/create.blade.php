@@ -698,11 +698,7 @@
                     var newBody = $("<tbody>");
                     for (i = 0; i < combinations.length; i++) {
                         var variant_name = combinations[i];
-                        var all_variants = variant_name.split('/');
-                        for (var j = 0; j < all_variants.length; j++) {
-                            all_variants[j] = all_variants[j].charAt(0);
-                        }
-                        var item_code = all_variants.join('/') + '-' + $("#code").val();
+                        var item_code = variant_name + '-' + $("#code").val();
                         var newRow = $("<tr>");
                         var cols = '';
                         cols += '<td class="variant-name">' + variant_name +
