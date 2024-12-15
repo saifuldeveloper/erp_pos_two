@@ -990,21 +990,21 @@ class ProductController extends Controller
     public function updateProduct(Request $request)
     {
 
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('products')->ignore($request->input('id'))->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
+        // $this->validate($request, [
+        //     'name' => [
+        //         'max:255',
+        //         Rule::unique('products')->ignore($request->input('id'))->where(function ($query) {
+        //             return $query->where('is_active', 1);
+        //         }),
+        //     ],
 
-            'code' => [
-                'max:255',
-                Rule::unique('products')->ignore($request->input('id'))->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ]
-        ]);
+        //     'code' => [
+        //         'max:255',
+        //         Rule::unique('products')->ignore($request->input('id'))->where(function ($query) {
+        //             return $query->where('is_active', 1);
+        //         }),
+        //     ]
+        // ]);
 
         $lims_product_data = Product::findOrFail($request->input('id'));
         $data = $request->except('image', 'file', 'prev_img');

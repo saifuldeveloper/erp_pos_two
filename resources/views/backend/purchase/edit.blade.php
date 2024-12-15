@@ -245,6 +245,7 @@
                                                         <input type="hidden" class="purchase-unit-operator" value="{{$unit_operator}}"/>
                                                         <input type="hidden" class="purchase-unit-operation-value" value="{{$unit_operation_value}}"/>
                                                         <input type="hidden" class="net_unit_cost" name="net_unit_cost[]" value="{{$product_purchase->net_unit_cost}}" />
+                                                        <input type="hidden" class="selling_price" name="selling_price[]" value="{{$product_purchase->selling_price}}" />
                                                         <input type="hidden" class="discount-value" name="discount[]" value="{{$product_purchase->discount}}" />
                                                         <input type="hidden" class="tax-rate" name="tax_rate[]" value="{{$product_purchase->tax_rate}}"/>
                                                         @if($tax)
@@ -685,7 +686,6 @@ $('button[name="update_btn"]').on("click", function() {
     } else {
         product_cost[rowindex] = $('input[name="edit_unit_cost"]').val() * row_unit_operation_value;
     }
-    console.log(product_cost[rowindex]);
     product_discount[rowindex] = $('input[name="edit_discount"]').val();
     var position = $('select[name="edit_unit"]').val();
     var temp_operator = temp_unit_operator[position];
@@ -757,6 +757,7 @@ function productSearch(data) {
                 cols += '<input type="hidden" class="product-id" name="product_id[]" value="' + data[9] + '"/>';
                 cols += '<input type="hidden" class="purchase-unit" name="purchase_unit[]" value="' + temp_unit_name[0] + '"/>';
                 cols += '<input type="hidden" class="net_unit_cost" name="net_unit_cost[]" />';
+                cols += '<input type="hidden" class="selling_price" name="selling_price[]" value="' + data[12] + '"/>';
                 cols += '<input type="hidden" class="discount-value" name="discount[]" />';
                 cols += '<input type="hidden" class="tax-rate" name="tax_rate[]" value="' + data[3] + '"/>';
                 cols += '<input type="hidden" class="tax-value" name="tax[]" />';

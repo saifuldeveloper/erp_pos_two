@@ -850,16 +850,16 @@ class PurchaseController extends Controller
                 $data['payment_status'] = 2;
             }
             $lims_product_purchase_data = ProductPurchase::where('purchase_id', $id)->get();
-
             $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
             $product_id = $data['product_id'];
             $product_code = $data['product_code'];
             $qty = $data['qty'];
             $recieved = $data['recieved'];
-            $batch_no = $data['batch_no'];
-            $expired_date = $data['expired_date'];
-            $purchase_unit = $data['purchase_unit'];
-            $net_unit_cost = $data['net_unit_cost'];
+            $batch_no = $data['batch_no'] ?? [];
+            $expired_date = $data['expired_date'] ?? [];
+            $purchase_unit = $data['purchase_unit'] ?? [];
+            $net_unit_cost = $data['net_unit_cost'] ?? [];
+            $selling_price = $data['selling_price'] ?? [];
             $discount = $data['discount'];
             $tax_rate = $data['tax_rate'];
             $tax = $data['tax'];
@@ -938,7 +938,8 @@ class PurchaseController extends Controller
                 $lims_product_data = Product::find($pro_id);
                 $price = null;
                 //dealing with product barch
-                if($batch_no[$key]) {
+                if($batch_no) {
+                    if($batch_no[$key]){
                     $product_batch_data = ProductBatch::where([
                                             ['product_id', $lims_product_data->id],
                                             ['batch_no', $batch_no[$key]]
@@ -957,6 +958,7 @@ class PurchaseController extends Controller
                                             ]);
                     }
                     $product_purchase['product_batch_id'] = $product_batch_data->id;
+                }
                 }
                 else
                     $product_purchase['product_batch_id'] = null;
@@ -1036,6 +1038,7 @@ class PurchaseController extends Controller
                 $product_purchase['recieved'] = $recieved[$key];
                 $product_purchase['purchase_unit_id'] = $lims_purchase_unit_data->id;
                 $product_purchase['net_unit_cost'] = $net_unit_cost[$key];
+                $product_purchase['selling_price'] = $selling_price[$key];
                 $product_purchase['discount'] = $discount[$key];
                 $product_purchase['tax_rate'] = $tax_rate[$key];
                 $product_purchase['tax'] = $tax[$key];
