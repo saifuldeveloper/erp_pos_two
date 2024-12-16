@@ -14,7 +14,7 @@ class Product extends Model
             return 'R-100';
         }
         $lastCode = substr($last->code, 2); // Remove 'R-' prefix
-        $lastId = hexdec($lastCode);  
+        $lastId = hexdec($lastCode);
         // $lastId = hexdec($last->code);
         // $nextId = dechex($lastId + 1);
         $nextId = dechex($lastId + 1);
@@ -108,5 +108,10 @@ class Product extends Model
     public function productSales()
     {
         return $this->hasMany(Product_Sale::class);
+    }
+
+    public function productVariants()
+    {
+        return $this->hasMany(ProductVariant::class);
     }
 }

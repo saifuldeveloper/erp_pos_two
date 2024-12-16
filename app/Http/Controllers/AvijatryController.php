@@ -10,6 +10,7 @@ use App\Models\Product_Warehouse;
 use App\Models\Purchase;
 use App\Models\Supplier;
 use App\Models\Unit;
+use App\Models\Variant;
 use App\Models\Warehouse;
 use App\Services\AvijatryService;
 use Illuminate\Http\Request;
@@ -181,6 +182,24 @@ class AvijatryController extends Controller
         }
     }
 
+    public function variantStore($shoeToSize)
+    {
+        $product = Product::where('code', $shoeToSize['shoe_id'])->first();
+        $variant = Variant::where('name', $shoeToSize['size']['name'])->first();
+        if (!$variant) {
+            $variant = new Variant();
+        }
+        $variant->name = $shoeToSize['size']['name'];
+        $variant->save();
+        $product->productVariants()->updateOrCreate([
+            'variant_id' => $variant->id,
+        ], [
+            'position' => $product->productVariants->last() ? $product->productVariants->last()->position + 1 : 1,
+            'item_code' => $variant->name . '-' . $product->code,
+            'qty' => $shoeToSize['quantity'],
+        ]);
+    }
+
     public function invoiceStore($invoice, $request)
     {
         $purchase = Purchase::where('reference_no', 'avijatry-' . $invoice['id'])->first();
@@ -250,6 +269,16 @@ class AvijatryController extends Controller
                     $giftReceive->quantity = $gift_transaction['count'];
                     $giftReceive->quantity_received = $request->gift_quantity_received[$gift_transaction['id']];
                     $giftReceive->save();
+                }
+            }
+
+            if ($entry['shoe']['shoe_to_size']) {
+                foreach ($entry['shoe']['shoe_to_size'] as $shoeToSize) {
+                    if ($shoeToSize['reference_id'] == $invoice['id'] && $shoeToSize['shoe_id'] == $entry['shoe']['id'] && $shoeToSize['type'] == 'sale') {
+                        $this->variantStore($shoeToSize);
+                        $product->is_variant = 1;
+                        $product->save();
+                    }
                 }
             }
         }
