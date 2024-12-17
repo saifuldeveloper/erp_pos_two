@@ -1288,10 +1288,11 @@ class ProductController extends Controller
             $preLoadedproducts = $this->limsProductSearch($request);
         else
             $preLoadedproducts = null;
-        $lims_product_list_without_variant = $this->productWithoutVariant();
-        $lims_product_list_with_variant = $this->productWithVariant();
+        // $lims_product_list_without_variant = $this->productWithoutVariant();
+        // $lims_product_list_with_variant = $this->productWithVariant();
+        $lims_product_list = $this->products();
 
-        return view('backend.product.print_barcode_custom_desing', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'preLoadedproducts'));
+        return view('backend.product.print_barcode_custom_desing', compact('lims_product_list', 'preLoadedproducts'));
     }
 
     public function printBarcodePage(Request $request)
@@ -1337,6 +1338,11 @@ class ProductController extends Controller
         }
 
         return view('backend.product.print_page', compact('products'));
+    }
+
+    public function products()
+    {
+        return Product::ActiveStandard()->select('id', 'name', 'code')->get();
     }
 
     public function productWithoutVariant()
