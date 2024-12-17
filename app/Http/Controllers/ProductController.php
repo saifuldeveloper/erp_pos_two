@@ -1370,6 +1370,11 @@ class ProductController extends Controller
             if ($lims_product_data->isEmpty()) {
                 $lims_product_data = Product::where('id', $product->id)->get();
             }
+        }else{
+            $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
+                ->select('products.*', 'product_variants.item_code', 'product_variants.variant_id', 'product_variants.additional_price')
+                ->where('product_variants.item_code', $product_code[0])
+                ->get();
         }
         $products = [];
         foreach ($lims_product_data as $key => $product_data) {

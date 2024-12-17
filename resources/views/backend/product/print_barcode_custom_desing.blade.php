@@ -5,12 +5,12 @@
     @endif
     <style>
         /*.barcodelist {
-                        max-width: 378px;
-                        text-align: center;
-                    }
-                    .barcodelist img {
-                        max-width: 150px;
-                    }*/
+                            max-width: 378px;
+                            text-align: center;
+                        }
+                        .barcodelist img {
+                            max-width: 150px;
+                        }*/
 
         @media print {
             * {
@@ -194,38 +194,43 @@
                     data: {
                         data: data
                     },
-                    success: function(data) {
-
-
-                        console.log(data);
+                    success: function(datas) {
                         var flag = 1;
+                        var product_code = [];
                         $(".product-code").each(function() {
-                            if ($(this).text() == data[1]) {
+                            product_code.push($(this).text());
+                        });
+                        datas.forEach(function(data) {
+                            if (product_code.includes(data[1])) {
                                 alert('Duplicate input is not allowed!')
                                 flag = 0;
                             }
                         });
                         $("input[name='product_code_name']").val('');
                         if (flag) {
-                            var newRow = $('<tr data-imagedata="' + data[3] + '" data-price="' +
-                                data[2] + '" data-promo-price="' + data[4] +
-                                '" data-currency="' + data[5] + '" data-currency-position="' +
-                                data[6] + '">');
-                            var cols = '';
-                            cols += '<td>' + data[0] + '</td>';
-                            cols += '<td class="product-code">' + data[1] + '</td>';
+                            datas.forEach(function(data) {
 
-                            cols +=
-                                '<input type="hidden" class="form-control qty" name="code[]" value="' +
-                                data[1] + '" />';
-                            cols +=
+                                var newRow = $('<tr data-imagedata="' + data[3] + '" data-price="' +
+                                    data[2] + '" data-promo-price="' + data[4] +
+                                    '" data-currency="' + data[5] +
+                                    '" data-currency-position="' +
+                                    data[6] + '">');
+                                var cols = '';
+                                cols += '<td>' + data[0] + '</td>';
+                                cols += '<td class="product-code">' + data[1] + '</td>';
 
-                                '<td><input type="number" class="form-control qty" name="qty[]" value="1" /></td>';
-                            cols +=
-                                '<td><button type="button" class="ibtnDel btn btn-md btn-danger">Delete</button></td>';
+                                cols +=
+                                    '<input type="hidden" class="form-control qty" name="code[]" value="' +
+                                    data[1] + '" />';
+                                cols +=
 
-                            newRow.append(cols);
-                            $("table.order-list tbody").append(newRow);
+                                    '<td><input type="number" class="form-control qty" name="qty[]" value="1" /></td>';
+                                cols +=
+                                    '<td><button type="button" class="ibtnDel btn btn-md btn-danger">Delete</button></td>';
+
+                                newRow.append(cols);
+                                $("table.order-list tbody").append(newRow);
+                            });
                         }
                     }
                 });
