@@ -1374,8 +1374,12 @@ class PurchaseController extends Controller
                     $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($lims_product_data->id, $product_purchase_data->variant_id)->first();
                     $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_purchase_data->product_id, $product_purchase_data->variant_id, $lims_purchase_data->warehouse_id)
                         ->first();
-                    $lims_product_variant_data->qty -= $recieved_qty;
-                    $lims_product_variant_data->save();
+                    // $lims_product_variant_data->qty -= $recieved_qty;
+                    if ($lims_product_variant_data) {
+                        $lims_product_variant_data->qty = ($lims_product_variant_data->qty ?? 0) - $recieved_qty;
+                        $lims_product_variant_data->save();
+                    }    
+                   
                 }
                 elseif($product_purchase_data->product_batch_id) {
                     $lims_product_batch_data = ProductBatch::find($product_purchase_data->product_batch_id);
@@ -1383,9 +1387,12 @@ class PurchaseController extends Controller
                         ['product_batch_id', $product_purchase_data->product_batch_id],
                         ['warehouse_id', $lims_purchase_data->warehouse_id]
                     ])->first();
-
-                    $lims_product_batch_data->qty -= $recieved_qty;
-                    $lims_product_batch_data->save();
+                    // $lims_product_batch_data->qty -= $recieved_qty;
+                    if ($lims_product_variant_data) {
+                        $lims_product_variant_data->qty = ($lims_product_variant_data->qty ?? 0) - $recieved_qty;
+                        $lims_product_variant_data->save();
+                    } 
+                    // $lims_product_batch_data->save();
                 }
                 else {
                     $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_purchase_data->product_id, $lims_purchase_data->warehouse_id)
