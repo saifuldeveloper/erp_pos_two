@@ -162,14 +162,9 @@
         $("ul#product #printBarcode-menu").addClass("active");
         <?php $productArray = []; ?>
         var lims_product_code = [
-            @foreach ($lims_product_list_without_variant as $product)
+            @foreach ($lims_product_list as $product)
                 <?php
                 $productArray[] = htmlspecialchars($product->code . ' (' . $product->name . ')');
-                ?>
-            @endforeach
-            @foreach ($lims_product_list_with_variant as $product)
-                <?php
-                $productArray[] = htmlspecialchars($product->item_code . ' (' . $product->name . ')');
                 ?>
             @endforeach
             <?php
