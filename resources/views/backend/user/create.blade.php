@@ -80,10 +80,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label><strong>{{trans('file.Company Name')}}</strong></label>
                                         <input type="text" name="company_name" class="form-control">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label><strong>{{trans('file.Role')}} *</strong></label>
                                         <select name="role_id" required class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Role...">
