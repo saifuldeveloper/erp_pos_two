@@ -35,7 +35,7 @@
 
         .box_stiker {
             /* height: 35mm; */
-            margin-bottom: 5px;
+            margin-bottom: 9px;
             padding-left: 3mm;
         }
 
@@ -205,7 +205,7 @@
                 <div class="barcode-col {{ $i % 2 == 0 ? 'barcode-left' : 'barcode-right' }}">
                     <div class="box_stiker">
                         <div class="box_header">
-                            {{-- <div class="box_memo_no"><span style="font-weight: bolder">M-1</span></div> --}}
+                            <!--<div class="box_memo_no"><span style="font-weight: bolder">M-1</span></div>-->
                             <div class="box_logo"></div>
                         </div>
                         <div class="box_middle">
@@ -228,8 +228,8 @@
                             <img src="data:image/png;base64,{{ DNS1D::getBarcodePNG($entry['code'], 'C39') }}"
                                 alt="barcode" style="width: 95%;height: 8mm"><br>
 
-                            <div class="footer" style="text-align: center;margin-top: -7px; font-size:20px;">
-                                <p class="shoe-id" style="font-size:21px;">{{ $entry['code'] }}</p>
+                            <div class="footer" style="margin-top: -7px; font-size:18px;">
+                                <p class="shoe-id" style="font-size:16px;">{{ $entry['code'] }}</p>
                             </div>
                         </div>
                     </div>
