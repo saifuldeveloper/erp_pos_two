@@ -52,9 +52,9 @@
                                     <div class="form-group">
                                         <label>{{trans('file.Product Code')}} *</strong> </label>
                                         <div class="input-group">
-                                            <input type="text" name="code" id="code" value="{{$lims_product_data->code}}" class="form-control" required>
+                                            <input type="text" name="code" id="code" value="{{$lims_product_data->code}}" class="form-control" required readonly>
                                             <div class="input-group-append">
-                                                <button id="genbutton" type="button" class="btn btn-sm btn-default" title="{{trans('file.Generate')}}"><i class="fa fa-refresh"></i></button>
+                                                {{-- <button id="genbutton" type="button" class="btn btn-sm btn-default" title="{{trans('file.Generate')}}"><i class="fa fa-refresh"></i></button> --}}
                                             </div>
                                         </div>
                                         <span class="validation-msg" id="code-error"></span>
@@ -443,9 +443,9 @@
                                         </div>
                                     </div>
                                     @endif
-                                    <div class="col-md-12 form-group">
+                                    {{-- <div class="col-md-12 form-group">
                                         <button type="button" class="btn btn-info add-more-variant"><i class="dripicons-plus"></i> {{trans('file.Add More Variant')}}</button>
-                                    </div>
+                                    </div> --}}
                                     <div class="table-responsive ml-2">
                                         <table id="variant-table" class="table table-hover variant-list">
                                             <thead>

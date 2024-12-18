@@ -382,7 +382,7 @@
                                         <div class="row" id="variant-input-section">
                                             <div class="col-md-4 form-group mt-2">
                                                 <label>{{ trans('file.Option') }} *</label>
-                                                <input type="text" name="variant_option[]"
+                                                <input type="text" name="variant_option[]" value="Color" readonly
                                                     class="form-control variant-field" placeholder="Size, Color etc...">
                                             </div>
                                             <div class="col-md-6 form-group mt-2">
@@ -390,12 +390,23 @@
                                                 <input type="text" name="variant_value[]"
                                                     class="type-variant form-control variant-field">
                                             </div>
+                                            {{-- new --}}
+                                            <div class="col-md-4 form-group mt-2">
+                                                <label>{{ trans('file.Option') }} *</label>
+                                                <input type="text" name="variant_option[]" value="Size" readonly
+                                                    class="form-control variant-field">
+                                            </div>
+                                            <div class="col-md-6 form-group mt-2">
+                                                <label>{{ trans('file.Value') }} *</label>
+                                                <input type="text" name="variant_value[]"
+                                                    class="type-variant form-control variant-field">
+                                            </div>
                                         </div>
-                                        <div class="col-md-12 form-group">
+                                        {{-- <div class="col-md-12 form-group">
                                             <button type="button" class="btn btn-info add-more-variant"><i
                                                     class="dripicons-plus"></i>
                                                 {{ trans('file.Add More Variant') }}</button>
-                                        </div>
+                                        </div> --}}
                                         <div class="table-responsive ml-2">
                                             <table id="variant-table" class="table table-hover variant-list">
                                                 <thead>
