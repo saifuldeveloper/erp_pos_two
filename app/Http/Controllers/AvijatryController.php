@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\GiftReceive;
 use App\Models\Product;
 use App\Models\Product_Warehouse;
+use App\Models\ProductVariant;
 use App\Models\Purchase;
 use App\Models\Supplier;
 use App\Models\Unit;
@@ -91,6 +92,7 @@ class AvijatryController extends Controller
 
     public function invoiceApprove(Request $request, $id)
     {
+        // dd($request->all());
         try {
             $response = $this->avijatryService->invoice($id);
             if ($response->status() == 200) {
@@ -100,6 +102,7 @@ class AvijatryController extends Controller
                 }
                 $ret = [];
                 $ret = $this->invoiceStore($invoice, $request);
+                dd($ret);
             } else {
                 abort(404);
             }
@@ -182,7 +185,7 @@ class AvijatryController extends Controller
         }
     }
 
-    public function variantStore($shoeToSize)
+    public function variantStore($shoeToSize, $received_qty)
     {
         $product = Product::where('code', $shoeToSize['shoe_id'])->first();
         $variant = Variant::where('name', $shoeToSize['size']['name'])->first();
@@ -191,12 +194,12 @@ class AvijatryController extends Controller
         }
         $variant->name = $shoeToSize['size']['name'];
         $variant->save();
-        $product->productVariants()->updateOrCreate([
+        $productVariant = $product->productVariants()->updateOrCreate([
             'variant_id' => $variant->id,
         ], [
             'position' => $product->productVariants->last() ? $product->productVariants->last()->position + 1 : 1,
             'item_code' => $variant->name . '-' . $product->code,
-            'qty' => $shoeToSize['quantity'],
+            'qty' => $received_qty[$shoeToSize['size']['name']],
         ]);
     }
 
@@ -214,48 +217,68 @@ class AvijatryController extends Controller
         $purchase->total_qty = $invoice['total_pairs'];
         $purchase->total_discount = $invoice['discount'];
         $purchase->total_tax = 0;
-        $purchase->total_cost = $invoice['total_amount'];
+        $purchase->total_cost = $request->total_amount;
         $purchase->order_tax_rate = 0;
         $purchase->order_tax = 0;
         $purchase->order_discount = $invoice['discount'];
         $purchase->shipping_cost = $invoice['transport'];
-        $purchase->grand_total = $invoice['total_receivable'];
-        $purchase->paid_amount = $invoice['total_payment'];
+        $purchase->grand_total = $request->grand_total;
+        $purchase->paid_amount = $request->paid_amount;
         $purchase->status = 1;
         $purchase->payment_status = 1;
         $purchase->note = $request->note;
         $purchase->save();
         foreach ($invoice['invoice_entries'] as $entry) {
             $product = Product::where('code', $entry['shoe']['id'])->first();
-            $previous_received_qty = $purchase->productPurchases()->where('product_id', $product->id)->first();
+            if ($entry['shoe']['shoe_to_size']) {
+                foreach ($entry['shoe']['shoe_to_size'] as $shoeToSize) {
+                    if ($shoeToSize['reference_id'] == $invoice['id'] && $shoeToSize['shoe_id'] == $entry['shoe']['id'] && $shoeToSize['type'] == 'sale') {
+                        $this->variantStore($shoeToSize, $request->received_quantity[$product->code]);
+                        $product->is_variant = 1;
+                        $product->save();
+                    }
+                }
+            }
+            //sum of received qty
+            $previous_received_qty = $purchase->productPurchases()->where('product_id', $product->id)->sum('recieved');
             if ($previous_received_qty) {
-                $product->qty -= $previous_received_qty->recieved;
+                $product->qty -= $previous_received_qty;
                 $product->save();
             }
-            $purchase->productPurchases()->updateOrCreate([
-                'product_id' => $product->id,
-            ], [
-                'qty' => $entry['count'],
-                'recieved' => $request->received_quantity[$product->code],
-                'purchase_unit_id' => $product->unit_id,
-                'net_unit_cost' => $product->cost,
-                'selling_price' => $product->price,
-                'discount' => 0,
-                'tax_rate' => 0,
-                'tax' => 0,
-                'total' => $entry['total_price'],
-            ]);
+            foreach ($request->sent_quantity[$product->code] as $key => $sent_qty) {
+                $purchase->productPurchases()->updateOrCreate([
+                    'product_id' => $product->id,
+                    'variant_id' => ProductVariant::where('item_code', $key . '-' . $product->code)->first()->id,
+                ], [
+                    'qty' => $sent_qty,
+                    'recieved' => $request->received_quantity[$product->code][$key],
+                    'purchase_unit_id' => $product->unit_id,
+                    'net_unit_cost' => $product->cost,
+                    'selling_price' => $product->price,
+                    'discount' => 0,
+                    'tax_rate' => 0,
+                    'tax' => 0,
+                    'total' => $product->cost * $request->received_quantity[$product->code][$key],
+                ]);
+            }
 
-            $product->qty += $request->received_quantity[$product->code];
+            $received_qty = $purchase->productPurchases()->where('product_id', $product->id)->sum('recieved');
+            $product->qty += $received_qty;
             $product->save();
 
-            $productWarehouse = Product_Warehouse::updateOrCreate([
-                'product_id' => $product->id,
-                'warehouse_id' => Warehouse::first()->id,
-            ], [
-                'qty' => $request->received_quantity[$product->code],
-                'price' => $product->cost,
-            ]);
+            $purchase->total_qty = $received_qty;
+            $purchase->save();
+
+            foreach ($request->received_quantity[$product->code] as $key => $received_qty) {
+                $productWarehouse = Product_Warehouse::updateOrCreate([
+                    'product_id' => $product->id,
+                    'warehouse_id' => Warehouse::first()->id,
+                    'variant_id' => ProductVariant::where('item_code', $key . '-' . $product->code)->first()->id,
+                ], [
+                    'qty' => $received_qty,
+                    'price' => $product->cost,
+                ]);
+            }
 
             if ($invoice['gift_transactions']) {
                 foreach ($invoice['gift_transactions'] as $gift_transaction) {
@@ -269,16 +292,6 @@ class AvijatryController extends Controller
                     $giftReceive->quantity = $gift_transaction['count'];
                     $giftReceive->quantity_received = $request->gift_quantity_received[$gift_transaction['id']];
                     $giftReceive->save();
-                }
-            }
-
-            if ($entry['shoe']['shoe_to_size']) {
-                foreach ($entry['shoe']['shoe_to_size'] as $shoeToSize) {
-                    if ($shoeToSize['reference_id'] == $invoice['id'] && $shoeToSize['shoe_id'] == $entry['shoe']['id'] && $shoeToSize['type'] == 'sale') {
-                        $this->variantStore($shoeToSize);
-                        $product->is_variant = 1;
-                        $product->save();
-                    }
                 }
             }
         }
