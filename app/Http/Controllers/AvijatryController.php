@@ -92,7 +92,6 @@ class AvijatryController extends Controller
 
     public function invoiceApprove(Request $request, $id)
     {
-        // dd($request->all());
         try {
             $response = $this->avijatryService->invoice($id);
             if ($response->status() == 200) {
@@ -102,7 +101,6 @@ class AvijatryController extends Controller
                 }
                 $ret = [];
                 $ret = $this->invoiceStore($invoice, $request);
-                dd($ret);
             } else {
                 abort(404);
             }
@@ -265,7 +263,7 @@ class AvijatryController extends Controller
             $received_qty = $purchase->productPurchases()->where('product_id', $product->id)->sum('recieved');
             $product->qty += $received_qty;
             $product->save();
-
+            $ret_received_qty[$product->code] = $received_qty;
             $purchase->total_qty = $received_qty;
             $purchase->save();
 
@@ -295,6 +293,7 @@ class AvijatryController extends Controller
                 }
             }
         }
+        $request->merge(['received_quantity' => $ret_received_qty]);
         return $request->all();
     }
 }
