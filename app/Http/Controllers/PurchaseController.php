@@ -159,7 +159,7 @@ class PurchaseController extends Controller
                 ->limit($limit)
                 ->orderBy($order, $dir);
             if (Auth::user()->role_id > 2 && config('staff_access') == 'own') {
-                $q =  $q->with('supplier', 'warehouse')
+                $q = $q->with('supplier', 'warehouse')
                     ->where('purchases.user_id', Auth::id())
                     ->orwhere([
                         ['purchases.reference_no', 'LIKE', "%{$search}%"],
@@ -225,7 +225,7 @@ class PurchaseController extends Controller
                 $returned_amount = DB::table('return_purchases')->where('purchase_id', $purchase->id)->sum('grand_total');
                 $nestedData['returned_amount'] = number_format($returned_amount, config('decimal'));
                 $nestedData['paid_amount'] = number_format($purchase->paid_amount, config('decimal'));
-                $nestedData['due'] = number_format($purchase->grand_total - $returned_amount  - $purchase->paid_amount, config('decimal'));
+                $nestedData['due'] = number_format($purchase->grand_total - $returned_amount - $purchase->paid_amount, config('decimal'));
                 //fetching custom fields data
                 foreach ($field_names as $field_name) {
                     $nestedData[$field_name] = $purchase->$field_name;
@@ -304,10 +304,10 @@ class PurchaseController extends Controller
             }
         }
         $json_data = array(
-            "draw"            => intval($request->input('draw')),
-            "recordsTotal"    => intval($totalData),
+            "draw" => intval($request->input('draw')),
+            "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
-            "data"            => $data
+            "data" => $data
         );
         echo json_encode($json_data);
     }
@@ -413,7 +413,7 @@ class PurchaseController extends Controller
                     array_unshift($unit_operator, $unit->operator);
                     array_unshift($unit_operation_value, $unit->operation_value);
                 } else {
-                    $unit_name[]  = $unit->unit_name;
+                    $unit_name[] = $unit->unit_name;
                     $unit_operator[] = $unit->operator;
                     $unit_operation_value[] = $unit->operation_value;
                 }
@@ -499,7 +499,7 @@ class PurchaseController extends Controller
         $product_purchase = [];
 
         foreach ($product_id as $i => $id) {
-            $lims_purchase_unit_data  = Unit::where('unit_name', $purchase_unit[$i])->first();
+            $lims_purchase_unit_data = Unit::where('unit_name', $purchase_unit[$i])->first();
 
             if ($lims_purchase_unit_data->operator == '*') {
                 $quantity = $recieved[$i] * $lims_purchase_unit_data->operation_value;
@@ -777,16 +777,16 @@ class PurchaseController extends Controller
             else
                 $product_purchase->recieved = 0;
             $product_purchase->purchase_unit_id = $unit[$key]['id'];
-            $product_purchase->net_unit_cost = number_format((float)$net_unit_cost, config('decimal'), '.', '');
+            $product_purchase->net_unit_cost = number_format((float) $net_unit_cost, config('decimal'), '.', '');
             $product_purchase->discount = $discount[$key] * $qty[$key];
             $product_purchase->tax_rate = $tax[$key]['rate'];
-            $product_purchase->tax = number_format((float)$product_tax, config('decimal'), '.', '');
-            $product_purchase->total = number_format((float)$total, config('decimal'), '.', '');
+            $product_purchase->tax = number_format((float) $product_tax, config('decimal'), '.', '');
+            $product_purchase->total = number_format((float) $total, config('decimal'), '.', '');
             $product_purchase->save();
             $lims_purchase_data->total_qty += $qty[$key];
             $lims_purchase_data->total_discount += $discount[$key] * $qty[$key];
-            $lims_purchase_data->total_tax += number_format((float)$product_tax, config('decimal'), '.', '');
-            $lims_purchase_data->total_cost += number_format((float)$total, config('decimal'), '.', '');
+            $lims_purchase_data->total_tax += number_format((float) $product_tax, config('decimal'), '.', '');
+            $lims_purchase_data->total_cost += number_format((float) $total, config('decimal'), '.', '');
         }
         $lims_purchase_data->item = $key + 1;
         $lims_purchase_data->order_tax = ($lims_purchase_data->total_cost - $lims_purchase_data->order_discount) * ($data['order_tax_rate'] / 100);
@@ -1361,17 +1361,24 @@ class PurchaseController extends Controller
                     $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($lims_product_data->id, $product_purchase_data->variant_id)->first();
                     $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_purchase_data->product_id, $product_purchase_data->variant_id, $lims_purchase_data->warehouse_id)
                         ->first();
-                    $lims_product_variant_data->qty -= $recieved_qty;
-                    $lims_product_variant_data->save();
+                    // $lims_product_batch_data->qty -= $recieved_qty;  
+                    if ($lims_product_variant_data) {
+                        $lims_product_variant_data->qty = ($lims_product_variant_data->qty ?? 0) - $recieved_qty;
+                        $lims_product_variant_data->save();
+                    }
+    
                 } elseif ($product_purchase_data->product_batch_id) {
                     $lims_product_batch_data = ProductBatch::find($product_purchase_data->product_batch_id);
                     $lims_product_warehouse_data = Product_Warehouse::where([
                         ['product_batch_id', $product_purchase_data->product_batch_id],
                         ['warehouse_id', $lims_purchase_data->warehouse_id]
                     ])->first();
+                    if ($lims_product_batch_data){
+                        $lims_product_batch_data->qty -= ($lims_product_batch_data->qty ?? 0) - $recieved_qty;
+                        $lims_product_batch_data->save();
+                    }
+                    // $lims_product_batch_data->qty -= $recieved_qty;
 
-                    $lims_product_batch_data->qty -= $recieved_qty;
-                    $lims_product_batch_data->save();
                 } else {
                     $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_purchase_data->product_id, $lims_purchase_data->warehouse_id)
                         ->first();
@@ -1415,7 +1422,8 @@ class PurchaseController extends Controller
             $lims_purchase_data->delete();
             $this->fileDelete('documents/purchase/', $lims_purchase_data->document);
 
-            return redirect('purchases')->with('not_permitted', 'Purchase deleted successfully');;
+            return redirect('purchases')->with('not_permitted', 'Purchase deleted successfully');
+            ;
         }
     }
 
