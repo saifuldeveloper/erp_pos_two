@@ -1560,16 +1560,28 @@
             }
         });
 
+        $(document).on('keyup', function() {
+            var activeElementId = $(document.activeElement).attr('id');
+            var tag_input = document.getElementsByClassName('tag-input');
+            var lastTagsInput = tag_input[tag_input.length - 1];
+            if(activeElementId == lastTagsInput.id) {
+                var lastTag = $(lastTagsInput).val();
+                $(lastTagsInput).val(lastTag.replace(/[^0-9]/g, ''));
+            }
+        });
+
         $(document).find('.add-color-image').on('click', function() {
-            var colors =  $(document).find('.tagsinput').first().find('.tag-text').map(function() {
+            var colors = $(document).find('.tagsinput').first().find('.tag-text').map(function() {
                 return $(this).text();
             }).get();
             var colorImageSection = $('#color-image-section');
             colorImageSection.empty();
             colors.forEach(function(color) {
                 var colorDiv = $('<div class="col-md-4 form-group mt-2"></div>');
-                var colorLabel = $('<label>'+ color.charAt(0).toUpperCase() + color.slice(1) + ' Image</label>');
-                var colorInput = $('<input type="file" name="color_images['+color+']" class="form-control" accept="image/*">');
+                var colorLabel = $('<label>' + color.charAt(0).toUpperCase() + color.slice(1) +
+                    ' Image</label>');
+                var colorInput = $('<input type="file" name="color_images[' + color +
+                    ']" class="form-control" accept="image/*">');
                 colorDiv.append(colorLabel, colorInput);
                 colorImageSection.append(colorDiv);
             });
