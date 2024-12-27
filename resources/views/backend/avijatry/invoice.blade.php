@@ -114,10 +114,14 @@
                                                                 'item_code',
                                                                 $shoe_to_size['size']['name'] . '-' . $product->code,
                                                             )->first();
-                                                            $proPurchase = $productPurchase
-                                                                ->where('variant_id', $productVariant->id)
-                                                                ->where('purchase_id', $purchase->id)
-                                                                ->first();
+                                                            if ($productPurchase) {
+                                                                $proPurchase = $productPurchase
+                                                                    ->where('variant_id', $productVariant->id)
+                                                                    ->where('purchase_id', $purchase->id)
+                                                                    ->first();
+                                                            } else {
+                                                                $proPurchase = null;
+                                                            }
                                                         } else {
                                                             $proPurchase = null;
                                                         }
@@ -271,7 +275,7 @@
         function calculateTotal() {
             let $input = $(document.activeElement);
             let inputName = $input.attr('name');
-            let inputValue = parseFloat($input.val());
+            let inputValue = parseFloat($input.val() || 0);
 
             // Prevent negative value and max value
             if (inputValue < 0) {
