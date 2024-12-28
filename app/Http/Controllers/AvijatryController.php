@@ -248,7 +248,7 @@ class AvijatryController extends Controller
                     'product_id' => $product->id,
                     'variant_id' => ProductVariant::where('item_code', $key . '-' . $product->code)->first()->id,
                 ], [
-                    'qty' => $sent_qty,
+                    'qty' => $request->received_quantity[$product->code][$key],
                     'recieved' => $request->received_quantity[$product->code][$key],
                     'purchase_unit_id' => $product->unit_id,
                     'net_unit_cost' => $product->cost,
