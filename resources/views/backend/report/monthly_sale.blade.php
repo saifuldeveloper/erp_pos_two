@@ -47,10 +47,12 @@
                                             @if ($total)
                                                 <a href="{{ route('sales.index', ['starting_date' => $year . '-' . ($key + 1) . '-01', 'ending_date' => $year . '-' . ($key + 1) . '-' . cal_days_in_month(CAL_GREGORIAN, $key + 1, $year)]) }}"
                                                     target="_blank">
-                                                    @foreach ($brand_total[$key + 1] as $brand => $total)
+                                                    @foreach ($brand_total[$key + 1] as $brand => $b_total)
                                                         <strong>{{ $brand }} : </strong>
-                                                        <span>{{ $total }}</span><br>
+                                                        <span>{{ $b_total }}</span><br>
                                                     @endforeach
+                                                    <strong>Total Discount : </strong>
+                                                    <span>{{ $total_discount[$key] }}</span><br>
                                                     <strong>{{ trans('file.grand total') }} : </strong>
                                                     <span>{{ $total }}</span><br>
                                                 </a>

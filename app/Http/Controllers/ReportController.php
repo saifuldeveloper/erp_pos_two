@@ -215,9 +215,11 @@ class ReportController extends Controller
                     ->whereDate('created_at', $date)
                     ->get();
                 $grand_total[$start] = 0;
+                $total_discount[$start] = 0;
                 $brand_total[$start] = [];
                 foreach ($sale_data as $sale) {
                     $grand_total[$start] += $sale->grand_total;
+                    $total_discount[$start] += $sale->order_discount;
                     foreach ($sale->productSales as $productSale) {
                         $brand_name = $productSale->product->brand->title ?? 'Unknown';
                         if (!isset($brand_total[$start][$brand_name])) {
@@ -235,7 +237,7 @@ class ReportController extends Controller
             $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $warehouse_id = 0;
-            return view('backend.report.daily_sale', compact('grand_total', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
+            return view('backend.report.daily_sale', compact('grand_total','total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
@@ -255,10 +257,12 @@ class ReportController extends Controller
                 $date = $year.'-'.$month.'-'.$start;
             $sale_data = Sale::with('productSales.product.brand')->where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', $date)->get();
             $grand_total[$start] = 0;
+            $total_discount[$start] = 0;
             $brand_total[$start] = [];
             foreach($sale_data as $sale)
             {
                 $grand_total[$start] += $sale->grand_total;
+                $total_discount[$start] += $sale->order_discount;
                 foreach($sale->productSales as $productSale)
                 {
                     $brand_name = $productSale->product->brand->title ?? 'Unknown';
@@ -276,7 +280,7 @@ class ReportController extends Controller
         $next_month = date('m', strtotime('+1 month', strtotime($year.'-'.$month.'-01')));
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $warehouse_id = $data['warehouse_id'];
-        return view('backend.report.daily_sale', compact('grand_total', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.daily_sale', compact('grand_total','total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
 
     }
 
@@ -385,6 +389,7 @@ class ReportController extends Controller
                 ->whereDate('created_at', '<=' , $end_date)
                 ->get();
                 $grand_total[] = $sale_data->sum('grand_total');
+                $total_discount[] = $sale_data->sum('order_discount');
                 $brand_total[] = [];
                 foreach($sale_data as $sale)
                 {
@@ -400,7 +405,7 @@ class ReportController extends Controller
             }
             $lims_warehouse_list = Warehouse::where('is_active',true)->get();
             $warehouse_id = 0;
-            return view('backend.report.monthly_sale', compact('year', 'grand_total','brand_total', 'lims_warehouse_list', 'warehouse_id'));
+            return view('backend.report.monthly_sale', compact('year', 'grand_total','total_discount','brand_total', 'lims_warehouse_list', 'warehouse_id'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -425,6 +430,7 @@ class ReportController extends Controller
             ->whereDate('created_at', '<=' , $end_date)
             ->get();
             $grand_total[] = $sale_data->sum('grand_total');
+            $total_discount[] = $sale_data->sum('order_discount');
             $brand_total[] = [];
             foreach($sale_data as $sale)
             {
@@ -441,7 +447,7 @@ class ReportController extends Controller
         }
         $lims_warehouse_list = Warehouse::where('is_active',true)->get();
         $warehouse_id = $data['warehouse_id'];
-        return view('backend.report.monthly_sale', compact('year', 'grand_total','brand_total', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.monthly_sale', compact('year', 'grand_total','total_discount','brand_total', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function monthlyPurchase($year)
@@ -1759,7 +1765,7 @@ class ReportController extends Controller
         $end_date = $data['end_date'];
 
         $lims_payment_data = Payment::whereBetween('created_at', [
-            $start_date, 
+            $start_date,
             $end_date
         ])
         ->get();
