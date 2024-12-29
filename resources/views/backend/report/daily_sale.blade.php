@@ -69,6 +69,9 @@
                                                     echo '<strong>' . $key . ' : </strong><span>' . $value . '</span><br>';
                                                 }
                                             }
+                                            if($total_discount[$i]) {
+                                                echo '<strong>Total Discount : </strong><span>' . $total_discount[$i] . '</span><br>';
+                                            }
                                             if ($grand_total[$i]) {
                                                 echo '<strong>' . trans('file.grand total') . ' : </strong><span>' . $grand_total[$i] . '</span><br><br>';
                                             }
@@ -93,6 +96,9 @@
                                                 foreach ($brand_total[$i] as $key => $value) {
                                                     echo '<strong>' . $key . ' : </strong><span>' . $value . '</span><br>';
                                                 }
+                                            }
+                                            if($total_discount[$i]) {
+                                                echo '<strong>Total Discount : </strong><span>' . $total_discount[$i] . '</span><br>';
                                             }
                                             if ($grand_total[$i]) {
                                                 echo '<strong>' . trans('file.grand total') . ' : </strong><span>' . $grand_total[$i] . '</span><br><br>';
