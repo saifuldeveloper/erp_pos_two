@@ -732,8 +732,12 @@
     $("#customDateFilter").on("click", function() {
         $(".date-btn").removeClass("active");
         $("customDateDropdown").addClass("active");
-        var start_date = $("#customStartDate").val();
-        var end_date = $("#customEndDate").val();
+        var input_start_date = $("#customStartDate").val();
+        var input_end_date = $("#customEndDate").val();
+
+        var start_date = input_start_date.split('-').reverse().join('-');
+        var end_date = input_end_date.split('-').reverse().join('-');
+
         $.get('dashboard-filter/' + start_date + '/' + end_date, function(data) {
             //console.log(data);
             dashboardFilter(data);
