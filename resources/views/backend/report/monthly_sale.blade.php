@@ -55,7 +55,7 @@
 
                                                     @foreach ($total_sale as $i => $sale)
                                                         @if ($key == $i)
-                                                            <strong>Total Sale : {{ $sale }} </strong>
+                                                            <strong>Total :  </strong> {{ $sale }}
                                                         @endif
                                                     @endforeach
                                                     <br>
