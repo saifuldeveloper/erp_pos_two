@@ -44,6 +44,7 @@
                                 <tr>
                                     @foreach ($grand_total as $key => $total)
                                         <td>
+                                            {{-- @dd($total_sale) --}}
                                             @if ($total)
                                                 <a href="{{ route('sales.index', ['starting_date' => $year . '-' . ($key + 1) . '-01', 'ending_date' => $year . '-' . ($key + 1) . '-' . cal_days_in_month(CAL_GREGORIAN, $key + 1, $year)]) }}"
                                                     target="_blank">
@@ -51,6 +52,13 @@
                                                         <strong>{{ $brand }} : </strong>
                                                         <span>{{ $b_total }}</span><br>
                                                     @endforeach
+
+                                                    @foreach ($total_sale as $i => $sale)
+                                                        @if ($key == $i)
+                                                            <strong>Total Sale : {{ $sale }} </strong>
+                                                        @endif
+                                                    @endforeach
+                                                    <br>
                                                     <strong>Total Discount : </strong>
                                                     <span>{{ $total_discount[$key] }}</span><br>
                                                     <strong>{{ trans('file.grand total') }} : </strong>

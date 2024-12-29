@@ -69,6 +69,9 @@
                                                     echo '<strong>' . $key . ' : </strong><span>' . $value . '</span><br>';
                                                 }
                                             }
+                                            if($total_sale[$i]) {
+                                                echo '<strong>Total Sale : </strong><span>' . $total_sale[$i] . '</span><br>';
+                                            }
                                             if($total_discount[$i]) {
                                                 echo '<strong>Total Discount : </strong><span>' . $total_discount[$i] . '</span><br>';
                                             }
