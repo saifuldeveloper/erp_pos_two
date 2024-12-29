@@ -70,7 +70,7 @@
                                                 }
                                             }
                                             if($total_sale[$i]) {
-                                                echo '<strong>Total Sale : </strong><span>' . $total_sale[$i] . '</span><br>';
+                                                echo '<strong>Total : </strong><span>' . $total_sale[$i] . '</span><br>';
                                             }
                                             if($total_discount[$i]) {
                                                 echo '<strong>Total Discount : </strong><span>' . $total_discount[$i] . '</span><br>';
@@ -93,6 +93,10 @@
                                                         <p>
                                                             <strong>' . $i . '</strong>
                                                         </p>';
+                                            }
+
+                                            if($total_sale[$i]) {
+                                                echo '<strong>Total : </strong><span>' . $total_sale[$i] . '</span><br>';
                                             }
 
                                             if ($brand_total[$i]) {
