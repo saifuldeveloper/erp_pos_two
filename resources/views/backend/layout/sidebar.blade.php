@@ -441,7 +441,7 @@
                 <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i
                             class="dripicons-document-remove"></i><span>{{ trans('file.Reports') }}</span></a>
                     <ul id="report" class="collapse list-unstyled ">
-                        @if ($profit_loss_active)
+                        {{-- @if ($profit_loss_active)
                             <li id="profit-loss-report-menu">
                                 {!! Form::open(['route' => 'report.profitLoss', 'method' => 'post', 'id' => 'profitLoss-report-form']) !!}
                                 <input type="hidden" name="start_date" value="{{ date('Y-m') . '-' . '01' }}" />
@@ -449,7 +449,7 @@
                                 <a id="profitLoss-link" href="">{{ trans('file.Summary Report') }}</a>
                                 {!! Form::close() !!}
                             </li>
-                        @endif
+                        @endif --}}
                         {{-- @if ($best_seller_active)
                 <li id="best-seller-report-menu">
                 <a href="{{url('report/best_seller')}}">{{trans('file.Best Seller')}}</a>
@@ -565,12 +565,12 @@
                                 {!! Form::close() !!}
                             </li>
                         @endif
-                        @if ($warehouse_report_active)
+                        {{-- @if ($warehouse_report_active)
                             <li id="warehouse-report-menu">
                                 <a id="warehouse-report-link"
                                     href="">{{ trans('file.Warehouse Report') }}</a>
                             </li>
-                        @endif
+                        @endif --}}
                         {{-- @if ($warehouse_stock_report_active)
                 <li id="warehouse-stock-report-menu">
                 <a href="{{route('report.warehouseStock')}}">{{trans('file.Warehouse Stock Chart')}}</a>
@@ -587,7 +587,7 @@
                                     href="{{ route('report.qtyAlert') }}">{{ trans('file.Product Quantity Alert') }}</a>
                             </li>
                         @endif
-                        @if ($dso_report_active)
+                        {{-- @if ($dso_report_active)
                             <li id="daily-sale-objective-menu">
                                 <a
                                     href="{{ route('report.dailySaleObjective') }}">{{ trans('file.Daily Sale Objective Report') }}</a>
@@ -597,7 +597,7 @@
                             <li id="user-report-menu">
                                 <a id="user-report-link" href="">{{ trans('file.User Report') }}</a>
                             </li>
-                        @endif
+                        @endif --}}
                     </ul>
                 </li>
             @endif
