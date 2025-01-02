@@ -1282,7 +1282,7 @@ class ProductController extends Controller
         return ['product_warehouse' => $product_warehouse, 'product_variant_warehouse' => $product_variant_warehouse];
     }
 
-    public function printBarcode(Request $request)
+   public function printBarcode(Request $request)
     {
         if ($request->input('data'))
             $preLoadedproducts = $this->limsProductSearch($request);
@@ -1338,8 +1338,9 @@ class ProductController extends Controller
         }
 
         return view('backend.product.print_page', compact('products'));
-    }
 
+    }
+    
     public function products()
     {
         return Product::ActiveStandard()->select('id', 'name', 'code')->get();
@@ -1605,5 +1606,6 @@ class ProductController extends Controller
         $this->cacheForget('product_list');
         $this->cacheForget('product_list_with_variant');
         return redirect('products')->with('message', 'Product deleted successfully');
+
     }
 }

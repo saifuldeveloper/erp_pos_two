@@ -553,8 +553,8 @@ class SaleController extends Controller
             $product_code = $data['product_code'];
             $qty = $data['qty'];
             $sale_unit = $data['sale_unit'];
-            $net_unit_price = $data['net_unit_price'];
-            $discount = $data['discount'];
+            $net_unit_price = $data['unit_price'];
+            $discount = $data['product_discount'];
             $tax_rate = $data['tax_rate'];
             $tax = $data['tax'];
             $total = $data['subtotal'];
@@ -1549,6 +1549,8 @@ class SaleController extends Controller
         $product[] = $lims_product_data->is_imei;
         $product[] = $lims_product_data->is_variant;
         $product[] = $qty;
+        $product[] = $lims_product_data->price;
+        $product[] = $lims_product_data->price - $product[2];
 
         if($lims_product_data->is_batch != null)
         {
@@ -1647,6 +1649,7 @@ class SaleController extends Controller
             $product_sale[5][$key] = $product_sale_data->discount;
             $product_sale[6][$key] = $product_sale_data->total;
             $product_sale[8][$key] = $product_sale_data->return_qty;
+            $product_sale[9][$key] = $product_sale_data->net_unit_price;
         }
         return $product_sale;
     }
@@ -2194,6 +2197,8 @@ class SaleController extends Controller
 
     public function genInvoice($id)
     {
+
+
         $lims_sale_data = Sale::find($id);
         $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
         if(cache()->has('biller_list'))

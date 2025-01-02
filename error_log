@@ -1,0 +1,1 @@
+[23-Dec-2024 14:20:17 UTC] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/avijatry/khulna.avijatry.com/vendor/symfony/finder/Iterator/DateRangeFilterIterator.php on line 43

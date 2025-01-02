@@ -5,12 +5,12 @@
     @endif
     <style>
         /*.barcodelist {
-                            max-width: 378px;
-                            text-align: center;
-                        }
-                        .barcodelist img {
-                            max-width: 150px;
-                        }*/
+                        max-width: 378px;
+                        text-align: center;
+                    }
+                    .barcodelist img {
+                        max-width: 150px;
+                    }*/
 
         @media print {
             * {

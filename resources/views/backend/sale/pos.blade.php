@@ -2503,7 +2503,7 @@ function addNewProduct(data){
     cols += '<input type="hidden" class="product_price" />';
     cols += '<input type="hidden" class="sale-unit" name="sale_unit[]" value="' + temp_unit_name[0] + '"/>';
     cols += '<input type="hidden" class="net_unit_price" name="net_unit_price[]" />';
-    cols += '<input type="hidden" class="discount-value" name="discount[]" />';
+    cols += '<input type="hidden" class="discount-value" name="discount[]" value=" '+data[17]+'"/>';
     cols += '<input type="hidden" class="tax-rate" name="tax_rate[]" value="' + data[3] + '"/>';
     cols += '<input type="hidden" class="tax-value" name="tax[]" />';
     cols += '<input type="hidden" class="tax-name" value="'+data[4]+'" />';
@@ -2512,6 +2512,8 @@ function addNewProduct(data){
     cols += '<input type="hidden" class="sale-unit-operation-value" value="'+data[8]+'" />';
     cols += '<input type="hidden" class="subtotal-value" name="subtotal[]" />';
     cols += '<input type="hidden" class="imei-number" name="imei_number[]" />';
+    cols += '<input type="hidden" class="imei-number" name="unit_price[]" value="'+data[16]+'" />';
+    cols += '<input type="hidden" class="is-imei"  name="product_discount[]" value="'+data[17]+'"/>';
 
     newRow.append(cols);
     if(keyboard_active==1) {
@@ -2538,23 +2540,28 @@ function addNewProduct(data){
     unit_operation_value.splice(rowindex, 0, data[8]);
     is_imei.splice(rowindex, 0, data[13]);
     is_variant.splice(rowindex, 0, data[14]);
+
+
     $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product_price').val(product_price[rowindex]);
     localStorageQty.splice(rowindex, 0, data[15]);
     localStorageProductId.splice(rowindex, 0, data[9]);
     localStorageProductCode.splice(rowindex, 0, data[1]);
     localStorageSaleUnit.splice(rowindex, 0, temp_unit_name[0]);
-    localStorageProductDiscount.splice(rowindex, 0, product_discount[rowindex]);
+    localStorageProductDiscount.splice(rowindex, 0, data[17]);
     localStorageTaxRate.splice(rowindex, 0, tax_rate[rowindex].toFixed({{$general_setting->decimal}}));
     localStorageTaxName.splice(rowindex, 0, data[4]);
     localStorageTaxMethod.splice(rowindex, 0, data[5]);
     localStorageTempUnitName.splice(rowindex, 0, data[6]);
     localStorageSaleUnitOperator.splice(rowindex, 0, data[7]);
     localStorageSaleUnitOperationValue.splice(rowindex, 0, data[8]);
+    localStorageNetUnitPrice.splice(rowindex, 0, data[16]);
+    localStorageProductDiscount.splice(rowindex, 0, data[17]);
     //put some dummy value
     localStorageNetUnitPrice.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
     localStorageTaxValue.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
     localStorageSubTotalUnit.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
     localStorageSubTotal.splice(rowindex, 0, '{{number_format(0, $general_setting->decimal, '.', '')}}');
+
 
     localStorage.setItem("localStorageProductId", localStorageProductId);
     localStorage.setItem("localStorageSaleUnit", localStorageSaleUnit);
@@ -2564,6 +2571,8 @@ function addNewProduct(data){
     localStorage.setItem("localStorageTempUnitName", localStorageTempUnitName);
     localStorage.setItem("localStorageSaleUnitOperator", localStorageSaleUnitOperator);
     localStorage.setItem("localStorageSaleUnitOperationValue", localStorageSaleUnitOperationValue);
+    localStorage.setItem("localStorageNetUnitPrice", localStorageNetUnitPrice);
+    localStorage.setItem("localStorageProductDiscount", localStorageProductDiscount);
     checkQuantity(data[15], true);
     localStorage.setItem("tbody-id", $("table.order-list tbody").html());
     if(data[13]) {

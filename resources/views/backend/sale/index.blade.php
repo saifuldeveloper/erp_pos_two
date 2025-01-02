@@ -471,24 +471,24 @@
     $("ul#sale").addClass("show");
     $("ul#sale #sale-list-menu").addClass("active");
 
-    @if(config('database.connections.saleprosaas_landlord'))
-        if(localStorage.getItem("message")) {
-            alert(localStorage.getItem("message"));
-            localStorage.removeItem("message");
-        }
+    // @if(config('database.connections.saleprosaas_landlord'))
+    //     if(localStorage.getItem("message")) {
+    //         alert(localStorage.getItem("message"));
+    //         localStorage.removeItem("message");
+    //     }
 
-        numberOfInvoice = <?php echo json_encode($numberOfInvoice)?>;
-        $.ajax({
-            type: 'GET',
-            async: false,
-            url: '{{route("package.fetchData", $general_setting->package_id)}}',
-            success: function(data) {
-                if(data['number_of_invoice'] > 0 && data['number_of_product'] <= numberOfInvoice) {
-                    $("a.add-sale-btn").addClass('d-none');
-                }
-            }
-        });
-    @endif
+    //     numberOfInvoice = <?php echo json_encode($numberOfInvoice)?>;
+    //     $.ajax({
+    //         type: 'GET',
+    //         async: false,
+    //         url: '{{route("package.fetchData", $general_setting->package_id)}}',
+    //         success: function(data) {
+    //             if(data['number_of_invoice'] > 0 && data['number_of_product'] <= numberOfInvoice) {
+    //                 $("a.add-sale-btn").addClass('d-none');
+    //             }
+    //         }
+    //     });
+    // @endif
 
 
     var columns = [{"data": "key"}, {"data": "date"}, {"data": "reference_no"}, {"data": "biller"}, {"data": "customer"}, {"data": "sale_status"}, {"data": "payment_status"}, {"data": "delivery_status"}, {"data": "grand_total"}, {"data": "returned_amount"}, {"data": "paid_amount"}, {"data": "due"}];
@@ -1070,6 +1070,7 @@
             var subtotal = data[6];
             var batch_no = data[7];
             var return_qty = data[8];
+            var unt_price = data[9];
             var total_qty = 0;
             var newBody = $("<tbody>");
             $.each(name_code, function(index){
@@ -1080,7 +1081,7 @@
                 cols += '<td>' + batch_no[index] + '</td>';
                 cols += '<td>' + qty[index] + ' ' + unit_code[index] + '</td>';
                 cols += '<td>' + return_qty[index] + ' ' + unit_code[index] + '</td>';
-                cols += '<td>' + parseFloat(subtotal[index] / qty[index]).toFixed({{$general_setting->decimal}}) + '</td>';
+                cols += '<td>' + parseFloat(unt_price[index] / qty[index]).toFixed({{$general_setting->decimal}}) + '</td>';
                 cols += '<td>' + tax[index] + '(' + tax_rate[index] + '%)' + '</td>';
                 cols += '<td>' + discount[index] + '</td>';
                 cols += '<td>' + subtotal[index] + '</td>';

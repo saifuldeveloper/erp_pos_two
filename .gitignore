@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /storage/*.key
+/public/images*
 /vendor
 .env
 .env.backup

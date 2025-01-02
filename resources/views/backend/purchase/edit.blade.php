@@ -686,6 +686,7 @@ $('button[name="update_btn"]').on("click", function() {
     } else {
         product_cost[rowindex] = $('input[name="edit_unit_cost"]').val() * row_unit_operation_value;
     }
+    
     product_discount[rowindex] = $('input[name="edit_discount"]').val();
     var position = $('select[name="edit_unit"]').val();
     var temp_operator = temp_unit_operator[position];
