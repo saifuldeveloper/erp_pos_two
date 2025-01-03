@@ -24,7 +24,6 @@ use App\Models\Product_Sale;
 use App\Models\Currency;
 use Auth;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use App\Mail\ReturnDetails;
 use Mail;
 use Illuminate\Support\Facades\Validator;
@@ -247,7 +246,7 @@ class ReturnController extends Controller
             $lims_sale_data = Sale::where([
                 ['reference_no', $request->input('reference_no')],
                 ['sale_status', 1]
-            ])->select('id', 'sale_status')->first();
+            ])->first();
             if(!$lims_sale_data)
                 return redirect()->back()->with('not_permitted', 'This reference either does not exist or status not completed!');
             $lims_product_sale_data = Product_Sale::where('sale_id', $lims_sale_data->id)->get();

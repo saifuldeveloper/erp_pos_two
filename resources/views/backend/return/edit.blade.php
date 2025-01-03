@@ -259,6 +259,14 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Order Discount</label>
+                                                <input type="text"  name="order_discount" value="{{ $lims_return_data->total_price- $lims_return_data->grand_total  }}" class="form-control order_discount" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -676,6 +684,11 @@ $('select[name="order_tax_rate"]').on("change", function() {
     calculateGrandTotal();
 });
 
+$(document).on('change', '.order_discount', function() {
+    calculateGrandTotal();
+});
+
+
 function isCashRegisterAvailable(warehouse_id) {
     $.ajax({
         url: '../../cash-register/check-availability/'+warehouse_id,
@@ -866,13 +879,13 @@ function calculateTotal() {
 function calculateGrandTotal() {
 
     var item = $('table.order-list tbody tr:last').index();
-
+    var order_discount = parseFloat($('input[name="order_discount"]').val());
     var total_qty = parseFloat($('#total-qty').text());
     var subtotal = parseFloat($('#total').text());
     var order_tax = parseFloat($('select[name="order_tax_rate"]').val());
     item = ++item + '(' + total_qty + ')';
     order_tax = subtotal * (order_tax / 100);
-    var grand_total = subtotal + order_tax;
+    var grand_total = subtotal + order_tax - order_discount;
 
     $('#item').text(item);
     $('input[name="item"]').val($('table.order-list tbody tr:last').index() + 1);

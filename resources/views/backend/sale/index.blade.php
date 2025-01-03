@@ -137,7 +137,7 @@
 
                         {{ Form::open(['route' => 'sale.sendmail', 'method' => 'post', 'class' => 'sendmail-form'] ) }}
                             <input type="hidden" name="sale_id">
-                            <button class="btn btn-default btn-sm d-print-none"><i class="dripicons-mail"></i> {{trans('file.Email')}}</button>
+                            {{-- <button class="btn btn-default btn-sm d-print-none"><i class="dripicons-mail"></i> {{trans('file.Email')}}</button> --}}
                         {{ Form::close() }}
                     </div>
                     <div class="col-md-6 d-print-none">
@@ -1049,6 +1049,8 @@
     }
 
     function saleDetails(sale){
+
+        console.log(sale);
         $("#sale-details input[name='sale_id']").val(sale[13]);
 
         var htmltext = '<strong>{{trans("file.Date")}}: </strong>'+sale[0]+'<br><strong>{{trans("file.reference")}}: </strong>'+sale[1]+'<br><strong>{{trans("file.Warehouse")}}: </strong>'+sale[27]+'<br>';
@@ -1079,8 +1081,8 @@
                 cols += '<td><strong>' + (index+1) + '</strong></td>';
                 cols += '<td>' + name_code[index] + '</td>';
                 cols += '<td>' + batch_no[index] + '</td>';
-                cols += '<td>' + qty[index] + ' ' + unit_code[index] + '</td>';
-                cols += '<td>' + return_qty[index] + ' ' + unit_code[index] + '</td>';
+                cols += '<td>' + qty[index]  + '</td>';
+                cols += '<td>' + return_qty[index] + '</td>';
                 cols += '<td>' + parseFloat(unt_price[index] / qty[index]).toFixed({{$general_setting->decimal}}) + '</td>';
                 cols += '<td>' + tax[index] + '(' + tax_rate[index] + '%)' + '</td>';
                 cols += '<td>' + discount[index] + '</td>';
@@ -1107,6 +1109,18 @@
             cols += '<td>' + sale[17] + '(' + sale[18] + '%)' + '</td>';
             newRow.append(cols);
             newBody.append(newRow);
+
+             if(sale[33] == 'Percentage'){
+                var newRow = $("<tr>");
+            cols = '';
+            cols += '<td colspan=8><strong>{{trans("file.Order Discount Percentage")}}:</strong></td>';
+            cols += '<td>'  + sale[34] + '%' + '</td>';
+            newRow.append(cols);
+            newBody.append(newRow);
+
+
+             }
+
 
             var newRow = $("<tr>");
             cols = '';

@@ -793,7 +793,7 @@
                     cols += '<td><strong>' + (index+1) + '</strong></td>';
                     cols += '<td>' + name_code[index] + '</td>';
                     //cols += '<td>' + batch_no[index] + '</td>';
-                    cols += '<td>' + qty[index] + ' ' + unit_code[index] + '</td>';
+                    cols += '<td>' + qty[index] + '</td>';
                     cols += '<td>' + (subtotal[index] / qty[index]) + '</td>';
                     cols += '<td>' + tax[index] + '(' + tax_rate[index] + '%)' + '</td>';
                     cols += '<td>' + discount[index] + '</td>';
@@ -804,7 +804,7 @@
 
                 var newRow = $("<tr>");
                 cols = '';
-                cols += '<td colspan=5><strong>{{trans("file.Total")}}:</strong></td>';
+                cols += '<td colspan=4><strong>{{trans("file.Total")}}:</strong></td>';
                 cols += '<td>' + purchase[13] + '</td>';
                 cols += '<td>' + purchase[14] + '</td>';
                 cols += '<td>' + purchase[15] + '</td>';
@@ -813,42 +813,42 @@
 
                 var newRow = $("<tr>");
                 cols = '';
-                cols += '<td colspan=7><strong>{{trans("file.Order Tax")}}:</strong></td>';
+                cols += '<td colspan=6><strong>{{trans("file.Order Tax")}}:</strong></td>';
                 cols += '<td>' + purchase[16] + '(' + purchase[17] + '%)' + '</td>';
                 newRow.append(cols);
                 newBody.append(newRow);
 
                 var newRow = $("<tr>");
                 cols = '';
-                cols += '<td colspan=7><strong>{{trans("file.Order Discount")}}:</strong></td>';
+                cols += '<td colspan=6><strong>{{trans("file.Order Discount")}}:</strong></td>';
                 cols += '<td>' + purchase[18] + '</td>';
                 newRow.append(cols);
                 newBody.append(newRow);
 
                 var newRow = $("<tr>");
                 cols = '';
-                cols += '<td colspan=7><strong>{{trans("file.Shipping Cost")}}:</strong></td>';
+                cols += '<td colspan=6><strong>{{trans("file.Shipping Cost")}}:</strong></td>';
                 cols += '<td>' + purchase[19] + '</td>';
                 newRow.append(cols);
                 newBody.append(newRow);
 
                 var newRow = $("<tr>");
                 cols = '';
-                cols += '<td colspan=7><strong>{{trans("file.grand total")}}:</strong></td>';
+                cols += '<td colspan=6><strong>{{trans("file.grand total")}}:</strong></td>';
                 cols += '<td>' + purchase[20] + '</td>';
                 newRow.append(cols);
                 newBody.append(newRow);
 
                 var newRow = $("<tr>");
                 cols = '';
-                cols += '<td colspan=7><strong>{{trans("file.Paid Amount")}}:</strong></td>';
+                cols += '<td colspan=6><strong>{{trans("file.Paid Amount")}}:</strong></td>';
                 cols += '<td>' + purchase[21] + '</td>';
                 newRow.append(cols);
                 newBody.append(newRow);
 
                 var newRow = $("<tr>");
                 cols = '';
-                cols += '<td colspan=7><strong>{{trans("file.Due")}}:</strong></td>';
+                cols += '<td colspan=6><strong>{{trans("file.Due")}}:</strong></td>';
                 cols += '<td>' + (purchase[20] - purchase[21]) + '</td>';
                 newRow.append(cols);
                 newBody.append(newRow);

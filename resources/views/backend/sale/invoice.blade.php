@@ -195,7 +195,6 @@
                         if ($product_sale_data->imei_number) {
                             $product_name .= '<br>' . trans('IMEI or Serial Numbers') . ': ' . $product_sale_data->imei_number;
                         }
-                        $total_product_discount += $product_sale_data->discount;
                         
                         ?>
                         <tr>

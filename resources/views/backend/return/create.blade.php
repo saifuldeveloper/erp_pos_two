@@ -169,6 +169,14 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Order Discount</label>
+                                                <input type="text"  name="order_discount" value="{{ $lims_sale_data->order_discount }}" class="form-control order_discount" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -301,6 +309,11 @@ $('select[name="order_tax_rate"]').on("change", function() {
     calculateGrandTotal();
 });
 
+
+$(document).on('change', '.order_discount', function() {
+    calculateGrandTotal();
+});
+
 function calculateTotal() {
     var total_qty = 0;
     var total_discount = 0;
@@ -354,12 +367,13 @@ function calculateTotal() {
 }
 
 function calculateGrandTotal() {
+
     var total_qty = parseFloat($('input[name="total_qty"]').val());
+    var order_discount = parseFloat($('input[name="order_discount"]').val());
     var subtotal = parseFloat($('input[name="total_price"]').val());
     var order_tax = parseFloat($('select[name="order_tax_rate"]').val());
     var order_tax = subtotal * (order_tax / 100);
-    var grand_total = subtotal + order_tax;
-
+    var grand_total = subtotal + order_tax- order_discount;
 
     $('#subtotal').text(subtotal.toFixed({{$general_setting->decimal}}));
     $('#order_tax').text(order_tax.toFixed({{$general_setting->decimal}}));

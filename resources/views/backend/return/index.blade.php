@@ -94,7 +94,7 @@
                     <button id="print-btn" type="button" class="btn btn-default btn-sm"><i class="dripicons-print"></i> {{trans('file.Print')}}</button>
                     {{ Form::open(['route' => 'return-sale.sendmail', 'method' => 'post', 'class' => 'sendmail-form'] ) }}
                         <input type="hidden" name="return_id">
-                        <button class="btn btn-default btn-sm d-print-none"><i class="dripicons-mail"></i> {{trans('file.Email')}}</button>
+                        {{-- <button class="btn btn-default btn-sm d-print-none"><i class="dripicons-mail"></i> {{trans('file.Email')}}</button> --}}
                     {{ Form::close() }}
                 </div>
                 <div class="col-md-6 d-print-none">
@@ -400,7 +400,7 @@
                 cols += '<td><strong>' + (index+1) + '</strong></td>';
                 cols += '<td>' + name_code[index] + '</td>';
                 cols += '<td>' + batch_no[index] + '</td>';
-                cols += '<td>' + qty[index] + ' ' + unit_code[index] + '</td>';
+                cols += '<td>' + qty[index] + '</td>';
                 cols += '<td>' + (subtotal[index] / qty[index]) + '</td>';
                 cols += '<td>' + tax[index] + '(' + tax_rate[index] + '%)' + '</td>';
                 cols += '<td>' + discount[index] + '</td>';
@@ -422,6 +422,13 @@
             cols = '';
             cols += '<td colspan=7><strong>{{trans("file.Order Tax")}}:</strong></td>';
             cols += '<td>' + returns[17] + '(' + returns[18] + '%)' + '</td>';
+            newRow.append(cols);
+            newBody.append(newRow);
+
+            var newRow = $("<tr>");
+            cols = '';
+            cols += '<td colspan=7><strong>{{trans("file.discount")}}:</strong></td>';
+            cols += '<td>' +(returns[16] - returns[19]) + '</td>';
             newRow.append(cols);
             newBody.append(newRow);
 
