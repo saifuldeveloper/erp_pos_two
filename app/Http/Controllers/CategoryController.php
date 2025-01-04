@@ -160,16 +160,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->name = preg_replace('/\s+/', ' ', $request->name);
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                    Rule::unique('categories')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif',
-            'icon'  => 'mimetypes:text/plain,image/png,image/jpeg,image/svg',
-        ]);
+            $this->validate($request, [
+                'name' => [
+                    'max:255',
+                    Rule::unique('categories')->where(function ($query) use ($request) {
+                        return $query->where('is_active', 1)
+                                    ->where('parent_id', $request->parent_id);
+                    }),
+                ],
+                'image' => 'image|mimes:jpg,jpeg,png,gif',
+                'icon'  => 'mimetypes:text/plain,image/png,image/jpeg,image/svg',
+            ]);
         $image = $request->image;
         if ($image) {
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);

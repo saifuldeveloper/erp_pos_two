@@ -144,7 +144,7 @@
             </div>
             <p>{{ trans('file.Date') }}:
                 {{ date($general_setting->date_format, strtotime($lims_sale_data->created_at->toDateString())) }} 
-                ({{ $lims_sale_data->updated_at->setTimezone('Asia/Dhaka')->format('h:i A') }})
+                ({{ $lims_sale_data->created_at->setTimezone('Asia/Dhaka')->format('h:i A') }})
                 <br>
                 {{ trans('file.reference') }}: {{ $lims_sale_data->reference_no }}<br>
                 {{ trans('file.customer') }}: {{ $lims_customer_data->name }}

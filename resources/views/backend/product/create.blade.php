@@ -58,13 +58,13 @@
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Code') }} *</strong> </label>
                                             <div class="input-group">
-                                                <input type="text" name="code" class="form-control" id="code"
+                                                <input type="text" name="code" readonly value="{{ $nextProductCode }}" class="form-control" id="code"
                                                     aria-describedby="code" required>
-                                                <div class="input-group-append">
+                                                {{-- <div class="input-group-append">
                                                     <button id="genbutton" type="button" class="btn btn-sm btn-default"
                                                         title="{{ trans('file.Generate') }}"><i
                                                             class="fa fa-refresh"></i></button>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <span class="validation-msg" id="code-error"></span>
                                         </div>

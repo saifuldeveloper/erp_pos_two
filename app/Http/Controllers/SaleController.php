@@ -458,10 +458,10 @@ class SaleController extends Controller
                 $data['cash_register_id'] = $cash_register_data->id;
 
             if(isset($data['created_at']))
-                $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at']));
+                $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at'] . ' ' . date('H:i:s')));
             else
                 $data['created_at'] = date("Y-m-d H:i:s");
-            //return dd($data);
+            
             if($data['pos']) {
                 if(!isset($data['reference_no']))
                     $data['reference_no'] = 'posr-' . date("Ymd") . '-'. date("his");

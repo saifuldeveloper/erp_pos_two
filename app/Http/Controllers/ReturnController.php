@@ -477,6 +477,11 @@ class ReturnController extends Controller
             $data['document'] = $documentName;
         }
 
+        if(empty($data['is_return'])) { 
+            $message = 'Please select at least one product to return';
+            return back()->with('message', $message);
+        }
+        
         $lims_return_data = Returns::create($data);
         $lims_customer_data = Customer::find($data['customer_id']);
         //collecting male data
@@ -499,6 +504,8 @@ class ReturnController extends Controller
         $tax_rate = $data['tax_rate'];
         $tax = $data['tax'];
         $total = $data['subtotal'];
+
+        if($product_id !== null){
 
         foreach ($product_id as $pro_id) {
             $key = array_search($pro_id, $data['product_id']);
@@ -615,6 +622,8 @@ class ReturnController extends Controller
             $product_sale_data->return_qty += $qty[$key];
             $product_sale_data->save();
         }
+    }
+
         $message = 'Return created successfully';
         if($data['change_sale_status'])
             $lims_sale_data->update(['sale_status' => 4]);
