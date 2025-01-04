@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Keygen\Keygen;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Unit;
 use App\Models\Tax;
 use App\Models\Warehouse;
@@ -24,6 +25,7 @@ use Illuminate\Validation\Rule;
 use DB;
 use App\Models\Variant;
 use App\Models\ProductVariant;
+use App\Models\ProductImage;
 use App\Models\Purchase;
 use App\Models\ProductPurchase;
 use App\Models\Payment;
@@ -480,6 +482,36 @@ class ProductController extends Controller
                 }
             }
         }
+
+        // $request->color_images[]
+        if (isset($data['is_variant'])) {
+            $colors = $request->variant_value[0]; //"red,blue,black"
+            $colors = explode(',', $colors);
+            foreach ($colors as $color) {
+                $color_data = Color::firstOrCreate(['name' => $color]);
+                $color_data->name = $color;
+                $color_data->save();
+            }
+            if ($request->color_images) {
+                foreach ($request->color_images as $key => $color_image) {
+                    $color = Color::where('name', $key)->first();
+                    if ($color) {
+                        $ext = pathinfo($color_image->getClientOriginalName(), PATHINFO_EXTENSION);
+                        $imageName = date("Ymdhis") . $key . uniqid();
+                        $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
+                        $color_image->move('public/images/product', $imageName);
+
+                        $product_image = new ProductImage();
+                        $product_image->product_id = $lims_product_data->id;
+                        $product_image->color_id = $color->id;
+                        $product_image->image = $imageName;
+                        $product_image->save();
+                    }
+                }
+            }
+        }
+
+
         $this->cacheForget('product_list');
         $this->cacheForget('product_list_with_variant');
         \Session::flash('create_message', 'Product created successfully');
@@ -1282,7 +1314,7 @@ class ProductController extends Controller
         return ['product_warehouse' => $product_warehouse, 'product_variant_warehouse' => $product_variant_warehouse];
     }
 
-   public function printBarcode(Request $request)
+    public function printBarcode(Request $request)
     {
         if ($request->input('data'))
             $preLoadedproducts = $this->limsProductSearch($request);
@@ -1338,9 +1370,8 @@ class ProductController extends Controller
         }
 
         return view('backend.product.print_page', compact('products'));
-
     }
-    
+
     public function products()
     {
         return Product::ActiveStandard()->select('id', 'name', 'code')->get();
@@ -1377,7 +1408,7 @@ class ProductController extends Controller
             if ($lims_product_data->isEmpty()) {
                 $lims_product_data = Product::where('id', $product->id)->get();
             }
-        }else{
+        } else {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
                 ->select('products.*', 'product_variants.item_code', 'product_variants.variant_id', 'product_variants.additional_price')
                 ->where('product_variants.item_code', $product_code[0])
@@ -1606,6 +1637,5 @@ class ProductController extends Controller
         $this->cacheForget('product_list');
         $this->cacheForget('product_list_with_variant');
         return redirect('products')->with('message', 'Product deleted successfully');
-
     }
 }
