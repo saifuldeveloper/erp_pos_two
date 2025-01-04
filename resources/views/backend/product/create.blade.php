@@ -118,9 +118,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>{{ trans('file.Brand') }}</strong> </label>
+                                            <label>{{ trans('file.Brand') }} *</strong> </label>
                                             <div class="input-group">
-                                                <select name="brand_id" class="selectpicker form-control"
+                                                <select name="brand_id" required class="selectpicker form-control"
                                                     data-live-search="true" data-live-search-style="begins"
                                                     title="Select Brand...">
                                                     @foreach ($lims_brand_list as $brand)
@@ -128,6 +128,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <span class="validation-msg"></span>
                                         </div>
                                     </div>
 
