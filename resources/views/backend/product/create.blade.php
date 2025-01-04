@@ -13,7 +13,7 @@
                             <p class="italic">
                                 <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
                             </p>
-                            <form id="product-form">
+                            <form id="product-form" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -417,6 +417,7 @@
                                                         <th>{{ trans('file.Item Code') }}</th>
                                                         <th>{{ trans('file.Additional Cost') }}</th>
                                                         <th>{{ trans('file.Additional Price') }}</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -744,6 +745,8 @@
                             cols +=
                                 '<td><input type="number" class="form-control additional-price" name="additional_price[]" value="" step="any" /></td>';
                         }
+                        cols +=
+                            '<td><button type="button" class="btn btn-danger btn-sm delete-variant-row"><i class="dripicons-trash"></i></button></td>';
                         newRow.append(cols);
                         newBody.append(newRow);
                     }
@@ -1085,6 +1088,11 @@
 
                 return [];
             };
+
+            //delete variant row
+            $(document).on('click', '.delete-variant-row', function() {
+                $(this).closest('tr').remove();
+            });
         })(jQuery);
         //end of variant related js
 
@@ -1193,7 +1201,6 @@
                         data: data
                     },
                     success: function(data) {
-                        //console.log(data);
                         var flag = 1;
                         $(".product-id").each(function() {
                             if ($(this).val() == data[8]) {
@@ -1478,6 +1485,15 @@
                             var file = $('#file')[0].files;
                             if (file.length > 0)
                                 formData.append('file', file[0]);
+
+                            //get file from #color-image-section
+                            var colorImages = $('#color-image-section').find('input[type="file"]');
+                            colorImages.each(function(index, el) {
+                                var file = el.files;
+                                if (file.length > 0)
+                                    formData.append(el.name, file[0]);
+                            });
+
                             $.ajax({
                                 type: 'POST',
                                 url: '{{ route('products.store') }}',
@@ -1485,11 +1501,9 @@
                                 contentType: false,
                                 processData: false,
                                 success: function(response) {
-                                    console.log(response);
                                     location.href = '../products';
                                 },
                                 error: function(response) {
-                                    console.log(response);
                                     if (response.responseJSON.errors.name) {
                                         $("#name-error").text(response.responseJSON.errors
                                             .name);
@@ -1515,7 +1529,6 @@
                 });
             },
             error: function(file, response) {
-                console.log(response);
                 if (response.errors.name) {
                     $("#name-error").text(response.errors.name);
                     this.removeAllFiles(true);
@@ -1550,13 +1563,11 @@
             },
             successmultiple: function(file, response) {
                 location.href = '../products';
-                //console.log(file, response);
             },
             completemultiple: function(file, response) {
                 console.log(file, response, "completemultiple");
             },
             reset: function() {
-                console.log("resetFiles");
                 this.removeAllFiles(true);
             }
         });
