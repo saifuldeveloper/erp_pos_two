@@ -38,7 +38,8 @@
                                                     title="Select Category...">
 
                                                     @foreach ($lims_category_list as $category)
-                                                        <option value="{{ $category->id }}">{{$category->parent->name.'-'.$category->name }}</option>
+                                                        <option value="{{ $category->id }}">
+                                                            {{ $category->parent->name . '-' . $category->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -420,6 +421,15 @@
                                                 <tbody>
                                                 </tbody>
                                             </table>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <button type="button" class="btn btn-info add-color-image">
+                                                <i class="dripicons-plus"></i>
+                                                Add Color wise Image
+                                            </button>
+                                        </div>
+                                        <div class="row" id="color-image-section">
+
                                         </div>
                                     </div>
                                     <div class="col-md-12 mt-2" id="diffPrice-option">
@@ -968,7 +978,8 @@
                     $(data.fake_input).keydown(function(event) {
                         // enter, alt, shift, esc, ctrl and arrows keys are ignored
                         if (jQuery.inArray(event.keyCode, [13, 37, 38, 39, 40, 27, 16, 17, 18,
-                            225]) === -1) {
+                                225
+                            ]) === -1) {
                             $(this).removeClass('error');
                         }
                     });
@@ -1547,6 +1558,33 @@
                 console.log("resetFiles");
                 this.removeAllFiles(true);
             }
+        });
+
+        $(document).on('keyup', function() {
+            var activeElementId = $(document.activeElement).attr('id');
+            var tag_input = document.getElementsByClassName('tag-input');
+            var lastTagsInput = tag_input[tag_input.length - 1];
+            if (activeElementId == lastTagsInput.id) {
+                var lastTag = $(lastTagsInput).val();
+                $(lastTagsInput).val(lastTag.replace(/[^0-9]/g, ''));
+            }
+        });
+
+        $(document).find('.add-color-image').on('click', function() {
+            var colors = $(document).find('.tagsinput').first().find('.tag-text').map(function() {
+                return $(this).text();
+            }).get();
+            var colorImageSection = $('#color-image-section');
+            colorImageSection.empty();
+            colors.forEach(function(color) {
+                var colorDiv = $('<div class="col-md-4 form-group mt-2"></div>');
+                var colorLabel = $('<label>' + color.charAt(0).toUpperCase() + color.slice(1) +
+                    ' Image</label>');
+                var colorInput = $('<input type="file" name="color_images[' + color +
+                    ']" class="form-control" accept="image/*">');
+                colorDiv.append(colorLabel, colorInput);
+                colorImageSection.append(colorDiv);
+            });
         });
     </script>
 @endpush
