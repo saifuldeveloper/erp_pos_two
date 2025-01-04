@@ -417,6 +417,7 @@
                                                         <th>{{ trans('file.Item Code') }}</th>
                                                         <th>{{ trans('file.Additional Cost') }}</th>
                                                         <th>{{ trans('file.Additional Price') }}</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -744,6 +745,7 @@
                             cols +=
                                 '<td><input type="number" class="form-control additional-price" name="additional_price[]" value="" step="any" /></td>';
                         }
+                        cols += '<td><button type="button" class="btn btn-danger btn-sm delete-variant-row"><i class="dripicons-trash"></i></button></td>';
                         newRow.append(cols);
                         newBody.append(newRow);
                     }
@@ -1085,6 +1087,11 @@
 
                 return [];
             };
+
+            //delete variant row
+            $(document).on('click', '.delete-variant-row', function() {
+                $(this).closest('tr').remove();
+            });
         })(jQuery);
         //end of variant related js
 
