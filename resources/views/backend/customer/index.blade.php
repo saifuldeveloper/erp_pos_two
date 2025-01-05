@@ -108,12 +108,12 @@
                                 <li>
                                     <button type="button" data-id="{{$customer->id}}" class="clear-due btn btn-link" data-toggle="modal" data-target="#clearDueModal" ><i class="dripicons-brush"></i> {{trans('file.Clear Due')}}</button>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <button type="button" data-id="{{$customer->id}}" class="deposit btn btn-link" data-toggle="modal" data-target="#depositModal" ><i class="dripicons-plus"></i> {{trans('file.Add Deposit')}}</button>
                                 </li>
                                 <li>
                                     <button type="button" data-id="{{$customer->id}}" class="getDeposit btn btn-link"><i class="fa fa-money"></i> {{trans('file.View Deposit')}}</button>
-                                </li>
+                                </li> --}}
                                 <li class="divider"></li>
                                 @if(in_array("customers-delete", $all_permission))
                                 {{ Form::open(['route' => ['customer.destroy', $customer->id], 'method' => 'DELETE'] ) }}
