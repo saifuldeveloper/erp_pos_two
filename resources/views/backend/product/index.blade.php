@@ -126,6 +126,15 @@
                     </table>
                 </div>
                 @endif
+                <div class="col-md-12 mt-2" id="color-images">
+                    <h5>Color Images</h5>
+                    <table class="table table-bordered table-hover color-images-list">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <h5 id="combo-header"></h5>
@@ -189,13 +198,14 @@
     });
 
     $(document).on("click", "tr.product-link td:not(:first-child, :last-child)", function() {
-        productDetails( $(this).parent().data('product'), $(this).parent().data('imagedata') );
+        productDetails( $(this).parent().data('product'), $(this).parent().data('imagedata'), $(this).parent().data('colorimages'));
     });
 
     $(document).on("click", ".view", function(){
         var product = $(this).parent().parent().parent().parent().parent().data('product');
         var imagedata = $(this).parent().parent().parent().parent().parent().data('imagedata');
-        productDetails(product, imagedata);
+        var colorImages = $(this).parent().parent().parent().parent().parent().data('colorimages');
+        productDetails(product, imagedata, colorImages);
     });
 
     $("#print-btn").on("click", function() {
@@ -207,7 +217,7 @@
           setTimeout(function(){newWin.close();},10);
     });
 
-    function productDetails(product, imagedata) {
+    function productDetails(product, imagedata, colorImages) {
         product[11] = product[11].replace(/@/g, '"');
         htmltext = slidertext = '';
 
@@ -239,6 +249,8 @@
         $("table.product-warehouse-list tbody").remove();
         $(".product-variant-list thead").remove();
         $(".product-variant-list tbody").remove();
+        $("#color-images thead").remove();
+        $("#color-images tbody").remove();
         $(".product-variant-warehouse-list thead").remove();
         $(".product-variant-warehouse-list tbody").remove();
         $("#product-warehouse-section").addClass('d-none');
@@ -361,6 +373,29 @@
                     }
                 });
             }
+            //color images
+            if(colorImages.length > 0) {
+                $("#color-images").removeClass('d-none');
+                var newHead = $("<thead>");
+                var newBody = $("<tbody>");
+                var newRow = $("<tr>");
+                newRow.append('<th>Color Name</th><th>Image</th>');
+                newHead.append(newRow);
+                $.each(colorImages, function(i) {
+                    var newRow = $("<tr>");
+                    var cols = '';
+                    cols += '<td>' + colorImages[i][0] + '</td>';
+                    cols += '<td><img src="public/images/product/'+colorImages[i][1]+'" height="100" width="100"></td>';
+
+                    newRow.append(cols);
+                    newBody.append(newRow);
+                });
+                $(".color-images-list").append(newHead);
+                $(".color-images-list").append(newBody);
+            }else {
+                $("#color-images").addClass('d-none');
+            }
+
         }
 
         $('#product-content').html(htmltext);
@@ -387,9 +422,14 @@
                 type:"post"
             },
             "createdRow": function( row, data, dataIndex ) {
+                var colorImages = [];
+                for (var i = 0; i < data['colorImages'].length; i++) {
+                    colorImages[i] = [data['colorImages'][i]['color']['name'], data['colorImages'][i]['image']];
+                }
                 $(row).addClass('product-link');
                 $(row).attr('data-product', data['product']);
                 $(row).attr('data-imagedata', data['imagedata']);
+                $(row).attr('data-colorimages', JSON.stringify(colorImages));
             },
             "columns": columns,
             'language': {

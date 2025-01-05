@@ -111,7 +111,7 @@ class ProductController extends Controller
             $field_names[] = str_replace(" ", "_", strtolower($fieldName));
         }
         if (empty($request->input('search.value'))) {
-            $products = Product::with('category', 'brand', 'unit')->offset($start)
+            $products = Product::with('category', 'brand', 'unit', 'productImages.color')->offset($start)
                 ->where('is_active', true)
                 ->limit($limit)
                 ->orderBy($order, $dir)
@@ -119,7 +119,7 @@ class ProductController extends Controller
         } else {
             $search = $request->input('search.value');
             $q = Product::select('products.*')
-                ->with('category', 'brand', 'unit')
+                ->with('category', 'brand', 'unit', 'productImages.color')
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->leftjoin('brands', 'products.brand_id', '=', 'brands.id')
                 ->where([
@@ -293,6 +293,7 @@ class ProductController extends Controller
                     ' "' . $product->is_variant . '"]'
                 );
                 //$nestedData['imagedata'] = DNS1D::getBarcodePNG($product->code, $product->barcode_symbology);
+                $nestedData['colorImages'] = $product->productImages;
                 $data[] = $nestedData;
             }
         }
@@ -323,7 +324,7 @@ class ProductController extends Controller
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $numberOfProduct = Product::where('is_active', true)->count();
             $custom_fields = CustomField::where('belongs_to', 'product')->get();
-            return view('backend.product.create', compact('nextProductCode','lims_product_list_without_variant', 'lims_product_list_with_variant', 'lims_brand_list', 'lims_category_list', 'lims_unit_list', 'lims_tax_list', 'lims_warehouse_list', 'numberOfProduct', 'custom_fields'));
+            return view('backend.product.create', compact('nextProductCode', 'lims_product_list_without_variant', 'lims_product_list_with_variant', 'lims_brand_list', 'lims_category_list', 'lims_unit_list', 'lims_tax_list', 'lims_warehouse_list', 'numberOfProduct', 'custom_fields'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
