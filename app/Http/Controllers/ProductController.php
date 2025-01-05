@@ -119,7 +119,7 @@ class ProductController extends Controller
         } else {
             $search = $request->input('search.value');
             $q = Product::select('products.*')
-                ->with('category', 'brand', 'unit')
+                ->with('category', 'brand', 'unit', 'productImages.color')
                 ->join('categories', 'products.category_id', '=', 'categories.id')
                 ->leftjoin('brands', 'products.brand_id', '=', 'brands.id')
                 ->where([
