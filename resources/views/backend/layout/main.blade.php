@@ -63,6 +63,8 @@
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:400,500,700" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css?family=Nunito:400,500,700" rel="stylesheet"></noscript>
     @stack('css')
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
 
   <body class="@if($theme == 'dark')dark-mode dripicons-brightness-low @endif  @if(Route::current()->getName() == 'sale.pos') pos-page @endif" onload="myFunction()">
@@ -439,7 +441,7 @@
                       <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{trans('file.Date')}}</label>
-                            <input type="text" name="created_at" class="form-control date" placeholder="Choose date"/>
+                            <input type="text" name="created_at" class="form-control futureDateBlock"  placeholder="Choose date"/>
                         </div>
                         <div class="col-md-6 form-group">
 
@@ -848,6 +850,8 @@
         <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.6/js/dataTables.fixedHeader.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      
         @endif
     @stack('scripts')
     <script>
@@ -864,6 +868,9 @@
         }
     </script>
     <script type="text/javascript">
+
+
+
         var theme = <?php echo json_encode($theme); ?>;
         if(theme == 'dark') {
             $('body').addClass('dark-mode');
@@ -1138,6 +1145,12 @@
       $('.selectpicker').selectpicker({
           style: 'btn-link',
       });
+
+
+        flatpickr(".futureDateBlock", {
+            maxDate: "today", // Disable future dates
+            dateFormat: "Y-m-d",
+        });
     </script>
   </body>
 </html>
