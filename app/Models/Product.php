@@ -10,13 +10,9 @@ class Product extends Model
     {
         $last = self::where('id', 'not like', 'X-%')->orderByRaw('convert(conv(id, 16, 10), signed) desc')->first();
         if (!$last) {
-            // return '100';
-            return 'R-100';
+            return '100';
         }
-        $lastCode = substr($last->code, 2); // Remove 'R-' prefix
-        $lastId = hexdec($lastCode);
-        // $lastId = hexdec($last->code);
-        // $nextId = dechex($lastId + 1);
+        $lastId = hexdec($last->id);
         $nextId = dechex($lastId + 1);
         return 'R-' . strtoupper($nextId);
     }
