@@ -198,7 +198,7 @@
     });
 
     $(document).on("click", "tr.product-link td:not(:first-child, :last-child)", function() {
-        productDetails( $(this).parent().data('product'), $(this).parent().data('imagedata'), $(this).parent().data('colorimages'));
+        productDetails( $(this).parent().data('product'), $(this).parent().data('imagedata'), $(this).parent().data('colorimages') );
     });
 
     $(document).on("click", ".view", function(){
@@ -395,7 +395,6 @@
             }else {
                 $("#color-images").addClass('d-none');
             }
-
         }
 
         $('#product-content').html(htmltext);

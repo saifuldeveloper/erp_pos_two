@@ -7,9 +7,9 @@ return [
 	"language" => "ভাষা",
 	'Avijatry Purchase'=> 'অভিযাত্রী ক্রয়',
 
-	'discount' => 'ছাড়',
-
 	"revenue" => "রাজস্ব",
+	
+	'discount' => 'ছাড়',
 
 	"product" => "পণ্য",
 

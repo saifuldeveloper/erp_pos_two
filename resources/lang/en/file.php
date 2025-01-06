@@ -2,9 +2,9 @@
 return [
 	'Avijatry Product' => 'Avijatry Product',
 	'Avijatry Purchase' => 'Avijatry Purchase',
-	'discount' => 'Discount',
 	'dashboard' => 'Dashboard',
 	'language' => 'Language',
+	'discount' => 'Discount',
 	'Languages' => 'Languages',
 	'revenue' => 'Revenue',
 	'product' => 'Product',

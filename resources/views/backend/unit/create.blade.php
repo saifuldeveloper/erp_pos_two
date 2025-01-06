@@ -112,13 +112,13 @@
                                 @endif
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="form-group operator">
-                        <label>{{trans('file.Operator')}}</label> <input type="text" name="operator" placeholder="Enter your Name" class="form-control" />
+                        <label>{{trans('file.Operator')}}</label> <input type="hidden" name="operator" value="*" placeholder="Enter your Name" class="form-control" />
                     </div>
                     <div class="form-group operation_value">
-                        <label>{{trans('file.Operation Value')}}</label><input type="number" name="operation_value" placeholder="Enter operation value" class="form-control" step="any"/>
-                    </div> --}}
+                        <label>{{trans('file.Operation Value')}}</label><input type="number" value="1" name="operation_value" placeholder="Enter operation value" class="form-control" step="any"/>
+                    </div>
                     <input type="submit" value="{{trans('file.submit')}}" class="btn btn-primary">
             </form>
         </div>

@@ -427,13 +427,11 @@ class PurchaseController extends Controller
             $products[$key][] = $product->is_imei;
             $products[$key][] = $product->price;
         }
-
         return $products;
     }
 
     public function store(Request $request)
     {
-        //dd($request->all());
         $data = $request->except('document');
         //return dd($data);
         $data['user_id'] = Auth::id();

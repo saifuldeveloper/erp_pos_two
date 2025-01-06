@@ -8,7 +8,7 @@ class Unit extends Model
 {
     protected $fillable =[
 
-       "unit_name", "operation_value", "is_active"
+       "unit_name", "operation_value", "operator", "is_active"
     ];
 
     public function product()
