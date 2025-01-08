@@ -58,8 +58,8 @@
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Code') }} *</strong> </label>
                                             <div class="input-group">
-                                                <input type="text" name="code" readonly value="{{ $nextProductCode }}" class="form-control" id="code"
-                                                    aria-describedby="code" required>
+                                                <input type="text" name="code" readonly value="{{ $nextProductCode }}"
+                                                    class="form-control" id="code" aria-describedby="code" required>
                                                 {{-- <div class="input-group-append">
                                                     <button id="genbutton" type="button" class="btn btn-sm btn-default"
                                                         title="{{ trans('file.Generate') }}"><i
@@ -1594,7 +1594,19 @@
                     ' Image</label>');
                 var colorInput = $('<input type="file" name="color_images[' + color +
                     ']" class="form-control" accept="image/*">');
-                colorDiv.append(colorLabel, colorInput);
+                var imagePreview = $(
+                    '<img class="img-fluid mt-2" src="#" alt="Color Image" style="display: none; height: 100px;">');
+
+                // Add an event listener for image preview
+                colorInput.on('change', function(event) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.attr('src', e.target.result).show();
+                    };
+                    reader.readAsDataURL(event.target.files[0]);
+                });
+
+                colorDiv.append(colorLabel, colorInput, imagePreview);
                 colorImageSection.append(colorDiv);
             });
         });
