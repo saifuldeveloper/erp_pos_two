@@ -1016,6 +1016,7 @@ class ProductController extends Controller
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $noOfVariantValue = 0;
             $custom_fields = CustomField::where('belongs_to', 'product')->get();
+            $lims_product_data->load('productImages.color');
             return view('backend.product.edit', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'lims_brand_list', 'lims_category_list', 'lims_unit_list', 'lims_tax_list', 'lims_product_data', 'lims_product_variant_data', 'lims_warehouse_list', 'noOfVariantValue', 'custom_fields'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -1023,7 +1024,6 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-
         // $this->validate($request, [
         //     'name' => [
         //         'max:255',
@@ -1216,6 +1216,50 @@ class ProductController extends Controller
         }
         if (count($custom_field_data))
             DB::table('products')->where('id', $lims_product_data->id)->update($custom_field_data);
+
+        // $request->color_images[]
+        if (isset($data['is_variant'])) {
+            $colors = $request->variant_value[0]; //"red,blue,black"
+            $colors = explode(',', $colors);
+            foreach ($colors as $color) {
+                $color_data = Color::firstOrCreate(['name' => $color]);
+                $color_data->name = $color;
+                $color_data->save();
+            }
+            if ($request->color_images) {
+                foreach ($request->color_images as $key => $color_image) {
+                    $color = Color::where('name', $key)->first();
+                    if ($color) {
+                        $product_image = ProductImage::where('product_id', $lims_product_data->id)->where('color_id', $color->id)->first();
+                        if ($product_image) {
+                            //remove old image
+                            $old_image = $product_image->image;
+                            if (file_exists('public/images/product/' . $old_image))
+                                @unlink('public/images/product/' . $old_image);
+
+                            $ext = pathinfo($color_image->getClientOriginalName(), PATHINFO_EXTENSION);
+                            $imageName = date("Ymdhis") . $key . uniqid();
+                            $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
+                            $color_image->move('public/images/product', $imageName);
+                            $product_image->image = $imageName;
+                            $product_image->save();
+                        } else {
+                            $ext = pathinfo($color_image->getClientOriginalName(), PATHINFO_EXTENSION);
+                            $imageName = date("Ymdhis") . $key . uniqid();
+                            $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
+                            $color_image->move('public/images/product', $imageName);
+
+                            $product_image = new ProductImage();
+                            $product_image->product_id = $lims_product_data->id;
+                            $product_image->color_id = $color->id;
+                            $product_image->image = $imageName;
+                            $product_image->save();
+                        }
+                    }
+                }
+            }
+        }
+
         $this->cacheForget('product_list');
         $this->cacheForget('product_list_with_variant');
         \Session::flash('edit_message', 'Product updated successfully');
