@@ -744,6 +744,121 @@ class ReportController extends Controller
         return view('backend.report.profit_loss2', compact('purchase', 'product_cost', 'product_tax', 'total_purchase', 'sale', 'total_sale', 'return', 'purchase_return', 'total_return', 'total_purchase_return', 'expense', 'payroll', 'total_expense', 'total_payroll', 'payment_recieved', 'payment_recieved_number', 'cash_payment_sale', 'cheque_payment_sale', 'credit_card_payment_sale', 'gift_card_payment_sale', 'paypal_payment_sale', 'deposit_payment_sale', 'payment_sent', 'payment_sent_number', 'cash_payment_purchase', 'cheque_payment_purchase', 'credit_card_payment_purchase', 'warehouse_name', 'warehouse_sale', 'warehouse_purchase', 'warehouse_return', 'warehouse_purchase_return', 'warehouse_expense', 'start_date', 'end_date'));
     }
 
+
+
+
+
+    public function cashInHand(Request $request)
+    {
+        $start_date = $request['start_date'];
+        $end_date = $request['end_date'];
+        $query1 = array(
+            'SUM(grand_total) AS grand_total',
+            'SUM(shipping_cost) AS shipping_cost',
+            'SUM(paid_amount) AS paid_amount',
+            'SUM(total_tax + order_tax) AS tax',
+            'SUM(total_discount + order_discount) AS discount'
+        );
+        $query2 = array(
+            'SUM(grand_total) AS grand_total',
+            'SUM(total_tax + order_tax) AS tax'
+        );
+        config()->set('database.connections.mysql.strict', false);
+        DB::reconnect();
+        $product_sale_data = Product_Sale::select(DB::raw('product_id, product_batch_id, sale_unit_id, sum(qty) as sold_qty, sum(product_sales.return_qty) as return_qty, sum(total) as sold_amount'))
+                            ->whereDate('created_at', '>=' , $start_date)
+                            ->whereDate('created_at', '<=' , $end_date)
+                            ->groupBy('product_id', 'product_batch_id')
+                            ->get();
+        config()->set('database.connections.mysql.strict', true);
+            DB::reconnect();
+        $data = $this->calculateAverageCOGS($product_sale_data);
+        $product_cost = $data[0];
+        $product_tax = $data[1];
+ 
+        $purchase = Purchase::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query1))->get();
+        $total_purchase = Purchase::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->count();
+        $sale = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query1))->get();
+        $total_sale = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->count();
+        $return = Returns::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query2))->get();
+        $total_return = Returns::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->count();
+        $purchase_return = ReturnPurchase::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query2))->get();
+        $total_purchase_return = ReturnPurchase::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->count();
+        $expense = Expense::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('amount');
+        $total_expense = Expense::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->count();
+        $payroll = Payroll::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('amount');
+        $total_payroll = Payroll::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->count();
+        $total_item = DB::table('product_warehouse')
+                    ->join('products', 'product_warehouse.product_id', '=', 'products.id')
+                    ->where([
+                        ['products.is_active', true],
+                        ['product_warehouse.qty', '>' , 0]
+                    ])->count();
+        $payment_recieved_number = DB::table('payments')->whereNotNull('sale_id')->whereDate('created_at', '>=' , $start_date)
+            ->whereDate('created_at', '<=' , $end_date)->count();
+        $payment_recieved = DB::table('payments')->whereNotNull('sale_id')->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('payments.amount');
+        $credit_card_payment_sale = DB::table('payments')
+                            ->where('paying_method', 'Credit Card')
+                            ->whereNotNull('payments.sale_id')
+                            ->whereDate('payments.created_at', '>=' , $start_date)
+                            ->whereDate('payments.created_at', '<=' , $end_date)->sum('payments.amount');
+        $cheque_payment_sale = DB::table('payments')
+                            ->where('paying_method', 'Cheque')
+                            ->whereNotNull('payments.sale_id')
+                            ->whereDate('payments.created_at', '>=' , $start_date)
+                            ->whereDate('payments.created_at', '<=' , $end_date)->sum('payments.amount');
+        $gift_card_payment_sale = DB::table('payments')
+                            ->where('paying_method', 'Gift Card')
+                            ->whereNotNull('sale_id')
+                            ->whereDate('created_at', '>=' , $start_date)
+                            ->whereDate('created_at', '<=' , $end_date)
+                            ->sum('amount');
+        $paypal_payment_sale = DB::table('payments')
+                            ->where('paying_method', 'Paypal')
+                            ->whereNotNull('sale_id')
+                            ->whereDate('created_at', '>=' , $start_date)
+                            ->whereDate('created_at', '<=' , $end_date)
+                            ->sum('amount');
+        $deposit_payment_sale = DB::table('payments')
+                            ->where('paying_method', 'Deposit')
+                            ->whereNotNull('sale_id')
+                            ->whereDate('created_at', '>=' , $start_date)
+                            ->whereDate('created_at', '<=' , $end_date)
+                            ->sum('amount');
+        $cash_payment_sale =  $payment_recieved - $credit_card_payment_sale - $cheque_payment_sale - $gift_card_payment_sale - $paypal_payment_sale - $deposit_payment_sale;
+        $payment_sent_number = DB::table('payments')->whereNotNull('purchase_id')->whereDate('created_at', '>=' , $start_date)
+            ->whereDate('created_at', '<=' , $end_date)->count();
+        $payment_sent = DB::table('payments')->whereNotNull('purchase_id')->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('payments.amount');
+        $credit_card_payment_purchase = DB::table('payments')
+                            ->where('paying_method', 'Gift Card')
+                            ->whereNotNull('payments.purchase_id')
+                            ->whereDate('payments.created_at', '>=' , $start_date)
+                            ->whereDate('payments.created_at', '<=' , $end_date)->sum('payments.amount');
+        $cheque_payment_purchase = DB::table('payments')
+                            ->where('paying_method', 'Cheque')
+                            ->whereNotNull('payments.purchase_id')
+                            ->whereDate('payments.created_at', '>=' , $start_date)
+                            ->whereDate('payments.created_at', '<=' , $end_date)->sum('payments.amount');
+        $cash_payment_purchase =  $payment_sent - $credit_card_payment_purchase - $cheque_payment_purchase;
+        $lims_warehouse_all = Warehouse::where('is_active',true)->get();
+        $warehouse_name = [];
+        $warehouse_sale = [];
+        $warehouse_purchase = [];
+        $warehouse_return = [];
+        $warehouse_purchase_return = [];
+        $warehouse_expense = [];
+        foreach ($lims_warehouse_all as $warehouse) {
+            $warehouse_name[] = $warehouse->name;
+            $warehouse_sale[] = Sale::where('warehouse_id', $warehouse->id)->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query2))->get();
+            $warehouse_purchase[] = Purchase::where('warehouse_id', $warehouse->id)->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query2))->get();
+            $warehouse_return[] = Returns::where('warehouse_id', $warehouse->id)->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query2))->get();
+            $warehouse_purchase_return[] = ReturnPurchase::where('warehouse_id', $warehouse->id)->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query2))->get();
+            $warehouse_expense[] = Expense::where('warehouse_id', $warehouse->id)->whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->sum('amount');
+        }
+
+        return view('backend.report.cash', compact('purchase', 'product_cost', 'product_tax', 'total_purchase', 'sale', 'total_sale', 'return', 'purchase_return', 'total_return', 'total_purchase_return', 'expense', 'payroll', 'total_expense', 'total_payroll', 'payment_recieved', 'payment_recieved_number', 'cash_payment_sale', 'cheque_payment_sale', 'credit_card_payment_sale', 'gift_card_payment_sale', 'paypal_payment_sale', 'deposit_payment_sale', 'payment_sent', 'payment_sent_number', 'cash_payment_purchase', 'cheque_payment_purchase', 'credit_card_payment_purchase', 'warehouse_name', 'warehouse_sale', 'warehouse_purchase', 'warehouse_return', 'warehouse_purchase_return', 'warehouse_expense', 'start_date', 'end_date'));
+    }
+
     public function calculateAverageCOGS($product_sale_data)
     {
         $product_cost = 0;
