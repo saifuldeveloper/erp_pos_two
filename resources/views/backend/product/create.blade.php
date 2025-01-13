@@ -389,8 +389,13 @@
                                             </div>
                                             <div class="col-md-6 form-group mt-2">
                                                 <label>{{ trans('file.Value') }} *</label>
-                                                <input type="text" name="variant_value[]"
-                                                    class="type-variant form-control variant-field">
+                                                <select name="variant_value[]"
+                                                    class="variant-val form-control variant-field" multiple
+                                                    id="color">
+                                                    @foreach ($colors as $color)
+                                                        <option value="{{ $color->name }}">{{ $color->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             {{-- new --}}
                                             <div class="col-md-4 form-group mt-2">
@@ -401,7 +406,7 @@
                                             <div class="col-md-6 form-group mt-2">
                                                 <label>{{ trans('file.Value') }} *</label>
                                                 <input type="text" name="variant_value[]"
-                                                    class="type-variant form-control variant-field">
+                                                    class="type-variant variant-val form-control variant-field">
                                             </div>
                                         </div>
                                         {{-- <div class="col-md-12 form-group">
@@ -626,6 +631,10 @@
             $('.type-variant').tagsInput();
         });
 
+        $(document).on('change', '#color', function() {
+            $('#color').addTag($('#color').val());
+        });
+
         (function($) {
             var delimiter = [];
             var inputSettings = [];
@@ -638,60 +647,69 @@
                 }, options);
                 this.each(function() {
                     var id = $(this).attr('id');
-                    var tagslist = $(this).val().split(_getDelimiter(delimiter[id]));
+                    if (id != 'color') {
+                        var tagslist = $(this).val().split(_getDelimiter(delimiter[id]));
+                    } else {
+                        var tagslist = [];
+                    }
                     if (tagslist[0] === '') tagslist = [];
 
                     value = jQuery.trim(value);
 
-                    if ((inputSettings[id].unique && $(this).tagExist(value)) || !_validateTag(value,
-                            inputSettings[id], tagslist, delimiter[id])) {
-                        $('#' + id + '_tag').addClass('error');
-                        return false;
-                    }
+                    if (id != 'color') {
+                        if ((inputSettings[id].unique && $(this).tagExist(value)) || !_validateTag(value,
+                                inputSettings[id], tagslist, delimiter[id])) {
+                            $('#' + id + '_tag').addClass('error');
+                            return false;
+                        }
 
-                    $('<span>', {
-                        class: 'tag'
-                    }).append(
                         $('<span>', {
-                            class: 'tag-text'
-                        }).text(value),
-                        $('<button>', {
-                            class: 'tag-remove'
-                        }).click(function() {
-                            return $('#' + id).removeTag(encodeURI(value));
-                        })
-                    ).insertBefore('#' + id + '_addTag');
-                    tagslist.push(value);
+                            class: 'tag'
+                        }).append(
+                            $('<span>', {
+                                class: 'tag-text'
+                            }).text(value),
+                            $('<button>', {
+                                class: 'tag-remove'
+                            }).click(function() {
+                                return $('#' + id).removeTag(encodeURI(value));
+                            })
+                        ).insertBefore('#' + id + '_addTag');
+                        tagslist.push(value);
 
-                    $('#' + id + '_tag').val('');
-                    if (options.focus) {
-                        $('#' + id + '_tag').focus();
-                    } else {
-                        $('#' + id + '_tag').blur();
+                        $('#' + id + '_tag').val('');
+                        if (options.focus) {
+                            $('#' + id + '_tag').focus();
+                        } else {
+                            $('#' + id + '_tag').blur();
+                        }
+
+                        $.fn.tagsInput.updateTagsField(this, tagslist);
+
+                        if (options.callback && callbacks[id] && callbacks[id]['onAddTag']) {
+                            var f = callbacks[id]['onAddTag'];
+                            f.call(this, this, value);
+                        }
+
+                        if (callbacks[id] && callbacks[id]['onChange']) {
+                            var i = tagslist.length;
+                            var f = callbacks[id]['onChange'];
+                            f.call(this, this, value);
+                        }
                     }
 
-                    $.fn.tagsInput.updateTagsField(this, tagslist);
-
-                    if (options.callback && callbacks[id] && callbacks[id]['onAddTag']) {
-                        var f = callbacks[id]['onAddTag'];
-                        f.call(this, this, value);
-                    }
-
-                    if (callbacks[id] && callbacks[id]['onChange']) {
-                        var i = tagslist.length;
-                        var f = callbacks[id]['onChange'];
-                        f.call(this, this, value);
-                    }
-
-                    $(".type-variant").each(function(index) {
+                    $(".variant-val").each(function(index) {
                         variantIds.splice(index, 1, $(this).attr('id'));
                     });
 
+
                     //start custom code
-                    first_variant_values = $('#' + variantIds[0]).val().split(_getDelimiter(delimiter[
-                        variantIds[0]]));
+                    first_variant_values = $('#color option:selected').map(function() {
+                        return $(this).val();
+                    }).get();
+
                     combinations = first_variant_values;
-                    step = 1;
+                    step = 2;
                     while (step < variantIds.length) {
                         var newCombinations = [];
                         for (var i = 0; i < combinations.length; i++) {
@@ -1595,7 +1613,8 @@
                 var colorInput = $('<input type="file" name="color_images[' + color +
                     ']" class="form-control" accept="image/*">');
                 var imagePreview = $(
-                    '<img class="img-fluid mt-2" src="#" alt="Color Image" style="display: none; height: 100px;">');
+                    '<img class="img-fluid mt-2" src="#" alt="Color Image" style="display: none; height: 100px;">'
+                );
 
                 // Add an event listener for image preview
                 colorInput.on('change', function(event) {
