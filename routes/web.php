@@ -21,6 +21,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CashRegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientAutoUpdateController;
+use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerController;
@@ -188,6 +189,8 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::post('unit/deletebyselection', 'deleteBySelection');
         Route::get('unit/lims_unit_search', 'limsUnitSearch')->name('unit.search');
      });
+
+    Route::resource('color', ColorController::class);
 
 
     Route::controller(CategoryController::class)->group(function () {
@@ -550,7 +553,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 	//accounting routes
     Route::controller(AccountsController::class)->group(function () {
         Route::get('accounts/make-default/{id}',  'makeDefault')->name('accounts.makeDefault');
-        
+
         Route::get('balancesheet', 'balanceSheet')->name('accounts.balancesheet');
         Route::post('account-statement', 'accountStatement')->name('accounts.statement');
         Route::get('accounts/all', 'accountsAll')->name('account.all');
