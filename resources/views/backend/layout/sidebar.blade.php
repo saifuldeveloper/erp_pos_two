@@ -32,6 +32,7 @@
                         @if ($unit_permission_active)
                             <li id="unit-menu"><a href="{{ route('unit.index') }}">{{ trans('file.Unit') }}</a></li>
                         @endif
+                        <li id="color-menu"><a href="{{ route('color.index') }}">Color </a></li>
                         @if ($category_permission_active)
                             <li id="category-menu"><a href="{{ route('category.index') }}">{{ __('file.category') }}</a>
                             </li>
