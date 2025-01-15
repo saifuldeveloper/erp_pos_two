@@ -116,4 +116,10 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
+
+    public function colors()
+    {
+        $colors = isset($this->variant_value[0]) ? explode(',', $this->variant_value[0]) : [];
+        return Color::whereIn('name', $colors)->get();
+    }
 }

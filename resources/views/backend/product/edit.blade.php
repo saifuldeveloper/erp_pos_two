@@ -521,12 +521,28 @@
                                                             class="form-control variant-field"
                                                             value="{{ $lims_product_data->variant_option[$key] }}">
                                                     </div>
-                                                    <div class="col-md-6 form-group mt-2">
-                                                        <label>{{ trans('file.Value') }} *</label>
-                                                        <input type="text" name="variant_value[]"
-                                                            class="type-variant form-control variant-field"
-                                                            value="{{ $lims_product_data->variant_value[$key] }}">
-                                                    </div>
+                                                    @if ($key == 0)
+                                                        <div class="col-md-6 form-group mt-2">
+                                                            <label>{{ trans('file.Value') }} *</label>
+                                                            <select name="variant_value[0][]"
+                                                                class="variant-val form-control variant-field" multiple
+                                                                id="color">
+                                                                @foreach ($colors as $color)
+                                                                    <option value="{{ $color->name }}"
+                                                                        {{ in_array($color->name, @$lims_product_colors) ? 'selected' : '' }}>
+                                                                        {{ $color->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    @else
+                                                        <div class="col-md-6 form-group mt-2">
+                                                            <label>{{ trans('file.Value') }} *</label>
+                                                            <input type="text" name="variant_value[]"
+                                                                class="type-variant variant-val form-control variant-field"
+                                                                value="{{ $lims_product_data->variant_value[$key] }}">
+                                                        </div>
+                                                    @endif
                                                 @endforeach
                                             </div>
                                         @else
@@ -772,6 +788,10 @@
             $('.type-variant').tagsInput();
         });
 
+        $(document).on('change', '#color', function() {
+            $('#color').addTag($('#color').val());
+        });
+
         (function($) {
             var delimiter = [];
             var inputSettings = [];
@@ -787,124 +807,132 @@
 
                 this.each(function() {
                     var id = $(this).attr('id');
-                    var tagslist = $(this).val().split(_getDelimiter(delimiter[id]));
+
+                    if (id != 'color') {
+                        var tagslist = $(this).val().split(_getDelimiter(delimiter[id]));
+                    } else {
+                        var tagslist = [];
+                    }
                     if (tagslist[0] === '') tagslist = [];
 
                     value = jQuery.trim(value);
+                    if (id != 'color') {
+                        if ((inputSettings[id].unique && $(this).tagExist(value)) || !_validateTag(value,
+                                inputSettings[id], tagslist, delimiter[id])) {
+                            $('#' + id + '_tag').addClass('error');
+                            return false;
+                        }
 
-                    if ((inputSettings[id].unique && $(this).tagExist(value)) || !_validateTag(value,
-                            inputSettings[id], tagslist, delimiter[id])) {
-                        $('#' + id + '_tag').addClass('error');
-                        return false;
-                    }
-
-                    $('<span>', {
-                        class: 'tag'
-                    }).append(
                         $('<span>', {
-                            class: 'tag-text'
-                        }).text(value),
-                        $('<button>', {
-                            class: 'tag-remove'
-                        }).click(function() {
-                            return $('#' + id).removeTag(encodeURI(value));
-                        })
-                    ).insertBefore('#' + id + '_addTag');
+                            class: 'tag'
+                        }).append(
+                            $('<span>', {
+                                class: 'tag-text'
+                            }).text(value),
+                            $('<button>', {
+                                class: 'tag-remove'
+                            }).click(function() {
+                                return $('#' + id).removeTag(encodeURI(value));
+                            })
+                        ).insertBefore('#' + id + '_addTag');
 
-                    tagslist.push(value);
+                        tagslist.push(value);
 
-                    $('#' + id + '_tag').val('');
-                    if (options.focus) {
-                        $('#' + id + '_tag').focus();
-                    } else {
-                        $('#' + id + '_tag').blur();
+                        $('#' + id + '_tag').val('');
+                        if (options.focus) {
+                            $('#' + id + '_tag').focus();
+                        } else {
+                            $('#' + id + '_tag').blur();
+                        }
+
+                        $.fn.tagsInput.updateTagsField(this, tagslist);
+
+                        if (options.callback && callbacks[id] && callbacks[id]['onAddTag']) {
+                            var f = callbacks[id]['onAddTag'];
+                            f.call(this, this, value);
+                        }
+
+                        if (callbacks[id] && callbacks[id]['onChange']) {
+                            var i = tagslist.length;
+                            var f = callbacks[id]['onChange'];
+                            f.call(this, this, value);
+                        }
                     }
 
-                    $.fn.tagsInput.updateTagsField(this, tagslist);
-
-                    if (options.callback && callbacks[id] && callbacks[id]['onAddTag']) {
-                        var f = callbacks[id]['onAddTag'];
-                        f.call(this, this, value);
-                    }
-
-                    if (callbacks[id] && callbacks[id]['onChange']) {
-                        var i = tagslist.length;
-                        var f = callbacks[id]['onChange'];
-                        f.call(this, this, value);
-                    }
-
-                    $(".type-variant").each(function(index) {
+                    $(".variant-val").each(function(index) {
                         variantIds.splice(index, 1, $(this).attr('id'));
                     });
-                    count++;
-                    if (customizedVariantCode) {
-                        first_variant_values = $('#' + variantIds[0]).val().split(_getDelimiter(delimiter[
-                            variantIds[0]]));
-                        combinations = first_variant_values;
-                        step = 1;
-                        while (step < variantIds.length) {
-                            var newCombinations = [];
-                            for (var i = 0; i < combinations.length; i++) {
-                                new_variant_values = $('#' + variantIds[step]).val().split(_getDelimiter(
-                                    delimiter[variantIds[step]]));
-                                for (var j = 0; j < new_variant_values.length; j++) {
-                                    newCombinations.push(combinations[i] + '/' + new_variant_values[j]);
-                                }
-                            }
-                            combinations = newCombinations;
-                            step++;
-                        }
-                        var rownumber = $('table.variant-list tbody tr:last').index();
-                        if (rownumber > -1) {
-                            oldCombinations = [];
-                            oldAdditionalCost = [];
-                            oldAdditionalPrice = [];
-                            oldProductVariantId = [];
-                            $(".variant-name").each(function(i) {
-                                oldCombinations.push($(this).val());
-                                oldProductVariantId.push($(
-                                    'table.variant-list tbody tr:nth-child(' + (i + 1) + ')'
-                                ).find('.product-variant-id').val());
-                                oldAdditionalCost.push($('table.variant-list tbody tr:nth-child(' +
-                                    (i + 1) + ')').find('.additional-cost').val());
-                                oldAdditionalPrice.push($('table.variant-list tbody tr:nth-child(' +
-                                    (i + 1) + ')').find('.additional-price').val());
-                            });
-                        }
+                    console.log(variantIds);
 
-                        $("table.variant-list tbody").remove();
-                        var newBody = $("<tbody>");
-                        for (i = 0; i < combinations.length; i++) {
-                            var variant_name = combinations[i];
-                            var item_code = variant_name + '-' + $("#code").val();
-                            var newRow = $("<tr>");
-                            var cols = '';
-                            cols += '<td>' + variant_name +
-                                '<input type="hidden" class="variant-name" name="variant_name[]" value="' +
-                                variant_name + '" /></td>';
-                            cols +=
-                                '<td><input type="text" class="form-control item-code" name="item_code[]" value="' +
-                                item_code + '" /></td>';
-                            //checking if this variant already exist in the variant table
-                            oldIndex = oldCombinations.indexOf(combinations[i]);
-                            if (oldIndex >= 0) {
-                                cols +=
-                                    '<td><input type="number" class="form-control additional-cost" name="additional_cost[]" value="' +
-                                    oldAdditionalCost[oldIndex] + '" step="any" /></td>';
-                                cols +=
-                                    '<td><input type="number" class="form-control additional-price" name="additional_price[]" value="' +
-                                    oldAdditionalPrice[oldIndex] + '" step="any" /></td>';
-                            } else {
-                                cols +=
-                                    '<td><input type="number" class="form-control additional-cost" name="additional_cost[]" value="" step="any" /></td>';
-                                cols +=
-                                    '<td><input type="number" class="form-control additional-price" name="additional_price[]" value="" step="any" /></td>';
+                    count++;
+
+                    first_variant_values = $('#color option:selected').map(function() {
+                        return $(this).val();
+                    }).get();
+                    combinations = first_variant_values;
+                    step = 2;
+                    while (step < variantIds.length) {
+                        var newCombinations = [];
+                        for (var i = 0; i < combinations.length; i++) {
+                            new_variant_values = $('#' + variantIds[step]).val().split(_getDelimiter(
+                                delimiter[variantIds[step]]));
+                            for (var j = 0; j < new_variant_values.length; j++) {
+                                newCombinations.push(combinations[i] + '/' + new_variant_values[j]);
                             }
-                            newRow.append(cols);
-                            newBody.append(newRow);
                         }
-                        $("table.variant-list").append(newBody);
+                        combinations = newCombinations;
+                        step++;
                     }
+                    var rownumber = $('table.variant-list tbody tr:last').index();
+                    if (rownumber > -1) {
+                        oldCombinations = [];
+                        oldAdditionalCost = [];
+                        oldAdditionalPrice = [];
+                        oldProductVariantId = [];
+                        $(".variant-name").each(function(i) {
+                            oldCombinations.push($(this).val());
+                            oldProductVariantId.push($(
+                                'table.variant-list tbody tr:nth-child(' + (i + 1) + ')'
+                            ).find('.product-variant-id').val());
+                            oldAdditionalCost.push($('table.variant-list tbody tr:nth-child(' +
+                                (i + 1) + ')').find('.additional-cost').val());
+                            oldAdditionalPrice.push($('table.variant-list tbody tr:nth-child(' +
+                                (i + 1) + ')').find('.additional-price').val());
+                        });
+                    }
+
+                    $("table.variant-list tbody").remove();
+                    var newBody = $("<tbody>");
+                    for (i = 0; i < combinations.length; i++) {
+                        var variant_name = combinations[i];
+                        var item_code = variant_name + '-' + $("#code").val();
+                        var newRow = $("<tr>");
+                        var cols = '';
+                        cols += '<td>' + variant_name +
+                            '<input type="hidden" class="variant-name" name="variant_name[]" value="' +
+                            variant_name + '" /></td>';
+                        cols +=
+                            '<td><input type="text" class="form-control item-code" name="item_code[]" value="' +
+                            item_code + '" /></td>';
+                        //checking if this variant already exist in the variant table
+                        oldIndex = oldCombinations.indexOf(combinations[i]);
+                        if (oldIndex >= 0) {
+                            cols +=
+                                '<td><input type="number" class="form-control additional-cost" name="additional_cost[]" value="' +
+                                oldAdditionalCost[oldIndex] + '" step="any" /></td>';
+                            cols +=
+                                '<td><input type="number" class="form-control additional-price" name="additional_price[]" value="' +
+                                oldAdditionalPrice[oldIndex] + '" step="any" /></td>';
+                        } else {
+                            cols +=
+                                '<td><input type="number" class="form-control additional-cost" name="additional_cost[]" value="" step="any" /></td>';
+                            cols +=
+                                '<td><input type="number" class="form-control additional-price" name="additional_price[]" value="" step="any" /></td>';
+                        }
+                        newRow.append(cols);
+                        newBody.append(newRow);
+                    }
+                    $("table.variant-list").append(newBody);
                 });
 
                 return false;
@@ -1754,10 +1782,9 @@
 
         $(document).find('.add-color-image').on('click', function() {
             // Get colors from the tags input
-            var colors = $(document).find('.tagsinput').first().find('.tag-text').map(function() {
-                return $(this).text();
+            var colors = $(document).find('#color option:selected').map(function() {
+                return $(this).val();
             }).get();
-
             // Get product images from the PHP variable
             var productImages = @json($lims_product_data->productImages);
 
@@ -1781,7 +1808,7 @@
                 var imagePreview;
                 if (productImage) {
                     var existingImageUrl =
-                    `/public/images/product/${productImage.image}`; // Adjust path as needed
+                        `/public/images/product/${productImage.image}`; // Adjust path as needed
                     imagePreview = $('<img class="img-fluid mt-2" src="' + existingImageUrl + '" alt="' +
                         color +
                         ' Image" style="height: 100px;">');
