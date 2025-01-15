@@ -325,7 +325,7 @@ class ProductController extends Controller
             $numberOfProduct = Product::where('is_active', true)->count();
             $custom_fields = CustomField::where('belongs_to', 'product')->get();
             $colors = Color::orderBy('name')->get();
-            return view('backend.product.create', compact('nextProductCode','lims_product_list_without_variant', 'lims_product_list_with_variant', 'lims_brand_list', 'lims_category_list', 'lims_unit_list', 'lims_tax_list', 'lims_warehouse_list', 'numberOfProduct', 'custom_fields', 'colors'));
+            return view('backend.product.create', compact('nextProductCode', 'lims_product_list_without_variant', 'lims_product_list_with_variant', 'lims_brand_list', 'lims_category_list', 'lims_unit_list', 'lims_tax_list', 'lims_warehouse_list', 'numberOfProduct', 'custom_fields', 'colors'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
@@ -352,6 +352,9 @@ class ProductController extends Controller
 
         if (isset($data['is_variant'])) {
             $data['variant_option'] = json_encode($data['variant_option']);
+            $data['variant_value'] = array_map(function ($item) {
+                return is_array($item) ? implode(',', $item) : $item;
+            }, $data['variant_value']);
             $data['variant_value'] = json_encode($data['variant_value']);
         } else {
             $data['variant_option'] = $data['variant_value'] = null;
@@ -488,8 +491,7 @@ class ProductController extends Controller
 
         // $request->color_images[]
         if (isset($data['is_variant'])) {
-            $colors = $request->variant_value[0]; //"red,blue,black"
-            $colors = explode(',', $colors);
+            $colors = $request->variant_value[0];
             foreach ($colors as $color) {
                 $color_data = Color::firstOrCreate(['name' => $color]);
                 $color_data->name = $color;
