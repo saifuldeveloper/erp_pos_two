@@ -389,7 +389,7 @@
                                             </div>
                                             <div class="col-md-6 form-group mt-2">
                                                 <label>{{ trans('file.Value') }} *</label>
-                                                <select name="variant_value[]"
+                                                <select name="variant_value[0][]"
                                                     class="variant-val form-control variant-field" multiple
                                                     id="color">
                                                     @foreach ($colors as $color)
@@ -1601,8 +1601,8 @@
         });
 
         $(document).find('.add-color-image').on('click', function() {
-            var colors = $(document).find('.tagsinput').first().find('.tag-text').map(function() {
-                return $(this).text();
+            var colors = $(document).find('#color option:selected').map(function() {
+                return $(this).val();
             }).get();
             var colorImageSection = $('#color-image-section');
             colorImageSection.empty();
