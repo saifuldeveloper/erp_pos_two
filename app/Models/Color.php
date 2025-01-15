@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Color extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'code',
@@ -17,5 +17,12 @@ class Color extends Model
     public function productImages()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function products()
+    {
+        return Product::where(function ($query) {
+            $query->where('variant_value', 'LIKE', '%' . $this->name . '%');
+        });
     }
 }
