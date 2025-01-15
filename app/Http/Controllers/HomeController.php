@@ -122,6 +122,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->where('payments.user_id', Auth::id())
+                ->where('payments.due_payment' ,1)
                 ->whereRaw('payments.created_at > sales.created_at')
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
@@ -149,6 +150,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->whereRaw('payments.created_at > sales.created_at')
+                ->where('payments.due_payment' ,1)
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
                 ->sum('payments.amount');
@@ -367,6 +369,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->where('payments.user_id', Auth::id())
+                ->where('payments.due_payment' ,1)
                 ->whereRaw('payments.created_at > sales.created_at')
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
@@ -411,6 +414,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->whereRaw('payments.created_at > sales.created_at')
+                ->where('payments.due_payment' ,1)
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
                 ->sum('payments.amount');

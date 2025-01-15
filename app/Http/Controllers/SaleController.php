@@ -2393,6 +2393,7 @@ class SaleController extends Controller
         $lims_payment_data->change = $data['paying_amount'] - $data['amount'];
         $lims_payment_data->paying_method = $paying_method;
         $lims_payment_data->payment_note = $data['payment_note'];
+        $lims_payment_data->due_payment =1;
         $lims_payment_data->save();
         $lims_sale_data->save();
 

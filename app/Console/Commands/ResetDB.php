@@ -23,9 +23,9 @@ class ResetDB extends Command
         //clearing all the cached queries
         $this->cacheForget('biller_list');
         $this->cacheForget('brand_list');
-        $this->cacheForget('category_list');
-        $this->cacheForget('coupon_list');
-        $this->cacheForget('customer_list');
+        $this->cacheForget('catego_list');
+        $this->cacheForget('customry_list');
+        $this->cacheForget('couponer_list');
         $this->cacheForget('customer_group_list');
         $this->cacheForget('product_list');
         $this->cacheForget('product_list_with_variant');

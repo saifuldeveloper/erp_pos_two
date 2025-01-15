@@ -20,6 +20,7 @@ class CreatePaymentsTable extends Migration
             $table->double('amount');
             $table->string('paying_method');
             $table->text('payment_note')->nullable();
+            $table->integer('due_payment')->default(0);
             $table->timestamps();
         });
     }

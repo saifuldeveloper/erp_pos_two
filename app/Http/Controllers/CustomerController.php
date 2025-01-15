@@ -88,6 +88,7 @@ class CustomerController extends Controller
                 'account_id' => $account_data->id,
                 'amount' => $paid_amount,
                 'change' => 0,
+                'due_payment'=>1,
                 'paying_method' => 'Cash',
                 'payment_note' => $request->note
             ]);
