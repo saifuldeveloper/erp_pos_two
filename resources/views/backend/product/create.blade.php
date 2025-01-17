@@ -390,8 +390,8 @@
                                             <div class="col-md-6 form-group mt-2">
                                                 <label>{{ trans('file.Value') }} *</label>
                                                 <select name="variant_value[0][]"
-                                                    class="variant-val form-control variant-field" multiple
-                                                    id="color">
+                                                    class="variant-val form-control variant-field selectpicker" multiple
+                                                    id="color" data-live-search="true" data-live-search-style="begins">
                                                     @foreach ($colors as $color)
                                                         <option value="{{ $color->name }}">{{ $color->name }}</option>
                                                     @endforeach
