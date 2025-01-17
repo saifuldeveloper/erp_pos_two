@@ -294,6 +294,7 @@ class ProductController extends Controller
                 );
                 //$nestedData['imagedata'] = DNS1D::getBarcodePNG($product->code, $product->barcode_symbology);
                 $nestedData['colorImages'] = $product->productImages;
+                $nestedData['variant_value'] = $product->variant_value;
                 $data[] = $nestedData;
             }
         }
