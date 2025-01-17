@@ -35,7 +35,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($lims_product_purchase_data as $product_purchase)
+                                                    @foreach($lims_product_purchase_data as $key=> $product_purchase)
                                                     <tr>
                                                     <?php
                                                         $product_data = DB::table('products')->find($product_purchase->product_id);
@@ -84,7 +84,7 @@
                                                         <td class="discount">{{ number_format((float)$product_purchase->discount, $general_setting->decimal, '.', '')}}</td>
                                                         <td class="tax">{{ number_format((float)$product_purchase->tax, $general_setting->decimal, '.', '')}}</td>
                                                         <td class="sub-total">{{ number_format((float)$product_purchase->total, $general_setting->decimal, '.', '')}}</td>
-                                                        <td><input type="checkbox" class="is-return" name="is_return[]" value="{{$product_data->id}}"></td>
+                                                        <td><input type="checkbox" class="is-return" name="is_return[{{$key}}]" value="{{$product_data->id}}"></td>
                                                         <input type="hidden" class="product-code" name="product_code[]" value="{{$product_data->code}}"/>
                                                         <input type="hidden" name="product_id[]" class="product-id" value="{{$product_data->id}}"/>
                                                         <input type="hidden" class="unit-cost" value="{{$product_purchase->total/$product_purchase->qty}}">

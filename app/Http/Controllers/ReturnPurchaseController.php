@@ -432,7 +432,7 @@ class ReturnPurchaseController extends Controller
 
         $product_id = $data['is_return'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null; 
+        $product_batch_id = $data['product_batch_id'] ?? null;
         $product_code = $data['product_code'];
         $qty = $data['qty'];
         $purchase_unit = $data['purchase_unit'];
@@ -442,7 +442,7 @@ class ReturnPurchaseController extends Controller
         $tax = $data['tax'];
         $total = $data['subtotal'];
 
-        foreach ($product_id as $pro_id) {
+        foreach ($product_id as $check=>$pro_id) {
             $key = array_search($pro_id, $data['product_id']);
             //return $key;
             $lims_product_data = Product::find($pro_id);
@@ -451,14 +451,14 @@ class ReturnPurchaseController extends Controller
                 $lims_purchase_unit_data  = Unit::where('unit_name', $purchase_unit[$key])->first();
                 $purchase_unit_id = $lims_purchase_unit_data->id;
                 if($lims_purchase_unit_data->operator == '*')
-                    $quantity = $qty[$key] * $lims_purchase_unit_data->operation_value;
+                    $quantity = $qty[$check] * $lims_purchase_unit_data->operation_value;
                 elseif($lims_purchase_unit_data->operator == '/')
-                    $quantity = $qty[$key] / $lims_purchase_unit_data->operation_value;
+                    $quantity = $qty[$check] / $lims_purchase_unit_data->operation_value;
 
                 if($lims_product_data->is_variant) {
                     $lims_product_variant_data = ProductVariant::
                         select('id', 'variant_id', 'qty')
-                        ->FindExactProductWithCode($pro_id, $product_code[$key])
+                        ->FindExactProductWithCode($pro_id, $product_code[$check])
                         ->first();
                     $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $lims_product_variant_data->variant_id, $data['warehouse_id'])->first();
                     $lims_product_variant_data->qty -= $quantity;
@@ -478,7 +478,6 @@ class ReturnPurchaseController extends Controller
                 }
                 else
                     $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $data['warehouse_id'])->first();
-
                 $lims_product_data->qty -=  $quantity;
                 $lims_product_warehouse_data->qty -= $quantity;
 
@@ -706,7 +705,7 @@ class ReturnPurchaseController extends Controller
 
         $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null; 
+        $product_batch_id = $data['product_batch_id'] ?? null;
         $product_code = $data['product_code'];
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];
