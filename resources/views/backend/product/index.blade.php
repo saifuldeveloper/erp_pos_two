@@ -149,7 +149,7 @@
                                 </table>
                             </div>
                         @endif
-                        <div class="col-md-12 mt-2" id="color-images">
+                        {{-- <div class="col-md-12 mt-2" id="color-images">
                             <h5>Color Images</h5>
                             <table class="table table-bordered table-hover color-images-list">
                                 <thead>
@@ -157,7 +157,7 @@
                                 <tbody>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <h5 id="combo-header"></h5>

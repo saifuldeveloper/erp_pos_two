@@ -525,11 +525,11 @@
                                                         <div class="col-md-6 form-group mt-2">
                                                             <label>{{ trans('file.Value') }} *</label>
                                                             <select name="variant_value[0][]"
-                                                                class="variant-val form-control variant-field" multiple
-                                                                id="color">
+                                                                class="variant-val form-control variant-field selectpicker"
+                                                                multiple id="color" data-live-search="true"
+                                                                data-live-search-style="begins">
                                                                 @foreach ($colors as $color)
                                                                     <option value="{{ $color->name }}"
-                                                                        {{ $lims_product_data->productPurchases->count() > 0 ? 'disabled' : '' }}
                                                                         {{ in_array($color->name, @$lims_product_colors) ? 'selected' : '' }}>
                                                                         {{ $color->name }}
                                                                     </option>
@@ -541,7 +541,8 @@
                                                             <label>{{ trans('file.Value') }} *</label>
                                                             <input type="text" name="variant_value[]"
                                                                 class="type-variant variant-val form-control variant-field"
-                                                                value="{{ $lims_product_data->variant_value[$key] }}" readonly>
+                                                                value="{{ $lims_product_data->variant_value[$key] }}"
+                                                                readonly>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -962,6 +963,11 @@
                         f.call(this, this, value);
                     }
                 });
+
+                var purchase_count = "{{ $lims_product_data->productPurchases->count() }}";
+                if (purchase_count > 0) {
+                    $('.tagsinput').find('.tag').find('button').addClass('d-none');
+                }
 
                 return false;
             };
@@ -1831,11 +1837,31 @@
             });
         });
 
-        $(document).ready(function(){
+        $(document).ready(function() {
             var purchase_count = "{{ $lims_product_data->productPurchases->count() }}";
-            if(purchase_count > 0){
-                var tags = $('.tagsinput').find('.tag').find('button').addClass('d-none');
+            if (purchase_count > 0) {
+                $('.tagsinput').find('.tag').find('button').addClass('d-none');
             }
+        });
+
+        $(document).ready(function() {
+            var purchaseCount = parseInt("{{ $lims_product_data->productPurchases->count() }}");
+            var lockedColors = @json($lims_product_colors);
+
+            $('#color').on('change', function(e) {
+                if (purchaseCount > 0) {
+                    var selectedColors = $(this).val();
+                    var invalidSelection = lockedColors.some(function(color) {
+                        return !selectedColors.includes(color);
+                    });
+
+                    if (invalidSelection) {
+                        $(this).val(lockedColors).selectpicker('refresh');
+                        alert(
+                            'You cannot change these colors because the product has associated purchases.');
+                    }
+                }
+            });
         });
     </script>
 @endpush
