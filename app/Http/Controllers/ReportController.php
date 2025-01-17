@@ -984,6 +984,7 @@ class ReportController extends Controller
     public function productReportData(Request $request)
     {
         $data = $request->all();
+
         $start_date = $data['start_date'];
         $end_date = $data['end_date'];
         $warehouse_id = $data['warehouse_id'];
@@ -1000,22 +1001,21 @@ class ReportController extends Controller
             $limit = $request->input('length');
         else
             $limit = $totalData;
-        //return $request;
+        
         $start = $request->input('start');
-        $order = $columns[$request->input('order.0.column')];
+        $order = $columns[$request->input('order.0.column') ?? 1] ?? 'name';
         $dir = $request->input('order.0.dir');
         if($request->input('search.value')) {
             $search = $request->input('search.value');
-            $totalData = Product::where([
-                ['name', 'LIKE', "%{$search}%"],
-                ['is_active', true]
-            ])->count();
+            $totalData = Product::where(function ($query) use ($search) {
+                $query->where('name', 'LIKE', "%{$search}%")
+                      ->orWhere('code', 'LIKE', "%{$search}%");
+            })->where('is_active', true)->count();
             $lims_product_all = Product::with('category')
                                 ->select('id', 'name', 'code', 'category_id', 'qty', 'is_variant', 'price', 'cost')
-                                ->where([
-                                    ['name', 'LIKE', "%{$search}%"],
-                                    ['is_active', true]
-                                ])->offset($start)
+                                ->where('name', 'LIKE', "%{$search}%")
+                                 ->orWhere('code', 'LIKE', "%{$search}%")
+                                  ->where('is_active', true)->offset($start)
                                   ->limit($limit)
                                   ->orderBy($order, $dir)
                                   ->get();
