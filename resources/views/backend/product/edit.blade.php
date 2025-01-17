@@ -529,6 +529,7 @@
                                                                 id="color">
                                                                 @foreach ($colors as $color)
                                                                     <option value="{{ $color->name }}"
+                                                                        {{ $lims_product_data->productPurchases->count() > 0 ? 'disabled' : '' }}
                                                                         {{ in_array($color->name, @$lims_product_colors) ? 'selected' : '' }}>
                                                                         {{ $color->name }}
                                                                     </option>
@@ -540,7 +541,7 @@
                                                             <label>{{ trans('file.Value') }} *</label>
                                                             <input type="text" name="variant_value[]"
                                                                 class="type-variant variant-val form-control variant-field"
-                                                                value="{{ $lims_product_data->variant_value[$key] }}">
+                                                                value="{{ $lims_product_data->variant_value[$key] }}" readonly>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -707,7 +708,6 @@
         var count = 1;
         var customizedVariantCode = 1;
         var noOfVariantValue = <?php echo json_encode($noOfVariantValue); ?>;
-        console.log(noOfVariantValue);
         $('[data-toggle="tooltip"]').tooltip();
 
         $(".remove-img").on("click", function() {
@@ -1829,6 +1829,13 @@
                 colorDiv.append(colorLabel, colorInput, imagePreview);
                 colorImageSection.append(colorDiv);
             });
+        });
+
+        $(document).ready(function(){
+            var purchase_count = "{{ $lims_product_data->productPurchases->count() }}";
+            if(purchase_count > 0){
+                var tags = $('.tagsinput').find('.tag').find('button').addClass('d-none');
+            }
         });
     </script>
 @endpush

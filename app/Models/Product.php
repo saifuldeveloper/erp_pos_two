@@ -122,4 +122,14 @@ class Product extends Model
         $colors = isset($this->variant_value[0]) ? explode(',', $this->variant_value[0]) : [];
         return Color::whereIn('name', $colors)->get();
     }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function productPurchases()
+    {
+        return $this->hasMany(ProductPurchase::class);
+    }
 }
