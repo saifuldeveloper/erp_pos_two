@@ -229,7 +229,7 @@ class HomeController extends Controller
         $cash = collect(['in' => $cashin, 'out' => $cashout]);
 
         $assets = collect([
-            'total_stock_value' => Product::selectRaw('sum(qty * price) as total_stock_value')->first()->total_stock_value,
+            'total_stock_value' => Product::selectRaw('sum(qty * price) as total_stock_value')->where('is_active', true)->first()->total_stock_value,
             'total_due' => Sale::selectRaw('sum(grand_total - paid_amount) as total_due_from_sale')->first()->total_due_from_sale,
             'total_current_balance' => $total_current_balance
         ]);

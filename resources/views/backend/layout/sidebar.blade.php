@@ -457,13 +457,13 @@
                 </li>
                 @endif --}}
 
-                {{-- <li id="profit-loss-report-menu">
+                <li id="profit-loss-report-menu">
                     {!! Form::open(['route' => 'report.cashInHand', 'method' => 'post', 'id' => 'profitLoss-report-form']) !!}
                     <input type="hidden" name="start_date" value="{{ date('Y-m') . '-' . '01' }}" />
                     <input type="hidden" name="end_date" value="{{ date('Y-m-d') }}" />
                     <a id="profitLoss-link" href="">{{ trans('file.Cash in Hand') }}</a>
                     {!! Form::close() !!}
-                </li> --}}
+                </li>
                         @if ($product_report_active)
                             <li id="product-report-menu">
                                 {!! Form::open(['route' => 'report.product', 'method' => 'get', 'id' => 'product-report-form']) !!}

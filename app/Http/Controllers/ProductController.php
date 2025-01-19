@@ -72,7 +72,7 @@ class ProductController extends Controller
             foreach ($custom_fields as $fieldName) {
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
-            $total = Product::select(DB::raw('SUM(qty) as qty'), DB::raw('SUM(cost) as cost'), DB::raw('SUM(price) as price'))
+            $total = Product::select(DB::raw('SUM(qty) as qty'), DB::raw('SUM(qty * cost) as cost'), DB::raw('SUM(qty * price) as price'))
                 ->where('is_active', true)
                 ->first();
             $count_data = array(
