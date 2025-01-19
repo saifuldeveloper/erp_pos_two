@@ -72,7 +72,15 @@ class ProductController extends Controller
             foreach ($custom_fields as $fieldName) {
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
-            return view('backend.product.index', compact('all_permission', 'role_id', 'numberOfProduct', 'custom_fields', 'field_name'));
+            $total = Product::select(DB::raw('SUM(qty) as qty'), DB::raw('SUM(cost) as cost'), DB::raw('SUM(price) as price'))
+                ->where('is_active', true)
+                ->first();
+            $count_data = array(
+                'total_qty' => $total->qty,
+                'total_cost' => $total->cost,
+                'total_price' => $total->price
+            );
+            return view('backend.product.index', compact('all_permission', 'role_id', 'numberOfProduct', 'custom_fields', 'field_name', 'count_data'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
