@@ -12,7 +12,13 @@ class ExpenseCategoryController extends Controller
 {
     public function index()
     {
-        $lims_expense_category_all = ExpenseCategory::where('is_active', true)->get();
+        // $lims_expense_category_all = ExpenseCategory::where('is_active', true)->get();
+
+        $lims_expense_category_all = ExpenseCategory::where('is_active', true)
+            ->leftJoin('expenses', 'expenses.expense_category_id', '=', 'expense_categories.id') 
+            ->select('expense_categories.*', DB::raw('SUM(expenses.amount) as total_amount')) // Select the category and the sum of amounts
+            ->groupBy('expense_categories.id') // Group by the expense category ID
+            ->get();
         return view('backend.expense_category.index', compact('lims_expense_category_all'));
     }
 
