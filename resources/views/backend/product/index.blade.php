@@ -39,19 +39,35 @@
                             {{ __('file.import_product') }}</a>
                     @endif
                 </div>
-                <div class="col-md-4">
-                    <a href="javascript:void(0)" class="btn btn-primary">
-                        Total Quantity: <span class="badge badge-light">{{ $count_data['total_qty'] }}</span>
-                    </a>
-                    <a href="javascript:void(0)" class="btn btn-primary">
-                        Total Price: <span class="badge badge-light">{{ $count_data['total_price'] }}</span>
-                    </a>
-                    <a href="javascript:void(0)" class="btn btn-primary">
-                        Total Cost: <span class="badge badge-light">{{ $count_data['total_cost'] }}</span>
-                    </a>
-                </div>
                 <div class="col-md-4"></div>
             </div>
+            <div class="row py-3">
+                <div class="col-md-4">
+                    <div class="wrapper count-title">
+                      <div>
+                          <div class="count-number"></div>
+                          <div class="name"><strong style="color: #ff8040"> Total Quantity :{{ $count_data['total_qty'] }}</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="wrapper count-title">
+                      <div>
+                          <div class="count-number"></div>
+                          <div class="name"><strong style="color: #ff8040">Total Price: {{ $count_data['total_price'] }}</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="wrapper count-title">
+                      <div>
+                          <div class="count-number"></div>
+                          <div class="name"><strong style="color: #ff8040">Total Cost :{{ $count_data['total_cost'] }}</strong></div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
 
         </div>
         <div class="table-responsive">
