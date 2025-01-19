@@ -28,13 +28,31 @@
 
     <section>
         <div class="container-fluid">
-            @if (in_array('products-add', $all_permission))
-                <a href="{{ route('products.create') }}" class="btn btn-info add-product-btn"><i class="dripicons-plus"></i>
-                    {{ __('file.add_product') }}</a>
-                <a href="#" data-toggle="modal" data-target="#importProduct"
-                    class="btn btn-primary add-product-btn"><i class="dripicons-copy"></i>
-                    {{ __('file.import_product') }}</a>
-            @endif
+            <div class="row">
+                <div class="col-md-4">
+                    @if (in_array('products-add', $all_permission))
+                        <a href="{{ route('products.create') }}" class="btn btn-info add-product-btn"><i
+                                class="dripicons-plus"></i>
+                            {{ __('file.add_product') }}</a>
+                        <a href="#" data-toggle="modal" data-target="#importProduct"
+                            class="btn btn-primary add-product-btn"><i class="dripicons-copy"></i>
+                            {{ __('file.import_product') }}</a>
+                    @endif
+                </div>
+                <div class="col-md-4">
+                    <a href="javascript:void(0)" class="btn btn-primary">
+                        Total Quantity: <span class="badge badge-light">{{ $count_data['total_qty'] }}</span>
+                    </a>
+                    <a href="javascript:void(0)" class="btn btn-primary">
+                        Total Price: <span class="badge badge-light">{{ $count_data['total_price'] }}</span>
+                    </a>
+                    <a href="javascript:void(0)" class="btn btn-primary">
+                        Total Cost: <span class="badge badge-light">{{ $count_data['total_cost'] }}</span>
+                    </a>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
         </div>
         <div class="table-responsive">
             <table id="product-data-table" class="table" style="width: 100%">
@@ -698,7 +716,6 @@
                 var src = $(this).attr('src');
                 $('#slider-content').find('img').first().attr('src', src);
             });
-
         });
 
         if (all_permission.indexOf("products-delete") == -1)
