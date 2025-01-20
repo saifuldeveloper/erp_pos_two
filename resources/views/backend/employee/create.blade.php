@@ -8,12 +8,10 @@
                             <h4>{{ trans('file.Add Employee') }}</h4>
                         </div>
                         <div class="card-body">
-                            <p class="italic">
-                                <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
-                            </p>
+                
                             {!! Form::open(['route' => 'employees.store', 'method' => 'post', 'files' => true]) !!}
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-8 mx-auto">
                                     <div class="form-group">
                                         <label>{{ trans('file.name') }} *</strong> </label>
                                         <input type="text" name="employee_name" required class="form-control">
@@ -35,7 +33,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>{{ trans('file.Email') }} *</label>
                                         <input type="email" name="email" placeholder="example@example.com" required
                                             class="form-control">
@@ -44,7 +42,7 @@
                                                 <strong>{{ $errors->first('email') }}</strong>
                                             </span>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label>{{ trans('file.Phone Number') }} *</label>
                                         <input type="text" name="phone_number" required class="form-control">
@@ -53,10 +51,10 @@
                                         <label>{{ trans('file.Address') }}</label>
                                         <input type="text" name="address" class="form-control">
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>{{ trans('file.City') }}</label>
                                         <input type="text" name="city" class="form-control">
-                                    </div>
+                                    </div> --}}
                                     {{-- <div class="form-group">
                                     <label>{{trans('file.Country')}}</label>
                                     <input type="text" name="country" class="form-control">
@@ -70,7 +68,7 @@
                                         <input type="number" name="salary" class="form-control" step="0.01" min="0" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group mt-4">
                                         <label>{{ trans('file.Add User') }}</label>
                                         <input type="checkbox" name="user" checked value="1" />
@@ -119,9 +117,9 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group mt-4">
+                                </div> --}}
+                                <div class="col-md-8 mx-auto">
+                                    <div class="form-group mt-4 text-end float-right">
                                         <input type="submit" value="{{ trans('file.submit') }}" class="btn btn-primary">
                                     </div>
                                 </div>

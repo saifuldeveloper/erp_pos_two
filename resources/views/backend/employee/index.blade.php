@@ -41,7 +41,7 @@
                         <th class="not-exported"></th>
                         <th>{{ trans('file.Image') }}</th>
                         <th>{{ trans('file.name') }}</th>
-                        <th>{{ trans('file.Email') }}</th>
+                        {{-- <th>{{ trans('file.Email') }}</th> --}}
                         <th>{{ trans('file.Phone Number') }}</th>
                         <th>{{ trans('file.Department') }}</th>
                         <th>{{ trans('file.Address') }}</th>
@@ -64,7 +64,7 @@
                                 <td>No Image</td>
                             @endif
                             <td>{{ $employee->name }}</td>
-                            <td>{{ $employee->email }}</td>
+                            {{-- <td>{{ $employee->email }}</td> --}}
                             <td>{{ $employee->phone_number }}</td>
                             <td>{{ $department->name }}</td>
                             <td>{{ $employee->address }}

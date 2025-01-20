@@ -205,8 +205,8 @@
                             <label>{{ trans('file.Method') }} *</label>
                             <select class="form-control selectpicker" name="paying_method" required>
                                 <option value="0">Cash</option>
-                                <option value="1">Cheque</option>
-                                <option value="2">Credit Card</option>
+                                {{-- <option value="1">Cheque</option>
+                                <option value="2">Credit Card</option> --}}
                             </select>
                         </div>
                         <div class="col-md-12 form-group">
