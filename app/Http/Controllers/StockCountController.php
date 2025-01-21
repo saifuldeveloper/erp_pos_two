@@ -116,4 +116,49 @@ class StockCountController extends Controller
 
         return redirect()->route('stock-count.index')->with('message', 'Stock Count created successfully! Please download the initial file to complete it.');
     }
+
+    public function edit($id)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('stock_count')) {
+            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+            $lims_stock_count = StockCount::find($id);
+            return view('backend.stock_count.edit', compact('lims_warehouse_list', 'lims_stock_count'));
+        } else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        $stock_count = StockCount::findOrFail($id);
+        $stock_count->warehouse_id = $data['warehouse_id'];
+        $stock_count->note = $data['note'];
+        $stock_count->save();
+
+        foreach ($stock_count->items as $key => $item) {
+            $product_variant = ProductVariant::where('item_code', $item->item_code)->first();
+            if ($product_variant) {
+                $product_variant->qty -= $item->updated_quantity;
+                $product_variant->save();
+
+                $product_variant->qty += $data['qty'][$key];
+                $product_variant->save();
+            }
+
+            $item->current_quantity = $data['current_qty'][$key];
+            $item->updated_quantity = $data['qty'][$key];
+            $item->save();
+        }
+
+        $data['product_id'] = array_unique($data['product_id']);
+
+        foreach ($data['product_id'] as $key => $product_id) {
+            $productVariantsQty = ProductVariant::where('product_id', $product_id)->sum('qty');
+            $product = Product::find($product_id);
+            $product->qty = $productVariantsQty;
+            $product->save();
+        }
+        return redirect()->route('stock-count.index')->with('message', 'Stock Count updated successfully!');
+    }
 }
