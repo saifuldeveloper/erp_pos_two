@@ -583,13 +583,11 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
     Route::post('attendance/importDeviceCsv', [AttendanceController::class, 'importDeviceCsv'])->name('attendances.importDeviceCsv');
 	Route::resource('attendance', AttendanceController::class);
 
-
     Route::controller(StockCountController::class)->group(function () {
-        Route::post('stock-count/finalize', 'finalize')->name('stock-count.finalize');
-        Route::get('stock-count/stockdif/{id}', 'stockDif');
-        Route::get('stock-count/{id}/qty_adjustment', 'qtyAdjustment')->name('stock-count.adjustment');
+        Route::get('product_search', 'productSearch')->name('stock-count.search');
     });
     Route::resource('stock-count', StockCountController::class);
+
 
 
     Route::controller(HolidayController::class)->group(function () {
