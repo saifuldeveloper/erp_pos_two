@@ -15,14 +15,8 @@ class CreateStockCountsTable extends Migration
     {
         Schema::create('stock_counts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
             $table->integer('warehouse_id');
-            $table->string('category_id')->nullable();
-            $table->string('brand_id')->nullable();
             $table->integer('user_id');
-            $table->string('type');
-            $table->string('initial_file')->nullable();
-            $table->string('final_file')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
         });
