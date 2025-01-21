@@ -626,7 +626,7 @@ class ProductController extends Controller
                 $ending_date = date("Y-m-d");
             }
             $product_id = $request->input('product_id');
-            $product_data = Product::select('name', 'code')->find($product_id);
+            $product_data = Product::select('id','name', 'code')->find($product_id);
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             return view('backend.product.history', compact('starting_date', 'ending_date', 'warehouse_id', 'product_id', 'product_data', 'lims_warehouse_list'));
         } else

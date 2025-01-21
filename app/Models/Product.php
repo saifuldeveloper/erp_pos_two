@@ -132,4 +132,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductPurchase::class);
     }
+
+    public function stockCountItems()
+    {
+        return $this->hasMany(StockCountItem::class);
+    }
 }

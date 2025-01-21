@@ -58,6 +58,9 @@
         <li class="nav-item">
             <a class="nav-link" href="#product-purchase-return" role="tab" data-toggle="tab">{{trans('file.Purchase Return')}}</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#product-stock-count" role="tab" data-toggle="tab">{{trans('file.Stock Count')}}</a>
+        </li>
     </ul>
     <div class="tab-content">
         <!-- sale table -->
@@ -144,6 +147,33 @@
                             <th>{{trans('file.Subtotal')}}</th>
                         </tr>
                     </thead>
+                </table>
+            </div>
+        </div>
+        <!-- stock count table -->
+        <div role="tabpanel" class="tab-pane fade" id="product-stock-count">
+            <div class="table-responsive mb-4">
+                <table id="stock-count-table" class="table table-hover" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>{{trans('file.Date')}}</th>
+                            <th>{{trans('file.Warehouse')}}</th>
+                            <th>Item code</th>
+                            <th>Current Quantity</th>
+                            <th>Updated Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($product_data->stockCountItems as $stockCountItem)
+                            <tr>
+                                <td>{{$stockCountItem->created_at}}</td>
+                                <td>{{$stockCountItem->stockCount->warehouse->name}}</td>
+                                <td>{{$stockCountItem->item_code}}</td>
+                                <td>{{$stockCountItem->current_quantity}}</td>
+                                <td>{{$stockCountItem->updated_quantity}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -387,7 +417,7 @@
             datatable_sum_purchase(api, false);
         }
     });
-    
+
     function datatable_sum_purchase(dt_selector, is_calling_first) {
         if (dt_selector.rows( '.selected' ).any() && is_calling_first) {
             var rows = dt_selector.rows( '.selected' ).indexes();
@@ -548,6 +578,67 @@
             }
         ],
         'select': { style: 'multi',  selector: 'td:first-child'},
+        'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        dom: '<"row"lfB>rtip',
+        rowId: 'ObjectID',
+        buttons: [
+            {
+                extend: 'pdf',
+                text: '<i title="export to pdf" class="fa fa-file-pdf-o"></i>',
+                exportOptions: {
+                    columns: ':visible:Not(.not-exported-purchase-return)',
+                    rows: ':visible'
+                }
+            },
+            {
+                extend: 'csv',
+                text: '<i title="export to csv" class="fa fa-file-text-o"></i>',
+                exportOptions: {
+                    columns: ':visible:Not(.not-exported-purchase-return)',
+                    rows: ':visible'
+                }
+            },
+            {
+                extend: 'print',
+                text: '<i title="print" class="fa fa-print"></i>',
+                exportOptions: {
+                    columns: ':visible:Not(.not-exported-purchase-return)',
+                    rows: ':visible'
+                }
+            },
+            {
+                extend: 'colvis',
+                text: '<i title="column visibility" class="fa fa-eye"></i>',
+                columns: ':gt(0)'
+            },
+        ]
+    });
+
+    //stock count table
+    $('#stock-count-table').DataTable({
+        "columns": [
+            {"data": "date"},
+            {"data": "warehouse"},
+            {"data": "current_qty"},
+            {"data": "qty"}
+        ],
+        'language': {
+
+            'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
+             "info":      '<small>{{trans("file.Showing")}} _START_ - _END_ (_TOTAL_)</small>',
+            "search":  '{{trans("file.Search")}}',
+            'paginate': {
+                    'previous': '<i class="dripicons-chevron-left"></i>',
+                    'next': '<i class="dripicons-chevron-right"></i>'
+            }
+        },
+        order:[['1', 'desc']],
+        'columnDefs': [
+            {
+                "orderable": false,
+                'targets': [0, 1, 2, 3]
+            },
+        ],
         'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
         dom: '<"row"lfB>rtip',
         rowId: 'ObjectID',
