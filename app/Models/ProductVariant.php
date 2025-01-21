@@ -23,4 +23,9 @@ class ProductVariant extends Model
             ['item_code', $item_code],
         ]);
     }
+
+    public function stockCountItems()
+    {
+        return $this->hasMany(StockCountItem::class, 'item_code', 'item_code');
+    }
 }
