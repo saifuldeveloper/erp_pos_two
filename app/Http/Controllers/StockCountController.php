@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Models\Warehouse;
 use App\Models\Product;
 use App\Models\Brand;
+use App\Models\Product_Warehouse;
 use App\Models\ProductVariant;
+use App\Models\Variant;
 use DB;
 use Auth;
 use Spatie\Permission\Models\Role;
@@ -103,6 +105,18 @@ class StockCountController extends Controller
                 $product_variant->qty += $data['qty'][$key];
                 $product_variant->save();
             }
+            $productVariant = explode('-', $data['product_code'][$key])[0];
+            $variant = Variant::where('name', $productVariant)->first();
+            if ($variant) {
+                $productWarehouse = Product_Warehouse::where('product_id', $data['product_id'][$key])
+                    ->where('variant_id', $variant->id)
+                    ->where('warehouse_id', $data['warehouse_id'])
+                    ->first();
+                if ($productWarehouse) {
+                    $productWarehouse->qty += $data['qty'][$key];
+                    $productWarehouse->save();
+                }
+            }
         }
 
         $data['product_id'] = array_unique($data['product_id']);
@@ -144,6 +158,21 @@ class StockCountController extends Controller
 
                 $product_variant->qty += $data['qty'][$key];
                 $product_variant->save();
+            }
+            $productVariant = explode('-', $item->item_code)[0];
+            $variant = Variant::where('name', $productVariant)->first();
+            if ($variant) {
+                $productWarehouse = Product_Warehouse::where('product_id', $item->product_id)
+                    ->where('variant_id', $variant->id)
+                    ->where('warehouse_id', $data['warehouse_id'])
+                    ->first();
+                if ($productWarehouse) {
+                    $productWarehouse->qty -= $item->updated_quantity;
+                    $productWarehouse->save();
+
+                    $productWarehouse->qty += $data['qty'][$key];
+                    $productWarehouse->save();
+                }
             }
 
             $item->current_quantity = $data['current_qty'][$key];
