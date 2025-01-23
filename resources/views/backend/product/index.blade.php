@@ -434,15 +434,15 @@
                             var newBody = $("<tbody>");
                             var newRow = $("<tr>");
                             newRow.append(
-                                '<th>{{ trans('file.Warehouse') }}</th><th>{{ trans('file.Batch No') }}</th><th>{{ trans('file.Expired Date') }}</th><th>{{ trans('file.Quantity') }}</th><th>{{ trans('file.IMEI or Serial Numbers') }}</th>'
+                                '<th>{{ trans('file.Warehouse') }}</th><th>{{ trans('file.Quantity') }}</th><th>{{ trans('file.IMEI or Serial Numbers') }}</th>'
                             );
                             newHead.append(newRow);
                             $.each(warehouse, function(index) {
                                 var newRow = $("<tr>");
                                 var cols = '';
                                 cols += '<td>' + warehouse[index] + '</td>';
-                                cols += '<td>' + batch[index] + '</td>';
-                                cols += '<td>' + expired_date[index] + '</td>';
+                                //cols += '<td>' + batch[index] + '</td>';
+                                // += '<td>' + expired_date[index] + '</td>';
                                 cols += '<td>' + qty[index] + '</td>';
                                 cols += '<td>' + imei_numbers[index] + '</td>';
 
