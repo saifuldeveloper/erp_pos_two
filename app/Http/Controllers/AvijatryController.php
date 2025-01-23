@@ -144,7 +144,7 @@ class AvijatryController extends Controller
 
         $product = new Product();
         $product->name = $shoe['id'];
-        $product->code = $shoe['id'];
+        $product->code = 'A-' . $shoe['id'];
         $product->type = 'standard';
         $product->barcode_symbology = 'C128';
         $product->brand_id = $brand_id;
@@ -280,7 +280,6 @@ class AvijatryController extends Controller
                     $productWarehouse->price = $product->cost;
                     $productWarehouse->save();
                 }
-
             }
 
 
