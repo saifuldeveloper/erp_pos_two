@@ -98,7 +98,7 @@ class AvijatryController extends Controller
             if ($response->status() == 200) {
                 $invoice = $response->json()['invoice'];
                 foreach ($invoice['invoice_entries'] as $entry) {
-                    Product::where('code', $entry['shoe']['id'])->first() ?: $this->productStore($entry['shoe']);
+                    Product::where('code', ('A-' . $entry['shoe']['id']))->first() ?: $this->productStore($entry['shoe']);
                 }
                 $ret = [];
                 $ret = $this->invoiceStore($invoice, $request);
@@ -186,7 +186,7 @@ class AvijatryController extends Controller
 
     public function variantStore($shoeToSize, $received_qty, $previous_received_qty)
     {
-        $product = Product::where('code', $shoeToSize['shoe_id'])->first();
+        $product = Product::where('code', ('A-' . $shoeToSize['shoe_id']))->first();
         $variant = Variant::where('name', $shoeToSize['size']['name'])->first();
         if (!$variant) {
             $variant = new Variant();
@@ -235,7 +235,7 @@ class AvijatryController extends Controller
         $purchase->note = $request->note;
         $purchase->save();
         foreach ($invoice['invoice_entries'] as $entry) {
-            $product = Product::where('code', $entry['shoe']['id'])->first();
+            $product = Product::where('code', ('A-' . $entry['shoe']['id']))->first();
             if ($entry['shoe']['shoe_to_size']) {
                 foreach ($entry['shoe']['shoe_to_size'] as $shoeToSize) {
                     if ($shoeToSize['reference_id'] == $invoice['id'] && $shoeToSize['shoe_id'] == $entry['shoe']['id'] && $shoeToSize['type'] == 'sale') {
@@ -248,7 +248,7 @@ class AvijatryController extends Controller
                         } else {
                             $previous_received_qty = 0;
                         }
-                        $this->variantStore($shoeToSize, $request->received_quantity[$product->code], $previous_received_qty);
+                        $this->variantStore($shoeToSize, $request->received_quantity[explode('-', $product->code)[1]], $previous_received_qty);
                         $product->is_variant = 1;
                         $product->save();
                     }
@@ -261,7 +261,7 @@ class AvijatryController extends Controller
                 $product->save();
             }
 
-            foreach ($request->received_quantity[$product->code] as $key => $received_qty) {
+            foreach ($request->received_quantity[explode('-', $product->code)[1]] as $key => $received_qty) {
                 $productWarehouse = Product_Warehouse::where('product_id', $product->id)
                     ->where('warehouse_id', Warehouse::first()->id)
                     ->where('variant_id', ProductVariant::where('item_code', $key . '-' . $product->code)->first()->id)
@@ -275,7 +275,7 @@ class AvijatryController extends Controller
                     $productWarehouse = new Product_Warehouse();
                     $productWarehouse->product_id = $product->id;
                     $productWarehouse->warehouse_id = Warehouse::first()->id;
-                    $productWarehouse->variant_id = ProductVariant::where('item_code', $key . '-' . $product->code)->first()->id;
+                    $productWarehouse->variant_id = ProductVariant::where('item_code', $key . '-' . $product->code)->first()->variant_id;
                     $productWarehouse->qty = $received_qty;
                     $productWarehouse->price = $product->cost;
                     $productWarehouse->save();
@@ -283,27 +283,27 @@ class AvijatryController extends Controller
             }
 
 
-            foreach ($request->sent_quantity[$product->code] as $key => $sent_qty) {
+            foreach ($request->sent_quantity[explode('-', $product->code)[1]] as $key => $sent_qty) {
                 $purchase->productPurchases()->updateOrCreate([
                     'product_id' => $product->id,
-                    'variant_id' => ProductVariant::where('item_code', $key . '-' . $product->code)->first()->id,
+                    'variant_id' => ProductVariant::where('item_code', $key . '-' . $product->code)->first()->variant_id,
                 ], [
-                    'qty' => $request->received_quantity[$product->code][$key],
-                    'recieved' => $request->received_quantity[$product->code][$key],
+                    'qty' => $request->received_quantity[explode('-', $product->code)[1]][$key],
+                    'recieved' => $request->received_quantity[explode('-', $product->code)[1]][$key],
                     'purchase_unit_id' => $product->unit_id,
                     'net_unit_cost' => $product->cost,
                     'selling_price' => $product->price,
                     'discount' => 0,
                     'tax_rate' => 0,
                     'tax' => 0,
-                    'total' => $product->cost * $request->received_quantity[$product->code][$key],
+                    'total' => $product->cost * $request->received_quantity[explode('-', $product->code)[1]][$key],
                 ]);
             }
 
             $received_qty = $purchase->productPurchases()->where('product_id', $product->id)->sum('recieved');
             $product->qty += $received_qty;
             $product->save();
-            $ret_received_qty[$product->code] = $received_qty;
+            $ret_received_qty[explode('-', $product->code)[1]] = $received_qty;
             $purchase->total_qty = $received_qty;
             $purchase->save();
 
