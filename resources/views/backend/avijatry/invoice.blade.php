@@ -114,10 +114,14 @@
                                                                 'item_code',
                                                                 $shoe_to_size['size']['name'] . '-' . $product->code,
                                                             )->first();
-                                                            $proPurchase = $productPurchase
-                                                                ->where('variant_id', $productVariant->id)
-                                                                ->where('purchase_id', $purchase->id)
-                                                                ->first();
+                                                            if ($productVariant) {
+                                                                $proPurchase = $productPurchase
+                                                                    ->where('variant_id', $productVariant->id)
+                                                                    ->where('purchase_id', $purchase->id)
+                                                                    ->first();
+                                                            } else {
+                                                                $proPurchase = null;
+                                                            }
                                                         } else {
                                                             $proPurchase = null;
                                                         }
