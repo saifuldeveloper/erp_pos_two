@@ -50,7 +50,7 @@
                         @forelse ($invoice['invoice_entries'] as $key => $entry)
                             @if ($purchase)
                                 @php
-                                    $product = App\Models\Product::where('code', $entry['shoe']['id'])->first();
+                                    $product = App\Models\Product::where('code', 'A-' . $entry['shoe']['id'])->first();
                                     $productPurchase = $purchase->productPurchases->where('product_id', $product->id);
                                 @endphp
                             @else
@@ -107,7 +107,7 @@
                                                     @php
                                                         $product = App\Models\Product::where(
                                                             'code',
-                                                            $entry['shoe']['id'],
+                                                            'A-' . $entry['shoe']['id'],
                                                         )->first();
                                                         if ($product) {
                                                             $productVariant = App\Models\ProductVariant::where(
