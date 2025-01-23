@@ -114,7 +114,7 @@
                                                                 'item_code',
                                                                 $shoe_to_size['size']['name'] . '-' . $product->code,
                                                             )->first();
-                                                            if ($productVariant) {
+                                                            if ($productVariant && $productPurchase) {
                                                                 $proPurchase = $productPurchase
                                                                     ->where('variant_id', $productVariant->id)
                                                                     ->where('purchase_id', $purchase->id)
