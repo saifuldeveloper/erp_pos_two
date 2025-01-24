@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Account;
+use App\Models\ExpenseCategory;
 use App\Models\Product;
 use App\Models\ProductPurchase;
 use App\Models\Product_Sale;
@@ -744,10 +746,6 @@ class ReportController extends Controller
         return view('backend.report.profit_loss2', compact('purchase', 'product_cost', 'product_tax', 'total_purchase', 'sale', 'total_sale', 'return', 'purchase_return', 'total_return', 'total_purchase_return', 'expense', 'payroll', 'total_expense', 'total_payroll', 'payment_recieved', 'payment_recieved_number', 'cash_payment_sale', 'cheque_payment_sale', 'credit_card_payment_sale', 'gift_card_payment_sale', 'paypal_payment_sale', 'deposit_payment_sale', 'payment_sent', 'payment_sent_number', 'cash_payment_purchase', 'cheque_payment_purchase', 'credit_card_payment_purchase', 'warehouse_name', 'warehouse_sale', 'warehouse_purchase', 'warehouse_return', 'warehouse_purchase_return', 'warehouse_expense', 'start_date', 'end_date'));
     }
 
-
-
-
-
     public function cashInHand(Request $request)
     {
         $start_date = $request['start_date'];
@@ -775,7 +773,7 @@ class ReportController extends Controller
         $data = $this->calculateAverageCOGS($product_sale_data);
         $product_cost = $data[0];
         $product_tax = $data[1];
- 
+
         $purchase = Purchase::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query1))->get();
         $total_purchase = Purchase::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->count();
         $sale = Sale::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->selectRaw(implode(',', $query1))->get();
@@ -1001,7 +999,7 @@ class ReportController extends Controller
             $limit = $request->input('length');
         else
             $limit = $totalData;
-        
+
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column') ?? 1] ?? 'name';
         $dir = $request->input('order.0.dir');
@@ -1891,6 +1889,44 @@ class ReportController extends Controller
 
         // $lims_payment_data = Payment::whereDate('created_at', '>=' , $start_date)->whereDate('created_at', '<=' , $end_date)->get();
         return view('backend.report.payment_report',compact('lims_payment_data', 'start_date', 'end_date'));
+    }
+
+    public function expenseReport(Request $request)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if($role->hasPermissionTo('expenses-index')){
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
+
+            if($request->starting_date) {
+                $starting_date = $request->starting_date;
+                $ending_date = $request->ending_date;
+            }
+            else {
+                $starting_date = date('Y-m-01', strtotime('-1 year', strtotime(date('Y-m-d'))));
+                $ending_date = date("Y-m-d");
+            }
+
+            if($request->input('expense_category_id'))
+                $expense_category_id = $request->input('expense_category_id');
+            else
+                $expense_category_id = 0;
+
+            if($request->input('warehouse_id'))
+                $warehouse_id = $request->input('warehouse_id');
+            else
+                $warehouse_id = 0;
+
+            $lims_warehouse_list = Warehouse::select('name', 'id')->where('is_active', true)->get();
+            $lims_account_list = Account::where('is_active', true)->get();
+            $lims_expense_category_list = ExpenseCategory::where('is_active', true)->get();
+            return view('backend.report.expense_report', compact('lims_account_list', 'lims_warehouse_list', 'all_permission', 'starting_date', 'ending_date', 'warehouse_id','expense_category_id', 'lims_expense_category_list'));
+        }
+        else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function warehouseReport(Request $request)
