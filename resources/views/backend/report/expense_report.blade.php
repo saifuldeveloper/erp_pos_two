@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header mt-2">
-                    <h3 class="text-center">{{ trans('file.Expense List') }}</h3>
+                    <h3 class="text-center">Expense Report</h3>
                 </div>
                 {!! Form::open(['route' => 'report.expense', 'method' => 'get']) !!}
                 <div class="row mb-3">
@@ -41,10 +41,14 @@
                                     data-live-search-style="begins">
                                     <option value="0">All Expense Category</option>
                                     @foreach ($lims_expense_category_list as $expense_category)
-                                        <option value="{{ $expense_category->id }}"
-                                            {{ $expense_category->id == $expense_category_id ? 'selected' : '' }}>
-                                            {{ $expense_category->name . ' (' . $expense_category->code . ')' }}
-                                        </option>
+                                        @if ($expense_category->id == $expense_category_id)
+                                            <option selected value="{{ $expense_category->id }}">
+                                                {{ $expense_category->name }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $expense_category->id }}">{{ $expense_category->name }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -76,10 +80,6 @@
                 </div>
                 {!! Form::close() !!}
             </div>
-            @if (in_array('expenses-add', $all_permission))
-                <button class="btn btn-info" data-toggle="modal" data-target="#expense-modal"><i class="dripicons-plus"></i>
-                    {{ trans('file.Add Expense') }}</button>
-            @endif
         </div>
         <div class="table-responsive">
             <table id="expense-table" class="table expense-list" style="width: 100%">
