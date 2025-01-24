@@ -55,9 +55,9 @@
                                     href="{{ route('product.printBarcode') }}">{{ __('file.print_barcode') }}</a></li>
                         @endif
                         @if ($adjustment_active)
-                            <li id="adjustment-list-menu"><a
+                            {{-- <li id="adjustment-list-menu"><a
                                     href="{{ route('qty_adjustment.index') }}">{{ trans('file.Adjustment List') }}</a>
-                            </li>
+                            </li> --}}
                             {{-- <li id="adjustment-create-menu"><a href="{{route('qty_adjustment.create')}}">{{trans('file.Add Adjustment')}}</a></li> --}}
                         @endif
                         @if ($stock_count_active)
