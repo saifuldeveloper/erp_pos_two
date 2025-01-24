@@ -52,12 +52,14 @@ class ExpenseController extends Controller
             1 => 'created_at',
             2 => 'reference_no',
         );
-
+        $expense_category_id = $request->input('expense_category_id') ?? 0;
         $warehouse_id = $request->input('warehouse_id');
         $q = Expense::whereDate('created_at', '>=' ,$request->input('starting_date'))
                      ->whereDate('created_at', '<=' ,$request->input('ending_date'));
         if(Auth::user()->role_id > 2 && config('staff_access') == 'own')
             $q = $q->where('user_id', Auth::id());
+        if($expense_category_id)
+            $q = $q->where('expense_category_id', $expense_category_id);
         if($warehouse_id)
             $q = $q->where('warehouse_id', $warehouse_id);
 
@@ -80,6 +82,8 @@ class ExpenseController extends Controller
                 ->orderBy($order, $dir);
             if(Auth::user()->role_id > 2 && config('staff_access') == 'own')
                 $q = $q->where('user_id', Auth::id());
+            if($expense_category_id)
+                $q = $q->where('expense_category_id', $expense_category_id);
             if($warehouse_id)
                 $q = $q->where('warehouse_id', $warehouse_id);
             $expenses = $q->get();

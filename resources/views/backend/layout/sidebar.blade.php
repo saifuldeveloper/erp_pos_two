@@ -519,6 +519,11 @@
                     {!! Form::close() !!}
                 </li>
                 @endif --}}
+                <li id="exp-report-menu">
+                    <a href="{{ route('report.expense') }}">
+                        Expense Report
+                    </a>
+                </li>
                         @if ($payment_report_active)
                             <li id="payment-report-menu">
                                 {!! Form::open(['route' => 'report.paymentByDate', 'method' => 'post', 'id' => 'payment-report-form']) !!}
