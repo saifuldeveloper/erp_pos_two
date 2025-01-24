@@ -120,13 +120,13 @@ class AvijatryController extends Controller
     {
         $brand_id = Brand::where('title', 'Avijatry')->first()->id;
         $parent_id = null;
-        $category_id = null;
+        $category = null;
         $unit_id = Unit::first()->id;
 
         if ($shoe['category']['parent']) {
             $parent_id = $this->categoryStore($shoe['category']['parent']);
         }
-        $category_id = $this->categoryStore($shoe['category'], $parent_id);
+        $category = $this->categoryStore($shoe['category'], $parent_id);
 
         $image_name = null;
 
@@ -143,12 +143,12 @@ class AvijatryController extends Controller
         }
 
         $product = new Product();
-        $product->name = $shoe['id'];
+        $product->name = $category->name;
         $product->code = 'A-' . $shoe['id'];
         $product->type = 'standard';
         $product->barcode_symbology = 'C128';
         $product->brand_id = $brand_id;
-        $product->category_id = $category_id;
+        $product->category_id = $category->id;
         $product->unit_id = $unit_id;
         $product->purchase_unit_id = $unit_id;
         $product->sale_unit_id = $unit_id;
@@ -173,14 +173,14 @@ class AvijatryController extends Controller
     {
         $existCategory = Category::where('name', $shoeCategory['name'])->first();
         if ($existCategory) {
-            return $existCategory->id;
+            return $existCategory;
         } else {
             $category = new Category();
             $category->name = $shoeCategory['name'];
             $category->parent_id = $parent_id;
             $category->is_active = 1;
             $category->save();
-            return $category->id;
+            return $category;
         }
     }
 
