@@ -32,7 +32,7 @@
                         @if ($unit_permission_active)
                             <li id="unit-menu"><a href="{{ route('unit.index') }}">{{ trans('file.Unit') }}</a></li>
                         @endif
-                        <li id="color-menu"><a href="{{ route('color.index') }}">Color </a></li>
+                        <li id="color-menu"><a href="{{ route('color.index') }}">{{ __('file.color') }} </a></li>
                         @if ($category_permission_active)
                             <li id="category-menu"><a href="{{ route('category.index') }}">{{ __('file.category') }}</a>
                             </li>
@@ -521,7 +521,7 @@
                 @endif --}}
                 <li id="exp-report-menu">
                     <a href="{{ route('report.expense') }}">
-                        Expense Report
+                      {{  trans('file.Expense Report') }}
                     </a>
                 </li>
                         @if ($payment_report_active)
@@ -682,7 +682,7 @@
                         <li id="warehouse-menu"><a
                                 href="{{ route('warehouse.index') }}">{{ trans('file.Warehouse') }}</a></li>
                     @endif
-                    <li id="table-menu"><a href="{{ route('tables.index') }}">{{ trans('file.Tables') }}</a></li>
+                    {{-- <li id="table-menu"><a href="{{ route('tables.index') }}">{{ trans('file.Tables') }}</a></li> --}}
                     @if ($customer_group_permission_active)
                         <li id="customer-group-menu"><a
                                 href="{{ route('customer_group.index') }}">{{ trans('file.Customer Group') }}</a>

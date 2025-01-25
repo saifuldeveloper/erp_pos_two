@@ -8,7 +8,15 @@ return [
 	'Avijatry Purchase'=> 'অভিযাত্রী ক্রয়',
 
 	"revenue" => "রাজস্ব",
-	
+	'Start Date & Time' => 'শুরুর তারিখ এবং সময়',
+
+	'End Date & Time' => 'শেষ তারিখ এবং সময়',
+
+	'Previous_balance' => 'পূর্ববর্তী হিসাব',
+	'purchase_return' => 'ক্রয় ফেরত',
+
+	'purchase' => 'ক্রয়',
+
 	'discount' => 'ছাড়',
 
 	"product" => "পণ্য",
@@ -56,6 +64,8 @@ return [
 	"return" => "ফেরত ",
 
 	"profit" => "লাভ",
+	
+	"sale" => "বিক্রয়",
 
 	"sale qty" => "বিক্রয় পরিমাণ",
 
@@ -396,6 +406,18 @@ return [
 	"Expense Category" => "ব্যয় ক্যাটাগরি",
 
 	"Expense" => "ব্যয়",
+	
+	"color" => "রং",
+	
+	"Add Color" => "রং যোগ করুন",
+	
+	"Total Quantity"=> "মোট পরিমাণ",
+
+	"Total Price" => "মোট মূল্য",
+
+	"Total Cost"=> "মোট খরচ",
+
+	"Expense Report" => "ব্যয় রিপোর্ট",
 
 	"Gift Card" => "গিফট কার্ড",
 

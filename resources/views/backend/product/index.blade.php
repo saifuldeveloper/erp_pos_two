@@ -46,7 +46,7 @@
                     <div class="wrapper count-title">
                       <div>
                           <div class="count-number"></div>
-                          <div class="name"><strong style="color: #ff8040"> Total Quantity :{{ $count_data['total_qty'] }}</strong></div>
+                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Quantity') }}  :{{ $count_data['total_qty'] }}</strong></div>
                       </div>
                     </div>
                   </div>
@@ -54,7 +54,7 @@
                     <div class="wrapper count-title">
                       <div>
                           <div class="count-number"></div>
-                          <div class="name"><strong style="color: #ff8040">Total Price: {{ $count_data['total_price'] }}</strong></div>
+                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Price') }}: {{ $count_data['total_price'] }}</strong></div>
                       </div>
                     </div>
                   </div>
@@ -62,7 +62,7 @@
                     <div class="wrapper count-title">
                       <div>
                           <div class="count-number"></div>
-                          <div class="name"><strong style="color: #ff8040">Total Cost :{{ $count_data['total_cost'] }}</strong></div>
+                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Cost ') }}:{{ $count_data['total_cost'] }}</strong></div>
                       </div>
                     </div>
                   </div>

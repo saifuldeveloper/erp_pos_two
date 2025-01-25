@@ -25,14 +25,14 @@
     <section>
         <div class="container-fluid">
             <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-primary"><i
-                    class="dripicons-plus"></i> Add Color</a>&nbsp;
+                    class="dripicons-plus"></i> {{ trans('file.Add Color') }}</a>&nbsp;
         </div>
         <div class="table-responsive">
             <table id="color-table" class="table">
                 <thead>
                     <tr>
                         <th class="not-exported" width="15%">#</th>
-                        <th width="50%">{{ trans('file.Name') }}</th>
+                        <th width="50%">{{ trans('file.name') }}</th>
                         <th width="50%">{{ trans('file.Code') }}</th>
                         <th class="not-exported">{{ trans('file.Action') }}</th>
                     </tr>
