@@ -443,6 +443,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
             Route::post('sale_report', 'saleReport')->name('report.sale');
             Route::post('sale-report-chart', 'saleReportChart')->name('report.saleChart');
             Route::get('expense_report', 'expenseReport')->name('report.expense');
+            Route::get('salary-report', 'salaryReport')->name('report.salary');
             Route::post('payment_report_by_date', 'paymentReportByDate')->name('report.paymentByDate');
             Route::post('warehouse_report', 'warehouseReport')->name('report.warehouse');
             Route::post('warehouse-sale-data', 'warehouseSaleData');

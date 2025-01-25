@@ -524,6 +524,11 @@
                       {{  trans('file.Expense Report') }}
                     </a>
                 </li>
+                <li id="salary-report-menu">
+                    <a href="{{ route('report.salary') }}">
+                        Salary Report
+                    </a>
+                </li>
                         @if ($payment_report_active)
                             <li id="payment-report-menu">
                                 {!! Form::open(['route' => 'report.paymentByDate', 'method' => 'post', 'id' => 'payment-report-form']) !!}
