@@ -1038,6 +1038,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
+
         // $this->validate($request, [
         //     'name' => [
         //         'max:255',
@@ -1055,8 +1056,11 @@ class ProductController extends Controller
         // ]);
 
         $lims_product_data = Product::findOrFail($request->input('id'));
+
+        $category = Category::with('parent')->find($request->category_id);
+        $new_name = $category->parent->name . '-' . $category->name;
         $data = $request->except('image', 'file', 'prev_img');
-        $data['name'] = htmlspecialchars(trim($data['name']));
+        $data['name'] = $new_name;
         $data['slug'] = Str::slug($data['name'], '-');
         $data['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '', $data['slug']);
         $data['slug'] = str_replace('\/', '/', $data['slug']);
