@@ -1943,10 +1943,13 @@ class ReportController extends Controller
                 $ending_date = $payroll->isEmpty() ? date('Y-m-d') : $payroll->last()->created_at->format('Y-m-d');
             }
 
-            if ($request->input('employee_id'))
+            if ($request->input('employee_id')){
                 $employee_id = $request->input('employee_id');
-            else
+                $selected_employee = Employee::find($employee_id);
+            }else{
                 $employee_id = '';
+                $selected_employee = null;
+            }
 
 
             $lims_account_list = Account::where('is_active', true)->get();
@@ -1967,7 +1970,7 @@ class ReportController extends Controller
                     ->get();
             }
 
-            return view('backend.report.salary_report', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id'));
+            return view('backend.report.salary_report', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id', 'selected_employee'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }

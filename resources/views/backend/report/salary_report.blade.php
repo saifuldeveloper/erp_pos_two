@@ -50,6 +50,85 @@
                 </div>
                 {!! Form::close() !!}
             </div>
+
+            @if ($employee_id != '')
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Employee Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <img src="{{ url('public/images/employee', $selected_employee->image) }}"
+                                                class="img-fluid" alt="Employee Image" height="300" width="300">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>Name</th>
+                                                <td>{{ $selected_employee->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email</th>
+                                                <td>{{ $selected_employee->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Phone Number</th>
+                                                <td>{{ $selected_employee->phone_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Department</th>
+                                                <td>{{ $selected_employee->department->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Staff ID</th>
+                                                <td>{{ $selected_employee->staff_id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Address</th>
+                                                <td>{{ $selected_employee->address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>City</th>
+                                                <td>{{ $selected_employee->city }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Country</th>
+                                                <td>{{ $selected_employee->country }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Salary</th>
+                                                <td>{{ $selected_employee->salary }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Payable</th>
+                                                <td>
+                                                    {{ number_format((float) $lims_payroll_all->where('employee_id', $employee_id)->count() * $selected_employee->salary, $general_setting->decimal, '.', '') }}    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Paid</th>
+                                                <td>
+                                                    {{-- sum of $lims_payroll_all->where('employee_id', $employee_id)->sum('amount') --}}
+                                                    {{ number_format((float) $lims_payroll_all->where('employee_id', $employee_id)->sum('amount'), $general_setting->decimal, '.', '') }}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
         <div class="table-responsive">
             <table id="payroll-table" class="table">
