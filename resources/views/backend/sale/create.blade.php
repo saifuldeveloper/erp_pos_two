@@ -19,7 +19,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{trans('file.Date')}}</label>
-                                            <input type="text" name="created_at" class="form-control date" value="{{date('d-m-Y')}}" placeholder="Choose date"/>
+                                            <input type="datetime-local" name="created_at" class="form-control" value="{{date('d-m-Y')}}" placeholder="Choose date"/>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

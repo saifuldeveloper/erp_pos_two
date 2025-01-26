@@ -22,7 +22,8 @@ class ProductPurchase extends Model
         "discount",
         "tax_rate",
         "tax",
-        "total"
+        "total",
+        "created_at",
     ];
 
     public function purchase()

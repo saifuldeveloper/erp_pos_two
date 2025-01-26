@@ -104,7 +104,7 @@
                                         user="menu">
                                         <li>
                                             <button type="button" data-id="{{ $payroll->id }}"
-                                                data-date="{{ date('d-m-Y', strtotime($payroll->created_at->toDateString())) }}"
+                                                data-date="{{ $payroll->created_at }}"
                                                 data-reference="{{ $payroll->reference_no }}"
                                                 data-employee="{{ $payroll->employee_id }}"
                                                 data-account="{{ $payroll->account_id }}"
@@ -164,7 +164,7 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Date') }}</label>
-                            <input type="text" name="created_at" class="form-control date" placeholder="Choose date"
+                            <input type="datetime-local" name="created_at" class="form-control" placeholder="Choose date"
                                 value="{{ date('d-m-Y') }}" />
                         </div>
                         <div class="col-md-6 form-group">
@@ -240,7 +240,7 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Date') }}</label>
-                            <input type="text" name="created_at" class="form-control date"
+                            <input type="datetime-local" name="created_at" class="form-control" value="{{ date('d-m-Y') }}"
                                 placeholder="Choose date" />
                         </div>
                         <div class="col-md-6 form-group">
@@ -332,6 +332,7 @@
         }
 
         $(document).on('click', '.edit-btn', function() {
+            console.log($(this).data('date'));
             $("#editModal input[name='payroll_id']").val($(this).data('id'));
             $("#editModal input[name='created_at']").val($(this).data('date'));
             $("#editModal select[name='employee_id']").val($(this).data('employee'));

@@ -19,7 +19,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>{{trans('file.Date')}}</label>
-                                            <input type="text" name="created_at" class="form-control date" value="{{date($general_setting->date_format, strtotime($lims_purchase_data->created_at->toDateString()))}}" />
+                                            <input type="datetime-local" name="created_at" class="form-control" value="{{$lims_purchase_data->created_at}}" />
                                         </div>
                                     </div>
                                     <div class="col-md-4">

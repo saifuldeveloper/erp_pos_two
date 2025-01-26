@@ -68,10 +68,12 @@ class PayrollController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
         if (isset($data['created_at']))
-            $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
+        $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at']));
         else
-            $data['created_at'] = date("Y-m-d");
+        $data['created_at'] = date("Y-m-d H:i:s");
+
         $data['reference_no'] = 'payroll-' . date("Ymd") . '-' . date("his");
         $data['user_id'] = Auth::id();
         Payroll::create($data);
@@ -104,9 +106,9 @@ class PayrollController extends Controller
     {
         $data = $request->all();
         if (isset($data['created_at']))
-            $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
+        $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at']));
         else
-            $data['created_at'] = date("Y-m-d");
+        $data['created_at'] = date("Y-m-d H:i:s");
         $lims_payroll_data = Payroll::find($data['payroll_id']);
         $lims_payroll_data->update($data);
         return redirect('payroll')->with('message', 'Payroll updated succesfully');

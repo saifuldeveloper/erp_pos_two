@@ -22,7 +22,7 @@
                     <th class="not-exported"></th>
                     <th>{{trans('file.Code')}}</th>
                     <th>{{trans('file.name')}}</th>
-                    <th>Amount</th>
+                    {{-- <th>Amount</th> --}}
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                     <td>{{$key}}</td>
                     <td>{{ $expense_category->code }}</td>
                     <td>{{ $expense_category->name }}</td>
-                    <td>{{ $expense_category->total_amount }}</td>
+                    {{-- <td>{{ $expense_category->total_amount }}</td> --}}
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}

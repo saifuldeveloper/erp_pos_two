@@ -464,7 +464,7 @@ class PurchaseController extends Controller
             $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at']));
         else
             $data['created_at'] = date("Y-m-d H:i:s");
-        //return dd($data);
+    
         $lims_purchase_data = Purchase::create($data);
         //inserting data for custom fields
         $custom_field_data = [];
@@ -607,6 +607,8 @@ class PurchaseController extends Controller
             $product_purchase['tax_rate'] = $tax_rate[$i];
             $product_purchase['tax'] = $tax[$i];
             $product_purchase['total'] = $total[$i];
+            $product_purchase['created_at'] =$lims_purchase_data->created_at;
+
             ProductPurchase::create($product_purchase);
         }
 
@@ -816,6 +818,8 @@ class PurchaseController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        // dd($request->all());
         $lims_purchase_data = Purchase::find($id);
         $data = $request->except('document');
         $document = $request->document;
@@ -854,7 +858,13 @@ class PurchaseController extends Controller
                 $data['payment_status'] = 2;
             }
             $lims_product_purchase_data = ProductPurchase::where('purchase_id', $id)->get();
+
+            if (isset($data['created_at']))
+            $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at']));
+           else
+     
             $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
+
             $product_id = $data['product_id'];
             $product_code = $data['product_code'];
             $qty = $data['qty'];

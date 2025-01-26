@@ -34,7 +34,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h3><i class="fa fa-dollar"></i> {{trans('file.Cash in Hand')}}</h3>
+                        <h3>	<strong>&#2547; </strong>{{trans('file.Cash in Hand')}}</h3>
                         <hr>
                         <div class="mt-3">
 

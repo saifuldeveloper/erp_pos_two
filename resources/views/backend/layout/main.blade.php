@@ -441,7 +441,7 @@
                       <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{trans('file.Date')}}</label>
-                            <input type="text" name="created_at" class="form-control futureDateBlock"  placeholder="Choose date"/>
+                            <input type="datetime-local" name="created_at" class="form-control futureDateBlock"  placeholder="Choose date"/>
                         </div>
                         <div class="col-md-6 form-group">
 
@@ -1149,7 +1149,9 @@
 
         flatpickr(".futureDateBlock", {
             maxDate: "today", // Disable future dates
-            dateFormat: "Y-m-d",
+            dateFormat: "Y-m-d H:i:S",
+            enableTime: true,
+     
         });
     </script>
   </body>
