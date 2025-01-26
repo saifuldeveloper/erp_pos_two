@@ -76,10 +76,10 @@
                                                 <th>Name</th>
                                                 <td>{{ $selected_employee->name }}</td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th>Email</th>
                                                 <td>{{ $selected_employee->email }}</td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr>
                                                 <th>Phone Number</th>
                                                 <td>{{ $selected_employee->phone_number }}</td>
@@ -96,14 +96,14 @@
                                                 <th>Address</th>
                                                 <td>{{ $selected_employee->address }}</td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 <th>City</th>
                                                 <td>{{ $selected_employee->city }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Country</th>
                                                 <td>{{ $selected_employee->country }}</td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr>
                                                 <th>Salary</th>
                                                 <td>{{ $selected_employee->salary }}</td>

@@ -599,6 +599,86 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            58 => 
+            array (
+                'id' => 59,
+                'name' => 'Nagra',
+                'image' => NULL,
+                'parent_id' => 16,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            59 => 
+            array (
+                'id' => 60,
+                'name' => 'Sit Pumpi',
+                'image' => NULL,
+                'parent_id' => 16,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            60 => 
+            array (
+                'id' => 61,
+                'name' => 'Boston',
+                'image' => NULL,
+                'parent_id' => 16,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            61 => 
+            array (
+                'id' => 62,
+                'name' => 'Sandal',
+                'image' => NULL,
+                'parent_id' => 16,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            62 => 
+            array (
+                'id' => 63,
+                'name' => 'Shoe',
+                'image' => NULL,
+                'parent_id' => 35,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            63 => 
+            array (
+                'id' => 64,
+                'name' => 'Sit',
+                'image' => NULL,
+                'parent_id' => 35,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            64 => 
+            array (
+                'id' => 65,
+                'name' => 'Sit',
+                'image' => NULL,
+                'parent_id' => 16,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            65 => 
+            array (
+                'id' => 66,
+                'name' => 'Heels',
+                'image' => NULL,
+                'parent_id' => 16,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

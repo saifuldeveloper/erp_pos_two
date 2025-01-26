@@ -435,6 +435,14 @@ class ColorsTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            52 => 
+            array (
+                'id' => 78,
+                'name' => 'Cyan',
+                'code' => NULL,
+                'created_at' => '2025-01-22 16:00:12',
+                'updated_at' => '2025-01-22 16:00:12',
+            ),
         ));
         
         

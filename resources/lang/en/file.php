@@ -191,6 +191,7 @@ return [
 	'People' => 'People',
 	'Option' => 'Option',
 	'Bill' => 'Bill',
+	'Total Cost' => 'Total Cost',
 	'Go To' => 'Go To',
 	'Mode' => 'Mode',
 	'In Words' => 'In Words',
@@ -207,8 +208,6 @@ return [
 	'Register' => 'Register',
 	'Total Quantity' => 'Total Quantity',
 	'Total Price' => 'Total Price',
-	'Total Cost' => 'Total Cost',
-	
 	'color' => 'Color',
 	'Add Color' => 'Add Color',
 	'Expense Report' => "Expense Report",
