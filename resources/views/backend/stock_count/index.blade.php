@@ -16,15 +16,48 @@
                 <i class="dripicons-plus"></i>
                 {{ trans('file.Count Stock') }}
             </a>
+            <div class="row py-3">
+                <div class="col-md-4">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Quantity') }}
+                                    :{{ $count['total_qty'] }}</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Price') }}:
+                                    {{ $count['total_price'] }}</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong
+                                    style="color: #ff8040">{{ trans('file.Total Cost') }}:{{ round($count['total_cost'], 2) }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="table-responsive">
             <table id="stock-count-table" class="table stock-count-list">
                 <thead>
                     <tr>
                         <th class="not-exported"></th>
-                        <th>{{trans('file.reference')}}</th>
+                        <th>{{ trans('file.reference') }}</th>
                         <th>{{ trans('file.Date') }}</th>
                         <th>{{ trans('file.Warehouse') }}</th>
+                        <th>Current Quantity</th>
+                        <th>Updated Quantity</th>
                         <th class="not-exported">{{ trans('file.action') }}</th>
                     </tr>
                 </thead>
@@ -39,6 +72,8 @@
                             <td>{{ date($general_setting->date_format, strtotime($stock_count->created_at->toDateString())) . ' ' . $stock_count->created_at->toTimeString() }}
                             </td>
                             <td>{{ $warehouse->name }}</td>
+                            <td>{{ $stock_count->items->sum('current_quantity') }}</td>
+                            <td>{{ $stock_count->items->sum('updated_quantity') }}</td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -75,7 +110,9 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="show-stock-count">Stock Count ({{ $stock_count->reference_no  }})</h4>
+                                        <h4 class="modal-title" id="show-stock-count">Stock Count
+                                            ({{ $stock_count->reference_no }})
+                                        </h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -101,6 +138,17 @@
                         </div>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>Total:</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </section>
@@ -189,6 +237,30 @@
                     columns: ':gt(0)'
                 },
             ],
+            drawCallback: function() {
+                var api = this.api();
+                datatable_sum(api, false);
+            }
         });
+
+        function datatable_sum(dt_selector, is_calling_first) {
+            if (dt_selector.rows('.selected').any() && is_calling_first) {
+                var rows = dt_selector.rows('.selected').indexes();
+
+                $(dt_selector.column(4).footer()).html(dt_selector.cells(rows, 4, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
+                $(dt_selector.column(5).footer()).html(dt_selector.cells(rows, 5, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
+            } else {
+                $(dt_selector.column(4).footer()).html(dt_selector.cells(rows, 4, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
+                $(dt_selector.column(5).footer()).html(dt_selector.cells(rows, 5, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
+            }
+        }
     </script>
 @endpush
