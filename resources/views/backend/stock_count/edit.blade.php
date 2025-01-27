@@ -46,7 +46,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        {{-- <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>{{ trans('file.Attach Document') }}</label> <i
                                                     class="dripicons-question" data-toggle="tooltip"
@@ -58,6 +58,14 @@
                                                     </span>
                                                 @endif
                                             </div>
+                                        </div> --}}
+                                        <div class="com-md-4">
+                                            <div class="form-group">
+                                                <label class="">{{trans('file.reference')}}</label>
+                                                <input type="text" name="reference" class="form-control" readonly
+                                                    value="{{ $lims_stock_count->reference_no }}" />
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="row mt-4">

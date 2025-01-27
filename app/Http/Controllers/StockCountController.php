@@ -84,6 +84,7 @@ class StockCountController extends Controller
     {
         $data = $request->all();
         $stock_count = new StockCount();
+        $stock_count->reference_no = 'stc-' . date("Ymd") . '-' . date("his");
         $stock_count->warehouse_id = $data['warehouse_id'];
         $stock_count->user_id = Auth::id();
         $stock_count->note = $data['note'];

@@ -9,6 +9,7 @@ class StockCount extends Model
     protected $table = 'stock_counts';
 
     protected $fillable = [
+        'reference_no',
         'warehouse_id',
         'user_id',
         'note'

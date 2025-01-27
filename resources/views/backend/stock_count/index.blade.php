@@ -22,6 +22,7 @@
                 <thead>
                     <tr>
                         <th class="not-exported"></th>
+                        <th>{{trans('file.reference')}}</th>
                         <th>{{ trans('file.Date') }}</th>
                         <th>{{ trans('file.Warehouse') }}</th>
                         <th class="not-exported">{{ trans('file.action') }}</th>
@@ -34,6 +35,7 @@
                         ?>
                         <tr>
                             <td>{{ $key }}</td>
+                            <td>{{ $stock_count->reference_no }}</td>
                             <td>{{ date($general_setting->date_format, strtotime($stock_count->created_at->toDateString())) . ' ' . $stock_count->created_at->toTimeString() }}
                             </td>
                             <td>{{ $warehouse->name }}</td>
@@ -73,7 +75,7 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="show-stock-count">Stock Count</h4>
+                                        <h4 class="modal-title" id="show-stock-count">Stock Count ({{ $stock_count->reference_no  }})</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>

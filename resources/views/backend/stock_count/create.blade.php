@@ -25,14 +25,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>{{ trans('file.Date') }}</label>
                                                 <input type="text" name="created_at" class="form-control date"
                                                     value="{{ date('d-m-Y') }}" placeholder="Choose date" />
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>{{ trans('file.Warehouse') }} *</label>
                                                 <select required name="warehouse_id" class="selectpicker form-control"
@@ -45,7 +45,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        {{-- <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>{{ trans('file.Attach Document') }}</label> <i
                                                     class="dripicons-question" data-toggle="tooltip"
@@ -57,7 +57,7 @@
                                                     </span>
                                                 @endif
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-12 mt-3">
                                             <label>{{ trans('file.Select Product') }}</label>
                                             <div class="search-box input-group">

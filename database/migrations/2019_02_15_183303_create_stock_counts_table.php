@@ -15,6 +15,7 @@ class CreateStockCountsTable extends Migration
     {
         Schema::create('stock_counts', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('reference_no');
             $table->integer('warehouse_id');
             $table->integer('user_id');
             $table->text('note')->nullable();
