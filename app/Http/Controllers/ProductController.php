@@ -206,12 +206,12 @@ class ProductController extends Controller
                 else
                     $nestedData['brand'] = "N/A";
                 $nestedData['category'] = $product->category->name;
-                if (Auth::user()->role_id > 2 && $product->type == 'standard') {
-                    $nestedData['qty'] = Product_Warehouse::where([
-                        ['product_id', $product->id],
-                        ['warehouse_id', Auth::user()->warehouse_id]
-                    ])->sum('qty');
-                } else
+                // if (Auth::user()->role_id > 2 && $product->type == 'standard') {
+                //     $nestedData['qty'] = Product_Warehouse::where([
+                //         ['product_id', $product->id],
+                //         ['warehouse_id', Auth::user()->warehouse_id]
+                //     ])->sum('qty');
+                // } else
                     $nestedData['qty'] = $product->qty;
 
                 if ($product->unit_id)
