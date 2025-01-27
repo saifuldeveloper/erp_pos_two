@@ -14,6 +14,9 @@ return [
 
 	'Previous_balance' => 'পূর্ববর্তী হিসাব',
 	'purchase_return' => 'ক্রয় ফেরত',
+	'item code' => 'পণ্য কোড',
+	'Current Quantity' => 'বর্তমান পরিমাণ',
+	'Updated Quantity' => 'আপডেট পরিমাণ',
 
 	'purchase' => 'ক্রয়',
 

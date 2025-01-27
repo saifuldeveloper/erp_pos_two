@@ -157,16 +157,20 @@
                     <thead>
                         <tr>
                             <th>{{trans('file.Date')}}</th>
+                            <th>{{trans('file.reference')}}</th>
                             <th>{{trans('file.Warehouse')}}</th>
-                            <th>Item code</th>
-                            <th>Current Quantity</th>
-                            <th>Updated Quantity</th>
+                            <th>{{trans('file.item code')}}</th>
+                            <th>{{trans('file.Current Quantity')}}</th>
+                            <th>{{trans('file.Updated Quantity')}}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($product_data->stockCountItems as $stockCountItem)
                             <tr>
+
+                             
                                 <td>{{$stockCountItem->created_at}}</td>
+                                <td>{{$stockCountItem->stockCount->reference_no}}</td>
                                 <td>{{$stockCountItem->stockCount->warehouse->name}}</td>
                                 <td>{{$stockCountItem->item_code}}</td>
                                 <td>{{$stockCountItem->current_quantity}}</td>
