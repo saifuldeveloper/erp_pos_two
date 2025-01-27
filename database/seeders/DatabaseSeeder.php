@@ -83,6 +83,5 @@ class DatabaseSeeder extends Seeder
         $this->call(WarehousesTableSeeder::class);
         $this->call(WasteItemsTableSeeder::class);
         $this->call(WastesTableSeeder::class);
-        $this->call(StockCountsTableSeeder::class);
     }
 }

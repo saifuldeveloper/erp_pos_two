@@ -24,7 +24,22 @@ class StockCountController extends Controller
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $general_setting = DB::table('general_settings')->latest()->first();
             $lims_stock_count_all = StockCount::orderBy('id', 'desc')->get();
-            return view('backend.stock_count.index', compact('lims_warehouse_list', 'lims_stock_count_all'));
+            $count = [];
+            $total_qty = 0;
+            $total_price = 0;
+            $total_cost = 0;
+            foreach ($lims_stock_count_all as $stock_count) {
+                foreach ($stock_count->items as $item) {
+                    $product = $item->product;
+                    $total_qty += $product->qty;
+                    $total_price += $product->price * $product->qty;
+                    $total_cost += $product->cost * $product->qty;
+                }
+            }
+            $count['total_qty'] = $total_qty;
+            $count['total_price'] = $total_price;
+            $count['total_cost'] = $total_cost;
+            return view('backend.stock_count.index', compact('lims_warehouse_list', 'lims_stock_count_all', 'count'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
