@@ -56,6 +56,8 @@
                         <th>{{ trans('file.reference') }}</th>
                         <th>{{ trans('file.Date') }}</th>
                         <th>{{ trans('file.Warehouse') }}</th>
+                        <th>Product</th>
+                        <th>Price</th>
                         <th>Current Quantity</th>
                         <th>Updated Quantity</th>
                         <th class="not-exported">{{ trans('file.action') }}</th>
@@ -65,6 +67,8 @@
                     @foreach ($lims_stock_count_all as $key => $stock_count)
                         <?php
                         $warehouse = DB::table('warehouses')->find($stock_count->warehouse_id);
+                        $product_ids = $stock_count->items->pluck('product_id');
+                        $product = DB::table('products')->find($product_ids[0]);
                         ?>
                         <tr>
                             <td>{{ $key }}</td>
@@ -72,6 +76,8 @@
                             <td>{{ date($general_setting->date_format, strtotime($stock_count->created_at->toDateString())) . ' ' . $stock_count->created_at->toTimeString() }}
                             </td>
                             <td>{{ $warehouse->name }}</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->price }}</td>
                             <td>{{ $stock_count->items->sum('current_quantity') }}</td>
                             <td>{{ $stock_count->items->sum('updated_quantity') }}</td>
                             <td>
@@ -142,6 +148,8 @@
                     <tr>
                         <th></th>
                         <th>Total:</th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -247,17 +255,23 @@
             if (dt_selector.rows('.selected').any() && is_calling_first) {
                 var rows = dt_selector.rows('.selected').indexes();
 
-                $(dt_selector.column(4).footer()).html(dt_selector.cells(rows, 4, {
+                $(dt_selector.column(5).footer()).html(dt_selector.cells(rows, 5, {
                     page: 'current'
                 }).data().sum().toFixed(2));
-                $(dt_selector.column(5).footer()).html(dt_selector.cells(rows, 5, {
+                $(dt_selector.column(6).footer()).html(dt_selector.cells(rows, 6, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
+                $(dt_selector.column(7).footer()).html(dt_selector.cells(rows, 7, {
                     page: 'current'
                 }).data().sum().toFixed(2));
             } else {
-                $(dt_selector.column(4).footer()).html(dt_selector.cells(rows, 4, {
+                $(dt_selector.column(5).footer()).html(dt_selector.cells(rows, 5, {
                     page: 'current'
                 }).data().sum().toFixed(2));
-                $(dt_selector.column(5).footer()).html(dt_selector.cells(rows, 5, {
+                $(dt_selector.column(6).footer()).html(dt_selector.cells(rows, 6, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
+                $(dt_selector.column(7).footer()).html(dt_selector.cells(rows, 7, {
                     page: 'current'
                 }).data().sum().toFixed(2));
             }
