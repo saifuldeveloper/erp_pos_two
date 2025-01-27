@@ -62,7 +62,7 @@
                     <div class="wrapper count-title">
                       <div>
                           <div class="count-number"></div>
-                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Cost ') }}:{{ $count_data['total_cost'] }}</strong></div>
+                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Cost') }}:{{ round($count_data['total_cost'], 2) }}</strong></div>
                       </div>
                     </div>
                   </div>

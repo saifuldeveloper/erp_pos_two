@@ -29,6 +29,16 @@ class CashRegistersTableSeeder extends Seeder
                 'created_at' => '2024-12-12 05:19:13',
                 'updated_at' => '2024-12-12 05:19:13',
             ),
+            1 => 
+            array (
+                'id' => 2,
+                'cash_in_hand' => 50000.0,
+                'user_id' => 1,
+                'warehouse_id' => 4,
+                'status' => 1,
+                'created_at' => '2025-01-23 17:43:42',
+                'updated_at' => '2025-01-23 17:43:42',
+            ),
         ));
         
         

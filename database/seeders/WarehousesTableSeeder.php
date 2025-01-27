@@ -55,6 +55,18 @@ class WarehousesTableSeeder extends Seeder
                 'updated_at' => '2024-12-23 04:04:11',
                 'is_default' => 1,
             ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'Godawon',
+                'phone' => '1234567890',
+                'email' => 'info.avijatrykhulna@gmail.com',
+                'address' => 'Dak Bangla Mor, Khulna',
+                'is_active' => 1,
+                'created_at' => '2025-01-22 12:22:58',
+                'updated_at' => '2025-01-22 12:22:58',
+                'is_default' => 1,
+            ),
         ));
         
         
