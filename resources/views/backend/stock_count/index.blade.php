@@ -16,7 +16,7 @@
                 <i class="dripicons-plus"></i>
                 {{ trans('file.Count Stock') }}
             </a>
-            <div class="row py-3">
+            {{-- <div class="row py-3">
                 <div class="col-md-4">
                     <div class="wrapper count-title">
                         <div>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <div class="table-responsive">
@@ -57,9 +57,10 @@
                         <th>{{ trans('file.Date') }}</th>
                         <th>{{ trans('file.Warehouse') }}</th>
                         <th>Product</th>
-                        <th>Price</th>
                         <th>Current Quantity</th>
+                        <th>Total Price</th>
                         <th>Updated Quantity</th>
+                        <th>Total Price</th>
                         <th class="not-exported">{{ trans('file.action') }}</th>
                     </tr>
                 </thead>
@@ -77,9 +78,10 @@
                             </td>
                             <td>{{ $warehouse->name }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
                             <td>{{ $stock_count->items->sum('current_quantity') }}</td>
+                            <td>{{ $product->price * $stock_count->items->sum('current_quantity') }}</td>
                             <td>{{ $stock_count->items->sum('updated_quantity') }}</td>
+                            <td>{{ $product->price * $stock_count->items->sum('updated_quantity') }}</td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -148,6 +150,7 @@
                     <tr>
                         <th></th>
                         <th>Total:</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -264,6 +267,9 @@
                 $(dt_selector.column(7).footer()).html(dt_selector.cells(rows, 7, {
                     page: 'current'
                 }).data().sum().toFixed(2));
+                $(dt_selector.column(8).footer()).html(dt_selector.cells(rows, 8, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
             } else {
                 $(dt_selector.column(5).footer()).html(dt_selector.cells(rows, 5, {
                     page: 'current'
@@ -272,6 +278,9 @@
                     page: 'current'
                 }).data().sum().toFixed(2));
                 $(dt_selector.column(7).footer()).html(dt_selector.cells(rows, 7, {
+                    page: 'current'
+                }).data().sum().toFixed(2));
+                $(dt_selector.column(8).footer()).html(dt_selector.cells(rows, 8, {
                     page: 'current'
                 }).data().sum().toFixed(2));
             }
