@@ -18,6 +18,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Mail\SupplierCreate;
 use App\Mail\CustomerCreate;
+use App\Models\SupplierDue;
 use Mail;
 
 class SupplierController extends Controller
@@ -87,6 +88,13 @@ class SupplierController extends Controller
             $purchase_data->save();
             $total_paid_amount -= $paid_amount;
         }
+
+        SupplierDue::create([
+            'supplier_id' => $request->supplier_id,
+            'amount' => $request->amount,
+            'note' => $request->note
+        ]);
+
         return redirect()->back()->with('message', 'Due cleared successfully');
     }
 
@@ -294,7 +302,7 @@ class SupplierController extends Controller
     public function suppliersAll()
     {
         $lims_supplier_list = DB::table('suppliers')->where('is_active', true)->get();
-        
+
         $html = '';
         foreach($lims_supplier_list as $supplier){
             $html .='<option value="'.$supplier->id.'">'.$supplier->name . ' (' . $supplier->phone_number. ')'.'</option>';
