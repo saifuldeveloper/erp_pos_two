@@ -19,34 +19,6 @@
                 {!! Form::open(['route' => 'report.stockCount', 'method' => 'get']) !!}
                 <div class="row ml-1 mt-2">
                     <div class="col-md-3">
-                        <div class="form-group">
-                            <label><strong>{{ trans('file.Brand') }}</strong></label>
-                            <select id="brand_id" name="brand_id" class="form-control selectpicker" data-live-search="true"
-                                data-live-search-style="begins" title="Select Brand...">
-                                <option value="0">{{ trans('file.All') }}</option>
-                                @foreach ($lims_brand_list as $brand)
-                                    <option value="{{ $brand->id }}"
-                                        {{ $brand->id == request()->brand_id ? 'selected' : '' }}>{{ $brand->title }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label><strong>{{ trans('file.Product') }}</strong></label>
-                            <select id="product_id" name="product_id" class="form-control selectpicker"
-                                data-live-search="true" data-live-search-style="begins" title="Select Product...">
-                                <option value="0">{{ trans('file.All') }}</option>
-                                @foreach ($lims_product_list as $product)
-                                    <option {{ $product->id == request()->product_id ? 'selected' : '' }}
-                                        value="{{ $product->id }}">{{ $product->name }} ({{ $product->code }})
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
                         @php
                             $starting_date = request()->starting_date ?? date('Y-m-d', strtotime('-1 month'));
                             $ending_date = request()->ending_date ?? date('Y-m-d');
@@ -68,58 +40,101 @@
                 </div>
                 {!! Form::close() !!}
             </div>
-            <div class="card">
-                @if (count($lims_stock_count_all) > 0)
-                    <div class="table-responsive">
-                        <table class="table stock-count-list">
-                            @if (request()->brand_id)
-                                <tr>
-                                    <th>Brand</th>
-                                    <td>{{ $lims_stock_count_all->first()->brand->title }}</td>
-                                </tr>
-                            @endif
-                            @if (request()->product_id)
-                                <tr>
-                                    <th>Product</th>
-                                    <td>{{ $lims_stock_count_all->first()->product->name }}
-                                        ({{ $lims_stock_count_all->first()->product->code }})</td>
-                                </tr>
-                            @endif
-                            @php
-                                $current_quantity = 0;
-                                $updated_quantity = 0;
-                                $total_before_update = 0;
-                                $total_after_update = 0;
-
-                                foreach ($lims_stock_count_all as $stock_count) {
-                                    $current_quantity += $stock_count->items->sum('current_quantity');
-                                    $updated_quantity += $stock_count->items->sum('updated_quantity');
-                                    $total_before_update +=
-                                        $stock_count->items->sum('current_quantity') * $stock_count->product->price;
-                                    $total_after_update +=
-                                        $stock_count->items->sum('updated_quantity') * $stock_count->product->price;
-                                }
-                            @endphp
-                            <tr>
-                                <th>Previous Quantity</th>
-                                <td>{{ $current_quantity }}</td>
-                            </tr>
-                            <tr>
-                                <th>Total Price</th>
-                                <td>{{ $total_before_update }}</td>
-                            </tr>
-                            <tr>
-                                <th>Updated Quantity</th>
-                                <td>{{ $updated_quantity }}</td>
-                            </tr>
-                            <tr>
-                                <th>Total Price</th>
-                                <td>{{ $total_after_update }}</td>
-                            </tr>
-                        </table>
+            @if (count($lims_stock_count_all) > 0)
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Brand Wise Stock Count</h3>
                     </div>
-                @endif
-            </div>
+                    <div class="card-body">
+                        @php
+                            $lims_stock_count_by_brand = $lims_stock_count_all->groupBy('brand_id');
+                        @endphp
+                        @if (count($lims_stock_count_by_brand) > 0)
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Brand</th>
+                                            <th>Previous Quantity</th>
+                                            <th>Total Price</th>
+                                            <th>Updated Quantity</th>
+                                            <th>Total Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($lims_stock_count_by_brand as $key => $stock_count)
+                                            @php
+                                                $current_quantity = 0;
+                                                $updated_quantity = 0;
+                                                $total_before_update = 0;
+                                                $total_after_update = 0;
+
+                                                foreach ($stock_count as $stock) {
+                                                    $current_quantity += $stock->items->sum('current_quantity');
+                                                    $updated_quantity += $stock->items->sum('updated_quantity');
+                                                    $total_before_update +=
+                                                        $stock->items->sum('current_quantity') * $stock->product->price;
+                                                    $total_after_update +=
+                                                        $stock->items->sum('updated_quantity') * $stock->product->price;
+                                                }
+                                            @endphp
+                                            <tr>
+                                                <td>{{ $stock_count->first()->brand->title }}</td>
+                                                <td>{{ $current_quantity }}</td>
+                                                <td>{{ $total_before_update }}</td>
+                                                <td>{{ $updated_quantity }}</td>
+                                                <td>{{ $total_after_update }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Stock Count</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table stock-count-list">
+                                @php
+                                    $current_quantity = 0;
+                                    $updated_quantity = 0;
+                                    $total_before_update = 0;
+                                    $total_after_update = 0;
+
+                                    foreach ($lims_stock_count_all as $stock_count) {
+                                        $current_quantity += $stock_count->items->sum('current_quantity');
+                                        $updated_quantity += $stock_count->items->sum('updated_quantity');
+                                        $total_before_update +=
+                                            $stock_count->items->sum('current_quantity') * $stock_count->product->price;
+                                        $total_after_update +=
+                                            $stock_count->items->sum('updated_quantity') * $stock_count->product->price;
+                                    }
+                                @endphp
+                                <tr>
+                                    <th>Previous Quantity</th>
+                                    <th>{{ $current_quantity }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Total Price</th>
+                                    <th>{{ $total_before_update }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Updated Quantity</th>
+                                    <th>{{ $updated_quantity }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Total Price</th>
+                                    <th>{{ $total_after_update }}</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
 
     </section>
@@ -129,7 +144,6 @@
         $("ul#report").siblings('a').attr('aria-expanded', 'true');
         $("ul#report").addClass("show");
         $("ul#report #stock-count-report-menu").addClass("active");
-        $(".selectpicker").selectpicker('refresh');
         $(".daterangepicker-field").daterangepicker({
             callback: function(startDate, endDate, period) {
                 var starting_date = startDate.format('YYYY-MM-DD');
