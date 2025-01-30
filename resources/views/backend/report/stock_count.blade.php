@@ -130,6 +130,15 @@
                                     <th>Total Price</th>
                                     <th>{{ $total_after_update }}</th>
                                 </tr>
+                                <tr></tr>
+                                <tr>
+                                    <th>Quantity Difference</th>
+                                    <th>{{ abs($updated_quantity - $current_quantity) }} {{ $updated_quantity > $current_quantity ? 'Increased' : 'Decreased' }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Price Difference</th>
+                                    <th>{{ abs($total_after_update - $total_before_update) }}</th>
+                                </tr>
                             </table>
                         </div>
                     </div>

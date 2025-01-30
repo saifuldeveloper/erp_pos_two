@@ -46,6 +46,29 @@
                     </div>
                 </div>
             </div> --}}
+            {!! Form::open(['route' => 'stock-count.index', 'method' => 'get']) !!}
+                <div class="row ml-1 mt-2">
+                    <div class="col-md-3">
+                        @php
+                            $starting_date = request()->starting_date ?? date('Y-m-d', strtotime('-1 month'));
+                            $ending_date = request()->ending_date ?? date('Y-m-d');
+                        @endphp
+                        <div class="form-group">
+                            <label><strong>{{ trans('file.Date') }}</strong></label>
+                            <input type="text" class="daterangepicker-field form-control"
+                                value="{{ $starting_date }} To {{ $ending_date }}" required />
+                            <input type="hidden" name="starting_date" value="{{ $starting_date }}">
+                            <input type="hidden" name="ending_date" value="{{ $ending_date }}">
+                        </div>
+                    </div>
+                    <div class="col-md-2 mt-4">
+                        <div class="form-group">
+                            <button class="btn btn-primary w-100" id="filter-btn"
+                                type="submit">{{ trans('file.submit') }}</button>
+                        </div>
+                    </div>
+                </div>
+                {!! Form::close() !!}
         </div>
 
         <div class="table-responsive">
@@ -169,7 +192,16 @@
         $("ul#product").siblings('a').attr('aria-expanded', 'true');
         $("ul#product").addClass("show");
         $("ul#product #stock-count-menu").addClass("active");
-
+        $(".daterangepicker-field").daterangepicker({
+            callback: function(startDate, endDate, period) {
+                var starting_date = startDate.format('YYYY-MM-DD');
+                var ending_date = endDate.format('YYYY-MM-DD');
+                var title = starting_date + ' To ' + ending_date;
+                $(this).val(title);
+                $('input[name="starting_date"]').val(starting_date);
+                $('input[name="ending_date"]').val(ending_date);
+            }
+        });
         $('#stock-count-table').DataTable({
             "order": [],
             'language': {
