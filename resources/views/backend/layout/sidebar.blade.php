@@ -606,6 +606,11 @@
                                     href="{{ route('report.qtyAlert') }}">{{ trans('file.Product Quantity Alert') }}</a>
                             </li>
                         @endif
+                        <li id="stock-count-report-menu">
+                            <a href="{{ route('report.stockCount') }}">
+                                Stock Count Report
+                            </a>
+                        </li>
                         {{-- @if ($dso_report_active)
                             <li id="daily-sale-objective-menu">
                                 <a
