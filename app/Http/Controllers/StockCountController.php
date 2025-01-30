@@ -17,13 +17,20 @@ use Spatie\Permission\Models\Role;
 
 class StockCountController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('stock_count')) {
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $general_setting = DB::table('general_settings')->latest()->first();
-            $lims_stock_count_all = StockCount::orderBy('id', 'desc')->get();
+            $lims_stock_count_all = StockCount::orderBy('id', 'desc')
+                ->when($request->starting_date, function ($q) use ($request) {
+                    return $q->whereDate('created_at', '>=', $request->starting_date);
+                })
+                ->when($request->ending_date, function ($q) use ($request) {
+                    return $q->whereDate('created_at', '<=', $request->ending_date);
+                })
+                ->get();
             $count = [];
             $total_qty = 0;
             $total_price = 0;
