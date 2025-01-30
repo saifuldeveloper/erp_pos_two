@@ -4842,17 +4842,28 @@ class ReportController extends Controller
         $lims_warehouse_list = Warehouse::get();
         $lims_brand_list = Brand::get();
         $lims_product_list = Product::select('id','name','code')->get();
-        $lims_stock_count_all = StockCount::orderBy('created_at', 'desc')
-        ->when($request->brand_id, function($q) use ($request) {
-            return $q->where('brand_id', $request->brand_id);
-        })
-        ->when($request->product_id, function($q) use ($request) {
-            return $q->where('product_id', $request->product_id);
-        })
-        ->when($request->warehouse_id, function($q) use ($request) {
-            return $q->where('warehouse_id', $request->warehouse_id);
-        })
-        ->get();
+        if($request->starting_date && $request->ending_date) {
+            $lims_stock_count_all = StockCount::orderBy('created_at', 'desc')
+            ->when($request->brand_id, function($q) use ($request) {
+                return $q->where('brand_id', $request->brand_id);
+            })
+            ->when($request->product_id, function($q) use ($request) {
+                return $q->where('product_id', $request->product_id);
+            })
+            ->when($request->warehouse_id, function($q) use ($request) {
+                return $q->where('warehouse_id', $request->warehouse_id);
+            })
+            ->when($request->starting_date, function($q) use ($request) {
+                return $q->whereDate('created_at', '>=', $request->starting_date);
+            })
+            ->when($request->ending_date, function($q) use ($request) {
+                return $q->whereDate('created_at', '<=', $request->ending_date);
+            })
+            ->get();
+        }
+        else {
+            $lims_stock_count_all = [];
+        }
         return view('backend.report.stock_count', compact('lims_stock_count_all', 'lims_brand_list', 'lims_product_list', 'lims_warehouse_list'));
     }
 }
