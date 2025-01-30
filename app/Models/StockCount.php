@@ -11,6 +11,8 @@ class StockCount extends Model
     protected $fillable = [
         'reference_no',
         'warehouse_id',
+        'product_id',
+        'brand_id',
         'user_id',
         'note'
     ];
@@ -28,5 +30,15 @@ class StockCount extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 }

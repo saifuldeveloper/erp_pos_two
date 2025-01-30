@@ -17,6 +17,8 @@ class CreateStockCountsTable extends Migration
             $table->increments('id');
             $table->string('reference_no');
             $table->integer('warehouse_id');
+            $table->integer('product_id')->nullable();
+            $table->integer('brand_id')->nullable();
             $table->integer('user_id');
             $table->text('note')->nullable();
             $table->timestamps();

@@ -101,6 +101,8 @@ class StockCountController extends Controller
         $stock_count = new StockCount();
         $stock_count->reference_no = 'stc-' . date("Ymd") . '-' . date("his");
         $stock_count->warehouse_id = $data['warehouse_id'];
+        $stock_count->product_id = $data['product_id'][0];
+        $stock_count->brand_id = Product::find($data['product_id'][0])->brand_id;
         $stock_count->user_id = Auth::id();
         $stock_count->note = $data['note'];
         $stock_count->save();
@@ -116,33 +118,33 @@ class StockCountController extends Controller
                 'updated_at' => now()
             ]);
 
-            $product_variant = ProductVariant::where('item_code', $data['product_code'][$key])->first();
-            if ($product_variant) {
-                $product_variant->qty += $data['qty'][$key];
-                $product_variant->save();
-            }
-            $productVariant = explode('-', $data['product_code'][$key])[0];
-            $variant = Variant::where('name', $productVariant)->first();
-            if ($variant) {
-                $productWarehouse = Product_Warehouse::where('product_id', $data['product_id'][$key])
-                    ->where('variant_id', $variant->id)
-                    ->where('warehouse_id', $data['warehouse_id'])
-                    ->first();
-                if ($productWarehouse) {
-                    $productWarehouse->qty += $data['qty'][$key];
-                    $productWarehouse->save();
-                }
-            }
+            // $product_variant = ProductVariant::where('item_code', $data['product_code'][$key])->first();
+            // if ($product_variant) {
+            //     $product_variant->qty += $data['qty'][$key];
+            //     $product_variant->save();
+            // }
+            // $productVariant = explode('-', $data['product_code'][$key])[0];
+            // $variant = Variant::where('name', $productVariant)->first();
+            // if ($variant) {
+            //     $productWarehouse = Product_Warehouse::where('product_id', $data['product_id'][$key])
+            //         ->where('variant_id', $variant->id)
+            //         ->where('warehouse_id', $data['warehouse_id'])
+            //         ->first();
+            //     if ($productWarehouse) {
+            //         $productWarehouse->qty += $data['qty'][$key];
+            //         $productWarehouse->save();
+            //     }
+            // }
         }
 
-        $data['product_id'] = array_unique($data['product_id']);
+        // $data['product_id'] = array_unique($data['product_id']);
 
-        foreach ($data['product_id'] as $key => $product_id) {
-            $productVariantsQty = ProductVariant::where('product_id', $product_id)->sum('qty');
-            $product = Product::find($product_id);
-            $product->qty = $productVariantsQty;
-            $product->save();
-        }
+        // foreach ($data['product_id'] as $key => $product_id) {
+        //     $productVariantsQty = ProductVariant::where('product_id', $product_id)->sum('qty');
+        //     $product = Product::find($product_id);
+        //     $product->qty = $productVariantsQty;
+        //     $product->save();
+        // }
 
         return redirect()->route('stock-count.index')->with('message', 'Stock Count created successfully! Please download the initial file to complete it.');
     }
@@ -167,43 +169,43 @@ class StockCountController extends Controller
         $stock_count->save();
 
         foreach ($stock_count->items as $key => $item) {
-            $product_variant = ProductVariant::where('item_code', $item->item_code)->first();
-            if ($product_variant) {
-                $product_variant->qty -= $item->updated_quantity;
-                $product_variant->save();
+            // $product_variant = ProductVariant::where('item_code', $item->item_code)->first();
+            // if ($product_variant) {
+            //     $product_variant->qty -= $item->updated_quantity;
+            //     $product_variant->save();
 
-                $product_variant->qty += $data['qty'][$key];
-                $product_variant->save();
-            }
-            $productVariant = explode('-', $item->item_code)[0];
-            $variant = Variant::where('name', $productVariant)->first();
-            if ($variant) {
-                $productWarehouse = Product_Warehouse::where('product_id', $item->product_id)
-                    ->where('variant_id', $variant->id)
-                    ->where('warehouse_id', $data['warehouse_id'])
-                    ->first();
-                if ($productWarehouse) {
-                    $productWarehouse->qty -= $item->updated_quantity;
-                    $productWarehouse->save();
+            //     $product_variant->qty += $data['qty'][$key];
+            //     $product_variant->save();
+            // }
+            // $productVariant = explode('-', $item->item_code)[0];
+            // $variant = Variant::where('name', $productVariant)->first();
+            // if ($variant) {
+            //     $productWarehouse = Product_Warehouse::where('product_id', $item->product_id)
+            //         ->where('variant_id', $variant->id)
+            //         ->where('warehouse_id', $data['warehouse_id'])
+            //         ->first();
+            //     if ($productWarehouse) {
+            //         $productWarehouse->qty -= $item->updated_quantity;
+            //         $productWarehouse->save();
 
-                    $productWarehouse->qty += $data['qty'][$key];
-                    $productWarehouse->save();
-                }
-            }
+            //         $productWarehouse->qty += $data['qty'][$key];
+            //         $productWarehouse->save();
+            //     }
+            // }
 
             $item->current_quantity = $data['current_qty'][$key];
             $item->updated_quantity = $data['qty'][$key];
             $item->save();
         }
 
-        $data['product_id'] = array_unique($data['product_id']);
+        // $data['product_id'] = array_unique($data['product_id']);
 
-        foreach ($data['product_id'] as $key => $product_id) {
-            $productVariantsQty = ProductVariant::where('product_id', $product_id)->sum('qty');
-            $product = Product::find($product_id);
-            $product->qty = $productVariantsQty;
-            $product->save();
-        }
+        // foreach ($data['product_id'] as $key => $product_id) {
+        //     $productVariantsQty = ProductVariant::where('product_id', $product_id)->sum('qty');
+        //     $product = Product::find($product_id);
+        //     $product->qty = $productVariantsQty;
+        //     $product->save();
+        // }
         return redirect()->route('stock-count.index')->with('message', 'Stock Count updated successfully!');
     }
 }
