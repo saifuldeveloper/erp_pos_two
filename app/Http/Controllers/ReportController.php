@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\Brand;
 use App\Models\ExpenseCategory;
 use App\Models\Employee;
 use App\Models\Product;
@@ -20,6 +21,7 @@ use App\Models\ReturnPurchase;
 use App\Models\ProductTransfer;
 use App\Models\PurchaseProductReturn;
 use App\Models\Payment;
+use App\Models\StockCount;
 use App\Models\Warehouse;
 use App\Models\Product_Warehouse;
 use App\Models\Expense;
@@ -4833,5 +4835,24 @@ class ReportController extends Controller
             $q = $q->where('supplier_id', $request->supplier_id);
         $lims_purchase_data = $q->get();
         return view('backend.report.supplier_due_report', compact('lims_purchase_data', 'start_date', 'end_date'));
+    }
+
+    public function stockCount(Request $request)
+    {
+        $lims_warehouse_list = Warehouse::get();
+        $lims_brand_list = Brand::get();
+        $lims_product_list = Product::select('id','name','code')->get();
+        $lims_stock_count_all = StockCount::orderBy('created_at', 'desc')
+        ->when($request->brand_id, function($q) use ($request) {
+            return $q->where('brand_id', $request->brand_id);
+        })
+        ->when($request->product_id, function($q) use ($request) {
+            return $q->where('product_id', $request->product_id);
+        })
+        ->when($request->warehouse_id, function($q) use ($request) {
+            return $q->where('warehouse_id', $request->warehouse_id);
+        })
+        ->get();
+        return view('backend.report.stock_count', compact('lims_stock_count_all', 'lims_brand_list', 'lims_product_list', 'lims_warehouse_list'));
     }
 }
