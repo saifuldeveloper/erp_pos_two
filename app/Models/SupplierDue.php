@@ -9,10 +9,15 @@ class SupplierDue extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['supplier_id', 'amount', 'note'];
+    protected $fillable = ['supplier_id', 'account_id', 'amount', 'note'];
 
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
+    }
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class);
     }
 }
