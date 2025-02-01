@@ -102,6 +102,33 @@ class SupplierController extends Controller
         return redirect()->back()->with('message', 'Due cleared successfully');
     }
 
+    public function dueClearList($supplier_id)
+    {
+        $lims_supplier_due_list = SupplierDue::where('supplier_id', $supplier_id)->get();
+        $lims_accounts = Account::where('is_active', true)->get();
+        $lims_supplier = Supplier::where('id', $supplier_id)->first();
+        return view('backend.supplier.due_clear_list', compact('lims_supplier_due_list', 'lims_accounts', 'lims_supplier'));
+    }
+
+    public function clearDueUpdate(Request $request, $id)
+    {
+        $lims_supplier_due = SupplierDue::findOrFail($id);
+        $lims_account = Account::find($lims_supplier_due->account_id);
+        $lims_account->total_balance += $lims_supplier_due->amount;
+        $lims_account->save();
+
+        $lims_supplier_due->account_id = $request->account_id;
+        $lims_supplier_due->amount = $request->amount;
+        $lims_supplier_due->note = $request->note;
+        $lims_supplier_due->save();
+
+        $lims_account = Account::find($request->account_id);
+        $lims_account->total_balance -= $request->amount;
+        $lims_account->save();
+
+        return redirect('suppliers/dueClear-list/'.$lims_supplier_due->supplier_id)->with('message', 'Due cleared updated successfully');
+    }
+
     public function create()
     {
         $role = Role::find(Auth::user()->role_id);

@@ -215,6 +215,8 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::post('importsupplier', 'importSupplier')->name('supplier.import');
         Route::post('supplier/deletebyselection', 'deleteBySelection');
         Route::post('suppliers/clear-due', 'clearDue')->name('supplier.clearDue');
+        Route::get('suppliers/dueClear-list/{supplier_id}', 'dueClearList')->name('supplier.dueClear.list');
+        Route::post('suppliers/clear-due-update/{id}', 'clearDueUpdate')->name('supplier.clearDue.update');
         Route::get('suppliers/all', 'suppliersAll')->name('supplier.all');
     });
     Route::resource('supplier', SupplierController::class)->except('show');

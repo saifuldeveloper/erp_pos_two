@@ -105,6 +105,12 @@
                                                 data-target="#clearDueModal"><i class="dripicons-brush"></i>
                                                 {{ trans('file.Clear Due') }}</button>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('supplier.dueClear.list', $supplier->id) }}"
+                                                class="btn btn-link"><i class="dripicons-document"></i>
+                                                Due Clear List
+                                            </a>
+                                        </li>
                                         <li class="divider"></li>
                                         @if (in_array('suppliers-delete', $all_permission))
                                             @if ($supplier->id !== 1)
@@ -149,7 +155,8 @@
                         <label for="account_id">Account *</label>
                         <select name="account_id" class="form-control" required>
                             @foreach ($lims_accounts as $account)
-                                <option value="{{ $account->id }}">{{ $account->name }} ({{ $account->total_balance }} Tk)</option>
+                                <option value="{{ $account->id }}">{{ $account->name }} ({{ $account->total_balance }}
+                                    Tk)</option>
                             @endforeach
                         </select>
                     </div>
