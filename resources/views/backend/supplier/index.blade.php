@@ -139,10 +139,19 @@
                 </div>
                 <div class="modal-body">
                     <p class="italic">
-                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small></p>
+                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
+                    </p>
                     <div class="form-group">
                         <label for="created_at">Date *</label>
                         <input type="date" name="created_at" class="form-control" required value="{{ date('Y-m-d') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="account_id">Account *</label>
+                        <select name="account_id" class="form-control" required>
+                            @foreach ($lims_accounts as $account)
+                                <option value="{{ $account->id }}">{{ $account->name }} ({{ $account->total_balance }} Tk)</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <input type="hidden" name="supplier_id">
@@ -173,7 +182,8 @@
                 </div>
                 <div class="modal-body">
                     <p class="italic">
-                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small></p>
+                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
+                    </p>
                     <p>{{ trans('file.The correct column order is') }} (name*, image, company_name*, vat_number, email*,
                         phone_number*, address*, city*,state, postal_code, country)
                         {{ trans('file.and you must follow this') }}.</p>

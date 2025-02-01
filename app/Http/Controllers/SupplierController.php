@@ -35,7 +35,8 @@ class SupplierController extends Controller
             if(empty($all_permission))
                 $all_permission[] = 'dummy text';
             $lims_supplier_all = Supplier::where('is_active', true)->get();
-            return view('backend.supplier.index',compact('lims_supplier_all', 'all_permission'));
+            $lims_accounts = Account::where('is_active', true)->get();
+            return view('backend.supplier.index',compact('lims_supplier_all', 'all_permission', 'lims_accounts'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -63,7 +64,6 @@ class SupplierController extends Controller
                 $cash_register_id = $lims_cash_register_data->id;
             else
                 $cash_register_id = null;
-            $account_data = Account::select('id')->where('is_default', 1)->first();
             if($total_paid_amount >= $due_amount) {
                 $paid_amount = $due_amount;
                 $payment_status = 2;
@@ -77,7 +77,7 @@ class SupplierController extends Controller
                 'purchase_id' => $purchase_data->id,
                 'user_id' => Auth::id(),
                 'cash_register_id' => $cash_register_id,
-                'account_id' => $account_data->id,
+                'account_id' => $request->account_id,
                 'amount' => $paid_amount,
                 'change' => 0,
                 'paying_method' => 'Cash',
@@ -91,9 +91,13 @@ class SupplierController extends Controller
 
         SupplierDue::create([
             'supplier_id' => $request->supplier_id,
+            'account_id' => $request->account_id,
             'amount' => $request->amount,
             'note' => $request->note
         ]);
+        $account = Account::find($request->account_id);
+        $account->total_balance -= $request->amount;
+        $account->save();
 
         return redirect()->back()->with('message', 'Due cleared successfully');
     }
