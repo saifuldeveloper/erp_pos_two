@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('supplier_id');
             $table->integer('account_id')->nullable();
             $table->decimal('amount', 15, 2)->default(0);
+            $table->json('payment_ids')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
         });
