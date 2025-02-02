@@ -18,6 +18,19 @@ return [
 	'Current Quantity' => 'বর্তমান পরিমাণ',
 	'Updated Quantity' => 'আপডেট পরিমাণ',
 
+	'Stock Count Report' => 'স্টক গণনা রিপোর্ট',
+	'Brand Wise Stock Count' => 'ব্র্যান্ড ভিত্তিক স্টক গণনা',
+	'Previous Quantity' => 'পূর্ববর্তী পরিমাণ',
+	'Total Price' => 'মোট মূল্য',
+	'Counted Quantity' => 'গণনা পরিমাণ',
+	'Counted Price' => 'গণনা মূল্য',
+	'Stock Count' => 'স্টক গণনা',
+	'Quantity Difference' => 'পরিমাণ পার্থক্য',
+	'Price Difference' => 'মূল্য পার্থক্য',
+	'Increased' => 'বেশি পেয়েছে ',
+	'Decreased' => 'কমেছে',
+	'Product' => 'পণ্য',
+
 	'purchase' => 'ক্রয়',
 
 	'discount' => 'ছাড়',

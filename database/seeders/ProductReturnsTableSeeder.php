@@ -433,6 +433,42 @@ class ProductReturnsTableSeeder extends Seeder
                 'created_at' => '2025-01-26 18:11:02',
                 'updated_at' => '2025-01-26 18:11:02',
             ),
+            23 => 
+            array (
+                'id' => 31,
+                'return_id' => 30,
+                'product_id' => 117,
+                'product_batch_id' => NULL,
+                'variant_id' => 53,
+                'imei_number' => NULL,
+                'qty' => 1.0,
+                'sale_unit_id' => 1,
+                'net_unit_price' => 1495.0,
+                'discount' => 0.0,
+                'tax_rate' => 0.0,
+                'tax' => 0.0,
+                'total' => 1495.0,
+                'created_at' => '2025-01-28 17:16:55',
+                'updated_at' => '2025-01-28 17:16:55',
+            ),
+            24 => 
+            array (
+                'id' => 32,
+                'return_id' => 31,
+                'product_id' => 117,
+                'product_batch_id' => NULL,
+                'variant_id' => 16,
+                'imei_number' => NULL,
+                'qty' => 1.0,
+                'sale_unit_id' => 1,
+                'net_unit_price' => 1495.0,
+                'discount' => 0.0,
+                'tax_rate' => 0.0,
+                'tax' => 0.0,
+                'total' => 1495.0,
+                'created_at' => '2025-01-30 11:28:50',
+                'updated_at' => '2025-01-30 11:28:50',
+            ),
         ));
         
         

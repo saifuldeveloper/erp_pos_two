@@ -1379,10 +1379,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 55,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1290.0,
                 'created_at' => '2024-12-12 07:36:14',
-                'updated_at' => '2025-01-18 11:41:40',
+                'updated_at' => '2025-01-27 22:10:59',
             ),
             105 => 
             array (
@@ -2783,10 +2783,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 78,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1490.0,
                 'created_at' => '2024-12-12 10:04:14',
-                'updated_at' => '2025-01-02 19:57:03',
+                'updated_at' => '2025-01-28 12:47:35',
             ),
             213 => 
             array (
@@ -3888,10 +3888,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 123,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 1490.0,
                 'created_at' => '2024-12-12 11:04:36',
-                'updated_at' => '2024-12-23 03:54:15',
+                'updated_at' => '2025-01-28 17:51:34',
             ),
             298 => 
             array (
@@ -4083,10 +4083,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 19,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 2490.0,
                 'created_at' => '2024-12-12 11:26:27',
-                'updated_at' => '2025-01-12 16:54:40',
+                'updated_at' => '2025-01-27 19:56:55',
             ),
             313 => 
             array (
@@ -5006,10 +5006,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 26,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 950.0,
                 'created_at' => '2024-12-23 04:34:31',
-                'updated_at' => '2024-12-31 17:36:49',
+                'updated_at' => '2025-01-27 13:51:11',
             ),
             384 => 
             array (
@@ -5760,10 +5760,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 183,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => NULL,
                 'created_at' => '2024-12-23 04:55:50',
-                'updated_at' => '2024-12-23 04:56:32',
+                'updated_at' => '2025-01-28 12:51:17',
             ),
             442 => 
             array (
@@ -6150,10 +6150,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 42,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2024-12-23 05:01:56',
-                'updated_at' => '2024-12-23 05:01:56',
+                'updated_at' => '2025-01-28 18:14:38',
             ),
             472 => 
             array (
@@ -7322,10 +7322,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 16,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'price' => 1495.0,
                 'created_at' => '2024-12-23 05:19:19',
-                'updated_at' => '2025-01-26 22:11:56',
+                'updated_at' => '2025-01-30 11:28:50',
             ),
             62 => 
             array (
@@ -7374,10 +7374,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 53,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'price' => 1495.0,
                 'created_at' => '2024-12-23 05:19:19',
-                'updated_at' => '2025-01-26 17:35:35',
+                'updated_at' => '2025-01-28 17:16:55',
             ),
             66 => 
             array (
@@ -8895,10 +8895,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 55,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2024-12-23 06:27:23',
-                'updated_at' => '2024-12-23 06:27:23',
+                'updated_at' => '2025-01-28 17:56:53',
             ),
             183 => 
             array (
@@ -9285,10 +9285,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 198,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 995.0,
                 'created_at' => '2024-12-23 06:33:36',
-                'updated_at' => '2024-12-23 06:33:36',
+                'updated_at' => '2025-01-30 11:53:32',
             ),
             213 => 
             array (
@@ -9480,10 +9480,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 204,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 825.0,
                 'created_at' => '2024-12-23 06:38:12',
-                'updated_at' => '2024-12-23 06:38:12',
+                'updated_at' => '2025-01-30 20:02:08',
             ),
             228 => 
             array (
@@ -10910,10 +10910,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 62,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 895.0,
                 'created_at' => '2024-12-23 06:59:04',
-                'updated_at' => '2024-12-23 06:59:04',
+                'updated_at' => '2025-01-28 19:17:29',
             ),
             338 => 
             array (
@@ -11378,10 +11378,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 54,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1395.0,
                 'created_at' => '2024-12-23 07:56:46',
-                'updated_at' => '2024-12-23 07:56:46',
+                'updated_at' => '2025-01-27 19:44:15',
             ),
             374 => 
             array (
@@ -13161,10 +13161,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 209,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1150.0,
                 'created_at' => '2024-12-23 09:47:47',
-                'updated_at' => '2024-12-23 09:47:47',
+                'updated_at' => '2025-01-27 15:06:43',
             ),
             11 => 
             array (
@@ -13460,10 +13460,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 19,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1150.0,
                 'created_at' => '2024-12-23 09:55:41',
-                'updated_at' => '2024-12-23 09:55:41',
+                'updated_at' => '2025-01-30 11:29:09',
             ),
             34 => 
             array (
@@ -13473,10 +13473,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 18,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1150.0,
                 'created_at' => '2024-12-23 09:55:41',
-                'updated_at' => '2024-12-23 09:55:41',
+                'updated_at' => '2025-01-27 17:05:25',
             ),
             35 => 
             array (
@@ -13486,10 +13486,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 17,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1150.0,
                 'created_at' => '2024-12-23 09:55:41',
-                'updated_at' => '2024-12-23 09:55:41',
+                'updated_at' => '2025-01-28 21:37:59',
             ),
             36 => 
             array (
@@ -14890,10 +14890,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 248,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => NULL,
                 'created_at' => '2024-12-23 11:01:38',
-                'updated_at' => '2024-12-23 11:03:01',
+                'updated_at' => '2025-01-30 20:28:48',
             ),
             144 => 
             array (
@@ -14942,10 +14942,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 248,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => NULL,
                 'created_at' => '2024-12-23 11:04:28',
-                'updated_at' => '2024-12-23 11:04:47',
+                'updated_at' => '2025-01-30 22:08:40',
             ),
             148 => 
             array (
@@ -15540,10 +15540,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 248,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => NULL,
                 'created_at' => '2024-12-23 11:20:16',
-                'updated_at' => '2024-12-23 11:20:42',
+                'updated_at' => '2025-01-30 11:29:09',
             ),
             194 => 
             array (
@@ -19297,10 +19297,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 206,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 3295.0,
                 'created_at' => '2024-12-23 15:15:29',
-                'updated_at' => '2024-12-23 15:15:29',
+                'updated_at' => '2025-01-30 14:57:59',
             ),
             483 => 
             array (
@@ -20300,10 +20300,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 39,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1495.0,
                 'created_at' => '2024-12-23 15:37:57',
-                'updated_at' => '2024-12-23 15:37:57',
+                'updated_at' => '2025-01-28 17:17:34',
             ),
             60 => 
             array (
@@ -22549,10 +22549,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 318,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2025-01-01 06:59:09',
-                'updated_at' => '2025-01-01 06:59:09',
+                'updated_at' => '2025-01-28 17:51:34',
             ),
             233 => 
             array (
@@ -22653,10 +22653,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 322,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2025-01-01 07:07:48',
-                'updated_at' => '2025-01-01 07:07:48',
+                'updated_at' => '2025-01-30 21:01:17',
             ),
             241 => 
             array (
@@ -22822,10 +22822,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 301,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1990.0,
                 'created_at' => '2025-01-01 11:24:07',
-                'updated_at' => '2025-01-14 19:43:17',
+                'updated_at' => '2025-01-27 20:21:19',
             ),
             254 => 
             array (
@@ -23732,10 +23732,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 354,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1290.0,
                 'created_at' => '2025-01-01 13:49:49',
-                'updated_at' => '2025-01-01 15:02:03',
+                'updated_at' => '2025-01-27 22:06:49',
             ),
             324 => 
             array (
@@ -24382,10 +24382,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 386,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 695.0,
                 'created_at' => '2025-01-01 15:41:35',
-                'updated_at' => '2025-01-12 15:04:48',
+                'updated_at' => '2025-01-27 11:49:36',
             ),
             374 => 
             array (
@@ -25799,10 +25799,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 442,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 350.0,
                 'created_at' => '2025-01-04 14:48:50',
-                'updated_at' => '2025-01-04 14:48:50',
+                'updated_at' => '2025-01-30 20:27:42',
             ),
             483 => 
             array (
@@ -25851,10 +25851,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 448,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 350.0,
                 'created_at' => '2025-01-04 15:05:08',
-                'updated_at' => '2025-01-04 15:05:08',
+                'updated_at' => '2025-01-28 12:40:04',
             ),
             487 => 
             array (
@@ -27114,10 +27114,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 534,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 135.0,
                 'created_at' => '2025-01-08 16:59:33',
-                'updated_at' => '2025-01-18 19:16:35',
+                'updated_at' => '2025-01-27 18:38:50',
             ),
             84 => 
             array (
@@ -27686,10 +27686,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 575,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1000.0,
                 'created_at' => '2025-01-08 18:36:16',
-                'updated_at' => '2025-01-18 19:16:26',
+                'updated_at' => '2025-01-27 16:20:30',
             ),
             128 => 
             array (
@@ -27712,10 +27712,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 573,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1000.0,
                 'created_at' => '2025-01-08 18:36:16',
-                'updated_at' => '2025-01-18 19:16:26',
+                'updated_at' => '2025-01-27 20:32:18',
             ),
             130 => 
             array (
@@ -27946,10 +27946,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 567,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 110.0,
                 'created_at' => '2025-01-08 18:49:37',
-                'updated_at' => '2025-01-18 19:16:22',
+                'updated_at' => '2025-01-30 11:21:34',
             ),
             148 => 
             array (
@@ -28089,10 +28089,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 568,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 120.0,
                 'created_at' => '2025-01-08 18:51:52',
-                'updated_at' => '2025-01-18 19:16:18',
+                'updated_at' => '2025-01-27 13:10:20',
             ),
             159 => 
             array (
@@ -28518,10 +28518,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 505,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 350.0,
                 'created_at' => '2025-01-14 12:17:28',
-                'updated_at' => '2025-01-18 19:13:48',
+                'updated_at' => '2025-01-30 20:28:48',
             ),
             192 => 
             array (
@@ -28726,10 +28726,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 338,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'price' => NULL,
                 'created_at' => '2025-01-19 19:56:31',
-                'updated_at' => '2025-01-25 16:16:38',
+                'updated_at' => '2025-01-30 11:21:34',
             ),
             208 => 
             array (
@@ -28739,10 +28739,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 387,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 695.0,
                 'created_at' => '2025-01-19 19:56:31',
-                'updated_at' => '2025-01-26 15:40:38',
+                'updated_at' => '2025-01-27 16:20:30',
             ),
             209 => 
             array (
@@ -28791,10 +28791,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 301,
                 'imei_number' => NULL,
                 'warehouse_id' => 1,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 795.0,
                 'created_at' => '2025-01-19 20:23:23',
-                'updated_at' => '2025-01-26 17:39:00',
+                'updated_at' => '2025-01-27 13:10:20',
             ),
             213 => 
             array (
@@ -30663,10 +30663,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 388,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => NULL,
                 'created_at' => '2025-01-22 14:06:47',
-                'updated_at' => '2025-01-22 14:07:08',
+                'updated_at' => '2025-01-28 18:57:55',
             ),
             357 => 
             array (
@@ -30676,10 +30676,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 355,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2025-01-22 14:06:47',
-                'updated_at' => '2025-01-22 14:06:47',
+                'updated_at' => '2025-01-28 18:57:55',
             ),
             358 => 
             array (
@@ -30689,10 +30689,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 354,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2025-01-22 14:06:47',
-                'updated_at' => '2025-01-22 14:06:47',
+                'updated_at' => '2025-01-28 18:57:55',
             ),
             359 => 
             array (
@@ -30702,10 +30702,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 353,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2025-01-22 14:06:47',
-                'updated_at' => '2025-01-22 14:06:47',
+                'updated_at' => '2025-01-28 18:57:55',
             ),
             360 => 
             array (
@@ -30715,10 +30715,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 352,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2025-01-22 14:06:47',
-                'updated_at' => '2025-01-22 14:06:47',
+                'updated_at' => '2025-01-28 18:53:32',
             ),
             361 => 
             array (
@@ -30728,10 +30728,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 351,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1055.0,
                 'created_at' => '2025-01-22 14:06:47',
-                'updated_at' => '2025-01-22 14:06:47',
+                'updated_at' => '2025-01-28 18:57:55',
             ),
             362 => 
             array (
@@ -33876,10 +33876,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 602,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 895.0,
                 'created_at' => '2025-01-22 16:11:42',
-                'updated_at' => '2025-01-22 16:11:42',
+                'updated_at' => '2025-01-30 14:23:10',
             ),
             104 => 
             array (
@@ -37100,10 +37100,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 179,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 825.0,
                 'created_at' => '2025-01-22 18:22:36',
-                'updated_at' => '2025-01-22 18:22:36',
+                'updated_at' => '2025-01-28 19:28:40',
             ),
             352 => 
             array (
@@ -40768,10 +40768,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 10,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => NULL,
                 'created_at' => '2025-01-23 12:24:24',
-                'updated_at' => '2025-01-23 18:38:31',
+                'updated_at' => '2025-01-27 18:51:55',
             ),
             134 => 
             array (
@@ -40807,10 +40807,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 7,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 3150.0,
                 'created_at' => '2025-01-23 12:24:24',
-                'updated_at' => '2025-01-23 18:38:31',
+                'updated_at' => '2025-01-28 16:54:59',
             ),
             137 => 
             array (
@@ -40872,10 +40872,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 32,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 3150.0,
                 'created_at' => '2025-01-23 12:30:21',
-                'updated_at' => '2025-01-23 18:36:52',
+                'updated_at' => '2025-01-28 16:51:15',
             ),
             142 => 
             array (
@@ -41392,10 +41392,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 74,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 1290.0,
                 'created_at' => '2025-01-23 12:46:28',
-                'updated_at' => '2025-01-23 12:46:28',
+                'updated_at' => '2025-01-27 18:45:45',
             ),
             182 => 
             array (
@@ -41457,10 +41457,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 24,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 3890.0,
                 'created_at' => '2025-01-23 12:47:29',
-                'updated_at' => '2025-01-23 14:48:16',
+                'updated_at' => '2025-01-27 18:35:13',
             ),
             187 => 
             array (
@@ -41626,10 +41626,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 16,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 2690.0,
                 'created_at' => '2025-01-23 12:49:45',
-                'updated_at' => '2025-01-23 12:49:45',
+                'updated_at' => '2025-01-27 18:51:55',
             ),
             200 => 
             array (
@@ -41951,10 +41951,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 21,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 1890.0,
                 'created_at' => '2025-01-23 12:55:38',
-                'updated_at' => '2025-01-23 12:55:38',
+                'updated_at' => '2025-01-27 18:33:02',
             ),
             225 => 
             array (
@@ -42445,10 +42445,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 66,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 2090.0,
                 'created_at' => '2025-01-23 13:04:20',
-                'updated_at' => '2025-01-23 13:04:20',
+                'updated_at' => '2025-01-28 19:00:19',
             ),
             263 => 
             array (
@@ -42718,10 +42718,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 40,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 2090.0,
                 'created_at' => '2025-01-23 13:09:01',
-                'updated_at' => '2025-01-23 13:09:01',
+                'updated_at' => '2025-01-27 18:51:55',
             ),
             284 => 
             array (
@@ -42731,10 +42731,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 39,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'price' => 2090.0,
                 'created_at' => '2025-01-23 13:09:01',
-                'updated_at' => '2025-01-23 13:09:01',
+                'updated_at' => '2025-01-27 18:51:55',
             ),
             285 => 
             array (
@@ -42822,10 +42822,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 57,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'price' => 790.0,
                 'created_at' => '2025-01-23 13:15:57',
-                'updated_at' => '2025-01-23 13:15:57',
+                'updated_at' => '2025-01-27 18:44:15',
             ),
             292 => 
             array (
@@ -50637,10 +50637,10 @@ class ProductWarehouseTableSeeder extends Seeder
                 'variant_id' => 248,
                 'imei_number' => NULL,
                 'warehouse_id' => 4,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'price' => 1555.0,
                 'created_at' => '2025-01-23 23:36:03',
-                'updated_at' => '2025-01-23 23:36:03',
+                'updated_at' => '2025-01-30 17:41:53',
             ),
             393 => 
             array (
@@ -52164,6 +52164,266 @@ class ProductWarehouseTableSeeder extends Seeder
                 'price' => 1190.0,
                 'created_at' => '2025-01-24 00:34:10',
                 'updated_at' => '2025-01-24 00:34:10',
+            ),
+            10 => 
+            array (
+                'id' => 4011,
+                'product_id' => '648',
+                'product_batch_id' => NULL,
+                'variant_id' => 57,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:29:44',
+                'updated_at' => '2025-01-27 18:44:53',
+            ),
+            11 => 
+            array (
+                'id' => 4012,
+                'product_id' => '634',
+                'product_batch_id' => NULL,
+                'variant_id' => 21,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:33:02',
+                'updated_at' => '2025-01-27 18:34:32',
+            ),
+            12 => 
+            array (
+                'id' => 4013,
+                'product_id' => '627',
+                'product_batch_id' => NULL,
+                'variant_id' => 24,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:35:13',
+                'updated_at' => '2025-01-27 18:38:50',
+            ),
+            13 => 
+            array (
+                'id' => 4014,
+                'product_id' => '626',
+                'product_batch_id' => NULL,
+                'variant_id' => 74,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:45:45',
+                'updated_at' => '2025-01-27 18:46:49',
+            ),
+            14 => 
+            array (
+                'id' => 4015,
+                'product_id' => '646',
+                'product_batch_id' => NULL,
+                'variant_id' => 40,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:51:55',
+                'updated_at' => '2025-01-27 18:56:57',
+            ),
+            15 => 
+            array (
+                'id' => 4016,
+                'product_id' => '646',
+                'product_batch_id' => NULL,
+                'variant_id' => 39,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:51:55',
+                'updated_at' => '2025-01-27 18:55:57',
+            ),
+            16 => 
+            array (
+                'id' => 4017,
+                'product_id' => '616',
+                'product_batch_id' => NULL,
+                'variant_id' => 10,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:51:55',
+                'updated_at' => '2025-01-27 18:55:02',
+            ),
+            17 => 
+            array (
+                'id' => 4018,
+                'product_id' => '629',
+                'product_batch_id' => NULL,
+                'variant_id' => 16,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-27 18:51:55',
+                'updated_at' => '2025-01-27 18:54:11',
+            ),
+            18 => 
+            array (
+                'id' => 4019,
+                'product_id' => '617',
+                'product_batch_id' => NULL,
+                'variant_id' => 32,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 1.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 16:51:15',
+                'updated_at' => '2025-01-28 16:51:15',
+            ),
+            19 => 
+            array (
+                'id' => 4020,
+                'product_id' => '616',
+                'product_batch_id' => NULL,
+                'variant_id' => 7,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 16:54:59',
+                'updated_at' => '2025-01-28 16:56:33',
+            ),
+            20 => 
+            array (
+                'id' => 4021,
+                'product_id' => '473',
+                'product_batch_id' => NULL,
+                'variant_id' => 352,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 18:53:32',
+                'updated_at' => '2025-01-28 18:54:36',
+            ),
+            21 => 
+            array (
+                'id' => 4022,
+                'product_id' => '473',
+                'product_batch_id' => NULL,
+                'variant_id' => 351,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 1.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 18:57:55',
+                'updated_at' => '2025-01-28 18:57:55',
+            ),
+            22 => 
+            array (
+                'id' => 4023,
+                'product_id' => '473',
+                'product_batch_id' => NULL,
+                'variant_id' => 353,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 1.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 18:57:55',
+                'updated_at' => '2025-01-28 18:57:55',
+            ),
+            23 => 
+            array (
+                'id' => 4024,
+                'product_id' => '473',
+                'product_batch_id' => NULL,
+                'variant_id' => 354,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 1.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 18:57:55',
+                'updated_at' => '2025-01-28 18:57:55',
+            ),
+            24 => 
+            array (
+                'id' => 4025,
+                'product_id' => '473',
+                'product_batch_id' => NULL,
+                'variant_id' => 355,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 1.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 18:57:55',
+                'updated_at' => '2025-01-28 18:57:55',
+            ),
+            25 => 
+            array (
+                'id' => 4026,
+                'product_id' => '473',
+                'product_batch_id' => NULL,
+                'variant_id' => 388,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 1.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 18:57:55',
+                'updated_at' => '2025-01-28 18:57:55',
+            ),
+            26 => 
+            array (
+                'id' => 4027,
+                'product_id' => '642',
+                'product_batch_id' => NULL,
+                'variant_id' => 66,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 19:00:19',
+                'updated_at' => '2025-01-28 19:01:31',
+            ),
+            27 => 
+            array (
+                'id' => 4028,
+                'product_id' => '557',
+                'product_batch_id' => NULL,
+                'variant_id' => 179,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-28 19:28:40',
+                'updated_at' => '2025-01-28 19:29:27',
+            ),
+            28 => 
+            array (
+                'id' => 4029,
+                'product_id' => '515',
+                'product_batch_id' => NULL,
+                'variant_id' => 602,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-30 14:23:10',
+                'updated_at' => '2025-01-30 14:24:29',
+            ),
+            29 => 
+            array (
+                'id' => 4030,
+                'product_id' => '762',
+                'product_batch_id' => NULL,
+                'variant_id' => 248,
+                'imei_number' => NULL,
+                'warehouse_id' => 1,
+                'qty' => 0.0,
+                'price' => NULL,
+                'created_at' => '2025-01-30 17:41:53',
+                'updated_at' => '2025-01-30 17:43:15',
             ),
         ));
         

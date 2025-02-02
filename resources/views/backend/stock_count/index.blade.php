@@ -79,11 +79,11 @@
                         <th>{{ trans('file.reference') }}</th>
                         <th>{{ trans('file.Date') }}</th>
                         <th>{{ trans('file.Warehouse') }}</th>
-                        <th>Product</th>
-                        <th>Current Quantity</th>
-                        <th>Total Price</th>
-                        <th>Updated Quantity</th>
-                        <th>Total Price</th>
+                        <th>{{ trans('file.Product') }}</th>
+                        <th>{{  trans('file.Previous Quantity') }}</th>
+                        <th>{{  trans('file.Total Price') }}</th>
+                        <th>{{  trans('file.Counted Quantity') }}</th>
+                        <th>{{  trans('file.Counted Price') }}</th>
                         <th class="not-exported">{{ trans('file.action') }}</th>
                     </tr>
                 </thead>
@@ -141,7 +141,7 @@
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="show-stock-count">Stock Count
+                                        <h4 class="modal-title" id="show-stock-count">{{  trans('file.Stock Count') }}
                                             ({{ $stock_count->reference_no }})
                                         </h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -152,8 +152,8 @@
                                         <div class="row mb-2 text-center">
                                             <div class="col-md-3"><strong>{{ trans('file.Product') }}</strong></div>
                                             <div class="col-md-3"><strong>{{ trans('file.Item Code') }}</strong></div>
-                                            <div class="col-md-3"><strong>Current Quantity</strong></div>
-                                            <div class="col-md-3"><strong>Updated Quantity</strong></div>
+                                            <div class="col-md-3"><strong>{{  trans('file.Previous Quantity') }}</strong></div>
+                                            <div class="col-md-3"><strong>{{  trans('file.Counted Quantity') }}</strong></div>
                                         </div>
                                         @foreach ($stock_count->items as $item)
                                             <div class="row mb-2 text-center">

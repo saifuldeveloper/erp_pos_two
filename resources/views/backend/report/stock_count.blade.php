@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header mt-2">
-                    <h3 class="text-center">Stock Count Report</h3>
+                    <h3 class="text-center"> {{ trans('file.Stock Count Report') }}</h3>
                 </div>
                 {!! Form::open(['route' => 'report.stockCount', 'method' => 'get']) !!}
                 <div class="row ml-1 mt-2">
@@ -43,7 +43,7 @@
             @if (count($lims_stock_count_all) > 0)
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center">Brand Wise Stock Count</h3>
+                        <h3 class="text-center">{{ trans('file.Brand Wise Stock Count') }}</h3>
                     </div>
                     <div class="card-body">
                         @php
@@ -54,11 +54,11 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Brand</th>
-                                            <th>Previous Quantity</th>
-                                            <th>Total Price</th>
-                                            <th>Updated Quantity</th>
-                                            <th>Total Price</th>
+                                            <th>{{ trans('file.Brand') }}</th>
+                                            <th>{{  trans('file.Previous Quantity') }}</th>
+                                            <th>{{  trans('file.Total Price') }}</th>
+                                            <th>{{ trans('file.Counted Quantity') }}</th>
+                                            <th>{{  trans('file.Counted Price') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center">Stock Count</h3>
+                        <h3 class="text-center">{{  trans('file.Stock Count') }}</h3>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -115,28 +115,32 @@
                                     }
                                 @endphp
                                 <tr>
-                                    <th>Previous Quantity</th>
+                                    <th>{{ trans('file.Previous Quantity') }}</th>
                                     <th>{{ $current_quantity }}</th>
                                 </tr>
                                 <tr>
-                                    <th>Total Price</th>
+                                    <th>{{ trans('file.Total Price') }}</th>
                                     <th>{{ $total_before_update }}</th>
                                 </tr>
                                 <tr>
-                                    <th>Updated Quantity</th>
+                                    <th>{{ trans('file.Counted Quantity') }}</th>
                                     <th>{{ $updated_quantity }}</th>
                                 </tr>
                                 <tr>
-                                    <th>Total Price</th>
+                                    <th>{{ trans('file.Counted Price') }}</th>
                                     <th>{{ $total_after_update }}</th>
                                 </tr>
                                 <tr></tr>
                                 <tr>
-                                    <th>Quantity Difference</th>
-                                    <th>{{ abs($updated_quantity - $current_quantity) }} {{ $updated_quantity > $current_quantity ? 'Increased' : 'Decreased' }}</th>
+                                    <th>{{ trans('file.Quantity Difference') }}</th>
+                                    
+                                    <th>
+                                        {{ abs($updated_quantity - $current_quantity) }} 
+                                        {{ $updated_quantity > $current_quantity ? trans('file.Increased') : trans('file.Decreased') }}
+                                    </th>
                                 </tr>
                                 <tr>
-                                    <th>Price Difference</th>
+                                    <th>{{ trans('file.Price Difference') }}</th>
                                     <th>{{ abs($total_after_update - $total_before_update) }}</th>
                                 </tr>
                             </table>

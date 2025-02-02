@@ -608,7 +608,7 @@
                         @endif
                         <li id="stock-count-report-menu">
                             <a href="{{ route('report.stockCount') }}">
-                                Stock Count Report
+                               {{ trans('file.Stock Count Report') }}
                             </a>
                         </li>
                         {{-- @if ($dso_report_active)
