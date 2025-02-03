@@ -42,11 +42,11 @@
         </div>
     </div>
     <ul class="nav nav-tabs ml-4 mt-3" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" href="#supplier-payments" role="tab" data-toggle="tab">{{trans('file.Payment')}}</a>
+          </li>
       <li class="nav-item">
-        <a class="nav-link active" href="#supplier-purchase" role="tab" data-toggle="tab">{{trans('file.Purchase')}}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#supplier-payments" role="tab" data-toggle="tab">{{trans('file.Payment')}}</a>
+        <a class="nav-link" href="#supplier-purchase" role="tab" data-toggle="tab">{{trans('file.Purchase')}}</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#supplier-return" role="tab" data-toggle="tab">{{trans('file.Return')}}</a>
@@ -56,7 +56,35 @@
       </li>
     </ul>
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade show active" id="supplier-purchase">
+
+        <div role="tabpanel" class="tab-pane fade show active" id="supplier-payments">
+            <div class="table-responsive mb-4">
+                <table id="payment-table" class="table table-hover" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th class="not-exported-payment"></th>
+                            <th>{{trans('file.Date')}}</th>
+                            <th>{{trans('file.Payment Reference')}}</th>
+                            <th>{{trans('file.Purchase Reference')}}</th>
+                            <th>{{trans('file.Amount')}}</th>
+                            <th>{{trans('file.Paid Method')}}</th>
+                        </tr>
+                    </thead>
+                    <tfoot class="tfoot active">
+                        <tr>
+                            <th></th>
+                            <th>{{trans('file.Total')}}</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="supplier-purchase">
             <div class="table-responsive mb-4">
                 <table id="purchase-table" class="table table-hover" style="width: 100%">
                     <thead>
@@ -89,32 +117,7 @@
             </div>
         </div>
 
-        <div role="tabpanel" class="tab-pane fade" id="supplier-payments">
-            <div class="table-responsive mb-4">
-                <table id="payment-table" class="table table-hover" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th class="not-exported-payment"></th>
-                            <th>{{trans('file.Date')}}</th>
-                            <th>{{trans('file.Payment Reference')}}</th>
-                            <th>{{trans('file.Purchase Reference')}}</th>
-                            <th>{{trans('file.Amount')}}</th>
-                            <th>{{trans('file.Paid Method')}}</th>
-                        </tr>
-                    </thead>
-                    <tfoot class="tfoot active">
-                        <tr>
-                            <th></th>
-                            <th>{{trans('file.Total')}}</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
+
 
         <div role="tabpanel" class="tab-pane fade" id="supplier-return">
             <div class="table-responsive mb-4">
