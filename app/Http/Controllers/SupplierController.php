@@ -205,6 +205,28 @@ class SupplierController extends Controller
         return redirect('suppliers/dueClear-list/' . $lims_supplier_due->supplier_id)->with('message', 'Due cleared updated successfully');
     }
 
+    public function clearDueDelete($id)
+    {
+        $lims_supplier_due = SupplierDue::findOrFail($id);
+        $lims_account = Account::find($lims_supplier_due->account_id);
+        $lims_account->total_balance += $lims_supplier_due->amount;
+        $lims_account->save();
+
+        $payment_ids = json_decode($lims_supplier_due->payment_ids);
+
+        foreach ($payment_ids as $payment_id) {
+            $old_payment = Payment::find($payment_id);
+            $purchase = Purchase::find($old_payment->purchase_id);
+            $purchase->paid_amount -= $old_payment->amount;
+            $purchase->payment_status = 1;
+            $purchase->save();
+            $old_payment->delete();
+        }
+
+        $lims_supplier_due->delete();
+        return redirect()->back()->with('message', 'Due cleared deleted successfully');
+    }
+
     public function create()
     {
         $role = Role::find(Auth::user()->role_id);
