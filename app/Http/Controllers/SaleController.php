@@ -301,6 +301,7 @@ class SaleController extends Controller
                 else
                     $nestedData['delivery_status'] = 'N/A';
 
+                $nestedData['total_quantity'] = $sale->total_qty;
                 $nestedData['grand_total'] = number_format($sale->grand_total, config('decimal'));
                 $returned_amount = DB::table('returns')->where('sale_id', $sale->id)->sum('grand_total');
                 $nestedData['returned_amount'] = number_format($returned_amount, config('decimal'));
@@ -364,7 +365,7 @@ class SaleController extends Controller
                 else
                  $currency_code = 'N/A';
 
-                $nestedData['sale'] = array( 
+                $nestedData['sale'] = array(
                 '[ "'.date(config('date_format') . ' (h:i A)', strtotime($sale->created_at)).'"',
                  ' "'.$sale->reference_no.'"',
                  ' "'.$sale_status.'"',
@@ -383,16 +384,16 @@ class SaleController extends Controller
                  ' "'.$sale->total_discount.'"',
                  ' "'.$sale->total_price.'"',
                  ' "'.$sale->order_tax.'"',
-                 ' "'.$sale->order_tax_rate.'"', 
-                 ' "'.$sale->order_discount.'"', 
-                 ' "'.$sale->shipping_cost.'"', 
-                 ' "'.$sale->grand_total.'"', 
-                 ' "'.$sale->paid_amount.'"', 
-                 ' "'.preg_replace('/[\n\r]/', "<br>", $sale->sale_note).'"', 
+                 ' "'.$sale->order_tax_rate.'"',
+                 ' "'.$sale->order_discount.'"',
+                 ' "'.$sale->shipping_cost.'"',
+                 ' "'.$sale->grand_total.'"',
+                 ' "'.$sale->paid_amount.'"',
+                 ' "'.preg_replace('/[\n\r]/', "<br>", $sale->sale_note).'"',
                  ' "'.preg_replace('/[\n\r]/', "<br>", $sale->staff_note).'"',
                  ' "'.$sale->user->name.'"',
                  ' "'.$sale->user->email.'"',
-                 ' "'.$sale->warehouse->name.'"', 
+                 ' "'.$sale->warehouse->name.'"',
                  ' "'.$coupon_code.'"',
                  ' "'.$sale->coupon_discount.'"',
                  ' "'.$sale->document.'"',
@@ -401,7 +402,7 @@ class SaleController extends Controller
                  ' "'.$sale->order_discount_type.'"',
                  ' "'.$sale->order_discount_value.'"]'
                 );
-             
+
 
                 $data[] = $nestedData;
             }
@@ -484,7 +485,7 @@ class SaleController extends Controller
                 $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at'] . ' ' . date('H:i:s')));
             else
                 $data['created_at'] = date("Y-m-d H:i:s");
-            
+
             if($data['pos']) {
                 if(!isset($data['reference_no']))
                     $data['reference_no'] = 'posr-' . date("Ymd") . '-'. date("his");
