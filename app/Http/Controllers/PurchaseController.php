@@ -221,6 +221,7 @@ class PurchaseController extends Controller
                 else
                     $nestedData['payment_status'] = '<div class="badge badge-success">' . trans('file.Paid') . '</div>';
 
+                $nestedData['total_qty'] = $purchase->total_qty;
                 $nestedData['grand_total'] = number_format($purchase->grand_total, config('decimal'));
                 $returned_amount = DB::table('return_purchases')->where('purchase_id', $purchase->id)->sum('grand_total');
                 $nestedData['returned_amount'] = number_format($returned_amount, config('decimal'));
@@ -464,7 +465,7 @@ class PurchaseController extends Controller
             $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at']));
         else
             $data['created_at'] = date("Y-m-d H:i:s");
-    
+
         $lims_purchase_data = Purchase::create($data);
         //inserting data for custom fields
         $custom_field_data = [];
@@ -862,7 +863,7 @@ class PurchaseController extends Controller
             if (isset($data['created_at']))
             $data['created_at'] = date("Y-m-d H:i:s", strtotime($data['created_at']));
            else
-     
+
             $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
 
             $product_id = $data['product_id'];
@@ -1369,12 +1370,12 @@ class PurchaseController extends Controller
                     $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($lims_product_data->id, $product_purchase_data->variant_id)->first();
                     $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_purchase_data->product_id, $product_purchase_data->variant_id, $lims_purchase_data->warehouse_id)
                         ->first();
-                    // $lims_product_batch_data->qty -= $recieved_qty;  
+                    // $lims_product_batch_data->qty -= $recieved_qty;
                     if ($lims_product_variant_data) {
                         $lims_product_variant_data->qty = ($lims_product_variant_data->qty ?? 0) - $recieved_qty;
                         $lims_product_variant_data->save();
                     }
-    
+
                 } elseif ($product_purchase_data->product_batch_id) {
                     $lims_product_batch_data = ProductBatch::find($product_purchase_data->product_batch_id);
                     $lims_product_warehouse_data = Product_Warehouse::where([
