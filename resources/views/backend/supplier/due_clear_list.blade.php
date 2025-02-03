@@ -49,6 +49,13 @@
                                             </button>
                                         </li>
                                         <li class="divider"></li>
+                                        {{ Form::open(['route' => ['supplier.clearDue.delete', $supplier_due->id], 'method' => 'DELETE']) }}
+                                        <li>
+                                            <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i
+                                                    class="dripicons-trash"></i>
+                                                {{ trans('file.delete') }}</button>
+                                        </li>
+                                        {{ Form::close() }}
                                     </ul>
                                 </div>
                             </td>
