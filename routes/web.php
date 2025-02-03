@@ -474,6 +474,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
             Route::post('customer-group-return-data', 'customerGroupReturnData');
             Route::post('supplier', 'supplierReport')->name('report.supplier');
             Route::post('supplier-purchase-data', 'supplierPurchaseData');
+            Route::post('supplier-payment', 'supplierPayment');
             Route::post('supplier-payment-data', 'supplierPaymentData');
             Route::post('supplier-return-data', 'supplierReturnData');
             Route::post('supplier-quotation-data', 'supplierQuotationData');

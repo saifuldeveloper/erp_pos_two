@@ -4404,6 +4404,93 @@ class ReportController extends Controller
         echo json_encode($json_data);
     }
 
+    public function supplierPayment(Request $request)
+    {
+        $columns = array(
+            1 => 'created_at',
+        );
+        $q = DB::table('supplier_dues')
+            ->join('accounts', 'supplier_dues.account_id', '=', 'accounts.id')
+            ->join('suppliers', 'supplier_dues.supplier_id', '=', 'suppliers.id')
+            ->where('supplier_dues.supplier_id', $request->input('supplier_id'))
+            ->whereDate('supplier_dues.created_at', '>=' , $request->input('start_date'))
+            ->whereDate('supplier_dues.created_at', '<=' , $request->input('end_date'));
+
+        $totalData = $q->count();
+        $totalFiltered = $totalData;
+
+        if($request->input('length') != -1)
+            $limit = $request->input('length');
+        else
+            $limit = $totalData;
+
+        $start = $request->input('start');
+        $order = 'supplier_dues.'.$columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+        $q = $q->select('supplier_dues.*', 'accounts.name as account_name', 'suppliers.name as supplier_name')
+            ->offset($start)
+            ->limit($limit)
+            ->orderBy($order, $dir);
+
+        if(empty($request->input('search.value'))) {
+            $supplier_dues = $q->get();
+        }
+        else
+        {
+            $search = $request->input('search.value');
+            $q = $q->whereDate('supplier_dues.created_at', '=' , date('Y-m-d', strtotime(str_replace('/', '-', $search))));
+            if(Auth::user()->role_id > 2 && config('staff_access') == 'own') {
+                $supplier_dues =  $q->orwhere([
+                                ['supplier_dues.note', 'LIKE', "%{$search}%"],
+                                ['supplier_dues.user_id', Auth::id()]
+                            ])
+                            ->orwhere([
+                                ['supplier_dues.created_at', 'LIKE', "%{$search}%"],
+                                ['supplier_dues.user_id', Auth::id()]
+                            ])
+                            ->get();
+                $totalFiltered = $q->orwhere([
+                                    ['supplier_dues.note', 'LIKE', "%{$search}%"],
+                                    ['supplier_dues.user_id', Auth::id()]
+                                ])
+                                ->orwhere([
+                                    ['supplier_dues.created_at', 'LIKE', "%{$search}%"],
+                                    ['supplier_dues.user_id', Auth::id()]
+                                ])
+                                ->count();
+            }
+            else {
+                $supplier_dues =  $q->orwhere('supplier_dues.created_at', 'LIKE', "%{$search}%")->orwhere('supplier_dues.note', 'LIKE', "%{$search}%")->get();
+                $totalFiltered = $q->orwhere('supplier_dues.created_at', 'LIKE', "%{$search}%")->orwhere('supplier_dues.note', 'LIKE', "%{$search}%")->count();
+            }
+        }
+
+        $data = array();
+        if(!empty($supplier_dues))
+        {
+            foreach ($supplier_dues as $key => $supplier_due)
+            {
+                $nestedData['id'] = $supplier_due->id;
+                $nestedData['key'] = $key;
+                $nestedData['date'] = date(config('date_format'), strtotime($supplier_due->created_at));
+                $nestedData['account'] = $supplier_due->account_name;
+                $nestedData['supplier'] = $supplier_due->supplier_name;
+                $nestedData['amount'] = number_format($supplier_due->amount, cache()->get('general_setting')->decimal);
+                $nestedData['note'] = $supplier_due->note;
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),
+            "recordsTotal"    => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data"            => $data
+        );
+
+        echo json_encode($json_data);
+    }
+
     public function supplierPaymentData(Request $request)
     {
         $columns = array(
