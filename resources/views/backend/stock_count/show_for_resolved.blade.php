@@ -38,7 +38,7 @@
                                             @endphp
                                             <tr>
                                                 <td>{{ $item->product->name }}</td>
-                                                <td>{{ $item->product->code }}</td>
+                                                <td>{{ $item->item_code }}</td>
                                                 <td>{{ $item->current_quantity }}</td>
                                                 <td>
                                                     @php
@@ -67,16 +67,16 @@
                                                 <td>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="resolved[{{ $item->id }}]"
-                                                            id="add_stock-{{ $item->id }}" value="add_stock">
-                                                        <label class="form-check label" for="add_stock-{{ $item->id }}"
+                                                            name="resolved[{{ $item->item_code }}]"
+                                                            id="update_stock-{{ $item->id }}" value="update_stock">
+                                                        <label class="form-check label" for="update_stock-{{ $item->id }}"
                                                             style="margin-right: 10px;">
-                                                            Add Stock
+                                                            Update Stock
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio"
-                                                            name="resolved[{{ $item->id }}]"
+                                                            name="resolved[{{ $item->item_code }}]"
                                                             id="cancel-{{ $item->id }}" value="cancel">
                                                         <label class="form-check label" for="cancel-{{ $item->id }}"
                                                             style="margin-right: 10px;">

@@ -2,55 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\StockCount;
 use Illuminate\Http\Request;
-use App\Models\Warehouse;
 use App\Models\Product;
-use App\Models\Brand;
-use App\Models\Product_Warehouse;
 use App\Models\ProductVariant;
-use App\Models\Variant;
 use DB;
 use Auth;
 use Spatie\Permission\Models\Role;
 
 class StockCountController extends Controller
 {
-    public function index(Request $request)
-    {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('stock_count')) {
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $general_setting = DB::table('general_settings')->latest()->first();
-            $lims_stock_count_all = StockCount::orderBy('id', 'desc')
-                ->when($request->starting_date, function ($q) use ($request) {
-                    return $q->whereDate('created_at', '>=', $request->starting_date);
-                })
-                ->when($request->ending_date, function ($q) use ($request) {
-                    return $q->whereDate('created_at', '<=', $request->ending_date);
-                })
-                ->get();
-            $count = [];
-            $total_qty = 0;
-            $total_price = 0;
-            $total_cost = 0;
-            foreach ($lims_stock_count_all as $stock_count) {
-                foreach ($stock_count->items as $item) {
-                    $product = $item->product;
-                    $total_qty += $product->qty;
-                    $total_price += $product->price * $product->qty;
-                    $total_cost += $product->cost * $product->qty;
-                }
-            }
-            $count['total_qty'] = $total_qty;
-            $count['total_price'] = $total_price;
-            $count['total_cost'] = $total_cost;
-            return view('backend.stock_count.index', compact('lims_warehouse_list', 'lims_stock_count_all', 'count'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
-    }
-
     public function create()
     {
         $role = Role::find(Auth::user()->role_id);
@@ -112,21 +73,10 @@ class StockCountController extends Controller
         return redirect()->route('stock-count.show', $stock_count->id);
     }
 
-    public function edit($id)
-    {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('stock_count')) {
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_stock_count = StockCount::find($id);
-            return view('backend.stock_count.edit', compact('lims_warehouse_list', 'lims_stock_count'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
-    }
-
     public function update(Request $request, $id)
     {
+        $stock_count = StockCount::find($id);
         if ($request->status == 'add') {
-            $stock_count = StockCount::find($id);
             foreach ($request['product_code'] as $key => $product_code) {
                 if ($request['qty'][$key] == 0) {
                     continue;
@@ -142,11 +92,32 @@ class StockCountController extends Controller
                 ]);
             }
         } elseif ($request->status == 'complete') {
-            $stock_count = StockCount::find($id);
             $stock_count->is_completed = true;
+            $stock_count->completed_by = Auth::user()->id;
             $stock_count->save();
         }elseif ($request->status == 'resolved') {
-            dd($request->all());
+            foreach ($request->resolved as $key => $value) {
+                if($value == 'update_stock'){
+                    $items = $stock_count->items->where('item_code', $key)->all();
+                    $updated_qty = 0;
+                    foreach ($items as $item) {
+                        $updated_qty += $item->updated_quantity;
+                        $current_qty = $item->current_quantity;
+                    }
+                    $productVariant = ProductVariant::where('item_code', $key)->first();
+                    $productVariant->qty = $updated_qty;
+                    $productVariant->save();
+
+                    $product = Product::find($productVariant->product_id);
+                    $product->qty += ($updated_qty - $current_qty);
+                    $product->save();
+                }
+            }
+            $stock_count->is_resolved = true;
+            $stock_count->resolved_by = Auth::user()->id;
+            $stock_count->save();
+
+            return redirect('/dashboard');
         }
 
         return redirect()->route('stock-count.show', $id);
@@ -161,8 +132,10 @@ class StockCountController extends Controller
             if ($lims_stock_count->is_completed == false) {
                 $lims_product_list = $this->product();
                 return view('backend.stock_count.show_for_complete', compact('lims_stock_count', 'lims_product_list'));
-            } else {
+            } elseif ($lims_stock_count->is_resolved == false) {
                 return view('backend.stock_count.show_for_resolved', compact('lims_stock_count'));
+            } else {
+                return redirect('/dashboard');
             }
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
