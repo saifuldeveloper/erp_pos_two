@@ -62,7 +62,7 @@
                         @endif
                         @if ($stock_count_active)
                             <li id="stock-count-menu"><a
-                                    href="{{ route('stock-count.index') }}">{{ trans('file.Stock Count') }}</a></li>
+                                    href="{{ route('stock-count.create') }}">{{ trans('file.Stock Count') }}</a></li>
                         @endif
                         {{-- অভিযাত্রী প্রোডাক্ট --}}
                         <li id="product-import-menu"><a
