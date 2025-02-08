@@ -55,9 +55,11 @@ class StockCountController extends Controller
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('purchases-add')) {
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_product_list = $this->product();
-            return view('backend.stock_count.create', compact('lims_warehouse_list', 'lims_product_list'));
+            $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
+            if ($stock_count) {
+                return redirect()->route('stock-count.show', $stock_count->id);
+            }
+            return view('backend.stock_count.create');
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
@@ -78,6 +80,7 @@ class StockCountController extends Controller
             ->first();
         if ($product && $product->is_variant) {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
+
                 ->where([
                     ['product_variants.product_id', $product->id],
                     ['products.is_active', true]
@@ -104,56 +107,9 @@ class StockCountController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
         $stock_count = new StockCount();
-        $stock_count->reference_no = 'stc-' . date("Ymd") . '-' . date("his");
-        $stock_count->warehouse_id = $data['warehouse_id'];
-        $stock_count->product_id = $data['product_id'][0];
-        $stock_count->brand_id = Product::find($data['product_id'][0])->brand_id;
-        $stock_count->user_id = Auth::id();
-        $stock_count->note = $data['note'];
         $stock_count->save();
-
-        foreach ($data['product_code'] as $key => $product_code) {
-            DB::table('stock_count_items')->insert([
-                'stock_count_id' => $stock_count->id,
-                'product_id' => $data['product_id'][$key],
-                'item_code' => $data['product_code'][$key],
-                'current_quantity' => $data['current_qty'][$key],
-                'updated_quantity' => $data['qty'][$key],
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-
-            // $product_variant = ProductVariant::where('item_code', $data['product_code'][$key])->first();
-            // if ($product_variant) {
-            //     $product_variant->qty += $data['qty'][$key];
-            //     $product_variant->save();
-            // }
-            // $productVariant = explode('-', $data['product_code'][$key])[0];
-            // $variant = Variant::where('name', $productVariant)->first();
-            // if ($variant) {
-            //     $productWarehouse = Product_Warehouse::where('product_id', $data['product_id'][$key])
-            //         ->where('variant_id', $variant->id)
-            //         ->where('warehouse_id', $data['warehouse_id'])
-            //         ->first();
-            //     if ($productWarehouse) {
-            //         $productWarehouse->qty += $data['qty'][$key];
-            //         $productWarehouse->save();
-            //     }
-            // }
-        }
-
-        // $data['product_id'] = array_unique($data['product_id']);
-
-        // foreach ($data['product_id'] as $key => $product_id) {
-        //     $productVariantsQty = ProductVariant::where('product_id', $product_id)->sum('qty');
-        //     $product = Product::find($product_id);
-        //     $product->qty = $productVariantsQty;
-        //     $product->save();
-        // }
-
-        return redirect()->route('stock-count.index')->with('message', 'Stock Count created successfully! Please download the initial file to complete it.');
+        return redirect()->route('stock-count.show', $stock_count->id);
     }
 
     public function edit($id)
@@ -169,50 +125,46 @@ class StockCountController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $stock_count = StockCount::findOrFail($id);
-        $stock_count->warehouse_id = $data['warehouse_id'];
-        $stock_count->note = $data['note'];
-        $stock_count->save();
-
-        foreach ($stock_count->items as $key => $item) {
-            // $product_variant = ProductVariant::where('item_code', $item->item_code)->first();
-            // if ($product_variant) {
-            //     $product_variant->qty -= $item->updated_quantity;
-            //     $product_variant->save();
-
-            //     $product_variant->qty += $data['qty'][$key];
-            //     $product_variant->save();
-            // }
-            // $productVariant = explode('-', $item->item_code)[0];
-            // $variant = Variant::where('name', $productVariant)->first();
-            // if ($variant) {
-            //     $productWarehouse = Product_Warehouse::where('product_id', $item->product_id)
-            //         ->where('variant_id', $variant->id)
-            //         ->where('warehouse_id', $data['warehouse_id'])
-            //         ->first();
-            //     if ($productWarehouse) {
-            //         $productWarehouse->qty -= $item->updated_quantity;
-            //         $productWarehouse->save();
-
-            //         $productWarehouse->qty += $data['qty'][$key];
-            //         $productWarehouse->save();
-            //     }
-            // }
-
-            $item->current_quantity = $data['current_qty'][$key];
-            $item->updated_quantity = $data['qty'][$key];
-            $item->save();
+        if ($request->status == 'add') {
+            $stock_count = StockCount::find($id);
+            foreach ($request['product_code'] as $key => $product_code) {
+                if ($request['qty'][$key] == 0) {
+                    continue;
+                }
+                DB::table('stock_count_items')->insert([
+                    'stock_count_id' => $stock_count->id,
+                    'product_id' => $request['product_id'][$key],
+                    'item_code' => $request['product_code'][$key],
+                    'current_quantity' => $request['current_qty'][$key],
+                    'updated_quantity' => $request['qty'][$key],
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+        } elseif ($request->status == 'complete') {
+            $stock_count = StockCount::find($id);
+            $stock_count->is_completed = true;
+            $stock_count->save();
+        }elseif ($request->status == 'resolved') {
+            dd($request->all());
         }
 
-        // $data['product_id'] = array_unique($data['product_id']);
+        return redirect()->route('stock-count.show', $id);
+    }
 
-        // foreach ($data['product_id'] as $key => $product_id) {
-        //     $productVariantsQty = ProductVariant::where('product_id', $product_id)->sum('qty');
-        //     $product = Product::find($product_id);
-        //     $product->qty = $productVariantsQty;
-        //     $product->save();
-        // }
-        return redirect()->route('stock-count.index')->with('message', 'Stock Count updated successfully!');
+    public function show($id)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('stock_count')) {
+            $lims_stock_count = StockCount::with('items')->find($id);
+            $lims_stock_count->items = $lims_stock_count->items->groupBy('item_code');
+            if ($lims_stock_count->is_completed == false) {
+                $lims_product_list = $this->product();
+                return view('backend.stock_count.show_for_complete', compact('lims_stock_count', 'lims_product_list'));
+            } else {
+                return view('backend.stock_count.show_for_resolved', compact('lims_stock_count'));
+            }
+        } else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 }
