@@ -16,9 +16,9 @@
                 <div class="card-header mt-2">
                     <div class="d-flex">
                         <h3 class="text-start"> {{ trans('file.Stock Count Report') }}</h3>
-                        <a href="{{ route('report.stockCount.remaining') }}" class="btn btn-primary ml-auto">
+                        <a href="{{ route('report.stockCount') }}" class="btn btn-primary ml-auto">
                             <i class="fas fa-list"></i>
-                            Remaining Products
+                            Stock Count
                         </a>
                     </div>
                 </div>
@@ -29,23 +29,17 @@
                         <table class="table table-striped" id="stock-count-report-table">
                             <thead>
                                 <tr>
-                                    <th>{{ trans('file.Date') }}</th>
                                     <th>{{ trans('file.Warehouse') }}</th>
                                     <th>{{ trans('file.Product') }}</th>
-                                    <th>{{ trans('file.item code') }}</th>
                                     <th>{{ trans('file.Current Quantity') }}</th>
-                                    <th>{{ trans('Update Quantity') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($stockCountItems as $stockCountItem)
+                                @foreach ($products as $product)
                                     <tr>
-                                        <td>{{ $stockCountItem->stockCount->created_at->format('d-m-Y') }}</td>
-                                        <td>{{ $stockCountItem->stockCount->warehouse->name }}</td>
-                                        <td>{{ $stockCountItem->product->name }}</td>
-                                        <td>{{ $stockCountItem->item_code }}</td>
-                                        <td>{{ $stockCountItem->current_quantity }}</td>
-                                        <td>{{ $stockCountItem->updated_quantity }}</td>
+                                        <td>{{ $product->warehouse_name }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->qty }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -65,7 +59,7 @@
         $('#stock-count-report-table').DataTable({
             "order": [],
             "columnDefs": [{
-                "targets": [0, 1, 2, 3, 4, 5],
+                "targets": [0, 1, 2],
                 "orderable": false
             }]
         });
