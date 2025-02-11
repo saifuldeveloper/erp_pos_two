@@ -9,12 +9,11 @@ class StockCount extends Model
     protected $table = 'stock_counts';
 
     protected $fillable = [
-        'reference_no',
         'warehouse_id',
-        'product_id',
-        'brand_id',
-        'user_id',
-        'note'
+        'is_completed',
+        'is_resolved',
+        'completed_by',
+        'resolved_by',
     ];
 
     public function items()
@@ -25,20 +24,5 @@ class StockCount extends Model
     public function warehouse()
     {
         return $this->belongsTo(Warehouse::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
-
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
     }
 }

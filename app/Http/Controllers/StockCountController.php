@@ -6,6 +6,7 @@ use App\Models\StockCount;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Models\Warehouse;
 use DB;
 use Auth;
 use Spatie\Permission\Models\Role;
@@ -20,39 +21,56 @@ class StockCountController extends Controller
             if ($stock_count) {
                 return redirect()->route('stock-count.show', $stock_count->id);
             }
-            return view('backend.stock_count.create');
+            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+            return view('backend.stock_count.create', compact('lims_warehouse_list'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function product()
     {
-        return Product::ActiveStandard()->select('id', 'name', 'code')->get();
+        $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
+
+        return Product::ActiveStandard()
+        ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+        ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id)
+        ->select('products.id', 'products.name', 'products.code')
+        ->groupBy('products.id')
+        ->get();
     }
 
     public function productSearch(Request $request)
     {
+        $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
         $product_code = explode("|", $request['data']);
         $product_code[0] = rtrim($product_code[0], " ");
-        $product = Product::where([
-            ['code', $product_code[0]],
-            ['is_active', true]
-        ])
+        $product = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+            ->where([
+                ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
+                ['products.code', $product_code[0]],
+                ['products.is_active', true]
+            ])
+            ->select('products.*')
             ->first();
         if ($product && $product->is_variant) {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-
+                ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
                 ->where([
                     ['product_variants.product_id', $product->id],
+                    ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
                     ['products.is_active', true]
                 ])
                 ->select('products.*', 'product_variants.item_code', 'product_variants.qty')
+                ->groupBy('product_variants.id')
                 ->get();
         } else {
-            $lims_product_data = Product::where([
-                ['code', $product_code[0]],
-                ['is_active', true]
-            ])
+            $lims_product_data = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+                ->where([
+                    ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
+                    ['products.code', $product_code[0]],
+                    ['products.is_active', true]
+                ])
+                ->groupBy('products.id')
                 ->get();
         }
 
@@ -69,6 +87,7 @@ class StockCountController extends Controller
     public function store(Request $request)
     {
         $stock_count = new StockCount();
+        $stock_count->warehouse_id = $request->warehouse_id;
         $stock_count->save();
         return redirect()->route('stock-count.show', $stock_count->id);
     }
