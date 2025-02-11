@@ -483,6 +483,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
             Route::post('supplier-due-report', 'supplierDueReportByDate')->name('report.supplierDueByDate');
             Route::post('supplier-due-report-data', 'supplierDueReportData');
             Route::get('stock-count', 'stockCount')->name('report.stockCount');
+            Route::get('stock-count/remaining', 'stockCountRemaining')->name('report.stockCount.remaining');
         });
     });
 
