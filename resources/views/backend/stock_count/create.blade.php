@@ -21,6 +21,16 @@
                                         <h2>Do you want to start stock count?</h2>
                                     </div>
                                     <div class="form-group">
+                                        <label>{{ trans('file.Warehouse') }} *</label>
+                                        <select required name="warehouse_id" class="selectpicker form-control"
+                                            data-live-search="true" title="Select warehouse...">
+                                            @foreach ($lims_warehouse_list as $warehouse)
+                                                <option value="{{ $warehouse->id }}">
+                                                    {{ $warehouse->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <button type="submit" class="btn btn-primary">Yes</button>
                                         <a href="{{ url('/dashboard') }}" class="btn btn-danger">No</a>
                                     </div>
