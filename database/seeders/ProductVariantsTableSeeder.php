@@ -262,9 +262,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BR/43-R-101',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-12 05:21:51',
-                'updated_at' => '2024-12-23 03:14:11',
+                'updated_at' => '2025-02-11 19:47:36',
             ),
             19 => 
             array (
@@ -405,9 +405,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Brown/42-R-105',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 05:36:31',
-                'updated_at' => '2024-12-23 03:14:25',
+                'updated_at' => '2025-02-08 21:43:58',
             ),
             30 => 
             array (
@@ -600,9 +600,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'W/42-R-108',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 05:47:39',
-                'updated_at' => '2025-01-09 19:36:13',
+                'updated_at' => '2025-02-06 17:27:48',
             ),
             45 => 
             array (
@@ -758,7 +758,7 @@ class ProductVariantsTableSeeder extends Seeder
                 'additional_price' => NULL,
                 'qty' => 1.0,
                 'created_at' => '2024-12-12 05:55:37',
-                'updated_at' => '2024-12-23 03:15:19',
+                'updated_at' => '2025-02-11 13:47:02',
             ),
             57 => 
             array (
@@ -1029,9 +1029,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/41-R-10F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 06:32:07',
-                'updated_at' => '2025-01-06 16:34:46',
+                'updated_at' => '2025-02-10 19:54:47',
             ),
             78 => 
             array (
@@ -1302,9 +1302,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/38-R-113',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 07:05:07',
-                'updated_at' => '2024-12-23 03:16:03',
+                'updated_at' => '2025-02-01 13:17:55',
             ),
             99 => 
             array (
@@ -1406,9 +1406,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/40-R-115',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-12 07:14:57',
-                'updated_at' => '2024-12-23 04:01:13',
+                'updated_at' => '2025-02-06 16:37:49',
             ),
             107 => 
             array (
@@ -2303,9 +2303,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/41-R-11D',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 08:21:59',
-                'updated_at' => '2024-12-23 03:59:47',
+                'updated_at' => '2025-02-11 20:27:56',
             ),
             176 => 
             array (
@@ -2979,9 +2979,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/37-R-128',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 09:54:51',
-                'updated_at' => '2024-12-23 03:58:18',
+                'updated_at' => '2025-02-11 20:10:52',
             ),
             228 => 
             array (
@@ -3317,9 +3317,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Blue/29-R-12D',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 10:15:15',
-                'updated_at' => '2024-12-23 03:56:31',
+                'updated_at' => '2025-02-02 11:52:46',
             ),
             254 => 
             array (
@@ -3486,9 +3486,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/37-R-12F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 10:19:26',
-                'updated_at' => '2024-12-23 03:55:51',
+                'updated_at' => '2025-02-09 16:36:01',
             ),
             267 => 
             array (
@@ -3577,9 +3577,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/37-R-130',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 10:27:09',
-                'updated_at' => '2024-12-23 03:55:38',
+                'updated_at' => '2025-02-01 12:16:52',
             ),
             274 => 
             array (
@@ -3772,9 +3772,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Orng/39-R-133',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 10:39:35',
-                'updated_at' => '2024-12-23 03:55:01',
+                'updated_at' => '2025-02-06 17:42:49',
             ),
             289 => 
             array (
@@ -4474,9 +4474,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/40-R-13C',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 11:27:13',
-                'updated_at' => '2024-12-23 03:53:22',
+                'updated_at' => '2025-02-06 17:21:07',
             ),
             343 => 
             array (
@@ -4500,9 +4500,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/42-R-13C',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-12 11:27:13',
-                'updated_at' => '2025-01-22 18:31:00',
+                'updated_at' => '2025-02-06 16:52:52',
             ),
             345 => 
             array (
@@ -5553,9 +5553,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/39-R-9',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:26:07',
-                'updated_at' => '2024-12-23 06:00:32',
+                'updated_at' => '2025-02-06 16:35:11',
             ),
             426 => 
             array (
@@ -5696,9 +5696,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/38-R-B',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:29:38',
-                'updated_at' => '2024-12-31 17:34:21',
+                'updated_at' => '2025-02-06 17:31:20',
             ),
             437 => 
             array (
@@ -5787,9 +5787,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/39-R-C',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:31:38',
-                'updated_at' => '2024-12-23 04:31:58',
+                'updated_at' => '2025-02-10 20:16:58',
             ),
             444 => 
             array (
@@ -5969,9 +5969,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Apricot/41-R-E',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:38:02',
-                'updated_at' => '2024-12-23 04:38:15',
+                'updated_at' => '2025-02-09 16:06:33',
             ),
             458 => 
             array (
@@ -6307,9 +6307,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/37-R-13',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:48:04',
-                'updated_at' => '2024-12-23 04:48:18',
+                'updated_at' => '2025-02-06 17:29:29',
             ),
             484 => 
             array (
@@ -6411,9 +6411,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/39-R-14',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:49:01',
-                'updated_at' => '2024-12-23 04:49:11',
+                'updated_at' => '2025-02-08 19:52:56',
             ),
             492 => 
             array (
@@ -6515,9 +6515,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/41-R-15',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:51:45',
-                'updated_at' => '2024-12-23 04:51:55',
+                'updated_at' => '2025-02-06 20:17:09',
             ),
         ));
         \DB::table('product_variants')->insert(array (
@@ -6582,9 +6582,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Purple/40-R-16',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 04:53:23',
-                'updated_at' => '2024-12-23 04:53:33',
+                'updated_at' => '2025-02-08 19:33:08',
             ),
             5 => 
             array (
@@ -7518,9 +7518,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'White/41-R-22',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 05:10:08',
-                'updated_at' => '2024-12-23 05:10:17',
+                'updated_at' => '2025-02-06 20:13:42',
             ),
             77 => 
             array (
@@ -7598,7 +7598,7 @@ class ProductVariantsTableSeeder extends Seeder
                 'additional_price' => NULL,
                 'qty' => 1.0,
                 'created_at' => '2024-12-23 05:10:52',
-                'updated_at' => '2024-12-23 05:11:01',
+                'updated_at' => '2025-02-06 21:55:54',
             ),
             83 => 
             array (
@@ -7637,7 +7637,7 @@ class ProductVariantsTableSeeder extends Seeder
                 'additional_price' => NULL,
                 'qty' => 1.0,
                 'created_at' => '2024-12-23 05:11:47',
-                'updated_at' => '2024-12-23 05:11:57',
+                'updated_at' => '2025-02-02 12:29:57',
             ),
             86 => 
             array (
@@ -7648,9 +7648,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Apricot/39-R-24',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 05:11:47',
-                'updated_at' => '2024-12-23 05:11:57',
+                'updated_at' => '2025-02-06 17:02:39',
             ),
             87 => 
             array (
@@ -7804,9 +7804,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/39-R-26',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 05:14:28',
-                'updated_at' => '2024-12-23 05:15:07',
+                'updated_at' => '2025-02-06 17:05:19',
             ),
             99 => 
             array (
@@ -7830,9 +7830,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/41-R-26',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 05:14:28',
-                'updated_at' => '2024-12-23 05:15:06',
+                'updated_at' => '2025-02-06 17:05:19',
             ),
             101 => 
             array (
@@ -8402,9 +8402,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/38-R-2E',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 05:22:01',
-                'updated_at' => '2024-12-23 05:22:12',
+                'updated_at' => '2025-02-11 11:43:19',
             ),
             145 => 
             array (
@@ -8493,9 +8493,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/38-R-2F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 05:29:47',
-                'updated_at' => '2024-12-23 05:30:00',
+                'updated_at' => '2025-02-02 12:30:54',
             ),
             152 => 
             array (
@@ -8688,9 +8688,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/41-R-31',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 05:35:37',
-                'updated_at' => '2024-12-23 05:35:47',
+                'updated_at' => '2025-02-11 18:48:04',
             ),
             167 => 
             array (
@@ -8766,9 +8766,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/41-R-32',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:03:25',
-                'updated_at' => '2024-12-23 06:03:33',
+                'updated_at' => '2025-02-11 20:27:56',
             ),
             173 => 
             array (
@@ -9624,9 +9624,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/36-R-3F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:26:30',
-                'updated_at' => '2024-12-23 06:26:42',
+                'updated_at' => '2025-02-06 16:16:47',
             ),
             239 => 
             array (
@@ -9650,9 +9650,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/38-R-3F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:26:30',
-                'updated_at' => '2024-12-23 06:26:42',
+                'updated_at' => '2025-02-06 16:16:47',
             ),
             241 => 
             array (
@@ -9663,9 +9663,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/39-R-3F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:26:30',
-                'updated_at' => '2024-12-23 06:26:42',
+                'updated_at' => '2025-02-01 17:52:07',
             ),
             242 => 
             array (
@@ -9923,9 +9923,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/41-R-42',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:29:00',
-                'updated_at' => '2024-12-23 06:29:08',
+                'updated_at' => '2025-02-11 14:13:32',
             ),
             262 => 
             array (
@@ -10274,9 +10274,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/38-R-47',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:35:17',
-                'updated_at' => '2024-12-23 06:35:30',
+                'updated_at' => '2025-02-09 15:59:25',
             ),
             289 => 
             array (
@@ -10352,9 +10352,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/42-R-49',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:39:18',
-                'updated_at' => '2025-01-26 22:11:56',
+                'updated_at' => '2025-02-01 18:36:38',
             ),
             295 => 
             array (
@@ -10469,9 +10469,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/36-R-4B',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:41:51',
-                'updated_at' => '2024-12-23 06:42:00',
+                'updated_at' => '2025-02-06 16:15:15',
             ),
             304 => 
             array (
@@ -10547,9 +10547,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Golden/36-R-4C',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:43:28',
-                'updated_at' => '2024-12-23 06:43:42',
+                'updated_at' => '2025-02-06 16:15:15',
             ),
             310 => 
             array (
@@ -10560,9 +10560,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Golden/37-R-4C',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:43:28',
-                'updated_at' => '2024-12-23 06:43:42',
+                'updated_at' => '2025-02-01 18:16:41',
             ),
             311 => 
             array (
@@ -11171,9 +11171,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/37-R-54',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:50:52',
-                'updated_at' => '2024-12-23 06:51:15',
+                'updated_at' => '2025-02-01 15:36:55',
             ),
             358 => 
             array (
@@ -11197,9 +11197,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/39-R-54',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:50:52',
-                'updated_at' => '2024-12-23 06:51:15',
+                'updated_at' => '2025-02-06 17:22:04',
             ),
             360 => 
             array (
@@ -11353,9 +11353,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Purple/38-R-57',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:54:44',
-                'updated_at' => '2024-12-23 06:54:56',
+                'updated_at' => '2025-02-11 18:06:39',
             ),
             372 => 
             array (
@@ -11535,9 +11535,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/10-R-59',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:56:19',
-                'updated_at' => '2025-01-20 20:08:12',
+                'updated_at' => '2025-02-01 20:13:43',
             ),
             386 => 
             array (
@@ -11626,9 +11626,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Brown/36-R-5B',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:57:49',
-                'updated_at' => '2024-12-23 06:57:57',
+                'updated_at' => '2025-02-06 16:02:14',
             ),
             393 => 
             array (
@@ -11691,9 +11691,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Brown/41-R-5B',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 06:57:49',
-                'updated_at' => '2024-12-23 06:57:57',
+                'updated_at' => '2025-02-06 17:56:20',
             ),
             398 => 
             array (
@@ -11925,9 +11925,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Brown/9-R-5F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 07:48:34',
-                'updated_at' => '2024-12-23 07:48:52',
+                'updated_at' => '2025-02-02 18:01:42',
             ),
             416 => 
             array (
@@ -11977,9 +11977,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/7-R-60',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 07:49:55',
-                'updated_at' => '2024-12-23 07:50:33',
+                'updated_at' => '2025-02-06 17:20:14',
             ),
             420 => 
             array (
@@ -12523,9 +12523,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Purple/37-R-68',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 08:06:21',
-                'updated_at' => '2024-12-23 08:07:44',
+                'updated_at' => '2025-02-08 18:45:54',
             ),
             462 => 
             array (
@@ -12900,9 +12900,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/42-R-6D',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 08:26:27',
-                'updated_at' => '2024-12-23 08:26:36',
+                'updated_at' => '2025-02-07 11:13:45',
             ),
             491 => 
             array (
@@ -13435,9 +13435,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/42-R-74',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 08:38:24',
-                'updated_at' => '2024-12-23 08:38:41',
+                'updated_at' => '2025-02-06 16:37:07',
             ),
             32 => 
             array (
@@ -13461,9 +13461,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/40-R-75',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 09:33:09',
-                'updated_at' => '2024-12-23 09:33:32',
+                'updated_at' => '2025-02-08 12:05:58',
             ),
             34 => 
             array (
@@ -13591,9 +13591,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/40-R-77',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 09:38:07',
-                'updated_at' => '2024-12-23 09:38:21',
+                'updated_at' => '2025-02-09 21:20:45',
             ),
             44 => 
             array (
@@ -13903,9 +13903,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/7-R-7C',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 09:44:31',
-                'updated_at' => '2024-12-29 08:06:10',
+                'updated_at' => '2025-02-06 16:27:48',
             ),
             68 => 
             array (
@@ -13944,7 +13944,7 @@ class ProductVariantsTableSeeder extends Seeder
                 'additional_price' => NULL,
                 'qty' => 1.0,
                 'created_at' => '2024-12-23 09:44:31',
-                'updated_at' => '2024-12-29 08:06:10',
+                'updated_at' => '2025-02-06 16:26:39',
             ),
             71 => 
             array (
@@ -13955,9 +13955,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/6-R-7D',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 09:46:10',
-                'updated_at' => '2024-12-23 09:46:20',
+                'updated_at' => '2025-02-10 15:45:31',
             ),
             72 => 
             array (
@@ -14046,9 +14046,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/40-R-7E',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 09:47:29',
-                'updated_at' => '2024-12-23 09:47:47',
+                'updated_at' => '2025-02-06 19:24:05',
             ),
             79 => 
             array (
@@ -14085,9 +14085,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/43-R-7E',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 09:47:29',
-                'updated_at' => '2024-12-23 09:47:47',
+                'updated_at' => '2025-02-06 19:24:05',
             ),
             82 => 
             array (
@@ -14371,9 +14371,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/40-R-83',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 09:55:31',
-                'updated_at' => '2024-12-23 09:55:41',
+                'updated_at' => '2025-02-06 16:30:15',
             ),
             104 => 
             array (
@@ -14514,9 +14514,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/41-R-85',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 10:27:37',
-                'updated_at' => '2024-12-23 10:27:50',
+                'updated_at' => '2025-02-01 14:12:16',
             ),
             115 => 
             array (
@@ -15177,9 +15177,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/37-R-8F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 10:46:03',
-                'updated_at' => '2024-12-23 10:46:14',
+                'updated_at' => '2025-02-02 17:08:55',
             ),
             166 => 
             array (
@@ -15203,9 +15203,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/39-R-8F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 10:46:03',
-                'updated_at' => '2024-12-23 10:46:14',
+                'updated_at' => '2025-02-06 16:12:14',
             ),
             168 => 
             array (
@@ -15216,9 +15216,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/40-R-8F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 10:46:03',
-                'updated_at' => '2024-12-23 10:46:14',
+                'updated_at' => '2025-02-06 17:02:39',
             ),
             169 => 
             array (
@@ -15450,9 +15450,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/43-R-93',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 10:52:47',
-                'updated_at' => '2024-12-23 10:53:00',
+                'updated_at' => '2025-02-08 16:05:52',
             ),
             187 => 
             array (
@@ -15840,9 +15840,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/39-R-9A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 11:05:39',
-                'updated_at' => '2024-12-23 11:05:52',
+                'updated_at' => '2025-02-08 21:12:07',
             ),
             217 => 
             array (
@@ -15853,9 +15853,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/40-R-9A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 11:05:39',
-                'updated_at' => '2024-12-23 11:05:52',
+                'updated_at' => '2025-02-11 21:15:35',
             ),
             218 => 
             array (
@@ -15931,9 +15931,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/42-R-9B',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 11:07:14',
-                'updated_at' => '2024-12-23 11:07:29',
+                'updated_at' => '2025-02-09 18:49:52',
             ),
             224 => 
             array (
@@ -16191,9 +16191,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/41-R-A0',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 11:14:34',
-                'updated_at' => '2024-12-23 11:14:51',
+                'updated_at' => '2025-02-06 20:52:12',
             ),
             244 => 
             array (
@@ -16204,9 +16204,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/42-R-A0',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 11:14:34',
-                'updated_at' => '2024-12-23 11:14:51',
+                'updated_at' => '2025-02-11 20:01:47',
             ),
             245 => 
             array (
@@ -16243,9 +16243,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/41-R-A1',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 11:15:49',
-                'updated_at' => '2024-12-23 11:16:04',
+                'updated_at' => '2025-02-06 18:18:10',
             ),
             248 => 
             array (
@@ -16256,9 +16256,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/42-R-A1',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 11:15:49',
-                'updated_at' => '2024-12-23 11:16:04',
+                'updated_at' => '2025-02-08 18:27:38',
             ),
             249 => 
             array (
@@ -16477,9 +16477,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/43-R-A5',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 11:21:22',
-                'updated_at' => '2024-12-23 11:21:34',
+                'updated_at' => '2025-02-06 17:00:09',
             ),
             266 => 
             array (
@@ -16802,9 +16802,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/42-R-AB',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 12:26:12',
-                'updated_at' => '2025-01-20 00:06:55',
+                'updated_at' => '2025-02-11 13:48:29',
             ),
             291 => 
             array (
@@ -17751,9 +17751,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/43-R-B9',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 12:58:44',
-                'updated_at' => '2024-12-23 12:59:24',
+                'updated_at' => '2025-02-09 20:52:44',
             ),
             364 => 
             array (
@@ -17764,9 +17764,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/40-R-BA',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 13:01:41',
-                'updated_at' => '2024-12-29 13:12:17',
+                'updated_at' => '2025-02-06 17:44:20',
             ),
             365 => 
             array (
@@ -18128,9 +18128,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/40-R-C0',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-23 13:58:25',
-                'updated_at' => '2024-12-23 13:58:52',
+                'updated_at' => '2025-02-07 16:26:10',
             ),
             393 => 
             array (
@@ -18505,9 +18505,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/42-R-C6',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 14:08:06',
-                'updated_at' => '2024-12-23 14:08:20',
+                'updated_at' => '2025-02-06 17:17:25',
             ),
             422 => 
             array (
@@ -18544,9 +18544,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/40-R-C7',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 14:09:29',
-                'updated_at' => '2024-12-23 14:09:37',
+                'updated_at' => '2025-02-09 15:46:06',
             ),
             425 => 
             array (
@@ -18622,9 +18622,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/7-R-C8',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 14:13:46',
-                'updated_at' => '2024-12-31 07:31:20',
+                'updated_at' => '2025-02-06 17:20:14',
             ),
             431 => 
             array (
@@ -19402,9 +19402,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/14-R-D2',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 14:37:39',
-                'updated_at' => '2024-12-23 14:37:46',
+                'updated_at' => '2025-02-06 19:36:25',
             ),
             491 => 
             array (
@@ -19441,9 +19441,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/11-R-D3',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 14:38:19',
-                'updated_at' => '2024-12-23 14:38:27',
+                'updated_at' => '2025-02-06 17:44:58',
             ),
             494 => 
             array (
@@ -19716,9 +19716,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/38-R-D7',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 14:44:08',
-                'updated_at' => '2024-12-23 14:44:16',
+                'updated_at' => '2025-02-06 17:28:31',
             ),
             15 => 
             array (
@@ -19976,9 +19976,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/12-R-DB',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 14:50:35',
-                'updated_at' => '2024-12-23 14:50:45',
+                'updated_at' => '2025-02-10 19:36:48',
             ),
             35 => 
             array (
@@ -20329,7 +20329,7 @@ class ProductVariantsTableSeeder extends Seeder
                 'additional_price' => NULL,
                 'qty' => 1.0,
                 'created_at' => '2024-12-23 15:17:56',
-                'updated_at' => '2024-12-23 15:18:20',
+                'updated_at' => '2025-02-09 16:35:16',
             ),
             62 => 
             array (
@@ -20379,9 +20379,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/40-R-E2',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 15:19:27',
-                'updated_at' => '2024-12-23 15:19:40',
+                'updated_at' => '2025-02-06 17:27:07',
             ),
             66 => 
             array (
@@ -20925,9 +20925,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/43-R-E9',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 15:27:07',
-                'updated_at' => '2024-12-23 15:27:22',
+                'updated_at' => '2025-02-08 21:09:14',
             ),
             108 => 
             array (
@@ -21107,9 +21107,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/41-R-ED',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 15:34:05',
-                'updated_at' => '2024-12-23 15:34:26',
+                'updated_at' => '2025-02-11 12:56:25',
             ),
             122 => 
             array (
@@ -21211,9 +21211,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/40-R-EE',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-23 15:35:32',
-                'updated_at' => '2024-12-23 15:36:42',
+                'updated_at' => '2025-02-01 20:00:37',
             ),
             130 => 
             array (
@@ -21588,9 +21588,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'MR/42-R-F4',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-31 06:59:36',
-                'updated_at' => '2025-01-20 00:04:34',
+                'updated_at' => '2025-02-08 21:16:21',
             ),
             159 => 
             array (
@@ -21653,9 +21653,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/43-R-F5',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-31 07:04:52',
-                'updated_at' => '2024-12-31 07:05:35',
+                'updated_at' => '2025-02-11 20:14:07',
             ),
             164 => 
             array (
@@ -21692,9 +21692,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'AS/41-R-F6',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-31 07:10:59',
-                'updated_at' => '2024-12-31 07:11:48',
+                'updated_at' => '2025-02-06 16:36:22',
             ),
             167 => 
             array (
@@ -21887,9 +21887,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'MR/43-R-F9',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-31 07:48:59',
-                'updated_at' => '2024-12-31 07:49:25',
+                'updated_at' => '2025-02-09 17:18:55',
             ),
             182 => 
             array (
@@ -22082,9 +22082,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/40-R-FC',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-31 08:41:15',
-                'updated_at' => '2025-01-20 00:02:38',
+                'updated_at' => '2025-02-07 16:22:15',
             ),
             197 => 
             array (
@@ -22368,9 +22368,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/43-R-100',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-31 09:43:13',
-                'updated_at' => '2025-01-20 00:02:38',
+                'updated_at' => '2025-02-11 22:08:30',
             ),
             219 => 
             array (
@@ -22511,9 +22511,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/44-R-104',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-31 09:55:53',
-                'updated_at' => '2025-01-20 00:02:38',
+                'updated_at' => '2025-02-02 21:50:04',
             ),
             230 => 
             array (
@@ -22602,9 +22602,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/41-R-141',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2024-12-31 12:15:48',
-                'updated_at' => '2025-01-20 00:02:38',
+                'updated_at' => '2025-02-02 15:32:50',
             ),
             237 => 
             array (
@@ -22745,9 +22745,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/42-R-143',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-31 12:41:35',
-                'updated_at' => '2025-01-20 00:02:38',
+                'updated_at' => '2025-02-06 17:30:24',
             ),
             248 => 
             array (
@@ -22940,9 +22940,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/41-R-147',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2024-12-31 13:56:41',
-                'updated_at' => '2025-01-20 00:02:38',
+                'updated_at' => '2025-02-06 20:56:24',
             ),
             263 => 
             array (
@@ -23187,9 +23187,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/11-R-14A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 05:54:36',
-                'updated_at' => '2025-01-01 05:55:11',
+                'updated_at' => '2025-02-10 17:28:58',
             ),
             282 => 
             array (
@@ -23421,9 +23421,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/1-R-14E',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 06:45:41',
-                'updated_at' => '2025-01-01 06:46:07',
+                'updated_at' => '2025-02-08 21:19:27',
             ),
             300 => 
             array (
@@ -23642,9 +23642,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/30-R-151',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-01 07:33:59',
-                'updated_at' => '2025-01-01 07:34:40',
+                'updated_at' => '2025-02-06 17:10:42',
             ),
             317 => 
             array (
@@ -23655,9 +23655,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/31-R-151',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 07:33:59',
-                'updated_at' => '2025-01-01 07:34:40',
+                'updated_at' => '2025-02-11 20:27:56',
             ),
             318 => 
             array (
@@ -23720,9 +23720,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'CM/31-R-152',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 07:42:29',
-                'updated_at' => '2025-01-01 07:43:15',
+                'updated_at' => '2025-02-11 11:43:19',
             ),
             323 => 
             array (
@@ -23733,9 +23733,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'CM/32-R-152',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 07:42:29',
-                'updated_at' => '2025-01-01 07:43:15',
+                'updated_at' => '2025-02-06 20:28:08',
             ),
             324 => 
             array (
@@ -24435,9 +24435,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'PUR/37-R-15E',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 13:10:10',
-                'updated_at' => '2025-01-01 13:18:59',
+                'updated_at' => '2025-02-09 19:14:54',
             ),
             378 => 
             array (
@@ -24669,9 +24669,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'PUR/40-R-161',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 13:47:34',
-                'updated_at' => '2025-01-02 21:23:47',
+                'updated_at' => '2025-01-31 11:44:52',
             ),
             396 => 
             array (
@@ -24682,9 +24682,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/36-R-162',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 13:49:25',
-                'updated_at' => '2025-01-15 19:08:00',
+                'updated_at' => '2025-02-11 20:00:31',
             ),
             397 => 
             array (
@@ -24708,9 +24708,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/38-R-162',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 13:49:25',
-                'updated_at' => '2025-01-01 15:02:03',
+                'updated_at' => '2025-02-08 21:17:35',
             ),
             399 => 
             array (
@@ -25007,9 +25007,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BE/36-R-167',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 14:31:35',
-                'updated_at' => '2025-01-01 14:37:12',
+                'updated_at' => '2025-02-06 16:25:36',
             ),
             422 => 
             array (
@@ -25306,9 +25306,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/30-R-16B',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 15:35:55',
-                'updated_at' => '2025-01-25 12:55:48',
+                'updated_at' => '2025-02-06 22:07:19',
             ),
             445 => 
             array (
@@ -25410,9 +25410,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/39-R-16D',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 15:44:18',
-                'updated_at' => '2025-01-16 18:36:41',
+                'updated_at' => '2025-02-10 12:57:48',
             ),
             453 => 
             array (
@@ -25436,9 +25436,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/41-R-16D',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 15:44:18',
-                'updated_at' => '2025-01-25 12:17:14',
+                'updated_at' => '2025-02-08 21:35:02',
             ),
             455 => 
             array (
@@ -25449,9 +25449,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/42-R-16D',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-01 15:44:18',
-                'updated_at' => '2025-01-01 15:44:48',
+                'updated_at' => '2025-02-09 13:57:34',
             ),
             456 => 
             array (
@@ -25592,9 +25592,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/40-R-170',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-02 13:27:03',
-                'updated_at' => '2025-01-12 16:57:36',
+                'updated_at' => '2025-02-06 17:40:39',
             ),
             467 => 
             array (
@@ -25787,9 +25787,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/36-R-173',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-02 18:05:46',
-                'updated_at' => '2025-01-02 18:06:16',
+                'updated_at' => '2025-02-01 18:05:22',
             ),
             482 => 
             array (
@@ -25891,9 +25891,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/39-R-174',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-02 18:11:37',
-                'updated_at' => '2025-01-02 20:29:49',
+                'updated_at' => '2025-02-11 19:15:34',
             ),
             490 => 
             array (
@@ -25943,9 +25943,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'SL/240-R-175',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-02 19:47:23',
-                'updated_at' => '2025-01-02 19:48:04',
+                'updated_at' => '2025-02-11 13:33:31',
             ),
             494 => 
             array (
@@ -26283,9 +26283,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BL/29-R-17A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-02 21:26:52',
-                'updated_at' => '2025-01-02 21:59:39',
+                'updated_at' => '2025-02-08 15:04:22',
             ),
             20 => 
             array (
@@ -26543,9 +26543,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'PNK/26-R-17E',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-02 22:11:28',
-                'updated_at' => '2025-01-02 22:11:58',
+                'updated_at' => '2025-02-01 18:31:38',
             ),
             40 => 
             array (
@@ -26569,9 +26569,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK-AS/41-R-17F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-04 14:36:02',
-                'updated_at' => '2025-01-07 19:50:40',
+                'updated_at' => '2025-02-09 12:36:54',
             ),
             42 => 
             array (
@@ -26582,9 +26582,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK-AS/42-R-17F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 14:36:02',
-                'updated_at' => '2025-01-04 14:38:21',
+                'updated_at' => '2025-02-06 17:46:49',
             ),
             43 => 
             array (
@@ -26673,9 +26673,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BL-AS/44-R-17F',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 14:36:02',
-                'updated_at' => '2025-01-04 14:38:20',
+                'updated_at' => '2025-02-10 12:43:18',
             ),
             50 => 
             array (
@@ -26779,7 +26779,7 @@ class ProductVariantsTableSeeder extends Seeder
                 'additional_price' => NULL,
                 'qty' => 1.0,
                 'created_at' => '2025-01-04 14:59:45',
-                'updated_at' => '2025-01-04 15:05:08',
+                'updated_at' => '2025-02-04 19:09:43',
             ),
             58 => 
             array (
@@ -26816,9 +26816,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/40//-R-182',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 16:18:44',
-                'updated_at' => '2025-01-04 16:19:18',
+                'updated_at' => '2025-02-06 17:34:06',
             ),
             61 => 
             array (
@@ -26959,9 +26959,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/43-R-183',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-04 17:00:56',
-                'updated_at' => '2025-01-04 17:01:48',
+                'updated_at' => '2025-02-02 16:50:34',
             ),
             72 => 
             array (
@@ -27440,9 +27440,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'AS/40-185',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 17:54:55',
-                'updated_at' => '2025-01-12 19:31:20',
+                'updated_at' => '2025-02-01 18:07:06',
             ),
             109 => 
             array (
@@ -27479,9 +27479,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'AS/43-185',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 17:54:55',
-                'updated_at' => '2025-01-26 19:44:58',
+                'updated_at' => '2025-02-09 18:49:52',
             ),
             112 => 
             array (
@@ -27492,9 +27492,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'MR/40-185',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 17:54:55',
-                'updated_at' => '2025-01-04 17:56:22',
+                'updated_at' => '2025-02-06 17:18:37',
             ),
             113 => 
             array (
@@ -27518,9 +27518,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'MR/42-185',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-04 17:54:55',
-                'updated_at' => '2025-01-04 17:56:22',
+                'updated_at' => '2025-02-01 20:18:50',
             ),
             115 => 
             array (
@@ -27531,9 +27531,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'MR/43-185',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 17:54:55',
-                'updated_at' => '2025-01-04 17:56:22',
+                'updated_at' => '2025-01-31 19:13:28',
             ),
             116 => 
             array (
@@ -28012,9 +28012,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK-AS/40-R-6',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-04 18:43:01',
-                'updated_at' => '2025-01-04 18:44:11',
+                'updated_at' => '2025-02-11 21:15:35',
             ),
             153 => 
             array (
@@ -29078,9 +29078,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/1-R-426',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 13:56:54',
-                'updated_at' => '2025-01-22 17:05:46',
+                'updated_at' => '2025-02-06 16:08:29',
             ),
             235 => 
             array (
@@ -29234,9 +29234,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'SY/1-R-427',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 16:40:11',
-                'updated_at' => '2025-01-18 19:16:43',
+                'updated_at' => '2025-02-06 16:42:05',
             ),
             247 => 
             array (
@@ -29585,9 +29585,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'CH/3-R-429',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 16:59:20',
-                'updated_at' => '2025-01-18 19:16:35',
+                'updated_at' => '2025-02-07 19:26:26',
             ),
             274 => 
             array (
@@ -29598,9 +29598,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/1-R-42A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 17:06:47',
-                'updated_at' => '2025-01-18 19:16:32',
+                'updated_at' => '2025-01-31 19:56:38',
             ),
             275 => 
             array (
@@ -29624,9 +29624,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/3-R-42A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 17:06:47',
-                'updated_at' => '2025-01-18 19:16:32',
+                'updated_at' => '2025-01-31 19:56:38',
             ),
             277 => 
             array (
@@ -30079,9 +30079,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi-L/2-R-431',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 18:35:13',
-                'updated_at' => '2025-01-18 19:16:26',
+                'updated_at' => '2025-02-06 22:07:19',
             ),
             312 => 
             array (
@@ -30482,9 +30482,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi-S/3-R-433',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 18:51:39',
-                'updated_at' => '2025-01-18 19:16:18',
+                'updated_at' => '2025-02-06 16:05:12',
             ),
             343 => 
             array (
@@ -30508,9 +30508,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi-S/5-R-433',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 18:51:39',
-                'updated_at' => '2025-01-18 19:16:18',
+                'updated_at' => '2025-02-06 16:05:12',
             ),
             345 => 
             array (
@@ -30521,9 +30521,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi-S/6-R-433',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-08 18:51:39',
-                'updated_at' => '2025-01-18 19:16:18',
+                'updated_at' => '2025-02-06 22:07:19',
             ),
             346 => 
             array (
@@ -30677,9 +30677,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/41-R-435',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-12 17:17:51',
-                'updated_at' => '2025-01-12 17:21:01',
+                'updated_at' => '2025-02-10 22:09:31',
             ),
             358 => 
             array (
@@ -30859,9 +30859,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/1-R-438',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-14 12:09:49',
-                'updated_at' => '2025-01-18 19:13:43',
+                'updated_at' => '2025-02-11 19:47:36',
             ),
             372 => 
             array (
@@ -30924,9 +30924,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'CH/1-R-439',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-14 12:16:43',
-                'updated_at' => '2025-01-19 16:08:25',
+                'updated_at' => '2025-02-10 14:16:24',
             ),
             377 => 
             array (
@@ -31028,9 +31028,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/1-R-442',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-14 12:42:15',
-                'updated_at' => '2025-01-18 19:14:01',
+                'updated_at' => '2025-01-31 21:09:21',
             ),
             385 => 
             array (
@@ -31249,9 +31249,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/43-R-448',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-19 20:22:51',
-                'updated_at' => '2025-01-19 20:23:23',
+                'updated_at' => '2025-02-01 19:17:51',
             ),
             402 => 
             array (
@@ -31275,9 +31275,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/40-R-449',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-19 20:26:09',
-                'updated_at' => '2025-01-19 20:26:41',
+                'updated_at' => '2025-02-06 16:05:12',
             ),
             404 => 
             array (
@@ -31301,9 +31301,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Wi/42-R-449',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-19 20:26:09',
-                'updated_at' => '2025-01-19 20:26:41',
+                'updated_at' => '2025-02-06 16:03:06',
             ),
             406 => 
             array (
@@ -31405,9 +31405,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Golden/36-R-451',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 12:51:42',
-                'updated_at' => '2025-01-22 12:52:37',
+                'updated_at' => '2025-02-06 17:36:25',
             ),
             414 => 
             array (
@@ -31431,9 +31431,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Golden/38-R-451',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 12:51:42',
-                'updated_at' => '2025-01-22 12:52:37',
+                'updated_at' => '2025-02-07 20:33:25',
             ),
             416 => 
             array (
@@ -31535,9 +31535,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/39-R-452',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 12:54:39',
-                'updated_at' => '2025-01-22 12:54:56',
+                'updated_at' => '2025-02-06 16:34:17',
             ),
             424 => 
             array (
@@ -32146,9 +32146,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Golden/39-R-45A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 13:25:04',
-                'updated_at' => '2025-01-22 13:25:13',
+                'updated_at' => '2025-02-11 19:54:30',
             ),
             471 => 
             array (
@@ -35957,9 +35957,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Golden/39-R-509',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 16:01:52',
-                'updated_at' => '2025-01-22 16:01:59',
+                'updated_at' => '2025-02-11 19:09:05',
             ),
             264 => 
             array (
@@ -36438,9 +36438,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/34-R-515',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 16:11:34',
-                'updated_at' => '2025-01-22 16:11:42',
+                'updated_at' => '2025-01-31 19:56:38',
             ),
             301 => 
             array (
@@ -36451,9 +36451,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/35-R-515',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 16:11:35',
-                'updated_at' => '2025-01-22 16:11:42',
+                'updated_at' => '2025-01-31 19:56:38',
             ),
             302 => 
             array (
@@ -42173,9 +42173,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Master/42-R-598',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-22 21:34:20',
-                'updated_at' => '2025-01-22 21:34:36',
+                'updated_at' => '2025-02-09 12:04:28',
             ),
             242 => 
             array (
@@ -43278,9 +43278,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Brown/42-R-616',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-23 12:23:57',
-                'updated_at' => '2025-01-23 18:38:31',
+                'updated_at' => '2025-02-07 19:26:26',
             ),
             327 => 
             array (
@@ -43291,9 +43291,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Brown/43-R-616',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:23:57',
-                'updated_at' => '2025-01-23 18:38:31',
+                'updated_at' => '2025-02-06 17:52:24',
             ),
             328 => 
             array (
@@ -43356,9 +43356,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/43-R-617',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:30:07',
-                'updated_at' => '2025-01-23 18:36:51',
+                'updated_at' => '2025-02-08 17:19:57',
             ),
             333 => 
             array (
@@ -43772,9 +43772,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/40-R-624',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:43:49',
-                'updated_at' => '2025-01-23 14:48:49',
+                'updated_at' => '2025-02-01 16:18:48',
             ),
             365 => 
             array (
@@ -43785,9 +43785,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/41-R-624',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-23 12:43:49',
-                'updated_at' => '2025-01-23 14:48:49',
+                'updated_at' => '2025-02-11 13:43:19',
             ),
             366 => 
             array (
@@ -43837,9 +43837,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/41-R-625',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-23 12:44:58',
-                'updated_at' => '2025-01-23 12:45:13',
+                'updated_at' => '2025-02-06 17:23:59',
             ),
             370 => 
             array (
@@ -43954,9 +43954,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'White/42-R-627',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:47:20',
-                'updated_at' => '2025-01-23 14:48:16',
+                'updated_at' => '2025-02-06 19:59:21',
             ),
             379 => 
             array (
@@ -44032,9 +44032,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'White/43-R-628',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:48:16',
-                'updated_at' => '2025-01-23 12:48:30',
+                'updated_at' => '2025-02-09 17:59:40',
             ),
             385 => 
             array (
@@ -44162,9 +44162,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'White/43-R-62A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'created_at' => '2025-01-23 12:50:38',
-                'updated_at' => '2025-01-23 12:50:52',
+                'updated_at' => '2025-01-31 19:51:18',
             ),
             395 => 
             array (
@@ -44201,9 +44201,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Grey/41-R-631',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:51:54',
-                'updated_at' => '2025-01-23 12:52:10',
+                'updated_at' => '2025-02-07 19:47:03',
             ),
             398 => 
             array (
@@ -44422,9 +44422,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'White/43-R-634',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:55:24',
-                'updated_at' => '2025-01-23 12:55:38',
+                'updated_at' => '2025-02-06 16:24:26',
             ),
             415 => 
             array (
@@ -44461,9 +44461,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/37-R-635',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:56:23',
-                'updated_at' => '2025-01-23 14:48:54',
+                'updated_at' => '2025-02-09 19:35:08',
             ),
             418 => 
             array (
@@ -44487,9 +44487,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/39-R-635',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:56:23',
-                'updated_at' => '2025-01-23 14:48:54',
+                'updated_at' => '2025-02-06 16:45:49',
             ),
             420 => 
             array (
@@ -44526,9 +44526,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/37-R-636',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 12:57:32',
-                'updated_at' => '2025-01-23 12:57:41',
+                'updated_at' => '2025-02-02 18:30:05',
             ),
             423 => 
             array (
@@ -44734,9 +44734,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/39-R-639',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 13:00:52',
-                'updated_at' => '2025-01-23 13:01:07',
+                'updated_at' => '2025-02-06 16:56:58',
             ),
             439 => 
             array (
@@ -45228,9 +45228,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Pink/40-R-646',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 13:08:14',
-                'updated_at' => '2025-01-23 13:09:01',
+                'updated_at' => '2025-02-06 20:28:08',
             ),
             477 => 
             array (
@@ -46088,9 +46088,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/39-R-659',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 18:43:32',
-                'updated_at' => '2025-01-23 18:50:40',
+                'updated_at' => '2025-02-10 17:39:34',
             ),
             43 => 
             array (
@@ -46413,9 +46413,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/40-R-665',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 19:01:54',
-                'updated_at' => '2025-01-23 19:35:09',
+                'updated_at' => '2025-02-06 17:16:12',
             ),
             68 => 
             array (
@@ -46439,9 +46439,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/42-R-665',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 19:01:54',
-                'updated_at' => '2025-01-23 19:35:08',
+                'updated_at' => '2025-02-06 17:41:31',
             ),
             70 => 
             array (
@@ -46452,9 +46452,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/43-R-665',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 19:01:54',
-                'updated_at' => '2025-01-23 19:35:08',
+                'updated_at' => '2025-02-06 17:41:31',
             ),
             71 => 
             array (
@@ -46465,9 +46465,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/44-R-665',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 19:01:54',
-                'updated_at' => '2025-01-23 19:35:08',
+                'updated_at' => '2025-02-06 19:35:13',
             ),
             72 => 
             array (
@@ -47440,9 +47440,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffe/40-R-682',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 20:09:36',
-                'updated_at' => '2025-01-23 20:09:46',
+                'updated_at' => '2025-02-06 17:48:21',
             ),
             147 => 
             array (
@@ -47934,9 +47934,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/42-R-68A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 20:21:32',
-                'updated_at' => '2025-01-23 20:21:45',
+                'updated_at' => '2025-02-08 19:57:48',
             ),
             185 => 
             array (
@@ -47999,9 +47999,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/9-R-691',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 20:22:55',
-                'updated_at' => '2025-01-23 20:23:10',
+                'updated_at' => '2025-02-11 11:43:19',
             ),
             190 => 
             array (
@@ -48428,9 +48428,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'White/4-R-698',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 21:04:05',
-                'updated_at' => '2025-01-23 21:04:14',
+                'updated_at' => '2025-02-06 16:11:05',
             ),
             223 => 
             array (
@@ -48922,9 +48922,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/37-R-705',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 21:14:06',
-                'updated_at' => '2025-01-23 21:14:17',
+                'updated_at' => '2025-02-01 17:33:21',
             ),
             261 => 
             array (
@@ -48935,9 +48935,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Coffee/38-R-705',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 21:14:06',
-                'updated_at' => '2025-01-23 21:14:17',
+                'updated_at' => '2025-02-06 17:32:49',
             ),
             262 => 
             array (
@@ -49013,9 +49013,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/38-R-706',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 21:16:44',
-                'updated_at' => '2025-01-23 21:16:58',
+                'updated_at' => '2025-02-11 15:58:47',
             ),
             268 => 
             array (
@@ -49208,9 +49208,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/37-R-709',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 21:24:22',
-                'updated_at' => '2025-01-23 21:24:32',
+                'updated_at' => '2025-02-01 15:36:55',
             ),
             283 => 
             array (
@@ -49247,9 +49247,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/40-R-709',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 21:24:22',
-                'updated_at' => '2025-01-23 21:24:32',
+                'updated_at' => '2025-02-01 20:11:51',
             ),
             286 => 
             array (
@@ -49273,9 +49273,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Black/41-R-70A',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 21:27:21',
-                'updated_at' => '2025-01-23 21:27:34',
+                'updated_at' => '2025-02-06 17:55:26',
             ),
             288 => 
             array (
@@ -51808,9 +51808,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/3-R-745',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 22:59:00',
-                'updated_at' => '2025-01-23 22:59:14',
+                'updated_at' => '2025-02-06 17:46:49',
             ),
             483 => 
             array (
@@ -53136,9 +53136,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/43-R-762',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 23:35:44',
-                'updated_at' => '2025-01-23 23:36:03',
+                'updated_at' => '2025-02-07 19:42:59',
             ),
             85 => 
             array (
@@ -53175,9 +53175,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Chocolate/42-R-763',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 23:38:35',
-                'updated_at' => '2025-01-23 23:38:51',
+                'updated_at' => '2025-02-08 14:49:20',
             ),
             88 => 
             array (
@@ -53305,9 +53305,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'Cream/2-R-765',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 23:42:45',
-                'updated_at' => '2025-01-23 23:42:53',
+                'updated_at' => '2025-02-02 15:15:40',
             ),
             98 => 
             array (
@@ -53383,9 +53383,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/2-R-766',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 23:43:58',
-                'updated_at' => '2025-01-23 23:44:05',
+                'updated_at' => '2025-02-11 20:50:17',
             ),
             104 => 
             array (
@@ -53461,9 +53461,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'PNK/37-R-767',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-23 23:46:03',
-                'updated_at' => '2025-01-23 23:46:11',
+                'updated_at' => '2025-02-10 20:14:53',
             ),
             110 => 
             array (
@@ -54449,9 +54449,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/41-R-781',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-24 00:29:39',
-                'updated_at' => '2025-01-24 00:29:46',
+                'updated_at' => '2025-02-06 16:32:36',
             ),
             186 => 
             array (
@@ -54683,9 +54683,9 @@ class ProductVariantsTableSeeder extends Seeder
                 'item_code' => 'BK/42-R-784',
                 'additional_cost' => NULL,
                 'additional_price' => NULL,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'created_at' => '2025-01-24 00:34:01',
-                'updated_at' => '2025-01-24 00:34:10',
+                'updated_at' => '2025-02-10 20:58:56',
             ),
             204 => 
             array (
@@ -54725,6 +54725,188 @@ class ProductVariantsTableSeeder extends Seeder
                 'qty' => 1.0,
                 'created_at' => '2025-01-24 00:34:01',
                 'updated_at' => '2025-01-24 00:34:10',
+            ),
+            207 => 
+            array (
+                'id' => 4311,
+                'product_id' => 785,
+                'variant_id' => 680,
+                'position' => 1,
+                'item_code' => 'White/31-R-785',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 2.0,
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:35:37',
+            ),
+            208 => 
+            array (
+                'id' => 4312,
+                'product_id' => 785,
+                'variant_id' => 681,
+                'position' => 2,
+                'item_code' => 'White/32-R-785',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 2.0,
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:35:37',
+            ),
+            209 => 
+            array (
+                'id' => 4313,
+                'product_id' => 785,
+                'variant_id' => 682,
+                'position' => 3,
+                'item_code' => 'White/33-R-785',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 2.0,
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:35:37',
+            ),
+            210 => 
+            array (
+                'id' => 4314,
+                'product_id' => 785,
+                'variant_id' => 683,
+                'position' => 4,
+                'item_code' => 'White/34-R-785',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 0.0,
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-10 21:31:19',
+            ),
+            211 => 
+            array (
+                'id' => 4315,
+                'product_id' => 785,
+                'variant_id' => 684,
+                'position' => 5,
+                'item_code' => 'White/35-R-785',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 1.0,
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-09 16:41:13',
+            ),
+            212 => 
+            array (
+                'id' => 4316,
+                'product_id' => 785,
+                'variant_id' => 60,
+                'position' => 6,
+                'item_code' => 'White/36-R-785',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 3.0,
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:35:37',
+            ),
+            213 => 
+            array (
+                'id' => 4317,
+                'product_id' => 786,
+                'variant_id' => 685,
+                'position' => 1,
+                'item_code' => 'White/27-R-786',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 2.0,
+                'created_at' => '2025-02-08 14:41:17',
+                'updated_at' => '2025-02-08 14:42:08',
+            ),
+            214 => 
+            array (
+                'id' => 4318,
+                'product_id' => 787,
+                'variant_id' => 58,
+                'position' => 1,
+                'item_code' => 'White/39-R-787',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 2.0,
+                'created_at' => '2025-02-08 14:44:36',
+                'updated_at' => '2025-02-08 14:45:25',
+            ),
+            215 => 
+            array (
+                'id' => 4319,
+                'product_id' => 788,
+                'variant_id' => 58,
+                'position' => 1,
+                'item_code' => 'White/39-R-788',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 1.0,
+                'created_at' => '2025-02-08 14:46:58',
+                'updated_at' => '2025-02-08 14:47:17',
+            ),
+            216 => 
+            array (
+                'id' => 4320,
+                'product_id' => 788,
+                'variant_id' => 21,
+                'position' => 2,
+                'item_code' => 'White/40-R-788',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 1.0,
+                'created_at' => '2025-02-08 14:46:58',
+                'updated_at' => '2025-02-08 14:47:17',
+            ),
+            217 => 
+            array (
+                'id' => 4321,
+                'product_id' => 788,
+                'variant_id' => 22,
+                'position' => 3,
+                'item_code' => 'White/41-R-788',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 1.0,
+                'created_at' => '2025-02-08 14:46:58',
+                'updated_at' => '2025-02-08 14:47:17',
+            ),
+            218 => 
+            array (
+                'id' => 4322,
+                'product_id' => 788,
+                'variant_id' => 23,
+                'position' => 4,
+                'item_code' => 'White/42-R-788',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 1.0,
+                'created_at' => '2025-02-08 14:46:58',
+                'updated_at' => '2025-02-08 14:47:17',
+            ),
+            219 => 
+            array (
+                'id' => 4323,
+                'product_id' => 788,
+                'variant_id' => 24,
+                'position' => 5,
+                'item_code' => 'White/43-R-788',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 1.0,
+                'created_at' => '2025-02-08 14:46:58',
+                'updated_at' => '2025-02-08 14:47:17',
+            ),
+            220 => 
+            array (
+                'id' => 4324,
+                'product_id' => 788,
+                'variant_id' => 25,
+                'position' => 6,
+                'item_code' => 'White/44-R-788',
+                'additional_cost' => NULL,
+                'additional_price' => NULL,
+                'qty' => 1.0,
+                'created_at' => '2025-02-08 14:46:58',
+                'updated_at' => '2025-02-08 14:47:17',
             ),
         ));
         

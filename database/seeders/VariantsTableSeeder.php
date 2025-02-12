@@ -4774,6 +4774,48 @@ class VariantsTableSeeder extends Seeder
                 'created_at' => '2025-01-24 00:29:39',
                 'updated_at' => '2025-01-24 00:29:39',
             ),
+            179 => 
+            array (
+                'id' => 680,
+                'name' => 'White/31',
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:33:18',
+            ),
+            180 => 
+            array (
+                'id' => 681,
+                'name' => 'White/32',
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:33:18',
+            ),
+            181 => 
+            array (
+                'id' => 682,
+                'name' => 'White/33',
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:33:18',
+            ),
+            182 => 
+            array (
+                'id' => 683,
+                'name' => 'White/34',
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:33:18',
+            ),
+            183 => 
+            array (
+                'id' => 684,
+                'name' => 'White/35',
+                'created_at' => '2025-02-08 14:33:18',
+                'updated_at' => '2025-02-08 14:33:18',
+            ),
+            184 => 
+            array (
+                'id' => 685,
+                'name' => 'White/27',
+                'created_at' => '2025-02-08 14:41:17',
+                'updated_at' => '2025-02-08 14:41:17',
+            ),
         ));
         
         

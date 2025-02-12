@@ -361,6 +361,24 @@ class ExpenseCategoriesTableSeeder extends Seeder
                 'created_at' => '2025-01-19 21:19:34',
                 'updated_at' => '2025-01-19 21:19:34',
             ),
+            38 => 
+            array (
+                'id' => 39,
+                'code' => '64371140',
+                'name' => 'City Bank POS Machine',
+                'is_active' => 1,
+                'created_at' => '2025-02-04 21:42:51',
+                'updated_at' => '2025-02-04 21:42:51',
+            ),
+            39 => 
+            array (
+                'id' => 40,
+                'code' => '12233760',
+                'name' => 'Sabbir',
+                'is_active' => 1,
+                'created_at' => '2025-02-06 22:21:57',
+                'updated_at' => '2025-02-06 22:21:57',
+            ),
         ));
         
         
