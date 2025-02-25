@@ -549,6 +549,28 @@
       }
     });
 
+//     $(".daterangepicker-field").daterangepicker({
+//     showDropdowns: true,
+//     autoUpdateInput: false, 
+//     minDate: moment("2000-01-01"),
+//     maxDate: moment("2030-12-31"),
+//     locale: {
+//         format: 'YYYY-MM-DD',
+//         monthNames: [
+//             "January", "February", "March", "April", "May", "June", 
+//             "July", "August", "September", "October", "November", "December"
+//         ]
+//     },
+//     callback: function(startDate, endDate, period){
+//         var starting_date = startDate.format('YYYY-MM-DD');
+//         var ending_date = endDate.format('YYYY-MM-DD');
+//         var title = starting_date + ' To ' + ending_date;
+//         $(".daterangepicker-field").val(title);
+//         $('input[name="starting_date"]').val(starting_date);
+//         $('input[name="ending_date"]').val(ending_date);
+//     }
+// });
+
     $(".gift-card").hide();
     $(".card-element").hide();
     $("#cheque").hide();
