@@ -52,9 +52,6 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        $("ul#report").siblings('a').attr('aria-expanded', 'true');
-        $("ul#report").addClass("show");
-        $("ul#report #stock-count-report-menu").addClass("active");
 
         $('#stock-count-report-table').DataTable({
             "order": [],
