@@ -118,18 +118,20 @@ class StockCountController extends Controller
             foreach ($request->resolved as $key => $value) {
                 if($value == 'update_stock'){
                     $items = $stock_count->items->where('item_code', $key)->all();
-                    $updated_qty = 0;
-                    foreach ($items as $item) {
-                        $updated_qty += $item->updated_quantity;
-                        $current_qty = $item->current_quantity;
-                    }
-                    $productVariant = ProductVariant::where('item_code', $key)->first();
-                    $productVariant->qty = $updated_qty;
-                    $productVariant->save();
+                    if($items){
+                        $updated_qty = 0;
+                        foreach ($items as $item) {
+                            $updated_qty += $item->updated_quantity;
+                            $current_qty = $item->current_quantity;
+                        }
+                        $productVariant = ProductVariant::where('item_code', $key)->first();
+                        $productVariant->qty = $updated_qty;
+                        $productVariant->save();
 
-                    $product = Product::find($productVariant->product_id);
-                    $product->qty += ($updated_qty - $current_qty);
-                    $product->save();
+                        $product = Product::find($productVariant->product_id);
+                        $product->qty += ($updated_qty - $current_qty);
+                        $product->save();
+                    }
                 }
             }
             $stock_count->is_resolved = true;
