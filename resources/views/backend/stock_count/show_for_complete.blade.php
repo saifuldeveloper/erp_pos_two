@@ -240,7 +240,7 @@
                             cols += '<td>' + data[1] + '</td>';
                             cols += '<td>' + data[2] + '</td>';
                             cols +=
-                                '<td><input type="number" class="form-control qty" name="qty[]" value="0" step="any" required/></td>';
+                                '<td><input type="number" class="form-control qty" name="qty[]" value="' + data[2] + '" step="any" required/></td>';
                             cols +=
                                 '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button></td>';
                             cols +=
