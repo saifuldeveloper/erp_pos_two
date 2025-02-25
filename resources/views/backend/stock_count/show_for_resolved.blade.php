@@ -56,7 +56,22 @@
                                                         <th>Current Quantity</th>
                                                         <th>Quantity Find</th>
                                                         <th>Remarks</th>
-                                                        <th>Actions</th>
+                                                        <th>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check
+                                                                    input all" type="radio" name="resolved[all]"
+                                                                    id="update_stock-all" value="update_stock">
+                                                                    <label class="form-check label"
+                                                                    for="update_stock-all" style="margin-right: 10px;">Update All</label>
+                                                            </div>
+                                                            <div class="form-check
+                                                                form-check-inline">
+                                                                <input class="form-check input all" type="radio" name="resolved[all]"
+                                                                    id="cancel-all" value="cancel">
+                                                                    <label class="form-check label"
+                                                                    for="cancel-all" style="margin-right: 10px;">Cancel All</label>
+                                                            </div>
+                                                        </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -144,6 +159,15 @@
                 }
             },
             dom: '<"row"lfB>rtip',
+        });
+
+        // Check all radio button
+        $('.all').on('change', function() {
+            var id = $(this).attr('id');
+            var value = $(this).val();
+            var checked = $(this).prop('checked');
+            var radio = $('input[type="radio"][value="' + value + '"]');
+            radio.prop('checked', checked);
         });
     </script>
 @endpush
