@@ -679,6 +679,36 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            66 => 
+            array (
+                'id' => 67,
+                'name' => 'Sandal',
+                'image' => NULL,
+                'parent_id' => 21,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            67 => 
+            array (
+                'id' => 68,
+                'name' => 'Boy',
+                'image' => NULL,
+                'parent_id' => NULL,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            68 => 
+            array (
+                'id' => 69,
+                'name' => 'Sandal',
+                'image' => NULL,
+                'parent_id' => 68,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

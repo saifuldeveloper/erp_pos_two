@@ -37,6 +37,24 @@ class EmployeesTableSeeder extends Seeder
                 'created_at' => '2024-12-19 11:52:31',
                 'updated_at' => '2024-12-28 09:03:49',
             ),
+            1 => 
+            array (
+                'id' => 2,
+                'name' => 'Kurban',
+                'email' => 'kurban@avijatry.com',
+                'phone_number' => '+8801956449453',
+                'department_id' => 3,
+                'user_id' => NULL,
+                'staff_id' => '161024-313001',
+                'image' => NULL,
+                'address' => 'Khulna',
+                'city' => 'Khulna',
+                'country' => 'Bangladesh',
+                'salary' => '12500.00',
+                'is_active' => 1,
+                'created_at' => '2025-02-15 21:54:25',
+                'updated_at' => '2025-02-18 19:16:25',
+            ),
         ));
         
         

@@ -443,6 +443,14 @@ class ColorsTableSeeder extends Seeder
                 'created_at' => '2025-01-22 16:00:12',
                 'updated_at' => '2025-01-22 16:00:12',
             ),
+            53 => 
+            array (
+                'id' => 79,
+                'name' => 'Silver',
+                'code' => NULL,
+                'created_at' => '2025-02-17 23:38:26',
+                'updated_at' => '2025-02-17 23:38:26',
+            ),
         ));
         
         
