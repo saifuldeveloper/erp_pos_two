@@ -80,7 +80,11 @@ class ProductController extends Controller
                 'total_cost' => $total->cost,
                 'total_price' => $total->price
             );
-            return view('backend.product.index', compact('all_permission', 'role_id', 'numberOfProduct', 'custom_fields', 'field_name', 'count_data'));
+
+            $brands = Brand::where('is_active', true)->get();
+            $categories = Category::where('is_active', true)->get();
+            $units = Unit::where('is_active', true)->get();
+            return view('backend.product.index', compact('all_permission', 'role_id', 'numberOfProduct', 'custom_fields', 'field_name', 'count_data', 'brands', 'categories', 'units'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
@@ -118,70 +122,79 @@ class ProductController extends Controller
         foreach ($custom_fields as $fieldName) {
             $field_names[] = str_replace(" ", "_", strtolower($fieldName));
         }
+
+        $query = Product::with('category', 'brand', 'unit', 'productImages.color')
+            ->where('is_active', true);
+
+        if ($request->input('name')) {
+            $query->where('name', 'LIKE', "%{$request->input('name')}%");
+        }
+
+        if ($request->input('code')) {
+            $query->where('code', 'LIKE', "%{$request->input('code')}%");
+        }
+
+        if ($request->input('brand')) {
+            $query->whereHas('brand', function ($q) use ($request) {
+                $q->where('title', $request->input('brand'));
+            });
+        }
+
+        if ($request->input('category')) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('name', $request->input('category'));
+            });
+        }
+
+        if ($request->input('unit')) {
+            $query->whereHas('unit', function ($q) use ($request) {
+                $q->where('unit_name', $request->input('unit'));
+            });
+        }
+
+        if ($request->input('qty')) {
+            $query->where('qty', '=', $request->input('qty'));
+        }
+
+        if ($request->input('price')) {
+            $query->where('price', '=', $request->input('price'));
+        }
+
+        if ($request->input('cost')) {
+            $query->where('cost', '=', $request->input('cost'));
+        }
+
         if (empty($request->input('search.value'))) {
-            $products = Product::with('category', 'brand', 'unit', 'productImages.color')->offset($start)
-                ->where('is_active', true)
+            $products = $query->offset($start)
                 ->limit($limit)
                 ->orderBy($order, $dir)
                 ->get();
+            $totalFiltered = $query->count(); // Update totalFiltered count after applying filters
         } else {
             $search = $request->input('search.value');
-            $q = Product::select('products.*')
-                ->with('category', 'brand', 'unit', 'productImages.color')
-                ->join('categories', 'products.category_id', '=', 'categories.id')
-                ->leftjoin('brands', 'products.brand_id', '=', 'brands.id')
-                ->where([
-                    ['products.name', 'LIKE', "%{$search}%"],
-                    ['products.is_active', true]
-                ])
-                ->orWhere([
-                    ['products.code', 'LIKE', "%{$search}%"],
-                    ['products.is_active', true]
-                ])
-                ->orWhere([
-                    ['categories.name', 'LIKE', "%{$search}%"],
-                    ['categories.is_active', true],
-                    ['products.is_active', true]
-                ])
-                ->orWhere([
-                    ['brands.title', 'LIKE', "%{$search}%"],
-                    ['brands.is_active', true],
-                    ['products.is_active', true]
-                ]);
-            //searching with custom field
-            foreach ($field_names as $key => $field_name) {
-                $q = $q->orwhere('products.' . $field_name, 'LIKE', "%{$search}%");
-            }
+            $q = $query->where(function ($q) use ($search, $field_names) {
+                $q->where('products.name', 'LIKE', "%{$search}%")
+                    ->orWhere('products.code', 'LIKE', "%{$search}%")
+                    ->orWhereHas('category', function ($q) use ($search) {
+                        $q->where('name', 'LIKE', "%{$search}%");
+                    })
+                    ->orWhereHas('brand', function ($q) use ($search) {
+                        $q->where('title', 'LIKE', "%{$search}%");
+                    });
 
-            $q = $q->offset($start)
+                //searching with custom field
+                foreach ($field_names as $field_name) {
+                    $q->orWhere('products.' . $field_name, 'LIKE', "%{$search}%");
+                }
+            });
+
+            $products = $q->offset($start)
                 ->limit($limit)
-                ->orderBy($order, $dir);
-
-            $products = $q->get();
+                ->orderBy($order, $dir)
+                ->get();
             $totalFiltered = $q->count();
-            /*$totalFiltered = Product::
-                            join('categories', 'products.category_id', '=', 'categories.id')
-                            ->leftjoin('brands', 'products.brand_id', '=', 'brands.id')
-                            ->where([
-                                ['products.name','LIKE',"%{$search}%"],
-                                ['products.is_active', true]
-                            ])
-                            ->orWhere([
-                                ['products.code', 'LIKE', "%{$search}%"],
-                                ['products.is_active', true]
-                            ])
-                            ->orWhere([
-                                ['categories.name', 'LIKE', "%{$search}%"],
-                                ['categories.is_active', true],
-                                ['products.is_active', true]
-                            ])
-                            ->orWhere([
-                                ['brands.title', 'LIKE', "%{$search}%"],
-                                ['brands.is_active', true],
-                                ['products.is_active', true]
-                            ])
-                            ->count();*/
         }
+
         $data = array();
         if (!empty($products)) {
             foreach ($products as $key => $product) {
@@ -212,7 +225,7 @@ class ProductController extends Controller
                 //         ['warehouse_id', Auth::user()->warehouse_id]
                 //     ])->sum('qty');
                 // } else
-                    $nestedData['qty'] = $product->qty;
+                $nestedData['qty'] = $product->qty;
 
                 if ($product->unit_id)
                     $nestedData['unit'] = $product->unit->unit_name;
@@ -626,7 +639,7 @@ class ProductController extends Controller
                 $ending_date = date("Y-m-d");
             }
             $product_id = $request->input('product_id');
-            $product_data = Product::select('id','name', 'code')->find($product_id);
+            $product_data = Product::select('id', 'name', 'code')->find($product_id);
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             return view('backend.product.history', compact('starting_date', 'ending_date', 'warehouse_id', 'product_id', 'product_data', 'lims_warehouse_list'));
         } else

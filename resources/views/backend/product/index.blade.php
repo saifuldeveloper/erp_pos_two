@@ -37,37 +37,115 @@
                         <a href="#" data-toggle="modal" data-target="#importProduct"
                             class="btn btn-primary add-product-btn"><i class="dripicons-copy"></i>
                             {{ __('file.import_product') }}</a>
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#filterSection"
+                            aria-expanded="false" aria-controls="filterSection">
+                            {{ __('Filter') }}
+                        </button>
                     @endif
                 </div>
                 <div class="col-md-4"></div>
             </div>
+            <div class="collapse mt-3" id="filterSection">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{ __('Name') }}</label>
+                                <input type="text" id="filterName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>{{ __('Code') }}</label>
+                                <input type="text" id="filterCode" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('Brand') }}</label>
+                                <select id="filterBrand" class="selectpicker form-control">
+                                    <option value="">{{ __('All') }}</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand->title }}">{{ $brand->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('Category') }}</label>
+                                <select id="filterCategory" class="selectpicker form-control">
+                                    <option value="">{{ __('All') }}</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('Unit') }}</label>
+                                <select id="filterUnit" class="selectpicker form-control">
+                                    <option value="">{{ __('All') }}</option>
+                                    @foreach ($units as $unit)
+                                        <option value="{{ $unit->unit_name }}">{{ $unit->unit_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('Quantity') }}</label>
+                                <input type="number" id="filterQty" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('Price') }}</label>
+                                <input type="number" id="filterPrice" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('Cost') }}</label>
+                                <input type="number" id="filterCost" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row py-3">
                 <div class="col-md-4">
                     <div class="wrapper count-title">
-                      <div>
-                          <div class="count-number"></div>
-                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Quantity') }}  :{{ $count_data['total_qty'] }}</strong></div>
-                      </div>
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Quantity') }}
+                                    :{{ $count_data['total_qty'] }}</strong></div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
                     <div class="wrapper count-title">
-                      <div>
-                          <div class="count-number"></div>
-                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Price') }}: {{ $count_data['total_price'] }}</strong></div>
-                      </div>
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Price') }}:
+                                    {{ $count_data['total_price'] }}</strong></div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
                     <div class="wrapper count-title">
-                      <div>
-                          <div class="count-number"></div>
-                          <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Cost') }}:{{ round($count_data['total_cost'], 2) }}</strong></div>
-                      </div>
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong
+                                    style="color: #ff8040">{{ trans('file.Total Cost') }}:{{ round($count_data['total_cost'], 2) }}</strong>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                </div>
             </div>
-            
+
 
         </div>
         <div class="table-responsive">
@@ -536,10 +614,19 @@
                 },
                 "processing": true,
                 "serverSide": true,
+                "stateSave": true, // Add this line
                 "ajax": {
                     url: "products/product-data",
-                    data: {
-                        all_permission: all_permission
+                    data: function(d) {
+                        d.name = $('#filterName').val();
+                        d.code = $('#filterCode').val();
+                        d.brand = $('#filterBrand').val();
+                        d.category = $('#filterCategory').val();
+                        d.unit = $('#filterUnit').val();
+                        d.qty = $('#filterQty').val();
+                        d.price = $('#filterPrice').val();
+                        d.cost = $('#filterCost').val();
+                        d.all_permission = all_permission;
                     },
                     dataType: "json",
                     type: "post"
@@ -727,6 +814,11 @@
                     },
                 ],
             });
+
+            $('#filterName, #filterCode, #filterBrand, #filterCategory, #filterUnit, #filterQty, #filterPrice, #filterCost')
+                .on('change keyup', function() {
+                    table.draw();
+                });
 
             $(document).on("click", ".color-image", function() {
                 var src = $(this).attr('src');
