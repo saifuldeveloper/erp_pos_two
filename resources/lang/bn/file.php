@@ -5,7 +5,13 @@ return [
 	"dashboard" => "ড্যাশবোর্ড",
 
 	"language" => "ভাষা",
-	'Avijatry Purchase'=> 'অভিযাত্রী ক্রয়',
+	'Avijatry Purchase' => 'অভিযাত্রী ক্রয়',
+	'Filter' => 'ফিল্টার',
+	'code' => 'কোড',
+	'brand' => 'ব্র্যান্ড',
+	'quantity' => 'পরিমাণ',
+	'cost' => 'খরচ',
+	'unit' => 'ইউনিট',
 
 	"revenue" => "রাজস্ব",
 	'Start Date & Time' => 'শুরুর তারিখ এবং সময়',
@@ -67,7 +73,7 @@ return [
 
 	"submit" => "জমা দিন",
 
-    "Select Custom Date" => "তারিখ নির্বাচন করুন",
+	"Select Custom Date" => "তারিখ নির্বাচন করুন",
 
 	"update" => "আপডেট করুন",
 
@@ -80,7 +86,7 @@ return [
 	"return" => "ফেরত ",
 
 	"profit" => "লাভ",
-	
+
 	"sale" => "বিক্রয়",
 
 	"sale qty" => "বিক্রয় পরিমাণ",
@@ -235,7 +241,7 @@ return [
 
 	"Staff" => "স্টাফ",
 
-    "Salary" => "বেতন",
+	"Salary" => "বেতন",
 
 	"Quotation" => "কোটেশন",
 
@@ -422,16 +428,16 @@ return [
 	"Expense Category" => "ব্যয় ক্যাটাগরি",
 
 	"Expense" => "ব্যয়",
-	
+
 	"color" => "রং",
-	
+
 	"Add Color" => "রং যোগ করুন",
-	
-	"Total Quantity"=> "মোট পরিমাণ",
+
+	"Total Quantity" => "মোট পরিমাণ",
 
 	"Total Price" => "মোট মূল্য",
 
-	"Total Cost"=> "মোট খরচ",
+	"Total Cost" => "মোট খরচ",
 
 	"Expense Report" => "ব্যয় রিপোর্ট",
 
@@ -478,7 +484,7 @@ return [
 	"This Month" => "এই মাসে",
 
 	"This Year" => "এই বছর",
-	"Cash" =>"নগদ",
+	"Cash" => "নগদ",
 
 	"Cash in Hand" => "হাতে নগদ",
 
@@ -502,7 +508,7 @@ return [
 
 	"Payment Status" => "পরিশোধের অবস্থা",
 
-    "Brand" => "ব্র্যান্ড",
+	"Brand" => "ব্র্যান্ড",
 
 	"Generate Invoice" => "চালান তৈরি করুন",
 
@@ -898,7 +904,7 @@ return [
 
 	"Received" => "প্রাপ্ত",
 
-    "Selling Price" => "বিক্রয়ের মূল্য",
+	"Selling Price" => "বিক্রয়ের মূল্য",
 
 	"Ordered" => "অর্ডার",
 
@@ -908,7 +914,7 @@ return [
 
 	"Draft" => "খসড়া",
 
-    "DraftList" => "খসড়া তালিকা",
+	"DraftList" => "খসড়া তালিকা",
 
 	"Stock Value by Price" => "মূল্য অনুসারে স্টকের মান",
 
@@ -1002,7 +1008,7 @@ return [
 
 	"HRM Setting" => "এইচআরএম সেটিং",
 
-	'hrm'        => 'এইচআরএম',
+	'hrm' => 'এইচআরএম',
 
 	"CheckIn" => "চেকইন",
 
@@ -1095,7 +1101,7 @@ return [
 	"Tax Number" => "ট্যাক্স নাম্বার",
 
 	"Holiday" => "ছুটি",
-	"Cancel"=>"বাতিল করুন",
+	"Cancel" => "বাতিল করুন",
 
 	"Add Holiday" => "ছুটি যোগ করুন",
 
@@ -1267,7 +1273,7 @@ return [
 
 	"Courier List" => "কুরিয়ার তালিকা",
 
-	"pos"          => "বিক্রয় করুন",
+	"pos" => "বিক্রয় করুন",
 
 	"Product History" => "পণ্যের ইতিহাস",
 
@@ -1337,22 +1343,22 @@ return [
 	"total due rcv" => "মোট বকেয়া আদায়",
 	"total expense" => "মোট খরচ",
 	"total salary" => "মোট বেতন",
-    "item stock value" => "আইটেম স্টক ভ্যালু",
-    "receiveable customer due" => "প্রাপ্য বকেয়া",
-    "total accounts balance" => "সমস্ত একাউন্টের হিসাব",
-    "total assets" => "সমস্ত সম্পদ",
-    "supplier due" => "সাপ্লায়ার বকেয়া",
-    "customer advance" => "ক্রেতার অগ্রীম",
-    "total liabilities" => "সমস্ত দায়",
-    "total cashin" => "সমস্ত ক্যাশ ইন",
-    "total cashout" => "সমস্ত ক্যাশ আউট",
-    "current balance" > "বর্তমান হিসাব",
+	"item stock value" => "আইটেম স্টক ভ্যালু",
+	"receiveable customer due" => "প্রাপ্য বকেয়া",
+	"total accounts balance" => "সমস্ত একাউন্টের হিসাব",
+	"total assets" => "সমস্ত সম্পদ",
+	"supplier due" => "সাপ্লায়ার বকেয়া",
+	"customer advance" => "ক্রেতার অগ্রীম",
+	"total liabilities" => "সমস্ত দায়",
+	"total cashin" => "সমস্ত ক্যাশ ইন",
+	"total cashout" => "সমস্ত ক্যাশ আউট",
+	"current balance" > "বর্তমান হিসাব",
 	'Avijatry Product' => 'অভিযাত্রী প্রোডাক্ট',
-    "Waste" => "জোলাপ",
-    "Waste List" => "জোলাপ তালিকা",
-    "Add Waste" => "জোলাপ যোগ করুন",
-    "Receiver Type" => "প্রাপকের ধরন",
-    "Receiver" => "প্রাপক",
-    "Select One" => "একটি নির্বাচন করুন",
-    "Not Found" => "পাওয়া যায়নি",
+	"Waste" => "জোলাপ",
+	"Waste List" => "জোলাপ তালিকা",
+	"Add Waste" => "জোলাপ যোগ করুন",
+	"Receiver Type" => "প্রাপকের ধরন",
+	"Receiver" => "প্রাপক",
+	"Select One" => "একটি নির্বাচন করুন",
+	"Not Found" => "পাওয়া যায়নি",
 ];

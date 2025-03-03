@@ -29,17 +29,18 @@
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6 d-flex">
                     @if (in_array('products-add', $all_permission))
                         <a href="{{ route('products.create') }}" class="btn btn-info add-product-btn"><i
                                 class="dripicons-plus"></i>
                             {{ __('file.add_product') }}</a>
                         <a href="#" data-toggle="modal" data-target="#importProduct"
-                            class="btn btn-primary add-product-btn"><i class="dripicons-copy"></i>
+                            class="btn btn-primary add-product-btn ml-2"><i class="dripicons-copy"></i>
                             {{ __('file.import_product') }}</a>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#filterSection"
+                        <button class="btn btn-primary ml-2" type="button" data-toggle="collapse" data-target="#filterSection"
                             aria-expanded="false" aria-controls="filterSection">
-                            {{ __('Filter') }}
+           
+                           {{ trans('file.Filter') }}
                         </button>
                     @endif
                 </div>
@@ -50,19 +51,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ __('Name') }}</label>
+                                
+                                <label>{{ trans('file.name') }}</label>
                                 <input type="text" id="filterName" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>{{ __('Code') }}</label>
+                                <label>{{ trans('file.code') }}</label>
                                 <input type="text" id="filterCode" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ __('Brand') }}</label>
+                                <label>{{ trans('file.brand') }}</label>
                                 <select id="filterBrand" class="selectpicker form-control">
                                     <option value="">{{ __('All') }}</option>
                                     @foreach ($brands as $brand)
@@ -73,7 +75,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ __('Category') }}</label>
+                                <label>{{ trans('file.category') }}</label>
                                 <select id="filterCategory" class="selectpicker form-control">
                                     <option value="">{{ __('All') }}</option>
                                     @foreach ($categories as $category)
@@ -84,7 +86,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ __('Unit') }}</label>
+                                <label>{{ trans('file.unit') }}</label>
                                 <select id="filterUnit" class="selectpicker form-control">
                                     <option value="">{{ __('All') }}</option>
                                     @foreach ($units as $unit)
@@ -95,19 +97,19 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ __('Quantity') }}</label>
+                                <label>{{ trans('file.quantity') }}</label>
                                 <input type="number" id="filterQty" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ __('Price') }}</label>
+                                <label>{{ trans('file.price') }}</label>
                                 <input type="number" id="filterPrice" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>{{ __('Cost') }}</label>
+                                <label>{{ trans('file.cost') }}</label>
                                 <input type="number" id="filterCost" class="form-control">
                             </div>
                         </div>
@@ -120,7 +122,7 @@
                     <div class="wrapper count-title">
                         <div>
                             <div class="count-number"></div>
-                            <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Quantity') }}
+                            <div class="name"><strong style="color: #ff8040">{{ trans('Total Quantity') }}
                                     :{{ $count_data['total_qty'] }}</strong></div>
                         </div>
                     </div>
