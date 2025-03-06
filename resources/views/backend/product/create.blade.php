@@ -391,7 +391,8 @@
                                                 <label>{{ trans('file.Value') }} *</label>
                                                 <select name="variant_value[0][]"
                                                     class="variant-val form-control variant-field selectpicker" multiple
-                                                    id="color" data-live-search="true" data-live-search-style="begins">
+                                                    id="color" data-live-search="true"
+                                                    data-live-search-style="begins">
                                                     @foreach ($colors as $color)
                                                         <option value="{{ $color->name }}">{{ $color->name }}</option>
                                                     @endforeach
@@ -1537,13 +1538,24 @@
 
                 this.on('sending', function(file, xhr, formData) {
                     // Append all form inputs to the formData Dropzone will POST
-                    var data = $("#product-form").serializeArray();
-                    $.each(data, function(key, el) {
-                        formData.append(el.name, el.value);
-                    });
+                    if (formData.get('code') == null) {
+                        var data = $("#product-form").serializeArray();
+                        $.each(data, function(key, el) {
+                            formData.append(el.name, el.value);
+                        });
+                    }
+
                     var file = $('#file')[0].files;
                     if (file.length > 0)
                         formData.append('file', file[0]);
+
+                    // Get file from #color-image-section
+                    var colorImages = $('#color-image-section').find('input[type="file"]');
+                    colorImages.each(function(index, el) {
+                        var file = el.files;
+                        if (file.length > 0)
+                            formData.append(el.name, file[0]);
+                    });
                 });
             },
             error: function(file, response) {
