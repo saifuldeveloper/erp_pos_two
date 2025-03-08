@@ -265,6 +265,13 @@
                             <li id="account-statement-menu"><a id="account-statement"
                                     href="">{{ trans('file.Account Statement') }}</a></li>
                         @endif
+                        <li>
+                            <li id="payment">
+                                <a id="account-payment" href="{{ route('account.payment') }}">
+                                    Payment
+                                </a>
+                            </li>
+                        </li>
                     </ul>
                 </li>
             @endif
