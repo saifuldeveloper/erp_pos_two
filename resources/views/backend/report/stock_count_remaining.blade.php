@@ -31,6 +31,7 @@
                                 <tr>
                                     <th>{{ trans('file.Warehouse') }}</th>
                                     <th>{{ trans('file.Product') }}</th>
+                                    <th>{{ trans('file.item code') }}</th>
                                     <th>{{ trans('file.Current Quantity') }}</th>
                                 </tr>
                             </thead>
@@ -39,6 +40,7 @@
                                     <tr>
                                         <td>{{ $product->warehouse_name }}</td>
                                         <td>{{ $product->name }}</td>
+                                        <td>{{ $product->code }}</td>
                                         <td>{{ $product->qty }}</td>
                                     </tr>
                                 @endforeach

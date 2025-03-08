@@ -4692,7 +4692,7 @@ class ReportController extends Controller
         $products = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
             ->join('warehouses', 'product_warehouse.warehouse_id', '=', 'warehouses.id')
             ->whereNotIn('products.id', $product_ids)
-            ->select('products.id', 'products.name', 'products.qty', 'warehouses.name as warehouse_name')   
+            ->select('products.id', 'products.name', 'products.qty','products.code', 'warehouses.name as warehouse_name')   
             ->groupBy('products.id')
             ->get();
         return view('backend.report.stock_count_remaining', compact('products'));
