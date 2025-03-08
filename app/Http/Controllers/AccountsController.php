@@ -219,16 +219,21 @@ class AccountsController extends Controller
     public function accountsAll()
     {
         $lims_account_list = DB::table('accounts')->where('is_active', true)->get();
-        
+
         $html = '';
         foreach($lims_account_list as $account){
             if($account->is_default == 1){
                 $html .='<option selected value="'.$account->id.'">'.$account->name . ' (' . $account->account_no. ')'.'</option>';
             }else{
                 $html .='<option value="'.$account->id.'">'.$account->name . ' (' . $account->account_no. ')'.'</option>';
-            }      
+            }
         }
 
         return response()->json($html);
+    }
+
+    public function payment()
+    {
+        return view('backend.account.payment');
     }
 }
