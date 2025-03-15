@@ -45,7 +45,7 @@ class BillersTableSeeder extends Seeder
                 'company_name' => 'Avijatry Khulna',
                 'vat_number' => NULL,
                 'email' => 'imrulkayes@gmail.com',
-                'phone_number' => '0000000',
+                'phone_number' => '01928219070',
                 'address' => 'Khulna',
                 'city' => 'Khulna',
                 'state' => NULL,
@@ -53,7 +53,7 @@ class BillersTableSeeder extends Seeder
                 'country' => NULL,
                 'is_active' => 1,
                 'created_at' => '2024-12-22 07:32:29',
-                'updated_at' => '2024-12-22 07:32:29',
+                'updated_at' => '2025-03-16 04:08:01',
             ),
         ));
         
