@@ -1388,6 +1388,7 @@ return [
 	"An error occured due to server not being to able to handle your request." => "An error occured due to server not being to able to handle your request.",
 	"An error occured because the service is unavailable." => "An error occured because the service is unavailable.",
 	"Please type a product name to search" => "Please type a product name to search",
+	"No warranty/guarantee is provided for foreign shoes/sandals" =>"No warranty/guarantee is provided for foreign shoes/sandals",
 	"Send" => "Send",
 	"don't have an account" => "don't have an account",
 	"Click here to login" => "Click here to login",

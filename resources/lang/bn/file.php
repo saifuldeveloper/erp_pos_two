@@ -1146,6 +1146,8 @@ return [
 	"Warehouse quantity of product variants" => "পণ্যের ভিন্নতা গোডাউন পরিমাণ",
 
 	"Thank you for shopping with us. Please come again" => "আমাদের সাথে কেনাকাটার জন্য ধন্যবাদ। আবার আসবেন অনুগ্রহ করে",
+	"No warranty/guarantee is provided for foreign shoes/sandals" => "বিদেশী জুতা/স্যান্ডেলের জন্য কোনও ওয়ারেন্টি/গ্যারান্টি দেওয়া হয় না।",
+
 
 	"Money Transfer" => "মানি ট্রান্সফার",
 
