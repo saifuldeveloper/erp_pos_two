@@ -93,7 +93,7 @@
                     <th>{{trans('file.customer')}}</th>
                     <th>{{trans('file.Sale Status')}}</th>
                     <th>{{trans('file.Payment Status')}}</th>
-                    <th>{{trans('file.Delivery Status')}}</th>
+                    {{-- <th>{{trans('file.Delivery Status')}}</th> --}}
                     <th>{{ trans('file.Quantity') }}</th>
                     <th>{{trans('file.grand total')}}</th>
                     <th>{{trans('file.Returned Amount')}}</th>
@@ -112,7 +112,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th></th>
+                {{-- <th></th> --}}
                 <th></th>
                 <th></th>
                 <th></th>
@@ -493,7 +493,7 @@
     // @endif
 
 
-    var columns = [{"data": "key"}, {"data": "date"}, {"data": "reference_no"}, {"data": "biller"}, {"data": "customer"}, {"data": "sale_status"}, {"data": "payment_status"}, {"data": "delivery_status"}, {"data":"total_quantity"},{"data": "grand_total"}, {"data": "returned_amount"}, {"data": "paid_amount"}, {"data": "due"}];
+    var columns = [{"data": "key"}, {"data": "date"}, {"data": "reference_no"}, {"data": "biller"}, {"data": "customer"}, {"data": "sale_status"}, {"data": "payment_status"},  {"data":"total_quantity"},{"data": "grand_total"}, {"data": "returned_amount"}, {"data": "paid_amount"}, {"data": "due"}];
     var field_name = <?php echo json_encode($field_name) ?>;
     for(i = 0; i < field_name.length; i++) {
         columns.push({"data": field_name[i]});

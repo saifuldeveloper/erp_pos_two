@@ -765,6 +765,9 @@
     }
 
     function purchaseDetails(purchase){
+
+        console.log(purchase);
+    
         var htmltext = '<strong>{{trans("file.Date")}}: </strong>'+purchase[0]+'<br><strong>{{trans("file.reference")}}: </strong>'+purchase[1]+'<br><strong>{{trans("file.Purchase Status")}}: </strong>'+purchase[2]+'<br>';
         // if(purchase[27])
         //     htmltext += '<br><strong>{{trans("file.Exchange Rate")}}: </strong>'+purchase[27]+'<br>';

@@ -227,6 +227,10 @@ class ReportController extends Controller
                         $brand_total[$start][$brand_name] += $productSale->total;
                     }
                 }
+                uksort($brand_total[$start], function ($a, $b) {
+                $priority = ['Avijatry' => 1, 'China' => 2];
+                return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
+                });
                 $start++;
             }
             $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
@@ -236,6 +240,7 @@ class ReportController extends Controller
             $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $warehouse_id = 0;
+
             return view('backend.report.daily_sale', compact('total_sale', 'grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');

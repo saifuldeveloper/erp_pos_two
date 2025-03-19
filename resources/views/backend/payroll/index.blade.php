@@ -78,7 +78,9 @@
                         @endphp
                         <tr data-id="{{ $payroll->id }}">
                             <td>{{ $key }}</td>
-                            <td>{{ date($general_setting->date_format, strtotime($payroll->created_at->toDateString())) }}
+                            {{-- <td>{{ date($general_setting->date_format, strtotime($payroll->created_at->toDateString())) }} --}}
+                                <td>{{ date(config('date_format') . ' (h:i A)', strtotime($payroll->created_at)) }}</td>
+                          
                             </td>
                             <td>{{ $payroll->reference_no }}</td>
                             <td>{{ $employee->name }}</td>

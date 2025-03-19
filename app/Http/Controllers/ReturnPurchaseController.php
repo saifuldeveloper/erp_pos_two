@@ -159,7 +159,8 @@ class ReturnPurchaseController extends Controller
             {
                 $nestedData['id'] = $returns->id;
                 $nestedData['key'] = $key;
-                $nestedData['date'] = date(config('date_format'), strtotime($returns->created_at->toDateString()));
+                // $nestedData['date'] = date(config('date_format'), strtotime($returns->created_at->toDateString()));
+                $nestedData['date'] = date(config('date_format') . ' (h:i A)', strtotime($returns->created_at));
                 $nestedData['reference_no'] = $returns->reference_no;
                 $nestedData['warehouse'] = $returns->warehouse->name;
                 if($returns->purchase_id) {

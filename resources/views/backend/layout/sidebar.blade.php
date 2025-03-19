@@ -119,11 +119,11 @@
                             {{-- <li id="sale-import-menu"><a href="{{url('sales/sale_by_csv')}}">{{trans('file.Import Sale By CSV')}}</a></li> --}}
                         @endif
 
-                        @if ($gift_card_permission_active)
+                        {{-- @if ($gift_card_permission_active)
                             <li id="gift-card-menu"><a
                                     href="{{ route('gift_cards.index') }}">{{ trans('file.Gift Card List') }}</a>
                             </li>
-                        @endif
+                        @endif --}}
                         @if ($coupon_permission_active)
                             <li id="coupon-menu"><a
                                     href="{{ route('coupons.index') }}">{{ trans('file.Coupon List') }}</a> </li>
