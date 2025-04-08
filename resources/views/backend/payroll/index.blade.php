@@ -64,7 +64,7 @@
                         <th>{{ trans('file.reference') }}</th>
                         <th>{{ trans('file.Employee') }}</th>
                         <th>{{ trans('file.Account') }}</th>
-                        <th>{{ trans('file.Salary') }}</th>
+                        <th>{{ trans('file.Payroll Type') }}</th>
                         <th>{{ trans('file.Amount') }}</th>
                         <th>{{ trans('file.Method') }}</th>
                         <th class="not-exported">{{ trans('file.action') }}</th>
@@ -79,13 +79,13 @@
                         <tr data-id="{{ $payroll->id }}">
                             <td>{{ $key }}</td>
                             {{-- <td>{{ date($general_setting->date_format, strtotime($payroll->created_at->toDateString())) }} --}}
-                                <td>{{ date(config('date_format') . ' (h:i A)', strtotime($payroll->created_at)) }}</td>
-                          
+                            <td>{{ date(config('date_format') . ' (h:i A)', strtotime($payroll->created_at)) }}</td>
+
                             </td>
                             <td>{{ $payroll->reference_no }}</td>
                             <td>{{ $employee->name }}</td>
                             <td>{{ $account->name }}</td>
-                            <td>{{ number_format((float) $employee->salary, $general_setting->decimal, '.', '') }}</td>
+                            <td>{{ $payroll->payrollType->name }}</td>
                             <td>{{ number_format((float) $payroll->amount, $general_setting->decimal, '.', '') }}</td>
                             @if ($payroll->paying_method == 0)
                                 <td>Cash</td>
@@ -107,6 +107,7 @@
                                         <li>
                                             <button type="button" data-id="{{ $payroll->id }}"
                                                 data-date="{{ $payroll->created_at }}"
+                                                data-payroll_type="{{ $payroll->payroll_type_id }}"
                                                 data-reference="{{ $payroll->reference_no }}"
                                                 data-employee="{{ $payroll->employee_id }}"
                                                 data-account="{{ $payroll->account_id }}"
@@ -166,8 +167,8 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Date') }}</label>
-                            <input type="datetime-local" name="created_at" class="form-control" placeholder="Choose date"
-                                value="{{ date('d-m-Y') }}" />
+                            <input type="datetime-local" name="created_at" class="form-control"
+                                placeholder="Choose date" value="{{ date('d-m-Y') }}" />
                         </div>
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Employee') }} *</label>
@@ -196,6 +197,16 @@
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
+                            <label> {{ trans('file.Payroll Type') }} *</label>
+                            <select class="form-control selectpicker" name="payroll_type_id" required
+                                id="payroll_type_id">
+                                <option value="">Select Payroll Type...</option>
+                                @foreach ($lims_payroll_types as $payroll_type)
+                                    <option value="{{ $payroll_type->id }}">{{ $payroll_type->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group d-none" id="salary">
                             <label>{{ trans('file.Salary') }}</label>
                             <input type="number" step="any" name="salary" class="form-control" readonly>
                         </div>
@@ -238,12 +249,11 @@
                     <p class="italic">
                         <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
                     </p>
-                    {!! Form::open(['route' => ['payroll.update', 1], 'method' => 'put', 'files' => true]) !!}
+                    {!! Form::open(['route' => ['payroll.update', 1], 'method' => 'put', 'id' => 'editForm']) !!}
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Date') }}</label>
-                            <input type="datetime-local" name="created_at" class="form-control" value="{{ date('d-m-Y') }}"
-                                placeholder="Choose date" />
+                            <input type="datetime-local" name="created_at" class="form-control" placeholder="Choose date" />
                         </div>
                         <div class="col-md-6 form-group">
                             <input type="hidden" name="payroll_id">
@@ -259,17 +269,20 @@
                             <label> {{ trans('file.Account') }} *</label>
                             <select class="form-control selectpicker" name="account_id">
                                 @foreach ($lims_account_list as $account)
-                                    @if ($account->is_default)
-                                        <option selected value="{{ $account->id }}">{{ $account->name }}
-                                            [{{ $account->account_no }}]</option>
-                                    @else
-                                        <option value="{{ $account->id }}">{{ $account->name }}
-                                            [{{ $account->account_no }}]</option>
-                                    @endif
+                                    <option value="{{ $account->id }}">{{ $account->name }} [{{ $account->account_no }}]</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
+                            <label> {{ trans('file.Payroll Type') }} *</label>
+                            <select class="form-control selectpicker" name="payroll_type_id" required id="edit_payroll_type_id">
+                                <option value="">Select Payroll Type...</option>
+                                @foreach ($lims_payroll_types as $payroll_type)
+                                    <option value="{{ $payroll_type->id }}">{{ $payroll_type->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group d-none" id="edit_salary">
                             <label>{{ trans('file.Salary') }}</label>
                             <input type="number" step="any" name="salary" class="form-control" readonly>
                         </div>
@@ -309,6 +322,24 @@
         var payroll_id = [];
         var user_verified = <?php echo json_encode(env('USER_VERIFIED')); ?>;
 
+        $("#payroll_type_id").on('change', function() {
+            var payroll_type_id = $(this).val();
+            if (payroll_type_id == 1) {
+                $('#salary').removeClass('d-none');
+            } else {
+                $('#salary').addClass('d-none');
+            }
+        });
+
+        $("#edit_payroll_type_id").on('change', function() {
+            var payroll_type_id = $(this).val();
+            if (payroll_type_id == 1) {
+                $('#edit_salary').removeClass('d-none');
+            } else {
+                $('#edit_salary').addClass('d-none');
+            }
+        });
+
         $(".daterangepicker-field").daterangepicker({
             callback: function(startDate, endDate, period) {
                 var starting_date = startDate.format('YYYY-MM-DD');
@@ -334,15 +365,35 @@
         }
 
         $(document).on('click', '.edit-btn', function() {
-            console.log($(this).data('date'));
-            $("#editModal input[name='payroll_id']").val($(this).data('id'));
-            $("#editModal input[name='created_at']").val($(this).data('date'));
-            $("#editModal select[name='employee_id']").val($(this).data('employee'));
-            $("#editModal select[name='account_id']").val($(this).data('account'));
-            $("#editModal input[name='salary']").val($(this).data('salary'));
-            $("#editModal input[name='amount']").val($(this).data('amount'));
-            $("#editModal select[name='paying_method']").val($(this).data('paying_method'));
-            $("#editModal textarea[name='note']").val($(this).data('note'));
+            const payrollId = $(this).data('id');
+            const date = $(this).data('date');
+            const employeeId = $(this).data('employee');
+            const accountId = $(this).data('account');
+            const payrollTypeId = $(this).data('payroll_type');
+            const salary = $(this).data('salary');
+            const amount = $(this).data('amount');
+            const payingMethod = $(this).data('paying_method');
+            const note = $(this).data('note');
+
+            const form = $('#editForm');
+            form.attr('action', `/payroll/${payrollId}`);
+            form.find('input[name="payroll_id"]').val(payrollId);
+            form.find('input[name="created_at"]').val(date);
+            form.find('select[name="employee_id"]').val(employeeId);
+            form.find('select[name="account_id"]').val(accountId);
+            form.find('select[name="payroll_type_id"]').val(payrollTypeId);
+            form.find('input[name="salary"]').val(salary);
+            form.find('input[name="amount"]').val(amount);
+            form.find('select[name="paying_method"]').val(payingMethod);
+            form.find('textarea[name="note"]').val(note);
+
+            // Show or hide salary field based on payroll type
+            if (payrollTypeId == 1) {
+                $('#edit_salary').removeClass('d-none');
+            } else {
+                $('#edit_salary').addClass('d-none');
+            }
+
             $('.selectpicker').selectpicker('refresh');
         });
 
