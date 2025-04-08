@@ -306,6 +306,10 @@
                             <li id="payroll-menu"><a
                                     href="{{ route('payroll.index') }}">{{ trans('file.Payroll') }}</a></li>
                         @endif
+                        <li id="payroll-type-menu">
+                            <a href="{{ route('payroll-types.index') }}">{{ trans('file.Payroll Type') }}</a>
+
+                        </li>
                         {{-- @if ($holiday_active)
                 <li id="holiday-menu"><a href="{{route('holidays.index')}}">{{trans('file.Holiday')}}</a></li>
                 @endif --}}
