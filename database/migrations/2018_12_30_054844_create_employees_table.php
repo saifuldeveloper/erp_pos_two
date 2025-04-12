@@ -24,6 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->decimal('salary', 15, 2)->nullable();
+            $table->json('salary_history')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
         });
