@@ -581,6 +581,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 
 
 	Route::post('employees/deletebyselection', [EmployeeController::class, 'deleteBySelection']);
+    Route::post('employees/salary-update', [EmployeeController::class, 'salaryUpdate'])->name('employees.salaryUpdate');
 	Route::resource('employees', EmployeeController::class);
 
     Route::resource('payroll-types', PayrollTypeController::class);
