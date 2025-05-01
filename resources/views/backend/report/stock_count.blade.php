@@ -23,6 +23,39 @@
                     </div>
                 </div>
             </div>
+            <div class="row pb-3 ">
+                <div class="col-md-4">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong style="color: #ff8040">{{ trans('Total Product') }}
+                                    : {{ $stockCountItems->groupBy('product_id')->count() }}
+                                </strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong style="color: #ff8040">{{ trans('Total Current Quantity') }}
+                                    : {{ $stockCountItems->sum('current_quantity') }}
+                                </strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name"><strong style="color: #ff8040">{{ trans('Total Update Quantity') }}
+                                    :{{ $stockCountItems->sum('updated_quantity') }}
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -58,7 +91,6 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-
         $('#stock-count-report-table').DataTable({
             "order": [],
             "columnDefs": [{
