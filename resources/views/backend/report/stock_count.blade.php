@@ -23,8 +23,32 @@
                     </div>
                 </div>
             </div>
+            <div class="card">
+                {!! Form::open(['route' => 'report.stockCount', 'method' => 'get']) !!}
+                <div class="row mb-3">
+                    <div class="col-md-4 offset-md-1 mt-4">
+                        <div class="form-group row">
+                            <label class="d-tc mt-2"><strong>{{ trans('file.Choose Your Date') }}</strong> &nbsp;</label>
+                            <div class="d-tc">
+                                <div class="input-group">
+                                    <input type="text" class="daterangepicker-field form-control"
+                                        value="{{ request('start_date') ?? date('Y-m-d') }} To {{ request('end_date') ?? date('Y-m-d') }}">
+                                    <input type="hidden" name="start_date" value="{{ request('start_date') }}" />
+                                    <input type="hidden" name="end_date" value="{{ request('end_date') }}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">{{ trans('file.submit') }}</button>
+                        </div>
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </div>
             <div class="row pb-3 ">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="wrapper count-title">
                         <div>
                             <div class="count-number"></div>
@@ -34,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="wrapper count-title">
                         <div>
                             <div class="count-number"></div>
@@ -44,13 +68,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-3">
                     <div class="wrapper count-title">
                         <div>
                             <div class="count-number"></div>
                             <div class="name"><strong style="color: #ff8040">{{ trans('Total Update Quantity') }}
                                     :{{ $stockCountItems->sum('updated_quantity') }}
                                 </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name">
+                                @foreach ($brandWiseStockCounts as $key => $brandWiseStockCount)
+                                    @php
+                                        $sumOfCurrentQuantity = array_sum(
+                                            array_column($brandWiseStockCount, 'current_quantity'),
+                                        );
+                                        $sumOfUpdatedQuantity = array_sum(
+                                            array_column($brandWiseStockCount, 'updated_quantity'),
+                                        );
+                                    @endphp
+
+                                    <strong style="color: #ff8040">
+                                        {{ $key }} :
+                                        {{ $sumOfCurrentQuantity }} To
+                                        {{ $sumOfUpdatedQuantity }}
+                                    </strong><br>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -97,6 +146,16 @@
                 "targets": [0, 1, 2, 3, 4, 5],
                 "orderable": false
             }]
+        });
+        $(".daterangepicker-field").daterangepicker({
+            callback: function(startDate, endDate, period) {
+                var start_date = startDate.format('YYYY-MM-DD');
+                var end_date = endDate.format('YYYY-MM-DD');
+                var title = start_date + ' to ' + end_date;
+                $(this).val(title);
+                $('input[name="start_date"]').val(start_date);
+                $('input[name="end_date"]').val(end_date);
+            }
         });
     </script>
 @endpush
