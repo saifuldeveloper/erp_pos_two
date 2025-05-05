@@ -228,8 +228,8 @@ class ReportController extends Controller
                     }
                 }
                 uksort($brand_total[$start], function ($a, $b) {
-                $priority = ['Avijatry' => 1, 'China' => 2];
-                return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
+                    $priority = ['Avijatry' => 1, 'China' => 2];
+                    return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
                 });
                 $start++;
             }
@@ -4681,14 +4681,24 @@ class ReportController extends Controller
 
     public function stockCount(Request $request)
     {
-        $stockCountItems = StockCountItem::with('stockCount')
+        $stockCountItems = StockCountItem::with('stockCount', 'product.brand')
             ->join('stock_counts', 'stock_counts.id', '=', 'stock_count_items.stock_count_id')
             ->where('stock_counts.is_completed', 1)
             ->where('stock_counts.is_resolved', 1)
             ->groupBy('item_code')
             ->select('stock_count_items.id', 'stock_count_id', 'product_id', 'item_code', 'current_quantity', DB::raw('sum(updated_quantity) as updated_quantity'))
+            ->when($request->start_date, function ($query) use ($request) {
+                return $query->whereDate('stock_counts.created_at', '>=', $request->start_date);
+            })
+            ->when($request->end_date, function ($query) use ($request) {
+                return $query->whereDate('stock_counts.created_at', '<=', $request->end_date);
+            })
             ->get();
-        return view('backend.report.stock_count', compact('stockCountItems'));
+        $brandWiseStockCounts = [];
+        foreach ($stockCountItems as $item) {
+            $brandWiseStockCounts[$item->product->brand->title][] = $item;
+        }
+        return view('backend.report.stock_count', compact('stockCountItems', 'brandWiseStockCounts'));
     }
 
     public function stockCountRemaining()
@@ -4697,7 +4707,7 @@ class ReportController extends Controller
         $products = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
             ->join('warehouses', 'product_warehouse.warehouse_id', '=', 'warehouses.id')
             ->whereNotIn('products.id', $product_ids)
-            ->select('products.id', 'products.name', 'products.qty','products.code', 'warehouses.name as warehouse_name')   
+            ->select('products.id', 'products.name', 'products.qty', 'products.code', 'warehouses.name as warehouse_name')
             ->groupBy('products.id')
             ->get();
         return view('backend.report.stock_count_remaining', compact('products'));
