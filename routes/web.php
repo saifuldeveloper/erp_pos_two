@@ -45,6 +45,7 @@ use App\Http\Controllers\MoneyTransferController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OtherController;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\PayrollTypeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\QuotationController;
@@ -566,6 +567,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::get('balancesheet', 'balanceSheet')->name('accounts.balancesheet');
         Route::post('account-statement', 'accountStatement')->name('accounts.statement');
         Route::get('accounts/all', 'accountsAll')->name('account.all');
+        Route::get('/payment', 'payment')->name('account.payment');
     });
     Route::resource('accounts', AccountsController::class);
 
@@ -579,9 +581,10 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
 
 
 	Route::post('employees/deletebyselection', [EmployeeController::class, 'deleteBySelection']);
+    Route::post('employees/salary-update', [EmployeeController::class, 'salaryUpdate'])->name('employees.salaryUpdate');
 	Route::resource('employees', EmployeeController::class);
 
-
+    Route::resource('payroll-types', PayrollTypeController::class);
 	Route::post('payroll/deletebyselection', [PayrollController::class, 'deleteBySelection']);
 	Route::resource('payroll', PayrollController::class);
 
@@ -641,13 +644,12 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function() {
         Route::get('/invoice/{id}', 'invoice')->name('invoice.show');
         Route::post('/invoice-approve/{id}', 'invoiceApprove')->name('invoice.approve');
     });
-
-    Route::controller(OtherController::class)->group(function () {
-        Route::get('/migrate', 'migrate')->name('migration');
-        Route::get('/clear', 'clear')->name('clear-cache');
-        Route::get('/composer', 'composer')->name('composer');
-        Route::get('/iseed', 'iseed')->name('iseed');
-        Route::get('/color-create', 'color');
-    });
 });
 
+Route::controller(OtherController::class)->group(function () {
+    Route::get('/migrate', 'migrate')->name('migration');
+    Route::get('/clear', 'clear')->name('clear-cache');
+    Route::get('/composer', 'composer')->name('composer');
+    Route::get('/iseed', 'iseed')->name('iseed');
+    Route::get('/color-create', 'color');
+});

@@ -56,23 +56,23 @@ class StockCountsTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'warehouse_id' => 1,
-                'is_completed' => 0,
-                'is_resolved' => 0,
-                'completed_by' => NULL,
-                'resolved_by' => NULL,
+                'is_completed' => 1,
+                'is_resolved' => 1,
+                'completed_by' => 1,
+                'resolved_by' => 1,
                 'created_at' => '2025-02-15 22:17:02',
-                'updated_at' => '2025-02-15 22:17:02',
+                'updated_at' => '2025-03-08 22:32:30',
             ),
             4 => 
             array (
                 'id' => 5,
                 'warehouse_id' => 1,
-                'is_completed' => 0,
-                'is_resolved' => 0,
-                'completed_by' => NULL,
-                'resolved_by' => NULL,
+                'is_completed' => 1,
+                'is_resolved' => 1,
+                'completed_by' => 1,
+                'resolved_by' => 1,
                 'created_at' => '2025-02-15 22:18:33',
-                'updated_at' => '2025-02-15 22:18:33',
+                'updated_at' => '2025-03-08 22:34:20',
             ),
             5 => 
             array (
@@ -84,6 +84,17 @@ class StockCountsTableSeeder extends Seeder
                 'resolved_by' => 1,
                 'created_at' => '2025-02-15 22:19:31',
                 'updated_at' => '2025-02-15 22:22:35',
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'warehouse_id' => 4,
+                'is_completed' => 0,
+                'is_resolved' => 0,
+                'completed_by' => NULL,
+                'resolved_by' => NULL,
+                'created_at' => '2025-03-08 22:34:58',
+                'updated_at' => '2025-03-08 22:34:58',
             ),
         ));
         

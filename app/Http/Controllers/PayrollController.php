@@ -13,6 +13,7 @@ use Spatie\Permission\Models\Permission;
 use App\Mail\PayrollDetails;
 use Mail;
 use App\Models\MailSetting;
+use App\Models\PayrollType;
 
 class PayrollController extends Controller
 {
@@ -54,8 +55,8 @@ class PayrollController extends Controller
                     })
                     ->get();
             }
-
-            return view('backend.payroll.index', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id'));
+            $lims_payroll_types = PayrollType::where('status', 'Active')->get();
+            return view('backend.payroll.index', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id', 'lims_payroll_types'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }

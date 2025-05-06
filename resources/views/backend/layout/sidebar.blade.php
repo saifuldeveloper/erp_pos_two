@@ -119,11 +119,11 @@
                             {{-- <li id="sale-import-menu"><a href="{{url('sales/sale_by_csv')}}">{{trans('file.Import Sale By CSV')}}</a></li> --}}
                         @endif
 
-                        @if ($gift_card_permission_active)
+                        {{-- @if ($gift_card_permission_active)
                             <li id="gift-card-menu"><a
                                     href="{{ route('gift_cards.index') }}">{{ trans('file.Gift Card List') }}</a>
                             </li>
-                        @endif
+                        @endif --}}
                         @if ($coupon_permission_active)
                             <li id="coupon-menu"><a
                                     href="{{ route('coupons.index') }}">{{ trans('file.Coupon List') }}</a> </li>
@@ -265,6 +265,13 @@
                             <li id="account-statement-menu"><a id="account-statement"
                                     href="">{{ trans('file.Account Statement') }}</a></li>
                         @endif
+                        <li>
+                            <li id="payment">
+                                <a id="account-payment" href="{{ route('account.payment') }}">
+                                    Payment
+                                </a>
+                            </li>
+                        </li>
                     </ul>
                 </li>
             @endif
@@ -299,6 +306,10 @@
                             <li id="payroll-menu"><a
                                     href="{{ route('payroll.index') }}">{{ trans('file.Payroll') }}</a></li>
                         @endif
+                        <li id="payroll-type-menu">
+                            <a href="{{ route('payroll-types.index') }}">{{ trans('file.Payroll Type') }}</a>
+
+                        </li>
                         {{-- @if ($holiday_active)
                 <li id="holiday-menu"><a href="{{route('holidays.index')}}">{{trans('file.Holiday')}}</a></li>
                 @endif --}}

@@ -50,6 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentWithGiftCardTableSeeder::class);
         $this->call(PaymentWithPaypalTableSeeder::class);
         $this->call(PaymentsTableSeeder::class);
+        $this->call(PayrollTypesTableSeeder::class);
         $this->call(PayrollsTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
         $this->call(PosSettingTableSeeder::class);

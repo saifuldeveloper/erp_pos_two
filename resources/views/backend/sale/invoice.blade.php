@@ -336,6 +336,11 @@
                     @endforeach
                     <tr>
                         <td class="centered" colspan="3">
+                            {{ trans('file.No warranty/guarantee is provided for foreign shoes/sandals') }}</td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="centered" colspan="3">
                             {{ trans('file.Thank you for shopping with us. Please come again') }}</td>
                     </tr>
                     <tr>

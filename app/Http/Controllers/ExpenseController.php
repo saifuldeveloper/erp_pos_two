@@ -122,7 +122,8 @@ class ExpenseController extends Controller
             {
                 $nestedData['id'] = $expense->id;
                 $nestedData['key'] = $key;
-                $nestedData['date'] = date(config('date_format'), strtotime($expense->created_at->toDateString()));
+                // $nestedData['date'] = date(config('date_format'), strtotime($expense->created_at->toDateString()));
+                $nestedData['date'] = date(config('date_format') . ' (h:i A)', strtotime($expense->created_at));
                 $nestedData['reference_no'] = $expense->reference_no;
                 $nestedData['warehouse'] = $expense->warehouse->name;
                 $nestedData['expenseCategory'] = $expense->expenseCategory->name;

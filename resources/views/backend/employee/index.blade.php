@@ -103,8 +103,7 @@
                                                     data-city="{{ $employee->city }}"
                                                     data-country="{{ $employee->country }}"
                                                     data-staff_id="{{ $employee->staff_id }}"
-                                                    data-salary="{{ $employee->salary }}"
-                                                    class="edit-btn btn btn-link"
+                                                    data-salary="{{ $employee->salary }}" class="edit-btn btn btn-link"
                                                     data-toggle="modal" data-target="#editModal">
                                                     <i class="dripicons-document-edit"></i>
                                                     {{ trans('file.edit') }}
@@ -121,6 +120,27 @@
                                             </li>
                                             {{ Form::close() }}
                                         @endif
+                                        <li class="divider"></li>
+                                        <li>
+                                            <button type="button" data-id="{{ $employee->id }}"
+                                                data-name="{{ $employee->name }}" data-salary="{{ $employee->salary }}"
+                                                class="salary-update-btn btn btn-link" data-toggle="modal"
+                                                data-target="#salaryUpdateModal">
+                                                <i class="dripicons-wallet"></i>
+                                                Salary Update
+                                            </button>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <button type="button" data-id="{{ $employee->id }}"
+                                                data-name="{{ $employee->name }}" data-salary="{{ $employee->salary }}"
+                                                data-salary_history="{{ $employee->salary_history }}"
+                                                class="salary-history-btn btn btn-link" data-toggle="modal"
+                                                data-target="#salaryUpdateListModal">
+                                                <i class="dripicons-clock"></i>
+                                                Salary Update History
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                             </td>
@@ -189,13 +209,98 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Salary') }}</label>
-                            <input type="number" name="salary" class="form-control" step="0.01" min="0" required>
+                            <input type="number" name="salary" class="form-control" step="0.01" min="0"
+                                required>
                         </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">{{ trans('file.submit') }}</button>
                     </div>
                     {{ Form::close() }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="salaryUpdateModal" tabindex="-1" role="dialog" aria-labelledby="salaryUpdateModalLabel"
+        aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="salaryUpdateModalLabel" class="modal-title">{{ trans('file.Update Salary') }}</h5>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                        <span aria-hidden="true"><i class="dripicons-cross"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="italic">
+                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
+                    </p>
+                    {!! Form::open(['route' => ['employees.salaryUpdate'], 'method' => 'post']) !!}
+                    <input type="hidden" name="employee_id" id="salary-employee-id">
+                    <div class="form-group">
+                        <label>{{ trans('file.name') }}</label>
+                        <input type="text" id="salary-employee-name" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ trans('file.date') }}</label>
+                        <input type="date" name="date" class="form-control" required value="{{ date('Y-m-d') }}">
+                    </div>
+                    <div class="form-group">
+                        <label>{{ trans('file.Current Salary') }} *</label>
+                        <input type="number" name="current_salary" id="salary-employee-salary" class="form-control"
+                            step="0.01" min="0" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ trans('file.Adjustment Amount') }} *</label>
+                        <input type="number" name="adjustment_amount" id="salary-adjustment-amount"
+                            class="form-control" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ trans('file.Final Salary') }} *</label>
+                        <input type="number" name="final_salary" id="salary-final-salary" class="form-control"
+                            step="0.01" min="0" required readonly>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">{{ trans('file.submit') }}</button>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Salary Update List Modal -->
+    <div id="salaryUpdateListModal" tabindex="-1" role="dialog" aria-labelledby="salaryUpdateListModalLabel"
+        aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="salaryUpdateListModalLabel" class="modal-title">{{ trans('file.Salary Update History') }}
+                    </h5>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                        <span aria-hidden="true"><i class="dripicons-cross"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="italic">
+                        <small>{{ trans('file.Here is the salary update history for the selected employee') }}.</small>
+                    </p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>{{ trans('file.Date') }}</th>
+                                    <th>{{ trans('file.Current Salary') }}</th>
+                                    <th>{{ trans('file.Adjustment Amount') }}</th>
+                                    <th>{{ trans('file.Final Salary') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salary-history-body">
+                                <!-- Salary history will be dynamically populated here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -255,6 +360,50 @@
             $("#editModal input[name='staff_id']").val($(this).data('staff_id'));
             $("#editModal input[name='salary']").val($(this).data('salary'));
             $('.selectpicker').selectpicker('refresh');
+        });
+
+        $(document).on('click', '.salary-update-btn', function() {
+            const employeeId = $(this).data('id');
+            const employeeName = $(this).data('name');
+            const employeeSalary = $(this).data('salary');
+
+            $('#salary-employee-id').val(employeeId);
+            $('#salary-employee-name').val(employeeName);
+            $('#salary-employee-salary').val(employeeSalary);
+            $('#salary-adjustment-amount').val('');
+            $('#salary-final-salary').val(employeeSalary);
+        });
+
+        $(document).on('input', '#salary-adjustment-amount', function() {
+            const currentSalary = parseFloat($('#salary-employee-salary').val());
+            const adjustmentAmount = parseFloat($(this).val()) || 0;
+            const finalSalary = currentSalary + adjustmentAmount;
+            $('#salary-final-salary').val(finalSalary.toFixed(2));
+        });
+
+        $(document).on('click', '.salary-history-btn', function() {
+            const salaryHistory = $(this).data('salary_history');
+            const $historyBody = $('#salary-history-body');
+            $historyBody.empty();
+
+            if (salaryHistory.length > 0) {
+                salaryHistory.forEach(history => {
+                    $historyBody.append(`
+                        <tr>
+                            <td>${history.date}</td>
+                            <td>${parseFloat(history.current_salary).toFixed(2)}</td>
+                            <td>${parseFloat(history.adjustment_amount).toFixed(2)}</td>
+                            <td>${parseFloat(history.final_salary).toFixed(2)}</td>
+                        </tr>
+                    `);
+                });
+            } else {
+                $historyBody.append(`
+                    <tr>
+                        <td colspan="4" class="text-center">{{ trans('file.No salary history available') }}</td>
+                    </tr>
+                `);
+            }
         });
 
         $('#employee-table').DataTable({

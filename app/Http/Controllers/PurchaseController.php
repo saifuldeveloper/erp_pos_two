@@ -272,7 +272,8 @@ class PurchaseController extends Controller
                     $currency_code = 'N/A';
 
                 $nestedData['purchase'] = array(
-                    '[ "' . date(config('date_format'), strtotime($purchase->created_at->toDateString())) . '"',
+                    // '[ "' . date(config('date_format'), strtotime($purchase->created_at->toDateString())) . '"',
+                    '[ "'.date(config('date_format') . ' (h:i A)', strtotime($purchase->created_at)).'"',
                     ' "' . $purchase->reference_no . '"',
                     ' "' . $purchase_status . '"',
                     ' "' . $purchase->id . '"',

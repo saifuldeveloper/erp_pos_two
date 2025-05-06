@@ -290,16 +290,16 @@ class SaleController extends Controller
                 else
                     $nestedData['payment_status'] = '<div class="badge badge-success">'.trans('file.Paid').'</div>';
                 $delivery_data = DB::table('deliveries')->select('status')->where('sale_id', $sale->id)->first();
-                if($delivery_data) {
-                    if($delivery_data->status == 1)
-                        $nestedData['delivery_status'] = '<div class="badge badge-info">'.trans('file.Packing').'</div>';
-                    elseif($delivery_data->status == 2)
-                        $nestedData['delivery_status'] = '<div class="badge badge-info">'.trans('file.Delivering').'</div>';
-                    elseif($delivery_data->status == 3)
-                        $nestedData['delivery_status'] = '<div class="badge badge-info">'.trans('file.Delivered').'</div>';
-                }
-                else
-                    $nestedData['delivery_status'] = 'N/A';
+                // if($delivery_data) {
+                //     if($delivery_data->status == 1)
+                //         $nestedData['delivery_status'] = '<div class="badge badge-info">'.trans('file.Packing').'</div>';
+                //     elseif($delivery_data->status == 2)
+                //         $nestedData['delivery_status'] = '<div class="badge badge-info">'.trans('file.Delivering').'</div>';
+                //     elseif($delivery_data->status == 3)
+                //         $nestedData['delivery_status'] = '<div class="badge badge-info">'.trans('file.Delivered').'</div>';
+                // }
+                // else
+                //     $nestedData['delivery_status'] = 'N/A';
 
                 $nestedData['total_quantity'] = $sale->total_qty;
                 $nestedData['grand_total'] = number_format($sale->grand_total, config('decimal'));
