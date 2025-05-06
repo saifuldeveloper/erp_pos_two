@@ -134,7 +134,7 @@
 
         .barcode-right {
             float: right;
-            height: 51mm;
+            height: 50mm;
             width: 50mm;
         }
 
