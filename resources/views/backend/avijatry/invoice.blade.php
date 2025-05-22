@@ -137,7 +137,7 @@
                                                             <input type="hidden"
                                                                 name="sent_quantity[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 value="{{ $shoe_to_size['quantity'] }}">
-                                                            <input type="number"
+                                                            <input type="number" step="any"
                                                                 name="received_quantity[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 class="form-control" required min="0"
                                                                 max="{{ $shoe_to_size['quantity'] }}"
@@ -148,7 +148,7 @@
                                                             <input type="hidden"
                                                                 name="retail_price[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 value="{{ $entry['shoe']['retail_price'] }}">
-                                                            <input type="number" readonly
+                                                            <input type="number" readonly step="any"
                                                                 name="price[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 class="form-control" required min="0"
                                                                 value="{{ $proPurchase ? $proPurchase->total : $entry['shoe']['retail_price'] * $shoe_to_size['quantity'] }}">
@@ -200,7 +200,7 @@
                         <tr>
                             <td colspan="7"><strong>Paid Amount:</strong></td>
                             <td>
-                                <input type="number" name="paid_amount" class="form-control" required min="0"
+                                <input type="number" step="any" name="paid_amount" class="form-control" required min="0"
                                     value="{{ $purchase ? $purchase->paid_amount : $invoice['total_receivable'] }}"
                                     onkeyup="dueCalculation()" onchange="dueCalculation()">
                             </td>
@@ -232,7 +232,7 @@
                                     <td colspan="6">{{ $gift_transaction['gift']['name'] }}</td>
                                     <td>{{ $gift_transaction['count'] }}</td>
                                     <td>
-                                        <input type="number"
+                                        <input type="number" step="any"
                                             name="gift_quantity_received[{{ $gift_transaction['id'] }}]"
                                             class="form-control" required min="0"
                                             max="{{ $gift_transaction['count'] }}"
@@ -328,9 +328,11 @@
                 subTotal += parseFloat($(this).val());
             });
 
+            if (subTotal <= 0) {
+                subTotal = @php echo $invoice['total_amount'] ?? 0; @endphp;
+            }
             $('.total_amount').text(subTotal);
             $('input[name="total_amount"]').val(subTotal);
-
             let totalCommission = parseFloat($('.total_commission').text().replace('(-)', ''));
             let totalDiscount = parseFloat($('.total_discount').text().replace('(-)', ''));
             let totalTransport = parseFloat($('.total_transport').text().replace('(+)', ''));
