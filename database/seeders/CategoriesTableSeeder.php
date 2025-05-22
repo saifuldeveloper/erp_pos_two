@@ -709,6 +709,16 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            69 => 
+            array (
+                'id' => 70,
+                'name' => 'স্কিন মোজা',
+                'image' => NULL,
+                'parent_id' => 1,
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

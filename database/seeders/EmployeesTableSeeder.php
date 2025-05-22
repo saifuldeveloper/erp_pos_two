@@ -51,9 +51,9 @@ class EmployeesTableSeeder extends Seeder
                 'city' => 'Khulna',
                 'country' => 'Bangladesh',
                 'salary' => '12500.00',
-                'is_active' => 1,
+                'is_active' => 0,
                 'created_at' => '2025-02-15 21:54:25',
-                'updated_at' => '2025-02-18 19:16:25',
+                'updated_at' => '2025-03-20 23:05:02',
             ),
         ));
         

@@ -89,12 +89,56 @@ class StockCountsTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'warehouse_id' => 4,
+                'is_completed' => 1,
+                'is_resolved' => 1,
+                'completed_by' => 5,
+                'resolved_by' => 5,
+                'created_at' => '2025-03-08 22:34:58',
+                'updated_at' => '2025-03-22 01:14:42',
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'warehouse_id' => 1,
+                'is_completed' => 1,
+                'is_resolved' => 1,
+                'completed_by' => 6,
+                'resolved_by' => 6,
+                'created_at' => '2025-03-22 04:39:50',
+                'updated_at' => '2025-03-22 04:43:29',
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'warehouse_id' => 1,
+                'is_completed' => 1,
+                'is_resolved' => 1,
+                'completed_by' => 1,
+                'resolved_by' => 1,
+                'created_at' => '2025-03-22 04:43:45',
+                'updated_at' => '2025-05-01 04:51:22',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'warehouse_id' => 1,
+                'is_completed' => 1,
+                'is_resolved' => 1,
+                'completed_by' => 1,
+                'resolved_by' => 1,
+                'created_at' => '2025-05-01 04:51:43',
+                'updated_at' => '2025-05-01 04:54:16',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'warehouse_id' => 1,
                 'is_completed' => 0,
                 'is_resolved' => 0,
                 'completed_by' => NULL,
                 'resolved_by' => NULL,
-                'created_at' => '2025-03-08 22:34:58',
-                'updated_at' => '2025-03-08 22:34:58',
+                'created_at' => '2025-05-01 05:02:01',
+                'updated_at' => '2025-05-01 05:02:01',
             ),
         ));
         
