@@ -125,7 +125,7 @@ class AvijatryController extends Controller
         $unit_id = Unit::first()->id;
 
         if ($shoe['category']['parent']) {
-            $parent_id = $this->categoryStore($shoe['category']['parent']);
+            $parent_id = $this->categoryStore($shoe['category']['parent'], $parent_id)->id;
         }
         $category = $this->categoryStore($shoe['category'], $parent_id);
         $color = $this->colorStore($shoe['color']);
