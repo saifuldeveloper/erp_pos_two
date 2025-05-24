@@ -99,7 +99,7 @@ class AvijatryController extends Controller
             if ($response->status() == 200) {
                 $invoice = $response->json()['invoice'];
                 foreach ($invoice['invoice_entries'] as $entry) {
-                    Product::where('code', ('A-' . $entry['shoe']['id']))->first() ?: $this->productStore($entry['shoe']);
+                    Product::where('code', ('A-' . $entry['shoe']['id']))->first() ?: $this->productStore($entry['shoe'],$invoice['commission']);
                 }
                 $ret = [];
                 $ret = $this->invoiceStore($invoice, $request);
@@ -117,7 +117,7 @@ class AvijatryController extends Controller
         }
     }
 
-    public function productStore($shoe)
+    public function productStore($shoe, $commission = 0)
     {
         $brand_id = Brand::where('title', 'Avijatry')->first()->id;
         $parent_id = null;
@@ -162,7 +162,7 @@ class AvijatryController extends Controller
         $product->unit_id = $unit_id;
         $product->purchase_unit_id = $unit_id;
         $product->sale_unit_id = $unit_id;
-        $product->cost = $shoe['retail_price'];
+        $product->cost = $shoe['retail_price'] - ($shoe['retail_price'] * ($commission / 100));
         $product->price = $shoe['retail_price'];
         $product->qty = null;
         $product->alert_quantity = null;
