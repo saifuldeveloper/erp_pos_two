@@ -102,7 +102,7 @@
                                                 @if (
                                                     $shoe_to_size['reference_id'] == $entry['invoice_id'] &&
                                                         $shoe_to_size['type'] == 'sale' &&
-                                                        $shoe_to_size['shoe_id'] == $entry['shoe_id']
+                                                        strtolower($shoe_to_size['shoe_id']) == strtolower($entry['shoe_id'])
                                                 )
                                                     @php
                                                         $product = App\Models\Product::where(
