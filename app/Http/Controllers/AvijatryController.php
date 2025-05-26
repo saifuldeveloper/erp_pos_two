@@ -8,7 +8,6 @@ use App\Models\Color;
 use App\Models\GiftReceive;
 use App\Models\Product;
 use App\Models\Product_Warehouse;
-use App\Models\ProductPurchase;
 use App\Models\ProductVariant;
 use App\Models\Purchase;
 use App\Models\Supplier;

@@ -276,7 +276,6 @@
             let $input = $(document.activeElement);
             let inputName = $input.attr('name');
             let inputValue = parseFloat($input.val());
-
             // Prevent negative value and max value
             if (inputValue < 0) {
                 $input.val(0);

@@ -6195,6 +6195,20 @@ class VariantsTableSeeder extends Seeder
                 'created_at' => '2025-05-21 21:35:12',
                 'updated_at' => '2025-05-21 21:35:12',
             ),
+            382 => 
+            array (
+                'id' => 883,
+                'name' => 'White/5',
+                'created_at' => '2025-05-24 19:47:14',
+                'updated_at' => '2025-05-24 19:47:14',
+            ),
+            383 => 
+            array (
+                'id' => 884,
+                'name' => 'White/6',
+                'created_at' => '2025-05-24 19:47:14',
+                'updated_at' => '2025-05-24 19:47:14',
+            ),
         ));
         
         

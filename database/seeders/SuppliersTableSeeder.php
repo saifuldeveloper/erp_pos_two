@@ -91,6 +91,24 @@ class SuppliersTableSeeder extends Seeder
                 'created_at' => '2025-01-19 20:08:02',
                 'updated_at' => '2025-01-19 20:08:02',
             ),
+            4 => 
+            array (
+                'id' => 5,
+                'name' => 'Khulna Accessories',
+                'image' => NULL,
+                'company_name' => 'Avijatry Khulna',
+                'vat_number' => NULL,
+                'email' => 'chinakhulna@avijatry.com',
+                'phone_number' => '123456789',
+                'address' => 'Shanghai',
+                'city' => 'Shanghai',
+                'state' => NULL,
+                'postal_code' => NULL,
+                'country' => NULL,
+                'is_active' => 1,
+                'created_at' => '2025-05-24 20:33:48',
+                'updated_at' => '2025-05-24 20:33:48',
+            ),
         ));
         
         

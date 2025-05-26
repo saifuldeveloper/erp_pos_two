@@ -91,6 +91,15 @@ class BrandsTableSeeder extends Seeder
                 'created_at' => '2025-01-19 19:47:47',
                 'updated_at' => '2025-01-19 19:47:47',
             ),
+            8 => 
+            array (
+                'id' => 9,
+                'title' => 'Khulna accessories',
+                'image' => NULL,
+                'is_active' => 1,
+                'created_at' => '2025-05-24 19:35:06',
+                'updated_at' => '2025-05-24 19:35:06',
+            ),
         ));
         
         
