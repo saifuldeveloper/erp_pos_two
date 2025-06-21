@@ -46,11 +46,17 @@
                                                         }
                                                         else
                                                             $product_variant_id = null;
-                                                        if($product_data->tax_method == 1){
-                                                            $product_cost = $product_purchase->net_unit_cost + ($product_purchase->discount / $product_purchase->qty);
-                                                        }
-                                                        elseif ($product_data->tax_method == 2) {
-                                                            $product_cost =($product_purchase->total / $product_purchase->qty) + ($product_purchase->discount / $product_purchase->qty);
+
+                                                        // Prevent division by zero
+                                                        if($product_purchase->qty != 0) {
+                                                            if($product_data->tax_method == 1){
+                                                                $product_cost = $product_purchase->net_unit_cost + ($product_purchase->discount / $product_purchase->qty);
+                                                            }
+                                                            elseif ($product_data->tax_method == 2) {
+                                                                $product_cost =($product_purchase->total / $product_purchase->qty) + ($product_purchase->discount / $product_purchase->qty);
+                                                            }
+                                                        } else {
+                                                            $product_cost = 0;
                                                         }
 
                                                         $tax = DB::table('taxes')->where('rate',$product_purchase->tax_rate)->first();
@@ -87,7 +93,7 @@
                                                         <td><input type="checkbox" class="is-return" name="is_return[{{$key}}]" value="{{$product_data->id}}"></td>
                                                         <input type="hidden" class="product-code" name="product_code[]" value="{{$product_data->code}}"/>
                                                         <input type="hidden" name="product_id[]" class="product-id" value="{{$product_data->id}}"/>
-                                                        <input type="hidden" class="unit-cost" value="{{$product_purchase->total/$product_purchase->qty}}">
+                                                        <input type="hidden" class="unit-cost" value="{{ $product_purchase->qty != 0 ? $product_purchase->total/$product_purchase->qty : 0 }}">
                                                         <input type="hidden" name="product_variant_id[]" value="{{$product_variant_id}}"/>
                                                         <input type="hidden" class="product-cost" name="product_cost[]" value="{{$product_cost}}"/>
                                                         <input type="hidden" class="purchase-unit" name="purchase_unit[]" value="{{$unit_name}}"/>
@@ -100,7 +106,7 @@
                                                         <input type="hidden" class="tax-name" value="No Tax" />
                                                         @endif
                                                         <input type="hidden" class="tax-method" value="{{$product_data->tax_method}}"/>
-                                                        <input type="hidden" class="unit-tax-value" value="{{$product_purchase->tax / $product_purchase->qty}}" />
+                                                        <input type="hidden" class="unit-tax-value" value="{{ $product_purchase->qty != 0 ? $product_purchase->tax / $product_purchase->qty : 0 }}" />
                                                         <input type="hidden" class="tax-value" name="tax[]" value="{{$product_purchase->tax}}" />
                                                         <input type="hidden" class="subtotal-value" name="subtotal[]" value="{{$product_purchase->total}}" />
                                                         <input type="hidden" class="imei-number" name="imei_number[]" value="{{$product_purchase->imei_number}}" />
