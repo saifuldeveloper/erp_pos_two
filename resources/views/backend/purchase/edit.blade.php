@@ -197,7 +197,8 @@
                                                             }
                                                         }
                                                         if($product_data->tax_method == 1){
-                                                            $product_cost = ($product_purchase->net_unit_cost + ($product_purchase->discount / $product_purchase->qty)) / $unit_operation_value[0];
+                                                            // $product_cost = ($product_purchase->net_unit_cost + ($product_purchase->discount / $product_purchase->qty)) / $unit_operation_value[0];
+                                                            $product_cost = $product_purchase->qty != 0 && !empty($unit_operation_value[0]) ? ($product_purchase->net_unit_cost + $product_purchase->discount / $product_purchase->qty) / $unit_operation_value[0] : 0;
                                                         }
                                                         else{
                                                             $product_cost = (($product_purchase->total + ($product_purchase->discount / $product_purchase->qty)) / $product_purchase->qty) / $unit_operation_value[0];

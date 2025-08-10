@@ -220,8 +220,8 @@ class PurchaseController extends Controller
                     $nestedData['payment_status'] = '<div class="badge badge-danger">' . trans('file.Due') . '</div>';
                 else
                     $nestedData['payment_status'] = '<div class="badge badge-success">' . trans('file.Paid') . '</div>';
-
-                $nestedData['total_qty'] = $purchase->total_qty;
+                // $nestedData['total_qty'] = $purchase->total_qty;
+                $nestedData['total_qty'] = ProductPurchase::where('purchase_id' ,$purchase->id)->sum('qty');
                 $nestedData['grand_total'] = number_format($purchase->grand_total, config('decimal'));
                 $returned_amount = DB::table('return_purchases')->where('purchase_id', $purchase->id)->sum('grand_total');
                 $nestedData['returned_amount'] = number_format($returned_amount, config('decimal'));

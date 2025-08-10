@@ -805,7 +805,7 @@ class ProductController extends Controller
                     $unit_data = DB::table('units')->select('unit_code')->find($purchase->purchase_unit_id);
                     $nestedData['qty'] .= ' ' . $unit_data->unit_code;
                 }
-                $nestedData['unit_cost'] = number_format(($purchase->total / $purchase->qty), config('decimal'));
+                $nestedData['unit_cost'] = $purchase->qty > 0? number_format(($purchase->total / $purchase->qty), config('decimal')) : '0.00';
                 $nestedData['sub_total'] = number_format($purchase->total, config('decimal'));
                 $data[] = $nestedData;
             }
