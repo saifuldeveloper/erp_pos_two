@@ -61,6 +61,7 @@ class AvijatryController extends Controller
 
     public function invoices()
     {
+              
         try {
             $response = $this->avijatryService->invoices();
             if ($response->status() == 200) {

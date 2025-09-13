@@ -30,21 +30,21 @@
                 </div>
             </div>
             <br>
-            <table class="table table-bordered product-purchase-list">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Product</th>
-                        <th>Qty</th>
-                        <th style="width: 10%">Variant</th>
-                        <th>Unit Cost</th>
-                        <th>Tax</th>
-                        <th>Discount</th>
-                        <th>SubTotal</th>
-                    </tr>
-                </thead>
-                <form action={{ route('invoice.approve', $invoice['id']) }} method="POST">
-                    @csrf
+            <form action={{ route('invoice.approve', $invoice['id']) }} method="POST">
+                @csrf
+                <table class="table table-bordered product-purchase-list">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th style="width: 10%">Variant</th>
+                            <th>Unit Cost</th>
+                            <th>Tax</th>
+                            <th>Discount</th>
+                            <th>SubTotal</th>
+                        </tr>
+                    </thead>
                     <input type="hidden" name="invoice_id" value="{{ $invoice['id'] }}">
                     <tbody>
                         @forelse ($invoice['invoice_entries'] as $key => $entry)
@@ -102,8 +102,7 @@
                                                 @if (
                                                     $shoe_to_size['reference_id'] == $entry['invoice_id'] &&
                                                         $shoe_to_size['type'] == 'sale' &&
-                                                        strtolower($shoe_to_size['shoe_id']) == strtolower($entry['shoe_id'])
-                                                )
+                                                        strtolower($shoe_to_size['shoe_id']) == strtolower($entry['shoe_id']))
                                                     @php
                                                         $product = App\Models\Product::where(
                                                             'code',
@@ -200,7 +199,8 @@
                         <tr>
                             <td colspan="7"><strong>Paid Amount:</strong></td>
                             <td>
-                                <input type="number" step="any" name="paid_amount" class="form-control" required min="0"
+                                <input type="number" step="any" name="paid_amount" class="form-control" required
+                                    min="0"
                                     value="{{ $purchase ? $purchase->paid_amount : $invoice['total_receivable'] }}"
                                     onkeyup="dueCalculation()" onchange="dueCalculation()">
                             </td>
@@ -260,8 +260,8 @@
                             </td>
                         </tr>
                     </tfoot>
-                </form>
-            </table>
+                </table>
+            </form>
         </div>
     </section>
 @endsection
