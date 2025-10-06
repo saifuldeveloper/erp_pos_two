@@ -39,6 +39,10 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-2 mt-4">
+                        <input type="text" class="form-control" name="countID" value="{{ request('countID') }}"
+                            placeholder="Enter Counting ID">
+                    </div>
                     <div class="col-md-3 mt-4">
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">{{ trans('file.submit') }}</button>
@@ -104,6 +108,51 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4 mb-3">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name">
+                                {{-- <strong style="color: #ff8040">
+                                    {{ trans('Total Current Value') }} :
+                                    {{ $stockCountItems->sum(function ($item) {
+                                        return $item->product->price * $item->current_quantity;
+                                    }) }}
+                                </strong> --}}
+                                <strong style="color: #ff8040">
+                                    {{ trans('Total Current Value') }} :
+                                    {{ $stockCountItems->sum(function ($item) {
+                                        if ($item->product) {
+                                            return $item->product->price * $item->current_quantity;
+                                        }
+                                        return 0;
+                                    }) }}
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="wrapper count-title">
+                        <div>
+                            <div class="count-number"></div>
+                            <div class="name">
+                                {{-- <strong style="color: #ff8040">
+                                    {{ trans('Total Product Price') }} :
+                                    {{ $stockCountItems->sum(function ($item) {
+                                        return $item->product->price * $item->updated_quantity;
+                                    }) }}
+                                </strong> --}}
+                                <strong style="color: #ff8040">
+                                    {{ trans('Total Product Price') }} :
+                                    {{ $stockCountItems->sum(function ($item) {
+                                        return optional($item->product)->price ? $item->product->price * $item->updated_quantity : 0;
+                                    }) }}
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card">
                 <div class="card-body">
@@ -112,6 +161,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ trans('file.Date') }}</th>
+                                    <th>Stock Count ID</th>
                                     <th>{{ trans('file.Warehouse') }}</th>
                                     <th>{{ trans('file.Product') }}</th>
                                     <th>{{ trans('file.item code') }}</th>
@@ -123,8 +173,9 @@
                                 @foreach ($stockCountItems as $stockCountItem)
                                     <tr>
                                         <td>{{ $stockCountItem->stockCount->created_at->format('d-m-Y') }}</td>
+                                        <td>{{ $stockCountItem->stock_count_id }}</td>
                                         <td>{{ $stockCountItem->stockCount->warehouse->name }}</td>
-                                        <td>{{ $stockCountItem->product->name }}</td>
+                                        <td>{{ @$stockCountItem->product->name }}</td>
                                         <td>{{ $stockCountItem->item_code }}</td>
                                         <td>{{ $stockCountItem->current_quantity }}</td>
                                         <td>{{ $stockCountItem->updated_quantity }}</td>

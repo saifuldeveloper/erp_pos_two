@@ -401,26 +401,46 @@
                 '</p><p><strong>{{ trans('file.Alert Quantity') }} : </strong>' + product[10] +
                 '</p><p><strong>{{ trans('file.Product Details') }}: </strong></p>' + product[11];
 
-            if (product[18]) {
+            // if (product[18]) {
+            //     var product_image = product[18].split(",");
+            //     if (product_image.length > 1) {
+            //         slidertext =
+            //             '<div id="product-img-slider" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';
+            //         for (var i = 0; i < product_image.length; i++) {
+            //             if (!i)
+            //                 slidertext += '<div class="carousel-item active"><img src="public/images/product/' +
+            //                 product_image[i] + '" height="300" width="100%"></div>';
+            //             else
+            //                 slidertext += '<div class="carousel-item"><img src="public/images/product/' + product_image[i] +
+            //                 '" height="300" width="100%"></div>';
+            //         }
+            //         slidertext +=
+            //             '</div><a class="carousel-control-prev" href="#product-img-slider" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#product-img-slider" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>';
+            //     } else {
+            //         slidertext = '<img src="public/images/product/' + product[18] + '" height="300" width="100%">';
+            //     }
+            // } else {
+            //     slidertext = '<img src="images/product/zummXD2dvAtI.png" height="300" width="100%">';
+            // }
+
+              if (product[18]) {
                 var product_image = product[18].split(",");
                 if (product_image.length > 1) {
                     slidertext =
                         '<div id="product-img-slider" class="carousel slide" data-ride="carousel"><div class="carousel-inner">';
                     for (var i = 0; i < product_image.length; i++) {
-                        if (!i)
-                            slidertext += '<div class="carousel-item active"><img src="public/images/product/' +
+                        let activeClass = !i ? 'active' : '';
+                        slidertext += '<div class="carousel-item ' + activeClass +
+                            '"><img src="{{ asset('images/product') }}/' +
                             product_image[i] + '" height="300" width="100%"></div>';
-                        else
-                            slidertext += '<div class="carousel-item"><img src="public/images/product/' + product_image[i] +
-                            '" height="300" width="100%"></div>';
                     }
                     slidertext +=
                         '</div><a class="carousel-control-prev" href="#product-img-slider" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#product-img-slider" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>';
                 } else {
-                    slidertext = '<img src="public/images/product/' + product[18] + '" height="300" width="100%">';
+                    slidertext = '<img src="{{ asset('images/product') }}/' + product[18] + '" height="300" width="100%">';
                 }
             } else {
-                slidertext = '<img src="images/product/zummXD2dvAtI.png" height="300" width="100%">';
+                slidertext = '<img src="{{ asset('images/product/zummXD2dvAtI.png') }}" height="300" width="100%">';
             }
             $("#combo-header").text('');
             $("table.item-list thead").remove();

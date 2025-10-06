@@ -81,7 +81,7 @@
                                                             $total = $items->sum('updated_quantity');
                                                         @endphp
                                                         <tr>
-                                                            <td>{{ $item->product->name }}</td>
+                                                            <td>{{ @$item->product->name }}</td>
                                                             <td>{{ $item->item_code }}</td>
                                                             <td>{{ $item->current_quantity }}</td>
                                                             <td>

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Waste;
 use App\Models\Biller;
-use App\Models\Currency;
+use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Employee;
-use App\Models\Product;
 use App\Models\Supplier;
-use App\Models\Waste;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class WasteController extends Controller
 {
@@ -24,37 +24,81 @@ class WasteController extends Controller
         }
     }
 
+    // public function wastedata(Request $request)
+    // {
+
+    //     $columns = ['date', 'receiver_type', 'receiver_id', 'total_price'];
+
+    //     $query = Waste::with('items.product')
+    //         ->select('wastes.id', 'wastes.created_at as date', 'wastes.receiver_type', 'wastes.receiver_name', 'wastes.total_price', 'wastes.status');
+
+
+    //     if ($search = $request->input('search')['value']) {
+    //         $query->where(function ($q) use ($search) {
+    //             $q->where('wastes.receiver_type', 'like', "%$search%")
+    //                 ->orWhere('products.name', 'like', "%$search%")
+    //                 ->orWhere('products.code', 'like', "%$search%");
+    //         });
+    //     }
+
+
+    //     if ($request->input('order')) {
+    //         $orderColumn = $columns[$request->input('order')[0]['column']];
+    //         $orderDir = $request->input('order')[0]['dir'];
+    //         $query->orderBy($orderColumn, $orderDir);
+    //     }
+
+
+    //     $start = $request->input('start');
+    //     $length = $request->input('length');
+    //     $totalRecords = $query->count();
+    //     $wastes = $query->offset($start)->limit($length)->get();
+
+
+    //     return response()->json([
+    //         'draw' => $request->input('draw'),
+    //         'recordsTotal' => $totalRecords,
+    //         'recordsFiltered' => $totalRecords,
+    //         'data' => $wastes,
+    //     ]);
+    // }
+
     public function wastedata(Request $request)
     {
-
-        $columns = ['date', 'receiver_type', 'receiver_id', 'total_price'];
-
-        $query = Waste::with('items.product')
-            ->select('wastes.id', 'wastes.created_at as date', 'wastes.receiver_type', 'wastes.receiver_name', 'wastes.total_price', 'wastes.status');
-
-
+        $columns = ['date', 'receiver_type', 'receiver_name', 'total_price'];
+        $baseQuery = Waste::select(
+            'wastes.id',
+            'wastes.created_at as date',
+            'wastes.receiver_type',
+            'wastes.receiver_name',
+            'wastes.total_price',
+            'wastes.status'
+        )
+            ->leftJoin('waste_items', 'wastes.id', '=', 'waste_items.waste_id')
+            ->leftJoin('products', 'waste_items.product_id', '=', 'products.id')
+            ->distinct('wastes.id');
+        $query = clone $baseQuery;
         if ($search = $request->input('search')['value']) {
             $query->where(function ($q) use ($search) {
                 $q->where('wastes.receiver_type', 'like', "%$search%")
+                    ->orWhere('wastes.receiver_name', 'like', "%$search%")
                     ->orWhere('products.name', 'like', "%$search%")
                     ->orWhere('products.code', 'like', "%$search%");
             });
         }
-
-
         if ($request->input('order')) {
-            $orderColumn = $columns[$request->input('order')[0]['column']];
-            $orderDir = $request->input('order')[0]['dir'];
+            $orderColumn = $columns[$request->input('order')[0]['column']] ?? 'date';
+            $orderDir = $request->input('order')[0]['dir'] ?? 'asc';
             $query->orderBy($orderColumn, $orderDir);
         }
-
-
-        $start = $request->input('start');
-        $length = $request->input('length');
-        $totalRecords = $query->count();
-        $wastes = $query->offset($start)->limit($length)->get();
-
-
+        $start = (int) $request->input('start', 0);
+        $length = (int) $request->input('length', 10);
+        $totalRecords = (clone $query)->count(DB::raw('distinct wastes.id'));
+        if ($length > 0) {
+            $wastes = $query->offset($start)->limit($length)->get();
+        } else {
+            $wastes = $query->get();
+        }
         return response()->json([
             'draw' => $request->input('draw'),
             'recordsTotal' => $totalRecords,
@@ -62,6 +106,7 @@ class WasteController extends Controller
             'data' => $wastes,
         ]);
     }
+
 
     public function create()
     {
@@ -83,7 +128,7 @@ class WasteController extends Controller
 
             foreach ($lims_product_data as $product) {
                 $product_qty[] = $product->qty;
-                $product_code[] =  $product->code;
+                $product_code[] = $product->code;
                 $product_name[] = $product->name;
                 $product_type[] = $product->type;
                 $product_id[] = $product->id;
@@ -175,7 +220,7 @@ class WasteController extends Controller
 
             foreach ($lims_product_data as $product) {
                 $product_qty[] = $product->qty;
-                $product_code[] =  $product->code;
+                $product_code[] = $product->code;
                 $product_name[] = $product->name;
                 $product_type[] = $product->type;
                 $product_id[] = $product->id;

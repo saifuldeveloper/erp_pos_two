@@ -89,9 +89,254 @@ class ProductController extends Controller
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
+    // public function productData(Request $request)
+    // {
+    //     $columns = array(
+    //         2 => 'name',
+    //         3 => 'code',
+    //         4 => 'brand_id',
+    //         5 => 'category_id',
+    //         6 => 'qty',
+    //         7 => 'unit_id',
+    //         8 => 'price',
+    //         9 => 'cost',
+    //         10 => 'stock_worth'
+    //     );
+
+    //     $totalData = DB::table('products')->where('is_active', true)->count();
+    //     $totalFiltered = $totalData;
+
+    //     if ($request->input('length') != -1)
+    //         $limit = $request->input('length');
+    //     else
+    //         $limit = $totalData;
+    //     $start = $request->input('start');
+    //     $order = 'products.' . $columns[$request->input('order.0.column')];
+    //     $dir = $request->input('order.0.dir');
+    //     //fetching custom fields data
+    //     $custom_fields = CustomField::where([
+    //         ['belongs_to', 'product'],
+    //         ['is_table', true]
+    //     ])->pluck('name');
+    //     $field_names = [];
+    //     foreach ($custom_fields as $fieldName) {
+    //         $field_names[] = str_replace(" ", "_", strtolower($fieldName));
+    //     }
+
+    //     $query = Product::with('category', 'brand', 'unit', 'productImages.color')
+    //         ->where('is_active', true);
+
+    //     if ($request->input('name')) {
+    //         $query->where('name', 'LIKE', "%{$request->input('name')}%");
+    //     }
+
+    //     if ($request->input('code')) {
+    //         $query->where('code', 'LIKE', "%{$request->input('code')}%");
+    //     }
+
+    //     if ($request->input('brand')) {
+    //         $query->whereHas('brand', function ($q) use ($request) {
+    //             $q->where('title', $request->input('brand'));
+    //         });
+    //     }
+
+    //     if ($request->input('category')) {
+    //         $query->whereHas('category', function ($q) use ($request) {
+    //             $q->where('name', $request->input('category'));
+    //         });
+    //     }
+
+    //     if ($request->input('unit')) {
+    //         $query->whereHas('unit', function ($q) use ($request) {
+    //             $q->where('unit_name', $request->input('unit'));
+    //         });
+    //     }
+
+    //     if ($request->input('qty')) {
+    //         $query->where('qty', '=', $request->input('qty'));
+    //     }
+
+    //     if ($request->input('price')) {
+    //         $query->where('price', '=', $request->input('price'));
+    //     }
+
+    //     if ($request->input('cost')) {
+    //         $query->where('cost', '=', $request->input('cost'));
+    //     }
+
+    //     if (empty($request->input('search.value'))) {
+    //         $products = $query->offset($start)
+    //             ->limit($limit)
+    //             ->orderBy($order, $dir)
+    //             ->get();
+    //         $totalFiltered = $query->count(); // Update totalFiltered count after applying filters
+    //     } else {
+    //         $search = $request->input('search.value');
+    //         $q = $query->where(function ($q) use ($search, $field_names) {
+    //             $q->where('products.name', 'LIKE', "%{$search}%")
+    //                 ->orWhere('products.code', 'LIKE', "%{$search}%")
+    //                 ->orWhereHas('category', function ($q) use ($search) {
+    //                     $q->where('name', 'LIKE', "%{$search}%");
+    //                 })
+    //                 ->orWhereHas('brand', function ($q) use ($search) {
+    //                     $q->where('title', 'LIKE', "%{$search}%");
+    //                 });
+
+    //             //searching with custom field
+    //             foreach ($field_names as $field_name) {
+    //                 $q->orWhere('products.' . $field_name, 'LIKE', "%{$search}%");
+    //             }
+    //         });
+
+    //         $products = $q->offset($start)
+    //             ->limit($limit)
+    //             ->orderBy($order, $dir)
+    //             ->get();
+    //         $totalFiltered = $q->count();
+    //     }
+
+    //     $data = array();
+    //     if (!empty($products)) {
+    //         foreach ($products as $key => $product) {
+    //             $nestedData['id'] = $product->id;
+    //             $nestedData['key'] = $key;
+    //             $product_image = explode(",", $product->image);
+    //             $product_image = htmlspecialchars($product_image[0]);
+    //             // if ($product_image && $product_image != 'zummXD2dvAtI.png') {
+    //             //     if (file_exists("public/images/product/small/" . $product_image))
+    //             //         $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
+    //             //     // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
+    //             //     else
+    //             //         $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
+
+    //             //     // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
+    //             // } else
+    //             //     $nestedData['image'] = '<img src="images/zummXD2dvAtI.png" height="80" width="80">';
+
+    //             if ($product_image && $product_image != 'zummXD2dvAtI.png') {
+    //                 $smallImagePath = public_path("images/product/small/" . $product_image);
+    //                 if (file_exists($smallImagePath)) {
+    //                     $nestedData['image'] = '<img src="' . asset('images/product/small/' . $product_image) . '" height="80" width="80">';
+    //                 } else {
+    //                     $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
+    //                 }
+    //             } else {
+    //                 $nestedData['image'] = '<img src="' . asset('images/zummXD2dvAtI.png') . '" height="80" width="80">';
+    //             }
+    //             $nestedData['name'] = $product->name;
+    //             $nestedData['code'] = $product->code;
+    //             if ($product->brand)
+    //                 $nestedData['brand'] = $product->brand->title;
+    //             else
+    //                 $nestedData['brand'] = "N/A";
+    //             $nestedData['category'] = $product->category->name;
+    //             $nestedData['qty'] = $product->qty;
+    //             if ($product->unit_id)
+    //                 $nestedData['unit'] = $product->unit->unit_name;
+    //             else
+    //                 $nestedData['unit'] = 'N/A';
+
+    //             $nestedData['price'] = $product->price;
+    //             $nestedData['cost'] = $product->cost;
+
+    //             if (config('currency_position') == 'prefix')
+    //                 $nestedData['stock_worth'] = config('currency') . ' ' . ($nestedData['qty'] * $product->price) . ' / ' . config('currency') . ' ' . ($nestedData['qty'] * $product->cost);
+    //             else
+    //                 $nestedData['stock_worth'] = ($nestedData['qty'] * $product->price) . ' ' . config('currency') . ' / ' . ($nestedData['qty'] * $product->cost) . ' ' . config('currency');
+
+    //             //fetching custom fields data
+    //             foreach ($field_names as $field_name) {
+    //                 $nestedData[$field_name] = $product->$field_name;
+    //             }
+
+    //             $nestedData['options'] = '<div class="btn-group">
+    //                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans("file.action") . '
+    //                           <span class="caret"></span>
+    //                           <span class="sr-only">Toggle Dropdown</span>
+    //                         </button>
+    //                         <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+    //                         <li>
+    //                             <button="type" class="btn btn-link view"><i class="fa fa-eye"></i> ' . trans('file.View') . '</button>
+    //                         </li>';
+
+    //             if (in_array("products-edit", $request['all_permission']))
+    //                 $nestedData['options'] .= '<li>
+    //                         <a href="' . route('products.edit', $product->id) . '" class="btn btn-link"><i class="fa fa-edit"></i> ' . trans('file.edit') . '</a>
+    //                     </li>';
+    //             if (in_array("product_history", $request['all_permission']))
+    //                 $nestedData['options'] .= \Form::open(["route" => "products.history", "method" => "GET"]) . '
+    //                         <li>
+    //                             <input type="hidden" name="product_id" value="' . $product->id . '" />
+    //                             <button type="submit" class="btn btn-link"><i class="dripicons-checklist"></i> ' . trans("file.Product History") . '</button>
+    //                         </li>' . \Form::close();
+    //             if (in_array("print_barcode", $request['all_permission'])) {
+    //                 $product_info = $product->code . ' (' . $product->name . ')';
+    //                 $nestedData['options'] .= \Form::open(["route" => "product.printBarcode", "method" => "GET"]) . '
+    //                     <li>
+    //                         <input type="hidden" name="data" value="' . $product_info . '" />
+    //                         <button type="submit" class="btn btn-link"><i class="dripicons-print"></i> ' . trans("file.print_barcode") . '</button>
+    //                     </li>' . \Form::close();
+    //             }
+    //             if (in_array("products-delete", $request['all_permission']))
+    //                 $nestedData['options'] .= \Form::open(["route" => ["products.destroy", $product->id], "method" => "DELETE"]) . '
+    //                         <li>
+    //                           <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="fa fa-trash"></i> ' . trans("file.delete") . '</button>
+    //                         </li>' . \Form::close() . '
+    //                     </ul>
+    //                 </div>';
+    //             // data for product details by one click
+    //             if ($product->tax_id)
+    //                 $tax = Tax::find($product->tax_id)->name;
+    //             else
+    //                 $tax = "N/A";
+
+    //             if ($product->tax_method == 1)
+    //                 $tax_method = trans('file.Exclusive');
+    //             else
+    //                 $tax_method = trans('file.Inclusive');
+
+    //             $nestedData['product'] = array(
+    //                 '[ "' . $product->type . '"',
+    //                 ' "' . $product->name . '"',
+    //                 ' "' . $product->code . '"',
+    //                 ' "' . $nestedData['brand'] . '"',
+    //                 ' "' . $nestedData['category'] . '"',
+    //                 ' "' . $nestedData['unit'] . '"',
+    //                 ' "' . $product->cost . '"',
+    //                 ' "' . $product->price . '"',
+    //                 ' "' . $tax . '"',
+    //                 ' "' . $tax_method . '"',
+    //                 ' "' . $product->alert_quantity . '"',
+    //                 ' "' . preg_replace('/\s+/S', " ", $product->product_details) . '"',
+    //                 ' "' . $product->id . '"',
+    //                 ' "' . $product->product_list . '"',
+    //                 ' "' . $product->variant_list . '"',
+    //                 ' "' . $product->qty_list . '"',
+    //                 ' "' . $product->price_list . '"',
+    //                 ' "' . $nestedData['qty'] . '"',
+    //                 ' "' . $product->image . '"',
+    //                 ' "' . $product->is_variant . '"]'
+    //             );
+    //             //$nestedData['imagedata'] = DNS1D::getBarcodePNG($product->code, $product->barcode_symbology);
+    //             $nestedData['colorImages'] = $product->productImages;
+    //             $nestedData['variant_value'] = $product->variant_value;
+    //             $data[] = $nestedData;
+    //         }
+    //     }
+    //     $json_data = array(
+    //         "draw" => intval($request->input('draw')),
+    //         "recordsTotal" => intval($totalData),
+    //         "recordsFiltered" => intval($totalFiltered),
+    //         "data" => $data
+    //     );
+
+    //     echo json_encode($json_data);
+    // }
+
+
     public function productData(Request $request)
     {
-        $columns = array(
+        $columns = [
             2 => 'name',
             3 => 'code',
             4 => 'brand_id',
@@ -101,233 +346,188 @@ class ProductController extends Controller
             8 => 'price',
             9 => 'cost',
             10 => 'stock_worth'
-        );
+        ];
 
-        $totalData = DB::table('products')->where('is_active', true)->count();
+        $totalData = Product::where('is_active', true)->count();
         $totalFiltered = $totalData;
 
-        if ($request->input('length') != -1)
-            $limit = $request->input('length');
-        else
-            $limit = $totalData;
+        $limit = ($request->input('length') != -1) ? $request->input('length') : $totalData;
         $start = $request->input('start');
-        $order = 'products.' . $columns[$request->input('order.0.column')];
-        $dir = $request->input('order.0.dir');
-        //fetching custom fields data
+        $order = 'products.' . ($columns[$request->input('order.0.column')] ?? 'name');
+        $dir = $request->input('order.0.dir') ?? 'asc';
+
+        // Custom fields
         $custom_fields = CustomField::where([
             ['belongs_to', 'product'],
             ['is_table', true]
         ])->pluck('name');
-        $field_names = [];
-        foreach ($custom_fields as $fieldName) {
-            $field_names[] = str_replace(" ", "_", strtolower($fieldName));
-        }
 
-        $query = Product::with('category', 'brand', 'unit', 'productImages.color')
+        $field_names = $custom_fields->map(fn($f) => str_replace(" ", "_", strtolower($f)))->toArray();
+
+        $query = Product::with(['category', 'brand', 'unit', 'productImages.color'])
             ->where('is_active', true);
 
-        if ($request->input('name')) {
-            $query->where('name', 'LIKE', "%{$request->input('name')}%");
-        }
+        // Filters
+        if ($request->name)
+            $query->where('name', 'LIKE', "%{$request->name}%");
 
-        if ($request->input('code')) {
-            $query->where('code', 'LIKE', "%{$request->input('code')}%");
-        }
+        if ($request->code)
+            $query->where('code', 'LIKE', "%{$request->code}%");
 
-        if ($request->input('brand')) {
-            $query->whereHas('brand', function ($q) use ($request) {
-                $q->where('title', $request->input('brand'));
-            });
-        }
+        if ($request->brand)
+            $query->whereHas('brand', fn($q) => $q->where('title', $request->brand));
 
-        if ($request->input('category')) {
-            $query->whereHas('category', function ($q) use ($request) {
-                $q->where('name', $request->input('category'));
-            });
-        }
+        if ($request->category)
+            $query->whereHas('category', fn($q) => $q->where('name', $request->category));
 
-        if ($request->input('unit')) {
-            $query->whereHas('unit', function ($q) use ($request) {
-                $q->where('unit_name', $request->input('unit'));
-            });
-        }
+        if ($request->unit)
+            $query->whereHas('unit', fn($q) => $q->where('unit_name', $request->unit));
 
-        if ($request->input('qty')) {
-            $query->where('qty', '=', $request->input('qty'));
-        }
+        if ($request->qty)
+            $query->where('qty', '=', $request->qty);
 
-        if ($request->input('price')) {
-            $query->where('price', '=', $request->input('price'));
-        }
+        if ($request->price)
+            $query->where('price', '=', $request->price);
 
-        if ($request->input('cost')) {
-            $query->where('cost', '=', $request->input('cost'));
-        }
+        if ($request->cost)
+            $query->where('cost', '=', $request->cost);
 
-        if (empty($request->input('search.value'))) {
-            $products = $query->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir)
-                ->get();
-            $totalFiltered = $query->count(); // Update totalFiltered count after applying filters
-        } else {
-            $search = $request->input('search.value');
-            $q = $query->where(function ($q) use ($search, $field_names) {
+        // 🔍 Search
+        if ($search = $request->input('search.value')) {
+            $query->where(function ($q) use ($search, $field_names) {
                 $q->where('products.name', 'LIKE', "%{$search}%")
                     ->orWhere('products.code', 'LIKE', "%{$search}%")
-                    ->orWhereHas('category', function ($q) use ($search) {
-                        $q->where('name', 'LIKE', "%{$search}%");
-                    })
-                    ->orWhereHas('brand', function ($q) use ($search) {
-                        $q->where('title', 'LIKE', "%{$search}%");
-                    });
-
-                //searching with custom field
+                    ->orWhereHas('category', fn($q) => $q->where('name', 'LIKE', "%{$search}%"))
+                    ->orWhereHas('brand', fn($q) => $q->where('title', 'LIKE', "%{$search}%"));
                 foreach ($field_names as $field_name) {
                     $q->orWhere('products.' . $field_name, 'LIKE', "%{$search}%");
                 }
             });
-
-            $products = $q->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir)
-                ->get();
-            $totalFiltered = $q->count();
         }
 
-        $data = array();
-        if (!empty($products)) {
-            foreach ($products as $key => $product) {
-                $nestedData['id'] = $product->id;
-                $nestedData['key'] = $key;
-                $product_image = explode(",", $product->image);
-                $product_image = htmlspecialchars($product_image[0]);
-                if ($product_image && $product_image != 'zummXD2dvAtI.png') {
-                    if (file_exists("public/images/product/small/" . $product_image))
-                        $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
-                    // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
-                    else
-                        $nestedData['image'] = '<img src="' . asset('images/product/' . $product_image) . '" height="80" width="80">';
+        $totalFiltered = $query->count();
 
-                    // $nestedData['image'] = '<img src="' . url('public/images/product', $product_image) . '" height="80" width="80">';
-                } else
-                    $nestedData['image'] = '<img src="images/zummXD2dvAtI.png" height="80" width="80">';
-                $nestedData['name'] = $product->name;
-                $nestedData['code'] = $product->code;
-                if ($product->brand)
-                    $nestedData['brand'] = $product->brand->title;
-                else
-                    $nestedData['brand'] = "N/A";
-                $nestedData['category'] = $product->category->name;
-                // if (Auth::user()->role_id > 2 && $product->type == 'standard') {
-                //     $nestedData['qty'] = Product_Warehouse::where([
-                //         ['product_id', $product->id],
-                //         ['warehouse_id', Auth::user()->warehouse_id]
-                //     ])->sum('qty');
-                // } else
-                $nestedData['qty'] = $product->qty;
+        $products = $query->offset($start)
+            ->limit($limit)
+            ->orderBy($order, $dir)
+            ->get();
 
-                if ($product->unit_id)
-                    $nestedData['unit'] = $product->unit->unit_name;
-                else
-                    $nestedData['unit'] = 'N/A';
+        $data = [];
 
-                $nestedData['price'] = $product->price;
-                $nestedData['cost'] = $product->cost;
+        foreach ($products as $key => $product) {
+            $nestedData['id'] = $product->id;
+            $nestedData['key'] = $key;
 
-                if (config('currency_position') == 'prefix')
-                    $nestedData['stock_worth'] = config('currency') . ' ' . ($nestedData['qty'] * $product->price) . ' / ' . config('currency') . ' ' . ($nestedData['qty'] * $product->cost);
-                else
-                    $nestedData['stock_worth'] = ($nestedData['qty'] * $product->price) . ' ' . config('currency') . ' / ' . ($nestedData['qty'] * $product->cost) . ' ' . config('currency');
+            // 🖼️ Image Handling (Safe for Local + Live)
+            $product_image = explode(",", $product->image)[0] ?? null;
+            $product_image = htmlspecialchars($product_image);
 
-                //fetching custom fields data
-                foreach ($field_names as $field_name) {
-                    $nestedData[$field_name] = $product->$field_name;
+            if ($product_image && $product_image != 'zummXD2dvAtI.png') {
+                $smallImagePath = public_path("images/product/small/" . $product_image);
+                if (file_exists($smallImagePath)) {
+                    $nestedData['image'] = '<img src="' . asset("images/product/small/$product_image") . '" height="80" width="80">';
+                } else {
+                    $nestedData['image'] = '<img src="' . asset("images/product/$product_image") . '" height="80" width="80">';
                 }
-
-                $nestedData['options'] = '<div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans("file.action") . '
-                              <span class="caret"></span>
-                              <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                            <li>
-                                <button="type" class="btn btn-link view"><i class="fa fa-eye"></i> ' . trans('file.View') . '</button>
-                            </li>';
-
-                if (in_array("products-edit", $request['all_permission']))
-                    $nestedData['options'] .= '<li>
-                            <a href="' . route('products.edit', $product->id) . '" class="btn btn-link"><i class="fa fa-edit"></i> ' . trans('file.edit') . '</a>
-                        </li>';
-                if (in_array("product_history", $request['all_permission']))
-                    $nestedData['options'] .= \Form::open(["route" => "products.history", "method" => "GET"]) . '
-                            <li>
-                                <input type="hidden" name="product_id" value="' . $product->id . '" />
-                                <button type="submit" class="btn btn-link"><i class="dripicons-checklist"></i> ' . trans("file.Product History") . '</button>
-                            </li>' . \Form::close();
-                if (in_array("print_barcode", $request['all_permission'])) {
-                    $product_info = $product->code . ' (' . $product->name . ')';
-                    $nestedData['options'] .= \Form::open(["route" => "product.printBarcode", "method" => "GET"]) . '
-                        <li>
-                            <input type="hidden" name="data" value="' . $product_info . '" />
-                            <button type="submit" class="btn btn-link"><i class="dripicons-print"></i> ' . trans("file.print_barcode") . '</button>
-                        </li>' . \Form::close();
-                }
-                if (in_array("products-delete", $request['all_permission']))
-                    $nestedData['options'] .= \Form::open(["route" => ["products.destroy", $product->id], "method" => "DELETE"]) . '
-                            <li>
-                              <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="fa fa-trash"></i> ' . trans("file.delete") . '</button>
-                            </li>' . \Form::close() . '
-                        </ul>
-                    </div>';
-                // data for product details by one click
-                if ($product->tax_id)
-                    $tax = Tax::find($product->tax_id)->name;
-                else
-                    $tax = "N/A";
-
-                if ($product->tax_method == 1)
-                    $tax_method = trans('file.Exclusive');
-                else
-                    $tax_method = trans('file.Inclusive');
-
-                $nestedData['product'] = array(
-                    '[ "' . $product->type . '"',
-                    ' "' . $product->name . '"',
-                    ' "' . $product->code . '"',
-                    ' "' . $nestedData['brand'] . '"',
-                    ' "' . $nestedData['category'] . '"',
-                    ' "' . $nestedData['unit'] . '"',
-                    ' "' . $product->cost . '"',
-                    ' "' . $product->price . '"',
-                    ' "' . $tax . '"',
-                    ' "' . $tax_method . '"',
-                    ' "' . $product->alert_quantity . '"',
-                    ' "' . preg_replace('/\s+/S', " ", $product->product_details) . '"',
-                    ' "' . $product->id . '"',
-                    ' "' . $product->product_list . '"',
-                    ' "' . $product->variant_list . '"',
-                    ' "' . $product->qty_list . '"',
-                    ' "' . $product->price_list . '"',
-                    ' "' . $nestedData['qty'] . '"',
-                    ' "' . $product->image . '"',
-                    ' "' . $product->is_variant . '"]'
-                );
-                //$nestedData['imagedata'] = DNS1D::getBarcodePNG($product->code, $product->barcode_symbology);
-                $nestedData['colorImages'] = $product->productImages;
-                $nestedData['variant_value'] = $product->variant_value;
-                $data[] = $nestedData;
+            } else {
+                $nestedData['image'] = '<img src="' . asset("images/product/zummXD2dvAtI.png") . '" height="80" width="80">';
             }
+
+            // 🧾 Basic Info
+            $nestedData['name'] = $product->name;
+            $nestedData['code'] = $product->code;
+            $nestedData['brand'] = $product->brand->title ?? 'N/A';
+            $nestedData['category'] = $product->category->name ?? 'N/A';
+            $nestedData['qty'] = $product->qty;
+            $nestedData['unit'] = $product->unit->unit_name ?? 'N/A';
+            $nestedData['price'] = $product->price;
+            $nestedData['cost'] = $product->cost;
+
+            if (config('currency_position') == 'prefix') {
+                $nestedData['stock_worth'] = config('currency') . ' ' . ($product->qty * $product->price) . ' / ' . config('currency') . ' ' . ($product->qty * $product->cost);
+            } else {
+                $nestedData['stock_worth'] = ($product->qty * $product->price) . ' ' . config('currency') . ' / ' . ($product->qty * $product->cost) . ' ' . config('currency');
+            }
+
+            // 🧩 Custom fields
+            foreach ($field_names as $field_name) {
+                $nestedData[$field_name] = $product->$field_name;
+            }
+
+            // ⚙️ Actions Dropdown
+            $options = '<div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+                . trans("file.action") .
+                '<span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+            <li><button type="button" class="btn btn-link view"><i class="fa fa-eye"></i> ' . trans('file.View') . '</button></li>';
+
+            if (in_array("products-edit", $request['all_permission'])) {
+                $options .= '<li><a href="' . route('products.edit', $product->id) . '" class="btn btn-link"><i class="fa fa-edit"></i> ' . trans('file.edit') . '</a></li>';
+            }
+
+            if (in_array("product_history", $request['all_permission'])) {
+                $options .= \Form::open(["route" => "products.history", "method" => "GET"]) . '
+                <li><input type="hidden" name="product_id" value="' . $product->id . '" />
+                <button type="submit" class="btn btn-link"><i class="dripicons-checklist"></i> ' . trans("file.Product History") . '</button></li>' . \Form::close();
+            }
+
+            if (in_array("print_barcode", $request['all_permission'])) {
+                $product_info = $product->code . ' (' . $product->name . ')';
+                $options .= \Form::open(["route" => "product.printBarcode", "method" => "GET"]) . '
+                <li><input type="hidden" name="data" value="' . $product_info . '" />
+                <button type="submit" class="btn btn-link"><i class="dripicons-print"></i> ' . trans("file.print_barcode") . '</button></li>' . \Form::close();
+            }
+
+            if (in_array("products-delete", $request['all_permission'])) {
+                $options .= \Form::open(["route" => ["products.destroy", $product->id], "method" => "DELETE"]) . '
+                <li><button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="fa fa-trash"></i> ' . trans("file.delete") . '</button></li>' . \Form::close();
+            }
+
+            $options .= '</ul></div>';
+            $nestedData['options'] = $options;
+
+            // 📦 Product details for modal
+            $tax = $product->tax_id ? Tax::find($product->tax_id)->name : "N/A";
+            $tax_method = $product->tax_method == 1 ? trans('file.Exclusive') : trans('file.Inclusive');
+
+            $nestedData['product'] = [
+                '["' . $product->type . '"',
+                '"' . $product->name . '"',
+                '"' . $product->code . '"',
+                '"' . $nestedData['brand'] . '"',
+                '"' . $nestedData['category'] . '"',
+                '"' . $nestedData['unit'] . '"',
+                '"' . $product->cost . '"',
+                '"' . $product->price . '"',
+                '"' . $tax . '"',
+                '"' . $tax_method . '"',
+                '"' . $product->alert_quantity . '"',
+                '"' . preg_replace('/\s+/S', " ", $product->product_details) . '"',
+                '"' . $product->id . '"',
+                '"' . $product->product_list . '"',
+                '"' . $product->variant_list . '"',
+                '"' . $product->qty_list . '"',
+                '"' . $product->price_list . '"',
+                '"' . $product->qty . '"',
+                '"' . $product->image . '"',
+                '"' . $product->is_variant . '"]'
+            ];
+
+            $nestedData['colorImages'] = $product->productImages;
+            $nestedData['variant_value'] = $product->variant_value;
+
+            $data[] = $nestedData;
         }
-        $json_data = array(
+
+        return response()->json([
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data
-        );
-
-        echo json_encode($json_data);
+        ]);
     }
+
 
     public function create()
     {
@@ -805,7 +1005,7 @@ class ProductController extends Controller
                     $unit_data = DB::table('units')->select('unit_code')->find($purchase->purchase_unit_id);
                     $nestedData['qty'] .= ' ' . $unit_data->unit_code;
                 }
-                $nestedData['unit_cost'] = $purchase->qty > 0? number_format(($purchase->total / $purchase->qty), config('decimal')) : '0.00';
+                $nestedData['unit_cost'] = $purchase->qty > 0 ? number_format(($purchase->total / $purchase->qty), config('decimal')) : '0.00';
                 $nestedData['sub_total'] = number_format($purchase->total, config('decimal'));
                 $data[] = $nestedData;
             }

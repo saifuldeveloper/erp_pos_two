@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product_Warehouse;
 use App\Models\StockCount;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -94,10 +95,12 @@ class StockCountController extends Controller
 
     public function update(Request $request, $id)
     {
+
+
         $stock_count = StockCount::find($id);
         if ($request->status == 'add') {
             foreach ($request['product_code'] as $key => $product_code) {
-                if ($request['qty'][$key] == 0) {
+                if ($request['qty'][$key] == 0 && $request['current_qty'] ==0){
                     continue;
                 }
                 DB::table('stock_count_items')->insert([
@@ -131,7 +134,21 @@ class StockCountController extends Controller
                         $product = Product::find($productVariant->product_id);
                         $product->qty += ($updated_qty - $current_qty);
                         $product->save();
+
+                        // warehouse decress
+                        $wareHouseProduct =Product_Warehouse::where('product_id' ,$item->product_id)->first();
+                        $wareHouseProduct->qty += ($updated_qty - $current_qty);
+                        $wareHouseProduct->save();
+
                     }
+                }else{
+                     $items = $stock_count->items->where('item_code', $key)->all();
+                     foreach($items as $item){
+                        $item->updated_quantity =$item->current_quantity;
+                        $item->save();
+                     }
+
+                    
                 }
             }
             $stock_count->is_resolved = true;
