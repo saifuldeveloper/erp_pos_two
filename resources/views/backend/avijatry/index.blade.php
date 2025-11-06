@@ -20,6 +20,7 @@
                                         <tr class="text-center">
                                             <th>Shoe ID</th>
                                             <th>Image</th>
+                                            <th>Retail Price</th>
                                             <th>Category</th>
                                             <th>Color</th>
                                             <th>Status</th>
@@ -39,6 +40,7 @@
                                                             style="width: 50px; height: 50px;">
                                                     </a>
                                                 </td>
+                                                <td>{{ $product['shoe']['retail_price'] }}</td>
                                                 <td>{{ $product['shoe']['category']['full_name'] }}</td>
                                                 <td>{{ $product['shoe']['color']['name'] }}</td>
                                                 <td>

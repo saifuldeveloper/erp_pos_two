@@ -47,6 +47,9 @@
                     </thead>
                     <input type="hidden" name="invoice_id" value="{{ $invoice['id'] }}">
                     <tbody>
+                        @php
+                            $total_amount=0;
+                        @endphp
                         @forelse ($invoice['invoice_entries'] as $key => $entry)
                             @if ($purchase)
                                 @php
@@ -71,7 +74,8 @@
                                 <td>{{ $entry['shoe']['retail_price'] }}</td>
                                 <td>0(0%)</td>
                                 <td>0</td>
-                                <td>{{ $entry['total_price'] }}</td>
+                                <td>{{ $entry['shoe']['retail_price'] * ['count']  }}</td>
+                                
                             </tr>
                             <div class="modal fade" id="variantModal{{ $key }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">

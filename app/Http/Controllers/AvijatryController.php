@@ -38,6 +38,7 @@ class AvijatryController extends Controller
                 $retailStore = [];
                 $products = [];
             }
+
             return view('backend.avijatry.index', compact('products', 'retailStore'));
         } catch (\Exception $e) {
             abort(404);

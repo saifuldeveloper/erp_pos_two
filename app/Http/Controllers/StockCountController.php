@@ -33,11 +33,11 @@ class StockCountController extends Controller
         $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
 
         return Product::ActiveStandard()
-        ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-        ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id)
-        ->select('products.id', 'products.name', 'products.code')
-        ->groupBy('products.id')
-        ->get();
+            ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+            ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id)
+            ->select('products.id', 'products.name', 'products.code')
+            ->groupBy('products.id')
+            ->get();
     }
 
     public function productSearch(Request $request)
@@ -93,14 +93,15 @@ class StockCountController extends Controller
         return redirect()->route('stock-count.show', $stock_count->id);
     }
 
+
     public function update(Request $request, $id)
     {
+        $stock_count = StockCount::findOrFail($id);
 
+        if ($request->status === 'add') {
 
-        $stock_count = StockCount::find($id);
-        if ($request->status == 'add') {
             foreach ($request['product_code'] as $key => $product_code) {
-                if ($request['qty'][$key] == 0 && $request['current_qty'] ==0){
+                if ($request['qty'][$key] == 0 && $request['current_qty'][$key] == 0) {
                     continue;
                 }
                 DB::table('stock_count_items')->insert([
@@ -110,56 +111,219 @@ class StockCountController extends Controller
                     'current_quantity' => $request['current_qty'][$key],
                     'updated_quantity' => $request['qty'][$key],
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
                 ]);
             }
-        } elseif ($request->status == 'complete') {
+
+            return back()->with('success', 'Stock count items added successfully.');
+
+        } elseif ($request->status === 'complete') {
             $stock_count->is_completed = true;
-            $stock_count->completed_by = Auth::user()->id;
+            $stock_count->completed_by = Auth::id();
             $stock_count->save();
-        }elseif ($request->status == 'resolved') {
-            foreach ($request->resolved as $key => $value) {
-                if($value == 'update_stock'){
-                    $items = $stock_count->items->where('item_code', $key)->all();
-                    if($items){
-                        $updated_qty = 0;
-                        foreach ($items as $item) {
-                            $updated_qty += $item->updated_quantity;
-                            $current_qty = $item->current_quantity;
-                        }
-                        $productVariant = ProductVariant::where('item_code', $key)->first();
-                        $productVariant->qty = $updated_qty;
-                        $productVariant->save();
+            return back()->with('success', 'Stock count marked as completed.');
 
-                        $product = Product::find($productVariant->product_id);
-                        $product->qty += ($updated_qty - $current_qty);
-                        $product->save();
+        } elseif ($request->status === 'resolved') {
 
-                        // warehouse decress
-                        $wareHouseProduct =Product_Warehouse::where('product_id' ,$item->product_id)->first();
-                        $wareHouseProduct->qty += ($updated_qty - $current_qty);
-                        $wareHouseProduct->save();
+            DB::beginTransaction();
+            try {
+                foreach ($request->resolved as $key => $value) {
 
+                    // 🟢 Skip "all"
+                    if ($key === 'all') {
+                        continue;
                     }
-                }else{
-                     $items = $stock_count->items->where('item_code', $key)->all();
-                     foreach($items as $item){
-                        $item->updated_quantity =$item->current_quantity;
-                        $item->save();
-                     }
+                    $items = $stock_count->items->where('item_code', $key);
+                    if ($items->isEmpty()) {
+                        continue;
+                    }
 
-                    
+                    if ($value === 'update_stock') {
+                        $updated_qty = $items->sum('updated_quantity');
+                        $total_current_qty = $items->sum('current_quantity');
+
+                        // 🔹 Variant Product
+                        $productVariant = ProductVariant::where('item_code', $key)->first();
+
+                        if ($productVariant) {
+                            // Update variant quantity
+                            $productVariant->qty = $updated_qty;
+                            $productVariant->save();
+
+                            // Update warehouse variant record
+                            $wareHouseProduct = Product_Warehouse::where('variant_id', $productVariant->variant_id)
+                                ->where('warehouse_id', $stock_count->warehouse_id)
+                                ->where('product_id', $items->first()->product_id)
+                                ->first();
+                            if ($wareHouseProduct) {
+                                $wareHouseProduct->qty = $updated_qty;
+                                $wareHouseProduct->save();
+                            }
+
+                            // Update main product stock difference
+                            $product = Product::find($productVariant->product_id);
+                            if ($product) {
+                                $product->qty += ($updated_qty - $total_current_qty);
+                                $product->save();
+                            }
+
+                        } else {
+                            // 🔹 Non-variant product
+                            $product = Product::where('code', $items->first()->item_code)->first();
+
+                            if ($product) {
+                                $product->qty += ($updated_qty - $total_current_qty);
+                                $product->save();
+
+                                // Update warehouse product
+                                $wareHouseProduct = Product_Warehouse::where('product_id', $product->id)
+                                    ->where('warehouse_id', $stock_count->warehouse_id)
+                                    ->first();
+
+                                if ($wareHouseProduct) {
+                                    $wareHouseProduct->qty = $updated_qty;
+                                    $wareHouseProduct->save();
+                                }
+                            }
+                        }
+
+                    } 
+                    // else {
+                    //     // 🔹 Ignore difference
+                    //     foreach ($items as $item) {
+                    //         $item->updated_quantity = $item->current_quantity;
+                    //         $item->is_resolved = true;
+                    //         $item->resolved_at = now();
+                    //         $item->save();
+                    //     }
+                    // }
                 }
-            }
-            $stock_count->is_resolved = true;
-            $stock_count->resolved_by = Auth::user()->id;
-            $stock_count->save();
 
-            return redirect('/dashboard');
+                // Mark stock count as resolved
+                $stock_count->is_resolved = true;
+                $stock_count->resolved_by = Auth::id();
+                $stock_count->save();
+
+                DB::commit();
+
+                return redirect('/dashboard')->with('success', 'Stock count resolved successfully.');
+
+            } catch (\Exception $e) {
+                DB::rollBack();
+                // Log::error('Stock resolve failed: ' . $e->getMessage());
+                return back()->with('error', 'Failed to resolve stock count.');
+            }
         }
 
+        // Default return if nothing matches
         return redirect()->route('stock-count.show', $id);
     }
+
+
+    // public function update(Request $request, $id)
+    // {
+
+
+    //     $stock_count = StockCount::find($id);
+    //     if ($request->status == 'add') {
+    //         foreach ($request['product_code'] as $key => $product_code) {
+    //             if ($request['qty'][$key] == 0 && $request['current_qty'] == 0) {
+    //                 continue;
+    //             }
+    //             DB::table('stock_count_items')->insert([
+    //                 'stock_count_id' => $stock_count->id,
+    //                 'product_id' => $request['product_id'][$key],
+    //                 'item_code' => $request['product_code'][$key],
+    //                 'current_quantity' => $request['current_qty'][$key],
+    //                 'updated_quantity' => $request['qty'][$key],
+    //                 'created_at' => now(),
+    //                 'updated_at' => now()
+    //             ]);
+    //         }
+    //     } elseif ($request->status == 'complete') {
+    //         $stock_count->is_completed = true;
+    //         $stock_count->completed_by = Auth::user()->id;
+    //         $stock_count->save();
+    //     } elseif ($request->status == 'resolved') {
+    //         foreach ($request->resolved as $key => $value) {
+    //             if ($key === 'all') {
+    //                 continue;
+    //             }
+
+    //             $items = $stock_count->items->where('item_code', $key);
+    //             if ($items->isEmpty()) {
+    //                 continue;
+    //             }
+
+    //             if ($value === 'update_stock') {
+    //                 $updated_qty = $items->sum('updated_quantity');
+    //                 $total_current_qty = $items->sum('current_quantity');
+
+    //                 $productVariant = ProductVariant::where('item_code', $key)->first();
+
+    //                 if ($productVariant) {
+    //                     $productVariant->qty = $updated_qty;
+    //                     $productVariant->save();
+    //                     $wareHouseProduct = Product_Warehouse::where('variant_id', $productVariant->variant_id)
+    //                         ->where('warehouse_id', $stock_count->warehouse_id)
+    //                         ->where('product_id', $items->first()->product_id)
+    //                         ->first();
+
+    //                     if ($wareHouseProduct) {
+    //                         $wareHouseProduct->qty = $updated_qty;
+    //                         $wareHouseProduct->save();
+    //                     }
+
+    //                     // Update main product stock difference
+    //                     $product = Product::find($productVariant->product_id);
+    //                     if ($product) {
+    //                         $product->qty += ($updated_qty - $total_current_qty);
+    //                         $product->save();
+    //                     }
+
+    //                 } else {
+    //                     dd('not_varient');
+
+    //                     // not Varient product
+    //                     $product = Product::where('code', $items[0]->item_code)->first();
+    //                     if ($product) {
+    //                         $product->qty += ($updated_qty - $total_current_qty);
+    //                         $product->save();
+    //                     }
+    //                     $wareHouseProduct = Product_Warehouse::where('product_id', $product->id ?? null)
+    //                         ->where('warehouse_id', $stock_count->warehouse_id)
+    //                         ->first();
+
+    //                     if ($wareHouseProduct) {
+    //                         $wareHouseProduct->qty = $updated_qty;
+    //                         $wareHouseProduct->save();
+    //                     }
+
+    //                 }
+    //                 foreach ($items as $item) {
+    //                     $item->is_resolved = true;
+    //                     $item->resolved_at = now();
+    //                     $item->save();
+    //                 }
+    //             } else {
+    //                 $items = $stock_count->items->where('item_code', $key)->all();
+    //                 foreach ($items as $item) {
+    //                     $item->updated_quantity = $item->current_quantity;
+    //                     $item->save();
+    //                 }
+
+
+    //             }
+    //         }
+    //         $stock_count->is_resolved = true;
+    //         $stock_count->resolved_by = Auth::user()->id;
+    //         $stock_count->save();
+
+    //         return redirect('/dashboard');
+    //     }
+
+    //     return redirect()->route('stock-count.show', $id);
+    // }
 
     public function show($id)
     {
