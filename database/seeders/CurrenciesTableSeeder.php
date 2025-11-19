@@ -26,8 +26,8 @@ class CurrenciesTableSeeder extends Seeder
                 'code' => '৳',
                 'exchange_rate' => 1.0,
                 'is_active' => 1,
-                'created_at' => '2024-09-26 15:34:55',
-                'updated_at' => '2024-09-26 15:34:55',
+                'created_at' => '2024-09-26 21:34:55',
+                'updated_at' => '2024-09-26 21:34:55',
             ),
         ));
         

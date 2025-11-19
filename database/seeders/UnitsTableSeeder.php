@@ -28,8 +28,8 @@ class UnitsTableSeeder extends Seeder
                 'operator' => '*',
                 'operation_value' => 1.0,
                 'is_active' => 1,
-                'created_at' => '2024-10-07 16:12:13',
-                'updated_at' => '2024-10-07 16:12:28',
+                'created_at' => '2025-04-19 19:10:31',
+                'updated_at' => '2025-04-19 19:10:44',
             ),
             1 => 
             array (
@@ -40,20 +40,8 @@ class UnitsTableSeeder extends Seeder
                 'operator' => '*',
                 'operation_value' => 1.0,
                 'is_active' => 1,
-                'created_at' => '2025-01-04 20:09:56',
-                'updated_at' => '2025-01-07 12:18:02',
-            ),
-            2 => 
-            array (
-                'id' => 3,
-                'unit_code' => NULL,
-                'unit_name' => '120',
-                'base_unit' => NULL,
-                'operator' => '*',
-                'operation_value' => 1.0,
-                'is_active' => 0,
-                'created_at' => '2025-01-07 00:40:20',
-                'updated_at' => '2025-01-07 00:40:39',
+                'created_at' => '2025-04-19 19:10:55',
+                'updated_at' => '2025-04-19 19:10:55',
             ),
         ));
         

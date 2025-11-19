@@ -25,8 +25,8 @@ class CustomerGroupsTableSeeder extends Seeder
                 'name' => 'General Customer',
                 'percentage' => '0',
                 'is_active' => 1,
-                'created_at' => '2024-10-07 20:06:18',
-                'updated_at' => '2024-10-07 20:06:18',
+                'created_at' => '2024-10-08 02:06:18',
+                'updated_at' => '2024-10-08 02:06:18',
             ),
             1 => 
             array (
@@ -34,8 +34,8 @@ class CustomerGroupsTableSeeder extends Seeder
                 'name' => 'wholesale Customer',
                 'percentage' => '0',
                 'is_active' => 1,
-                'created_at' => '2024-10-07 20:06:37',
-                'updated_at' => '2024-10-07 20:06:37',
+                'created_at' => '2024-10-08 02:06:37',
+                'updated_at' => '2024-10-08 02:06:37',
             ),
         ));
         

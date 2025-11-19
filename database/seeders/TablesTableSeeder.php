@@ -26,8 +26,8 @@ class TablesTableSeeder extends Seeder
                 'number_of_person' => 5,
                 'description' => NULL,
                 'is_active' => 0,
-                'created_at' => '2024-12-11 07:09:07',
-                'updated_at' => '2024-12-21 06:57:48',
+                'created_at' => '2024-12-11 13:09:07',
+                'updated_at' => '2024-12-21 12:57:48',
             ),
         ));
         
