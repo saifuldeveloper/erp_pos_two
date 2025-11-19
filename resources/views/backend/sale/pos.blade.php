@@ -1728,7 +1728,7 @@ $('.customer-submit-btn').on("click", function() {
       $('#today-profit-modal').modal('show');
   }
 
-if(role_id > 2){
+if(role_id > 2 && role_id > 5 ){
     $('#biller_id').addClass('d-none');
     $('#warehouse_id').addClass('d-none');
     $('select[name=warehouse_id]').val(warehouse_id);

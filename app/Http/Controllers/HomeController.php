@@ -38,7 +38,7 @@ class HomeController extends Controller
     public function home()
     {
         // return view('backend.home');
-           return redirect('dashboard');
+        return redirect('dashboard');
     }
 
     public function index()
@@ -48,7 +48,7 @@ class HomeController extends Controller
 
     public function documentation()
     {
-        $general_setting =  Cache::remember('general_setting', 60 * 60 * 24 * 365, function () {
+        $general_setting = Cache::remember('general_setting', 60 * 60 * 24 * 365, function () {
             return DB::table('general_settings')->latest()->first();
         });
         return view('backend.documentation', compact('general_setting'));
@@ -89,17 +89,47 @@ class HomeController extends Controller
         config()->set('database.connections.mysql.strict', false);
         DB::reconnect();
         if (Auth::user()->role_id == 5) {
-            $customer = Customer::select('id', 'points')->where('user_id', Auth::id())->first();
-            $lims_sale_data = Sale::with('warehouse')->where('customer_id', $customer->id)->orderBy('created_at', 'desc')->get();
-            $lims_payment_data = DB::table('payments')
-                ->join('sales', 'payments.sale_id', '=', 'sales.id')
-                ->where('customer_id', $customer->id)
-                ->select('payments.*', 'sales.reference_no as sale_reference')
-                ->orderBy('payments.created_at', 'desc')
-                ->get();
-            $lims_quotation_data = Quotation::with('biller', 'customer', 'supplier', 'user')->orderBy('id', 'desc')->where('customer_id', $customer->id)->orderBy('created_at', 'desc')->get();
 
-            $lims_return_data = Returns::with('warehouse', 'customer', 'biller')->where('customer_id', $customer->id)->orderBy('created_at', 'desc')->get();
+            $customer = Customer::select('id', 'points')->where('user_id', Auth::id())->first();
+
+            $customer = Customer::select('id', 'points')
+                ->where('user_id', Auth::id())
+                ->first();
+
+            if ($customer) {
+                $lims_sale_data = Sale::with('warehouse')
+                    ->where('customer_id', $customer->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+                $lims_payment_data = DB::table('payments')
+                    ->join('sales', 'payments.sale_id', '=', 'sales.id')
+                    ->where('customer_id', $customer->id)
+                    ->select('payments.*', 'sales.reference_no as sale_reference')
+                    ->orderBy('payments.created_at', 'desc')
+                    ->get();
+
+                $lims_quotation_data = Quotation::with('biller', 'customer', 'supplier', 'user')
+                    ->where('customer_id', $customer->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+
+                $lims_return_data = Returns::with('warehouse', 'customer', 'biller')
+                    ->where('customer_id', $customer->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+            } else {
+                $lims_sale_data = collect();
+                $lims_payment_data = collect();
+                $lims_return_data = collect();
+                $lims_quotation_data = collect();
+            }
+
+
+
+
+
+
             $lims_reward_point_setting_data = RewardPointSetting::select('per_point_amount')->latest()->first();
             return view('backend.customer_index', compact('customer', 'lims_sale_data', 'lims_payment_data', 'lims_quotation_data', 'lims_return_data', 'lims_reward_point_setting_data'));
         }
@@ -122,7 +152,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->where('payments.user_id', Auth::id())
-                ->where('payments.due_payment' ,1)
+                ->where('payments.due_payment', 1)
                 ->whereRaw('payments.created_at > sales.created_at')
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
@@ -150,7 +180,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->whereRaw('payments.created_at > sales.created_at')
-                ->where('payments.due_payment' ,1)
+                ->where('payments.due_payment', 1)
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
                 ->sum('payments.amount');
@@ -192,8 +222,8 @@ class HomeController extends Controller
             }
             $sent_amount = $sent_amount + $return_amount + $expense_amount + $payroll_amount;
 
-            $payment_recieved[] = number_format((float)($recieved_amount + $purchase_return_amount), config('decimal'), '.', '');
-            $payment_sent[] = number_format((float)$sent_amount, config('decimal'), '.', '');
+            $payment_recieved[] = number_format((float) ($recieved_amount + $purchase_return_amount), config('decimal'), '.', '');
+            $payment_sent[] = number_format((float) $sent_amount, config('decimal'), '.', '');
             $month[] = date("F", strtotime($start_date));
             $start = strtotime("+1 month", $start);
         }
@@ -210,8 +240,8 @@ class HomeController extends Controller
                 $sale_amount = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
                 $purchase_amount = Purchase::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('grand_total');
             }
-            $yearly_sale_amount[] = number_format((float)$sale_amount, config('decimal'), '.', '');
-            $yearly_purchase_amount[] = number_format((float)$purchase_amount, config('decimal'), '.', '');
+            $yearly_sale_amount[] = number_format((float) $sale_amount, config('decimal'), '.', '');
+            $yearly_purchase_amount[] = number_format((float) $purchase_amount, config('decimal'), '.', '');
             $start = strtotime("+1 month", $start);
         }
 
@@ -244,7 +274,7 @@ class HomeController extends Controller
         //fetching data for auto updates
         if (Auth::user()->role_id <= 2 && isset($_COOKIE['login_now']) && $_COOKIE['login_now']) {
             $autoUpdateData = $this->general();
-            $alertBugEnable =  $autoUpdateData['alertBugEnable'];
+            $alertBugEnable = $autoUpdateData['alertBugEnable'];
             $alertVersionUpgradeEnable = $autoUpdateData['alertVersionUpgradeEnable'];
         } else {
             $autoUpdateData = $alertBugEnable = $alertVersionUpgradeEnable = '';
@@ -369,7 +399,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->where('user_id', Auth::id())->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->where('payments.user_id', Auth::id())
-                ->where('payments.due_payment' ,1)
+                ->where('payments.due_payment', 1)
                 ->whereRaw('payments.created_at > sales.created_at')
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
@@ -414,7 +444,7 @@ class HomeController extends Controller
             $sale_paid = Sale::whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('paid_amount');
             $due_payment_received = Payment::join('sales', 'payments.sale_id', '=', 'sales.id')
                 ->whereRaw('payments.created_at > sales.created_at')
-                ->where('payments.due_payment' ,1)
+                ->where('payments.due_payment', 1)
                 ->whereDate('payments.created_at', '>=', $start_date)
                 ->whereDate('payments.created_at', '<=', $end_date)
                 ->sum('payments.amount');
