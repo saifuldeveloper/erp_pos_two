@@ -296,8 +296,8 @@ class PurchaseController extends Controller
                     ' "' . $purchase->grand_total . '"',
                     ' "' . $purchase->paid_amount . '"',
                     ' "' . preg_replace('/\s+/S', " ", $purchase->note) . '"',
-                    ' "' . $user->name . '"',
-                    ' "' . $user->email . '"',
+                    ' "' . @$user->name . '"',
+                    ' "' . @$user->email . '"',
                     ' "' . $purchase->document . '"',
                     ' "' . $currency_code . '"',
                     ' "' . $purchase->exchange_rate . '"]'

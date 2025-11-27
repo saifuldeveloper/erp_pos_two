@@ -24,8 +24,8 @@ class DiscountPlanCustomersTableSeeder extends Seeder
                 'id' => 1,
                 'discount_plan_id' => 1,
                 'customer_id' => 1,
-                'created_at' => '2024-12-27 18:26:59',
-                'updated_at' => '2024-12-27 18:26:59',
+                'created_at' => '2024-12-27 12:26:59',
+                'updated_at' => '2024-12-27 12:26:59',
             ),
         ));
         

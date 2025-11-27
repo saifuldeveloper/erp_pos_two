@@ -23,46 +23,100 @@ class BrandsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'title' => 'Avijatry',
-                'image' => '20250419013907.jpg',
-                'is_active' => 1,
-                'created_at' => '2025-04-19 19:39:07',
-                'updated_at' => '2025-04-19 19:39:07',
+                'image' => '20241227113712.png',
+                'is_active' => 0,
+                'created_at' => '2024-10-07 16:07:13',
+                'updated_at' => '2025-11-13 08:38:06',
             ),
             1 => 
             array (
                 'id' => 2,
-                'title' => 'China',
-                'image' => '20250419013945.jpg',
-                'is_active' => 1,
-                'created_at' => '2025-04-19 19:39:45',
-                'updated_at' => '2025-04-19 19:39:45',
+                'title' => 'Apex',
+                'image' => '20241007040726.jpeg',
+                'is_active' => 0,
+                'created_at' => '2024-10-07 16:07:26',
+                'updated_at' => '2024-12-12 07:49:59',
             ),
             2 => 
             array (
                 'id' => 3,
-                'title' => 'Avijatry Discount',
-                'image' => '20250420082854.jpg',
-                'is_active' => 1,
-                'created_at' => '2025-04-21 02:28:54',
-                'updated_at' => '2025-04-21 02:28:54',
+                'title' => 'Bata',
+                'image' => '20241007040816.png',
+                'is_active' => 0,
+                'created_at' => '2024-10-07 16:08:16',
+                'updated_at' => '2024-12-12 07:50:04',
             ),
             3 => 
             array (
                 'id' => 4,
-                'title' => 'China Discount',
-                'image' => '20250424040942.png',
-                'is_active' => 1,
-                'created_at' => '2025-04-24 22:09:43',
-                'updated_at' => '2025-04-24 22:09:43',
+                'title' => 'Lotto',
+                'image' => '20241007040829.png',
+                'is_active' => 0,
+                'created_at' => '2024-10-07 16:08:29',
+                'updated_at' => '2024-12-12 07:49:52',
             ),
             4 => 
             array (
                 'id' => 5,
+                'title' => 'China',
+                'image' => '20250119074713.png',
+                'is_active' => 0,
+                'created_at' => '2024-12-12 04:51:07',
+                'updated_at' => '2025-11-13 08:38:15',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'title' => 'Test',
+                'image' => NULL,
+                'is_active' => 0,
+                'created_at' => '2024-12-21 11:19:25',
+                'updated_at' => '2024-12-23 05:06:35',
+            ),
+            6 => 
+            array (
+                'id' => 7,
                 'title' => 'Accessories',
-                'image' => '20250425044000.jpg',
+                'image' => '20250104123203.jpeg',
+                'is_active' => 0,
+                'created_at' => '2025-01-04 12:23:57',
+                'updated_at' => '2025-11-13 08:38:20',
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'title' => 'Khulna China',
+                'image' => '20250119074747.png',
+                'is_active' => 0,
+                'created_at' => '2025-01-19 19:47:47',
+                'updated_at' => '2025-11-13 08:38:25',
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'title' => 'Khulna accessories',
+                'image' => NULL,
+                'is_active' => 0,
+                'created_at' => '2025-05-24 19:35:06',
+                'updated_at' => '2025-11-13 08:38:40',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'title' => 'Avijatry',
+                'image' => '20251117015252.png',
                 'is_active' => 1,
-                'created_at' => '2025-04-25 22:40:00',
-                'updated_at' => '2025-04-25 22:40:00',
+                'created_at' => '2025-11-17 13:51:23',
+                'updated_at' => '2025-11-17 13:52:52',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'title' => 'China',
+                'image' => NULL,
+                'is_active' => 1,
+                'created_at' => '2025-11-17 13:53:15',
+                'updated_at' => '2025-11-17 13:53:15',
             ),
         ));
         
