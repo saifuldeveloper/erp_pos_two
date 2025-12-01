@@ -74,7 +74,10 @@
                                 <td>{{ $entry['shoe']['retail_price'] }}</td>
                                 <td>0(0%)</td>
                                 <td>0</td>
-                                <td>{{ $entry['shoe']['retail_price'] * ['count']  }}</td>
+                                {{-- <td>{{ $entry['shoe']['retail_price'] * ['count']  }}</td>
+                                 --}}
+                                 <td>{{ $entry['shoe']['retail_price'] * $entry['count'] }}</td>
+
                                 
                             </tr>
                             <div class="modal fade" id="variantModal{{ $key }}" tabindex="-1" role="dialog"

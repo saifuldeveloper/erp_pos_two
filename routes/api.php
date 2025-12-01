@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DemoAutoUpdateController;
+use App\Http\Controllers\API\Website\EcommersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(DemoAutoUpdateController::class)->group(function () {
-    Route::get('fetch-data-general', 'fetchDataGeneral')->name('fetch-data-general');
-    Route::get('fetch-data-upgrade', 'fetchDataForAutoUpgrade')->name('data-read');
-    Route::get('fetch-data-bugs', 'fetchDataForBugs')->name('fetch-data-bugs');
+// website route
+
+
+Route::controller(EcommersController::class)->prefix('v1')->group(function (){
+     Route::get('product/info', 'productInfo');
+
+     Route::post('order/store', 'store');
+
+
 });
+
+
+
+
+
+
 
