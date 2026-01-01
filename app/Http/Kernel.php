@@ -19,6 +19,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        
     ];
 
     /**
@@ -42,6 +43,7 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            
         ],
     ];
 
@@ -67,6 +69,7 @@ class Kernel extends HttpKernel
         'common' => \App\Http\Middleware\Common::class,
         'superadminauth' => \App\Http\Middleware\SuperAdminAuth::class,
         'cors' => \App\Http\Middleware\Cors::class,
+        'retail.secret' => \App\Http\Middleware\CheckRetailSecretKey::class,
     ];
 
     /**

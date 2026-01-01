@@ -17,17 +17,22 @@ use Illuminate\Support\Facades\Route;
 // website route
 
 
-Route::controller(EcommersController::class)->prefix('v1')->group(function (){
-     Route::get('product/info', 'productInfo');
+// Route::controller(EcommersController::class)->prefix('v1')->group(function () {
 
-     Route::post('order/store', 'store');
-
-
-});
+//      Route::get('product/info', 'productInfo');
+//      Route::post('order/store', 'store');
 
 
+// });
 
 
 
+
+Route::prefix('v1')->middleware('retail.secret')->controller(EcommersController::class)->group(function () {
+
+          Route::get('product/info', 'productInfo');
+          Route::post('order/store', 'store');
+
+     });
 
 
