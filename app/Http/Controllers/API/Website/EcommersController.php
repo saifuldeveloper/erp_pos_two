@@ -38,9 +38,26 @@ class EcommersController extends Controller
 
     public function productInfo()
     {
-        $product = Product::with('productVariants')
-            ->where('code', $this->request->input('code'))
-            ->first();
+
+
+        $productVarient = ProductVariant::where('item_code', $this->request->input('code'))->first();
+
+
+        $code = $this->request->input('code');
+
+        $variant = ProductVariant::where('item_code', $code)->first();
+
+        if ($variant) {
+            $product = Product::with('productVariants')
+                ->where('id', $variant->product_id)
+                ->first();
+        } else {
+            // 2️⃣ Try Product
+            $product = Product::with('productVariants')
+                ->where('code', $code)
+                ->first();
+        }
+
 
         if (!$product) {
             return response()->json([
@@ -80,7 +97,7 @@ class EcommersController extends Controller
         }
     }
 
-    
+
 
 
 

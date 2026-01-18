@@ -262,7 +262,7 @@ class SaleController extends Controller
                 $nestedData['key'] = $key;
                 $nestedData['date'] = date(config('date_format'), strtotime($sale->created_at->toDateString()));
                 $nestedData['reference_no'] = $sale->reference_no;
-                $nestedData['biller'] = $sale->biller->name;
+                $nestedData['biller'] = $sale->biller->name ?? 'No found';
                 $nestedData['customer'] = $sale->customer->name.'<br>'.$sale->customer->phone_number.'<input type="hidden" class="deposit" value="'.($sale->customer->deposit - $sale->customer->expense).'" />'.'<input type="hidden" class="points" value="'.$sale->customer->points.'" />';
 
                 if($sale->sale_status == 1){
@@ -370,12 +370,12 @@ class SaleController extends Controller
                 '[ "'.date(config('date_format') . ' (h:i A)', strtotime($sale->created_at)).'"',
                  ' "'.$sale->reference_no.'"',
                  ' "'.$sale_status.'"',
-                 ' "'.$sale->biller->name.'"',
-                 ' "'.$sale->biller->company_name.'"',
-                 ' "'.$sale->biller->email.'"',
-                 ' "'.$sale->biller->phone_number.'"',
-                 ' "'.$sale->biller->address.'"',
-                 ' "'.$sale->biller->city.'"',
+                 ' "'.@$sale->biller->name.'"',
+                 ' "'.@$sale->biller->company_name.'"',
+                 ' "'.@$sale->biller->email.'"',
+                 ' "'.@$sale->biller->phone_number.'"',
+                 ' "'.@$sale->biller->address.'"',
+                 ' "'.@$sale->biller->city.'"',
                  ' "'.$sale->customer->name.'"',
                  ' "'.$sale->customer->phone_number.'"',
                  ' "'.$sale->customer->address.'"',

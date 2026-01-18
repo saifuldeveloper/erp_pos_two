@@ -33,6 +33,7 @@ class CreateSalesTable extends Migration
             $table->integer('payment_status');
             $table->string('document')->nullable();
             $table->double('paid_amount')->nullable();
+            $table->text('payment_note')->nullable();
             $table->text('sale_note')->nullable();
             $table->text('staff_note')->nullable();
             $table->timestamps();

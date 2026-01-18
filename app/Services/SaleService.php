@@ -27,14 +27,25 @@ class SaleService
     public function store(array $data)
     {
 
-      
+
 
         return DB::transaction(function () use ($data) {
-            
 
-            
+        
+
+
+            if (isset($data['sale_type']) && $data['sale_type'] === 'website') {
+                $customer = Customer::where('phone_number', $data['customer_info']['phone_number'])->first();
+                if (!$customer) {
+                    $customer = $this->createCustomer(
+                        $data['customer_info']
+                    );
+                }
+                $data['customer_id'] = $customer->id;
+
+            }
+
             $data['user_id'] = Auth::id() ? Auth::id() : 1;
-
             // Cash Register
             $register = CashRegister::where([
                 ['user_id', $data['user_id']],
@@ -51,10 +62,23 @@ class SaleService
                 : now();
 
             // Reference No
+            // if (!isset($data['reference_no'])) {
+            //     $data['reference_no'] = $data['pos']
+            //         ? 'posr-' . date("Ymd") . '-' . date("his")
+            //         : 'sr-' . date("Ymd") . '-' . date("his");
+            // }
+
             if (!isset($data['reference_no'])) {
-                $data['reference_no'] = $data['pos']
-                    ? 'posr-' . date("Ymd") . '-' . date("his")
-                    : 'sr-' . date("Ymd") . '-' . date("his");
+                $timestamp = date("Ymd-His");
+                if (($data['sale_type'] ?? '') === 'website') {
+                    $data['ecom'] = true;
+                }
+                $prefix = match ($data['sale_type'] ?? '') {
+                    'website' => (!empty($data['ecom']) ? 'ecomr-' : 'sr-'),
+                    default => (!empty($data['pos']) ? 'posr-' : 'sr-'),
+                };
+
+                $data['reference_no'] = $prefix . $timestamp;
             }
 
             // Payment Status
@@ -127,6 +151,34 @@ class SaleService
     /* =====================================================
      * =============== Helper Methods Below =================
      * ===================================================== */
+
+    public function CreateCustomer(array $data)
+    {
+        $customer_data = [
+            'customer_group_id' => 1,
+            'name' => $data['customer_name'] ?? 'Website Customer',
+            'phone_number' => $data['phone_number'],
+            'email' => $data['email'] ?? null,
+            'address' => $data['address'] ?? null,
+            'city' => $data['city'] ?? null,
+            'is_active' => true,
+        ];
+        $customer = Customer::create($customer_data);
+        if (!empty($data['custom_fields'])) {
+            $custom_field_data = [];
+            foreach ($data['custom_fields'] as $key => $value) {
+                if (is_array($value)) {
+                    $custom_field_data[$key] = implode(',', $value);
+                } else {
+                    $custom_field_data[$key] = $value;
+                }
+            }
+            if (!empty($custom_field_data)) {
+                DB::table('customers')->where('id', $customer->id)->update($custom_field_data);
+            }
+        }
+        return $customer;
+    }
 
     private function uploadDocument($file)
     {
@@ -313,7 +365,7 @@ class SaleService
     {
         $payment = new Payment();
         // $payment->user_id = Auth::id();
-        $payment->user_id= Auth::id() ? Auth::id() : 1;
+        $payment->user_id = Auth::id() ? Auth::id() : 1;
         $payment->sale_id = $sale_id;
         $payment->cash_register_id = $register ? $register->id : null;
 
