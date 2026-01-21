@@ -43,6 +43,7 @@
                             <option value="1">{{trans('file.Completed')}}</option>
                             <option value="2">{{trans('file.Pending')}}</option>
                             <option value="4">{{trans('file.Returned')}}</option>
+                            <option value="5">{{trans('file.In Progress')}}</option>
                         </select>
                     </div>
                 </div>

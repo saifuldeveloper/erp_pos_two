@@ -281,6 +281,10 @@ class SaleController extends Controller
                     $nestedData['sale_status'] = '<div class="badge badge-danger">'.trans('file.Returned').'</div>';
                     $sale_status = trans('file.Returned');
                 }
+                elseif($sale->sale_status == 5){
+                    $nestedData['sale_status'] = '<div class="badge badge-danger">'.trans('file.In Progress').'</div>';
+                    $sale_status = trans('file.In Progress');
+                }
 
                 if($sale->payment_status == 1)
                     $nestedData['payment_status'] = '<div class="badge badge-danger">'.trans('file.Pending').'</div>';
@@ -1908,6 +1912,7 @@ class SaleController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $data = $request->except('document');
         //return dd($data);
         $document = $request->document;
@@ -2175,7 +2180,7 @@ class SaleController extends Controller
             $product_sale['sale_id'] = $id ;
             $product_sale['product_id'] = $pro_id;
             $product_sale['imei_number'] = $imei_number[$key];
-            $product_sale['product_batch_id'] = $product_batch_id[$key];
+            // $product_sale['product_batch_id'] = $product_batch_id[$key];
             $product_sale['qty'] = $mail_data['qty'][$key] = $qty[$key];
             $product_sale['sale_unit_id'] = $sale_unit_id;
             $product_sale['net_unit_price'] = $net_unit_price[$key];
@@ -2200,6 +2205,7 @@ class SaleController extends Controller
             else
                 Product_Sale::create($product_sale);
         }
+
         $lims_sale_data->update($data);
         //inserting data for custom fields
         $custom_field_data = [];

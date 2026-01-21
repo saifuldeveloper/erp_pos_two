@@ -27,6 +27,7 @@ return [
 	'quantity' => 'Quantity',
 	'cost' => 'Cost',
 	'unit' => 'Unit',
+	'In Progress' =>'In Progress',
 
 	'purchase' => 'Purchase',
 	'dashboard' => 'Dashboard',

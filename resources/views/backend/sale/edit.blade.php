@@ -54,7 +54,7 @@
                                         <div class="form-group">
                                             <label>{{trans('file.Biller')}} *</label>
                                             <input type="hidden" name="biller_id_hidden" value="{{$lims_sale_data->biller_id}}" />
-                                            <select required name="biller_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Biller...">
+                                            <select name="biller_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Biller...">
                                                 @foreach($lims_biller_list as $biller)
                                                 <option value="{{$biller->id}}">{{$biller->name . ' (' . $biller->company_name . ')'}}</option>
                                                 @endforeach
@@ -378,6 +378,9 @@
                                             <select name="sale_status" class="form-control">
                                                 <option value="1">{{trans('file.Completed')}}</option>
                                                 <option value="2">{{trans('file.Pending')}}</option>
+                                                <option value="3">{{trans('file.Draft')}}</option>
+                                                <option value="4">{{trans('file.Returned')}}</option>
+                                                <option value="5">{{trans('file.In Progress')}}</option>
                                             </select>
                                         </div>
                                     </div>

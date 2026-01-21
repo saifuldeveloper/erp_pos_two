@@ -80,7 +80,6 @@ class EcommersController extends Controller
     {
         try {
             $result = $this->saleService->store($request->all());
-
             return response()->json([
                 'success' => true,
                 'message' => $result['message'],
