@@ -60,21 +60,40 @@ class AvijatryController extends Controller
         }
     }
 
-    public function invoices()
+    // public function invoices()
+    // {
+
+    //     try {
+    //         $response = $this->avijatryService->invoices();
+    //         if ($response->status() == 200) {
+    //             $invoices = $response->json()['invoices'];
+    //         } else {
+    //             $invoices = 'API error';
+    //         }
+    //         return view('backend.avijatry.invoices', compact('invoices'));
+    //     } catch (\Exception $e) {
+    //         return $e->getMessage();
+    //     }
+    // }
+
+    public function invoices(Request $request)
     {
-              
         try {
-            $response = $this->avijatryService->invoices();
-            if ($response->status() == 200) {
-                $invoices = $response->json()['invoices'];
+            $page = $request->get('page', 1);
+            $response = $this->avijatryService->invoices($page);
+
+            if ($response->successful()) {
+                $invoiceData = $response->json()['invoices'];
             } else {
-                $invoices = 'API error';
+                $invoiceData = 'API error';
             }
-            return view('backend.avijatry.invoices', compact('invoices'));
+            return view('backend.avijatry.invoices', ['invoices' => $invoiceData]);
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return back()->with('error', $e->getMessage());
         }
     }
+
+
 
     public function invoice($id)
     {
@@ -100,7 +119,7 @@ class AvijatryController extends Controller
             if ($response->status() == 200) {
                 $invoice = $response->json()['invoice'];
                 foreach ($invoice['invoice_entries'] as $entry) {
-                    Product::where('code', ('A-' . $entry['shoe']['id']))->first() ?: $this->productStore($entry['shoe'],$invoice['commission']);
+                    Product::where('code', ('A-' . $entry['shoe']['id']))->first() ?: $this->productStore($entry['shoe'], $invoice['commission']);
                 }
                 $ret = [];
                 $ret = $this->invoiceStore($invoice, $request);

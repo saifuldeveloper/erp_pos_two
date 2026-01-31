@@ -17,6 +17,7 @@ class CreateDeliveriesTable extends Migration
             $table->string('recieved_by')->nullable();
             $table->string('file')->nullable();
             $table->string('note')->nullable();
+            $table->string('courier_tracking_id')->nullable();
             $table->string('status');
             $table->timestamps();
         });

@@ -27,18 +27,39 @@ class AvijatryService
         return Http::withHeaders([
             'secret_key' => $this->secret_key,
         ])->post($this->base_url . '/product-approved', [
-            'id' => $request->id,
-            'is_approved' => $request->is_approved,
-            'quantity' => $request->quantity,
-            'note' => $request->note,
-        ]);
+                    'id' => $request->id,
+                    'is_approved' => $request->is_approved,
+                    'quantity' => $request->quantity,
+                    'note' => $request->note,
+                ]);
     }
 
-    public function invoices()
+    // public function invoices()
+    // {
+    //     return Http::withHeaders([
+    //         'secret_key' => $this->secret_key,
+    //     ])->get($this->base_url . '/invoices');
+    // }
+
+    // public function invoices()
+    // {
+    //     return Http::withHeaders([
+    //         'secret_key' => $this->secret_key,
+    //     ])
+    //         ->timeout(180)          // invoices list heavy → বেশি সময় দাও
+    //         ->connectTimeout(30)
+    //         ->retry(3, 500)
+    //         ->get(rtrim($this->base_url, '/') . '/invoices');
+    // }
+    public function invoices($page = 1) // Default page 1
     {
         return Http::withHeaders([
             'secret_key' => $this->secret_key,
-        ])->get($this->base_url . '/invoices');
+        ])
+            ->timeout(180)
+            ->connectTimeout(30)
+            ->retry(3, 500)
+            ->get(rtrim($this->base_url, '/') . '/invoices?page=' . $page);
     }
 
     public function invoice($invoiceId)
@@ -53,11 +74,11 @@ class AvijatryService
         return Http::withHeaders([
             'secret_key' => $this->secret_key,
         ])->post($this->base_url . '/invoice-approved', [
-            'id' => $invoiceId,
-            'retail_store_status' => 'Approved',
-            'retail_store_remarks' => $ret['note'] ?? '',
-            'retail_store_received_quantity' => $ret['received_quantity'] ?? [],
-            'gift_receives' => $ret['gift_quantity_received'] ?? [],
-        ]);
+                    'id' => $invoiceId,
+                    'retail_store_status' => 'Approved',
+                    'retail_store_remarks' => $ret['note'] ?? '',
+                    'retail_store_received_quantity' => $ret['received_quantity'] ?? [],
+                    'gift_receives' => $ret['gift_quantity_received'] ?? [],
+                ]);
     }
 }

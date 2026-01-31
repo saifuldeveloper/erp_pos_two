@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Courier extends Model
 {
-    protected $fillable = ["name", "phone_number", "address", "is_active"];
+    protected $fillable = ["name","is_active","client_id","client_secret","store_id","username","password"];
 }

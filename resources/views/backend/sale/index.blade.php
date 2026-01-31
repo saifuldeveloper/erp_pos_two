@@ -431,22 +431,22 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-6 mt-2 form-group">
+                    {{-- <div class="col-md-6 mt-2 form-group">
                         <label>{{trans('file.Delivered By')}}</label>
                         <input type="text" name="delivered_by" class="form-control">
-                    </div>
-                    <div class="col-md-6 mt-2 form-group">
+                    </div> --}}
+                    {{-- <div class="col-md-6 mt-2 form-group">
                         <label>{{trans('file.Received By')}} </label>
                         <input type="text" name="recieved_by" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.customer')}} *</label>
                         <p id="customer"></p>
-                    </div>
-                    <div class="col-md-6 form-group">
+                    </div> --}}
+                    {{-- <div class="col-md-6 form-group">
                         <label>{{trans('file.Attach File')}}</label>
                         <input type="file" name="file" class="form-control">
-                    </div>
+                    </div> --}}
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Address')}} *</label>
                         <textarea rows="3" name="address" class="form-control" required></textarea>
@@ -867,6 +867,7 @@
     $(document).on("click", "table.sale-list tbody .add-delivery", function(event) {
         var id = $(this).data('id').toString();
         $.get('delivery/create/'+id, function(data) {
+
             $('#dr').text(data[0]);
             $('#sr').text(data[1]);
 

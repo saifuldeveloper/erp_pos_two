@@ -347,10 +347,10 @@ class SaleController extends Controller
                             <button type="button" class="add-payment btn btn-link" data-id = "'.$sale->id.'" data-toggle="modal" data-target="#add-payment"><i class="fa fa-plus"></i> '.trans('file.Add Payment').'</button>
                         </li>';
 
-                // $nestedData['options'] .=
-                //     '<li>
-                //         <button type="button" class="add-delivery btn btn-link" data-id = "'.$sale->id.'"><i class="fa fa-truck"></i> '.trans('file.Add Delivery').'</button>
-                //     </li>';
+                $nestedData['options'] .=
+                    '<li>
+                        <button type="button" class="add-delivery btn btn-link" data-id = "'.$sale->id.'"><i class="fa fa-truck"></i> '.trans('file.Add Delivery').'</button>
+                    </li>';
                 if(in_array("sales-delete", $request['all_permission']))
                     $nestedData['options'] .= \Form::open(["route" => ["sales.destroy", $sale->id], "method" => "DELETE"] ).'
                             <li>
@@ -394,7 +394,8 @@ class SaleController extends Controller
                  ' "'.$sale->shipping_cost.'"',
                  ' "'.$sale->grand_total.'"',
                  ' "'.$sale->paid_amount.'"',
-                 ' "'.preg_replace('/[\n\r]/', "<br>", $sale->sale_note).'"',
+                //  ' "'.preg_replace('/[\n\r]/', "<br>", $sale->sale_note).'"',
+                 ' "'.$sale->sale_note.'"',
                  ' "'.preg_replace('/[\n\r]/', "<br>", $sale->staff_note).'"',
                  ' "'.@$sale->user->name.'"',
                  ' "'.@$sale->user->email.'"',

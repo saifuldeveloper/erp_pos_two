@@ -48,7 +48,7 @@
                     <input type="hidden" name="invoice_id" value="{{ $invoice['id'] }}">
                     <tbody>
                         @php
-                            $total_amount=0;
+                            $total_amount = 0;
                         @endphp
                         @forelse ($invoice['invoice_entries'] as $key => $entry)
                             @if ($purchase)
@@ -76,9 +76,16 @@
                                 <td>0</td>
                                 {{-- <td>{{ $entry['shoe']['retail_price'] * ['count']  }}</td>
                                  --}}
-                                 <td>{{ $entry['shoe']['retail_price'] * $entry['count'] }}</td>
+                                {{-- <td>{{ $entry['shoe']['retail_price'] * $entry['count'] }}</td> --}}
+                                @php
+                                    $totalQty = collect($entry['shoe']['shoe_to_size'])
+                                        ->where('reference_id', $entry['invoice_id'])
+                                        ->where('type', 'sale')
+                                        ->sum('quantity');
+                                @endphp
+                                <td> {{ $entry['shoe']['retail_price'] * $totalQty }}</td>
 
-                                
+
                             </tr>
                             <div class="modal fade" id="variantModal{{ $key }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -3,6 +3,11 @@
 return [
 
 	"dashboard" => "ড্যাশবোর্ড",
+	'Clinet ID' =>'ক্লায়েন্ট আইডি',
+	'Store ID' =>'স্টোর আইডি',
+	'Courier Track ID'=>'কুরিয়ার ট্র্যাক আইডি',
+	'commission' =>'কমিশন',
+	'memo id' =>'মেমো নং',
 
 	"language" => "ভাষা",
 	'Avijatry Purchase' => 'অভিযাত্রী ক্রয়',

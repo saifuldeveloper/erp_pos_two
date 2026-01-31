@@ -16,8 +16,13 @@ class CreateCouriersTable extends Migration
         Schema::create('couriers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone_number');
-            $table->text('address');
+            $table->string('phone_number')->nullable();
+            $table->text('address')->nullable();
+            $table->string('client_id')->nullable();
+            $table->string('client_secret')->nullable();
+            $table->string('store_id')->nullable();
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
         });

@@ -31,7 +31,7 @@ class SaleService
 
         return DB::transaction(function () use ($data) {
 
-        
+
 
 
             if (isset($data['sale_type']) && $data['sale_type'] === 'website') {
@@ -62,24 +62,30 @@ class SaleService
                 : now();
 
             // Reference No
+            if (!isset($data['reference_no'])) {
+                $data['reference_no'] = $data['pos']
+                    ? 'posr-' . date("Ymd") . '-' . date("his")
+                    : 'sr-' . date("Ymd") . '-' . date("his");
+            } else {
+
+                $data['reference_no'] = $data['reference_no'];
+            }
+
             // if (!isset($data['reference_no'])) {
-            //     $data['reference_no'] = $data['pos']
-            //         ? 'posr-' . date("Ymd") . '-' . date("his")
-            //         : 'sr-' . date("Ymd") . '-' . date("his");
+            //     $timestamp = date("Ymd-His");
+            //     if (($data['sale_type'] ?? '') === 'website') {
+            //         $data['ecom'] = true;
+            //     }
+            //     $prefix = match ($data['sale_type'] ?? '') {
+            //         'website' => (!empty($data['ecom']) ? 'ecomr-' : 'sr-'),
+            //         default => (!empty($data['pos']) ? 'posr-' : 'sr-'),
+            //     };
+
+            //     // $data['reference_no'] = $prefix . $timestamp;
+            //     $data['reference_no'] = $data['reference_no'];
             // }
 
-            if (!isset($data['reference_no'])) {
-                $timestamp = date("Ymd-His");
-                if (($data['sale_type'] ?? '') === 'website') {
-                    $data['ecom'] = true;
-                }
-                $prefix = match ($data['sale_type'] ?? '') {
-                    'website' => (!empty($data['ecom']) ? 'ecomr-' : 'sr-'),
-                    default => (!empty($data['pos']) ? 'posr-' : 'sr-'),
-                };
 
-                $data['reference_no'] = $prefix . $timestamp;
-            }
 
             // Payment Status
             if ($data['pos']) {

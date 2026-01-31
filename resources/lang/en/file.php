@@ -1,5 +1,11 @@
 <?php
 return [
+	'Clinet ID' =>'Clinet ID',
+	'Store ID' =>'Store ID',
+	'commission' =>'Commission',
+	'memo id'=>'Memo Id',
+	'Send Courier' =>'Send Courier',
+	'Courier Track ID' =>'Courier Track ID',
 	'Avijatry Product' => 'Avijatry Product',
 	'Avijatry Purchase' => 'Avijatry Purchase',
 	'Start Date & Time' => 'Start Date & Time',
