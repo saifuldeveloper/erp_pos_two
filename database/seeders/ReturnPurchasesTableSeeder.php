@@ -41,8 +41,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-14 16:37:56',
-                'updated_at' => '2025-01-14 16:37:56',
+                'created_at' => '2025-01-14 10:37:56',
+                'updated_at' => '2025-01-14 10:37:56',
             ),
             1 => 
             array (
@@ -66,8 +66,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-23 16:22:55',
-                'updated_at' => '2025-01-23 16:22:55',
+                'created_at' => '2025-01-23 10:22:55',
+                'updated_at' => '2025-01-23 10:22:55',
             ),
             2 => 
             array (
@@ -91,8 +91,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-23 16:24:30',
-                'updated_at' => '2025-01-23 16:24:30',
+                'created_at' => '2025-01-23 10:24:30',
+                'updated_at' => '2025-01-23 10:24:30',
             ),
             3 => 
             array (
@@ -116,8 +116,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-25 18:52:21',
-                'updated_at' => '2025-01-25 18:52:21',
+                'created_at' => '2025-01-25 12:52:21',
+                'updated_at' => '2025-01-25 12:52:21',
             ),
             4 => 
             array (
@@ -141,8 +141,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-07 18:07:35',
-                'updated_at' => '2025-05-07 18:07:35',
+                'created_at' => '2025-05-07 12:07:35',
+                'updated_at' => '2025-05-07 12:07:35',
             ),
             5 => 
             array (
@@ -166,8 +166,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-07 18:08:43',
-                'updated_at' => '2025-05-07 18:08:43',
+                'created_at' => '2025-05-07 12:08:43',
+                'updated_at' => '2025-05-07 12:08:43',
             ),
             6 => 
             array (
@@ -184,15 +184,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 1,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 788.4,
+                'total_cost' => 788.3999999999999772626324556767940521240234375,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
-                'grand_total' => 788.4,
+                'grand_total' => 788.3999999999999772626324556767940521240234375,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-07 18:09:58',
-                'updated_at' => '2025-05-07 18:09:58',
+                'created_at' => '2025-05-07 12:09:58',
+                'updated_at' => '2025-05-07 12:09:58',
             ),
             7 => 
             array (
@@ -216,8 +216,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-07 18:10:44',
-                'updated_at' => '2025-05-07 18:10:44',
+                'created_at' => '2025-05-07 12:10:44',
+                'updated_at' => '2025-05-07 12:10:44',
             ),
             8 => 
             array (
@@ -241,8 +241,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-07 18:11:32',
-                'updated_at' => '2025-05-07 18:11:32',
+                'created_at' => '2025-05-07 12:11:32',
+                'updated_at' => '2025-05-07 12:11:32',
             ),
             9 => 
             array (
@@ -266,8 +266,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:11:51',
-                'updated_at' => '2025-05-12 19:11:51',
+                'created_at' => '2025-05-12 13:11:51',
+                'updated_at' => '2025-05-12 13:11:51',
             ),
             10 => 
             array (
@@ -291,8 +291,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:16:23',
-                'updated_at' => '2025-05-12 19:16:23',
+                'created_at' => '2025-05-12 13:16:23',
+                'updated_at' => '2025-05-12 13:16:23',
             ),
             11 => 
             array (
@@ -316,8 +316,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:18:26',
-                'updated_at' => '2025-05-12 19:18:26',
+                'created_at' => '2025-05-12 13:18:26',
+                'updated_at' => '2025-05-12 13:18:26',
             ),
             12 => 
             array (
@@ -341,8 +341,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:19:37',
-                'updated_at' => '2025-05-12 19:19:37',
+                'created_at' => '2025-05-12 13:19:37',
+                'updated_at' => '2025-05-12 13:19:37',
             ),
             13 => 
             array (
@@ -366,8 +366,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:22:53',
-                'updated_at' => '2025-05-12 19:22:53',
+                'created_at' => '2025-05-12 13:22:53',
+                'updated_at' => '2025-05-12 13:22:53',
             ),
             14 => 
             array (
@@ -391,8 +391,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:24:56',
-                'updated_at' => '2025-05-12 19:24:56',
+                'created_at' => '2025-05-12 13:24:56',
+                'updated_at' => '2025-05-12 13:24:56',
             ),
             15 => 
             array (
@@ -416,8 +416,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:31:26',
-                'updated_at' => '2025-05-12 19:31:26',
+                'created_at' => '2025-05-12 13:31:26',
+                'updated_at' => '2025-05-12 13:31:26',
             ),
             16 => 
             array (
@@ -441,8 +441,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:33:42',
-                'updated_at' => '2025-05-12 19:33:42',
+                'created_at' => '2025-05-12 13:33:42',
+                'updated_at' => '2025-05-12 13:33:42',
             ),
             17 => 
             array (
@@ -466,8 +466,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:36:07',
-                'updated_at' => '2025-05-12 19:36:07',
+                'created_at' => '2025-05-12 13:36:07',
+                'updated_at' => '2025-05-12 13:36:07',
             ),
             18 => 
             array (
@@ -491,8 +491,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:44:00',
-                'updated_at' => '2025-05-12 19:44:00',
+                'created_at' => '2025-05-12 13:44:00',
+                'updated_at' => '2025-05-12 13:44:00',
             ),
             19 => 
             array (
@@ -516,8 +516,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:54:50',
-                'updated_at' => '2025-05-12 19:54:50',
+                'created_at' => '2025-05-12 13:54:50',
+                'updated_at' => '2025-05-12 13:54:50',
             ),
             20 => 
             array (
@@ -541,8 +541,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 19:56:14',
-                'updated_at' => '2025-05-12 19:56:14',
+                'created_at' => '2025-05-12 13:56:14',
+                'updated_at' => '2025-05-12 13:56:14',
             ),
             21 => 
             array (
@@ -566,8 +566,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:07:07',
-                'updated_at' => '2025-05-12 20:07:07',
+                'created_at' => '2025-05-12 14:07:07',
+                'updated_at' => '2025-05-12 14:07:07',
             ),
             22 => 
             array (
@@ -591,8 +591,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:10:34',
-                'updated_at' => '2025-05-12 20:10:34',
+                'created_at' => '2025-05-12 14:10:34',
+                'updated_at' => '2025-05-12 14:10:34',
             ),
             23 => 
             array (
@@ -616,8 +616,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:19:31',
-                'updated_at' => '2025-05-12 20:19:31',
+                'created_at' => '2025-05-12 14:19:31',
+                'updated_at' => '2025-05-12 14:19:31',
             ),
             24 => 
             array (
@@ -641,8 +641,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:25:33',
-                'updated_at' => '2025-05-12 20:25:33',
+                'created_at' => '2025-05-12 14:25:33',
+                'updated_at' => '2025-05-12 14:25:33',
             ),
             25 => 
             array (
@@ -666,8 +666,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:27:07',
-                'updated_at' => '2025-05-12 20:27:07',
+                'created_at' => '2025-05-12 14:27:07',
+                'updated_at' => '2025-05-12 14:27:07',
             ),
             26 => 
             array (
@@ -691,8 +691,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:29:02',
-                'updated_at' => '2025-05-12 20:29:02',
+                'created_at' => '2025-05-12 14:29:02',
+                'updated_at' => '2025-05-12 14:29:02',
             ),
             27 => 
             array (
@@ -716,8 +716,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:35:55',
-                'updated_at' => '2025-05-12 20:35:55',
+                'created_at' => '2025-05-12 14:35:55',
+                'updated_at' => '2025-05-12 14:35:55',
             ),
             28 => 
             array (
@@ -741,8 +741,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:36:50',
-                'updated_at' => '2025-05-12 20:36:50',
+                'created_at' => '2025-05-12 14:36:50',
+                'updated_at' => '2025-05-12 14:36:50',
             ),
             29 => 
             array (
@@ -766,8 +766,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:37:26',
-                'updated_at' => '2025-05-12 20:37:26',
+                'created_at' => '2025-05-12 14:37:26',
+                'updated_at' => '2025-05-12 14:37:26',
             ),
             30 => 
             array (
@@ -791,8 +791,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:38:04',
-                'updated_at' => '2025-05-12 20:38:04',
+                'created_at' => '2025-05-12 14:38:04',
+                'updated_at' => '2025-05-12 14:38:04',
             ),
             31 => 
             array (
@@ -816,8 +816,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:38:50',
-                'updated_at' => '2025-05-12 20:38:50',
+                'created_at' => '2025-05-12 14:38:50',
+                'updated_at' => '2025-05-12 14:38:50',
             ),
             32 => 
             array (
@@ -841,8 +841,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:44:59',
-                'updated_at' => '2025-05-12 20:44:59',
+                'created_at' => '2025-05-12 14:44:59',
+                'updated_at' => '2025-05-12 14:44:59',
             ),
             33 => 
             array (
@@ -866,8 +866,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:51:06',
-                'updated_at' => '2025-05-12 20:51:06',
+                'created_at' => '2025-05-12 14:51:06',
+                'updated_at' => '2025-05-12 14:51:06',
             ),
             34 => 
             array (
@@ -891,8 +891,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:53:47',
-                'updated_at' => '2025-05-12 20:53:47',
+                'created_at' => '2025-05-12 14:53:47',
+                'updated_at' => '2025-05-12 14:53:47',
             ),
             35 => 
             array (
@@ -916,8 +916,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-12 20:54:18',
-                'updated_at' => '2025-05-12 20:54:18',
+                'created_at' => '2025-05-12 14:54:18',
+                'updated_at' => '2025-05-12 14:54:18',
             ),
             36 => 
             array (
@@ -941,8 +941,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => '6 pair 1995',
                 'staff_note' => NULL,
-                'created_at' => '2025-10-05 10:46:27',
-                'updated_at' => '2025-10-05 10:46:27',
+                'created_at' => '2025-10-05 04:46:27',
+                'updated_at' => '2025-10-05 04:46:27',
             ),
             37 => 
             array (
@@ -966,8 +966,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-05 11:35:45',
-                'updated_at' => '2025-10-05 11:35:45',
+                'created_at' => '2025-10-05 05:35:45',
+                'updated_at' => '2025-10-05 05:35:45',
             ),
             38 => 
             array (
@@ -991,8 +991,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-05 11:36:58',
-                'updated_at' => '2025-10-05 11:36:58',
+                'created_at' => '2025-10-05 05:36:58',
+                'updated_at' => '2025-10-05 05:36:58',
             ),
             39 => 
             array (
@@ -1016,8 +1016,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-05 11:39:00',
-                'updated_at' => '2025-10-05 11:39:00',
+                'created_at' => '2025-10-05 05:39:00',
+                'updated_at' => '2025-10-05 05:39:00',
             ),
             40 => 
             array (
@@ -1041,8 +1041,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-05 11:42:37',
-                'updated_at' => '2025-10-05 11:42:37',
+                'created_at' => '2025-10-05 05:42:37',
+                'updated_at' => '2025-10-05 05:42:37',
             ),
             41 => 
             array (
@@ -1066,8 +1066,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-05 20:09:05',
-                'updated_at' => '2025-10-05 20:09:05',
+                'created_at' => '2025-10-05 14:09:05',
+                'updated_at' => '2025-10-05 14:09:05',
             ),
             42 => 
             array (
@@ -1091,8 +1091,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 11:24:07',
-                'updated_at' => '2025-10-06 11:24:07',
+                'created_at' => '2025-10-06 05:24:07',
+                'updated_at' => '2025-10-06 05:24:07',
             ),
             43 => 
             array (
@@ -1109,15 +1109,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 2,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 1087.2,
+                'total_cost' => 1087.200000000000045474735088646411895751953125,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
-                'grand_total' => 1087.2,
+                'grand_total' => 1087.200000000000045474735088646411895751953125,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 11:29:35',
-                'updated_at' => '2025-10-06 11:29:35',
+                'created_at' => '2025-10-06 05:29:35',
+                'updated_at' => '2025-10-06 05:29:35',
             ),
             44 => 
             array (
@@ -1134,15 +1134,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 1,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 860.4,
+                'total_cost' => 860.3999999999999772626324556767940521240234375,
                 'order_tax_rate' => NULL,
                 'order_tax' => NULL,
-                'grand_total' => 860.4,
+                'grand_total' => 860.3999999999999772626324556767940521240234375,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 11:30:22',
-                'updated_at' => '2025-10-06 11:30:22',
+                'created_at' => '2025-10-06 05:30:22',
+                'updated_at' => '2025-10-06 05:30:22',
             ),
             45 => 
             array (
@@ -1159,15 +1159,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 1,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 712.8,
+                'total_cost' => 712.799999999999954525264911353588104248046875,
                 'order_tax_rate' => NULL,
                 'order_tax' => NULL,
-                'grand_total' => 712.8,
+                'grand_total' => 712.799999999999954525264911353588104248046875,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 11:32:31',
-                'updated_at' => '2025-10-06 11:32:31',
+                'created_at' => '2025-10-06 05:32:31',
+                'updated_at' => '2025-10-06 05:32:31',
             ),
             46 => 
             array (
@@ -1191,8 +1191,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 11:33:21',
-                'updated_at' => '2025-10-06 11:33:21',
+                'created_at' => '2025-10-06 05:33:21',
+                'updated_at' => '2025-10-06 05:33:21',
             ),
             47 => 
             array (
@@ -1216,8 +1216,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 21:00:42',
-                'updated_at' => '2025-10-06 21:00:42',
+                'created_at' => '2025-10-06 15:00:42',
+                'updated_at' => '2025-10-06 15:00:42',
             ),
             48 => 
             array (
@@ -1241,8 +1241,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 21:01:00',
-                'updated_at' => '2025-10-06 21:01:00',
+                'created_at' => '2025-10-06 15:01:00',
+                'updated_at' => '2025-10-06 15:01:00',
             ),
             49 => 
             array (
@@ -1266,8 +1266,8 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 21:01:22',
-                'updated_at' => '2025-10-06 21:01:22',
+                'created_at' => '2025-10-06 15:01:22',
+                'updated_at' => '2025-10-06 15:01:22',
             ),
             50 => 
             array (
@@ -1284,15 +1284,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 8,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 5731.2,
+                'total_cost' => 5731.1999999999998181010596454143524169921875,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
-                'grand_total' => 5731.2,
+                'grand_total' => 5731.1999999999998181010596454143524169921875,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-08 17:03:41',
-                'updated_at' => '2025-10-08 17:03:41',
+                'created_at' => '2025-10-08 11:03:41',
+                'updated_at' => '2025-10-08 11:03:41',
             ),
             51 => 
             array (
@@ -1309,15 +1309,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4298.4,
+                'total_cost' => 4298.399999999999636202119290828704833984375,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
-                'grand_total' => 4298.4,
+                'grand_total' => 4298.399999999999636202119290828704833984375,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-08 17:04:16',
-                'updated_at' => '2025-10-08 17:04:17',
+                'created_at' => '2025-10-08 11:04:16',
+                'updated_at' => '2025-10-08 11:04:17',
             ),
             52 => 
             array (
@@ -1334,15 +1334,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4125.6,
+                'total_cost' => 4125.600000000000363797880709171295166015625,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
-                'grand_total' => 4125.6,
+                'grand_total' => 4125.600000000000363797880709171295166015625,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-08 17:05:10',
-                'updated_at' => '2025-10-08 17:05:10',
+                'created_at' => '2025-10-08 11:05:10',
+                'updated_at' => '2025-10-08 11:05:10',
             ),
             53 => 
             array (
@@ -1359,15 +1359,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 1,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 500.4,
+                'total_cost' => 500.3999999999999772626324556767940521240234375,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
-                'grand_total' => 500.4,
+                'grand_total' => 500.3999999999999772626324556767940521240234375,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-08 17:06:16',
-                'updated_at' => '2025-10-08 17:06:16',
+                'created_at' => '2025-10-08 11:06:16',
+                'updated_at' => '2025-10-08 11:06:16',
             ),
             54 => 
             array (
@@ -1384,15 +1384,15 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'total_qty' => 1,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 644.4,
+                'total_cost' => 644.3999999999999772626324556767940521240234375,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
-                'grand_total' => 644.4,
+                'grand_total' => 644.3999999999999772626324556767940521240234375,
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-08 17:06:57',
-                'updated_at' => '2025-10-08 17:06:57',
+                'created_at' => '2025-10-08 11:06:57',
+                'updated_at' => '2025-10-08 11:06:57',
             ),
             55 => 
             array (
@@ -1416,8 +1416,108 @@ class ReturnPurchasesTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-08 17:07:40',
-                'updated_at' => '2025-10-08 17:07:40',
+                'created_at' => '2025-10-08 11:07:40',
+                'updated_at' => '2025-10-08 11:07:40',
+            ),
+            56 => 
+            array (
+                'id' => 81,
+                'reference_no' => 'prr-20260208-103019',
+                'supplier_id' => 1,
+                'warehouse_id' => 4,
+                'user_id' => 12,
+                'purchase_id' => 482,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 860.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 860.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-08 22:30:19',
+                'updated_at' => '2026-02-08 22:30:19',
+            ),
+            57 => 
+            array (
+                'id' => 82,
+                'reference_no' => 'prr-20260208-103152',
+                'supplier_id' => 1,
+                'warehouse_id' => 1,
+                'user_id' => 12,
+                'purchase_id' => 1231,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 644.3999999999999772626324556767940521240234375,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 644.3999999999999772626324556767940521240234375,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-08 22:31:52',
+                'updated_at' => '2026-02-08 22:31:52',
+            ),
+            58 => 
+            array (
+                'id' => 83,
+                'reference_no' => 'prr-20260208-103331',
+                'supplier_id' => 1,
+                'warehouse_id' => 1,
+                'user_id' => 12,
+                'purchase_id' => 1215,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 5,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 5202.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 5202.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-08 22:33:31',
+                'updated_at' => '2026-02-08 22:33:31',
+            ),
+            59 => 
+            array (
+                'id' => 84,
+                'reference_no' => 'prr-20260208-103447',
+                'supplier_id' => 1,
+                'warehouse_id' => 1,
+                'user_id' => 12,
+                'purchase_id' => 1230,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 4,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4989.600000000000363797880709171295166015625,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 4989.600000000000363797880709171295166015625,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-08 22:34:47',
+                'updated_at' => '2026-02-08 22:34:47',
             ),
         ));
         

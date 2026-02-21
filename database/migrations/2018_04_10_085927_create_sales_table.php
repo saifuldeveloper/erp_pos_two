@@ -30,6 +30,7 @@ class CreateSalesTable extends Migration
             $table->double('order_discount')->nullable();
             $table->double('shipping_cost')->nullable();
             $table->integer('sale_status');
+            $table->string('sale_type')->nullable();
             $table->integer('payment_status');
             $table->string('document')->nullable();
             $table->double('paid_amount')->nullable();

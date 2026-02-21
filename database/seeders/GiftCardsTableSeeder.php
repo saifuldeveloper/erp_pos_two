@@ -30,8 +30,8 @@ class GiftCardsTableSeeder extends Seeder
                 'expired_date' => '2025-02-28',
                 'created_by' => 1,
                 'is_active' => 1,
-                'created_at' => '2025-02-01 12:28:29',
-                'updated_at' => '2025-02-01 12:28:29',
+                'created_at' => '2025-02-01 06:28:29',
+                'updated_at' => '2025-02-01 06:28:29',
             ),
         ));
         

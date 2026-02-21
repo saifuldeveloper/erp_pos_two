@@ -23,10 +23,10 @@ class GeneralSettingsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'site_title' => 'Khulna Avijatry',
-                'site_logo' => '20251114090950.png',
+                'site_logo' => '20260131081331.png',
                 'is_rtl' => 0,
-                'created_at' => '2023-06-21 05:00:00',
-                'updated_at' => '2025-11-14 21:09:50',
+                'created_at' => '2023-06-20 23:00:00',
+                'updated_at' => '2026-01-31 08:13:31',
                 'currency' => '1',
                 'package_id' => NULL,
                 'staff_access' => 'all',

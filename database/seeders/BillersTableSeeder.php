@@ -34,8 +34,8 @@ class BillersTableSeeder extends Seeder
                 'postal_code' => NULL,
                 'country' => NULL,
                 'is_active' => 0,
-                'created_at' => '2024-10-07 18:24:14',
-                'updated_at' => '2024-12-22 07:31:20',
+                'created_at' => '2024-10-07 12:24:14',
+                'updated_at' => '2024-12-22 01:31:20',
             ),
             1 => 
             array (
@@ -52,8 +52,8 @@ class BillersTableSeeder extends Seeder
                 'postal_code' => NULL,
                 'country' => NULL,
                 'is_active' => 1,
-                'created_at' => '2024-12-22 07:32:29',
-                'updated_at' => '2025-03-16 04:08:01',
+                'created_at' => '2024-12-22 01:32:29',
+                'updated_at' => '2025-03-15 22:08:01',
             ),
         ));
         

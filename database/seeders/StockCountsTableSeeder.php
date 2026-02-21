@@ -27,8 +27,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-02-12 18:21:50',
-                'updated_at' => '2025-02-15 22:14:37',
+                'created_at' => '2025-02-12 12:21:50',
+                'updated_at' => '2025-02-15 16:14:37',
             ),
             1 => 
             array (
@@ -38,8 +38,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 3,
                 'resolved_by' => 3,
-                'created_at' => '2025-02-15 22:15:05',
-                'updated_at' => '2025-02-18 18:59:36',
+                'created_at' => '2025-02-15 16:15:05',
+                'updated_at' => '2025-02-18 12:59:36',
             ),
             2 => 
             array (
@@ -49,8 +49,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 3,
                 'resolved_by' => 3,
-                'created_at' => '2025-02-15 22:16:48',
-                'updated_at' => '2025-02-18 19:10:11',
+                'created_at' => '2025-02-15 16:16:48',
+                'updated_at' => '2025-02-18 13:10:11',
             ),
             3 => 
             array (
@@ -60,8 +60,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-02-15 22:17:02',
-                'updated_at' => '2025-03-08 22:32:30',
+                'created_at' => '2025-02-15 16:17:02',
+                'updated_at' => '2025-03-08 16:32:30',
             ),
             4 => 
             array (
@@ -71,8 +71,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-02-15 22:18:33',
-                'updated_at' => '2025-03-08 22:34:20',
+                'created_at' => '2025-02-15 16:18:33',
+                'updated_at' => '2025-03-08 16:34:20',
             ),
             5 => 
             array (
@@ -82,8 +82,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-02-15 22:19:31',
-                'updated_at' => '2025-02-15 22:22:35',
+                'created_at' => '2025-02-15 16:19:31',
+                'updated_at' => '2025-02-15 16:22:35',
             ),
             6 => 
             array (
@@ -93,8 +93,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 5,
                 'resolved_by' => 5,
-                'created_at' => '2025-03-08 22:34:58',
-                'updated_at' => '2025-03-22 01:14:42',
+                'created_at' => '2025-03-08 16:34:58',
+                'updated_at' => '2025-03-21 19:14:42',
             ),
             7 => 
             array (
@@ -104,8 +104,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 6,
                 'resolved_by' => 6,
-                'created_at' => '2025-03-22 04:39:50',
-                'updated_at' => '2025-03-22 04:43:29',
+                'created_at' => '2025-03-21 22:39:50',
+                'updated_at' => '2025-03-21 22:43:29',
             ),
             8 => 
             array (
@@ -115,8 +115,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-03-22 04:43:45',
-                'updated_at' => '2025-05-01 04:51:22',
+                'created_at' => '2025-03-21 22:43:45',
+                'updated_at' => '2025-04-30 22:51:22',
             ),
             9 => 
             array (
@@ -126,8 +126,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-05-01 04:51:43',
-                'updated_at' => '2025-05-01 04:54:16',
+                'created_at' => '2025-04-30 22:51:43',
+                'updated_at' => '2025-04-30 22:54:16',
             ),
             10 => 
             array (
@@ -137,8 +137,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-05-01 05:02:01',
-                'updated_at' => '2025-10-02 13:41:51',
+                'created_at' => '2025-04-30 23:02:01',
+                'updated_at' => '2025-10-02 07:41:51',
             ),
             11 => 
             array (
@@ -148,8 +148,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:05:56',
-                'updated_at' => '2025-10-02 15:07:59',
+                'created_at' => '2025-10-02 09:05:56',
+                'updated_at' => '2025-10-02 09:07:59',
             ),
             12 => 
             array (
@@ -159,8 +159,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:08:08',
-                'updated_at' => '2025-10-02 15:08:47',
+                'created_at' => '2025-10-02 09:08:08',
+                'updated_at' => '2025-10-02 09:08:47',
             ),
             13 => 
             array (
@@ -170,8 +170,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:09:20',
-                'updated_at' => '2025-10-02 15:09:49',
+                'created_at' => '2025-10-02 09:09:20',
+                'updated_at' => '2025-10-02 09:09:49',
             ),
             14 => 
             array (
@@ -181,8 +181,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:10:02',
-                'updated_at' => '2025-10-02 15:10:38',
+                'created_at' => '2025-10-02 09:10:02',
+                'updated_at' => '2025-10-02 09:10:38',
             ),
             15 => 
             array (
@@ -192,8 +192,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:10:45',
-                'updated_at' => '2025-10-02 15:11:33',
+                'created_at' => '2025-10-02 09:10:45',
+                'updated_at' => '2025-10-02 09:11:33',
             ),
             16 => 
             array (
@@ -203,8 +203,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:11:40',
-                'updated_at' => '2025-10-02 15:13:37',
+                'created_at' => '2025-10-02 09:11:40',
+                'updated_at' => '2025-10-02 09:13:37',
             ),
             17 => 
             array (
@@ -214,8 +214,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:13:43',
-                'updated_at' => '2025-10-02 15:14:22',
+                'created_at' => '2025-10-02 09:13:43',
+                'updated_at' => '2025-10-02 09:14:22',
             ),
             18 => 
             array (
@@ -225,8 +225,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:14:38',
-                'updated_at' => '2025-10-02 15:16:00',
+                'created_at' => '2025-10-02 09:14:38',
+                'updated_at' => '2025-10-02 09:16:00',
             ),
             19 => 
             array (
@@ -236,8 +236,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:16:12',
-                'updated_at' => '2025-10-02 15:18:31',
+                'created_at' => '2025-10-02 09:16:12',
+                'updated_at' => '2025-10-02 09:18:31',
             ),
             20 => 
             array (
@@ -247,8 +247,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:18:37',
-                'updated_at' => '2025-10-02 15:19:52',
+                'created_at' => '2025-10-02 09:18:37',
+                'updated_at' => '2025-10-02 09:19:52',
             ),
             21 => 
             array (
@@ -258,8 +258,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-02 15:20:05',
-                'updated_at' => '2025-10-05 12:17:23',
+                'created_at' => '2025-10-02 09:20:05',
+                'updated_at' => '2025-10-05 06:17:23',
             ),
             22 => 
             array (
@@ -269,8 +269,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-05 12:17:36',
-                'updated_at' => '2025-10-05 15:14:48',
+                'created_at' => '2025-10-05 06:17:36',
+                'updated_at' => '2025-10-05 09:14:48',
             ),
             23 => 
             array (
@@ -280,8 +280,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-05 15:16:00',
-                'updated_at' => '2025-10-06 18:39:00',
+                'created_at' => '2025-10-05 09:16:00',
+                'updated_at' => '2025-10-06 12:39:00',
             ),
             24 => 
             array (
@@ -291,8 +291,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 18:41:45',
-                'updated_at' => '2025-10-06 18:45:20',
+                'created_at' => '2025-10-06 12:41:45',
+                'updated_at' => '2025-10-06 12:45:20',
             ),
             25 => 
             array (
@@ -302,8 +302,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 18:59:50',
-                'updated_at' => '2025-10-06 20:27:07',
+                'created_at' => '2025-10-06 12:59:50',
+                'updated_at' => '2025-10-06 14:27:07',
             ),
             26 => 
             array (
@@ -313,8 +313,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 20:29:47',
-                'updated_at' => '2025-10-06 20:40:29',
+                'created_at' => '2025-10-06 14:29:47',
+                'updated_at' => '2025-10-06 14:40:29',
             ),
             27 => 
             array (
@@ -324,8 +324,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 21:26:54',
-                'updated_at' => '2025-10-06 21:27:54',
+                'created_at' => '2025-10-06 15:26:54',
+                'updated_at' => '2025-10-06 15:27:54',
             ),
             28 => 
             array (
@@ -335,8 +335,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 21:46:26',
-                'updated_at' => '2025-10-06 21:47:54',
+                'created_at' => '2025-10-06 15:46:26',
+                'updated_at' => '2025-10-06 15:47:54',
             ),
             29 => 
             array (
@@ -346,8 +346,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 22:12:52',
-                'updated_at' => '2025-10-06 22:35:37',
+                'created_at' => '2025-10-06 16:12:52',
+                'updated_at' => '2025-10-06 16:35:37',
             ),
             30 => 
             array (
@@ -357,8 +357,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 22:37:58',
-                'updated_at' => '2025-10-06 22:38:19',
+                'created_at' => '2025-10-06 16:37:58',
+                'updated_at' => '2025-10-06 16:38:19',
             ),
             31 => 
             array (
@@ -368,8 +368,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 22:39:34',
-                'updated_at' => '2025-10-06 22:42:11',
+                'created_at' => '2025-10-06 16:39:34',
+                'updated_at' => '2025-10-06 16:42:11',
             ),
             32 => 
             array (
@@ -379,8 +379,8 @@ class StockCountsTableSeeder extends Seeder
                 'is_resolved' => 1,
                 'completed_by' => 1,
                 'resolved_by' => 1,
-                'created_at' => '2025-10-06 22:42:21',
-                'updated_at' => '2025-10-06 22:43:24',
+                'created_at' => '2025-10-06 16:42:21',
+                'updated_at' => '2025-10-06 16:43:24',
             ),
         ));
         

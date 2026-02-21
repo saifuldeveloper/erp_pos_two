@@ -28,8 +28,8 @@ class WastesTableSeeder extends Seeder
                 'note' => 'Mithu saheb 1023 article 40 size er ekta niche',
                 'total_price' => '1495.00',
                 'status' => 1,
-                'created_at' => '2025-03-07 05:35:28',
-                'updated_at' => '2025-03-07 05:35:28',
+                'created_at' => '2025-03-06 23:35:28',
+                'updated_at' => '2025-03-06 23:35:28',
             ),
             1 => 
             array (
@@ -40,8 +40,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'Contract employee Mamun EID GIFT - (779-42), (472-38)',
                 'total_price' => '1975.00',
                 'status' => 1,
-                'created_at' => '2025-04-13 23:42:31',
-                'updated_at' => '2025-04-14 00:18:46',
+                'created_at' => '2025-04-13 17:42:31',
+                'updated_at' => '2025-04-13 18:18:46',
             ),
             2 => 
             array (
@@ -52,8 +52,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'KURBAN EID GIFT - (941-35), (907-37), (182-40)',
                 'total_price' => '4270.00',
                 'status' => 1,
-                'created_at' => '2025-04-13 23:48:35',
-                'updated_at' => '2025-04-14 00:20:38',
+                'created_at' => '2025-04-13 17:48:35',
+                'updated_at' => '2025-04-13 18:20:38',
             ),
             3 => 
             array (
@@ -64,8 +64,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'Contract employee Liton EID GIFT - (180-41), (1075-38)',
                 'total_price' => '1945.00',
                 'status' => 1,
-                'created_at' => '2025-04-13 23:53:25',
-                'updated_at' => '2025-04-14 00:23:02',
+                'created_at' => '2025-04-13 17:53:25',
+                'updated_at' => '2025-04-13 18:23:02',
             ),
             4 => 
             array (
@@ -76,8 +76,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'Saihd Employee EID GIFT - (1125-42), (817-26), (R-7-41)',
                 'total_price' => '4130.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 00:03:47',
-                'updated_at' => '2025-04-14 00:24:38',
+                'created_at' => '2025-04-13 18:03:47',
+                'updated_at' => '2025-04-13 18:24:38',
             ),
             5 => 
             array (
@@ -88,8 +88,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'Al-Amin EID GIFT - (C5-40), (1021-40), (53A-7)',
                 'total_price' => '4145.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 00:10:07',
-                'updated_at' => '2025-04-14 00:25:28',
+                'created_at' => '2025-04-13 18:10:07',
+                'updated_at' => '2025-04-13 18:25:28',
             ),
             6 => 
             array (
@@ -100,8 +100,8 @@ class WastesTableSeeder extends Seeder
                 'note' => 'Contract employee Sakil EID GIFT',
                 'total_price' => '2095.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 00:14:37',
-                'updated_at' => '2025-04-14 00:14:37',
+                'created_at' => '2025-04-13 18:14:37',
+                'updated_at' => '2025-04-13 18:14:37',
             ),
             7 => 
             array (
@@ -112,8 +112,8 @@ class WastesTableSeeder extends Seeder
                 'note' => 'Contract employee Dishan EID GIFT',
                 'total_price' => '2210.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 00:15:45',
-                'updated_at' => '2025-04-14 00:15:45',
+                'created_at' => '2025-04-13 18:15:45',
+                'updated_at' => '2025-04-13 18:15:45',
             ),
             8 => 
             array (
@@ -124,8 +124,8 @@ class WastesTableSeeder extends Seeder
                 'note' => 'Contract employee Sakirul EID GIFT',
                 'total_price' => '2095.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 00:17:28',
-                'updated_at' => '2025-04-14 00:17:28',
+                'created_at' => '2025-04-13 18:17:28',
+                'updated_at' => '2025-04-13 18:17:28',
             ),
             9 => 
             array (
@@ -136,8 +136,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'EID GIFT (R-57-37), (763-41), (998-34)',
                 'total_price' => '5040.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 01:54:24',
-                'updated_at' => '2025-04-14 01:54:24',
+                'created_at' => '2025-04-13 19:54:24',
+                'updated_at' => '2025-04-13 19:54:24',
             ),
             10 => 
             array (
@@ -148,8 +148,8 @@ class WastesTableSeeder extends Seeder
                 'note' => 'Contract employee Sohel EID GIFT',
                 'total_price' => '2040.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 01:59:11',
-                'updated_at' => '2025-04-14 01:59:11',
+                'created_at' => '2025-04-13 19:59:11',
+                'updated_at' => '2025-04-13 19:59:11',
             ),
             11 => 
             array (
@@ -160,8 +160,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'SABBIR EID GIFT (1021-39)',
                 'total_price' => '2095.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 02:09:45',
-                'updated_at' => '2025-04-14 02:09:45',
+                'created_at' => '2025-04-13 20:09:45',
+                'updated_at' => '2025-04-13 20:09:45',
             ),
             12 => 
             array (
@@ -172,8 +172,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'Aynul Vai Dhaka (1008-39), (777-42)',
                 'total_price' => '4285.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 02:13:49',
-                'updated_at' => '2025-04-14 02:13:49',
+                'created_at' => '2025-04-13 20:13:49',
+                'updated_at' => '2025-04-13 20:13:49',
             ),
             13 => 
             array (
@@ -184,8 +184,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'Contract employee Rony EID GIFT (R-81)',
                 'total_price' => '2095.00',
                 'status' => 1,
-                'created_at' => '2025-04-14 02:16:02',
-                'updated_at' => '2025-04-14 02:16:02',
+                'created_at' => '2025-04-13 20:16:02',
+                'updated_at' => '2025-04-13 20:16:02',
             ),
             14 => 
             array (
@@ -196,8 +196,8 @@ class WastesTableSeeder extends Seeder
                 'note' => 'Emrul EID GIFT',
                 'total_price' => '5085.00',
                 'status' => 1,
-                'created_at' => '2025-04-15 01:33:41',
-                'updated_at' => '2025-04-15 01:33:41',
+                'created_at' => '2025-04-14 19:33:41',
+                'updated_at' => '2025-04-14 19:33:41',
             ),
             15 => 
             array (
@@ -208,8 +208,8 @@ class WastesTableSeeder extends Seeder
             'note' => 'Contract employee ERAZ EID GIFT (1021-43)',
                 'total_price' => '2095.00',
                 'status' => 1,
-                'created_at' => '2025-04-15 02:00:12',
-                'updated_at' => '2025-04-15 02:00:12',
+                'created_at' => '2025-04-14 20:00:12',
+                'updated_at' => '2025-04-14 20:00:12',
             ),
             16 => 
             array (
@@ -220,8 +220,8 @@ class WastesTableSeeder extends Seeder
                 'note' => 'Buya',
                 'total_price' => '995.00',
                 'status' => 1,
-                'created_at' => '2025-05-03 21:24:16',
-                'updated_at' => '2025-05-03 21:24:16',
+                'created_at' => '2025-05-03 15:24:16',
+                'updated_at' => '2025-05-03 15:24:16',
             ),
             17 => 
             array (
@@ -232,8 +232,8 @@ class WastesTableSeeder extends Seeder
                 'note' => NULL,
                 'total_price' => '0.00',
                 'status' => 1,
-                'created_at' => '2025-10-02 14:33:57',
-                'updated_at' => '2025-10-02 14:33:57',
+                'created_at' => '2025-10-02 08:33:57',
+                'updated_at' => '2025-10-02 08:33:57',
             ),
             18 => 
             array (
@@ -244,8 +244,8 @@ class WastesTableSeeder extends Seeder
                 'note' => NULL,
                 'total_price' => '3345.00',
                 'status' => 1,
-                'created_at' => '2025-10-02 14:35:24',
-                'updated_at' => '2025-10-02 14:35:24',
+                'created_at' => '2025-10-02 08:35:24',
+                'updated_at' => '2025-10-02 08:35:24',
             ),
             19 => 
             array (
@@ -256,8 +256,8 @@ class WastesTableSeeder extends Seeder
                 'note' => '1 pair',
                 'total_price' => '2195.00',
                 'status' => 1,
-                'created_at' => '2025-10-05 11:19:31',
-                'updated_at' => '2025-10-05 11:19:31',
+                'created_at' => '2025-10-05 05:19:31',
+                'updated_at' => '2025-10-05 05:19:31',
             ),
             20 => 
             array (
@@ -268,8 +268,8 @@ class WastesTableSeeder extends Seeder
                 'note' => NULL,
                 'total_price' => '1150.00',
                 'status' => 1,
-                'created_at' => '2025-10-05 11:20:45',
-                'updated_at' => '2025-10-05 11:20:45',
+                'created_at' => '2025-10-05 05:20:45',
+                'updated_at' => '2025-10-05 05:20:45',
             ),
         ));
         

@@ -24,8 +24,8 @@ class DiscountPlansTableSeeder extends Seeder
                 'id' => 1,
                 'name' => '10% Discount',
                 'is_active' => 0,
-                'created_at' => '2024-12-27 12:26:59',
-                'updated_at' => '2024-12-31 17:19:15',
+                'created_at' => '2024-12-27 06:26:59',
+                'updated_at' => '2024-12-31 11:19:15',
             ),
         ));
         

@@ -27,8 +27,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'চাবির রিং',
                 'quantity' => 100,
                 'quantity_received' => 80,
-                'created_at' => '2024-12-19 11:40:56',
-                'updated_at' => '2024-12-19 11:40:56',
+                'created_at' => '2024-12-19 05:40:56',
+                'updated_at' => '2024-12-19 05:40:56',
             ),
             1 => 
             array (
@@ -38,8 +38,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে ব্যাগ',
                 'quantity' => 50,
                 'quantity_received' => 40,
-                'created_at' => '2024-12-19 11:40:56',
-                'updated_at' => '2024-12-19 11:40:56',
+                'created_at' => '2024-12-19 05:40:56',
+                'updated_at' => '2024-12-19 05:40:56',
             ),
             2 => 
             array (
@@ -49,8 +49,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'চাবির রিং',
                 'quantity' => 100,
                 'quantity_received' => 100,
-                'created_at' => '2024-12-19 11:45:23',
-                'updated_at' => '2024-12-19 11:45:23',
+                'created_at' => '2024-12-19 05:45:23',
+                'updated_at' => '2024-12-19 05:45:23',
             ),
             3 => 
             array (
@@ -60,8 +60,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে ব্যাগ',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-19 11:45:23',
-                'updated_at' => '2024-12-19 11:45:23',
+                'created_at' => '2024-12-19 05:45:23',
+                'updated_at' => '2024-12-19 05:45:23',
             ),
             4 => 
             array (
@@ -71,8 +71,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'চাবির রিং',
                 'quantity' => 100,
                 'quantity_received' => 100,
-                'created_at' => '2024-12-21 06:44:29',
-                'updated_at' => '2024-12-21 06:44:29',
+                'created_at' => '2024-12-21 00:44:29',
+                'updated_at' => '2024-12-21 00:44:29',
             ),
             5 => 
             array (
@@ -82,8 +82,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে-বক্স',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-21 06:44:29',
-                'updated_at' => '2024-12-21 06:44:29',
+                'created_at' => '2024-12-21 00:44:29',
+                'updated_at' => '2024-12-21 00:44:29',
             ),
             6 => 
             array (
@@ -93,8 +93,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে ব্যাগ',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-21 06:44:29',
-                'updated_at' => '2024-12-21 06:44:29',
+                'created_at' => '2024-12-21 00:44:29',
+                'updated_at' => '2024-12-21 00:44:29',
             ),
             7 => 
             array (
@@ -104,8 +104,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'চাবির রিং',
                 'quantity' => 100,
                 'quantity_received' => 100,
-                'created_at' => '2024-12-21 06:47:39',
-                'updated_at' => '2024-12-21 06:47:39',
+                'created_at' => '2024-12-21 00:47:39',
+                'updated_at' => '2024-12-21 00:47:39',
             ),
             8 => 
             array (
@@ -115,8 +115,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে-বক্স',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-21 06:47:39',
-                'updated_at' => '2024-12-21 06:47:39',
+                'created_at' => '2024-12-21 00:47:39',
+                'updated_at' => '2024-12-21 00:47:39',
             ),
             9 => 
             array (
@@ -126,8 +126,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে ব্যাগ',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-21 06:47:39',
-                'updated_at' => '2024-12-21 06:47:39',
+                'created_at' => '2024-12-21 00:47:39',
+                'updated_at' => '2024-12-21 00:47:39',
             ),
             10 => 
             array (
@@ -137,8 +137,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'চাবির রিং',
                 'quantity' => 100,
                 'quantity_received' => 100,
-                'created_at' => '2024-12-21 06:51:47',
-                'updated_at' => '2024-12-21 06:51:47',
+                'created_at' => '2024-12-21 00:51:47',
+                'updated_at' => '2024-12-21 00:51:47',
             ),
             11 => 
             array (
@@ -148,8 +148,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে-বক্স',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-21 06:51:47',
-                'updated_at' => '2024-12-21 06:51:47',
+                'created_at' => '2024-12-21 00:51:47',
+                'updated_at' => '2024-12-21 00:51:47',
             ),
             12 => 
             array (
@@ -159,8 +159,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে ব্যাগ',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-21 06:51:47',
-                'updated_at' => '2024-12-21 06:51:47',
+                'created_at' => '2024-12-21 00:51:47',
+                'updated_at' => '2024-12-21 00:51:47',
             ),
             13 => 
             array (
@@ -170,8 +170,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'চাবির রিং',
                 'quantity' => 100,
                 'quantity_received' => 100,
-                'created_at' => '2024-12-22 06:14:37',
-                'updated_at' => '2024-12-22 06:14:37',
+                'created_at' => '2024-12-22 00:14:37',
+                'updated_at' => '2024-12-22 00:14:37',
             ),
             14 => 
             array (
@@ -181,8 +181,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে-বক্স',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-22 06:14:37',
-                'updated_at' => '2024-12-22 06:14:37',
+                'created_at' => '2024-12-22 00:14:37',
+                'updated_at' => '2024-12-22 00:14:37',
             ),
             15 => 
             array (
@@ -192,8 +192,8 @@ class GiftReceivesTableSeeder extends Seeder
                 'name' => 'লে ব্যাগ',
                 'quantity' => 50,
                 'quantity_received' => 50,
-                'created_at' => '2024-12-22 06:14:37',
-                'updated_at' => '2024-12-22 06:14:37',
+                'created_at' => '2024-12-22 00:14:37',
+                'updated_at' => '2024-12-22 00:14:37',
             ),
         ));
         

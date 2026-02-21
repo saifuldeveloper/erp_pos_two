@@ -43,8 +43,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2024-12-27 17:31:28',
-                'updated_at' => '2024-12-27 17:31:28',
+                'created_at' => '2024-12-27 11:31:28',
+                'updated_at' => '2024-12-27 11:31:28',
             ),
             1 => 
             array (
@@ -70,8 +70,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2024-12-31 13:24:34',
-                'updated_at' => '2024-12-31 13:24:34',
+                'created_at' => '2024-12-31 07:24:34',
+                'updated_at' => '2024-12-31 07:24:34',
             ),
             2 => 
             array (
@@ -97,8 +97,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => '1500 TK',
                 'staff_note' => NULL,
-                'created_at' => '2024-12-31 14:59:05',
-                'updated_at' => '2024-12-31 14:59:05',
+                'created_at' => '2024-12-31 08:59:05',
+                'updated_at' => '2024-12-31 08:59:05',
             ),
             3 => 
             array (
@@ -124,8 +124,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-02 13:38:46',
-                'updated_at' => '2025-01-02 13:38:46',
+                'created_at' => '2025-01-02 07:38:46',
+                'updated_at' => '2025-01-02 07:38:46',
             ),
             4 => 
             array (
@@ -151,8 +151,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-02 17:27:07',
-                'updated_at' => '2025-01-02 17:27:07',
+                'created_at' => '2025-01-02 11:27:07',
+                'updated_at' => '2025-01-02 11:27:07',
             ),
             5 => 
             array (
@@ -178,8 +178,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-02 19:57:03',
-                'updated_at' => '2025-01-02 19:57:03',
+                'created_at' => '2025-01-02 13:57:03',
+                'updated_at' => '2025-01-02 13:57:03',
             ),
             6 => 
             array (
@@ -205,8 +205,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-04 19:13:48',
-                'updated_at' => '2025-01-04 19:13:48',
+                'created_at' => '2025-01-04 13:13:48',
+                'updated_at' => '2025-01-04 13:13:48',
             ),
             7 => 
             array (
@@ -232,8 +232,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-05 17:02:23',
-                'updated_at' => '2025-01-05 17:02:23',
+                'created_at' => '2025-01-05 11:02:23',
+                'updated_at' => '2025-01-05 11:02:23',
             ),
             8 => 
             array (
@@ -259,8 +259,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-05 18:36:34',
-                'updated_at' => '2025-01-05 18:36:34',
+                'created_at' => '2025-01-05 12:36:34',
+                'updated_at' => '2025-01-05 12:36:34',
             ),
             9 => 
             array (
@@ -286,8 +286,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-09 19:36:13',
-                'updated_at' => '2025-01-09 19:36:13',
+                'created_at' => '2025-01-09 13:36:13',
+                'updated_at' => '2025-01-09 13:36:13',
             ),
             10 => 
             array (
@@ -313,8 +313,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-12 19:13:28',
-                'updated_at' => '2025-01-12 19:13:28',
+                'created_at' => '2025-01-12 13:13:28',
+                'updated_at' => '2025-01-12 13:13:28',
             ),
             11 => 
             array (
@@ -340,8 +340,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-15 15:53:16',
-                'updated_at' => '2025-01-15 15:53:16',
+                'created_at' => '2025-01-15 09:53:16',
+                'updated_at' => '2025-01-15 09:53:16',
             ),
             12 => 
             array (
@@ -367,8 +367,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-15 19:08:00',
-                'updated_at' => '2025-01-15 19:08:00',
+                'created_at' => '2025-01-15 13:08:00',
+                'updated_at' => '2025-01-15 13:08:00',
             ),
             13 => 
             array (
@@ -394,8 +394,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-16 13:24:09',
-                'updated_at' => '2025-01-16 13:24:09',
+                'created_at' => '2025-01-16 07:24:09',
+                'updated_at' => '2025-01-16 07:24:09',
             ),
             14 => 
             array (
@@ -421,8 +421,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-16 20:03:32',
-                'updated_at' => '2025-01-16 20:03:32',
+                'created_at' => '2025-01-16 14:03:32',
+                'updated_at' => '2025-01-16 14:03:32',
             ),
             15 => 
             array (
@@ -448,8 +448,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-18 16:18:17',
-                'updated_at' => '2025-01-18 16:18:17',
+                'created_at' => '2025-01-18 10:18:17',
+                'updated_at' => '2025-01-18 10:18:17',
             ),
             16 => 
             array (
@@ -475,8 +475,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-19 19:16:49',
-                'updated_at' => '2025-01-19 19:16:49',
+                'created_at' => '2025-01-19 13:16:49',
+                'updated_at' => '2025-01-19 13:16:49',
             ),
             17 => 
             array (
@@ -502,8 +502,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-21 17:37:47',
-                'updated_at' => '2025-01-21 17:37:47',
+                'created_at' => '2025-01-21 11:37:47',
+                'updated_at' => '2025-01-21 11:37:47',
             ),
             18 => 
             array (
@@ -529,8 +529,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-21 19:12:00',
-                'updated_at' => '2025-01-21 19:12:00',
+                'created_at' => '2025-01-21 13:12:00',
+                'updated_at' => '2025-01-21 13:12:00',
             ),
             19 => 
             array (
@@ -556,8 +556,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-25 18:14:45',
-                'updated_at' => '2025-01-25 18:14:45',
+                'created_at' => '2025-01-25 12:14:45',
+                'updated_at' => '2025-01-25 12:14:45',
             ),
             20 => 
             array (
@@ -583,8 +583,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-26 13:04:14',
-                'updated_at' => '2025-01-26 13:04:14',
+                'created_at' => '2025-01-26 07:04:14',
+                'updated_at' => '2025-01-26 07:04:14',
             ),
             21 => 
             array (
@@ -610,8 +610,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-26 17:39:00',
-                'updated_at' => '2025-01-26 17:39:00',
+                'created_at' => '2025-01-26 11:39:00',
+                'updated_at' => '2025-01-26 11:39:00',
             ),
             22 => 
             array (
@@ -637,8 +637,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-26 18:11:02',
-                'updated_at' => '2025-01-26 18:11:02',
+                'created_at' => '2025-01-26 12:11:02',
+                'updated_at' => '2025-01-26 12:11:02',
             ),
             23 => 
             array (
@@ -664,8 +664,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-28 17:16:55',
-                'updated_at' => '2025-01-28 17:16:55',
+                'created_at' => '2025-01-28 11:16:55',
+                'updated_at' => '2025-01-28 11:16:55',
             ),
             24 => 
             array (
@@ -691,8 +691,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-01-30 11:28:50',
-                'updated_at' => '2025-01-30 11:28:50',
+                'created_at' => '2025-01-30 05:28:50',
+                'updated_at' => '2025-01-30 05:28:50',
             ),
             25 => 
             array (
@@ -718,8 +718,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-02 12:29:57',
-                'updated_at' => '2025-02-02 12:29:57',
+                'created_at' => '2025-02-02 06:29:57',
+                'updated_at' => '2025-02-02 06:29:57',
             ),
             26 => 
             array (
@@ -745,8 +745,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-06 21:55:54',
-                'updated_at' => '2025-02-06 21:55:54',
+                'created_at' => '2025-02-06 15:55:54',
+                'updated_at' => '2025-02-06 15:55:54',
             ),
             27 => 
             array (
@@ -772,8 +772,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-09 16:35:16',
-                'updated_at' => '2025-02-09 16:35:16',
+                'created_at' => '2025-02-09 10:35:16',
+                'updated_at' => '2025-02-09 10:35:16',
             ),
             28 => 
             array (
@@ -799,8 +799,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-11 13:47:02',
-                'updated_at' => '2025-02-11 13:47:02',
+                'created_at' => '2025-02-11 07:47:02',
+                'updated_at' => '2025-02-11 07:47:02',
             ),
             29 => 
             array (
@@ -826,8 +826,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-12 11:25:44',
-                'updated_at' => '2025-02-12 11:25:44',
+                'created_at' => '2025-02-12 05:25:44',
+                'updated_at' => '2025-02-12 05:25:44',
             ),
             30 => 
             array (
@@ -853,8 +853,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-16 16:47:03',
-                'updated_at' => '2025-02-16 16:47:03',
+                'created_at' => '2025-02-16 10:47:03',
+                'updated_at' => '2025-02-16 10:47:03',
             ),
             31 => 
             array (
@@ -880,8 +880,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-16 18:03:19',
-                'updated_at' => '2025-02-16 18:03:19',
+                'created_at' => '2025-02-16 12:03:19',
+                'updated_at' => '2025-02-16 12:03:19',
             ),
             32 => 
             array (
@@ -907,8 +907,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-18 17:02:55',
-                'updated_at' => '2025-02-18 17:02:55',
+                'created_at' => '2025-02-18 11:02:55',
+                'updated_at' => '2025-02-18 11:02:55',
             ),
             33 => 
             array (
@@ -934,8 +934,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-19 12:16:51',
-                'updated_at' => '2025-02-19 12:16:51',
+                'created_at' => '2025-02-19 06:16:51',
+                'updated_at' => '2025-02-19 06:16:51',
             ),
             34 => 
             array (
@@ -961,8 +961,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-25 12:17:31',
-                'updated_at' => '2025-02-25 12:17:31',
+                'created_at' => '2025-02-25 06:17:31',
+                'updated_at' => '2025-02-25 06:17:31',
             ),
             35 => 
             array (
@@ -988,8 +988,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-25 12:23:32',
-                'updated_at' => '2025-02-25 12:23:32',
+                'created_at' => '2025-02-25 06:23:32',
+                'updated_at' => '2025-02-25 06:23:32',
             ),
             36 => 
             array (
@@ -1015,8 +1015,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-25 14:56:49',
-                'updated_at' => '2025-02-25 14:56:49',
+                'created_at' => '2025-02-25 08:56:49',
+                'updated_at' => '2025-02-25 08:56:49',
             ),
             37 => 
             array (
@@ -1042,8 +1042,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-25 17:16:33',
-                'updated_at' => '2025-02-25 17:16:33',
+                'created_at' => '2025-02-25 11:16:33',
+                'updated_at' => '2025-02-25 11:16:33',
             ),
             38 => 
             array (
@@ -1069,8 +1069,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-25 18:19:30',
-                'updated_at' => '2025-02-25 18:19:30',
+                'created_at' => '2025-02-25 12:19:30',
+                'updated_at' => '2025-02-25 12:19:30',
             ),
             39 => 
             array (
@@ -1096,8 +1096,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-02-27 19:09:11',
-                'updated_at' => '2025-02-27 19:09:11',
+                'created_at' => '2025-02-27 13:09:11',
+                'updated_at' => '2025-02-27 13:09:11',
             ),
             40 => 
             array (
@@ -1123,8 +1123,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-01 19:22:10',
-                'updated_at' => '2025-03-01 19:22:10',
+                'created_at' => '2025-03-01 13:22:10',
+                'updated_at' => '2025-03-01 13:22:10',
             ),
             41 => 
             array (
@@ -1150,8 +1150,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-01 23:04:35',
-                'updated_at' => '2025-03-01 23:04:35',
+                'created_at' => '2025-03-01 17:04:35',
+                'updated_at' => '2025-03-01 17:04:35',
             ),
             42 => 
             array (
@@ -1177,8 +1177,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-04 18:08:07',
-                'updated_at' => '2025-03-04 18:08:07',
+                'created_at' => '2025-03-04 12:08:07',
+                'updated_at' => '2025-03-04 12:08:07',
             ),
             43 => 
             array (
@@ -1204,8 +1204,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-05 03:11:37',
-                'updated_at' => '2025-03-05 03:11:37',
+                'created_at' => '2025-03-04 21:11:37',
+                'updated_at' => '2025-03-04 21:11:37',
             ),
             44 => 
             array (
@@ -1231,8 +1231,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-06 03:53:32',
-                'updated_at' => '2025-03-06 03:53:32',
+                'created_at' => '2025-03-05 21:53:32',
+                'updated_at' => '2025-03-05 21:53:32',
             ),
             45 => 
             array (
@@ -1258,8 +1258,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-06 04:28:44',
-                'updated_at' => '2025-03-06 04:28:44',
+                'created_at' => '2025-03-05 22:28:44',
+                'updated_at' => '2025-03-05 22:28:44',
             ),
             46 => 
             array (
@@ -1285,8 +1285,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-06 17:04:43',
-                'updated_at' => '2025-03-06 17:04:43',
+                'created_at' => '2025-03-06 11:04:43',
+                'updated_at' => '2025-03-06 11:04:43',
             ),
             47 => 
             array (
@@ -1312,8 +1312,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-06 21:49:01',
-                'updated_at' => '2025-03-06 21:49:01',
+                'created_at' => '2025-03-06 15:49:01',
+                'updated_at' => '2025-03-06 15:49:01',
             ),
             48 => 
             array (
@@ -1339,8 +1339,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-08 03:10:51',
-                'updated_at' => '2025-03-08 03:10:51',
+                'created_at' => '2025-03-07 21:10:51',
+                'updated_at' => '2025-03-07 21:10:51',
             ),
             49 => 
             array (
@@ -1366,8 +1366,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-08 04:52:50',
-                'updated_at' => '2025-03-08 04:52:50',
+                'created_at' => '2025-03-07 22:52:50',
+                'updated_at' => '2025-03-07 22:52:50',
             ),
             50 => 
             array (
@@ -1393,8 +1393,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-11 02:01:42',
-                'updated_at' => '2025-03-11 02:01:42',
+                'created_at' => '2025-03-10 20:01:42',
+                'updated_at' => '2025-03-10 20:01:42',
             ),
             51 => 
             array (
@@ -1420,8 +1420,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-12 18:38:58',
-                'updated_at' => '2025-03-12 18:38:58',
+                'created_at' => '2025-03-12 12:38:58',
+                'updated_at' => '2025-03-12 12:38:58',
             ),
             52 => 
             array (
@@ -1447,8 +1447,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-13 02:58:31',
-                'updated_at' => '2025-03-13 02:58:31',
+                'created_at' => '2025-03-12 20:58:31',
+                'updated_at' => '2025-03-12 20:58:31',
             ),
             53 => 
             array (
@@ -1474,8 +1474,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-14 02:42:04',
-                'updated_at' => '2025-03-14 02:42:04',
+                'created_at' => '2025-03-13 20:42:04',
+                'updated_at' => '2025-03-13 20:42:04',
             ),
             54 => 
             array (
@@ -1501,8 +1501,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-14 02:45:13',
-                'updated_at' => '2025-03-14 02:45:13',
+                'created_at' => '2025-03-13 20:45:13',
+                'updated_at' => '2025-03-13 20:45:13',
             ),
             55 => 
             array (
@@ -1528,8 +1528,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-14 04:02:32',
-                'updated_at' => '2025-03-14 04:02:32',
+                'created_at' => '2025-03-13 22:02:32',
+                'updated_at' => '2025-03-13 22:02:32',
             ),
             56 => 
             array (
@@ -1555,8 +1555,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-15 02:22:12',
-                'updated_at' => '2025-03-15 02:22:12',
+                'created_at' => '2025-03-14 20:22:12',
+                'updated_at' => '2025-03-14 20:22:12',
             ),
             57 => 
             array (
@@ -1582,8 +1582,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-15 02:47:05',
-                'updated_at' => '2025-03-15 02:47:05',
+                'created_at' => '2025-03-14 20:47:05',
+                'updated_at' => '2025-03-14 20:47:05',
             ),
             58 => 
             array (
@@ -1609,8 +1609,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-15 21:21:12',
-                'updated_at' => '2025-03-15 21:21:12',
+                'created_at' => '2025-03-15 15:21:12',
+                'updated_at' => '2025-03-15 15:21:12',
             ),
             59 => 
             array (
@@ -1636,8 +1636,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-15 22:01:58',
-                'updated_at' => '2025-03-15 22:01:58',
+                'created_at' => '2025-03-15 16:01:58',
+                'updated_at' => '2025-03-15 16:01:58',
             ),
             60 => 
             array (
@@ -1663,8 +1663,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-16 17:42:24',
-                'updated_at' => '2025-03-16 17:42:24',
+                'created_at' => '2025-03-16 11:42:24',
+                'updated_at' => '2025-03-16 11:42:24',
             ),
             61 => 
             array (
@@ -1690,8 +1690,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-16 17:47:03',
-                'updated_at' => '2025-03-16 17:47:03',
+                'created_at' => '2025-03-16 11:47:03',
+                'updated_at' => '2025-03-16 11:47:03',
             ),
             62 => 
             array (
@@ -1717,8 +1717,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-16 18:08:48',
-                'updated_at' => '2025-03-16 18:08:48',
+                'created_at' => '2025-03-16 12:08:48',
+                'updated_at' => '2025-03-16 12:08:48',
             ),
             63 => 
             array (
@@ -1744,8 +1744,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-16 22:05:37',
-                'updated_at' => '2025-03-16 22:05:37',
+                'created_at' => '2025-03-16 16:05:37',
+                'updated_at' => '2025-03-16 16:05:37',
             ),
             64 => 
             array (
@@ -1771,8 +1771,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-16 22:40:44',
-                'updated_at' => '2025-03-16 22:40:44',
+                'created_at' => '2025-03-16 16:40:44',
+                'updated_at' => '2025-03-16 16:40:44',
             ),
             65 => 
             array (
@@ -1798,8 +1798,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-17 21:09:35',
-                'updated_at' => '2025-03-17 21:09:35',
+                'created_at' => '2025-03-17 15:09:35',
+                'updated_at' => '2025-03-17 15:09:35',
             ),
             66 => 
             array (
@@ -1825,8 +1825,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-17 21:22:11',
-                'updated_at' => '2025-03-17 21:22:11',
+                'created_at' => '2025-03-17 15:22:11',
+                'updated_at' => '2025-03-17 15:22:11',
             ),
             67 => 
             array (
@@ -1852,8 +1852,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-18 17:05:51',
-                'updated_at' => '2025-03-18 17:05:51',
+                'created_at' => '2025-03-18 11:05:51',
+                'updated_at' => '2025-03-18 11:05:51',
             ),
             68 => 
             array (
@@ -1879,8 +1879,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-18 18:30:33',
-                'updated_at' => '2025-03-18 18:30:33',
+                'created_at' => '2025-03-18 12:30:33',
+                'updated_at' => '2025-03-18 12:30:33',
             ),
             69 => 
             array (
@@ -1906,8 +1906,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-18 23:33:11',
-                'updated_at' => '2025-03-18 23:33:11',
+                'created_at' => '2025-03-18 17:33:11',
+                'updated_at' => '2025-03-18 17:33:11',
             ),
             70 => 
             array (
@@ -1933,8 +1933,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-19 02:50:07',
-                'updated_at' => '2025-03-19 02:50:07',
+                'created_at' => '2025-03-18 20:50:07',
+                'updated_at' => '2025-03-18 20:50:07',
             ),
             71 => 
             array (
@@ -1960,8 +1960,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-19 03:45:30',
-                'updated_at' => '2025-03-19 03:45:30',
+                'created_at' => '2025-03-18 21:45:30',
+                'updated_at' => '2025-03-18 21:45:30',
             ),
             72 => 
             array (
@@ -1987,8 +1987,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-19 04:16:10',
-                'updated_at' => '2025-03-19 04:16:10',
+                'created_at' => '2025-03-18 22:16:10',
+                'updated_at' => '2025-03-18 22:16:10',
             ),
             73 => 
             array (
@@ -2014,8 +2014,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-19 22:35:48',
-                'updated_at' => '2025-03-19 22:35:48',
+                'created_at' => '2025-03-19 16:35:48',
+                'updated_at' => '2025-03-19 16:35:48',
             ),
             74 => 
             array (
@@ -2041,8 +2041,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-19 23:18:34',
-                'updated_at' => '2025-03-19 23:18:34',
+                'created_at' => '2025-03-19 17:18:34',
+                'updated_at' => '2025-03-19 17:18:34',
             ),
             75 => 
             array (
@@ -2068,8 +2068,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-20 22:22:11',
-                'updated_at' => '2025-03-20 22:22:11',
+                'created_at' => '2025-03-20 16:22:11',
+                'updated_at' => '2025-03-20 16:22:11',
             ),
             76 => 
             array (
@@ -2095,8 +2095,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-21 01:55:56',
-                'updated_at' => '2025-03-21 01:55:56',
+                'created_at' => '2025-03-20 19:55:56',
+                'updated_at' => '2025-03-20 19:55:56',
             ),
             77 => 
             array (
@@ -2122,8 +2122,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-21 03:40:38',
-                'updated_at' => '2025-03-21 03:40:38',
+                'created_at' => '2025-03-20 21:40:38',
+                'updated_at' => '2025-03-20 21:40:38',
             ),
             78 => 
             array (
@@ -2149,8 +2149,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-21 04:58:33',
-                'updated_at' => '2025-03-21 04:58:33',
+                'created_at' => '2025-03-20 22:58:33',
+                'updated_at' => '2025-03-20 22:58:33',
             ),
             79 => 
             array (
@@ -2176,8 +2176,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-21 06:08:57',
-                'updated_at' => '2025-03-21 06:08:57',
+                'created_at' => '2025-03-21 00:08:57',
+                'updated_at' => '2025-03-21 00:08:57',
             ),
             80 => 
             array (
@@ -2203,8 +2203,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-21 18:59:25',
-                'updated_at' => '2025-03-21 18:59:25',
+                'created_at' => '2025-03-21 12:59:25',
+                'updated_at' => '2025-03-21 12:59:25',
             ),
             81 => 
             array (
@@ -2230,8 +2230,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-21 20:24:19',
-                'updated_at' => '2025-03-21 20:24:19',
+                'created_at' => '2025-03-21 14:24:19',
+                'updated_at' => '2025-03-21 14:24:19',
             ),
             82 => 
             array (
@@ -2257,8 +2257,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 01:22:03',
-                'updated_at' => '2025-03-22 01:22:03',
+                'created_at' => '2025-03-21 19:22:03',
+                'updated_at' => '2025-03-21 19:22:03',
             ),
             83 => 
             array (
@@ -2284,8 +2284,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 01:46:46',
-                'updated_at' => '2025-03-22 01:46:46',
+                'created_at' => '2025-03-21 19:46:46',
+                'updated_at' => '2025-03-21 19:46:46',
             ),
             84 => 
             array (
@@ -2311,8 +2311,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 02:03:17',
-                'updated_at' => '2025-03-22 02:03:17',
+                'created_at' => '2025-03-21 20:03:17',
+                'updated_at' => '2025-03-21 20:03:17',
             ),
             85 => 
             array (
@@ -2338,8 +2338,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 02:57:09',
-                'updated_at' => '2025-03-22 02:57:09',
+                'created_at' => '2025-03-21 20:57:09',
+                'updated_at' => '2025-03-21 20:57:09',
             ),
             86 => 
             array (
@@ -2365,8 +2365,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 03:08:30',
-                'updated_at' => '2025-03-22 03:08:30',
+                'created_at' => '2025-03-21 21:08:30',
+                'updated_at' => '2025-03-21 21:08:30',
             ),
             87 => 
             array (
@@ -2392,8 +2392,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 04:11:33',
-                'updated_at' => '2025-03-22 04:11:33',
+                'created_at' => '2025-03-21 22:11:33',
+                'updated_at' => '2025-03-21 22:11:33',
             ),
             88 => 
             array (
@@ -2419,8 +2419,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 04:11:53',
-                'updated_at' => '2025-03-22 04:11:53',
+                'created_at' => '2025-03-21 22:11:53',
+                'updated_at' => '2025-03-21 22:11:53',
             ),
             89 => 
             array (
@@ -2446,8 +2446,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 05:27:16',
-                'updated_at' => '2025-03-22 05:27:16',
+                'created_at' => '2025-03-21 23:27:16',
+                'updated_at' => '2025-03-21 23:27:16',
             ),
             90 => 
             array (
@@ -2473,8 +2473,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 20:15:53',
-                'updated_at' => '2025-03-22 20:15:53',
+                'created_at' => '2025-03-22 14:15:53',
+                'updated_at' => '2025-03-22 14:15:53',
             ),
             91 => 
             array (
@@ -2500,8 +2500,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 21:14:49',
-                'updated_at' => '2025-03-22 21:14:49',
+                'created_at' => '2025-03-22 15:14:49',
+                'updated_at' => '2025-03-22 15:14:49',
             ),
             92 => 
             array (
@@ -2527,8 +2527,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 21:57:40',
-                'updated_at' => '2025-03-22 21:57:40',
+                'created_at' => '2025-03-22 15:57:40',
+                'updated_at' => '2025-03-22 15:57:40',
             ),
             93 => 
             array (
@@ -2554,8 +2554,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-22 22:29:35',
-                'updated_at' => '2025-03-22 22:29:35',
+                'created_at' => '2025-03-22 16:29:35',
+                'updated_at' => '2025-03-22 16:29:35',
             ),
             94 => 
             array (
@@ -2581,8 +2581,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 03:08:56',
-                'updated_at' => '2025-03-23 03:08:56',
+                'created_at' => '2025-03-22 21:08:56',
+                'updated_at' => '2025-03-22 21:08:56',
             ),
             95 => 
             array (
@@ -2608,8 +2608,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 04:00:39',
-                'updated_at' => '2025-03-23 04:00:39',
+                'created_at' => '2025-03-22 22:00:39',
+                'updated_at' => '2025-03-22 22:00:39',
             ),
             96 => 
             array (
@@ -2635,8 +2635,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 18:03:28',
-                'updated_at' => '2025-03-23 18:03:28',
+                'created_at' => '2025-03-23 12:03:28',
+                'updated_at' => '2025-03-23 12:03:28',
             ),
             97 => 
             array (
@@ -2662,8 +2662,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 18:14:48',
-                'updated_at' => '2025-03-23 18:14:48',
+                'created_at' => '2025-03-23 12:14:48',
+                'updated_at' => '2025-03-23 12:14:48',
             ),
             98 => 
             array (
@@ -2689,8 +2689,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 18:39:00',
-                'updated_at' => '2025-03-23 18:39:00',
+                'created_at' => '2025-03-23 12:39:00',
+                'updated_at' => '2025-03-23 12:39:00',
             ),
             99 => 
             array (
@@ -2716,8 +2716,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 19:56:15',
-                'updated_at' => '2025-03-23 19:56:15',
+                'created_at' => '2025-03-23 13:56:15',
+                'updated_at' => '2025-03-23 13:56:15',
             ),
             100 => 
             array (
@@ -2743,8 +2743,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 21:08:17',
-                'updated_at' => '2025-03-23 21:08:17',
+                'created_at' => '2025-03-23 15:08:17',
+                'updated_at' => '2025-03-23 15:08:17',
             ),
             101 => 
             array (
@@ -2770,8 +2770,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 21:12:15',
-                'updated_at' => '2025-03-23 21:12:15',
+                'created_at' => '2025-03-23 15:12:15',
+                'updated_at' => '2025-03-23 15:12:15',
             ),
             102 => 
             array (
@@ -2797,8 +2797,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-23 22:41:10',
-                'updated_at' => '2025-03-23 22:41:10',
+                'created_at' => '2025-03-23 16:41:10',
+                'updated_at' => '2025-03-23 16:41:10',
             ),
             103 => 
             array (
@@ -2824,8 +2824,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-24 01:08:49',
-                'updated_at' => '2025-03-24 01:08:49',
+                'created_at' => '2025-03-23 19:08:49',
+                'updated_at' => '2025-03-23 19:08:49',
             ),
             104 => 
             array (
@@ -2851,8 +2851,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-24 05:11:04',
-                'updated_at' => '2025-03-24 05:11:04',
+                'created_at' => '2025-03-23 23:11:04',
+                'updated_at' => '2025-03-23 23:11:04',
             ),
             105 => 
             array (
@@ -2878,8 +2878,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-24 18:11:16',
-                'updated_at' => '2025-03-24 18:11:16',
+                'created_at' => '2025-03-24 12:11:16',
+                'updated_at' => '2025-03-24 12:11:16',
             ),
             106 => 
             array (
@@ -2905,8 +2905,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-24 19:02:19',
-                'updated_at' => '2025-03-24 19:02:19',
+                'created_at' => '2025-03-24 13:02:19',
+                'updated_at' => '2025-03-24 13:02:19',
             ),
             107 => 
             array (
@@ -2932,8 +2932,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-24 19:58:59',
-                'updated_at' => '2025-03-24 19:58:59',
+                'created_at' => '2025-03-24 13:58:59',
+                'updated_at' => '2025-03-24 13:58:59',
             ),
             108 => 
             array (
@@ -2959,8 +2959,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 01:47:13',
-                'updated_at' => '2025-03-25 01:47:13',
+                'created_at' => '2025-03-24 19:47:13',
+                'updated_at' => '2025-03-24 19:47:13',
             ),
             109 => 
             array (
@@ -2986,8 +2986,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 02:17:10',
-                'updated_at' => '2025-03-25 02:17:10',
+                'created_at' => '2025-03-24 20:17:10',
+                'updated_at' => '2025-03-24 20:17:10',
             ),
             110 => 
             array (
@@ -3013,8 +3013,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 02:21:57',
-                'updated_at' => '2025-03-25 02:21:57',
+                'created_at' => '2025-03-24 20:21:57',
+                'updated_at' => '2025-03-24 20:21:57',
             ),
             111 => 
             array (
@@ -3040,8 +3040,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 02:51:24',
-                'updated_at' => '2025-03-25 02:51:24',
+                'created_at' => '2025-03-24 20:51:24',
+                'updated_at' => '2025-03-24 20:51:24',
             ),
             112 => 
             array (
@@ -3067,8 +3067,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 03:33:59',
-                'updated_at' => '2025-03-25 03:33:59',
+                'created_at' => '2025-03-24 21:33:59',
+                'updated_at' => '2025-03-24 21:33:59',
             ),
             113 => 
             array (
@@ -3094,8 +3094,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 06:25:28',
-                'updated_at' => '2025-03-25 06:25:28',
+                'created_at' => '2025-03-25 00:25:28',
+                'updated_at' => '2025-03-25 00:25:28',
             ),
             114 => 
             array (
@@ -3121,8 +3121,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 07:52:50',
-                'updated_at' => '2025-03-25 07:52:50',
+                'created_at' => '2025-03-25 01:52:50',
+                'updated_at' => '2025-03-25 01:52:50',
             ),
             115 => 
             array (
@@ -3148,8 +3148,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 18:10:25',
-                'updated_at' => '2025-03-25 18:10:25',
+                'created_at' => '2025-03-25 12:10:25',
+                'updated_at' => '2025-03-25 12:10:25',
             ),
             116 => 
             array (
@@ -3175,8 +3175,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 18:16:07',
-                'updated_at' => '2025-03-25 18:16:07',
+                'created_at' => '2025-03-25 12:16:07',
+                'updated_at' => '2025-03-25 12:16:07',
             ),
             117 => 
             array (
@@ -3202,8 +3202,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-25 21:49:22',
-                'updated_at' => '2025-03-25 21:49:22',
+                'created_at' => '2025-03-25 15:49:22',
+                'updated_at' => '2025-03-25 15:49:22',
             ),
             118 => 
             array (
@@ -3229,8 +3229,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 00:39:18',
-                'updated_at' => '2025-03-26 00:39:18',
+                'created_at' => '2025-03-25 18:39:18',
+                'updated_at' => '2025-03-25 18:39:18',
             ),
             119 => 
             array (
@@ -3256,8 +3256,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 01:26:52',
-                'updated_at' => '2025-03-26 01:26:52',
+                'created_at' => '2025-03-25 19:26:52',
+                'updated_at' => '2025-03-25 19:26:52',
             ),
             120 => 
             array (
@@ -3283,8 +3283,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 03:05:30',
-                'updated_at' => '2025-03-26 03:05:30',
+                'created_at' => '2025-03-25 21:05:30',
+                'updated_at' => '2025-03-25 21:05:30',
             ),
             121 => 
             array (
@@ -3310,8 +3310,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 05:00:36',
-                'updated_at' => '2025-03-26 05:00:36',
+                'created_at' => '2025-03-25 23:00:36',
+                'updated_at' => '2025-03-25 23:00:36',
             ),
             122 => 
             array (
@@ -3337,8 +3337,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 18:26:56',
-                'updated_at' => '2025-03-26 18:26:56',
+                'created_at' => '2025-03-26 12:26:56',
+                'updated_at' => '2025-03-26 12:26:56',
             ),
             123 => 
             array (
@@ -3364,8 +3364,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 18:30:13',
-                'updated_at' => '2025-03-26 18:30:13',
+                'created_at' => '2025-03-26 12:30:13',
+                'updated_at' => '2025-03-26 12:30:13',
             ),
             124 => 
             array (
@@ -3391,8 +3391,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 19:13:42',
-                'updated_at' => '2025-03-26 19:13:42',
+                'created_at' => '2025-03-26 13:13:42',
+                'updated_at' => '2025-03-26 13:13:42',
             ),
             125 => 
             array (
@@ -3418,8 +3418,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-26 19:23:49',
-                'updated_at' => '2025-03-26 19:23:49',
+                'created_at' => '2025-03-26 13:23:49',
+                'updated_at' => '2025-03-26 13:23:49',
             ),
             126 => 
             array (
@@ -3445,8 +3445,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-27 02:01:38',
-                'updated_at' => '2025-03-27 02:01:38',
+                'created_at' => '2025-03-26 20:01:38',
+                'updated_at' => '2025-03-26 20:01:38',
             ),
             127 => 
             array (
@@ -3472,8 +3472,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-27 02:59:45',
-                'updated_at' => '2025-03-27 02:59:45',
+                'created_at' => '2025-03-26 20:59:45',
+                'updated_at' => '2025-03-26 20:59:45',
             ),
             128 => 
             array (
@@ -3499,8 +3499,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-27 06:01:52',
-                'updated_at' => '2025-03-27 06:01:52',
+                'created_at' => '2025-03-27 00:01:52',
+                'updated_at' => '2025-03-27 00:01:52',
             ),
             129 => 
             array (
@@ -3526,8 +3526,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-27 20:03:24',
-                'updated_at' => '2025-03-27 20:03:24',
+                'created_at' => '2025-03-27 14:03:24',
+                'updated_at' => '2025-03-27 14:03:24',
             ),
             130 => 
             array (
@@ -3553,8 +3553,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-27 20:57:25',
-                'updated_at' => '2025-03-27 20:57:25',
+                'created_at' => '2025-03-27 14:57:25',
+                'updated_at' => '2025-03-27 14:57:25',
             ),
             131 => 
             array (
@@ -3580,8 +3580,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-27 21:00:37',
-                'updated_at' => '2025-03-27 21:00:37',
+                'created_at' => '2025-03-27 15:00:37',
+                'updated_at' => '2025-03-27 15:00:37',
             ),
             132 => 
             array (
@@ -3607,8 +3607,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-28 01:53:33',
-                'updated_at' => '2025-03-28 01:53:33',
+                'created_at' => '2025-03-27 19:53:33',
+                'updated_at' => '2025-03-27 19:53:33',
             ),
             133 => 
             array (
@@ -3634,8 +3634,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-28 02:52:14',
-                'updated_at' => '2025-03-28 02:52:14',
+                'created_at' => '2025-03-27 20:52:14',
+                'updated_at' => '2025-03-27 20:52:14',
             ),
             134 => 
             array (
@@ -3661,8 +3661,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-28 03:22:44',
-                'updated_at' => '2025-03-28 03:22:44',
+                'created_at' => '2025-03-27 21:22:44',
+                'updated_at' => '2025-03-27 21:22:44',
             ),
             135 => 
             array (
@@ -3688,8 +3688,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-28 18:22:45',
-                'updated_at' => '2025-03-28 18:22:45',
+                'created_at' => '2025-03-28 12:22:45',
+                'updated_at' => '2025-03-28 12:22:45',
             ),
             136 => 
             array (
@@ -3715,8 +3715,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-28 21:33:31',
-                'updated_at' => '2025-03-28 21:33:31',
+                'created_at' => '2025-03-28 15:33:31',
+                'updated_at' => '2025-03-28 15:33:31',
             ),
             137 => 
             array (
@@ -3742,8 +3742,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-28 22:49:35',
-                'updated_at' => '2025-03-28 22:49:35',
+                'created_at' => '2025-03-28 16:49:35',
+                'updated_at' => '2025-03-28 16:49:35',
             ),
             138 => 
             array (
@@ -3769,8 +3769,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 02:19:05',
-                'updated_at' => '2025-03-29 02:19:05',
+                'created_at' => '2025-03-28 20:19:05',
+                'updated_at' => '2025-03-28 20:19:05',
             ),
             139 => 
             array (
@@ -3796,8 +3796,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 03:31:44',
-                'updated_at' => '2025-03-29 03:31:44',
+                'created_at' => '2025-03-28 21:31:44',
+                'updated_at' => '2025-03-28 21:31:44',
             ),
             140 => 
             array (
@@ -3823,8 +3823,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 04:05:20',
-                'updated_at' => '2025-03-29 04:05:20',
+                'created_at' => '2025-03-28 22:05:20',
+                'updated_at' => '2025-03-28 22:05:20',
             ),
             141 => 
             array (
@@ -3850,8 +3850,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 04:39:07',
-                'updated_at' => '2025-03-29 04:39:07',
+                'created_at' => '2025-03-28 22:39:07',
+                'updated_at' => '2025-03-28 22:39:07',
             ),
             142 => 
             array (
@@ -3877,8 +3877,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 18:44:52',
-                'updated_at' => '2025-03-29 18:44:52',
+                'created_at' => '2025-03-29 12:44:52',
+                'updated_at' => '2025-03-29 12:44:52',
             ),
             143 => 
             array (
@@ -3904,8 +3904,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 18:45:02',
-                'updated_at' => '2025-03-29 18:45:02',
+                'created_at' => '2025-03-29 12:45:02',
+                'updated_at' => '2025-03-29 12:45:02',
             ),
             144 => 
             array (
@@ -3931,8 +3931,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 18:47:48',
-                'updated_at' => '2025-03-29 18:47:48',
+                'created_at' => '2025-03-29 12:47:48',
+                'updated_at' => '2025-03-29 12:47:48',
             ),
             145 => 
             array (
@@ -3958,8 +3958,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 18:52:12',
-                'updated_at' => '2025-03-29 18:52:12',
+                'created_at' => '2025-03-29 12:52:12',
+                'updated_at' => '2025-03-29 12:52:12',
             ),
             146 => 
             array (
@@ -3985,8 +3985,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 18:55:53',
-                'updated_at' => '2025-03-29 18:55:53',
+                'created_at' => '2025-03-29 12:55:53',
+                'updated_at' => '2025-03-29 12:55:53',
             ),
             147 => 
             array (
@@ -4012,8 +4012,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 19:51:40',
-                'updated_at' => '2025-03-29 19:51:40',
+                'created_at' => '2025-03-29 13:51:40',
+                'updated_at' => '2025-03-29 13:51:40',
             ),
             148 => 
             array (
@@ -4039,8 +4039,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 21:45:17',
-                'updated_at' => '2025-03-29 21:45:17',
+                'created_at' => '2025-03-29 15:45:17',
+                'updated_at' => '2025-03-29 15:45:17',
             ),
             149 => 
             array (
@@ -4066,8 +4066,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 21:55:42',
-                'updated_at' => '2025-03-29 21:55:42',
+                'created_at' => '2025-03-29 15:55:42',
+                'updated_at' => '2025-03-29 15:55:42',
             ),
             150 => 
             array (
@@ -4093,8 +4093,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-29 22:31:22',
-                'updated_at' => '2025-03-29 22:31:22',
+                'created_at' => '2025-03-29 16:31:22',
+                'updated_at' => '2025-03-29 16:31:22',
             ),
             151 => 
             array (
@@ -4120,8 +4120,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 00:45:15',
-                'updated_at' => '2025-03-30 00:45:15',
+                'created_at' => '2025-03-29 18:45:15',
+                'updated_at' => '2025-03-29 18:45:15',
             ),
             152 => 
             array (
@@ -4147,8 +4147,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 02:27:16',
-                'updated_at' => '2025-03-30 02:27:16',
+                'created_at' => '2025-03-29 20:27:16',
+                'updated_at' => '2025-03-29 20:27:16',
             ),
             153 => 
             array (
@@ -4174,8 +4174,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 05:16:39',
-                'updated_at' => '2025-03-30 05:16:39',
+                'created_at' => '2025-03-29 23:16:39',
+                'updated_at' => '2025-03-29 23:16:39',
             ),
             154 => 
             array (
@@ -4201,8 +4201,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 05:19:14',
-                'updated_at' => '2025-03-30 05:19:14',
+                'created_at' => '2025-03-29 23:19:14',
+                'updated_at' => '2025-03-29 23:19:14',
             ),
             155 => 
             array (
@@ -4228,8 +4228,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 06:08:27',
-                'updated_at' => '2025-03-30 06:08:27',
+                'created_at' => '2025-03-30 00:08:27',
+                'updated_at' => '2025-03-30 00:08:27',
             ),
             156 => 
             array (
@@ -4255,8 +4255,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 18:35:54',
-                'updated_at' => '2025-03-30 18:35:54',
+                'created_at' => '2025-03-30 12:35:54',
+                'updated_at' => '2025-03-30 12:35:54',
             ),
             157 => 
             array (
@@ -4282,8 +4282,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 18:45:33',
-                'updated_at' => '2025-03-30 18:45:33',
+                'created_at' => '2025-03-30 12:45:33',
+                'updated_at' => '2025-03-30 12:45:33',
             ),
             158 => 
             array (
@@ -4309,8 +4309,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 20:11:12',
-                'updated_at' => '2025-03-30 20:11:12',
+                'created_at' => '2025-03-30 14:11:12',
+                'updated_at' => '2025-03-30 14:11:12',
             ),
             159 => 
             array (
@@ -4336,8 +4336,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 20:22:36',
-                'updated_at' => '2025-03-30 20:22:36',
+                'created_at' => '2025-03-30 14:22:36',
+                'updated_at' => '2025-03-30 14:22:36',
             ),
             160 => 
             array (
@@ -4363,8 +4363,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-30 22:33:21',
-                'updated_at' => '2025-03-30 22:33:21',
+                'created_at' => '2025-03-30 16:33:21',
+                'updated_at' => '2025-03-30 16:33:21',
             ),
             161 => 
             array (
@@ -4390,8 +4390,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-31 01:02:41',
-                'updated_at' => '2025-03-31 01:02:41',
+                'created_at' => '2025-03-30 19:02:41',
+                'updated_at' => '2025-03-30 19:02:41',
             ),
             162 => 
             array (
@@ -4417,8 +4417,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-31 02:41:29',
-                'updated_at' => '2025-03-31 02:41:29',
+                'created_at' => '2025-03-30 20:41:29',
+                'updated_at' => '2025-03-30 20:41:29',
             ),
             163 => 
             array (
@@ -4444,8 +4444,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-31 02:51:18',
-                'updated_at' => '2025-03-31 02:51:18',
+                'created_at' => '2025-03-30 20:51:18',
+                'updated_at' => '2025-03-30 20:51:18',
             ),
             164 => 
             array (
@@ -4471,8 +4471,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-31 06:36:55',
-                'updated_at' => '2025-03-31 06:36:55',
+                'created_at' => '2025-03-31 00:36:55',
+                'updated_at' => '2025-03-31 00:36:55',
             ),
             165 => 
             array (
@@ -4498,8 +4498,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-31 06:54:54',
-                'updated_at' => '2025-03-31 06:54:54',
+                'created_at' => '2025-03-31 00:54:54',
+                'updated_at' => '2025-03-31 00:54:54',
             ),
             166 => 
             array (
@@ -4525,8 +4525,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-31 07:50:04',
-                'updated_at' => '2025-03-31 07:50:04',
+                'created_at' => '2025-03-31 01:50:04',
+                'updated_at' => '2025-03-31 01:50:04',
             ),
             167 => 
             array (
@@ -4552,8 +4552,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-03-31 09:18:10',
-                'updated_at' => '2025-03-31 09:18:10',
+                'created_at' => '2025-03-31 03:18:10',
+                'updated_at' => '2025-03-31 03:18:10',
             ),
             168 => 
             array (
@@ -4579,8 +4579,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-02 18:49:04',
-                'updated_at' => '2025-04-02 18:49:04',
+                'created_at' => '2025-04-02 12:49:04',
+                'updated_at' => '2025-04-02 12:49:04',
             ),
             169 => 
             array (
@@ -4606,8 +4606,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-02 19:07:34',
-                'updated_at' => '2025-04-02 19:07:34',
+                'created_at' => '2025-04-02 13:07:34',
+                'updated_at' => '2025-04-02 13:07:34',
             ),
             170 => 
             array (
@@ -4633,8 +4633,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-02 19:08:05',
-                'updated_at' => '2025-04-02 19:08:05',
+                'created_at' => '2025-04-02 13:08:05',
+                'updated_at' => '2025-04-02 13:08:05',
             ),
             171 => 
             array (
@@ -4660,8 +4660,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-02 21:29:37',
-                'updated_at' => '2025-04-02 21:29:37',
+                'created_at' => '2025-04-02 15:29:37',
+                'updated_at' => '2025-04-02 15:29:37',
             ),
             172 => 
             array (
@@ -4687,8 +4687,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-02 23:51:13',
-                'updated_at' => '2025-04-02 23:51:13',
+                'created_at' => '2025-04-02 17:51:13',
+                'updated_at' => '2025-04-02 17:51:13',
             ),
             173 => 
             array (
@@ -4714,8 +4714,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-03 21:10:12',
-                'updated_at' => '2025-04-03 21:10:12',
+                'created_at' => '2025-04-03 15:10:12',
+                'updated_at' => '2025-04-03 15:10:12',
             ),
             174 => 
             array (
@@ -4741,8 +4741,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-05 22:53:07',
-                'updated_at' => '2025-04-05 22:53:07',
+                'created_at' => '2025-04-05 16:53:07',
+                'updated_at' => '2025-04-05 16:53:07',
             ),
             175 => 
             array (
@@ -4768,8 +4768,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-08 23:40:35',
-                'updated_at' => '2025-04-08 23:40:35',
+                'created_at' => '2025-04-08 17:40:35',
+                'updated_at' => '2025-04-08 17:40:35',
             ),
             176 => 
             array (
@@ -4795,8 +4795,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-13 02:19:06',
-                'updated_at' => '2025-04-13 02:19:06',
+                'created_at' => '2025-04-12 20:19:06',
+                'updated_at' => '2025-04-12 20:19:06',
             ),
             177 => 
             array (
@@ -4822,8 +4822,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-15 01:31:44',
-                'updated_at' => '2025-04-15 01:31:44',
+                'created_at' => '2025-04-14 19:31:44',
+                'updated_at' => '2025-04-14 19:31:44',
             ),
             178 => 
             array (
@@ -4849,8 +4849,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-15 03:03:33',
-                'updated_at' => '2025-04-15 03:03:33',
+                'created_at' => '2025-04-14 21:03:33',
+                'updated_at' => '2025-04-14 21:03:33',
             ),
             179 => 
             array (
@@ -4876,8 +4876,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-15 03:30:23',
-                'updated_at' => '2025-04-15 03:30:23',
+                'created_at' => '2025-04-14 21:30:23',
+                'updated_at' => '2025-04-14 21:30:23',
             ),
             180 => 
             array (
@@ -4903,8 +4903,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-16 01:40:11',
-                'updated_at' => '2025-04-16 01:40:11',
+                'created_at' => '2025-04-15 19:40:11',
+                'updated_at' => '2025-04-15 19:40:11',
             ),
             181 => 
             array (
@@ -4930,8 +4930,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-17 01:46:52',
-                'updated_at' => '2025-04-17 01:46:52',
+                'created_at' => '2025-04-16 19:46:52',
+                'updated_at' => '2025-04-16 19:46:52',
             ),
             182 => 
             array (
@@ -4957,8 +4957,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-20 00:08:22',
-                'updated_at' => '2025-04-20 00:08:22',
+                'created_at' => '2025-04-19 18:08:22',
+                'updated_at' => '2025-04-19 18:08:22',
             ),
             183 => 
             array (
@@ -4984,8 +4984,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-21 23:03:10',
-                'updated_at' => '2025-04-21 23:03:10',
+                'created_at' => '2025-04-21 17:03:10',
+                'updated_at' => '2025-04-21 17:03:10',
             ),
             184 => 
             array (
@@ -5011,8 +5011,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-27 18:50:30',
-                'updated_at' => '2025-04-27 18:50:30',
+                'created_at' => '2025-04-27 12:50:30',
+                'updated_at' => '2025-04-27 12:50:30',
             ),
             185 => 
             array (
@@ -5038,8 +5038,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-27 23:57:21',
-                'updated_at' => '2025-04-27 23:57:21',
+                'created_at' => '2025-04-27 17:57:21',
+                'updated_at' => '2025-04-27 17:57:21',
             ),
             186 => 
             array (
@@ -5065,8 +5065,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-28 22:37:05',
-                'updated_at' => '2025-04-28 22:37:05',
+                'created_at' => '2025-04-28 16:37:05',
+                'updated_at' => '2025-04-28 16:37:05',
             ),
             187 => 
             array (
@@ -5092,8 +5092,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-04-30 00:32:48',
-                'updated_at' => '2025-04-30 00:32:48',
+                'created_at' => '2025-04-29 18:32:48',
+                'updated_at' => '2025-04-29 18:32:48',
             ),
             188 => 
             array (
@@ -5119,8 +5119,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-01 20:55:50',
-                'updated_at' => '2025-05-01 20:55:50',
+                'created_at' => '2025-05-01 14:55:50',
+                'updated_at' => '2025-05-01 14:55:50',
             ),
             189 => 
             array (
@@ -5146,8 +5146,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-03 18:35:47',
-                'updated_at' => '2025-05-03 18:35:47',
+                'created_at' => '2025-05-03 12:35:47',
+                'updated_at' => '2025-05-03 12:35:47',
             ),
             190 => 
             array (
@@ -5173,8 +5173,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-03 19:09:08',
-                'updated_at' => '2025-05-03 19:09:08',
+                'created_at' => '2025-05-03 13:09:08',
+                'updated_at' => '2025-05-03 13:09:08',
             ),
             191 => 
             array (
@@ -5200,8 +5200,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-06 21:45:02',
-                'updated_at' => '2025-05-06 21:45:02',
+                'created_at' => '2025-05-06 15:45:02',
+                'updated_at' => '2025-05-06 15:45:02',
             ),
             192 => 
             array (
@@ -5227,8 +5227,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-06 21:47:54',
-                'updated_at' => '2025-05-06 21:47:54',
+                'created_at' => '2025-05-06 15:47:54',
+                'updated_at' => '2025-05-06 15:47:54',
             ),
             193 => 
             array (
@@ -5254,8 +5254,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-06 21:51:36',
-                'updated_at' => '2025-05-06 21:51:36',
+                'created_at' => '2025-05-06 15:51:36',
+                'updated_at' => '2025-05-06 15:51:36',
             ),
             194 => 
             array (
@@ -5281,8 +5281,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-07 17:38:08',
-                'updated_at' => '2025-05-07 17:38:08',
+                'created_at' => '2025-05-07 11:38:08',
+                'updated_at' => '2025-05-07 11:38:08',
             ),
             195 => 
             array (
@@ -5308,8 +5308,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-11 12:07:33',
-                'updated_at' => '2025-05-11 12:07:33',
+                'created_at' => '2025-05-11 06:07:33',
+                'updated_at' => '2025-05-11 06:07:33',
             ),
             196 => 
             array (
@@ -5335,8 +5335,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-11 18:27:02',
-                'updated_at' => '2025-05-11 18:27:02',
+                'created_at' => '2025-05-11 12:27:02',
+                'updated_at' => '2025-05-11 12:27:02',
             ),
             197 => 
             array (
@@ -5362,8 +5362,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-15 17:29:52',
-                'updated_at' => '2025-05-15 17:29:52',
+                'created_at' => '2025-05-15 11:29:52',
+                'updated_at' => '2025-05-15 11:29:52',
             ),
             198 => 
             array (
@@ -5389,8 +5389,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-19 14:06:09',
-                'updated_at' => '2025-05-19 14:06:09',
+                'created_at' => '2025-05-19 08:06:09',
+                'updated_at' => '2025-05-19 08:06:09',
             ),
             199 => 
             array (
@@ -5416,8 +5416,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-26 12:01:23',
-                'updated_at' => '2025-05-26 12:01:23',
+                'created_at' => '2025-05-26 06:01:23',
+                'updated_at' => '2025-05-26 06:01:23',
             ),
             200 => 
             array (
@@ -5443,8 +5443,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-26 14:50:03',
-                'updated_at' => '2025-05-26 14:50:03',
+                'created_at' => '2025-05-26 08:50:03',
+                'updated_at' => '2025-05-26 08:50:03',
             ),
             201 => 
             array (
@@ -5470,8 +5470,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-05-29 18:11:06',
-                'updated_at' => '2025-05-29 18:11:06',
+                'created_at' => '2025-05-29 12:11:06',
+                'updated_at' => '2025-05-29 12:11:06',
             ),
             202 => 
             array (
@@ -5497,8 +5497,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-01 19:22:58',
-                'updated_at' => '2025-06-01 19:22:58',
+                'created_at' => '2025-06-01 13:22:58',
+                'updated_at' => '2025-06-01 13:22:58',
             ),
             203 => 
             array (
@@ -5524,8 +5524,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-01 22:43:04',
-                'updated_at' => '2025-06-01 22:43:04',
+                'created_at' => '2025-06-01 16:43:04',
+                'updated_at' => '2025-06-01 16:43:04',
             ),
             204 => 
             array (
@@ -5551,8 +5551,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-03 17:00:57',
-                'updated_at' => '2025-06-03 17:00:57',
+                'created_at' => '2025-06-03 11:00:57',
+                'updated_at' => '2025-06-03 11:00:57',
             ),
             205 => 
             array (
@@ -5578,8 +5578,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-04 12:22:51',
-                'updated_at' => '2025-06-04 12:22:51',
+                'created_at' => '2025-06-04 06:22:51',
+                'updated_at' => '2025-06-04 06:22:51',
             ),
             206 => 
             array (
@@ -5605,8 +5605,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-04 15:08:12',
-                'updated_at' => '2025-06-04 15:08:12',
+                'created_at' => '2025-06-04 09:08:12',
+                'updated_at' => '2025-06-04 09:08:12',
             ),
             207 => 
             array (
@@ -5632,8 +5632,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-05 17:02:12',
-                'updated_at' => '2025-06-05 17:02:12',
+                'created_at' => '2025-06-05 11:02:12',
+                'updated_at' => '2025-06-05 11:02:12',
             ),
             208 => 
             array (
@@ -5659,8 +5659,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-05 19:43:45',
-                'updated_at' => '2025-06-05 19:43:45',
+                'created_at' => '2025-06-05 13:43:45',
+                'updated_at' => '2025-06-05 13:43:45',
             ),
             209 => 
             array (
@@ -5686,8 +5686,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-06 16:11:26',
-                'updated_at' => '2025-06-06 16:11:26',
+                'created_at' => '2025-06-06 10:11:26',
+                'updated_at' => '2025-06-06 10:11:26',
             ),
             210 => 
             array (
@@ -5713,8 +5713,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-06 17:25:25',
-                'updated_at' => '2025-06-06 17:25:25',
+                'created_at' => '2025-06-06 11:25:25',
+                'updated_at' => '2025-06-06 11:25:25',
             ),
             211 => 
             array (
@@ -5740,8 +5740,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-09 17:05:51',
-                'updated_at' => '2025-06-09 17:05:51',
+                'created_at' => '2025-06-09 11:05:51',
+                'updated_at' => '2025-06-09 11:05:51',
             ),
             212 => 
             array (
@@ -5767,8 +5767,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-10 17:35:12',
-                'updated_at' => '2025-06-10 17:35:12',
+                'created_at' => '2025-06-10 11:35:12',
+                'updated_at' => '2025-06-10 11:35:12',
             ),
             213 => 
             array (
@@ -5794,8 +5794,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-11 12:01:48',
-                'updated_at' => '2025-06-11 12:01:48',
+                'created_at' => '2025-06-11 06:01:48',
+                'updated_at' => '2025-06-11 06:01:48',
             ),
             214 => 
             array (
@@ -5821,8 +5821,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-11 18:41:42',
-                'updated_at' => '2025-06-11 18:41:42',
+                'created_at' => '2025-06-11 12:41:42',
+                'updated_at' => '2025-06-11 12:41:42',
             ),
             215 => 
             array (
@@ -5848,8 +5848,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-15 21:00:33',
-                'updated_at' => '2025-06-15 21:00:33',
+                'created_at' => '2025-06-15 15:00:33',
+                'updated_at' => '2025-06-15 15:00:33',
             ),
             216 => 
             array (
@@ -5875,8 +5875,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-23 20:02:07',
-                'updated_at' => '2025-06-23 20:02:07',
+                'created_at' => '2025-06-23 14:02:07',
+                'updated_at' => '2025-06-23 14:02:07',
             ),
             217 => 
             array (
@@ -5902,8 +5902,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-06-29 14:04:42',
-                'updated_at' => '2025-06-29 14:04:42',
+                'created_at' => '2025-06-29 08:04:42',
+                'updated_at' => '2025-06-29 08:04:42',
             ),
             218 => 
             array (
@@ -5929,8 +5929,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-02 11:20:13',
-                'updated_at' => '2025-07-02 11:20:13',
+                'created_at' => '2025-07-02 05:20:13',
+                'updated_at' => '2025-07-02 05:20:13',
             ),
             219 => 
             array (
@@ -5956,8 +5956,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-05 20:28:18',
-                'updated_at' => '2025-07-05 20:28:18',
+                'created_at' => '2025-07-05 14:28:18',
+                'updated_at' => '2025-07-05 14:28:18',
             ),
             220 => 
             array (
@@ -5983,8 +5983,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-12 21:47:57',
-                'updated_at' => '2025-07-12 21:47:57',
+                'created_at' => '2025-07-12 15:47:57',
+                'updated_at' => '2025-07-12 15:47:57',
             ),
             221 => 
             array (
@@ -6010,8 +6010,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-12 21:49:49',
-                'updated_at' => '2025-07-12 21:49:49',
+                'created_at' => '2025-07-12 15:49:49',
+                'updated_at' => '2025-07-12 15:49:49',
             ),
             222 => 
             array (
@@ -6037,8 +6037,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-20 20:25:02',
-                'updated_at' => '2025-07-20 20:25:02',
+                'created_at' => '2025-07-20 14:25:02',
+                'updated_at' => '2025-07-20 14:25:02',
             ),
             223 => 
             array (
@@ -6064,8 +6064,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-21 20:24:47',
-                'updated_at' => '2025-07-21 20:24:47',
+                'created_at' => '2025-07-21 14:24:47',
+                'updated_at' => '2025-07-21 14:24:47',
             ),
             224 => 
             array (
@@ -6091,8 +6091,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-26 15:51:13',
-                'updated_at' => '2025-07-26 15:51:13',
+                'created_at' => '2025-07-26 09:51:13',
+                'updated_at' => '2025-07-26 09:51:13',
             ),
             225 => 
             array (
@@ -6118,8 +6118,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-28 21:38:18',
-                'updated_at' => '2025-07-28 21:38:18',
+                'created_at' => '2025-07-28 15:38:18',
+                'updated_at' => '2025-07-28 15:38:18',
             ),
             226 => 
             array (
@@ -6145,8 +6145,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-07-30 20:45:34',
-                'updated_at' => '2025-07-30 20:45:34',
+                'created_at' => '2025-07-30 14:45:34',
+                'updated_at' => '2025-07-30 14:45:34',
             ),
             227 => 
             array (
@@ -6172,8 +6172,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-08-09 19:53:10',
-                'updated_at' => '2025-08-09 19:53:10',
+                'created_at' => '2025-08-09 13:53:10',
+                'updated_at' => '2025-08-09 13:53:10',
             ),
             228 => 
             array (
@@ -6199,8 +6199,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-08-13 22:04:35',
-                'updated_at' => '2025-08-13 22:04:35',
+                'created_at' => '2025-08-13 16:04:35',
+                'updated_at' => '2025-08-13 16:04:35',
             ),
             229 => 
             array (
@@ -6226,8 +6226,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-08-24 17:07:55',
-                'updated_at' => '2025-08-24 17:07:55',
+                'created_at' => '2025-08-24 11:07:55',
+                'updated_at' => '2025-08-24 11:07:55',
             ),
             230 => 
             array (
@@ -6253,8 +6253,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-08-27 16:59:00',
-                'updated_at' => '2025-08-27 16:59:00',
+                'created_at' => '2025-08-27 10:59:00',
+                'updated_at' => '2025-08-27 10:59:00',
             ),
             231 => 
             array (
@@ -6280,8 +6280,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-02 18:07:34',
-                'updated_at' => '2025-09-02 18:07:34',
+                'created_at' => '2025-09-02 12:07:34',
+                'updated_at' => '2025-09-02 12:07:34',
             ),
             232 => 
             array (
@@ -6307,8 +6307,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-03 18:41:21',
-                'updated_at' => '2025-09-03 18:41:21',
+                'created_at' => '2025-09-03 12:41:21',
+                'updated_at' => '2025-09-03 12:41:21',
             ),
             233 => 
             array (
@@ -6334,8 +6334,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-08 17:45:42',
-                'updated_at' => '2025-09-08 17:45:42',
+                'created_at' => '2025-09-08 11:45:42',
+                'updated_at' => '2025-09-08 11:45:42',
             ),
             234 => 
             array (
@@ -6361,8 +6361,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-08 18:30:13',
-                'updated_at' => '2025-09-08 18:30:13',
+                'created_at' => '2025-09-08 12:30:13',
+                'updated_at' => '2025-09-08 12:30:13',
             ),
             235 => 
             array (
@@ -6388,8 +6388,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-15 21:31:27',
-                'updated_at' => '2025-09-15 21:31:27',
+                'created_at' => '2025-09-15 15:31:27',
+                'updated_at' => '2025-09-15 15:31:27',
             ),
             236 => 
             array (
@@ -6415,8 +6415,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-16 15:27:49',
-                'updated_at' => '2025-09-16 15:27:49',
+                'created_at' => '2025-09-16 09:27:49',
+                'updated_at' => '2025-09-16 09:27:49',
             ),
             237 => 
             array (
@@ -6442,8 +6442,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-18 19:13:30',
-                'updated_at' => '2025-09-18 19:13:30',
+                'created_at' => '2025-09-18 13:13:30',
+                'updated_at' => '2025-09-18 13:13:30',
             ),
             238 => 
             array (
@@ -6469,8 +6469,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-19 19:04:01',
-                'updated_at' => '2025-09-19 19:04:01',
+                'created_at' => '2025-09-19 13:04:01',
+                'updated_at' => '2025-09-19 13:04:01',
             ),
             239 => 
             array (
@@ -6496,8 +6496,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-21 18:10:15',
-                'updated_at' => '2025-09-21 18:10:15',
+                'created_at' => '2025-09-21 12:10:15',
+                'updated_at' => '2025-09-21 12:10:15',
             ),
             240 => 
             array (
@@ -6523,8 +6523,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-23 14:29:00',
-                'updated_at' => '2025-09-23 14:29:00',
+                'created_at' => '2025-09-23 08:29:00',
+                'updated_at' => '2025-09-23 08:29:00',
             ),
             241 => 
             array (
@@ -6550,8 +6550,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-24 15:20:03',
-                'updated_at' => '2025-09-24 15:20:03',
+                'created_at' => '2025-09-24 09:20:03',
+                'updated_at' => '2025-09-24 09:20:03',
             ),
             242 => 
             array (
@@ -6577,8 +6577,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-24 21:49:34',
-                'updated_at' => '2025-09-24 21:49:34',
+                'created_at' => '2025-09-24 15:49:34',
+                'updated_at' => '2025-09-24 15:49:34',
             ),
             243 => 
             array (
@@ -6604,8 +6604,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-27 17:49:23',
-                'updated_at' => '2025-09-27 17:49:23',
+                'created_at' => '2025-09-27 11:49:23',
+                'updated_at' => '2025-09-27 11:49:23',
             ),
             244 => 
             array (
@@ -6631,8 +6631,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-27 19:25:00',
-                'updated_at' => '2025-09-27 19:25:00',
+                'created_at' => '2025-09-27 13:25:00',
+                'updated_at' => '2025-09-27 13:25:00',
             ),
             245 => 
             array (
@@ -6658,8 +6658,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-27 20:05:16',
-                'updated_at' => '2025-09-27 20:05:16',
+                'created_at' => '2025-09-27 14:05:16',
+                'updated_at' => '2025-09-27 14:05:16',
             ),
             246 => 
             array (
@@ -6685,8 +6685,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-28 16:52:14',
-                'updated_at' => '2025-09-28 16:52:14',
+                'created_at' => '2025-09-28 10:52:14',
+                'updated_at' => '2025-09-28 10:52:14',
             ),
             247 => 
             array (
@@ -6712,8 +6712,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-29 21:05:28',
-                'updated_at' => '2025-09-29 21:05:28',
+                'created_at' => '2025-09-29 15:05:28',
+                'updated_at' => '2025-09-29 15:05:28',
             ),
             248 => 
             array (
@@ -6739,8 +6739,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-29 21:05:38',
-                'updated_at' => '2025-09-29 21:05:38',
+                'created_at' => '2025-09-29 15:05:38',
+                'updated_at' => '2025-09-29 15:05:38',
             ),
             249 => 
             array (
@@ -6766,8 +6766,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-09-29 21:24:15',
-                'updated_at' => '2025-09-29 21:24:15',
+                'created_at' => '2025-09-29 15:24:15',
+                'updated_at' => '2025-09-29 15:24:15',
             ),
             250 => 
             array (
@@ -6793,8 +6793,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-05 17:50:09',
-                'updated_at' => '2025-10-05 17:50:09',
+                'created_at' => '2025-10-05 11:50:09',
+                'updated_at' => '2025-10-05 11:50:09',
             ),
             251 => 
             array (
@@ -6820,8 +6820,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-06 13:07:39',
-                'updated_at' => '2025-10-06 13:07:39',
+                'created_at' => '2025-10-06 07:07:39',
+                'updated_at' => '2025-10-06 07:07:39',
             ),
             252 => 
             array (
@@ -6847,8 +6847,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-10-12 18:41:55',
-                'updated_at' => '2025-10-12 18:41:55',
+                'created_at' => '2025-10-12 12:41:55',
+                'updated_at' => '2025-10-12 12:41:55',
             ),
             253 => 
             array (
@@ -6874,8 +6874,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-11-05 17:54:10',
-                'updated_at' => '2025-11-05 17:54:10',
+                'created_at' => '2025-11-05 11:54:10',
+                'updated_at' => '2025-11-05 11:54:10',
             ),
             254 => 
             array (
@@ -6901,8 +6901,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-11-09 16:57:27',
-                'updated_at' => '2025-11-09 16:57:27',
+                'created_at' => '2025-11-09 10:57:27',
+                'updated_at' => '2025-11-09 10:57:27',
             ),
             255 => 
             array (
@@ -6928,8 +6928,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-11-18 15:03:16',
-                'updated_at' => '2025-11-18 15:03:16',
+                'created_at' => '2025-11-18 09:03:16',
+                'updated_at' => '2025-11-18 09:03:16',
             ),
             256 => 
             array (
@@ -6955,8 +6955,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-11-18 15:46:58',
-                'updated_at' => '2025-11-18 15:46:58',
+                'created_at' => '2025-11-18 09:46:58',
+                'updated_at' => '2025-11-18 09:46:58',
             ),
             257 => 
             array (
@@ -6982,8 +6982,8 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-11-18 16:44:19',
-                'updated_at' => '2025-11-18 16:44:19',
+                'created_at' => '2025-11-18 10:44:19',
+                'updated_at' => '2025-11-18 10:44:19',
             ),
             258 => 
             array (
@@ -7009,8 +7009,845 @@ class ReturnsTableSeeder extends Seeder
                 'document' => NULL,
                 'return_note' => NULL,
                 'staff_note' => NULL,
-                'created_at' => '2025-11-18 16:44:41',
-                'updated_at' => '2025-11-18 16:44:41',
+                'created_at' => '2025-11-18 10:44:41',
+                'updated_at' => '2025-11-18 10:44:41',
+            ),
+            259 => 
+            array (
+                'id' => 270,
+                'reference_no' => 'rr-20251125-071939',
+                'user_id' => 12,
+                'sale_id' => 5584,
+                'cash_register_id' => NULL,
+                'customer_id' => 4341,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1790.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1790.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-11-25 19:19:39',
+                'updated_at' => '2025-11-25 19:19:39',
+            ),
+            260 => 
+            array (
+                'id' => 271,
+                'reference_no' => 'rr-20251208-072823',
+                'user_id' => 12,
+                'sale_id' => 716,
+                'cash_register_id' => NULL,
+                'customer_id' => 385,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1050.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1050.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-08 19:28:23',
+                'updated_at' => '2025-12-08 19:28:23',
+            ),
+            261 => 
+            array (
+                'id' => 272,
+                'reference_no' => 'rr-20251208-074226',
+                'user_id' => 12,
+                'sale_id' => 5824,
+                'cash_register_id' => NULL,
+                'customer_id' => 4549,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 2050.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1230.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-08 19:42:26',
+                'updated_at' => '2025-12-08 19:42:26',
+            ),
+            262 => 
+            array (
+                'id' => 273,
+                'reference_no' => 'rr-20251211-062353',
+                'user_id' => 12,
+                'sale_id' => 5861,
+                'cash_register_id' => NULL,
+                'customer_id' => 2598,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1495.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1495.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-11 18:23:53',
+                'updated_at' => '2025-12-11 18:23:53',
+            ),
+            263 => 
+            array (
+                'id' => 274,
+                'reference_no' => 'rr-20251211-065934',
+                'user_id' => 12,
+                'sale_id' => 4875,
+                'cash_register_id' => NULL,
+                'customer_id' => 3787,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 795.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 795.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-11 18:59:34',
+                'updated_at' => '2025-12-11 18:59:34',
+            ),
+            264 => 
+            array (
+                'id' => 275,
+                'reference_no' => 'rr-20251211-112908',
+                'user_id' => 12,
+                'sale_id' => 5842,
+                'cash_register_id' => NULL,
+                'customer_id' => 4564,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 795.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 795.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-11 23:29:08',
+                'updated_at' => '2025-12-11 23:29:08',
+            ),
+            265 => 
+            array (
+                'id' => 276,
+                'reference_no' => 'rr-20251213-035313',
+                'user_id' => 12,
+                'sale_id' => 5753,
+                'cash_register_id' => NULL,
+                'customer_id' => 4490,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1595.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1595.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-13 15:53:13',
+                'updated_at' => '2025-12-13 15:53:13',
+            ),
+            266 => 
+            array (
+                'id' => 277,
+                'reference_no' => 'rr-20251214-054328',
+                'user_id' => 12,
+                'sale_id' => 5942,
+                'cash_register_id' => NULL,
+                'customer_id' => 4648,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 595.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 595.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-14 17:43:28',
+                'updated_at' => '2025-12-14 17:43:28',
+            ),
+            267 => 
+            array (
+                'id' => 278,
+                'reference_no' => 'rr-20251216-060855',
+                'user_id' => 12,
+                'sale_id' => 5964,
+                'cash_register_id' => NULL,
+                'customer_id' => 4663,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1395.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1395.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-16 18:08:55',
+                'updated_at' => '2025-12-16 18:08:55',
+            ),
+            268 => 
+            array (
+                'id' => 279,
+                'reference_no' => 'rr-20251217-045951',
+                'user_id' => 12,
+                'sale_id' => 5423,
+                'cash_register_id' => NULL,
+                'customer_id' => 4209,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1395.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1395.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-17 16:59:51',
+                'updated_at' => '2025-12-17 16:59:51',
+            ),
+            269 => 
+            array (
+                'id' => 280,
+                'reference_no' => 'rr-20251224-015345',
+                'user_id' => 12,
+                'sale_id' => 6114,
+                'cash_register_id' => NULL,
+                'customer_id' => 4780,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1055.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 840.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-24 13:53:45',
+                'updated_at' => '2025-12-24 13:53:45',
+            ),
+            270 => 
+            array (
+                'id' => 281,
+                'reference_no' => 'rr-20251224-015605',
+                'user_id' => 12,
+                'sale_id' => 6113,
+                'cash_register_id' => NULL,
+                'customer_id' => 4780,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1055.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 840.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-24 13:56:05',
+                'updated_at' => '2025-12-24 13:56:05',
+            ),
+            271 => 
+            array (
+                'id' => 282,
+                'reference_no' => 'rr-20251225-090720',
+                'user_id' => 12,
+                'sale_id' => 6145,
+                'cash_register_id' => NULL,
+                'customer_id' => 4806,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1790.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 815.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-25 21:07:20',
+                'updated_at' => '2025-12-25 21:07:20',
+            ),
+            272 => 
+            array (
+                'id' => 283,
+                'reference_no' => 'rr-20251227-040119',
+                'user_id' => 12,
+                'sale_id' => 6131,
+                'cash_register_id' => NULL,
+                'customer_id' => 3008,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 790.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 790.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2025-12-27 16:01:19',
+                'updated_at' => '2025-12-27 16:01:19',
+            ),
+            273 => 
+            array (
+                'id' => 284,
+                'reference_no' => 'rr-20260102-083424',
+                'user_id' => 12,
+                'sale_id' => 6280,
+                'cash_register_id' => NULL,
+                'customer_id' => 920,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 795.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 795.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-02 20:34:24',
+                'updated_at' => '2026-01-02 20:34:24',
+            ),
+            274 => 
+            array (
+                'id' => 285,
+                'reference_no' => 'rr-20260104-040126',
+                'user_id' => 12,
+                'sale_id' => 6281,
+                'cash_register_id' => NULL,
+                'customer_id' => 4909,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 690.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 690.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-04 16:01:26',
+                'updated_at' => '2026-01-04 16:01:26',
+            ),
+            275 => 
+            array (
+                'id' => 286,
+                'reference_no' => 'rr-20260108-093214',
+                'user_id' => 12,
+                'sale_id' => 6364,
+                'cash_register_id' => NULL,
+                'customer_id' => 4984,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1890.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1890.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-08 21:32:14',
+                'updated_at' => '2026-01-08 21:32:14',
+            ),
+            276 => 
+            array (
+                'id' => 287,
+                'reference_no' => 'rr-20260108-094945',
+                'user_id' => 12,
+                'sale_id' => 6368,
+                'cash_register_id' => NULL,
+                'customer_id' => 4986,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1250.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 875.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-08 21:49:45',
+                'updated_at' => '2026-01-08 21:49:45',
+            ),
+            277 => 
+            array (
+                'id' => 288,
+                'reference_no' => 'rr-20260110-073528',
+                'user_id' => 12,
+                'sale_id' => 6313,
+                'cash_register_id' => NULL,
+                'customer_id' => 4940,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 850.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 850.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-10 19:35:28',
+                'updated_at' => '2026-01-10 19:35:28',
+            ),
+            278 => 
+            array (
+                'id' => 289,
+                'reference_no' => 'rr-20260121-013825',
+                'user_id' => 12,
+                'sale_id' => 6447,
+                'cash_register_id' => NULL,
+                'customer_id' => 5054,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 850.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 850.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-21 13:38:25',
+                'updated_at' => '2026-01-21 13:38:25',
+            ),
+            279 => 
+            array (
+                'id' => 290,
+                'reference_no' => 'rr-20260122-101132',
+                'user_id' => 12,
+                'sale_id' => 6503,
+                'cash_register_id' => NULL,
+                'customer_id' => 2680,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1890.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1605.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-22 22:11:32',
+                'updated_at' => '2026-01-22 22:11:32',
+            ),
+            280 => 
+            array (
+                'id' => 291,
+                'reference_no' => 'rr-20260125-023407',
+                'user_id' => 12,
+                'sale_id' => 6505,
+                'cash_register_id' => NULL,
+                'customer_id' => 5054,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 695.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 695.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-25 14:34:07',
+                'updated_at' => '2026-01-25 14:34:07',
+            ),
+            281 => 
+            array (
+                'id' => 292,
+                'reference_no' => 'rr-20260129-064444',
+                'user_id' => 12,
+                'sale_id' => 6386,
+                'cash_register_id' => NULL,
+                'customer_id' => 3473,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 955.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 955.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-29 18:44:44',
+                'updated_at' => '2026-01-29 18:44:44',
+            ),
+            282 => 
+            array (
+                'id' => 293,
+                'reference_no' => 'rr-20260131-071259',
+                'user_id' => 12,
+                'sale_id' => 6565,
+                'cash_register_id' => NULL,
+                'customer_id' => 5144,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 895.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 895.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-01-31 19:12:59',
+                'updated_at' => '2026-01-31 19:12:59',
+            ),
+            283 => 
+            array (
+                'id' => 294,
+                'reference_no' => 'rr-20260207-080829',
+                'user_id' => 12,
+                'sale_id' => 6394,
+                'cash_register_id' => NULL,
+                'customer_id' => 5007,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1595.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1275.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-07 20:08:29',
+                'updated_at' => '2026-02-07 20:08:29',
+            ),
+            284 => 
+            array (
+                'id' => 295,
+                'reference_no' => 'rr-20260210-014346',
+                'user_id' => 12,
+                'sale_id' => 6661,
+                'cash_register_id' => NULL,
+                'customer_id' => 1,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1350.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1350.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-10 13:43:46',
+                'updated_at' => '2026-02-10 13:43:46',
+            ),
+            285 => 
+            array (
+                'id' => 296,
+                'reference_no' => 'rr-20260214-120124',
+                'user_id' => 12,
+                'sale_id' => 6662,
+                'cash_register_id' => NULL,
+                'customer_id' => 5213,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1290.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1290.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-14 12:01:24',
+                'updated_at' => '2026-02-14 12:01:24',
+            ),
+            286 => 
+            array (
+                'id' => 297,
+                'reference_no' => 'rr-20260217-123558',
+                'user_id' => 12,
+                'sale_id' => 6664,
+                'cash_register_id' => NULL,
+                'customer_id' => 834,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 795.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 795.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-17 12:35:58',
+                'updated_at' => '2026-02-17 12:35:58',
+            ),
+            287 => 
+            array (
+                'id' => 298,
+                'reference_no' => 'rr-20260218-115358',
+                'user_id' => 12,
+                'sale_id' => 6717,
+                'cash_register_id' => NULL,
+                'customer_id' => 5259,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 795.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 795.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-18 11:53:58',
+                'updated_at' => '2026-02-18 11:53:58',
+            ),
+            288 => 
+            array (
+                'id' => 299,
+                'reference_no' => 'rr-20260218-054116',
+                'user_id' => 12,
+                'sale_id' => 6696,
+                'cash_register_id' => NULL,
+                'customer_id' => 1,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 795.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 795.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-18 17:41:16',
+                'updated_at' => '2026-02-18 17:41:16',
+            ),
+            289 => 
+            array (
+                'id' => 300,
+                'reference_no' => 'rr-20260219-063909',
+                'user_id' => 12,
+                'sale_id' => 6472,
+                'cash_register_id' => NULL,
+                'customer_id' => 5075,
+                'warehouse_id' => 1,
+                'biller_id' => 2,
+                'account_id' => 3,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 1,
+                'total_qty' => 1.0,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_price' => 1050.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'grand_total' => 1050.0,
+                'document' => NULL,
+                'return_note' => NULL,
+                'staff_note' => NULL,
+                'created_at' => '2026-02-19 18:39:09',
+                'updated_at' => '2026-02-19 18:39:09',
             ),
         ));
         

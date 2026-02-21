@@ -30,8 +30,8 @@ class ExpensesTableSeeder extends Seeder
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2024-12-27 00:00:00',
-                'updated_at' => '2024-12-27 16:56:03',
+                'created_at' => '2024-12-26 18:00:00',
+                'updated_at' => '2024-12-27 10:56:03',
             ),
             1 => 
             array (
@@ -44,8 +44,8 @@ class ExpensesTableSeeder extends Seeder
                 'cash_register_id' => 1,
                 'amount' => 1600.0,
                 'note' => 'Tiles Puting',
-                'created_at' => '2024-12-27 00:00:00',
-                'updated_at' => '2025-01-07 12:33:45',
+                'created_at' => '2024-12-26 18:00:00',
+                'updated_at' => '2025-01-07 06:33:45',
             ),
             2 => 
             array (
@@ -58,8 +58,8 @@ class ExpensesTableSeeder extends Seeder
                 'cash_register_id' => 1,
                 'amount' => 1300.0,
                 'note' => NULL,
-                'created_at' => '2024-12-27 00:00:00',
-                'updated_at' => '2024-12-27 17:00:16',
+                'created_at' => '2024-12-26 18:00:00',
+                'updated_at' => '2024-12-27 11:00:16',
             ),
             3 => 
             array (
@@ -76,8 +76,8 @@ Banner - 400
 Cloth+Rin - 100
 Supplies - 1720
 Carpet - 1850',
-                'created_at' => '2024-12-28 00:00:00',
-                'updated_at' => '2025-01-10 21:51:21',
+                'created_at' => '2024-12-27 18:00:00',
+                'updated_at' => '2025-01-10 15:51:21',
             ),
             4 => 
             array (
@@ -90,8 +90,8 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2024-12-28 00:00:00',
-                'updated_at' => '2024-12-29 05:13:44',
+                'created_at' => '2024-12-27 18:00:00',
+                'updated_at' => '2024-12-28 23:13:44',
             ),
             5 => 
             array (
@@ -104,24 +104,10 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 1300.0,
                 'note' => NULL,
-                'created_at' => '2024-12-28 00:00:00',
-                'updated_at' => '2024-12-29 05:17:39',
+                'created_at' => '2024-12-27 18:00:00',
+                'updated_at' => '2024-12-28 23:17:39',
             ),
             6 => 
-            array (
-                'id' => 10,
-                'reference_no' => 'er-20241229-051816',
-                'expense_category_id' => 9,
-                'warehouse_id' => 1,
-                'account_id' => 1,
-                'user_id' => 1,
-                'cash_register_id' => 1,
-                'amount' => 2500.0,
-                'note' => NULL,
-                'created_at' => '2024-12-28 00:00:00',
-                'updated_at' => '2024-12-29 05:18:16',
-            ),
-            7 => 
             array (
                 'id' => 11,
                 'reference_no' => 'er-20241230-044138',
@@ -132,10 +118,10 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 62.0,
                 'note' => 'Pen',
-                'created_at' => '2024-12-29 00:00:00',
-                'updated_at' => '2025-01-07 12:32:43',
+                'created_at' => '2024-12-28 18:00:00',
+                'updated_at' => '2025-01-07 06:32:43',
             ),
-            8 => 
+            7 => 
             array (
                 'id' => 12,
                 'reference_no' => 'er-20241230-044251',
@@ -146,10 +132,10 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 2200.0,
                 'note' => 'Lock',
-                'created_at' => '2024-12-29 00:00:00',
-                'updated_at' => '2025-01-07 12:32:27',
+                'created_at' => '2024-12-28 18:00:00',
+                'updated_at' => '2025-01-07 06:32:27',
             ),
-            9 => 
+            8 => 
             array (
                 'id' => 13,
                 'reference_no' => 'er-20241230-044328',
@@ -160,10 +146,10 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 1300.0,
                 'note' => NULL,
-                'created_at' => '2024-12-29 00:00:00',
-                'updated_at' => '2024-12-30 04:43:28',
+                'created_at' => '2024-12-28 18:00:00',
+                'updated_at' => '2024-12-29 22:43:28',
             ),
-            10 => 
+            9 => 
             array (
                 'id' => 14,
                 'reference_no' => 'er-20241230-045030',
@@ -174,10 +160,10 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => 'Said 4 Days, Al Amin 1 day',
-                'created_at' => '2024-12-29 00:00:00',
-                'updated_at' => '2025-01-11 01:38:37',
+                'created_at' => '2024-12-28 18:00:00',
+                'updated_at' => '2025-01-10 19:38:37',
             ),
-            11 => 
+            10 => 
             array (
                 'id' => 16,
                 'reference_no' => 'er-20241231-035822',
@@ -188,10 +174,10 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 1750.0,
                 'note' => NULL,
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2025-01-07 12:29:42',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2025-01-07 06:29:42',
             ),
-            12 => 
+            11 => 
             array (
                 'id' => 17,
                 'reference_no' => 'er-20241231-040025',
@@ -202,10 +188,10 @@ Carpet - 1850',
                 'cash_register_id' => 1,
                 'amount' => 4300.0,
                 'note' => 'Mic+Auto last day',
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2024-12-31 16:00:25',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2024-12-31 10:00:25',
             ),
-            13 => 
+            12 => 
             array (
                 'id' => 18,
                 'reference_no' => 'er-20241231-040149',
@@ -218,10 +204,10 @@ Carpet - 1850',
                 'note' => 'Carpet - 150
 Water Tap - 250
 Rod - 120',
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2025-01-10 22:28:42',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2025-01-10 16:28:42',
             ),
-            14 => 
+            13 => 
             array (
                 'id' => 19,
                 'reference_no' => 'er-20241231-040221',
@@ -232,10 +218,10 @@ Rod - 120',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2024-12-31 16:02:21',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2024-12-31 10:02:21',
             ),
-            15 => 
+            14 => 
             array (
                 'id' => 20,
                 'reference_no' => 'er-20241231-040405',
@@ -246,10 +232,10 @@ Rod - 120',
                 'cash_register_id' => 1,
                 'amount' => 140.0,
                 'note' => 'Labour',
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2025-01-07 12:30:42',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2025-01-07 06:30:42',
             ),
-            16 => 
+            15 => 
             array (
                 'id' => 21,
                 'reference_no' => 'er-20241231-040447',
@@ -260,10 +246,10 @@ Rod - 120',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2024-12-31 16:04:47',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2024-12-31 10:04:47',
             ),
-            17 => 
+            16 => 
             array (
                 'id' => 22,
                 'reference_no' => 'er-20241231-040526',
@@ -274,10 +260,10 @@ Rod - 120',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'Labour',
-                'created_at' => '2024-12-31 00:00:00',
-                'updated_at' => '2025-01-07 12:27:40',
+                'created_at' => '2024-12-30 18:00:00',
+                'updated_at' => '2025-01-07 06:27:40',
             ),
-            18 => 
+            17 => 
             array (
                 'id' => 23,
                 'reference_no' => 'er-20241231-040611',
@@ -289,10 +275,10 @@ Rod - 120',
                 'amount' => 460.0,
                 'note' => 'Chair - 400
 Socks - 60',
-                'created_at' => '2024-12-31 00:00:00',
-                'updated_at' => '2025-01-10 22:34:16',
+                'created_at' => '2024-12-30 18:00:00',
+                'updated_at' => '2025-01-10 16:34:16',
             ),
-            19 => 
+            18 => 
             array (
                 'id' => 24,
                 'reference_no' => 'er-20241231-040702',
@@ -303,10 +289,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 5200.0,
                 'note' => 'Fan',
-                'created_at' => '2024-12-31 00:00:00',
-                'updated_at' => '2025-01-07 12:28:12',
+                'created_at' => '2024-12-30 18:00:00',
+                'updated_at' => '2025-01-07 06:28:12',
             ),
-            20 => 
+            19 => 
             array (
                 'id' => 27,
                 'reference_no' => 'er-20241231-041324',
@@ -317,10 +303,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2025-01-07 12:31:58',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2025-01-07 06:31:58',
             ),
-            21 => 
+            20 => 
             array (
                 'id' => 28,
                 'reference_no' => 'er-20241231-041509',
@@ -331,10 +317,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => 'Said, Al Amin, Kurban',
-                'created_at' => '2024-12-31 00:00:00',
-                'updated_at' => '2025-01-10 22:35:29',
+                'created_at' => '2024-12-30 18:00:00',
+                'updated_at' => '2025-01-10 16:35:29',
             ),
-            22 => 
+            21 => 
             array (
                 'id' => 29,
                 'reference_no' => 'er-20241231-041705',
@@ -345,10 +331,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 1750.0,
                 'note' => 'Labour',
-                'created_at' => '2024-12-31 00:00:00',
-                'updated_at' => '2025-01-07 12:29:32',
+                'created_at' => '2024-12-30 18:00:00',
+                'updated_at' => '2025-01-07 06:29:32',
             ),
-            23 => 
+            22 => 
             array (
                 'id' => 30,
                 'reference_no' => 'er-20250101-040455',
@@ -359,10 +345,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-01 00:00:00',
-                'updated_at' => '2025-01-01 16:04:55',
+                'created_at' => '2024-12-31 18:00:00',
+                'updated_at' => '2025-01-01 10:04:55',
             ),
-            24 => 
+            23 => 
             array (
                 'id' => 31,
                 'reference_no' => 'er-20250101-040735',
@@ -373,10 +359,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 950.0,
                 'note' => 'Combined - 510, Electrician - 300, File - 120, Plug - 20',
-                'created_at' => '2025-01-01 00:00:00',
-                'updated_at' => '2025-01-10 22:38:23',
+                'created_at' => '2024-12-31 18:00:00',
+                'updated_at' => '2025-01-10 16:38:23',
             ),
-            25 => 
+            24 => 
             array (
                 'id' => 32,
                 'reference_no' => 'er-20250104-092920',
@@ -387,10 +373,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-04 21:29:20',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-04 15:29:20',
             ),
-            26 => 
+            25 => 
             array (
                 'id' => 33,
                 'reference_no' => 'er-20250104-093019',
@@ -401,10 +387,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Pubali Bank POS Account Opening',
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-11 01:21:19',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-10 19:21:19',
             ),
-            27 => 
+            26 => 
             array (
                 'id' => 35,
                 'reference_no' => 'er-20250104-094859',
@@ -415,10 +401,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2025-01-04 21:48:59',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2025-01-04 15:48:59',
             ),
-            28 => 
+            27 => 
             array (
                 'id' => 36,
                 'reference_no' => 'er-20250104-095052',
@@ -429,10 +415,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 33.0,
                 'note' => 'মোট খুচরা ডিস্কাউন্ট',
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2025-01-10 22:14:36',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2025-01-10 16:14:36',
             ),
-            29 => 
+            28 => 
             array (
                 'id' => 37,
                 'reference_no' => 'er-20250104-095555',
@@ -443,10 +429,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 50000.0,
                 'note' => NULL,
-                'created_at' => '2024-12-30 00:00:00',
-                'updated_at' => '2025-01-04 21:55:55',
+                'created_at' => '2024-12-29 18:00:00',
+                'updated_at' => '2025-01-04 15:55:55',
             ),
-            30 => 
+            29 => 
             array (
                 'id' => 38,
                 'reference_no' => 'er-20250104-095650',
@@ -457,10 +443,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 65000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-04 21:56:50',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-04 15:56:50',
             ),
-            31 => 
+            30 => 
             array (
                 'id' => 39,
                 'reference_no' => 'er-20250104-095720',
@@ -471,10 +457,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-04 21:57:20',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-04 15:57:20',
             ),
-            32 => 
+            31 => 
             array (
                 'id' => 41,
                 'reference_no' => 'er-20250104-102456',
@@ -485,10 +471,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-04 00:00:00',
-                'updated_at' => '2025-01-04 22:24:56',
+                'created_at' => '2025-01-03 18:00:00',
+                'updated_at' => '2025-01-04 16:24:56',
             ),
-            33 => 
+            32 => 
             array (
                 'id' => 42,
                 'reference_no' => 'er-20250104-102517',
@@ -499,10 +485,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-01-04 00:00:00',
-                'updated_at' => '2025-01-07 12:10:06',
+                'created_at' => '2025-01-03 18:00:00',
+                'updated_at' => '2025-01-07 06:10:06',
             ),
-            34 => 
+            33 => 
             array (
                 'id' => 43,
                 'reference_no' => 'er-20250108-083135',
@@ -517,10 +503,10 @@ Socks - 60',
 কুরিয়ার - ২০০
 টিস্যু - ৩০
 ক্যামেরা মিস্ত্রী - ৬০০',
-                'created_at' => '2025-01-05 00:00:00',
-                'updated_at' => '2025-01-08 20:31:35',
+                'created_at' => '2025-01-04 18:00:00',
+                'updated_at' => '2025-01-08 14:31:35',
             ),
-            35 => 
+            34 => 
             array (
                 'id' => 44,
                 'reference_no' => 'er-20250108-083252',
@@ -531,10 +517,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-05 00:00:00',
-                'updated_at' => '2025-01-08 20:32:52',
+                'created_at' => '2025-01-04 18:00:00',
+                'updated_at' => '2025-01-08 14:32:52',
             ),
-            36 => 
+            35 => 
             array (
                 'id' => 45,
                 'reference_no' => 'er-20250108-083639',
@@ -545,10 +531,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => 'গোডাউন ভাড়া',
-                'created_at' => '2025-01-05 00:00:00',
-                'updated_at' => '2025-01-08 20:36:39',
+                'created_at' => '2025-01-04 18:00:00',
+                'updated_at' => '2025-01-08 14:36:39',
             ),
-            37 => 
+            36 => 
             array (
                 'id' => 46,
                 'reference_no' => 'er-20250108-084332',
@@ -559,10 +545,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-05 00:00:00',
-                'updated_at' => '2025-01-08 20:43:32',
+                'created_at' => '2025-01-04 18:00:00',
+                'updated_at' => '2025-01-08 14:43:32',
             ),
-            38 => 
+            37 => 
             array (
                 'id' => 47,
                 'reference_no' => 'er-20250108-084524',
@@ -573,10 +559,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 80000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-06 00:00:00',
-                'updated_at' => '2025-01-08 20:45:24',
+                'created_at' => '2025-01-05 18:00:00',
+                'updated_at' => '2025-01-08 14:45:24',
             ),
-            39 => 
+            38 => 
             array (
                 'id' => 48,
                 'reference_no' => 'er-20250108-084921',
@@ -591,10 +577,10 @@ Socks - 60',
 জুতা রিপেয়ার - ২০
 মিস্ত্রী - ৪০০
 কাপড় - ৮০',
-                'created_at' => '2025-01-06 00:00:00',
-                'updated_at' => '2025-01-10 23:23:45',
+                'created_at' => '2025-01-05 18:00:00',
+                'updated_at' => '2025-01-10 17:23:45',
             ),
-            40 => 
+            39 => 
             array (
                 'id' => 49,
                 'reference_no' => 'er-20250108-085030',
@@ -605,10 +591,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-06 00:00:00',
-                'updated_at' => '2025-01-10 23:30:28',
+                'created_at' => '2025-01-05 18:00:00',
+                'updated_at' => '2025-01-10 17:30:28',
             ),
-            41 => 
+            40 => 
             array (
                 'id' => 50,
                 'reference_no' => 'er-20250108-085112',
@@ -619,10 +605,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 3100.0,
                 'note' => NULL,
-                'created_at' => '2025-01-07 00:00:00',
-                'updated_at' => '2025-01-08 20:51:12',
+                'created_at' => '2025-01-06 18:00:00',
+                'updated_at' => '2025-01-08 14:51:12',
             ),
-            42 => 
+            41 => 
             array (
                 'id' => 51,
                 'reference_no' => 'er-20250108-085258',
@@ -633,10 +619,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'জানুয়ারি বেতন থেকে ৩০০০',
-                'created_at' => '2025-01-07 00:00:00',
-                'updated_at' => '2025-01-08 20:52:58',
+                'created_at' => '2025-01-06 18:00:00',
+                'updated_at' => '2025-01-08 14:52:58',
             ),
-            43 => 
+            42 => 
             array (
                 'id' => 52,
                 'reference_no' => 'er-20250108-085335',
@@ -647,10 +633,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-07 00:00:00',
-                'updated_at' => '2025-01-08 20:53:35',
+                'created_at' => '2025-01-06 18:00:00',
+                'updated_at' => '2025-01-08 14:53:35',
             ),
-            44 => 
+            43 => 
             array (
                 'id' => 53,
                 'reference_no' => 'er-20250110-093244',
@@ -661,10 +647,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 115.0,
                 'note' => 'Kurban may have made some purchase.',
-                'created_at' => '2024-12-27 00:00:00',
-                'updated_at' => '2025-01-10 21:32:44',
+                'created_at' => '2024-12-26 18:00:00',
+                'updated_at' => '2025-01-10 15:32:44',
             ),
-            45 => 
+            44 => 
             array (
                 'id' => 54,
                 'reference_no' => 'er-20250110-095014',
@@ -675,10 +661,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 670.0,
                 'note' => 'Pen Holder',
-                'created_at' => '2024-12-28 00:00:00',
-                'updated_at' => '2025-01-10 21:50:14',
+                'created_at' => '2024-12-27 18:00:00',
+                'updated_at' => '2025-01-10 15:50:14',
             ),
-            46 => 
+            45 => 
             array (
                 'id' => 55,
                 'reference_no' => 'er-20250110-104256',
@@ -689,10 +675,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 1450.0,
                 'note' => 'Salary December',
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-10 22:42:56',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-10 16:42:56',
             ),
-            47 => 
+            46 => 
             array (
                 'id' => 56,
                 'reference_no' => 'er-20250110-104346',
@@ -703,10 +689,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 1650.0,
                 'note' => 'Salary December',
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-10 22:43:46',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-10 16:43:46',
             ),
-            48 => 
+            47 => 
             array (
                 'id' => 57,
                 'reference_no' => 'er-20250110-104440',
@@ -717,10 +703,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 2900.0,
                 'note' => 'Salary December',
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-10 22:44:40',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-10 16:44:40',
             ),
-            49 => 
+            48 => 
             array (
                 'id' => 58,
                 'reference_no' => 'er-20250110-104554',
@@ -731,10 +717,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 10500.0,
                 'note' => 'Salary December',
-                'created_at' => '2025-01-02 00:00:00',
-                'updated_at' => '2025-01-10 22:45:54',
+                'created_at' => '2025-01-01 18:00:00',
+                'updated_at' => '2025-01-10 16:45:54',
             ),
-            50 => 
+            49 => 
             array (
                 'id' => 59,
                 'reference_no' => 'er-20250110-105239',
@@ -745,10 +731,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 60.0,
                 'note' => 'Imam saheb',
-                'created_at' => '2025-01-04 00:00:00',
-                'updated_at' => '2025-01-10 22:52:39',
+                'created_at' => '2025-01-03 18:00:00',
+                'updated_at' => '2025-01-10 16:52:39',
             ),
-            51 => 
+            50 => 
             array (
                 'id' => 60,
                 'reference_no' => 'er-20250110-112413',
@@ -759,10 +745,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 400.0,
                 'note' => 'December Bill',
-                'created_at' => '2025-01-06 00:00:00',
-                'updated_at' => '2025-01-10 23:24:13',
+                'created_at' => '2025-01-05 18:00:00',
+                'updated_at' => '2025-01-10 17:24:13',
             ),
-            52 => 
+            51 => 
             array (
                 'id' => 61,
                 'reference_no' => 'er-20250110-113009',
@@ -773,10 +759,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-01-06 00:00:00',
-                'updated_at' => '2025-01-10 23:30:09',
+                'created_at' => '2025-01-05 18:00:00',
+                'updated_at' => '2025-01-10 17:30:09',
             ),
-            53 => 
+            52 => 
             array (
                 'id' => 62,
                 'reference_no' => 'er-20250110-113832',
@@ -787,10 +773,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 40000.0,
                 'note' => 'December 2024',
-                'created_at' => '2025-01-08 00:00:00',
-                'updated_at' => '2025-01-10 23:38:32',
+                'created_at' => '2025-01-07 18:00:00',
+                'updated_at' => '2025-01-10 17:38:32',
             ),
-            54 => 
+            53 => 
             array (
                 'id' => 63,
                 'reference_no' => 'er-20250110-113857',
@@ -801,10 +787,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-08 00:00:00',
-                'updated_at' => '2025-01-10 23:38:57',
+                'created_at' => '2025-01-07 18:00:00',
+                'updated_at' => '2025-01-10 17:38:57',
             ),
-            55 => 
+            54 => 
             array (
                 'id' => 64,
                 'reference_no' => 'er-20250110-114022',
@@ -815,10 +801,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 1151.0,
                 'note' => 'Completion of calculation',
-                'created_at' => '2025-01-08 00:00:00',
-                'updated_at' => '2025-01-10 23:40:22',
+                'created_at' => '2025-01-07 18:00:00',
+                'updated_at' => '2025-01-10 17:40:22',
             ),
-            56 => 
+            55 => 
             array (
                 'id' => 65,
                 'reference_no' => 'er-20250111-010523',
@@ -829,10 +815,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-01-09 00:00:00',
-                'updated_at' => '2025-01-11 01:05:23',
+                'created_at' => '2025-01-08 18:00:00',
+                'updated_at' => '2025-01-10 19:05:23',
             ),
-            57 => 
+            56 => 
             array (
                 'id' => 66,
                 'reference_no' => 'er-20250111-010602',
@@ -843,10 +829,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-01-10 00:00:00',
-                'updated_at' => '2025-01-11 01:41:34',
+                'created_at' => '2025-01-09 18:00:00',
+                'updated_at' => '2025-01-10 19:41:34',
             ),
-            58 => 
+            57 => 
             array (
                 'id' => 67,
                 'reference_no' => 'er-20250111-010657',
@@ -857,10 +843,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 50000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-09 00:00:00',
-                'updated_at' => '2025-01-11 01:06:57',
+                'created_at' => '2025-01-08 18:00:00',
+                'updated_at' => '2025-01-10 19:06:57',
             ),
-            59 => 
+            58 => 
             array (
                 'id' => 68,
                 'reference_no' => 'er-20250111-012149',
@@ -871,10 +857,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 2000.0,
                 'note' => 'UCB Bank POS Account Opening',
-                'created_at' => '2025-01-09 00:00:00',
-                'updated_at' => '2025-01-11 01:21:49',
+                'created_at' => '2025-01-08 18:00:00',
+                'updated_at' => '2025-01-10 19:21:49',
             ),
-            60 => 
+            59 => 
             array (
                 'id' => 69,
                 'reference_no' => 'er-20250111-012229',
@@ -885,10 +871,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 700.0,
                 'note' => 'Glass Sticker + Visiting Card',
-                'created_at' => '2025-01-09 00:00:00',
-                'updated_at' => '2025-01-11 01:22:29',
+                'created_at' => '2025-01-08 18:00:00',
+                'updated_at' => '2025-01-10 19:22:29',
             ),
-            61 => 
+            60 => 
             array (
                 'id' => 70,
                 'reference_no' => 'er-20250111-012257',
@@ -899,10 +885,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 3000.0,
                 'note' => 'January Week 1',
-                'created_at' => '2025-01-09 00:00:00',
-                'updated_at' => '2025-01-11 01:22:57',
+                'created_at' => '2025-01-08 18:00:00',
+                'updated_at' => '2025-01-10 19:22:57',
             ),
-            62 => 
+            61 => 
             array (
                 'id' => 71,
                 'reference_no' => 'er-20250111-012342',
@@ -913,10 +899,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 30.0,
                 'note' => 'UCB Bank Officer Coffee',
-                'created_at' => '2025-01-09 00:00:00',
-                'updated_at' => '2025-01-11 01:23:42',
+                'created_at' => '2025-01-08 18:00:00',
+                'updated_at' => '2025-01-10 19:23:42',
             ),
-            63 => 
+            62 => 
             array (
                 'id' => 72,
                 'reference_no' => 'er-20250111-012408',
@@ -927,10 +913,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-09 00:00:00',
-                'updated_at' => '2025-01-11 01:24:08',
+                'created_at' => '2025-01-08 18:00:00',
+                'updated_at' => '2025-01-10 19:24:08',
             ),
-            64 => 
+            63 => 
             array (
                 'id' => 73,
                 'reference_no' => 'er-20250111-012601',
@@ -941,10 +927,10 @@ Socks - 60',
                 'cash_register_id' => NULL,
                 'amount' => 1105.0,
                 'note' => 'Kurban- 420+100, Al-Amin - 485+100',
-                'created_at' => '2025-01-10 00:00:00',
-                'updated_at' => '2025-01-11 01:41:52',
+                'created_at' => '2025-01-09 18:00:00',
+                'updated_at' => '2025-01-10 19:41:52',
             ),
-            65 => 
+            64 => 
             array (
                 'id' => 74,
                 'reference_no' => 'er-20250112-065608',
@@ -955,10 +941,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-11 00:00:00',
-                'updated_at' => '2025-01-12 18:56:08',
+                'created_at' => '2025-01-10 18:00:00',
+                'updated_at' => '2025-01-12 12:56:08',
             ),
-            66 => 
+            65 => 
             array (
                 'id' => 75,
                 'reference_no' => 'er-20250112-115047',
@@ -969,10 +955,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 205.0,
                 'note' => 'Shoe hapka',
-                'created_at' => '2025-01-12 23:50:47',
-                'updated_at' => '2025-01-12 23:50:47',
+                'created_at' => '2025-01-12 17:50:47',
+                'updated_at' => '2025-01-12 17:50:47',
             ),
-            67 => 
+            66 => 
             array (
                 'id' => 76,
                 'reference_no' => 'er-20250112-115125',
@@ -983,10 +969,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-01-12 00:00:00',
-                'updated_at' => '2025-01-12 23:51:25',
+                'created_at' => '2025-01-11 18:00:00',
+                'updated_at' => '2025-01-12 17:51:25',
             ),
-            68 => 
+            67 => 
             array (
                 'id' => 77,
                 'reference_no' => 'er-20250112-115217',
@@ -997,10 +983,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => 'kurban+alamin+said',
-                'created_at' => '2025-01-12 00:00:00',
-                'updated_at' => '2025-01-12 23:52:17',
+                'created_at' => '2025-01-11 18:00:00',
+                'updated_at' => '2025-01-12 17:52:17',
             ),
-            69 => 
+            68 => 
             array (
                 'id' => 78,
                 'reference_no' => 'er-20250113-063633',
@@ -1011,10 +997,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-01-13 00:00:00',
-                'updated_at' => '2025-01-13 18:36:33',
+                'created_at' => '2025-01-12 18:00:00',
+                'updated_at' => '2025-01-13 12:36:33',
             ),
-            70 => 
+            69 => 
             array (
                 'id' => 79,
                 'reference_no' => 'er-20250113-063718',
@@ -1025,10 +1011,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-01-13 00:00:00',
-                'updated_at' => '2025-01-13 18:37:18',
+                'created_at' => '2025-01-12 18:00:00',
+                'updated_at' => '2025-01-13 12:37:18',
             ),
-            71 => 
+            70 => 
             array (
                 'id' => 80,
                 'reference_no' => 'er-20250113-091222',
@@ -1039,10 +1025,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 5570.0,
                 'note' => 'Mirror',
-                'created_at' => '2025-01-13 00:00:00',
-                'updated_at' => '2025-01-13 21:12:53',
+                'created_at' => '2025-01-12 18:00:00',
+                'updated_at' => '2025-01-13 15:12:53',
             ),
-            72 => 
+            71 => 
             array (
                 'id' => 81,
                 'reference_no' => 'er-20250113-103631',
@@ -1053,10 +1039,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 100000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-13 00:00:00',
-                'updated_at' => '2025-01-13 22:36:31',
+                'created_at' => '2025-01-12 18:00:00',
+                'updated_at' => '2025-01-13 16:36:31',
             ),
-            73 => 
+            72 => 
             array (
                 'id' => 82,
                 'reference_no' => 'er-20250114-092336',
@@ -1067,10 +1053,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-01-14 00:00:00',
-                'updated_at' => '2025-01-14 21:23:36',
+                'created_at' => '2025-01-13 18:00:00',
+                'updated_at' => '2025-01-14 15:23:36',
             ),
-            74 => 
+            73 => 
             array (
                 'id' => 83,
                 'reference_no' => 'er-20250114-100314',
@@ -1081,10 +1067,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-01-14 00:00:00',
-                'updated_at' => '2025-01-14 22:03:14',
+                'created_at' => '2025-01-13 18:00:00',
+                'updated_at' => '2025-01-14 16:03:14',
             ),
-            75 => 
+            74 => 
             array (
                 'id' => 84,
                 'reference_no' => 'er-20250114-100349',
@@ -1095,10 +1081,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-01-14 00:00:00',
-                'updated_at' => '2025-01-14 22:03:49',
+                'created_at' => '2025-01-13 18:00:00',
+                'updated_at' => '2025-01-14 16:03:49',
             ),
-            76 => 
+            75 => 
             array (
                 'id' => 85,
                 'reference_no' => 'er-20250116-022111',
@@ -1109,10 +1095,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-15 00:00:00',
-                'updated_at' => '2025-01-16 02:21:11',
+                'created_at' => '2025-01-14 18:00:00',
+                'updated_at' => '2025-01-15 20:21:11',
             ),
-            77 => 
+            76 => 
             array (
                 'id' => 86,
                 'reference_no' => 'er-20250116-030537',
@@ -1123,10 +1109,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-01-16 00:00:00',
-                'updated_at' => '2025-01-16 15:05:37',
+                'created_at' => '2025-01-15 18:00:00',
+                'updated_at' => '2025-01-16 09:05:37',
             ),
-            78 => 
+            77 => 
             array (
                 'id' => 87,
                 'reference_no' => 'er-20250116-030613',
@@ -1137,10 +1123,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'ঝাড়ু',
-                'created_at' => '2025-01-16 00:00:00',
-                'updated_at' => '2025-01-16 15:06:13',
+                'created_at' => '2025-01-15 18:00:00',
+                'updated_at' => '2025-01-16 09:06:13',
             ),
-            79 => 
+            78 => 
             array (
                 'id' => 88,
                 'reference_no' => 'er-20250116-030715',
@@ -1151,10 +1137,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => 'শাটার মিস্ত্রি',
-                'created_at' => '2025-01-16 00:00:00',
-                'updated_at' => '2025-01-16 15:07:15',
+                'created_at' => '2025-01-15 18:00:00',
+                'updated_at' => '2025-01-16 09:07:15',
             ),
-            80 => 
+            79 => 
             array (
                 'id' => 89,
                 'reference_no' => 'er-20250116-030749',
@@ -1165,10 +1151,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 55000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-16 00:00:00',
-                'updated_at' => '2025-01-16 15:07:49',
+                'created_at' => '2025-01-15 18:00:00',
+                'updated_at' => '2025-01-16 09:07:49',
             ),
-            81 => 
+            80 => 
             array (
                 'id' => 90,
                 'reference_no' => 'er-20250116-095358',
@@ -1179,10 +1165,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-16 00:00:00',
-                'updated_at' => '2025-01-16 21:53:58',
+                'created_at' => '2025-01-15 18:00:00',
+                'updated_at' => '2025-01-16 15:53:58',
             ),
-            82 => 
+            81 => 
             array (
                 'id' => 91,
                 'reference_no' => 'er-20250116-095423',
@@ -1193,10 +1179,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-01-16 00:00:00',
-                'updated_at' => '2025-01-16 21:54:23',
+                'created_at' => '2025-01-15 18:00:00',
+                'updated_at' => '2025-01-16 15:54:23',
             ),
-            83 => 
+            82 => 
             array (
                 'id' => 92,
                 'reference_no' => 'er-20250116-095504',
@@ -1207,10 +1193,10 @@ Socks - 60',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-01-16 00:00:00',
-                'updated_at' => '2025-01-16 21:55:04',
+                'created_at' => '2025-01-15 18:00:00',
+                'updated_at' => '2025-01-16 15:55:04',
             ),
-            84 => 
+            83 => 
             array (
                 'id' => 93,
                 'reference_no' => 'er-20250118-115108',
@@ -1222,10 +1208,10 @@ Socks - 60',
                 'amount' => 1105.0,
                 'note' => 'Kurban - 420+100
 Al-Amin - 485+100',
-                'created_at' => '2025-01-17 00:00:00',
-                'updated_at' => '2025-01-18 11:51:08',
+                'created_at' => '2025-01-16 18:00:00',
+                'updated_at' => '2025-01-18 05:51:08',
             ),
-            85 => 
+            84 => 
             array (
                 'id' => 95,
                 'reference_no' => 'er-20250118-063431',
@@ -1236,10 +1222,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 720.0,
                 'note' => 'IMRUL 26 DEC TO 18 JAN',
-                'created_at' => '2025-01-18 00:00:00',
-                'updated_at' => '2025-01-18 18:34:31',
+                'created_at' => '2025-01-17 18:00:00',
+                'updated_at' => '2025-01-18 12:34:31',
             ),
-            86 => 
+            85 => 
             array (
                 'id' => 96,
                 'reference_no' => 'er-20250118-100010',
@@ -1250,10 +1236,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-18 00:00:00',
-                'updated_at' => '2025-01-18 22:00:10',
+                'created_at' => '2025-01-17 18:00:00',
+                'updated_at' => '2025-01-18 16:00:10',
             ),
-            87 => 
+            86 => 
             array (
                 'id' => 97,
                 'reference_no' => 'er-20250119-073919',
@@ -1264,10 +1250,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-01-19 00:00:00',
-                'updated_at' => '2025-01-19 19:39:19',
+                'created_at' => '2025-01-18 18:00:00',
+                'updated_at' => '2025-01-19 13:39:19',
             ),
-            88 => 
+            87 => 
             array (
                 'id' => 98,
                 'reference_no' => 'er-20250119-091624',
@@ -1278,10 +1264,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 60000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-19 00:00:00',
-                'updated_at' => '2025-01-19 21:16:24',
+                'created_at' => '2025-01-18 18:00:00',
+                'updated_at' => '2025-01-19 15:16:24',
             ),
-            89 => 
+            88 => 
             array (
                 'id' => 99,
                 'reference_no' => 'er-20250119-092011',
@@ -1292,10 +1278,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 10000.0,
                 'note' => 'Jump Keds payment',
-                'created_at' => '2025-01-19 00:00:00',
-                'updated_at' => '2025-01-19 21:20:11',
+                'created_at' => '2025-01-18 18:00:00',
+                'updated_at' => '2025-01-19 15:20:11',
             ),
-            90 => 
+            89 => 
             array (
                 'id' => 100,
                 'reference_no' => 'er-20250119-092341',
@@ -1306,10 +1292,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 350.0,
                 'note' => 'Wallet Purchese',
-                'created_at' => '2025-01-19 00:00:00',
-                'updated_at' => '2025-01-19 21:23:41',
+                'created_at' => '2025-01-18 18:00:00',
+                'updated_at' => '2025-01-19 15:23:41',
             ),
-            91 => 
+            90 => 
             array (
                 'id' => 101,
                 'reference_no' => 'er-20250120-094416',
@@ -1320,10 +1306,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-20 00:00:00',
-                'updated_at' => '2025-01-20 21:44:16',
+                'created_at' => '2025-01-19 18:00:00',
+                'updated_at' => '2025-01-20 15:44:16',
             ),
-            92 => 
+            91 => 
             array (
                 'id' => 102,
                 'reference_no' => 'er-20250120-094438',
@@ -1334,10 +1320,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-01-20 00:00:00',
-                'updated_at' => '2025-01-20 21:44:38',
+                'created_at' => '2025-01-19 18:00:00',
+                'updated_at' => '2025-01-20 15:44:38',
             ),
-            93 => 
+            92 => 
             array (
                 'id' => 103,
                 'reference_no' => 'er-20250120-094503',
@@ -1348,10 +1334,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-01-20 00:00:00',
-                'updated_at' => '2025-01-20 21:45:03',
+                'created_at' => '2025-01-19 18:00:00',
+                'updated_at' => '2025-01-20 15:45:03',
             ),
-            94 => 
+            93 => 
             array (
                 'id' => 104,
                 'reference_no' => 'er-20250120-094525',
@@ -1362,10 +1348,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-01-20 00:00:00',
-                'updated_at' => '2025-01-20 21:45:25',
+                'created_at' => '2025-01-19 18:00:00',
+                'updated_at' => '2025-01-20 15:45:25',
             ),
-            95 => 
+            94 => 
             array (
                 'id' => 105,
                 'reference_no' => 'er-20250121-124519',
@@ -1376,10 +1362,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'ইদুরের বিষ',
-                'created_at' => '2025-01-21 00:00:00',
-                'updated_at' => '2025-01-21 12:45:19',
+                'created_at' => '2025-01-20 18:00:00',
+                'updated_at' => '2025-01-21 06:45:19',
             ),
-            96 => 
+            95 => 
             array (
                 'id' => 106,
                 'reference_no' => 'er-20250121-084955',
@@ -1390,10 +1376,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 2110.0,
                 'note' => 'Jump Keds payment',
-                'created_at' => '2025-01-21 00:00:00',
-                'updated_at' => '2025-01-21 20:49:55',
+                'created_at' => '2025-01-20 18:00:00',
+                'updated_at' => '2025-01-21 14:49:55',
             ),
-            97 => 
+            96 => 
             array (
                 'id' => 107,
                 'reference_no' => 'er-20250121-085443',
@@ -1404,10 +1390,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => 'Glass Mistri',
-                'created_at' => '2025-01-21 00:00:00',
-                'updated_at' => '2025-01-21 20:54:44',
+                'created_at' => '2025-01-20 18:00:00',
+                'updated_at' => '2025-01-21 14:54:44',
             ),
-            98 => 
+            97 => 
             array (
                 'id' => 108,
                 'reference_no' => 'er-20250121-095200',
@@ -1418,10 +1404,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 85.0,
                 'note' => NULL,
-                'created_at' => '2025-01-21 00:00:00',
-                'updated_at' => '2025-01-21 21:52:00',
+                'created_at' => '2025-01-20 18:00:00',
+                'updated_at' => '2025-01-21 15:52:00',
             ),
-            99 => 
+            98 => 
             array (
                 'id' => 109,
                 'reference_no' => 'er-20250121-095219',
@@ -1432,10 +1418,10 @@ Al-Amin - 485+100',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-01-21 00:00:00',
-                'updated_at' => '2025-01-21 21:52:19',
+                'created_at' => '2025-01-20 18:00:00',
+                'updated_at' => '2025-01-21 15:52:19',
             ),
-            100 => 
+            99 => 
             array (
                 'id' => 110,
                 'reference_no' => 'er-20250122-041957',
@@ -1448,10 +1434,10 @@ Al-Amin - 485+100',
                 'note' => 'Glass Cleaner - 120
 Godown light - 360
 Grease - 40',
-                'created_at' => '2025-01-22 00:00:00',
-                'updated_at' => '2025-01-22 16:19:57',
+                'created_at' => '2025-01-21 18:00:00',
+                'updated_at' => '2025-01-22 10:19:57',
             ),
-            101 => 
+            100 => 
             array (
                 'id' => 111,
                 'reference_no' => 'er-20250122-042516',
@@ -1464,10 +1450,10 @@ Grease - 40',
                 'note' => 'Bus vara - 1300
 Rikshaw vara - 250
 Food - 450',
-                'created_at' => '2025-01-22 00:00:00',
-                'updated_at' => '2025-01-22 16:25:16',
+                'created_at' => '2025-01-21 18:00:00',
+                'updated_at' => '2025-01-22 10:25:16',
             ),
-            102 => 
+            101 => 
             array (
                 'id' => 112,
                 'reference_no' => 'er-20250122-102220',
@@ -1478,10 +1464,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => 'জুতা রিপেয়ার',
-                'created_at' => '2025-01-22 00:00:00',
-                'updated_at' => '2025-01-22 22:22:20',
+                'created_at' => '2025-01-21 18:00:00',
+                'updated_at' => '2025-01-22 16:22:20',
             ),
-            103 => 
+            102 => 
             array (
                 'id' => 113,
                 'reference_no' => 'er-20250122-102255',
@@ -1492,10 +1478,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-01-22 00:00:00',
-                'updated_at' => '2025-01-22 22:22:55',
+                'created_at' => '2025-01-21 18:00:00',
+                'updated_at' => '2025-01-22 16:22:55',
             ),
-            104 => 
+            103 => 
             array (
                 'id' => 114,
                 'reference_no' => 'er-20250122-102342',
@@ -1506,10 +1492,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => 'নতুন ছেলে সহ ৪ জন',
-                'created_at' => '2025-01-22 00:00:00',
-                'updated_at' => '2025-01-22 22:23:42',
+                'created_at' => '2025-01-21 18:00:00',
+                'updated_at' => '2025-01-22 16:23:42',
             ),
-            105 => 
+            104 => 
             array (
                 'id' => 115,
                 'reference_no' => 'er-20250122-102824',
@@ -1520,10 +1506,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 650.0,
                 'note' => 'Salary',
-                'created_at' => '2025-01-22 00:00:00',
-                'updated_at' => '2025-01-22 22:28:24',
+                'created_at' => '2025-01-21 18:00:00',
+                'updated_at' => '2025-01-22 16:28:24',
             ),
-            106 => 
+            105 => 
             array (
                 'id' => 116,
                 'reference_no' => 'er-20250123-080215',
@@ -1534,10 +1520,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Labour',
-                'created_at' => '2025-01-23 00:00:00',
-                'updated_at' => '2025-01-23 20:02:15',
+                'created_at' => '2025-01-22 18:00:00',
+                'updated_at' => '2025-01-23 14:02:15',
             ),
-            107 => 
+            106 => 
             array (
                 'id' => 117,
                 'reference_no' => 'er-20250123-080310',
@@ -1548,10 +1534,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 80000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-23 00:00:00',
-                'updated_at' => '2025-01-23 20:03:10',
+                'created_at' => '2025-01-22 18:00:00',
+                'updated_at' => '2025-01-23 14:03:10',
             ),
-            108 => 
+            107 => 
             array (
                 'id' => 118,
                 'reference_no' => 'er-20250125-010549',
@@ -1562,10 +1548,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-01-23 00:00:00',
-                'updated_at' => '2025-01-25 13:05:49',
+                'created_at' => '2025-01-22 18:00:00',
+                'updated_at' => '2025-01-25 07:05:49',
             ),
-            109 => 
+            108 => 
             array (
                 'id' => 119,
                 'reference_no' => 'er-20250125-010613',
@@ -1576,10 +1562,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-01-23 00:00:00',
-                'updated_at' => '2025-01-25 13:06:13',
+                'created_at' => '2025-01-22 18:00:00',
+                'updated_at' => '2025-01-25 07:06:13',
             ),
-            110 => 
+            109 => 
             array (
                 'id' => 120,
                 'reference_no' => 'er-20250125-010641',
@@ -1590,10 +1576,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 1600.0,
                 'note' => NULL,
-                'created_at' => '2025-01-23 00:00:00',
-                'updated_at' => '2025-01-25 13:06:41',
+                'created_at' => '2025-01-22 18:00:00',
+                'updated_at' => '2025-01-25 07:06:41',
             ),
-            111 => 
+            110 => 
             array (
                 'id' => 121,
                 'reference_no' => 'er-20250125-010716',
@@ -1604,10 +1590,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Food',
-                'created_at' => '2025-01-23 00:00:00',
-                'updated_at' => '2025-01-25 13:07:16',
+                'created_at' => '2025-01-22 18:00:00',
+                'updated_at' => '2025-01-25 07:07:16',
             ),
-            112 => 
+            111 => 
             array (
                 'id' => 122,
                 'reference_no' => 'er-20250125-010751',
@@ -1618,10 +1604,10 @@ Food - 450',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-01-23 00:00:00',
-                'updated_at' => '2025-01-25 13:07:51',
+                'created_at' => '2025-01-22 18:00:00',
+                'updated_at' => '2025-01-25 07:07:51',
             ),
-            113 => 
+            112 => 
             array (
                 'id' => 123,
                 'reference_no' => 'er-20250125-011056',
@@ -1633,10 +1619,10 @@ Food - 450',
                 'amount' => 955.0,
                 'note' => 'Kurban - 520
 Said - 435',
-                'created_at' => '2025-01-24 00:00:00',
-                'updated_at' => '2025-01-25 13:10:56',
+                'created_at' => '2025-01-23 18:00:00',
+                'updated_at' => '2025-01-25 07:10:56',
             ),
-            114 => 
+            113 => 
             array (
                 'id' => 124,
                 'reference_no' => 'er-20250125-011914',
@@ -1647,10 +1633,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet Bill',
-                'created_at' => '2025-01-25 00:00:00',
-                'updated_at' => '2025-01-25 13:19:14',
+                'created_at' => '2025-01-24 18:00:00',
+                'updated_at' => '2025-01-25 07:19:14',
             ),
-            115 => 
+            114 => 
             array (
                 'id' => 125,
                 'reference_no' => 'er-20250125-062802',
@@ -1661,10 +1647,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 650.0,
                 'note' => 'Labour',
-                'created_at' => '2025-01-25 00:00:00',
-                'updated_at' => '2025-01-25 18:28:02',
+                'created_at' => '2025-01-24 18:00:00',
+                'updated_at' => '2025-01-25 12:28:02',
             ),
-            116 => 
+            115 => 
             array (
                 'id' => 126,
                 'reference_no' => 'er-20250125-070120',
@@ -1675,10 +1661,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 3300.0,
                 'note' => NULL,
-                'created_at' => '2025-01-25 00:00:00',
-                'updated_at' => '2025-01-25 19:01:20',
+                'created_at' => '2025-01-24 18:00:00',
+                'updated_at' => '2025-01-25 13:01:20',
             ),
-            117 => 
+            116 => 
             array (
                 'id' => 127,
                 'reference_no' => 'er-20250125-095252',
@@ -1689,10 +1675,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 42.0,
                 'note' => NULL,
-                'created_at' => '2025-01-25 00:00:00',
-                'updated_at' => '2025-01-25 21:52:52',
+                'created_at' => '2025-01-24 18:00:00',
+                'updated_at' => '2025-01-25 15:52:52',
             ),
-            118 => 
+            117 => 
             array (
                 'id' => 128,
                 'reference_no' => 'er-20250125-095312',
@@ -1703,10 +1689,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-01-25 00:00:00',
-                'updated_at' => '2025-01-25 21:53:12',
+                'created_at' => '2025-01-24 18:00:00',
+                'updated_at' => '2025-01-25 15:53:12',
             ),
-            119 => 
+            118 => 
             array (
                 'id' => 129,
                 'reference_no' => 'er-20250125-095403',
@@ -1717,10 +1703,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => 'নতুন দুইটা ছেলে সহ',
-                'created_at' => '2025-01-25 00:00:00',
-                'updated_at' => '2025-01-25 21:54:03',
+                'created_at' => '2025-01-24 18:00:00',
+                'updated_at' => '2025-01-25 15:54:03',
             ),
-            120 => 
+            119 => 
             array (
                 'id' => 130,
                 'reference_no' => 'er-20250126-041942',
@@ -1731,10 +1717,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 35000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-26 00:00:00',
-                'updated_at' => '2025-01-26 16:19:42',
+                'created_at' => '2025-01-25 18:00:00',
+                'updated_at' => '2025-01-26 10:19:42',
             ),
-            121 => 
+            120 => 
             array (
                 'id' => 131,
                 'reference_no' => 'er-20250126-095726',
@@ -1745,10 +1731,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => 'Polythene',
-                'created_at' => '2025-01-26 00:00:00',
-                'updated_at' => '2025-01-26 21:57:26',
+                'created_at' => '2025-01-25 18:00:00',
+                'updated_at' => '2025-01-26 15:57:26',
             ),
-            122 => 
+            121 => 
             array (
                 'id' => 132,
                 'reference_no' => 'er-20250126-104256',
@@ -1759,10 +1745,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-01-26 00:00:00',
-                'updated_at' => '2025-01-26 22:42:56',
+                'created_at' => '2025-01-25 18:00:00',
+                'updated_at' => '2025-01-26 16:42:56',
             ),
-            123 => 
+            122 => 
             array (
                 'id' => 133,
                 'reference_no' => 'er-20250127-081816',
@@ -1773,10 +1759,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 130.0,
                 'note' => 'গোডাউনের চাবি বানানো',
-                'created_at' => '2025-01-27 19:00:00',
-                'updated_at' => '2025-01-27 20:18:16',
+                'created_at' => '2025-01-27 13:00:00',
+                'updated_at' => '2025-01-27 14:18:16',
             ),
-            124 => 
+            123 => 
             array (
                 'id' => 134,
                 'reference_no' => 'er-20250127-101620',
@@ -1787,10 +1773,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-01-27 22:16:00',
-                'updated_at' => '2025-01-27 22:16:20',
+                'created_at' => '2025-01-27 16:16:00',
+                'updated_at' => '2025-01-27 16:16:20',
             ),
-            125 => 
+            124 => 
             array (
                 'id' => 135,
                 'reference_no' => 'er-20250128-101103',
@@ -1801,10 +1787,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 65.0,
                 'note' => 'Tissue',
-                'created_at' => '2025-01-28 14:15:00',
-                'updated_at' => '2025-01-28 22:11:03',
+                'created_at' => '2025-01-28 08:15:00',
+                'updated_at' => '2025-01-28 16:11:03',
             ),
-            126 => 
+            125 => 
             array (
                 'id' => 136,
                 'reference_no' => 'er-20250128-101144',
@@ -1815,10 +1801,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-01-28 22:00:00',
-                'updated_at' => '2025-01-28 22:11:44',
+                'created_at' => '2025-01-28 16:00:00',
+                'updated_at' => '2025-01-28 16:11:44',
             ),
-            127 => 
+            126 => 
             array (
                 'id' => 137,
                 'reference_no' => 'er-20250128-101215',
@@ -1829,10 +1815,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-01-28 12:00:00',
-                'updated_at' => '2025-01-28 22:12:15',
+                'created_at' => '2025-01-28 06:00:00',
+                'updated_at' => '2025-01-28 16:12:15',
             ),
-            128 => 
+            127 => 
             array (
                 'id' => 138,
                 'reference_no' => 'er-20250128-101306',
@@ -1843,10 +1829,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-01-28 22:00:00',
-                'updated_at' => '2025-01-28 22:13:06',
+                'created_at' => '2025-01-28 16:00:00',
+                'updated_at' => '2025-01-28 16:13:06',
             ),
-            129 => 
+            128 => 
             array (
                 'id' => 139,
                 'reference_no' => 'er-20250128-101344',
@@ -1857,10 +1843,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'Godown Light',
-                'created_at' => '2025-01-28 21:15:00',
-                'updated_at' => '2025-01-28 22:13:44',
+                'created_at' => '2025-01-28 15:15:00',
+                'updated_at' => '2025-01-28 16:13:44',
             ),
-            130 => 
+            129 => 
             array (
                 'id' => 140,
                 'reference_no' => 'er-20250128-101422',
@@ -1871,10 +1857,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-28 15:00:00',
-                'updated_at' => '2025-01-28 22:14:22',
+                'created_at' => '2025-01-28 09:00:00',
+                'updated_at' => '2025-01-28 16:14:22',
             ),
-            131 => 
+            130 => 
             array (
                 'id' => 141,
                 'reference_no' => 'er-20250130-113103',
@@ -1885,10 +1871,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-01-29 22:00:00',
-                'updated_at' => '2025-01-30 11:31:03',
+                'created_at' => '2025-01-29 16:00:00',
+                'updated_at' => '2025-01-30 05:31:03',
             ),
-            132 => 
+            131 => 
             array (
                 'id' => 142,
                 'reference_no' => 'er-20250130-092903',
@@ -1899,10 +1885,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-01-30 11:00:00',
-                'updated_at' => '2025-01-30 21:29:03',
+                'created_at' => '2025-01-30 05:00:00',
+                'updated_at' => '2025-01-30 15:29:03',
             ),
-            133 => 
+            132 => 
             array (
                 'id' => 143,
                 'reference_no' => 'er-20250130-092933',
@@ -1913,10 +1899,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-01-30 15:00:00',
-                'updated_at' => '2025-01-30 21:29:33',
+                'created_at' => '2025-01-30 09:00:00',
+                'updated_at' => '2025-01-30 15:29:33',
             ),
-            134 => 
+            133 => 
             array (
                 'id' => 144,
                 'reference_no' => 'er-20250130-093006',
@@ -1927,10 +1913,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 25000.0,
                 'note' => NULL,
-                'created_at' => '2025-01-30 14:00:00',
-                'updated_at' => '2025-01-30 21:30:06',
+                'created_at' => '2025-01-30 08:00:00',
+                'updated_at' => '2025-01-30 15:30:06',
             ),
-            135 => 
+            134 => 
             array (
                 'id' => 145,
                 'reference_no' => 'er-20250130-093032',
@@ -1941,10 +1927,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-01-30 17:00:00',
-                'updated_at' => '2025-01-30 21:30:32',
+                'created_at' => '2025-01-30 11:00:00',
+                'updated_at' => '2025-01-30 15:30:32',
             ),
-            136 => 
+            135 => 
             array (
                 'id' => 146,
                 'reference_no' => 'er-20250130-093131',
@@ -1955,10 +1941,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Poss Roll',
-                'created_at' => '2025-01-30 18:00:00',
-                'updated_at' => '2025-01-30 21:31:31',
+                'created_at' => '2025-01-30 12:00:00',
+                'updated_at' => '2025-01-30 15:31:31',
             ),
-            137 => 
+            136 => 
             array (
                 'id' => 147,
                 'reference_no' => 'er-20250130-101349',
@@ -1969,10 +1955,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => 'Salay',
-                'created_at' => '2025-01-30 12:00:00',
-                'updated_at' => '2025-01-30 22:13:49',
+                'created_at' => '2025-01-30 06:00:00',
+                'updated_at' => '2025-01-30 16:13:49',
             ),
-            138 => 
+            137 => 
             array (
                 'id' => 148,
                 'reference_no' => 'er-20250130-101453',
@@ -1983,10 +1969,10 @@ Said - 435',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-01-30 22:00:00',
-                'updated_at' => '2025-01-30 22:14:53',
+                'created_at' => '2025-01-30 16:00:00',
+                'updated_at' => '2025-01-30 16:14:53',
             ),
-            139 => 
+            138 => 
             array (
                 'id' => 149,
                 'reference_no' => 'er-20250131-102725',
@@ -1998,10 +1984,10 @@ Said - 435',
                 'amount' => 2435.0,
                 'note' => 'Overtime - 435
 Salay - 2000',
-                'created_at' => '2025-01-31 22:00:00',
-                'updated_at' => '2025-01-31 22:27:25',
+                'created_at' => '2025-01-31 16:00:00',
+                'updated_at' => '2025-01-31 16:27:25',
             ),
-            140 => 
+            139 => 
             array (
                 'id' => 150,
                 'reference_no' => 'er-20250131-102758',
@@ -2012,10 +1998,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 520.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-01-31 22:00:00',
-                'updated_at' => '2025-01-31 22:27:58',
+                'created_at' => '2025-01-31 16:00:00',
+                'updated_at' => '2025-01-31 16:27:58',
             ),
-            141 => 
+            140 => 
             array (
                 'id' => 151,
                 'reference_no' => 'er-20250131-102838',
@@ -2026,10 +2012,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-01-31 22:00:00',
-                'updated_at' => '2025-01-31 22:28:38',
+                'created_at' => '2025-01-31 16:00:00',
+                'updated_at' => '2025-01-31 16:28:38',
             ),
-            142 => 
+            141 => 
             array (
                 'id' => 152,
                 'reference_no' => 'er-20250131-102935',
@@ -2040,10 +2026,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Dishan Friday Lunch',
-                'created_at' => '2025-01-31 22:00:00',
-                'updated_at' => '2025-01-31 22:29:35',
+                'created_at' => '2025-01-31 16:00:00',
+                'updated_at' => '2025-01-31 16:29:35',
             ),
-            143 => 
+            142 => 
             array (
                 'id' => 153,
                 'reference_no' => 'er-20250131-102959',
@@ -2054,10 +2040,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 600.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-01-31 22:00:00',
-                'updated_at' => '2025-01-31 22:29:59',
+                'created_at' => '2025-01-31 16:00:00',
+                'updated_at' => '2025-01-31 16:29:59',
             ),
-            144 => 
+            143 => 
             array (
                 'id' => 154,
                 'reference_no' => 'er-20250201-101340',
@@ -2068,10 +2054,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-02-01 22:00:00',
-                'updated_at' => '2025-02-01 22:13:40',
+                'created_at' => '2025-02-01 16:00:00',
+                'updated_at' => '2025-02-01 16:13:40',
             ),
-            145 => 
+            144 => 
             array (
                 'id' => 155,
                 'reference_no' => 'er-20250201-101400',
@@ -2082,10 +2068,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 14500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-01 22:00:00',
-                'updated_at' => '2025-02-01 22:14:00',
+                'created_at' => '2025-02-01 16:00:00',
+                'updated_at' => '2025-02-01 16:14:00',
             ),
-            146 => 
+            145 => 
             array (
                 'id' => 156,
                 'reference_no' => 'er-20250201-101415',
@@ -2096,10 +2082,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-01 12:00:00',
-                'updated_at' => '2025-02-01 22:14:15',
+                'created_at' => '2025-02-01 06:00:00',
+                'updated_at' => '2025-02-01 16:14:15',
             ),
-            147 => 
+            146 => 
             array (
                 'id' => 157,
                 'reference_no' => 'er-20250202-091334',
@@ -2110,10 +2096,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => 'খাবার পানির বিল',
-                'created_at' => '2025-02-02 15:00:00',
-                'updated_at' => '2025-02-02 21:13:34',
+                'created_at' => '2025-02-02 09:00:00',
+                'updated_at' => '2025-02-02 15:13:34',
             ),
-            148 => 
+            147 => 
             array (
                 'id' => 158,
                 'reference_no' => 'er-20250202-091525',
@@ -2124,10 +2110,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 10000.0,
                 'note' => 'সাইনবোর্ড - ওয়ার্কসপ বিল',
-                'created_at' => '2025-02-02 19:00:00',
-                'updated_at' => '2025-02-02 21:15:25',
+                'created_at' => '2025-02-02 13:00:00',
+                'updated_at' => '2025-02-02 15:15:25',
             ),
-            149 => 
+            148 => 
             array (
                 'id' => 159,
                 'reference_no' => 'er-20250202-091554',
@@ -2138,10 +2124,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => 'ঝাড়ু',
-                'created_at' => '2025-02-02 12:00:00',
-                'updated_at' => '2025-02-02 21:15:54',
+                'created_at' => '2025-02-02 06:00:00',
+                'updated_at' => '2025-02-02 15:15:54',
             ),
-            150 => 
+            149 => 
             array (
                 'id' => 160,
                 'reference_no' => 'er-20250202-102830',
@@ -2152,10 +2138,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2900.0,
                 'note' => NULL,
-                'created_at' => '2025-02-02 12:00:00',
-                'updated_at' => '2025-02-02 22:28:30',
+                'created_at' => '2025-02-02 06:00:00',
+                'updated_at' => '2025-02-02 16:28:30',
             ),
-            151 => 
+            150 => 
             array (
                 'id' => 161,
                 'reference_no' => 'er-20250202-102910',
@@ -2166,10 +2152,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-02 22:00:00',
-                'updated_at' => '2025-02-02 22:29:10',
+                'created_at' => '2025-02-02 16:00:00',
+                'updated_at' => '2025-02-02 16:29:10',
             ),
-            152 => 
+            151 => 
             array (
                 'id' => 162,
                 'reference_no' => 'er-20250204-093942',
@@ -2180,10 +2166,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'Clam + Wire Service',
-                'created_at' => '2025-02-04 14:00:00',
-                'updated_at' => '2025-02-04 21:39:42',
+                'created_at' => '2025-02-04 08:00:00',
+                'updated_at' => '2025-02-04 15:39:42',
             ),
-            153 => 
+            152 => 
             array (
                 'id' => 163,
                 'reference_no' => 'er-20250204-094012',
@@ -2194,10 +2180,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 15000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-04 10:00:00',
-                'updated_at' => '2025-02-04 21:40:12',
+                'created_at' => '2025-02-04 04:00:00',
+                'updated_at' => '2025-02-04 15:40:12',
             ),
-            154 => 
+            153 => 
             array (
                 'id' => 164,
                 'reference_no' => 'er-20250204-094130',
@@ -2208,10 +2194,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 11915.0,
                 'note' => NULL,
-                'created_at' => '2025-02-04 12:00:00',
-                'updated_at' => '2025-02-04 21:41:30',
+                'created_at' => '2025-02-04 06:00:00',
+                'updated_at' => '2025-02-04 15:41:30',
             ),
-            155 => 
+            154 => 
             array (
                 'id' => 165,
                 'reference_no' => 'er-20250204-094313',
@@ -2222,10 +2208,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-04 12:00:00',
-                'updated_at' => '2025-02-04 21:43:13',
+                'created_at' => '2025-02-04 06:00:00',
+                'updated_at' => '2025-02-04 15:43:13',
             ),
-            156 => 
+            155 => 
             array (
                 'id' => 166,
                 'reference_no' => 'er-20250204-094525',
@@ -2236,10 +2222,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-04 21:45:00',
-                'updated_at' => '2025-02-04 21:45:25',
+                'created_at' => '2025-02-04 15:45:00',
+                'updated_at' => '2025-02-04 15:45:25',
             ),
-            157 => 
+            156 => 
             array (
                 'id' => 167,
                 'reference_no' => 'er-20250204-094602',
@@ -2250,10 +2236,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'January Salary',
-                'created_at' => '2025-02-04 21:45:00',
-                'updated_at' => '2025-02-04 21:46:02',
+                'created_at' => '2025-02-04 15:45:00',
+                'updated_at' => '2025-02-04 15:46:02',
             ),
-            158 => 
+            157 => 
             array (
                 'id' => 168,
                 'reference_no' => 'er-20250204-100957',
@@ -2264,10 +2250,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-04 12:00:00',
-                'updated_at' => '2025-02-04 22:09:57',
+                'created_at' => '2025-02-04 06:00:00',
+                'updated_at' => '2025-02-04 16:09:57',
             ),
-            159 => 
+            158 => 
             array (
                 'id' => 169,
                 'reference_no' => 'er-20250206-072639',
@@ -2278,10 +2264,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1300.0,
                 'note' => 'Miter mistri',
-                'created_at' => '2025-02-03 12:00:00',
-                'updated_at' => '2025-02-06 19:26:39',
+                'created_at' => '2025-02-03 06:00:00',
+                'updated_at' => '2025-02-06 13:26:39',
             ),
-            160 => 
+            159 => 
             array (
                 'id' => 170,
                 'reference_no' => 'er-20250206-072707',
@@ -2292,10 +2278,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => 'Sirij paper',
-                'created_at' => '2025-02-03 12:00:00',
-                'updated_at' => '2025-02-06 19:27:07',
+                'created_at' => '2025-02-03 06:00:00',
+                'updated_at' => '2025-02-06 13:27:07',
             ),
-            161 => 
+            160 => 
             array (
                 'id' => 171,
                 'reference_no' => 'er-20250206-072729',
@@ -2306,10 +2292,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-03 22:00:00',
-                'updated_at' => '2025-02-06 19:27:29',
+                'created_at' => '2025-02-03 16:00:00',
+                'updated_at' => '2025-02-06 13:27:29',
             ),
-            162 => 
+            161 => 
             array (
                 'id' => 172,
                 'reference_no' => 'er-20250206-072749',
@@ -2320,10 +2306,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-03 12:00:00',
-                'updated_at' => '2025-02-06 19:27:49',
+                'created_at' => '2025-02-03 06:00:00',
+                'updated_at' => '2025-02-06 13:27:49',
             ),
-            163 => 
+            162 => 
             array (
                 'id' => 173,
                 'reference_no' => 'er-20250206-074058',
@@ -2334,10 +2320,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3800.0,
                 'note' => 'Electric wire',
-                'created_at' => '2025-02-03 00:00:00',
-                'updated_at' => '2025-02-06 19:42:19',
+                'created_at' => '2025-02-02 18:00:00',
+                'updated_at' => '2025-02-06 13:42:19',
             ),
-            164 => 
+            163 => 
             array (
                 'id' => 174,
                 'reference_no' => 'er-20250206-074122',
@@ -2348,10 +2334,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 25.0,
                 'note' => NULL,
-                'created_at' => '2025-02-03 12:00:00',
-                'updated_at' => '2025-02-06 19:41:22',
+                'created_at' => '2025-02-03 06:00:00',
+                'updated_at' => '2025-02-06 13:41:22',
             ),
-            165 => 
+            164 => 
             array (
                 'id' => 175,
                 'reference_no' => 'er-20250206-074422',
@@ -2362,10 +2348,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-02-04 12:00:00',
-                'updated_at' => '2025-02-06 19:44:22',
+                'created_at' => '2025-02-04 06:00:00',
+                'updated_at' => '2025-02-06 13:44:22',
             ),
-            166 => 
+            165 => 
             array (
                 'id' => 176,
                 'reference_no' => 'er-20250206-074530',
@@ -2376,10 +2362,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 760.0,
                 'note' => 'Rack Glass',
-                'created_at' => '2025-02-05 12:00:00',
-                'updated_at' => '2025-02-06 19:45:30',
+                'created_at' => '2025-02-05 06:00:00',
+                'updated_at' => '2025-02-06 13:45:30',
             ),
-            167 => 
+            166 => 
             array (
                 'id' => 177,
                 'reference_no' => 'er-20250206-074555',
@@ -2390,10 +2376,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => NULL,
-                'created_at' => '2025-02-05 12:00:00',
-                'updated_at' => '2025-02-06 19:45:55',
+                'created_at' => '2025-02-05 06:00:00',
+                'updated_at' => '2025-02-06 13:45:55',
             ),
-            168 => 
+            167 => 
             array (
                 'id' => 178,
                 'reference_no' => 'er-20250206-074638',
@@ -2404,10 +2390,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-02-05 12:00:00',
-                'updated_at' => '2025-02-06 19:46:38',
+                'created_at' => '2025-02-05 06:00:00',
+                'updated_at' => '2025-02-06 13:46:38',
             ),
-            169 => 
+            168 => 
             array (
                 'id' => 179,
                 'reference_no' => 'er-20250206-101812',
@@ -2418,10 +2404,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-02-06 12:00:00',
-                'updated_at' => '2025-02-06 22:18:12',
+                'created_at' => '2025-02-06 06:00:00',
+                'updated_at' => '2025-02-06 16:18:12',
             ),
-            170 => 
+            169 => 
             array (
                 'id' => 180,
                 'reference_no' => 'er-20250206-101918',
@@ -2432,10 +2418,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-06 12:00:00',
-                'updated_at' => '2025-02-06 22:19:18',
+                'created_at' => '2025-02-06 06:00:00',
+                'updated_at' => '2025-02-06 16:19:18',
             ),
-            171 => 
+            170 => 
             array (
                 'id' => 181,
                 'reference_no' => 'er-20250206-101957',
@@ -2446,10 +2432,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 105.0,
                 'note' => 'Cashout Charge',
-                'created_at' => '2025-02-06 12:00:00',
-                'updated_at' => '2025-02-06 22:19:57',
+                'created_at' => '2025-02-06 06:00:00',
+                'updated_at' => '2025-02-06 16:19:57',
             ),
-            172 => 
+            171 => 
             array (
                 'id' => 182,
                 'reference_no' => 'er-20250206-102032',
@@ -2460,10 +2446,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-06 12:00:00',
-                'updated_at' => '2025-02-06 22:20:32',
+                'created_at' => '2025-02-06 06:00:00',
+                'updated_at' => '2025-02-06 16:20:32',
             ),
-            173 => 
+            172 => 
             array (
                 'id' => 183,
                 'reference_no' => 'er-20250206-102044',
@@ -2474,10 +2460,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-02-06 22:20:44',
-                'updated_at' => '2025-02-06 22:20:44',
+                'created_at' => '2025-02-06 16:20:44',
+                'updated_at' => '2025-02-06 16:20:44',
             ),
-            174 => 
+            173 => 
             array (
                 'id' => 184,
                 'reference_no' => 'er-20250206-102105',
@@ -2488,10 +2474,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-06 12:00:00',
-                'updated_at' => '2025-02-06 22:21:05',
+                'created_at' => '2025-02-06 06:00:00',
+                'updated_at' => '2025-02-06 16:21:05',
             ),
-            175 => 
+            174 => 
             array (
                 'id' => 185,
                 'reference_no' => 'er-20250206-102133',
@@ -2502,10 +2488,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-06 12:00:00',
-                'updated_at' => '2025-02-06 22:21:33',
+                'created_at' => '2025-02-06 06:00:00',
+                'updated_at' => '2025-02-06 16:21:33',
             ),
-            176 => 
+            175 => 
             array (
                 'id' => 186,
                 'reference_no' => 'er-20250206-102219',
@@ -2516,10 +2502,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 580.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-06 12:00:00',
-                'updated_at' => '2025-02-06 22:22:19',
+                'created_at' => '2025-02-06 06:00:00',
+                'updated_at' => '2025-02-06 16:22:19',
             ),
-            177 => 
+            176 => 
             array (
                 'id' => 187,
                 'reference_no' => 'er-20250208-123524',
@@ -2530,10 +2516,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-02-07 22:00:00',
-                'updated_at' => '2025-02-08 12:35:24',
+                'created_at' => '2025-02-07 16:00:00',
+                'updated_at' => '2025-02-08 06:35:24',
             ),
-            178 => 
+            177 => 
             array (
                 'id' => 188,
                 'reference_no' => 'er-20250208-123558',
@@ -2544,10 +2530,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 520.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-02-07 22:00:00',
-                'updated_at' => '2025-02-08 12:35:58',
+                'created_at' => '2025-02-07 16:00:00',
+                'updated_at' => '2025-02-08 06:35:58',
             ),
-            179 => 
+            178 => 
             array (
                 'id' => 189,
                 'reference_no' => 'er-20250208-123636',
@@ -2558,10 +2544,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2495.0,
                 'note' => NULL,
-                'created_at' => '2025-02-07 22:00:00',
-                'updated_at' => '2025-02-08 12:36:36',
+                'created_at' => '2025-02-07 16:00:00',
+                'updated_at' => '2025-02-08 06:36:36',
             ),
-            180 => 
+            179 => 
             array (
                 'id' => 190,
                 'reference_no' => 'er-20250208-073020',
@@ -2572,10 +2558,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 12260.0,
                 'note' => 'Jump Payment',
-                'created_at' => '2025-02-08 19:30:00',
-                'updated_at' => '2025-02-08 19:30:20',
+                'created_at' => '2025-02-08 13:30:00',
+                'updated_at' => '2025-02-08 13:30:20',
             ),
-            181 => 
+            180 => 
             array (
                 'id' => 191,
                 'reference_no' => 'er-20250208-100812',
@@ -2586,10 +2572,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 480.0,
                 'note' => 'Glass Frame',
-                'created_at' => '2025-02-08 22:00:00',
-                'updated_at' => '2025-02-08 22:08:12',
+                'created_at' => '2025-02-08 16:00:00',
+                'updated_at' => '2025-02-08 16:08:12',
             ),
-            182 => 
+            181 => 
             array (
                 'id' => 192,
                 'reference_no' => 'er-20250208-100841',
@@ -2600,10 +2586,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-08 22:00:00',
-                'updated_at' => '2025-02-08 22:08:41',
+                'created_at' => '2025-02-08 16:00:00',
+                'updated_at' => '2025-02-08 16:08:41',
             ),
-            183 => 
+            182 => 
             array (
                 'id' => 193,
                 'reference_no' => 'er-20250208-100905',
@@ -2614,10 +2600,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 700.0,
                 'note' => NULL,
-                'created_at' => '2025-02-08 17:00:00',
-                'updated_at' => '2025-02-08 22:09:05',
+                'created_at' => '2025-02-08 11:00:00',
+                'updated_at' => '2025-02-08 16:09:05',
             ),
-            184 => 
+            183 => 
             array (
                 'id' => 194,
                 'reference_no' => 'er-20250208-100930',
@@ -2628,10 +2614,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 795.0,
                 'note' => NULL,
-                'created_at' => '2025-02-08 22:00:00',
-                'updated_at' => '2025-02-08 22:09:30',
+                'created_at' => '2025-02-08 16:00:00',
+                'updated_at' => '2025-02-08 16:09:30',
             ),
-            185 => 
+            184 => 
             array (
                 'id' => 195,
                 'reference_no' => 'er-20250208-100954',
@@ -2642,10 +2628,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1355.0,
                 'note' => NULL,
-                'created_at' => '2025-02-08 22:00:00',
-                'updated_at' => '2025-02-08 22:09:54',
+                'created_at' => '2025-02-08 16:00:00',
+                'updated_at' => '2025-02-08 16:09:54',
             ),
-            186 => 
+            185 => 
             array (
                 'id' => 196,
                 'reference_no' => 'er-20250209-102108',
@@ -2656,10 +2642,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 895.0,
                 'note' => NULL,
-                'created_at' => '2025-02-09 22:00:00',
-                'updated_at' => '2025-02-09 22:21:08',
+                'created_at' => '2025-02-09 16:00:00',
+                'updated_at' => '2025-02-09 16:21:08',
             ),
-            187 => 
+            186 => 
             array (
                 'id' => 197,
                 'reference_no' => 'er-20250209-102151',
@@ -2670,10 +2656,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => 'Rin Powder',
-                'created_at' => '2025-02-09 00:00:00',
-                'updated_at' => '2025-02-09 22:21:51',
+                'created_at' => '2025-02-08 18:00:00',
+                'updated_at' => '2025-02-09 16:21:51',
             ),
-            188 => 
+            187 => 
             array (
                 'id' => 198,
                 'reference_no' => 'er-20250209-102223',
@@ -2684,10 +2670,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-02-09 12:00:00',
-                'updated_at' => '2025-02-09 22:22:23',
+                'created_at' => '2025-02-09 06:00:00',
+                'updated_at' => '2025-02-09 16:22:23',
             ),
-            189 => 
+            188 => 
             array (
                 'id' => 199,
                 'reference_no' => 'er-20250209-102302',
@@ -2698,10 +2684,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 13000.0,
                 'note' => 'Sutter Repair',
-                'created_at' => '2025-02-09 00:00:00',
-                'updated_at' => '2025-02-09 22:23:02',
+                'created_at' => '2025-02-08 18:00:00',
+                'updated_at' => '2025-02-09 16:23:02',
             ),
-            190 => 
+            189 => 
             array (
                 'id' => 200,
                 'reference_no' => 'er-20250209-102337',
@@ -2712,10 +2698,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-09 22:00:00',
-                'updated_at' => '2025-02-09 22:23:37',
+                'created_at' => '2025-02-09 16:00:00',
+                'updated_at' => '2025-02-09 16:23:37',
             ),
-            191 => 
+            190 => 
             array (
                 'id' => 201,
                 'reference_no' => 'er-20250209-102416',
@@ -2726,10 +2712,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-02-09 22:00:00',
-                'updated_at' => '2025-02-09 22:24:16',
+                'created_at' => '2025-02-09 16:00:00',
+                'updated_at' => '2025-02-09 16:24:16',
             ),
-            192 => 
+            191 => 
             array (
                 'id' => 202,
                 'reference_no' => 'er-20250209-102435',
@@ -2740,10 +2726,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-02-09 12:00:00',
-                'updated_at' => '2025-02-09 22:24:35',
+                'created_at' => '2025-02-09 06:00:00',
+                'updated_at' => '2025-02-09 16:24:35',
             ),
-            193 => 
+            192 => 
             array (
                 'id' => 203,
                 'reference_no' => 'er-20250210-093935',
@@ -2754,10 +2740,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-10 22:00:00',
-                'updated_at' => '2025-02-10 21:39:35',
+                'created_at' => '2025-02-10 16:00:00',
+                'updated_at' => '2025-02-10 15:39:35',
             ),
-            194 => 
+            193 => 
             array (
                 'id' => 204,
                 'reference_no' => 'er-20250210-093958',
@@ -2768,10 +2754,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => NULL,
-                'created_at' => '2025-02-10 22:00:00',
-                'updated_at' => '2025-02-10 21:39:58',
+                'created_at' => '2025-02-10 16:00:00',
+                'updated_at' => '2025-02-10 15:39:58',
             ),
-            195 => 
+            194 => 
             array (
                 'id' => 205,
                 'reference_no' => 'er-20250211-091047',
@@ -2782,10 +2768,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-11 16:00:00',
-                'updated_at' => '2025-02-11 21:10:47',
+                'created_at' => '2025-02-11 10:00:00',
+                'updated_at' => '2025-02-11 15:10:47',
             ),
-            196 => 
+            195 => 
             array (
                 'id' => 206,
                 'reference_no' => 'er-20250211-102253',
@@ -2796,10 +2782,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-11 22:25:00',
-                'updated_at' => '2025-02-11 22:22:53',
+                'created_at' => '2025-02-11 16:25:00',
+                'updated_at' => '2025-02-11 16:22:53',
             ),
-            197 => 
+            196 => 
             array (
                 'id' => 207,
                 'reference_no' => 'er-20250211-102332',
@@ -2810,10 +2796,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => NULL,
-                'created_at' => '2025-02-11 15:00:00',
-                'updated_at' => '2025-02-11 22:23:32',
+                'created_at' => '2025-02-11 09:00:00',
+                'updated_at' => '2025-02-11 16:23:32',
             ),
-            198 => 
+            197 => 
             array (
                 'id' => 208,
                 'reference_no' => 'er-20250212-102635',
@@ -2824,10 +2810,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-12 22:00:00',
-                'updated_at' => '2025-02-12 22:26:35',
+                'created_at' => '2025-02-12 16:00:00',
+                'updated_at' => '2025-02-12 16:26:35',
             ),
-            199 => 
+            198 => 
             array (
                 'id' => 209,
                 'reference_no' => 'er-20250212-102710',
@@ -2838,10 +2824,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-12 22:00:00',
-                'updated_at' => '2025-02-12 22:27:10',
+                'created_at' => '2025-02-12 16:00:00',
+                'updated_at' => '2025-02-12 16:27:10',
             ),
-            200 => 
+            199 => 
             array (
                 'id' => 210,
                 'reference_no' => 'er-20250212-102859',
@@ -2852,10 +2838,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1195.0,
                 'note' => NULL,
-                'created_at' => '2025-02-12 22:00:00',
-                'updated_at' => '2025-02-12 22:28:59',
+                'created_at' => '2025-02-12 16:00:00',
+                'updated_at' => '2025-02-12 16:28:59',
             ),
-            201 => 
+            200 => 
             array (
                 'id' => 211,
                 'reference_no' => 'er-20250212-102936',
@@ -2866,10 +2852,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'ঘর মোছা বুয়া',
-                'created_at' => '2025-02-12 12:00:00',
-                'updated_at' => '2025-02-12 22:29:36',
+                'created_at' => '2025-02-12 06:00:00',
+                'updated_at' => '2025-02-12 16:29:36',
             ),
-            202 => 
+            201 => 
             array (
                 'id' => 212,
                 'reference_no' => 'er-20250216-092303',
@@ -2880,10 +2866,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-13 12:00:00',
-                'updated_at' => '2025-02-16 21:23:03',
+                'created_at' => '2025-02-13 06:00:00',
+                'updated_at' => '2025-02-16 15:23:03',
             ),
-            203 => 
+            202 => 
             array (
                 'id' => 213,
                 'reference_no' => 'er-20250216-092328',
@@ -2894,10 +2880,10 @@ Salay - 2000',
                 'cash_register_id' => 1,
                 'amount' => 480.0,
                 'note' => NULL,
-                'created_at' => '2025-02-13 12:00:00',
-                'updated_at' => '2025-02-16 21:23:28',
+                'created_at' => '2025-02-13 06:00:00',
+                'updated_at' => '2025-02-16 15:23:28',
             ),
-            204 => 
+            203 => 
             array (
                 'id' => 214,
                 'reference_no' => 'er-20250216-092754',
@@ -2913,10 +2899,10 @@ Royal Boult + White cement - 80
 Ellectronic - 5195
 Shoe Repair - 100
 Ellect. Mistri - 1000',
-                'created_at' => '2025-02-13 12:00:00',
-                'updated_at' => '2025-02-16 21:27:54',
+                'created_at' => '2025-02-13 06:00:00',
+                'updated_at' => '2025-02-16 15:27:54',
             ),
-            205 => 
+            204 => 
             array (
                 'id' => 215,
                 'reference_no' => 'er-20250216-093002',
@@ -2927,10 +2913,10 @@ Ellect. Mistri - 1000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-13 12:00:00',
-                'updated_at' => '2025-02-16 21:30:02',
+                'created_at' => '2025-02-13 06:00:00',
+                'updated_at' => '2025-02-16 15:30:02',
             ),
-            206 => 
+            205 => 
             array (
                 'id' => 216,
                 'reference_no' => 'er-20250216-093141',
@@ -2941,10 +2927,10 @@ Ellect. Mistri - 1000',
                 'cash_register_id' => 1,
                 'amount' => 115000.0,
                 'note' => 'এসি জমা',
-                'created_at' => '2025-02-13 12:00:00',
-                'updated_at' => '2025-02-16 21:31:41',
+                'created_at' => '2025-02-13 06:00:00',
+                'updated_at' => '2025-02-16 15:31:41',
             ),
-            207 => 
+            206 => 
             array (
                 'id' => 217,
                 'reference_no' => 'er-20250216-093335',
@@ -2955,10 +2941,10 @@ Ellect. Mistri - 1000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Sob-E-Barat Bonous - 500x6= 3000',
-                'created_at' => '2025-02-13 12:00:00',
-                'updated_at' => '2025-02-16 21:33:35',
+                'created_at' => '2025-02-13 06:00:00',
+                'updated_at' => '2025-02-16 15:33:35',
             ),
-            208 => 
+            207 => 
             array (
                 'id' => 218,
                 'reference_no' => 'er-20250216-101058',
@@ -2969,10 +2955,10 @@ Ellect. Mistri - 1000',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-02-16 12:00:00',
-                'updated_at' => '2025-02-16 22:10:58',
+                'created_at' => '2025-02-16 06:00:00',
+                'updated_at' => '2025-02-16 16:10:58',
             ),
-            209 => 
+            208 => 
             array (
                 'id' => 219,
                 'reference_no' => 'er-20250216-101414',
@@ -2987,10 +2973,10 @@ Meater - 6740
 Meater board - 80
 Ellct. Mistri - 250
 Remote Battery - 30',
-                'created_at' => '2025-02-16 12:00:00',
-                'updated_at' => '2025-02-16 22:14:14',
+                'created_at' => '2025-02-16 06:00:00',
+                'updated_at' => '2025-02-16 16:14:14',
             ),
-            210 => 
+            209 => 
             array (
                 'id' => 220,
                 'reference_no' => 'er-20250216-101432',
@@ -3001,10 +2987,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 15.0,
                 'note' => NULL,
-                'created_at' => '2025-02-16 12:00:00',
-                'updated_at' => '2025-02-16 22:14:32',
+                'created_at' => '2025-02-16 06:00:00',
+                'updated_at' => '2025-02-16 16:14:32',
             ),
-            211 => 
+            210 => 
             array (
                 'id' => 221,
                 'reference_no' => 'er-20250216-101500',
@@ -3015,10 +3001,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Godown',
-                'created_at' => '2025-02-16 12:00:00',
-                'updated_at' => '2025-02-16 22:15:00',
+                'created_at' => '2025-02-16 06:00:00',
+                'updated_at' => '2025-02-16 16:15:00',
             ),
-            212 => 
+            211 => 
             array (
                 'id' => 222,
                 'reference_no' => 'er-20250216-101530',
@@ -3029,10 +3015,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Mosjid monthly',
-                'created_at' => '2025-02-16 12:00:00',
-                'updated_at' => '2025-02-16 22:15:30',
+                'created_at' => '2025-02-16 06:00:00',
+                'updated_at' => '2025-02-16 16:15:30',
             ),
-            213 => 
+            212 => 
             array (
                 'id' => 223,
                 'reference_no' => 'er-20250216-101613',
@@ -3043,10 +3029,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 1995.0,
                 'note' => NULL,
-                'created_at' => '2025-02-16 12:00:00',
-                'updated_at' => '2025-02-16 22:16:13',
+                'created_at' => '2025-02-16 06:00:00',
+                'updated_at' => '2025-02-16 16:16:13',
             ),
-            214 => 
+            213 => 
             array (
                 'id' => 224,
                 'reference_no' => 'er-20250217-074216',
@@ -3057,10 +3043,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 160.0,
                 'note' => 'এসির পানির পট',
-                'created_at' => '2025-02-17 12:00:00',
-                'updated_at' => '2025-02-17 19:42:16',
+                'created_at' => '2025-02-17 06:00:00',
+                'updated_at' => '2025-02-17 13:42:16',
             ),
-            215 => 
+            214 => 
             array (
                 'id' => 225,
                 'reference_no' => 'er-20250217-074425',
@@ -3074,10 +3060,10 @@ Remote Battery - 30',
 গাড়ি ভাড়া - ৪০০
 খাবার - ৩০০
 ঢাকা বাবদ - ৫০০',
-                'created_at' => '2025-02-17 12:00:00',
-                'updated_at' => '2025-02-17 19:44:25',
+                'created_at' => '2025-02-17 06:00:00',
+                'updated_at' => '2025-02-17 13:44:25',
             ),
-            216 => 
+            215 => 
             array (
                 'id' => 226,
                 'reference_no' => 'er-20250217-100025',
@@ -3088,10 +3074,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => 'নতুন ছেলে সহ',
-                'created_at' => '2025-02-17 12:00:00',
-                'updated_at' => '2025-02-17 22:00:25',
+                'created_at' => '2025-02-17 06:00:00',
+                'updated_at' => '2025-02-17 16:00:25',
             ),
-            217 => 
+            216 => 
             array (
                 'id' => 227,
                 'reference_no' => 'er-20250217-100108',
@@ -3102,10 +3088,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-02-17 20:00:00',
-                'updated_at' => '2025-02-17 22:01:08',
+                'created_at' => '2025-02-17 14:00:00',
+                'updated_at' => '2025-02-17 16:01:08',
             ),
-            218 => 
+            217 => 
             array (
                 'id' => 228,
                 'reference_no' => 'er-20250217-100133',
@@ -3116,10 +3102,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-17 22:00:00',
-                'updated_at' => '2025-02-17 22:01:33',
+                'created_at' => '2025-02-17 16:00:00',
+                'updated_at' => '2025-02-17 16:01:33',
             ),
-            219 => 
+            218 => 
             array (
                 'id' => 229,
                 'reference_no' => 'er-20250218-100416',
@@ -3130,10 +3116,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-02-18 22:00:00',
-                'updated_at' => '2025-02-18 22:04:16',
+                'created_at' => '2025-02-18 16:00:00',
+                'updated_at' => '2025-02-18 16:04:16',
             ),
-            220 => 
+            219 => 
             array (
                 'id' => 230,
                 'reference_no' => 'er-20250218-100510',
@@ -3144,10 +3130,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 27000.0,
                 'note' => 'Ac payment complete',
-                'created_at' => '2025-02-18 14:00:00',
-                'updated_at' => '2025-02-18 22:05:10',
+                'created_at' => '2025-02-18 08:00:00',
+                'updated_at' => '2025-02-18 16:05:10',
             ),
-            221 => 
+            220 => 
             array (
                 'id' => 231,
                 'reference_no' => 'er-20250218-100558',
@@ -3158,10 +3144,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-02-18 12:00:00',
-                'updated_at' => '2025-02-18 22:05:58',
+                'created_at' => '2025-02-18 06:00:00',
+                'updated_at' => '2025-02-18 16:05:58',
             ),
-            222 => 
+            221 => 
             array (
                 'id' => 232,
                 'reference_no' => 'er-20250218-100631',
@@ -3172,10 +3158,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Sutter Repair',
-                'created_at' => '2025-02-18 12:00:00',
-                'updated_at' => '2025-02-18 22:06:31',
+                'created_at' => '2025-02-18 06:00:00',
+                'updated_at' => '2025-02-18 16:06:31',
             ),
-            223 => 
+            222 => 
             array (
                 'id' => 233,
                 'reference_no' => 'er-20250218-100729',
@@ -3186,10 +3172,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-18 22:00:00',
-                'updated_at' => '2025-02-18 22:07:29',
+                'created_at' => '2025-02-18 16:00:00',
+                'updated_at' => '2025-02-18 16:07:29',
             ),
-            224 => 
+            223 => 
             array (
                 'id' => 234,
                 'reference_no' => 'er-20250219-101158',
@@ -3200,10 +3186,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-02-19 12:00:00',
-                'updated_at' => '2025-02-19 22:11:58',
+                'created_at' => '2025-02-19 06:00:00',
+                'updated_at' => '2025-02-19 16:11:58',
             ),
-            225 => 
+            224 => 
             array (
                 'id' => 235,
                 'reference_no' => 'er-20250219-101318',
@@ -3214,10 +3200,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 1650.0,
                 'note' => NULL,
-                'created_at' => '2025-02-19 20:00:00',
-                'updated_at' => '2025-02-19 22:13:18',
+                'created_at' => '2025-02-19 14:00:00',
+                'updated_at' => '2025-02-19 16:13:18',
             ),
-            226 => 
+            225 => 
             array (
                 'id' => 236,
                 'reference_no' => 'er-20250219-101415',
@@ -3228,10 +3214,10 @@ Remote Battery - 30',
                 'cash_register_id' => 1,
                 'amount' => 995.0,
                 'note' => NULL,
-                'created_at' => '2025-02-19 12:00:00',
-                'updated_at' => '2025-02-19 22:14:15',
+                'created_at' => '2025-02-19 06:00:00',
+                'updated_at' => '2025-02-19 16:14:15',
             ),
-            227 => 
+            226 => 
             array (
                 'id' => 237,
                 'reference_no' => 'er-20250219-101458',
@@ -3243,10 +3229,10 @@ Remote Battery - 30',
                 'amount' => 350.0,
                 'note' => 'Food - 100
 Papos - 250',
-                'created_at' => '2025-02-19 00:00:00',
-                'updated_at' => '2025-02-19 22:15:10',
+                'created_at' => '2025-02-18 18:00:00',
+                'updated_at' => '2025-02-19 16:15:10',
             ),
-            228 => 
+            227 => 
             array (
                 'id' => 238,
                 'reference_no' => 'er-20250219-101528',
@@ -3257,10 +3243,10 @@ Papos - 250',
                 'cash_register_id' => 1,
                 'amount' => 15.0,
                 'note' => NULL,
-                'created_at' => '2025-02-19 12:00:00',
-                'updated_at' => '2025-02-19 22:15:28',
+                'created_at' => '2025-02-19 06:00:00',
+                'updated_at' => '2025-02-19 16:15:28',
             ),
-            229 => 
+            228 => 
             array (
                 'id' => 239,
                 'reference_no' => 'er-20250220-103406',
@@ -3271,10 +3257,10 @@ Papos - 250',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-02-20 12:00:00',
-                'updated_at' => '2025-02-20 22:34:06',
+                'created_at' => '2025-02-20 06:00:00',
+                'updated_at' => '2025-02-20 16:34:06',
             ),
-            230 => 
+            229 => 
             array (
                 'id' => 240,
                 'reference_no' => 'er-20250220-103432',
@@ -3285,10 +3271,10 @@ Papos - 250',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-02-20 12:00:00',
-                'updated_at' => '2025-02-20 22:34:32',
+                'created_at' => '2025-02-20 06:00:00',
+                'updated_at' => '2025-02-20 16:34:32',
             ),
-            231 => 
+            230 => 
             array (
                 'id' => 241,
                 'reference_no' => 'er-20250220-103512',
@@ -3299,10 +3285,10 @@ Papos - 250',
                 'cash_register_id' => 1,
                 'amount' => 10475.0,
                 'note' => NULL,
-                'created_at' => '2025-02-20 22:00:00',
-                'updated_at' => '2025-02-20 22:35:12',
+                'created_at' => '2025-02-20 16:00:00',
+                'updated_at' => '2025-02-20 16:35:12',
             ),
-            232 => 
+            231 => 
             array (
                 'id' => 242,
                 'reference_no' => 'er-20250220-103546',
@@ -3313,10 +3299,10 @@ Papos - 250',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-02-20 12:00:00',
-                'updated_at' => '2025-02-20 22:35:46',
+                'created_at' => '2025-02-20 06:00:00',
+                'updated_at' => '2025-02-20 16:35:46',
             ),
-            233 => 
+            232 => 
             array (
                 'id' => 243,
                 'reference_no' => 'er-20250220-103640',
@@ -3328,10 +3314,10 @@ Papos - 250',
                 'amount' => 3300.0,
                 'note' => 'Air freshner - 300
 Pos roll - 3000',
-                'created_at' => '2025-02-20 12:00:00',
-                'updated_at' => '2025-02-20 22:36:40',
+                'created_at' => '2025-02-20 06:00:00',
+                'updated_at' => '2025-02-20 16:36:40',
             ),
-            234 => 
+            233 => 
             array (
                 'id' => 244,
                 'reference_no' => 'er-20250220-103703',
@@ -3342,10 +3328,10 @@ Pos roll - 3000',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-20 12:00:00',
-                'updated_at' => '2025-02-20 22:37:03',
+                'created_at' => '2025-02-20 06:00:00',
+                'updated_at' => '2025-02-20 16:37:03',
             ),
-            235 => 
+            234 => 
             array (
                 'id' => 245,
                 'reference_no' => 'er-20250220-103730',
@@ -3356,10 +3342,10 @@ Pos roll - 3000',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-20 22:00:00',
-                'updated_at' => '2025-02-20 22:37:30',
+                'created_at' => '2025-02-20 16:00:00',
+                'updated_at' => '2025-02-20 16:37:30',
             ),
-            236 => 
+            235 => 
             array (
                 'id' => 246,
                 'reference_no' => 'er-20250220-103803',
@@ -3370,10 +3356,10 @@ Pos roll - 3000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Liton Salary',
-                'created_at' => '2025-02-20 22:00:00',
-                'updated_at' => '2025-02-20 22:38:03',
+                'created_at' => '2025-02-20 16:00:00',
+                'updated_at' => '2025-02-20 16:38:03',
             ),
-            237 => 
+            236 => 
             array (
                 'id' => 247,
                 'reference_no' => 'er-20250222-115729',
@@ -3384,10 +3370,10 @@ Pos roll - 3000',
                 'cash_register_id' => 1,
                 'amount' => 520.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-02-21 22:00:00',
-                'updated_at' => '2025-02-22 11:57:29',
+                'created_at' => '2025-02-21 16:00:00',
+                'updated_at' => '2025-02-22 05:57:29',
             ),
-            238 => 
+            237 => 
             array (
                 'id' => 248,
                 'reference_no' => 'er-20250222-115758',
@@ -3398,10 +3384,10 @@ Pos roll - 3000',
                 'cash_register_id' => 1,
                 'amount' => 435.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-02-21 22:00:00',
-                'updated_at' => '2025-02-22 11:57:58',
+                'created_at' => '2025-02-21 16:00:00',
+                'updated_at' => '2025-02-22 05:57:58',
             ),
-            239 => 
+            238 => 
             array (
                 'id' => 249,
                 'reference_no' => 'er-20250222-115848',
@@ -3413,10 +3399,10 @@ Pos roll - 3000',
                 'amount' => 200.0,
                 'note' => 'Liton overtime - 100
 Dishan overtime - 100',
-                'created_at' => '2025-02-21 12:00:00',
-                'updated_at' => '2025-02-22 11:58:48',
+                'created_at' => '2025-02-21 06:00:00',
+                'updated_at' => '2025-02-22 05:58:48',
             ),
-            240 => 
+            239 => 
             array (
                 'id' => 250,
                 'reference_no' => 'er-20250222-115914',
@@ -3427,10 +3413,10 @@ Dishan overtime - 100',
                 'cash_register_id' => 1,
                 'amount' => 790.0,
                 'note' => NULL,
-                'created_at' => '2025-02-21 22:00:00',
-                'updated_at' => '2025-02-22 11:59:14',
+                'created_at' => '2025-02-21 16:00:00',
+                'updated_at' => '2025-02-22 05:59:14',
             ),
-            241 => 
+            240 => 
             array (
                 'id' => 251,
                 'reference_no' => 'er-20250222-095951',
@@ -3441,10 +3427,10 @@ Dishan overtime - 100',
                 'cash_register_id' => 1,
                 'amount' => 3935.0,
                 'note' => NULL,
-                'created_at' => '2025-02-22 00:00:00',
-                'updated_at' => '2025-02-22 22:17:50',
+                'created_at' => '2025-02-21 18:00:00',
+                'updated_at' => '2025-02-22 16:17:50',
             ),
-            242 => 
+            241 => 
             array (
                 'id' => 252,
                 'reference_no' => 'er-20250222-100011',
@@ -3455,10 +3441,10 @@ Dishan overtime - 100',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-02-22 22:00:00',
-                'updated_at' => '2025-02-22 22:00:11',
+                'created_at' => '2025-02-22 16:00:00',
+                'updated_at' => '2025-02-22 16:00:11',
             ),
-            243 => 
+            242 => 
             array (
                 'id' => 253,
                 'reference_no' => 'er-20250222-100052',
@@ -3470,10 +3456,10 @@ Dishan overtime - 100',
                 'amount' => 40.0,
                 'note' => 'Viodine - 30
 Tula - 10',
-                'created_at' => '2025-02-22 17:00:00',
-                'updated_at' => '2025-02-22 22:00:52',
+                'created_at' => '2025-02-22 11:00:00',
+                'updated_at' => '2025-02-22 16:00:52',
             ),
-            244 => 
+            243 => 
             array (
                 'id' => 254,
                 'reference_no' => 'er-20250222-100116',
@@ -3484,10 +3470,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-22 22:00:00',
-                'updated_at' => '2025-02-22 22:01:16',
+                'created_at' => '2025-02-22 16:00:00',
+                'updated_at' => '2025-02-22 16:01:16',
             ),
-            245 => 
+            244 => 
             array (
                 'id' => 255,
                 'reference_no' => 'er-20250223-094509',
@@ -3498,10 +3484,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 900.0,
                 'note' => NULL,
-                'created_at' => '2025-02-23 12:00:00',
-                'updated_at' => '2025-02-23 21:45:09',
+                'created_at' => '2025-02-23 06:00:00',
+                'updated_at' => '2025-02-23 15:45:09',
             ),
-            246 => 
+            245 => 
             array (
                 'id' => 256,
                 'reference_no' => 'er-20250223-094631',
@@ -3512,10 +3498,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-23 22:00:00',
-                'updated_at' => '2025-02-23 21:46:31',
+                'created_at' => '2025-02-23 16:00:00',
+                'updated_at' => '2025-02-23 15:46:31',
             ),
-            247 => 
+            246 => 
             array (
                 'id' => 257,
                 'reference_no' => 'er-20250223-094714',
@@ -3526,10 +3512,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-02-23 12:00:00',
-                'updated_at' => '2025-02-23 21:47:14',
+                'created_at' => '2025-02-23 06:00:00',
+                'updated_at' => '2025-02-23 15:47:14',
             ),
-            248 => 
+            247 => 
             array (
                 'id' => 258,
                 'reference_no' => 'er-20250224-100529',
@@ -3540,10 +3526,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 50000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-24 15:00:00',
-                'updated_at' => '2025-02-24 22:05:29',
+                'created_at' => '2025-02-24 09:00:00',
+                'updated_at' => '2025-02-24 16:05:29',
             ),
-            249 => 
+            248 => 
             array (
                 'id' => 259,
                 'reference_no' => 'er-20250224-100548',
@@ -3554,10 +3540,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-24 12:00:00',
-                'updated_at' => '2025-02-24 22:05:48',
+                'created_at' => '2025-02-24 06:00:00',
+                'updated_at' => '2025-02-24 16:05:48',
             ),
-            250 => 
+            249 => 
             array (
                 'id' => 260,
                 'reference_no' => 'er-20250224-100609',
@@ -3568,10 +3554,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-24 17:00:00',
-                'updated_at' => '2025-02-24 22:06:09',
+                'created_at' => '2025-02-24 11:00:00',
+                'updated_at' => '2025-02-24 16:06:09',
             ),
-            251 => 
+            250 => 
             array (
                 'id' => 261,
                 'reference_no' => 'er-20250224-100625',
@@ -3582,10 +3568,10 @@ Tula - 10',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-02-24 12:00:00',
-                'updated_at' => '2025-02-24 22:06:25',
+                'created_at' => '2025-02-24 06:00:00',
+                'updated_at' => '2025-02-24 16:06:25',
             ),
-            252 => 
+            251 => 
             array (
                 'id' => 262,
                 'reference_no' => 'er-20250225-104646',
@@ -3598,10 +3584,10 @@ Tula - 10',
                 'note' => 'Logo
 Kawsar= 500
 Rickshaw= 50',
-                'created_at' => '2025-02-25 14:00:00',
-                'updated_at' => '2025-02-25 22:46:46',
+                'created_at' => '2025-02-25 08:00:00',
+                'updated_at' => '2025-02-25 16:46:46',
             ),
-            253 => 
+            252 => 
             array (
                 'id' => 263,
                 'reference_no' => 'er-20250225-104710',
@@ -3612,10 +3598,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-25 22:00:00',
-                'updated_at' => '2025-02-25 22:47:10',
+                'created_at' => '2025-02-25 16:00:00',
+                'updated_at' => '2025-02-25 16:47:10',
             ),
-            254 => 
+            253 => 
             array (
                 'id' => 264,
                 'reference_no' => 'er-20250225-104757',
@@ -3626,10 +3612,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet Bill',
-                'created_at' => '2025-02-25 17:00:00',
-                'updated_at' => '2025-02-25 22:47:57',
+                'created_at' => '2025-02-25 11:00:00',
+                'updated_at' => '2025-02-25 16:47:57',
             ),
-            255 => 
+            254 => 
             array (
                 'id' => 265,
                 'reference_no' => 'er-20250225-104826',
@@ -3640,10 +3626,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 595.0,
                 'note' => NULL,
-                'created_at' => '2025-02-25 12:00:00',
-                'updated_at' => '2025-02-25 22:48:26',
+                'created_at' => '2025-02-25 06:00:00',
+                'updated_at' => '2025-02-25 16:48:26',
             ),
-            256 => 
+            255 => 
             array (
                 'id' => 266,
                 'reference_no' => 'er-20250225-104844',
@@ -3654,10 +3640,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-02-25 12:00:00',
-                'updated_at' => '2025-02-25 22:48:44',
+                'created_at' => '2025-02-25 06:00:00',
+                'updated_at' => '2025-02-25 16:48:44',
             ),
-            257 => 
+            256 => 
             array (
                 'id' => 267,
                 'reference_no' => 'er-20250225-104910',
@@ -3668,10 +3654,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-25 12:00:00',
-                'updated_at' => '2025-02-25 22:49:10',
+                'created_at' => '2025-02-25 06:00:00',
+                'updated_at' => '2025-02-25 16:49:10',
             ),
-            258 => 
+            257 => 
             array (
                 'id' => 268,
                 'reference_no' => 'er-20250225-105112',
@@ -3682,10 +3668,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 410.0,
                 'note' => 'Ellectronic Product',
-                'created_at' => '2025-02-25 12:00:00',
-                'updated_at' => '2025-02-25 22:51:12',
+                'created_at' => '2025-02-25 06:00:00',
+                'updated_at' => '2025-02-25 16:51:12',
             ),
-            259 => 
+            258 => 
             array (
                 'id' => 269,
                 'reference_no' => 'er-20250225-105212',
@@ -3696,10 +3682,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-25 22:00:00',
-                'updated_at' => '2025-02-25 22:52:12',
+                'created_at' => '2025-02-25 16:00:00',
+                'updated_at' => '2025-02-25 16:52:12',
             ),
-            260 => 
+            259 => 
             array (
                 'id' => 270,
                 'reference_no' => 'er-20250226-095425',
@@ -3710,10 +3696,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-26 22:00:00',
-                'updated_at' => '2025-02-26 21:54:25',
+                'created_at' => '2025-02-26 16:00:00',
+                'updated_at' => '2025-02-26 15:54:25',
             ),
-            261 => 
+            260 => 
             array (
                 'id' => 271,
                 'reference_no' => 'er-20250226-095506',
@@ -3724,10 +3710,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-02-26 21:00:00',
-                'updated_at' => '2025-02-26 21:55:06',
+                'created_at' => '2025-02-26 15:00:00',
+                'updated_at' => '2025-02-26 15:55:06',
             ),
-            262 => 
+            261 => 
             array (
                 'id' => 272,
                 'reference_no' => 'er-20250227-103103',
@@ -3738,10 +3724,10 @@ Rickshaw= 50',
                 'cash_register_id' => 2,
                 'amount' => 30.0,
                 'note' => 'Duster',
-                'created_at' => '2025-02-27 18:00:00',
-                'updated_at' => '2025-02-28 04:31:03',
+                'created_at' => '2025-02-27 12:00:00',
+                'updated_at' => '2025-02-27 22:31:03',
             ),
-            263 => 
+            262 => 
             array (
                 'id' => 273,
                 'reference_no' => 'er-20250227-103119',
@@ -3752,10 +3738,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-02-28 04:00:00',
-                'updated_at' => '2025-02-28 04:31:19',
+                'created_at' => '2025-02-27 22:00:00',
+                'updated_at' => '2025-02-27 22:31:19',
             ),
-            264 => 
+            263 => 
             array (
                 'id' => 274,
                 'reference_no' => 'er-20250227-103141',
@@ -3766,10 +3752,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-02-27 15:00:00',
-                'updated_at' => '2025-02-28 04:31:41',
+                'created_at' => '2025-02-27 09:00:00',
+                'updated_at' => '2025-02-27 22:31:41',
             ),
-            265 => 
+            264 => 
             array (
                 'id' => 275,
                 'reference_no' => 'er-20250227-103207',
@@ -3780,10 +3766,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-27 20:00:00',
-                'updated_at' => '2025-02-28 04:32:07',
+                'created_at' => '2025-02-27 14:00:00',
+                'updated_at' => '2025-02-27 22:32:07',
             ),
-            266 => 
+            265 => 
             array (
                 'id' => 276,
                 'reference_no' => 'er-20250227-103234',
@@ -3794,10 +3780,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-27 20:00:00',
-                'updated_at' => '2025-02-28 04:32:34',
+                'created_at' => '2025-02-27 14:00:00',
+                'updated_at' => '2025-02-27 22:32:34',
             ),
-            267 => 
+            266 => 
             array (
                 'id' => 277,
                 'reference_no' => 'er-20250227-103304',
@@ -3808,10 +3794,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-28 04:00:00',
-                'updated_at' => '2025-02-28 04:33:04',
+                'created_at' => '2025-02-27 22:00:00',
+                'updated_at' => '2025-02-27 22:33:04',
             ),
-            268 => 
+            267 => 
             array (
                 'id' => 278,
                 'reference_no' => 'er-20250227-103338',
@@ -3822,10 +3808,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Liton Salary',
-                'created_at' => '2025-02-28 04:00:00',
-                'updated_at' => '2025-02-28 04:33:38',
+                'created_at' => '2025-02-27 22:00:00',
+                'updated_at' => '2025-02-27 22:33:38',
             ),
-            269 => 
+            268 => 
             array (
                 'id' => 279,
                 'reference_no' => 'er-20250227-103401',
@@ -3836,10 +3822,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-02-28 04:00:00',
-                'updated_at' => '2025-02-28 04:34:01',
+                'created_at' => '2025-02-27 22:00:00',
+                'updated_at' => '2025-02-27 22:34:01',
             ),
-            270 => 
+            269 => 
             array (
                 'id' => 280,
                 'reference_no' => 'er-20250227-103728',
@@ -3850,10 +3836,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1200.0,
                 'note' => 'Imrul Dailly Tiffin 19 Jan - 27 Feb',
-                'created_at' => '2025-02-28 04:00:00',
-                'updated_at' => '2025-02-28 04:37:28',
+                'created_at' => '2025-02-27 22:00:00',
+                'updated_at' => '2025-02-27 22:37:28',
             ),
-            271 => 
+            270 => 
             array (
                 'id' => 281,
                 'reference_no' => 'er-20250228-091712',
@@ -3864,10 +3850,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2945.0,
                 'note' => NULL,
-                'created_at' => '2025-02-28 18:00:00',
-                'updated_at' => '2025-03-01 03:17:12',
+                'created_at' => '2025-02-28 12:00:00',
+                'updated_at' => '2025-02-28 21:17:12',
             ),
-            272 => 
+            271 => 
             array (
                 'id' => 282,
                 'reference_no' => 'er-20250228-091737',
@@ -3878,10 +3864,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-02-28 18:00:00',
-                'updated_at' => '2025-03-01 03:17:37',
+                'created_at' => '2025-02-28 12:00:00',
+                'updated_at' => '2025-02-28 21:17:37',
             ),
-            273 => 
+            272 => 
             array (
                 'id' => 283,
                 'reference_no' => 'er-20250228-091807',
@@ -3892,10 +3878,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-03-01 04:00:00',
-                'updated_at' => '2025-03-01 03:18:07',
+                'created_at' => '2025-02-28 22:00:00',
+                'updated_at' => '2025-02-28 21:18:07',
             ),
-            274 => 
+            273 => 
             array (
                 'id' => 284,
                 'reference_no' => 'er-20250228-091831',
@@ -3906,10 +3892,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 435.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-03-01 03:00:00',
-                'updated_at' => '2025-03-01 03:18:31',
+                'created_at' => '2025-02-28 21:00:00',
+                'updated_at' => '2025-02-28 21:18:31',
             ),
-            275 => 
+            274 => 
             array (
                 'id' => 285,
                 'reference_no' => 'er-20250228-091851',
@@ -3920,10 +3906,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 600.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-03-01 03:00:00',
-                'updated_at' => '2025-03-01 03:18:51',
+                'created_at' => '2025-02-28 21:00:00',
+                'updated_at' => '2025-02-28 21:18:51',
             ),
-            276 => 
+            275 => 
             array (
                 'id' => 286,
                 'reference_no' => 'er-20250228-091928',
@@ -3934,10 +3920,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Liton Overtime',
-                'created_at' => '2025-03-01 03:00:00',
-                'updated_at' => '2025-03-01 03:19:28',
+                'created_at' => '2025-02-28 21:00:00',
+                'updated_at' => '2025-02-28 21:19:28',
             ),
-            277 => 
+            276 => 
             array (
                 'id' => 287,
                 'reference_no' => 'er-20250301-101119',
@@ -3948,10 +3934,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1690.0,
                 'note' => NULL,
-                'created_at' => '2025-03-01 18:00:00',
-                'updated_at' => '2025-03-02 04:11:19',
+                'created_at' => '2025-03-01 12:00:00',
+                'updated_at' => '2025-03-01 22:11:19',
             ),
-            278 => 
+            277 => 
             array (
                 'id' => 288,
                 'reference_no' => 'er-20250301-101134',
@@ -3962,10 +3948,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-03-01 18:00:00',
-                'updated_at' => '2025-03-02 04:11:34',
+                'created_at' => '2025-03-01 12:00:00',
+                'updated_at' => '2025-03-01 22:11:34',
             ),
-            279 => 
+            278 => 
             array (
                 'id' => 289,
                 'reference_no' => 'er-20250301-101158',
@@ -3976,10 +3962,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 270.0,
                 'note' => 'Water Bill',
-                'created_at' => '2025-03-01 20:00:00',
-                'updated_at' => '2025-03-02 04:11:58',
+                'created_at' => '2025-03-01 14:00:00',
+                'updated_at' => '2025-03-01 22:11:58',
             ),
-            280 => 
+            279 => 
             array (
                 'id' => 290,
                 'reference_no' => 'er-20250301-101226',
@@ -3990,10 +3976,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 5500.0,
                 'note' => 'February Salary',
-                'created_at' => '2025-03-01 18:00:00',
-                'updated_at' => '2025-03-02 04:12:26',
+                'created_at' => '2025-03-01 12:00:00',
+                'updated_at' => '2025-03-01 22:12:26',
             ),
-            281 => 
+            280 => 
             array (
                 'id' => 291,
                 'reference_no' => 'er-20250301-101252',
@@ -4004,10 +3990,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 250.0,
                 'note' => 'Dishan Salary',
-                'created_at' => '2025-03-01 18:00:00',
-                'updated_at' => '2025-03-02 04:12:52',
+                'created_at' => '2025-03-01 12:00:00',
+                'updated_at' => '2025-03-01 22:12:52',
             ),
-            282 => 
+            281 => 
             array (
                 'id' => 292,
                 'reference_no' => 'er-20250301-101310',
@@ -4018,10 +4004,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-03-01 18:00:00',
-                'updated_at' => '2025-03-02 04:13:10',
+                'created_at' => '2025-03-01 12:00:00',
+                'updated_at' => '2025-03-01 22:13:10',
             ),
-            283 => 
+            282 => 
             array (
                 'id' => 293,
                 'reference_no' => 'er-20250302-101804',
@@ -4032,10 +4018,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-02 18:00:00',
-                'updated_at' => '2025-03-03 04:18:04',
+                'created_at' => '2025-03-02 12:00:00',
+                'updated_at' => '2025-03-02 22:18:04',
             ),
-            284 => 
+            283 => 
             array (
                 'id' => 294,
                 'reference_no' => 'er-20250302-101840',
@@ -4046,10 +4032,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 4500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-02 18:00:00',
-                'updated_at' => '2025-03-03 04:18:41',
+                'created_at' => '2025-03-02 12:00:00',
+                'updated_at' => '2025-03-02 22:18:41',
             ),
-            285 => 
+            284 => 
             array (
                 'id' => 295,
                 'reference_no' => 'er-20250302-101958',
@@ -4060,10 +4046,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Dhaka cost',
-                'created_at' => '2025-03-03 04:00:00',
-                'updated_at' => '2025-03-03 04:19:58',
+                'created_at' => '2025-03-02 22:00:00',
+                'updated_at' => '2025-03-02 22:19:58',
             ),
-            286 => 
+            285 => 
             array (
                 'id' => 296,
                 'reference_no' => 'er-20250302-102738',
@@ -4074,10 +4060,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1350.0,
                 'note' => 'Eftar Equipment',
-                'created_at' => '2025-03-02 18:00:00',
-                'updated_at' => '2025-03-03 04:27:38',
+                'created_at' => '2025-03-02 12:00:00',
+                'updated_at' => '2025-03-02 22:27:38',
             ),
-            287 => 
+            286 => 
             array (
                 'id' => 297,
                 'reference_no' => 'er-20250302-102819',
@@ -4088,10 +4074,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1340.0,
                 'note' => 'Eftar item',
-                'created_at' => '2025-03-03 00:00:00',
-                'updated_at' => '2025-03-03 04:28:19',
+                'created_at' => '2025-03-02 18:00:00',
+                'updated_at' => '2025-03-02 22:28:19',
             ),
-            288 => 
+            287 => 
             array (
                 'id' => 298,
                 'reference_no' => 'er-20250302-102843',
@@ -4102,10 +4088,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Liton salary',
-                'created_at' => '2025-03-02 18:00:00',
-                'updated_at' => '2025-03-03 04:28:43',
+                'created_at' => '2025-03-02 12:00:00',
+                'updated_at' => '2025-03-02 22:28:43',
             ),
-            289 => 
+            288 => 
             array (
                 'id' => 299,
                 'reference_no' => 'er-20250302-102932',
@@ -4116,10 +4102,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1920.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-02 18:00:00',
-                'updated_at' => '2025-03-03 04:29:32',
+                'created_at' => '2025-03-02 12:00:00',
+                'updated_at' => '2025-03-02 22:29:32',
             ),
-            290 => 
+            289 => 
             array (
                 'id' => 300,
                 'reference_no' => 'er-20250303-100308',
@@ -4130,10 +4116,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 940.0,
                 'note' => NULL,
-                'created_at' => '2025-03-03 18:00:00',
-                'updated_at' => '2025-03-04 04:03:08',
+                'created_at' => '2025-03-03 12:00:00',
+                'updated_at' => '2025-03-03 22:03:08',
             ),
-            291 => 
+            290 => 
             array (
                 'id' => 301,
                 'reference_no' => 'er-20250303-100332',
@@ -4144,10 +4130,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1290.0,
                 'note' => NULL,
-                'created_at' => '2025-03-03 18:00:00',
-                'updated_at' => '2025-03-04 04:03:32',
+                'created_at' => '2025-03-03 12:00:00',
+                'updated_at' => '2025-03-03 22:03:32',
             ),
-            292 => 
+            291 => 
             array (
                 'id' => 302,
                 'reference_no' => 'er-20250303-100411',
@@ -4158,10 +4144,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1340.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-04 00:00:00',
-                'updated_at' => '2025-03-04 04:04:11',
+                'created_at' => '2025-03-03 18:00:00',
+                'updated_at' => '2025-03-03 22:04:11',
             ),
-            293 => 
+            292 => 
             array (
                 'id' => 303,
                 'reference_no' => 'er-20250303-100433',
@@ -4172,10 +4158,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'Mistri',
-                'created_at' => '2025-03-03 18:00:00',
-                'updated_at' => '2025-03-04 04:04:33',
+                'created_at' => '2025-03-03 12:00:00',
+                'updated_at' => '2025-03-03 22:04:33',
             ),
-            294 => 
+            293 => 
             array (
                 'id' => 304,
                 'reference_no' => 'er-20250304-115745',
@@ -4186,10 +4172,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => 'Tissue',
-                'created_at' => '2025-03-04 20:00:00',
-                'updated_at' => '2025-03-05 05:57:45',
+                'created_at' => '2025-03-04 14:00:00',
+                'updated_at' => '2025-03-04 23:57:45',
             ),
-            295 => 
+            294 => 
             array (
                 'id' => 305,
                 'reference_no' => 'er-20250304-115814',
@@ -4200,10 +4186,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1600.0,
                 'note' => NULL,
-                'created_at' => '2025-03-05 04:00:00',
-                'updated_at' => '2025-03-05 05:58:14',
+                'created_at' => '2025-03-04 22:00:00',
+                'updated_at' => '2025-03-04 23:58:14',
             ),
-            296 => 
+            295 => 
             array (
                 'id' => 306,
                 'reference_no' => 'er-20250304-115909',
@@ -4214,10 +4200,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2260.0,
                 'note' => NULL,
-                'created_at' => '2025-03-04 23:00:00',
-                'updated_at' => '2025-03-05 05:59:09',
+                'created_at' => '2025-03-04 17:00:00',
+                'updated_at' => '2025-03-04 23:59:09',
             ),
-            297 => 
+            296 => 
             array (
                 'id' => 307,
                 'reference_no' => 'er-20250304-115933',
@@ -4228,10 +4214,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1400.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-04 18:00:00',
-                'updated_at' => '2025-03-05 05:59:33',
+                'created_at' => '2025-03-04 12:00:00',
+                'updated_at' => '2025-03-04 23:59:33',
             ),
-            298 => 
+            297 => 
             array (
                 'id' => 308,
                 'reference_no' => 'er-20250305-120001',
@@ -4242,10 +4228,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Dishan Salary',
-                'created_at' => '2025-03-05 04:00:00',
-                'updated_at' => '2025-03-05 06:00:01',
+                'created_at' => '2025-03-04 22:00:00',
+                'updated_at' => '2025-03-05 00:00:01',
             ),
-            299 => 
+            298 => 
             array (
                 'id' => 309,
                 'reference_no' => 'er-20250305-120036',
@@ -4256,10 +4242,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-05 04:00:00',
-                'updated_at' => '2025-03-05 06:00:36',
+                'created_at' => '2025-03-04 22:00:00',
+                'updated_at' => '2025-03-05 00:00:36',
             ),
-            300 => 
+            299 => 
             array (
                 'id' => 310,
                 'reference_no' => 'er-20250305-120053',
@@ -4270,10 +4256,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => NULL,
-                'created_at' => '2025-03-05 04:00:00',
-                'updated_at' => '2025-03-05 06:00:53',
+                'created_at' => '2025-03-04 22:00:00',
+                'updated_at' => '2025-03-05 00:00:53',
             ),
-            301 => 
+            300 => 
             array (
                 'id' => 311,
                 'reference_no' => 'er-20250305-110741',
@@ -4284,10 +4270,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => NULL,
-                'created_at' => '2025-03-05 18:00:00',
-                'updated_at' => '2025-03-06 05:07:41',
+                'created_at' => '2025-03-05 12:00:00',
+                'updated_at' => '2025-03-05 23:07:41',
             ),
-            302 => 
+            301 => 
             array (
                 'id' => 312,
                 'reference_no' => 'er-20250305-110804',
@@ -4298,10 +4284,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-03-05 17:00:00',
-                'updated_at' => '2025-03-06 05:08:04',
+                'created_at' => '2025-03-05 11:00:00',
+                'updated_at' => '2025-03-05 23:08:04',
             ),
-            303 => 
+            302 => 
             array (
                 'id' => 313,
                 'reference_no' => 'er-20250305-110841',
@@ -4312,10 +4298,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 6795.0,
                 'note' => 'Ellectronic equipment for generator',
-                'created_at' => '2025-03-05 18:00:00',
-                'updated_at' => '2025-03-06 05:08:41',
+                'created_at' => '2025-03-05 12:00:00',
+                'updated_at' => '2025-03-05 23:08:41',
             ),
-            304 => 
+            303 => 
             array (
                 'id' => 314,
                 'reference_no' => 'er-20250305-110924',
@@ -4326,10 +4312,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 850.0,
                 'note' => 'Generator oil + mobil',
-                'created_at' => '2025-03-05 22:00:00',
-                'updated_at' => '2025-03-06 05:09:24',
+                'created_at' => '2025-03-05 16:00:00',
+                'updated_at' => '2025-03-05 23:09:24',
             ),
-            305 => 
+            304 => 
             array (
                 'id' => 315,
                 'reference_no' => 'er-20250305-111000',
@@ -4340,10 +4326,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'Ellectric mistri',
-                'created_at' => '2025-03-05 23:00:00',
-                'updated_at' => '2025-03-06 05:10:00',
+                'created_at' => '2025-03-05 17:00:00',
+                'updated_at' => '2025-03-05 23:10:00',
             ),
-            306 => 
+            305 => 
             array (
                 'id' => 316,
                 'reference_no' => 'er-20250305-111029',
@@ -4354,10 +4340,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Generator security chain',
-                'created_at' => '2025-03-05 23:00:00',
-                'updated_at' => '2025-03-06 05:10:29',
+                'created_at' => '2025-03-05 17:00:00',
+                'updated_at' => '2025-03-05 23:10:29',
             ),
-            307 => 
+            306 => 
             array (
                 'id' => 317,
                 'reference_no' => 'er-20250305-111110',
@@ -4368,10 +4354,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1435.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-05 18:00:00',
-                'updated_at' => '2025-03-06 05:11:10',
+                'created_at' => '2025-03-05 12:00:00',
+                'updated_at' => '2025-03-05 23:11:10',
             ),
-            308 => 
+            307 => 
             array (
                 'id' => 318,
                 'reference_no' => 'er-20250305-111131',
@@ -4382,10 +4368,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-03-06 04:00:00',
-                'updated_at' => '2025-03-06 05:11:31',
+                'created_at' => '2025-03-05 22:00:00',
+                'updated_at' => '2025-03-05 23:11:31',
             ),
-            309 => 
+            308 => 
             array (
                 'id' => 319,
                 'reference_no' => 'er-20250305-111150',
@@ -4396,10 +4382,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1055.0,
                 'note' => NULL,
-                'created_at' => '2025-03-05 18:00:00',
-                'updated_at' => '2025-03-06 05:11:50',
+                'created_at' => '2025-03-05 12:00:00',
+                'updated_at' => '2025-03-05 23:11:50',
             ),
-            310 => 
+            309 => 
             array (
                 'id' => 320,
                 'reference_no' => 'er-20250305-111218',
@@ -4410,10 +4396,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Mamun salary',
-                'created_at' => '2025-03-06 05:00:00',
-                'updated_at' => '2025-03-06 05:12:18',
+                'created_at' => '2025-03-05 23:00:00',
+                'updated_at' => '2025-03-05 23:12:18',
             ),
-            311 => 
+            310 => 
             array (
                 'id' => 321,
                 'reference_no' => 'er-20250306-115854',
@@ -4424,10 +4410,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-03-06 16:00:00',
-                'updated_at' => '2025-03-07 05:58:54',
+                'created_at' => '2025-03-06 10:00:00',
+                'updated_at' => '2025-03-06 23:58:54',
             ),
-            312 => 
+            311 => 
             array (
                 'id' => 322,
                 'reference_no' => 'er-20250306-115925',
@@ -4438,10 +4424,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 8000.0,
                 'note' => 'Light',
-                'created_at' => '2025-03-06 18:00:00',
-                'updated_at' => '2025-03-07 05:59:25',
+                'created_at' => '2025-03-06 12:00:00',
+                'updated_at' => '2025-03-06 23:59:25',
             ),
-            313 => 
+            312 => 
             array (
                 'id' => 323,
                 'reference_no' => 'er-20250306-115953',
@@ -4452,10 +4438,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 530.0,
                 'note' => 'Multiplug',
-                'created_at' => '2025-03-06 22:00:00',
-                'updated_at' => '2025-03-07 05:59:53',
+                'created_at' => '2025-03-06 16:00:00',
+                'updated_at' => '2025-03-06 23:59:53',
             ),
-            314 => 
+            313 => 
             array (
                 'id' => 324,
                 'reference_no' => 'er-20250307-120033',
@@ -4466,10 +4452,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Godown Camera Advance',
-                'created_at' => '2025-03-06 22:00:00',
-                'updated_at' => '2025-03-07 06:00:33',
+                'created_at' => '2025-03-06 16:00:00',
+                'updated_at' => '2025-03-07 00:00:33',
             ),
-            315 => 
+            314 => 
             array (
                 'id' => 325,
                 'reference_no' => 'er-20250307-120113',
@@ -4480,10 +4466,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-03-07 02:00:00',
-                'updated_at' => '2025-03-07 06:01:13',
+                'created_at' => '2025-03-06 20:00:00',
+                'updated_at' => '2025-03-07 00:01:13',
             ),
-            316 => 
+            315 => 
             array (
                 'id' => 326,
                 'reference_no' => 'er-20250307-120130',
@@ -4494,10 +4480,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-06 18:00:00',
-                'updated_at' => '2025-03-07 06:01:30',
+                'created_at' => '2025-03-06 12:00:00',
+                'updated_at' => '2025-03-07 00:01:30',
             ),
-            317 => 
+            316 => 
             array (
                 'id' => 327,
                 'reference_no' => 'er-20250307-120157',
@@ -4508,10 +4494,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Liton Salary',
-                'created_at' => '2025-03-06 18:00:00',
-                'updated_at' => '2025-03-07 06:01:57',
+                'created_at' => '2025-03-06 12:00:00',
+                'updated_at' => '2025-03-07 00:01:57',
             ),
-            318 => 
+            317 => 
             array (
                 'id' => 328,
                 'reference_no' => 'er-20250307-120221',
@@ -4522,10 +4508,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Said Salary',
-                'created_at' => '2025-03-07 04:00:00',
-                'updated_at' => '2025-03-07 06:02:21',
+                'created_at' => '2025-03-06 22:00:00',
+                'updated_at' => '2025-03-07 00:02:21',
             ),
-            319 => 
+            318 => 
             array (
                 'id' => 329,
                 'reference_no' => 'er-20250307-120236',
@@ -4536,10 +4522,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => NULL,
-                'created_at' => '2025-03-06 18:00:00',
-                'updated_at' => '2025-03-07 06:02:36',
+                'created_at' => '2025-03-06 12:00:00',
+                'updated_at' => '2025-03-07 00:02:36',
             ),
-            320 => 
+            319 => 
             array (
                 'id' => 330,
                 'reference_no' => 'er-20250307-111418',
@@ -4550,10 +4536,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 13400.0,
                 'note' => 'Godown camera',
-                'created_at' => '2025-03-07 21:00:00',
-                'updated_at' => '2025-03-08 05:14:18',
+                'created_at' => '2025-03-07 15:00:00',
+                'updated_at' => '2025-03-07 23:14:18',
             ),
-            321 => 
+            320 => 
             array (
                 'id' => 331,
                 'reference_no' => 'er-20250307-111436',
@@ -4564,10 +4550,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 595.0,
                 'note' => NULL,
-                'created_at' => '2025-03-08 05:00:00',
-                'updated_at' => '2025-03-08 05:14:36',
+                'created_at' => '2025-03-07 23:00:00',
+                'updated_at' => '2025-03-07 23:14:36',
             ),
-            322 => 
+            321 => 
             array (
                 'id' => 332,
                 'reference_no' => 'er-20250307-111501',
@@ -4578,10 +4564,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1400.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-08 00:00:00',
-                'updated_at' => '2025-03-08 05:15:01',
+                'created_at' => '2025-03-07 18:00:00',
+                'updated_at' => '2025-03-07 23:15:01',
             ),
-            323 => 
+            322 => 
             array (
                 'id' => 333,
                 'reference_no' => 'er-20250307-111522',
@@ -4592,10 +4578,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 335.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-03-07 18:00:00',
-                'updated_at' => '2025-03-08 05:15:22',
+                'created_at' => '2025-03-07 12:00:00',
+                'updated_at' => '2025-03-07 23:15:22',
             ),
-            324 => 
+            323 => 
             array (
                 'id' => 334,
                 'reference_no' => 'er-20250307-111555',
@@ -4606,10 +4592,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 420.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-03-08 05:00:00',
-                'updated_at' => '2025-03-08 05:15:55',
+                'created_at' => '2025-03-07 23:00:00',
+                'updated_at' => '2025-03-07 23:15:55',
             ),
-            325 => 
+            324 => 
             array (
                 'id' => 335,
                 'reference_no' => 'er-20250307-111642',
@@ -4620,10 +4606,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 485.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-03-08 05:00:00',
-                'updated_at' => '2025-03-08 05:16:42',
+                'created_at' => '2025-03-07 23:00:00',
+                'updated_at' => '2025-03-07 23:16:42',
             ),
-            326 => 
+            325 => 
             array (
                 'id' => 336,
                 'reference_no' => 'er-20250307-111705',
@@ -4634,10 +4620,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-03-08 05:00:00',
-                'updated_at' => '2025-03-08 05:17:05',
+                'created_at' => '2025-03-07 23:00:00',
+                'updated_at' => '2025-03-07 23:17:05',
             ),
-            327 => 
+            326 => 
             array (
                 'id' => 337,
                 'reference_no' => 'er-20250309-124003',
@@ -4648,10 +4634,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1490.0,
                 'note' => NULL,
-                'created_at' => '2025-03-08 18:00:00',
-                'updated_at' => '2025-03-09 06:40:03',
+                'created_at' => '2025-03-08 12:00:00',
+                'updated_at' => '2025-03-09 00:40:03',
             ),
-            328 => 
+            327 => 
             array (
                 'id' => 338,
                 'reference_no' => 'er-20250309-124026',
@@ -4662,10 +4648,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-03-08 18:00:00',
-                'updated_at' => '2025-03-09 06:40:26',
+                'created_at' => '2025-03-08 12:00:00',
+                'updated_at' => '2025-03-09 00:40:26',
             ),
-            329 => 
+            328 => 
             array (
                 'id' => 339,
                 'reference_no' => 'er-20250309-124058',
@@ -4676,10 +4662,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => 'Mamun Salary',
-                'created_at' => '2025-03-08 18:00:00',
-                'updated_at' => '2025-03-09 06:40:58',
+                'created_at' => '2025-03-08 12:00:00',
+                'updated_at' => '2025-03-09 00:40:58',
             ),
-            330 => 
+            329 => 
             array (
                 'id' => 340,
                 'reference_no' => 'er-20250309-124123',
@@ -4690,10 +4676,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 10000.0,
                 'note' => 'Said Eid Bonous',
-                'created_at' => '2025-03-08 18:00:00',
-                'updated_at' => '2025-03-09 06:41:23',
+                'created_at' => '2025-03-08 12:00:00',
+                'updated_at' => '2025-03-09 00:41:23',
             ),
-            331 => 
+            330 => 
             array (
                 'id' => 341,
                 'reference_no' => 'er-20250309-124150',
@@ -4704,10 +4690,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 800.0,
                 'note' => 'Godown Router',
-                'created_at' => '2025-03-08 18:00:00',
-                'updated_at' => '2025-03-09 06:41:50',
+                'created_at' => '2025-03-08 12:00:00',
+                'updated_at' => '2025-03-09 00:41:50',
             ),
-            332 => 
+            331 => 
             array (
                 'id' => 342,
                 'reference_no' => 'er-20250309-104539',
@@ -4718,10 +4704,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-09 17:00:00',
-                'updated_at' => '2025-03-10 04:45:39',
+                'created_at' => '2025-03-09 11:00:00',
+                'updated_at' => '2025-03-09 22:45:39',
             ),
-            333 => 
+            332 => 
             array (
                 'id' => 343,
                 'reference_no' => 'er-20250309-104611',
@@ -4732,10 +4718,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 12500.0,
                 'note' => 'Eid bonous',
-                'created_at' => '2025-03-09 18:00:00',
-                'updated_at' => '2025-03-10 04:46:11',
+                'created_at' => '2025-03-09 12:00:00',
+                'updated_at' => '2025-03-09 22:46:11',
             ),
-            334 => 
+            333 => 
             array (
                 'id' => 344,
                 'reference_no' => 'er-20250309-104644',
@@ -4746,10 +4732,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-09 20:00:00',
-                'updated_at' => '2025-03-10 04:46:44',
+                'created_at' => '2025-03-09 14:00:00',
+                'updated_at' => '2025-03-09 22:46:44',
             ),
-            335 => 
+            334 => 
             array (
                 'id' => 345,
                 'reference_no' => 'er-20250309-104710',
@@ -4760,10 +4746,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => NULL,
-                'created_at' => '2025-03-09 22:00:00',
-                'updated_at' => '2025-03-10 04:47:10',
+                'created_at' => '2025-03-09 16:00:00',
+                'updated_at' => '2025-03-09 22:47:10',
             ),
-            336 => 
+            335 => 
             array (
                 'id' => 346,
                 'reference_no' => 'er-20250309-104736',
@@ -4774,10 +4760,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1560.0,
                 'note' => 'Light',
-                'created_at' => '2025-03-09 06:00:00',
-                'updated_at' => '2025-03-10 05:07:47',
+                'created_at' => '2025-03-09 00:00:00',
+                'updated_at' => '2025-03-09 23:07:47',
             ),
-            337 => 
+            336 => 
             array (
                 'id' => 347,
                 'reference_no' => 'er-20250309-104841',
@@ -4788,10 +4774,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2900.0,
                 'note' => '2 Days efter',
-                'created_at' => '2025-03-09 18:00:00',
-                'updated_at' => '2025-03-10 04:48:41',
+                'created_at' => '2025-03-09 12:00:00',
+                'updated_at' => '2025-03-09 22:48:41',
             ),
-            338 => 
+            337 => 
             array (
                 'id' => 348,
                 'reference_no' => 'er-20250309-110601',
@@ -4802,10 +4788,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Liton Salary',
-                'created_at' => '2025-03-09 18:00:00',
-                'updated_at' => '2025-03-10 05:06:01',
+                'created_at' => '2025-03-09 12:00:00',
+                'updated_at' => '2025-03-09 23:06:01',
             ),
-            339 => 
+            338 => 
             array (
                 'id' => 350,
                 'reference_no' => 'er-20250309-111237',
@@ -4816,10 +4802,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 3685.0,
                 'note' => NULL,
-                'created_at' => '2025-03-10 04:00:00',
-                'updated_at' => '2025-03-10 05:12:37',
+                'created_at' => '2025-03-09 22:00:00',
+                'updated_at' => '2025-03-09 23:12:37',
             ),
-            340 => 
+            339 => 
             array (
                 'id' => 351,
                 'reference_no' => 'er-20250310-110141',
@@ -4830,10 +4816,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 11685.0,
                 'note' => NULL,
-                'created_at' => '2025-03-11 05:00:00',
-                'updated_at' => '2025-03-11 05:01:41',
+                'created_at' => '2025-03-10 23:00:00',
+                'updated_at' => '2025-03-10 23:01:41',
             ),
-            341 => 
+            340 => 
             array (
                 'id' => 352,
                 'reference_no' => 'er-20250310-110226',
@@ -4844,10 +4830,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 15000.0,
                 'note' => 'Eid Bonous',
-                'created_at' => '2025-03-10 23:00:00',
-                'updated_at' => '2025-03-11 05:02:26',
+                'created_at' => '2025-03-10 17:00:00',
+                'updated_at' => '2025-03-10 23:02:26',
             ),
-            342 => 
+            341 => 
             array (
                 'id' => 353,
                 'reference_no' => 'er-20250310-110258',
@@ -4858,10 +4844,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1400.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-10 23:00:00',
-                'updated_at' => '2025-03-11 05:02:58',
+                'created_at' => '2025-03-10 17:00:00',
+                'updated_at' => '2025-03-10 23:02:58',
             ),
-            343 => 
+            342 => 
             array (
                 'id' => 354,
                 'reference_no' => 'er-20250312-120333',
@@ -4872,10 +4858,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 65000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-11 17:00:00',
-                'updated_at' => '2025-03-12 06:03:33',
+                'created_at' => '2025-03-11 11:00:00',
+                'updated_at' => '2025-03-12 00:03:33',
             ),
-            344 => 
+            343 => 
             array (
                 'id' => 355,
                 'reference_no' => 'er-20250312-120841',
@@ -4886,10 +4872,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1455.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-12 00:00:00',
-                'updated_at' => '2025-03-12 06:08:41',
+                'created_at' => '2025-03-11 18:00:00',
+                'updated_at' => '2025-03-12 00:08:41',
             ),
-            345 => 
+            344 => 
             array (
                 'id' => 356,
                 'reference_no' => 'er-20250312-120919',
@@ -4900,10 +4886,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 800.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-12 05:00:00',
-                'updated_at' => '2025-03-12 06:09:19',
+                'created_at' => '2025-03-11 23:00:00',
+                'updated_at' => '2025-03-12 00:09:19',
             ),
-            346 => 
+            345 => 
             array (
                 'id' => 357,
                 'reference_no' => 'er-20250312-120949',
@@ -4914,10 +4900,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 14500.0,
                 'note' => 'Eid Bonous',
-                'created_at' => '2025-03-12 05:00:00',
-                'updated_at' => '2025-03-12 06:09:49',
+                'created_at' => '2025-03-11 23:00:00',
+                'updated_at' => '2025-03-12 00:09:49',
             ),
-            347 => 
+            346 => 
             array (
                 'id' => 358,
                 'reference_no' => 'er-20250312-121010',
@@ -4928,10 +4914,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Mamun Salary',
-                'created_at' => '2025-03-11 18:00:00',
-                'updated_at' => '2025-03-12 06:10:10',
+                'created_at' => '2025-03-11 12:00:00',
+                'updated_at' => '2025-03-12 00:10:10',
             ),
-            348 => 
+            347 => 
             array (
                 'id' => 359,
                 'reference_no' => 'er-20250312-121033',
@@ -4942,10 +4928,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-12 05:00:00',
-                'updated_at' => '2025-03-12 06:10:33',
+                'created_at' => '2025-03-11 23:00:00',
+                'updated_at' => '2025-03-12 00:10:33',
             ),
-            349 => 
+            348 => 
             array (
                 'id' => 360,
                 'reference_no' => 'er-20250312-114103',
@@ -4956,10 +4942,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Tool',
-                'created_at' => '2025-03-12 18:00:00',
-                'updated_at' => '2025-03-13 05:41:03',
+                'created_at' => '2025-03-12 12:00:00',
+                'updated_at' => '2025-03-12 23:41:03',
             ),
-            350 => 
+            349 => 
             array (
                 'id' => 361,
                 'reference_no' => 'er-20250312-114205',
@@ -4970,10 +4956,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 1485.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-12 06:00:00',
-                'updated_at' => '2025-03-13 05:44:41',
+                'created_at' => '2025-03-12 00:00:00',
+                'updated_at' => '2025-03-12 23:44:41',
             ),
-            351 => 
+            350 => 
             array (
                 'id' => 362,
                 'reference_no' => 'er-20250312-114320',
@@ -4984,10 +4970,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 2250.0,
                 'note' => NULL,
-                'created_at' => '2025-03-12 18:00:00',
-                'updated_at' => '2025-03-13 05:43:20',
+                'created_at' => '2025-03-12 12:00:00',
+                'updated_at' => '2025-03-12 23:43:20',
             ),
-            352 => 
+            351 => 
             array (
                 'id' => 363,
                 'reference_no' => 'er-20250312-114352',
@@ -4998,10 +4984,10 @@ Rickshaw= 50',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-13 05:00:00',
-                'updated_at' => '2025-03-13 05:43:52',
+                'created_at' => '2025-03-12 23:00:00',
+                'updated_at' => '2025-03-12 23:43:52',
             ),
-            353 => 
+            352 => 
             array (
                 'id' => 364,
                 'reference_no' => 'er-20250314-123509',
@@ -5013,10 +4999,10 @@ Rickshaw= 50',
                 'amount' => 200.0,
                 'note' => 'Mamun - 100
 Kurban - 100',
-                'created_at' => '2025-03-13 16:00:00',
-                'updated_at' => '2025-03-14 06:35:09',
+                'created_at' => '2025-03-13 10:00:00',
+                'updated_at' => '2025-03-14 00:35:09',
             ),
-            354 => 
+            353 => 
             array (
                 'id' => 365,
                 'reference_no' => 'er-20250314-123533',
@@ -5027,10 +5013,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Poster',
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:35:33',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:35:33',
             ),
-            355 => 
+            354 => 
             array (
                 'id' => 366,
                 'reference_no' => 'er-20250314-123549',
@@ -5041,10 +5027,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 10040.0,
                 'note' => NULL,
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:35:49',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:35:49',
             ),
-            356 => 
+            355 => 
             array (
                 'id' => 367,
                 'reference_no' => 'er-20250314-123604',
@@ -5055,10 +5041,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 470.0,
                 'note' => NULL,
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:36:04',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:36:04',
             ),
-            357 => 
+            356 => 
             array (
                 'id' => 368,
                 'reference_no' => 'er-20250314-123624',
@@ -5069,10 +5055,10 @@ Kurban - 100',
                 'cash_register_id' => 2,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:36:24',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:36:24',
             ),
-            358 => 
+            357 => 
             array (
                 'id' => 369,
                 'reference_no' => 'er-20250314-123636',
@@ -5083,10 +5069,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:36:36',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:36:36',
             ),
-            359 => 
+            358 => 
             array (
                 'id' => 370,
                 'reference_no' => 'er-20250314-123654',
@@ -5097,10 +5083,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Mosjid',
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:36:54',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:36:54',
             ),
-            360 => 
+            359 => 
             array (
                 'id' => 371,
                 'reference_no' => 'er-20250314-123712',
@@ -5111,10 +5097,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Liton salary',
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:37:12',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:37:12',
             ),
-            361 => 
+            360 => 
             array (
                 'id' => 372,
                 'reference_no' => 'er-20250314-123727',
@@ -5125,10 +5111,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 60000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:37:27',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:37:27',
             ),
-            362 => 
+            361 => 
             array (
                 'id' => 373,
                 'reference_no' => 'er-20250314-123743',
@@ -5139,10 +5125,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'Mistri',
-                'created_at' => '2025-03-13 06:00:00',
-                'updated_at' => '2025-03-14 06:40:00',
+                'created_at' => '2025-03-13 00:00:00',
+                'updated_at' => '2025-03-14 00:40:00',
             ),
-            363 => 
+            362 => 
             array (
                 'id' => 374,
                 'reference_no' => 'er-20250314-123833',
@@ -5153,10 +5139,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:38:33',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:38:33',
             ),
-            364 => 
+            363 => 
             array (
                 'id' => 375,
                 'reference_no' => 'er-20250314-124706',
@@ -5167,10 +5153,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 1430.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-13 18:00:00',
-                'updated_at' => '2025-03-14 06:47:06',
+                'created_at' => '2025-03-13 12:00:00',
+                'updated_at' => '2025-03-14 00:47:06',
             ),
-            365 => 
+            364 => 
             array (
                 'id' => 376,
                 'reference_no' => 'er-20250315-124201',
@@ -5181,10 +5167,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 5985.0,
                 'note' => NULL,
-                'created_at' => '2025-03-14 18:00:00',
-                'updated_at' => '2025-03-15 06:42:01',
+                'created_at' => '2025-03-14 12:00:00',
+                'updated_at' => '2025-03-15 00:42:01',
             ),
-            366 => 
+            365 => 
             array (
                 'id' => 377,
                 'reference_no' => 'er-20250315-124225',
@@ -5195,10 +5181,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 2950.0,
                 'note' => NULL,
-                'created_at' => '2025-03-14 18:00:00',
-                'updated_at' => '2025-03-15 06:42:25',
+                'created_at' => '2025-03-14 12:00:00',
+                'updated_at' => '2025-03-15 00:42:25',
             ),
-            367 => 
+            366 => 
             array (
                 'id' => 378,
                 'reference_no' => 'er-20250315-124245',
@@ -5209,10 +5195,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 335.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-14 18:00:00',
-                'updated_at' => '2025-03-15 06:42:45',
+                'created_at' => '2025-03-14 12:00:00',
+                'updated_at' => '2025-03-15 00:42:45',
             ),
-            368 => 
+            367 => 
             array (
                 'id' => 379,
                 'reference_no' => 'er-20250315-124300',
@@ -5223,10 +5209,10 @@ Kurban - 100',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-03-14 18:00:00',
-                'updated_at' => '2025-03-15 06:43:00',
+                'created_at' => '2025-03-14 12:00:00',
+                'updated_at' => '2025-03-15 00:43:00',
             ),
-            369 => 
+            368 => 
             array (
                 'id' => 380,
                 'reference_no' => 'er-20250315-124431',
@@ -5240,10 +5226,10 @@ Kurban - 100',
 Kurban - 420
 Emrul - 500
 Al-Amin - 485',
-                'created_at' => '2025-03-14 18:00:00',
-                'updated_at' => '2025-03-15 06:44:31',
+                'created_at' => '2025-03-14 12:00:00',
+                'updated_at' => '2025-03-15 00:44:31',
             ),
-            370 => 
+            369 => 
             array (
                 'id' => 381,
                 'reference_no' => 'er-20250316-125241',
@@ -5254,10 +5240,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2900.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-16 00:00:00',
-                'updated_at' => '2025-03-16 06:52:41',
+                'created_at' => '2025-03-15 18:00:00',
+                'updated_at' => '2025-03-16 00:52:41',
             ),
-            371 => 
+            370 => 
             array (
                 'id' => 382,
                 'reference_no' => 'er-20250316-125338',
@@ -5268,10 +5254,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5185.0,
                 'note' => NULL,
-                'created_at' => '2025-03-15 18:00:00',
-                'updated_at' => '2025-03-16 06:53:38',
+                'created_at' => '2025-03-15 12:00:00',
+                'updated_at' => '2025-03-16 00:53:38',
             ),
-            372 => 
+            371 => 
             array (
                 'id' => 383,
                 'reference_no' => 'er-20250316-125407',
@@ -5282,10 +5268,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 700.0,
                 'note' => 'Fan',
-                'created_at' => '2025-03-15 18:00:00',
-                'updated_at' => '2025-03-16 06:54:07',
+                'created_at' => '2025-03-15 12:00:00',
+                'updated_at' => '2025-03-16 00:54:07',
             ),
-            373 => 
+            372 => 
             array (
                 'id' => 384,
                 'reference_no' => 'er-20250316-125432',
@@ -5296,10 +5282,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5500.0,
                 'note' => NULL,
-                'created_at' => '2025-03-15 18:00:00',
-                'updated_at' => '2025-03-16 06:54:32',
+                'created_at' => '2025-03-15 12:00:00',
+                'updated_at' => '2025-03-16 00:54:32',
             ),
-            374 => 
+            373 => 
             array (
                 'id' => 385,
                 'reference_no' => 'er-20250316-125534',
@@ -5310,10 +5296,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 110.0,
                 'note' => NULL,
-                'created_at' => '2025-03-15 18:00:00',
-                'updated_at' => '2025-03-16 06:55:34',
+                'created_at' => '2025-03-15 12:00:00',
+                'updated_at' => '2025-03-16 00:55:34',
             ),
-            375 => 
+            374 => 
             array (
                 'id' => 386,
                 'reference_no' => 'er-20250316-010019',
@@ -5324,10 +5310,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 7000.0,
                 'note' => 'Mamun salary',
-                'created_at' => '2025-03-15 18:00:00',
-                'updated_at' => '2025-03-16 07:00:19',
+                'created_at' => '2025-03-15 12:00:00',
+                'updated_at' => '2025-03-16 01:00:19',
             ),
-            376 => 
+            375 => 
             array (
                 'id' => 387,
                 'reference_no' => 'er-20250317-021055',
@@ -5338,10 +5324,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1890.0,
                 'note' => NULL,
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:10:55',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:10:55',
             ),
-            377 => 
+            376 => 
             array (
                 'id' => 388,
                 'reference_no' => 'er-20250317-021135',
@@ -5352,10 +5338,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1440.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:11:35',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:11:35',
             ),
-            378 => 
+            377 => 
             array (
                 'id' => 389,
                 'reference_no' => 'er-20250317-021157',
@@ -5366,10 +5352,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 250000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:11:57',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:11:57',
             ),
-            379 => 
+            378 => 
             array (
                 'id' => 390,
                 'reference_no' => 'er-20250317-021226',
@@ -5380,10 +5366,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:12:26',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:12:26',
             ),
-            380 => 
+            379 => 
             array (
                 'id' => 391,
                 'reference_no' => 'er-20250317-021247',
@@ -5394,10 +5380,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 250.0,
                 'note' => 'Generator oil',
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:12:47',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:12:47',
             ),
-            381 => 
+            380 => 
             array (
                 'id' => 392,
                 'reference_no' => 'er-20250317-021309',
@@ -5408,10 +5394,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Liton salary',
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:13:09',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:13:09',
             ),
-            382 => 
+            381 => 
             array (
                 'id' => 393,
                 'reference_no' => 'er-20250317-021333',
@@ -5422,10 +5408,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Dishan salary',
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:13:33',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:13:33',
             ),
-            383 => 
+            382 => 
             array (
                 'id' => 394,
                 'reference_no' => 'er-20250317-021353',
@@ -5436,10 +5422,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 75.0,
                 'note' => NULL,
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:13:53',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:13:53',
             ),
-            384 => 
+            383 => 
             array (
                 'id' => 395,
                 'reference_no' => 'er-20250317-021413',
@@ -5450,10 +5436,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 290.0,
                 'note' => NULL,
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:14:13',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:14:13',
             ),
-            385 => 
+            384 => 
             array (
                 'id' => 396,
                 'reference_no' => 'er-20250317-021502',
@@ -5464,10 +5450,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 17000.0,
                 'note' => 'Bkash payment',
-                'created_at' => '2025-03-16 18:00:00',
-                'updated_at' => '2025-03-17 08:15:02',
+                'created_at' => '2025-03-16 12:00:00',
+                'updated_at' => '2025-03-17 02:15:02',
             ),
-            386 => 
+            385 => 
             array (
                 'id' => 397,
                 'reference_no' => 'er-20250318-123322',
@@ -5478,10 +5464,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:33:22',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:33:22',
             ),
-            387 => 
+            386 => 
             array (
                 'id' => 398,
                 'reference_no' => 'er-20250318-123347',
@@ -5492,10 +5478,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1430.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:33:47',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:33:47',
             ),
-            388 => 
+            387 => 
             array (
                 'id' => 399,
                 'reference_no' => 'er-20250318-123412',
@@ -5506,10 +5492,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 88000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:34:12',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:34:12',
             ),
-            389 => 
+            388 => 
             array (
                 'id' => 400,
                 'reference_no' => 'er-20250318-123426',
@@ -5520,10 +5506,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:34:26',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:34:26',
             ),
-            390 => 
+            389 => 
             array (
                 'id' => 401,
                 'reference_no' => 'er-20250318-123500',
@@ -5534,10 +5520,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 665.0,
                 'note' => 'Gen oil',
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:35:00',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:35:00',
             ),
-            391 => 
+            390 => 
             array (
                 'id' => 402,
                 'reference_no' => 'er-20250318-123521',
@@ -5548,10 +5534,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 10000.0,
                 'note' => 'Liton salary',
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:35:21',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:35:21',
             ),
-            392 => 
+            391 => 
             array (
                 'id' => 403,
                 'reference_no' => 'er-20250318-123537',
@@ -5562,10 +5548,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:35:37',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:35:37',
             ),
-            393 => 
+            392 => 
             array (
                 'id' => 404,
                 'reference_no' => 'er-20250318-123559',
@@ -5576,10 +5562,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 290.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-17 18:00:00',
-                'updated_at' => '2025-03-18 06:35:59',
+                'created_at' => '2025-03-17 12:00:00',
+                'updated_at' => '2025-03-18 00:35:59',
             ),
-            394 => 
+            393 => 
             array (
                 'id' => 405,
                 'reference_no' => 'er-20250319-124536',
@@ -5590,10 +5576,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-18 18:00:00',
-                'updated_at' => '2025-03-19 06:45:36',
+                'created_at' => '2025-03-18 12:00:00',
+                'updated_at' => '2025-03-19 00:45:36',
             ),
-            395 => 
+            394 => 
             array (
                 'id' => 406,
                 'reference_no' => 'er-20250319-124622',
@@ -5604,10 +5590,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1790.0,
                 'note' => NULL,
-                'created_at' => '2025-03-18 18:00:00',
-                'updated_at' => '2025-03-19 06:46:22',
+                'created_at' => '2025-03-18 12:00:00',
+                'updated_at' => '2025-03-19 00:46:22',
             ),
-            396 => 
+            395 => 
             array (
                 'id' => 407,
                 'reference_no' => 'er-20250319-124638',
@@ -5618,10 +5604,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-18 18:00:00',
-                'updated_at' => '2025-03-19 06:46:38',
+                'created_at' => '2025-03-18 12:00:00',
+                'updated_at' => '2025-03-19 00:46:38',
             ),
-            397 => 
+            396 => 
             array (
                 'id' => 408,
                 'reference_no' => 'er-20250319-124700',
@@ -5632,10 +5618,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-03-18 18:00:00',
-                'updated_at' => '2025-03-19 06:47:00',
+                'created_at' => '2025-03-18 12:00:00',
+                'updated_at' => '2025-03-19 00:47:00',
             ),
-            398 => 
+            397 => 
             array (
                 'id' => 409,
                 'reference_no' => 'er-20250319-124721',
@@ -5646,10 +5632,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1420.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-18 18:00:00',
-                'updated_at' => '2025-03-19 06:47:21',
+                'created_at' => '2025-03-18 12:00:00',
+                'updated_at' => '2025-03-19 00:47:21',
             ),
-            399 => 
+            398 => 
             array (
                 'id' => 410,
                 'reference_no' => 'er-20250320-015806',
@@ -5660,10 +5646,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 75000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 07:58:06',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 01:58:06',
             ),
-            400 => 
+            399 => 
             array (
                 'id' => 411,
                 'reference_no' => 'er-20250320-015825',
@@ -5674,10 +5660,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6875.0,
                 'note' => NULL,
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 07:58:25',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 01:58:25',
             ),
-            401 => 
+            400 => 
             array (
                 'id' => 412,
                 'reference_no' => 'er-20250320-015840',
@@ -5688,10 +5674,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 07:58:40',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 01:58:40',
             ),
-            402 => 
+            401 => 
             array (
                 'id' => 413,
                 'reference_no' => 'er-20250320-015854',
@@ -5702,10 +5688,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 140.0,
                 'note' => NULL,
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 07:58:54',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 01:58:54',
             ),
-            403 => 
+            402 => 
             array (
                 'id' => 414,
                 'reference_no' => 'er-20250320-015933',
@@ -5716,10 +5702,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1415.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 07:59:33',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 01:59:33',
             ),
-            404 => 
+            403 => 
             array (
                 'id' => 415,
                 'reference_no' => 'er-20250320-020020',
@@ -5730,10 +5716,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Hijra',
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 08:00:20',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 02:00:20',
             ),
-            405 => 
+            404 => 
             array (
                 'id' => 416,
                 'reference_no' => 'er-20250320-020034',
@@ -5744,10 +5730,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 08:00:34',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 02:00:34',
             ),
-            406 => 
+            405 => 
             array (
                 'id' => 417,
                 'reference_no' => 'er-20250320-020057',
@@ -5758,10 +5744,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 320.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-19 06:00:00',
-                'updated_at' => '2025-03-20 08:10:30',
+                'created_at' => '2025-03-19 00:00:00',
+                'updated_at' => '2025-03-20 02:10:30',
             ),
-            407 => 
+            406 => 
             array (
                 'id' => 418,
                 'reference_no' => 'er-20250320-020152',
@@ -5772,10 +5758,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5655.0,
                 'note' => 'Sutter color',
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 08:01:52',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 02:01:52',
             ),
-            408 => 
+            407 => 
             array (
                 'id' => 419,
                 'reference_no' => 'er-20250320-020431',
@@ -5786,10 +5772,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2100.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 08:04:31',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 02:04:31',
             ),
-            409 => 
+            408 => 
             array (
                 'id' => 420,
                 'reference_no' => 'er-20250320-020510',
@@ -5800,10 +5786,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Mamun salary',
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 08:05:10',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 02:05:10',
             ),
-            410 => 
+            409 => 
             array (
                 'id' => 421,
                 'reference_no' => 'er-20250320-020542',
@@ -5814,10 +5800,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Bkash Payment',
-                'created_at' => '2025-03-19 18:00:00',
-                'updated_at' => '2025-03-20 08:05:42',
+                'created_at' => '2025-03-19 12:00:00',
+                'updated_at' => '2025-03-20 02:05:42',
             ),
-            411 => 
+            410 => 
             array (
                 'id' => 422,
                 'reference_no' => 'er-20250321-020641',
@@ -5828,10 +5814,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:06:41',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:06:41',
             ),
-            412 => 
+            411 => 
             array (
                 'id' => 423,
                 'reference_no' => 'er-20250321-020702',
@@ -5842,10 +5828,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3940.0,
                 'note' => NULL,
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:07:02',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:07:02',
             ),
-            413 => 
+            412 => 
             array (
                 'id' => 424,
                 'reference_no' => 'er-20250321-020724',
@@ -5856,10 +5842,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 650.0,
                 'note' => NULL,
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:07:24',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:07:24',
             ),
-            414 => 
+            413 => 
             array (
                 'id' => 426,
                 'reference_no' => 'er-20250321-020804',
@@ -5870,10 +5856,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:08:04',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:08:04',
             ),
-            415 => 
+            414 => 
             array (
                 'id' => 427,
                 'reference_no' => 'er-20250321-020829',
@@ -5884,10 +5870,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1455.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:08:29',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:08:29',
             ),
-            416 => 
+            415 => 
             array (
                 'id' => 428,
                 'reference_no' => 'er-20250321-020846',
@@ -5898,10 +5884,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:08:46',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:08:46',
             ),
-            417 => 
+            416 => 
             array (
                 'id' => 429,
                 'reference_no' => 'er-20250321-020858',
@@ -5912,10 +5898,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:08:58',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:08:58',
             ),
-            418 => 
+            417 => 
             array (
                 'id' => 430,
                 'reference_no' => 'er-20250321-020942',
@@ -5926,10 +5912,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 255.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:09:42',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:09:42',
             ),
-            419 => 
+            418 => 
             array (
                 'id' => 431,
                 'reference_no' => 'er-20250321-021006',
@@ -5940,10 +5926,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Bkash Payment',
-                'created_at' => '2025-03-20 18:00:00',
-                'updated_at' => '2025-03-21 08:10:06',
+                'created_at' => '2025-03-20 12:00:00',
+                'updated_at' => '2025-03-21 02:10:06',
             ),
-            420 => 
+            419 => 
             array (
                 'id' => 432,
                 'reference_no' => 'er-20250322-014533',
@@ -5954,10 +5940,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 350.0,
                 'note' => '50 pice Shopping bag',
-                'created_at' => '2025-03-21 00:00:00',
-                'updated_at' => '2025-05-25 14:10:10',
+                'created_at' => '2025-03-20 18:00:00',
+                'updated_at' => '2025-05-25 08:10:10',
             ),
-            421 => 
+            420 => 
             array (
                 'id' => 433,
                 'reference_no' => 'er-20250322-014552',
@@ -5968,10 +5954,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 9600.0,
                 'note' => NULL,
-                'created_at' => '2025-03-21 18:00:00',
-                'updated_at' => '2025-03-22 07:45:52',
+                'created_at' => '2025-03-21 12:00:00',
+                'updated_at' => '2025-03-22 01:45:52',
             ),
-            422 => 
+            421 => 
             array (
                 'id' => 434,
                 'reference_no' => 'er-20250322-014613',
@@ -5982,10 +5968,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1440.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-21 18:00:00',
-                'updated_at' => '2025-03-22 07:46:13',
+                'created_at' => '2025-03-21 12:00:00',
+                'updated_at' => '2025-03-22 01:46:13',
             ),
-            423 => 
+            422 => 
             array (
                 'id' => 435,
                 'reference_no' => 'er-20250322-014632',
@@ -5996,10 +5982,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-03-21 18:00:00',
-                'updated_at' => '2025-03-22 07:46:32',
+                'created_at' => '2025-03-21 12:00:00',
+                'updated_at' => '2025-03-22 01:46:32',
             ),
-            424 => 
+            423 => 
             array (
                 'id' => 436,
                 'reference_no' => 'er-20250322-014651',
@@ -6010,10 +5996,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 290.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-21 18:00:00',
-                'updated_at' => '2025-03-22 07:46:51',
+                'created_at' => '2025-03-21 12:00:00',
+                'updated_at' => '2025-03-22 01:46:51',
             ),
-            425 => 
+            424 => 
             array (
                 'id' => 437,
                 'reference_no' => 'er-20250323-024030',
@@ -6024,10 +6010,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 770.0,
                 'note' => NULL,
-                'created_at' => '2025-03-22 18:00:00',
-                'updated_at' => '2025-03-23 08:40:30',
+                'created_at' => '2025-03-22 12:00:00',
+                'updated_at' => '2025-03-23 02:40:30',
             ),
-            426 => 
+            425 => 
             array (
                 'id' => 438,
                 'reference_no' => 'er-20250323-024050',
@@ -6038,10 +6024,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 18700.0,
                 'note' => NULL,
-                'created_at' => '2025-03-22 18:00:00',
-                'updated_at' => '2025-03-23 08:40:50',
+                'created_at' => '2025-03-22 12:00:00',
+                'updated_at' => '2025-03-23 02:40:50',
             ),
-            427 => 
+            426 => 
             array (
                 'id' => 439,
                 'reference_no' => 'er-20250323-024115',
@@ -6052,10 +6038,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1425.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-22 18:00:00',
-                'updated_at' => '2025-03-23 08:41:15',
+                'created_at' => '2025-03-22 12:00:00',
+                'updated_at' => '2025-03-23 02:41:15',
             ),
-            428 => 
+            427 => 
             array (
                 'id' => 440,
                 'reference_no' => 'er-20250323-024132',
@@ -6066,10 +6052,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-03-22 18:00:00',
-                'updated_at' => '2025-03-23 08:41:32',
+                'created_at' => '2025-03-22 12:00:00',
+                'updated_at' => '2025-03-23 02:41:32',
             ),
-            429 => 
+            428 => 
             array (
                 'id' => 441,
                 'reference_no' => 'er-20250323-024153',
@@ -6080,10 +6066,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 415.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-22 18:00:00',
-                'updated_at' => '2025-03-23 08:41:53',
+                'created_at' => '2025-03-22 12:00:00',
+                'updated_at' => '2025-03-23 02:41:53',
             ),
-            430 => 
+            429 => 
             array (
                 'id' => 442,
                 'reference_no' => 'er-20250323-024221',
@@ -6094,10 +6080,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => 'Mamun salary',
-                'created_at' => '2025-03-22 18:00:00',
-                'updated_at' => '2025-03-23 08:42:21',
+                'created_at' => '2025-03-22 12:00:00',
+                'updated_at' => '2025-03-23 02:42:21',
             ),
-            431 => 
+            430 => 
             array (
                 'id' => 443,
                 'reference_no' => 'er-20250323-024252',
@@ -6108,10 +6094,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Liton Salary',
-                'created_at' => '2025-03-22 18:00:00',
-                'updated_at' => '2025-03-23 08:42:52',
+                'created_at' => '2025-03-22 12:00:00',
+                'updated_at' => '2025-03-23 02:42:52',
             ),
-            432 => 
+            431 => 
             array (
                 'id' => 444,
                 'reference_no' => 'er-20250324-022840',
@@ -6122,10 +6108,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 450000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-23 18:00:00',
-                'updated_at' => '2025-03-24 08:28:40',
+                'created_at' => '2025-03-23 12:00:00',
+                'updated_at' => '2025-03-24 02:28:40',
             ),
-            433 => 
+            432 => 
             array (
                 'id' => 445,
                 'reference_no' => 'er-20250324-022858',
@@ -6136,10 +6122,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4985.0,
                 'note' => NULL,
-                'created_at' => '2025-03-23 18:00:00',
-                'updated_at' => '2025-03-24 08:28:58',
+                'created_at' => '2025-03-23 12:00:00',
+                'updated_at' => '2025-03-24 02:28:58',
             ),
-            434 => 
+            433 => 
             array (
                 'id' => 446,
                 'reference_no' => 'er-20250324-022923',
@@ -6150,10 +6136,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1620.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-23 18:00:00',
-                'updated_at' => '2025-03-24 08:29:23',
+                'created_at' => '2025-03-23 12:00:00',
+                'updated_at' => '2025-03-24 02:29:23',
             ),
-            435 => 
+            434 => 
             array (
                 'id' => 447,
                 'reference_no' => 'er-20250324-022950',
@@ -6164,10 +6150,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => 'Polythene',
-                'created_at' => '2025-03-23 18:00:00',
-                'updated_at' => '2025-03-24 08:29:50',
+                'created_at' => '2025-03-23 12:00:00',
+                'updated_at' => '2025-03-24 02:29:50',
             ),
-            436 => 
+            435 => 
             array (
                 'id' => 448,
                 'reference_no' => 'er-20250324-023005',
@@ -6178,10 +6164,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 415.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-23 18:00:00',
-                'updated_at' => '2025-03-24 08:30:05',
+                'created_at' => '2025-03-23 12:00:00',
+                'updated_at' => '2025-03-24 02:30:05',
             ),
-            437 => 
+            436 => 
             array (
                 'id' => 449,
                 'reference_no' => 'er-20250324-023017',
@@ -6192,10 +6178,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-23 18:00:00',
-                'updated_at' => '2025-03-24 08:30:17',
+                'created_at' => '2025-03-23 12:00:00',
+                'updated_at' => '2025-03-24 02:30:17',
             ),
-            438 => 
+            437 => 
             array (
                 'id' => 450,
                 'reference_no' => 'er-20250324-023033',
@@ -6206,10 +6192,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1845.0,
                 'note' => NULL,
-                'created_at' => '2025-03-23 18:00:00',
-                'updated_at' => '2025-03-24 08:30:33',
+                'created_at' => '2025-03-23 12:00:00',
+                'updated_at' => '2025-03-24 02:30:33',
             ),
-            439 => 
+            438 => 
             array (
                 'id' => 451,
                 'reference_no' => 'er-20250325-020134',
@@ -6220,10 +6206,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 115000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-24 18:00:00',
-                'updated_at' => '2025-03-25 08:01:34',
+                'created_at' => '2025-03-24 12:00:00',
+                'updated_at' => '2025-03-25 02:01:34',
             ),
-            440 => 
+            439 => 
             array (
                 'id' => 452,
                 'reference_no' => 'er-20250325-020258',
@@ -6234,10 +6220,10 @@ Al-Amin - 485',
                 'cash_register_id' => 2,
                 'amount' => 2390.0,
                 'note' => NULL,
-                'created_at' => '2025-03-24 18:00:00',
-                'updated_at' => '2025-03-25 08:02:58',
+                'created_at' => '2025-03-24 12:00:00',
+                'updated_at' => '2025-03-25 02:02:58',
             ),
-            441 => 
+            440 => 
             array (
                 'id' => 453,
                 'reference_no' => 'er-20250325-020320',
@@ -6248,10 +6234,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1725.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-24 18:00:00',
-                'updated_at' => '2025-03-25 08:03:20',
+                'created_at' => '2025-03-24 12:00:00',
+                'updated_at' => '2025-03-25 02:03:20',
             ),
-            442 => 
+            441 => 
             array (
                 'id' => 454,
                 'reference_no' => 'er-20250325-020354',
@@ -6262,10 +6248,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-03-24 18:00:00',
-                'updated_at' => '2025-03-25 08:03:54',
+                'created_at' => '2025-03-24 12:00:00',
+                'updated_at' => '2025-03-25 02:03:54',
             ),
-            443 => 
+            442 => 
             array (
                 'id' => 455,
                 'reference_no' => 'er-20250325-020528',
@@ -6276,10 +6262,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 385.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-24 18:00:00',
-                'updated_at' => '2025-03-25 08:05:28',
+                'created_at' => '2025-03-24 12:00:00',
+                'updated_at' => '2025-03-25 02:05:28',
             ),
-            444 => 
+            443 => 
             array (
                 'id' => 456,
                 'reference_no' => 'er-20250325-020555',
@@ -6290,10 +6276,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-24 18:00:00',
-                'updated_at' => '2025-03-25 08:05:55',
+                'created_at' => '2025-03-24 12:00:00',
+                'updated_at' => '2025-03-25 02:05:55',
             ),
-            445 => 
+            444 => 
             array (
                 'id' => 457,
                 'reference_no' => 'er-20250325-020608',
@@ -6304,10 +6290,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-03-24 18:00:00',
-                'updated_at' => '2025-03-25 08:06:08',
+                'created_at' => '2025-03-24 12:00:00',
+                'updated_at' => '2025-03-25 02:06:08',
             ),
-            446 => 
+            445 => 
             array (
                 'id' => 458,
                 'reference_no' => 'er-20250326-021845',
@@ -6318,10 +6304,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 110000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:18:45',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:18:45',
             ),
-            447 => 
+            446 => 
             array (
                 'id' => 459,
                 'reference_no' => 'er-20250326-022018',
@@ -6332,10 +6318,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'Liton vai salary',
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:20:18',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:20:18',
             ),
-            448 => 
+            447 => 
             array (
                 'id' => 460,
                 'reference_no' => 'er-20250326-022141',
@@ -6346,10 +6332,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1740.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:21:41',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:21:41',
             ),
-            449 => 
+            448 => 
             array (
                 'id' => 461,
                 'reference_no' => 'er-20250326-022225',
@@ -6360,10 +6346,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 140.0,
                 'note' => NULL,
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:22:25',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:22:25',
             ),
-            450 => 
+            449 => 
             array (
                 'id' => 462,
                 'reference_no' => 'er-20250326-022313',
@@ -6374,10 +6360,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 385.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:23:13',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:23:13',
             ),
-            451 => 
+            450 => 
             array (
                 'id' => 463,
                 'reference_no' => 'er-20250326-022343',
@@ -6388,10 +6374,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:23:43',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:23:43',
             ),
-            452 => 
+            451 => 
             array (
                 'id' => 464,
                 'reference_no' => 'er-20250326-022403',
@@ -6402,10 +6388,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 85.0,
                 'note' => 'Glass cleaner',
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:24:03',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:24:03',
             ),
-            453 => 
+            452 => 
             array (
                 'id' => 465,
                 'reference_no' => 'er-20250326-022438',
@@ -6416,10 +6402,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet bill',
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:24:38',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:24:38',
             ),
-            454 => 
+            453 => 
             array (
                 'id' => 466,
                 'reference_no' => 'er-20250326-023056',
@@ -6430,10 +6416,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2145.0,
                 'note' => NULL,
-                'created_at' => '2025-03-25 18:00:00',
-                'updated_at' => '2025-03-26 08:30:56',
+                'created_at' => '2025-03-25 12:00:00',
+                'updated_at' => '2025-03-26 02:30:56',
             ),
-            455 => 
+            454 => 
             array (
                 'id' => 467,
                 'reference_no' => 'er-20250327-022204',
@@ -6444,10 +6430,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1300.0,
                 'note' => 'Generator oil',
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:22:04',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:22:04',
             ),
-            456 => 
+            455 => 
             array (
                 'id' => 468,
                 'reference_no' => 'er-20250327-022221',
@@ -6458,10 +6444,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => 'Tissue',
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:22:21',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:22:21',
             ),
-            457 => 
+            456 => 
             array (
                 'id' => 469,
                 'reference_no' => 'er-20250327-022235',
@@ -6472,10 +6458,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:22:35',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:22:35',
             ),
-            458 => 
+            457 => 
             array (
                 'id' => 470,
                 'reference_no' => 'er-20250327-022254',
@@ -6486,10 +6472,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 410.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:22:54',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:22:54',
             ),
-            459 => 
+            458 => 
             array (
                 'id' => 471,
                 'reference_no' => 'er-20250327-022313',
@@ -6500,10 +6486,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6275.0,
                 'note' => NULL,
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:23:13',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:23:13',
             ),
-            460 => 
+            459 => 
             array (
                 'id' => 472,
                 'reference_no' => 'er-20250327-022338',
@@ -6514,10 +6500,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1720.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:23:38',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:23:38',
             ),
-            461 => 
+            460 => 
             array (
                 'id' => 473,
                 'reference_no' => 'er-20250327-022358',
@@ -6528,10 +6514,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:23:58',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:23:58',
             ),
-            462 => 
+            461 => 
             array (
                 'id' => 474,
                 'reference_no' => 'er-20250327-022451',
@@ -6542,10 +6528,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'Mamun salary',
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:24:51',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:24:51',
             ),
-            463 => 
+            462 => 
             array (
                 'id' => 475,
                 'reference_no' => 'er-20250327-022710',
@@ -6556,10 +6542,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 19000.0,
                 'note' => 'Bkash payment',
-                'created_at' => '2025-03-26 18:00:00',
-                'updated_at' => '2025-03-27 08:27:10',
+                'created_at' => '2025-03-26 12:00:00',
+                'updated_at' => '2025-03-27 02:27:10',
             ),
-            464 => 
+            463 => 
             array (
                 'id' => 476,
                 'reference_no' => 'er-20250328-025839',
@@ -6570,10 +6556,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 380.0,
                 'note' => NULL,
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 08:58:39',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 02:58:39',
             ),
-            465 => 
+            464 => 
             array (
                 'id' => 477,
                 'reference_no' => 'er-20250328-025854',
@@ -6584,10 +6570,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 300000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 08:58:54',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 02:58:54',
             ),
-            466 => 
+            465 => 
             array (
                 'id' => 478,
                 'reference_no' => 'er-20250328-025908',
@@ -6598,10 +6584,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 08:59:08',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 02:59:08',
             ),
-            467 => 
+            466 => 
             array (
                 'id' => 479,
                 'reference_no' => 'er-20250328-025930',
@@ -6612,10 +6598,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 410.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 08:59:30',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 02:59:30',
             ),
-            468 => 
+            467 => 
             array (
                 'id' => 480,
                 'reference_no' => 'er-20250328-025950',
@@ -6626,10 +6612,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 16330.0,
                 'note' => NULL,
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 08:59:50',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 02:59:50',
             ),
-            469 => 
+            468 => 
             array (
                 'id' => 481,
                 'reference_no' => 'er-20250328-030012',
@@ -6640,10 +6626,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1715.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 09:00:12',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 03:00:12',
             ),
-            470 => 
+            469 => 
             array (
                 'id' => 482,
                 'reference_no' => 'er-20250328-030028',
@@ -6654,10 +6640,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 45.0,
                 'note' => NULL,
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 09:00:28',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 03:00:28',
             ),
-            471 => 
+            470 => 
             array (
                 'id' => 483,
                 'reference_no' => 'er-20250328-030045',
@@ -6668,10 +6654,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Liton Salary',
-                'created_at' => '2025-03-27 06:00:00',
-                'updated_at' => '2025-03-28 09:03:11',
+                'created_at' => '2025-03-27 00:00:00',
+                'updated_at' => '2025-03-28 03:03:11',
             ),
-            472 => 
+            471 => 
             array (
                 'id' => 484,
                 'reference_no' => 'er-20250328-030120',
@@ -6682,10 +6668,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Imam Bonus',
-                'created_at' => '2025-03-27 18:00:00',
-                'updated_at' => '2025-03-28 09:01:20',
+                'created_at' => '2025-03-27 12:00:00',
+                'updated_at' => '2025-03-28 03:01:20',
             ),
-            473 => 
+            472 => 
             array (
                 'id' => 485,
                 'reference_no' => 'er-20250329-033206',
@@ -6696,10 +6682,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 65.0,
                 'note' => NULL,
-                'created_at' => '2025-03-28 18:00:00',
-                'updated_at' => '2025-03-29 09:32:06',
+                'created_at' => '2025-03-28 12:00:00',
+                'updated_at' => '2025-03-29 03:32:06',
             ),
-            474 => 
+            473 => 
             array (
                 'id' => 486,
                 'reference_no' => 'er-20250329-033229',
@@ -6710,10 +6696,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 410.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-28 18:00:00',
-                'updated_at' => '2025-03-29 09:32:29',
+                'created_at' => '2025-03-28 12:00:00',
+                'updated_at' => '2025-03-29 03:32:29',
             ),
-            475 => 
+            474 => 
             array (
                 'id' => 487,
                 'reference_no' => 'er-20250329-033305',
@@ -6724,10 +6710,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2710.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-28 18:00:00',
-                'updated_at' => '2025-03-29 09:33:05',
+                'created_at' => '2025-03-28 12:00:00',
+                'updated_at' => '2025-03-29 03:33:05',
             ),
-            476 => 
+            475 => 
             array (
                 'id' => 488,
                 'reference_no' => 'er-20250329-033327',
@@ -6738,10 +6724,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 800.0,
                 'note' => 'Eid bonus soho',
-                'created_at' => '2025-03-28 18:00:00',
-                'updated_at' => '2025-03-29 09:33:27',
+                'created_at' => '2025-03-28 12:00:00',
+                'updated_at' => '2025-03-29 03:33:27',
             ),
-            477 => 
+            476 => 
             array (
                 'id' => 489,
                 'reference_no' => 'er-20250329-033351',
@@ -6752,10 +6738,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Sakil Salary',
-                'created_at' => '2025-03-28 18:00:00',
-                'updated_at' => '2025-03-29 09:33:51',
+                'created_at' => '2025-03-28 12:00:00',
+                'updated_at' => '2025-03-29 03:33:51',
             ),
-            478 => 
+            477 => 
             array (
                 'id' => 490,
                 'reference_no' => 'er-20250329-034514',
@@ -6766,10 +6752,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 8470.0,
                 'note' => NULL,
-                'created_at' => '2025-03-28 18:00:00',
-                'updated_at' => '2025-03-29 09:45:14',
+                'created_at' => '2025-03-28 12:00:00',
+                'updated_at' => '2025-03-29 03:45:14',
             ),
-            479 => 
+            478 => 
             array (
                 'id' => 491,
                 'reference_no' => 'er-20250408-085603',
@@ -6780,10 +6766,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 290.0,
                 'note' => NULL,
-                'created_at' => '2025-03-29 18:00:00',
-                'updated_at' => '2025-04-09 02:56:03',
+                'created_at' => '2025-03-29 12:00:00',
+                'updated_at' => '2025-04-08 20:56:03',
             ),
-            480 => 
+            479 => 
             array (
                 'id' => 492,
                 'reference_no' => 'er-20250408-085633',
@@ -6794,10 +6780,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 730.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-29 06:00:00',
-                'updated_at' => '2025-04-09 02:57:23',
+                'created_at' => '2025-03-29 00:00:00',
+                'updated_at' => '2025-04-08 20:57:23',
             ),
-            481 => 
+            480 => 
             array (
                 'id' => 493,
                 'reference_no' => 'er-20250408-085715',
@@ -6808,10 +6794,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1270.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-29 18:00:00',
-                'updated_at' => '2025-04-09 02:57:15',
+                'created_at' => '2025-03-29 12:00:00',
+                'updated_at' => '2025-04-08 20:57:15',
             ),
-            482 => 
+            481 => 
             array (
                 'id' => 494,
                 'reference_no' => 'er-20250408-085756',
@@ -6822,10 +6808,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-29 18:00:00',
-                'updated_at' => '2025-04-09 02:57:56',
+                'created_at' => '2025-03-29 12:00:00',
+                'updated_at' => '2025-04-08 20:57:56',
             ),
-            483 => 
+            482 => 
             array (
                 'id' => 495,
                 'reference_no' => 'er-20250408-085926',
@@ -6836,10 +6822,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-29 00:00:00',
-                'updated_at' => '2025-07-14 18:49:42',
+                'created_at' => '2025-03-28 18:00:00',
+                'updated_at' => '2025-07-14 12:49:42',
             ),
-            484 => 
+            483 => 
             array (
                 'id' => 496,
                 'reference_no' => 'er-20250408-085957',
@@ -6850,10 +6836,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 10570.0,
                 'note' => NULL,
-                'created_at' => '2025-03-29 18:00:00',
-                'updated_at' => '2025-04-09 02:59:57',
+                'created_at' => '2025-03-29 12:00:00',
+                'updated_at' => '2025-04-08 20:59:57',
             ),
-            485 => 
+            484 => 
             array (
                 'id' => 497,
                 'reference_no' => 'er-20250408-090238',
@@ -6864,10 +6850,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-29 18:00:00',
-                'updated_at' => '2025-04-09 03:02:38',
+                'created_at' => '2025-03-29 12:00:00',
+                'updated_at' => '2025-04-08 21:02:38',
             ),
-            486 => 
+            485 => 
             array (
                 'id' => 498,
                 'reference_no' => 'er-20250408-090312',
@@ -6878,10 +6864,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Liton Salary',
-                'created_at' => '2025-03-29 18:00:00',
-                'updated_at' => '2025-04-09 03:03:12',
+                'created_at' => '2025-03-29 12:00:00',
+                'updated_at' => '2025-04-08 21:03:12',
             ),
-            487 => 
+            486 => 
             array (
                 'id' => 499,
                 'reference_no' => 'er-20250408-090431',
@@ -6892,10 +6878,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Mamun salary',
-                'created_at' => '2025-03-29 18:00:00',
-                'updated_at' => '2025-04-09 03:04:31',
+                'created_at' => '2025-03-29 12:00:00',
+                'updated_at' => '2025-04-08 21:04:31',
             ),
-            488 => 
+            487 => 
             array (
                 'id' => 500,
                 'reference_no' => 'er-20250408-090631',
@@ -6906,10 +6892,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => NULL,
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:06:31',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:06:31',
             ),
-            489 => 
+            488 => 
             array (
                 'id' => 501,
                 'reference_no' => 'er-20250408-090709',
@@ -6920,10 +6906,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 160.0,
                 'note' => 'Scavenger',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:07:09',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:07:09',
             ),
-            490 => 
+            489 => 
             array (
                 'id' => 502,
                 'reference_no' => 'er-20250408-090736',
@@ -6934,10 +6920,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 240.0,
                 'note' => NULL,
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:07:36',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:07:36',
             ),
-            491 => 
+            490 => 
             array (
                 'id' => 503,
                 'reference_no' => 'er-20250408-090814',
@@ -6948,10 +6934,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'Saline',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:08:14',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:08:14',
             ),
-            492 => 
+            491 => 
             array (
                 'id' => 504,
                 'reference_no' => 'er-20250408-090853',
@@ -6962,10 +6948,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 510.0,
                 'note' => 'Water bill',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:08:53',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:08:53',
             ),
-            493 => 
+            492 => 
             array (
                 'id' => 505,
                 'reference_no' => 'er-20250408-090931',
@@ -6976,10 +6962,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1740.0,
                 'note' => 'Efter',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:09:31',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:09:31',
             ),
-            494 => 
+            493 => 
             array (
                 'id' => 506,
                 'reference_no' => 'er-20250408-091000',
@@ -6990,10 +6976,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 580.0,
                 'note' => 'Food',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:10:00',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:10:00',
             ),
-            495 => 
+            494 => 
             array (
                 'id' => 507,
                 'reference_no' => 'er-20250408-091033',
@@ -7004,10 +6990,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3210.0,
                 'note' => 'Dinner',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:10:33',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:10:33',
             ),
-            496 => 
+            495 => 
             array (
                 'id' => 508,
                 'reference_no' => 'er-20250408-091058',
@@ -7018,10 +7004,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 13500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:10:58',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:10:58',
             ),
-            497 => 
+            496 => 
             array (
                 'id' => 509,
                 'reference_no' => 'er-20250408-091142',
@@ -7032,10 +7018,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Bonus',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:11:42',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:11:42',
             ),
-            498 => 
+            497 => 
             array (
                 'id' => 510,
                 'reference_no' => 'er-20250408-091206',
@@ -7046,10 +7032,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1700.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:12:06',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:12:06',
             ),
-            499 => 
+            498 => 
             array (
                 'id' => 511,
                 'reference_no' => 'er-20250408-091236',
@@ -7060,12 +7046,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => 'Dishan Salary',
-                'created_at' => '2025-03-30 18:00:00',
-                'updated_at' => '2025-04-09 03:12:36',
+                'created_at' => '2025-03-30 12:00:00',
+                'updated_at' => '2025-04-08 21:12:36',
             ),
-        ));
-        \DB::table('expenses')->insert(array (
-            0 => 
+            499 => 
             array (
                 'id' => 512,
                 'reference_no' => 'er-20250408-091333',
@@ -7076,10 +7060,12 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:13:33',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:13:33',
             ),
-            1 => 
+        ));
+        \DB::table('expenses')->insert(array (
+            0 => 
             array (
                 'id' => 513,
                 'reference_no' => 'er-20250408-091402',
@@ -7090,10 +7076,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Liton salary',
-                'created_at' => '2025-03-31 06:00:00',
-                'updated_at' => '2025-04-09 03:20:13',
+                'created_at' => '2025-03-31 00:00:00',
+                'updated_at' => '2025-04-08 21:20:13',
             ),
-            2 => 
+            1 => 
             array (
                 'id' => 514,
                 'reference_no' => 'er-20250408-091433',
@@ -7104,10 +7090,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 8500.0,
                 'note' => 'Mamun salary',
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:14:33',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:14:33',
             ),
-            3 => 
+            2 => 
             array (
                 'id' => 515,
                 'reference_no' => 'er-20250408-091457',
@@ -7118,10 +7104,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:14:57',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:14:57',
             ),
-            4 => 
+            3 => 
             array (
                 'id' => 516,
                 'reference_no' => 'er-20250408-091531',
@@ -7132,10 +7118,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Sakil salary',
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:15:31',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:15:31',
             ),
-            5 => 
+            4 => 
             array (
                 'id' => 517,
                 'reference_no' => 'er-20250408-091601',
@@ -7146,10 +7132,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4500.0,
                 'note' => 'Eraz salary',
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:16:01',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:16:01',
             ),
-            6 => 
+            5 => 
             array (
                 'id' => 518,
                 'reference_no' => 'er-20250408-091624',
@@ -7160,10 +7146,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4500.0,
                 'note' => 'Rony salary',
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:16:24',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:16:24',
             ),
-            7 => 
+            6 => 
             array (
                 'id' => 519,
                 'reference_no' => 'er-20250408-091702',
@@ -7174,10 +7160,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 8000.0,
                 'note' => 'Sohel Salary',
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:17:02',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:17:02',
             ),
-            8 => 
+            7 => 
             array (
                 'id' => 520,
                 'reference_no' => 'er-20250408-091807',
@@ -7188,10 +7174,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5585.0,
                 'note' => 'Sell commission',
-                'created_at' => '2025-03-31 18:00:00',
-                'updated_at' => '2025-04-09 03:18:07',
+                'created_at' => '2025-03-31 12:00:00',
+                'updated_at' => '2025-04-08 21:18:07',
             ),
-            9 => 
+            8 => 
             array (
                 'id' => 521,
                 'reference_no' => 'er-20250408-092116',
@@ -7202,10 +7188,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-04-01 18:00:00',
-                'updated_at' => '2025-04-09 03:21:16',
+                'created_at' => '2025-04-01 12:00:00',
+                'updated_at' => '2025-04-08 21:21:16',
             ),
-            10 => 
+            9 => 
             array (
                 'id' => 522,
                 'reference_no' => 'er-20250408-092209',
@@ -7216,10 +7202,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2900.0,
                 'note' => 'Sell commission',
-                'created_at' => '2025-04-01 18:00:00',
-                'updated_at' => '2025-04-09 03:22:09',
+                'created_at' => '2025-04-01 12:00:00',
+                'updated_at' => '2025-04-08 21:22:09',
             ),
-            11 => 
+            10 => 
             array (
                 'id' => 523,
                 'reference_no' => 'er-20250408-092233',
@@ -7230,10 +7216,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-04-02 18:00:00',
-                'updated_at' => '2025-04-09 03:22:33',
+                'created_at' => '2025-04-02 12:00:00',
+                'updated_at' => '2025-04-08 21:22:33',
             ),
-            12 => 
+            11 => 
             array (
                 'id' => 524,
                 'reference_no' => 'er-20250408-092254',
@@ -7244,10 +7230,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-02 18:00:00',
-                'updated_at' => '2025-04-09 03:22:54',
+                'created_at' => '2025-04-02 12:00:00',
+                'updated_at' => '2025-04-08 21:22:54',
             ),
-            13 => 
+            12 => 
             array (
                 'id' => 525,
                 'reference_no' => 'er-20250408-092321',
@@ -7258,10 +7244,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 15740.0,
                 'note' => NULL,
-                'created_at' => '2025-04-02 18:00:00',
-                'updated_at' => '2025-04-09 03:23:21',
+                'created_at' => '2025-04-02 12:00:00',
+                'updated_at' => '2025-04-08 21:23:21',
             ),
-            14 => 
+            13 => 
             array (
                 'id' => 526,
                 'reference_no' => 'er-20250408-092354',
@@ -7272,10 +7258,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1880.0,
                 'note' => 'Sell commission',
-                'created_at' => '2025-04-02 18:00:00',
-                'updated_at' => '2025-04-09 03:23:54',
+                'created_at' => '2025-04-02 12:00:00',
+                'updated_at' => '2025-04-08 21:23:54',
             ),
-            15 => 
+            14 => 
             array (
                 'id' => 527,
                 'reference_no' => 'er-20250408-092514',
@@ -7286,10 +7272,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-03 18:00:00',
-                'updated_at' => '2025-04-09 03:25:14',
+                'created_at' => '2025-04-03 12:00:00',
+                'updated_at' => '2025-04-08 21:25:14',
             ),
-            16 => 
+            15 => 
             array (
                 'id' => 528,
                 'reference_no' => 'er-20250408-092536',
@@ -7300,10 +7286,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-03 18:00:00',
-                'updated_at' => '2025-04-09 03:25:36',
+                'created_at' => '2025-04-03 12:00:00',
+                'updated_at' => '2025-04-08 21:25:36',
             ),
-            17 => 
+            16 => 
             array (
                 'id' => 529,
                 'reference_no' => 'er-20250408-092606',
@@ -7314,10 +7300,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Repair',
-                'created_at' => '2025-04-03 18:00:00',
-                'updated_at' => '2025-04-09 03:26:06',
+                'created_at' => '2025-04-03 12:00:00',
+                'updated_at' => '2025-04-08 21:26:06',
             ),
-            18 => 
+            17 => 
             array (
                 'id' => 530,
                 'reference_no' => 'er-20250408-092618',
@@ -7328,10 +7314,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-04-03 18:00:00',
-                'updated_at' => '2025-04-09 03:26:18',
+                'created_at' => '2025-04-03 12:00:00',
+                'updated_at' => '2025-04-08 21:26:18',
             ),
-            19 => 
+            18 => 
             array (
                 'id' => 531,
                 'reference_no' => 'er-20250408-092816',
@@ -7342,10 +7328,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-04-05 18:00:00',
-                'updated_at' => '2025-04-09 03:28:16',
+                'created_at' => '2025-04-05 12:00:00',
+                'updated_at' => '2025-04-08 21:28:16',
             ),
-            20 => 
+            19 => 
             array (
                 'id' => 532,
                 'reference_no' => 'er-20250408-092833',
@@ -7356,10 +7342,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-05 18:00:00',
-                'updated_at' => '2025-04-09 03:28:33',
+                'created_at' => '2025-04-05 12:00:00',
+                'updated_at' => '2025-04-08 21:28:33',
             ),
-            21 => 
+            20 => 
             array (
                 'id' => 533,
                 'reference_no' => 'er-20250408-092907',
@@ -7370,10 +7356,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3100.0,
                 'note' => 'Bkash payment',
-                'created_at' => '2025-04-05 18:00:00',
-                'updated_at' => '2025-04-09 03:29:07',
+                'created_at' => '2025-04-05 12:00:00',
+                'updated_at' => '2025-04-08 21:29:07',
             ),
-            22 => 
+            21 => 
             array (
                 'id' => 534,
                 'reference_no' => 'er-20250408-092934',
@@ -7384,10 +7370,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 410000.0,
                 'note' => 'Bank Deposit',
-                'created_at' => '2025-04-05 00:00:00',
-                'updated_at' => '2025-07-14 18:58:57',
+                'created_at' => '2025-04-04 18:00:00',
+                'updated_at' => '2025-07-14 12:58:57',
             ),
-            23 => 
+            22 => 
             array (
                 'id' => 535,
                 'reference_no' => 'er-20250408-093026',
@@ -7398,10 +7384,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'Jharu',
-                'created_at' => '2025-04-06 18:00:00',
-                'updated_at' => '2025-04-09 03:30:26',
+                'created_at' => '2025-04-06 12:00:00',
+                'updated_at' => '2025-04-08 21:30:26',
             ),
-            24 => 
+            23 => 
             array (
                 'id' => 536,
                 'reference_no' => 'er-20250408-093041',
@@ -7412,10 +7398,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-06 18:00:00',
-                'updated_at' => '2025-04-09 03:30:41',
+                'created_at' => '2025-04-06 12:00:00',
+                'updated_at' => '2025-04-08 21:30:41',
             ),
-            25 => 
+            24 => 
             array (
                 'id' => 537,
                 'reference_no' => 'er-20250408-093101',
@@ -7426,10 +7412,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 180000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-06 18:00:00',
-                'updated_at' => '2025-04-09 03:31:01',
+                'created_at' => '2025-04-06 12:00:00',
+                'updated_at' => '2025-04-08 21:31:01',
             ),
-            26 => 
+            25 => 
             array (
                 'id' => 538,
                 'reference_no' => 'er-20250408-093119',
@@ -7440,10 +7426,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-04-06 18:00:00',
-                'updated_at' => '2025-04-09 03:31:19',
+                'created_at' => '2025-04-06 12:00:00',
+                'updated_at' => '2025-04-08 21:31:19',
             ),
-            27 => 
+            26 => 
             array (
                 'id' => 539,
                 'reference_no' => 'er-20250408-093141',
@@ -7454,10 +7440,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-06 18:00:00',
-                'updated_at' => '2025-04-09 03:31:41',
+                'created_at' => '2025-04-06 12:00:00',
+                'updated_at' => '2025-04-08 21:31:41',
             ),
-            28 => 
+            27 => 
             array (
                 'id' => 540,
                 'reference_no' => 'er-20250408-093200',
@@ -7468,10 +7454,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-06 18:00:00',
-                'updated_at' => '2025-04-09 03:32:00',
+                'created_at' => '2025-04-06 12:00:00',
+                'updated_at' => '2025-04-08 21:32:00',
             ),
-            29 => 
+            28 => 
             array (
                 'id' => 541,
                 'reference_no' => 'er-20250408-093244',
@@ -7482,10 +7468,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1300.0,
                 'note' => 'Generator oil',
-                'created_at' => '2025-04-06 18:00:00',
-                'updated_at' => '2025-04-09 03:32:44',
+                'created_at' => '2025-04-06 12:00:00',
+                'updated_at' => '2025-04-08 21:32:44',
             ),
-            30 => 
+            29 => 
             array (
                 'id' => 542,
                 'reference_no' => 'er-20250408-093346',
@@ -7496,10 +7482,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-04-07 18:00:00',
-                'updated_at' => '2025-04-09 03:33:46',
+                'created_at' => '2025-04-07 12:00:00',
+                'updated_at' => '2025-04-08 21:33:46',
             ),
-            31 => 
+            30 => 
             array (
                 'id' => 543,
                 'reference_no' => 'er-20250408-093403',
@@ -7510,10 +7496,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-07 18:00:00',
-                'updated_at' => '2025-04-09 03:34:03',
+                'created_at' => '2025-04-07 12:00:00',
+                'updated_at' => '2025-04-08 21:34:03',
             ),
-            32 => 
+            31 => 
             array (
                 'id' => 544,
                 'reference_no' => 'er-20250408-093422',
@@ -7524,10 +7510,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 220.0,
                 'note' => 'Hapka',
-                'created_at' => '2025-04-07 18:00:00',
-                'updated_at' => '2025-04-09 03:34:22',
+                'created_at' => '2025-04-07 12:00:00',
+                'updated_at' => '2025-04-08 21:34:22',
             ),
-            33 => 
+            32 => 
             array (
                 'id' => 545,
                 'reference_no' => 'er-20250408-093437',
@@ -7538,10 +7524,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-04-07 18:00:00',
-                'updated_at' => '2025-04-09 03:34:37',
+                'created_at' => '2025-04-07 12:00:00',
+                'updated_at' => '2025-04-08 21:34:37',
             ),
-            34 => 
+            33 => 
             array (
                 'id' => 546,
                 'reference_no' => 'er-20250408-093454',
@@ -7552,10 +7538,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3290.0,
                 'note' => NULL,
-                'created_at' => '2025-04-07 18:00:00',
-                'updated_at' => '2025-04-09 03:34:54',
+                'created_at' => '2025-04-07 12:00:00',
+                'updated_at' => '2025-04-08 21:34:54',
             ),
-            35 => 
+            34 => 
             array (
                 'id' => 547,
                 'reference_no' => 'er-20250408-104838',
@@ -7566,10 +7552,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-04-08 18:00:00',
-                'updated_at' => '2025-04-09 04:48:38',
+                'created_at' => '2025-04-08 12:00:00',
+                'updated_at' => '2025-04-08 22:48:38',
             ),
-            36 => 
+            35 => 
             array (
                 'id' => 548,
                 'reference_no' => 'er-20250408-104852',
@@ -7580,10 +7566,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-08 18:00:00',
-                'updated_at' => '2025-04-09 04:48:52',
+                'created_at' => '2025-04-08 12:00:00',
+                'updated_at' => '2025-04-08 22:48:52',
             ),
-            37 => 
+            36 => 
             array (
                 'id' => 549,
                 'reference_no' => 'er-20250408-104912',
@@ -7594,10 +7580,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Photocopy',
-                'created_at' => '2025-04-08 18:00:00',
-                'updated_at' => '2025-04-09 04:49:12',
+                'created_at' => '2025-04-08 12:00:00',
+                'updated_at' => '2025-04-08 22:49:12',
             ),
-            38 => 
+            37 => 
             array (
                 'id' => 550,
                 'reference_no' => 'er-20250408-104929',
@@ -7608,10 +7594,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 160.0,
                 'note' => 'Food',
-                'created_at' => '2025-04-08 18:00:00',
-                'updated_at' => '2025-04-09 04:49:29',
+                'created_at' => '2025-04-08 12:00:00',
+                'updated_at' => '2025-04-08 22:49:29',
             ),
-            39 => 
+            38 => 
             array (
                 'id' => 551,
                 'reference_no' => 'er-20250408-104945',
@@ -7622,10 +7608,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-08 18:00:00',
-                'updated_at' => '2025-04-09 04:49:45',
+                'created_at' => '2025-04-08 12:00:00',
+                'updated_at' => '2025-04-08 22:49:45',
             ),
-            40 => 
+            39 => 
             array (
                 'id' => 552,
                 'reference_no' => 'er-20250409-110546',
@@ -7636,10 +7622,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2990.0,
                 'note' => NULL,
-                'created_at' => '2025-04-09 18:00:00',
-                'updated_at' => '2025-04-10 05:05:46',
+                'created_at' => '2025-04-09 12:00:00',
+                'updated_at' => '2025-04-09 23:05:46',
             ),
-            41 => 
+            40 => 
             array (
                 'id' => 553,
                 'reference_no' => 'er-20250409-110606',
@@ -7650,10 +7636,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'Repair',
-                'created_at' => '2025-04-09 18:00:00',
-                'updated_at' => '2025-04-10 05:06:06',
+                'created_at' => '2025-04-09 12:00:00',
+                'updated_at' => '2025-04-09 23:06:06',
             ),
-            42 => 
+            41 => 
             array (
                 'id' => 554,
                 'reference_no' => 'er-20250409-110618',
@@ -7664,10 +7650,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-09 18:00:00',
-                'updated_at' => '2025-04-10 05:06:18',
+                'created_at' => '2025-04-09 12:00:00',
+                'updated_at' => '2025-04-09 23:06:18',
             ),
-            43 => 
+            42 => 
             array (
                 'id' => 555,
                 'reference_no' => 'er-20250409-110642',
@@ -7678,10 +7664,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Glass cleaner',
-                'created_at' => '2025-04-09 18:00:00',
-                'updated_at' => '2025-04-10 05:06:42',
+                'created_at' => '2025-04-09 12:00:00',
+                'updated_at' => '2025-04-09 23:06:42',
             ),
-            44 => 
+            43 => 
             array (
                 'id' => 556,
                 'reference_no' => 'er-20250410-102901',
@@ -7692,10 +7678,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-04-10 18:00:00',
-                'updated_at' => '2025-04-11 04:29:01',
+                'created_at' => '2025-04-10 12:00:00',
+                'updated_at' => '2025-04-10 22:29:01',
             ),
-            45 => 
+            44 => 
             array (
                 'id' => 557,
                 'reference_no' => 'er-20250410-102931',
@@ -7706,10 +7692,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-10 18:00:00',
-                'updated_at' => '2025-04-11 04:29:31',
+                'created_at' => '2025-04-10 12:00:00',
+                'updated_at' => '2025-04-10 22:29:31',
             ),
-            46 => 
+            45 => 
             array (
                 'id' => 558,
                 'reference_no' => 'er-20250410-102945',
@@ -7720,10 +7706,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-04-10 18:00:00',
-                'updated_at' => '2025-04-11 04:29:45',
+                'created_at' => '2025-04-10 12:00:00',
+                'updated_at' => '2025-04-10 22:29:45',
             ),
-            47 => 
+            46 => 
             array (
                 'id' => 559,
                 'reference_no' => 'er-20250410-103003',
@@ -7734,10 +7720,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 55000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-10 18:00:00',
-                'updated_at' => '2025-04-11 04:30:03',
+                'created_at' => '2025-04-10 12:00:00',
+                'updated_at' => '2025-04-10 22:30:03',
             ),
-            48 => 
+            47 => 
             array (
                 'id' => 560,
                 'reference_no' => 'er-20250412-103635',
@@ -7748,10 +7734,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-12 18:00:00',
-                'updated_at' => '2025-04-13 04:36:35',
+                'created_at' => '2025-04-12 12:00:00',
+                'updated_at' => '2025-04-12 22:36:35',
             ),
-            49 => 
+            48 => 
             array (
                 'id' => 561,
                 'reference_no' => 'er-20250412-103657',
@@ -7762,10 +7748,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-12 18:00:00',
-                'updated_at' => '2025-04-13 04:36:57',
+                'created_at' => '2025-04-12 12:00:00',
+                'updated_at' => '2025-04-12 22:36:57',
             ),
-            50 => 
+            49 => 
             array (
                 'id' => 562,
                 'reference_no' => 'er-20250413-102140',
@@ -7776,10 +7762,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 55.0,
                 'note' => NULL,
-                'created_at' => '2025-04-13 18:00:00',
-                'updated_at' => '2025-04-14 04:21:40',
+                'created_at' => '2025-04-13 12:00:00',
+                'updated_at' => '2025-04-13 22:21:40',
             ),
-            51 => 
+            50 => 
             array (
                 'id' => 563,
                 'reference_no' => 'er-20250413-102209',
@@ -7790,10 +7776,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-13 18:00:00',
-                'updated_at' => '2025-04-14 04:22:09',
+                'created_at' => '2025-04-13 12:00:00',
+                'updated_at' => '2025-04-13 22:22:09',
             ),
-            52 => 
+            51 => 
             array (
                 'id' => 564,
                 'reference_no' => 'er-20250413-102227',
@@ -7804,10 +7790,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-04-13 18:00:00',
-                'updated_at' => '2025-04-14 04:22:27',
+                'created_at' => '2025-04-13 12:00:00',
+                'updated_at' => '2025-04-13 22:22:27',
             ),
-            53 => 
+            52 => 
             array (
                 'id' => 565,
                 'reference_no' => 'er-20250414-101404',
@@ -7818,10 +7804,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-04-14 18:00:00',
-                'updated_at' => '2025-04-15 04:14:04',
+                'created_at' => '2025-04-14 12:00:00',
+                'updated_at' => '2025-04-14 22:14:04',
             ),
-            54 => 
+            53 => 
             array (
                 'id' => 566,
                 'reference_no' => 'er-20250414-101417',
@@ -7832,10 +7818,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-14 18:00:00',
-                'updated_at' => '2025-04-15 04:14:17',
+                'created_at' => '2025-04-14 12:00:00',
+                'updated_at' => '2025-04-14 22:14:17',
             ),
-            55 => 
+            54 => 
             array (
                 'id' => 567,
                 'reference_no' => 'er-20250414-101441',
@@ -7846,10 +7832,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-04-14 18:00:00',
-                'updated_at' => '2025-04-15 04:14:41',
+                'created_at' => '2025-04-14 12:00:00',
+                'updated_at' => '2025-04-14 22:14:41',
             ),
-            56 => 
+            55 => 
             array (
                 'id' => 568,
                 'reference_no' => 'er-20250415-100442',
@@ -7860,10 +7846,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-15 18:00:00',
-                'updated_at' => '2025-04-16 04:04:42',
+                'created_at' => '2025-04-15 12:00:00',
+                'updated_at' => '2025-04-15 22:04:42',
             ),
-            57 => 
+            56 => 
             array (
                 'id' => 569,
                 'reference_no' => 'er-20250415-100510',
@@ -7874,10 +7860,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-15 18:00:00',
-                'updated_at' => '2025-04-16 04:05:10',
+                'created_at' => '2025-04-15 12:00:00',
+                'updated_at' => '2025-04-15 22:05:10',
             ),
-            58 => 
+            57 => 
             array (
                 'id' => 570,
                 'reference_no' => 'er-20250415-100552',
@@ -7888,10 +7874,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => 'Repair',
-                'created_at' => '2025-04-15 18:00:00',
-                'updated_at' => '2025-04-16 04:05:52',
+                'created_at' => '2025-04-15 12:00:00',
+                'updated_at' => '2025-04-15 22:05:52',
             ),
-            59 => 
+            58 => 
             array (
                 'id' => 571,
                 'reference_no' => 'er-20250415-100610',
@@ -7902,10 +7888,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Wheel',
-                'created_at' => '2025-04-15 18:00:00',
-                'updated_at' => '2025-04-16 04:06:10',
+                'created_at' => '2025-04-15 12:00:00',
+                'updated_at' => '2025-04-15 22:06:10',
             ),
-            60 => 
+            59 => 
             array (
                 'id' => 572,
                 'reference_no' => 'er-20250416-101140',
@@ -7916,10 +7902,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Mosjid',
-                'created_at' => '2025-04-16 18:00:00',
-                'updated_at' => '2025-04-17 04:11:40',
+                'created_at' => '2025-04-16 12:00:00',
+                'updated_at' => '2025-04-16 22:11:40',
             ),
-            61 => 
+            60 => 
             array (
                 'id' => 573,
                 'reference_no' => 'er-20250416-101157',
@@ -7930,10 +7916,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-16 18:00:00',
-                'updated_at' => '2025-04-17 04:11:57',
+                'created_at' => '2025-04-16 12:00:00',
+                'updated_at' => '2025-04-16 22:11:57',
             ),
-            62 => 
+            61 => 
             array (
                 'id' => 574,
                 'reference_no' => 'er-20250416-101225',
@@ -7944,10 +7930,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-16 18:00:00',
-                'updated_at' => '2025-04-17 04:12:25',
+                'created_at' => '2025-04-16 12:00:00',
+                'updated_at' => '2025-04-16 22:12:25',
             ),
-            63 => 
+            62 => 
             array (
                 'id' => 575,
                 'reference_no' => 'er-20250416-101236',
@@ -7958,10 +7944,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2990.0,
                 'note' => NULL,
-                'created_at' => '2025-04-16 18:00:00',
-                'updated_at' => '2025-04-17 04:12:36',
+                'created_at' => '2025-04-16 12:00:00',
+                'updated_at' => '2025-04-16 22:12:36',
             ),
-            64 => 
+            63 => 
             array (
                 'id' => 576,
                 'reference_no' => 'er-20250416-101258',
@@ -7972,10 +7958,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => 'Repair',
-                'created_at' => '2025-04-16 18:00:00',
-                'updated_at' => '2025-04-17 04:12:58',
+                'created_at' => '2025-04-16 12:00:00',
+                'updated_at' => '2025-04-16 22:12:58',
             ),
-            65 => 
+            64 => 
             array (
                 'id' => 577,
                 'reference_no' => 'er-20250417-100310',
@@ -7986,10 +7972,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-17 18:00:00',
-                'updated_at' => '2025-04-18 04:03:10',
+                'created_at' => '2025-04-17 12:00:00',
+                'updated_at' => '2025-04-17 22:03:10',
             ),
-            66 => 
+            65 => 
             array (
                 'id' => 578,
                 'reference_no' => 'er-20250417-100329',
@@ -8000,10 +7986,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-17 18:00:00',
-                'updated_at' => '2025-04-18 04:03:29',
+                'created_at' => '2025-04-17 12:00:00',
+                'updated_at' => '2025-04-17 22:03:29',
             ),
-            67 => 
+            66 => 
             array (
                 'id' => 579,
                 'reference_no' => 'er-20250417-100347',
@@ -8014,10 +8000,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-04-17 18:00:00',
-                'updated_at' => '2025-04-18 04:03:47',
+                'created_at' => '2025-04-17 12:00:00',
+                'updated_at' => '2025-04-17 22:03:47',
             ),
-            68 => 
+            67 => 
             array (
                 'id' => 580,
                 'reference_no' => 'er-20250417-100407',
@@ -8028,10 +8014,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Bkash Payment',
-                'created_at' => '2025-04-17 18:00:00',
-                'updated_at' => '2025-04-18 04:04:07',
+                'created_at' => '2025-04-17 12:00:00',
+                'updated_at' => '2025-04-17 22:04:07',
             ),
-            69 => 
+            68 => 
             array (
                 'id' => 581,
                 'reference_no' => 'er-20250419-103949',
@@ -8042,10 +8028,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-04-19 18:00:00',
-                'updated_at' => '2025-04-20 04:39:49',
+                'created_at' => '2025-04-19 12:00:00',
+                'updated_at' => '2025-04-19 22:39:49',
             ),
-            70 => 
+            69 => 
             array (
                 'id' => 582,
                 'reference_no' => 'er-20250419-104016',
@@ -8056,10 +8042,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-19 18:00:00',
-                'updated_at' => '2025-04-20 04:40:16',
+                'created_at' => '2025-04-19 12:00:00',
+                'updated_at' => '2025-04-19 22:40:16',
             ),
-            71 => 
+            70 => 
             array (
                 'id' => 583,
                 'reference_no' => 'er-20250419-104042',
@@ -8070,10 +8056,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'Repair',
-                'created_at' => '2025-04-19 18:00:00',
-                'updated_at' => '2025-04-20 04:40:42',
+                'created_at' => '2025-04-19 12:00:00',
+                'updated_at' => '2025-04-19 22:40:42',
             ),
-            72 => 
+            71 => 
             array (
                 'id' => 584,
                 'reference_no' => 'er-20250420-100114',
@@ -8084,10 +8070,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Eid er ager pos roll',
-                'created_at' => '2025-04-20 18:00:00',
-                'updated_at' => '2025-04-21 04:01:14',
+                'created_at' => '2025-04-20 12:00:00',
+                'updated_at' => '2025-04-20 22:01:14',
             ),
-            73 => 
+            72 => 
             array (
                 'id' => 585,
                 'reference_no' => 'er-20250420-100133',
@@ -8098,10 +8084,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-20 18:00:00',
-                'updated_at' => '2025-04-21 04:01:33',
+                'created_at' => '2025-04-20 12:00:00',
+                'updated_at' => '2025-04-20 22:01:33',
             ),
-            74 => 
+            73 => 
             array (
                 'id' => 586,
                 'reference_no' => 'er-20250421-101122',
@@ -8112,10 +8098,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 38000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-21 18:00:00',
-                'updated_at' => '2025-04-22 04:11:22',
+                'created_at' => '2025-04-21 12:00:00',
+                'updated_at' => '2025-04-21 22:11:22',
             ),
-            75 => 
+            74 => 
             array (
                 'id' => 587,
                 'reference_no' => 'er-20250421-101142',
@@ -8126,10 +8112,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-21 18:00:00',
-                'updated_at' => '2025-04-22 04:11:42',
+                'created_at' => '2025-04-21 12:00:00',
+                'updated_at' => '2025-04-21 22:11:42',
             ),
-            76 => 
+            75 => 
             array (
                 'id' => 588,
                 'reference_no' => 'er-20250421-101157',
@@ -8140,10 +8126,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-04-21 18:00:00',
-                'updated_at' => '2025-04-22 04:11:57',
+                'created_at' => '2025-04-21 12:00:00',
+                'updated_at' => '2025-04-21 22:11:57',
             ),
-            77 => 
+            76 => 
             array (
                 'id' => 589,
                 'reference_no' => 'er-20250421-101227',
@@ -8154,10 +8140,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-04-21 18:00:00',
-                'updated_at' => '2025-04-22 04:12:27',
+                'created_at' => '2025-04-21 12:00:00',
+                'updated_at' => '2025-04-21 22:12:27',
             ),
-            78 => 
+            77 => 
             array (
                 'id' => 590,
                 'reference_no' => 'er-20250421-101241',
@@ -8168,10 +8154,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-21 18:00:00',
-                'updated_at' => '2025-04-22 04:12:41',
+                'created_at' => '2025-04-21 12:00:00',
+                'updated_at' => '2025-04-21 22:12:41',
             ),
-            79 => 
+            78 => 
             array (
                 'id' => 591,
                 'reference_no' => 'er-20250421-101300',
@@ -8182,10 +8168,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-21 18:00:00',
-                'updated_at' => '2025-04-22 04:13:00',
+                'created_at' => '2025-04-21 12:00:00',
+                'updated_at' => '2025-04-21 22:13:00',
             ),
-            80 => 
+            79 => 
             array (
                 'id' => 592,
                 'reference_no' => 'er-20250422-095509',
@@ -8196,10 +8182,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-22 18:00:00',
-                'updated_at' => '2025-04-23 03:55:09',
+                'created_at' => '2025-04-22 12:00:00',
+                'updated_at' => '2025-04-22 21:55:09',
             ),
-            81 => 
+            80 => 
             array (
                 'id' => 593,
                 'reference_no' => 'er-20250422-095535',
@@ -8210,10 +8196,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-22 18:00:00',
-                'updated_at' => '2025-04-23 03:55:35',
+                'created_at' => '2025-04-22 12:00:00',
+                'updated_at' => '2025-04-22 21:55:35',
             ),
-            82 => 
+            81 => 
             array (
                 'id' => 594,
                 'reference_no' => 'er-20250423-100531',
@@ -8224,10 +8210,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => 'Repair',
-                'created_at' => '2025-04-23 18:00:00',
-                'updated_at' => '2025-04-24 04:05:31',
+                'created_at' => '2025-04-23 12:00:00',
+                'updated_at' => '2025-04-23 22:05:31',
             ),
-            83 => 
+            82 => 
             array (
                 'id' => 595,
                 'reference_no' => 'er-20250423-100555',
@@ -8238,10 +8224,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-23 18:00:00',
-                'updated_at' => '2025-04-24 04:05:55',
+                'created_at' => '2025-04-23 12:00:00',
+                'updated_at' => '2025-04-23 22:05:55',
             ),
-            84 => 
+            83 => 
             array (
                 'id' => 596,
                 'reference_no' => 'er-20250423-100606',
@@ -8252,10 +8238,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 980.0,
                 'note' => NULL,
-                'created_at' => '2025-04-23 18:00:00',
-                'updated_at' => '2025-04-24 04:06:06',
+                'created_at' => '2025-04-23 12:00:00',
+                'updated_at' => '2025-04-23 22:06:06',
             ),
-            85 => 
+            84 => 
             array (
                 'id' => 597,
                 'reference_no' => 'er-20250424-101004',
@@ -8266,10 +8252,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 13000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-24 06:00:00',
-                'updated_at' => '2025-04-25 04:12:41',
+                'created_at' => '2025-04-24 00:00:00',
+                'updated_at' => '2025-04-24 22:12:41',
             ),
-            86 => 
+            85 => 
             array (
                 'id' => 598,
                 'reference_no' => 'er-20250424-101019',
@@ -8280,10 +8266,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-24 06:00:00',
-                'updated_at' => '2025-04-25 04:10:45',
+                'created_at' => '2025-04-24 00:00:00',
+                'updated_at' => '2025-04-24 22:10:45',
             ),
-            87 => 
+            86 => 
             array (
                 'id' => 599,
                 'reference_no' => 'er-20250424-101038',
@@ -8294,10 +8280,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Repair',
-                'created_at' => '2025-04-24 18:00:00',
-                'updated_at' => '2025-04-25 04:10:38',
+                'created_at' => '2025-04-24 12:00:00',
+                'updated_at' => '2025-04-24 22:10:38',
             ),
-            88 => 
+            87 => 
             array (
                 'id' => 600,
                 'reference_no' => 'er-20250424-101109',
@@ -8308,10 +8294,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-24 18:00:00',
-                'updated_at' => '2025-04-25 04:11:09',
+                'created_at' => '2025-04-24 12:00:00',
+                'updated_at' => '2025-04-24 22:11:09',
             ),
-            89 => 
+            88 => 
             array (
                 'id' => 601,
                 'reference_no' => 'er-20250424-101128',
@@ -8322,10 +8308,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-24 18:00:00',
-                'updated_at' => '2025-04-25 04:11:28',
+                'created_at' => '2025-04-24 12:00:00',
+                'updated_at' => '2025-04-24 22:11:28',
             ),
-            90 => 
+            89 => 
             array (
                 'id' => 602,
                 'reference_no' => 'er-20250426-100545',
@@ -8336,10 +8322,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet bill',
-                'created_at' => '2025-04-26 18:00:00',
-                'updated_at' => '2025-04-27 04:05:45',
+                'created_at' => '2025-04-26 12:00:00',
+                'updated_at' => '2025-04-26 22:05:45',
             ),
-            91 => 
+            90 => 
             array (
                 'id' => 603,
                 'reference_no' => 'er-20250426-100559',
@@ -8350,10 +8336,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-04-26 18:00:00',
-                'updated_at' => '2025-04-27 04:05:59',
+                'created_at' => '2025-04-26 12:00:00',
+                'updated_at' => '2025-04-26 22:05:59',
             ),
-            92 => 
+            91 => 
             array (
                 'id' => 604,
                 'reference_no' => 'er-20250426-100612',
@@ -8364,10 +8350,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-04-26 18:00:00',
-                'updated_at' => '2025-04-27 04:06:12',
+                'created_at' => '2025-04-26 12:00:00',
+                'updated_at' => '2025-04-26 22:06:12',
             ),
-            93 => 
+            92 => 
             array (
                 'id' => 605,
                 'reference_no' => 'er-20250427-101114',
@@ -8378,10 +8364,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 420.0,
                 'note' => 'Cleaner',
-                'created_at' => '2025-04-27 18:00:00',
-                'updated_at' => '2025-04-28 04:11:14',
+                'created_at' => '2025-04-27 12:00:00',
+                'updated_at' => '2025-04-27 22:11:14',
             ),
-            94 => 
+            93 => 
             array (
                 'id' => 606,
                 'reference_no' => 'er-20250427-101136',
@@ -8392,10 +8378,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-27 18:00:00',
-                'updated_at' => '2025-04-28 04:11:36',
+                'created_at' => '2025-04-27 12:00:00',
+                'updated_at' => '2025-04-27 22:11:36',
             ),
-            95 => 
+            94 => 
             array (
                 'id' => 607,
                 'reference_no' => 'er-20250427-101204',
@@ -8406,10 +8392,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-27 18:00:00',
-                'updated_at' => '2025-04-28 04:12:04',
+                'created_at' => '2025-04-27 12:00:00',
+                'updated_at' => '2025-04-27 22:12:04',
             ),
-            96 => 
+            95 => 
             array (
                 'id' => 608,
                 'reference_no' => 'er-20250428-101701',
@@ -8420,10 +8406,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Genarator repair',
-                'created_at' => '2025-04-28 06:00:00',
-                'updated_at' => '2025-04-29 04:17:22',
+                'created_at' => '2025-04-28 00:00:00',
+                'updated_at' => '2025-04-28 22:17:22',
             ),
-            97 => 
+            96 => 
             array (
                 'id' => 609,
                 'reference_no' => 'er-20250428-101742',
@@ -8434,10 +8420,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-28 18:00:00',
-                'updated_at' => '2025-04-29 04:17:42',
+                'created_at' => '2025-04-28 12:00:00',
+                'updated_at' => '2025-04-28 22:17:42',
             ),
-            98 => 
+            97 => 
             array (
                 'id' => 610,
                 'reference_no' => 'er-20250429-101514',
@@ -8448,10 +8434,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-29 18:00:00',
-                'updated_at' => '2025-04-30 04:15:14',
+                'created_at' => '2025-04-29 12:00:00',
+                'updated_at' => '2025-04-29 22:15:14',
             ),
-            99 => 
+            98 => 
             array (
                 'id' => 611,
                 'reference_no' => 'er-20250430-101749',
@@ -8462,10 +8448,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-04-30 18:00:00',
-                'updated_at' => '2025-05-01 04:17:49',
+                'created_at' => '2025-04-30 12:00:00',
+                'updated_at' => '2025-04-30 22:17:49',
             ),
-            100 => 
+            99 => 
             array (
                 'id' => 612,
                 'reference_no' => 'er-20250430-101805',
@@ -8476,10 +8462,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 14500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-30 18:00:00',
-                'updated_at' => '2025-05-01 04:18:05',
+                'created_at' => '2025-04-30 12:00:00',
+                'updated_at' => '2025-04-30 22:18:05',
             ),
-            101 => 
+            100 => 
             array (
                 'id' => 613,
                 'reference_no' => 'er-20250430-101825',
@@ -8490,10 +8476,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-30 18:00:00',
-                'updated_at' => '2025-05-01 04:18:25',
+                'created_at' => '2025-04-30 12:00:00',
+                'updated_at' => '2025-04-30 22:18:25',
             ),
-            102 => 
+            101 => 
             array (
                 'id' => 614,
                 'reference_no' => 'er-20250430-101844',
@@ -8504,10 +8490,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-04-30 18:00:00',
-                'updated_at' => '2025-05-01 04:18:44',
+                'created_at' => '2025-04-30 12:00:00',
+                'updated_at' => '2025-04-30 22:18:44',
             ),
-            103 => 
+            102 => 
             array (
                 'id' => 615,
                 'reference_no' => 'er-20250501-103151',
@@ -8518,10 +8504,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-05-01 12:00:00',
-                'updated_at' => '2025-05-01 22:31:51',
+                'created_at' => '2025-05-01 06:00:00',
+                'updated_at' => '2025-05-01 16:31:51',
             ),
-            104 => 
+            103 => 
             array (
                 'id' => 616,
                 'reference_no' => 'er-20250501-103216',
@@ -8532,10 +8518,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3300.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-01 12:00:00',
-                'updated_at' => '2025-05-01 22:32:16',
+                'created_at' => '2025-05-01 06:00:00',
+                'updated_at' => '2025-05-01 16:32:16',
             ),
-            105 => 
+            104 => 
             array (
                 'id' => 617,
                 'reference_no' => 'er-20250501-103230',
@@ -8546,10 +8532,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 4300.0,
                 'note' => NULL,
-                'created_at' => '2025-05-01 12:00:00',
-                'updated_at' => '2025-05-01 22:32:30',
+                'created_at' => '2025-05-01 06:00:00',
+                'updated_at' => '2025-05-01 16:32:30',
             ),
-            106 => 
+            105 => 
             array (
                 'id' => 618,
                 'reference_no' => 'er-20250501-103245',
@@ -8560,10 +8546,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-05-01 12:00:00',
-                'updated_at' => '2025-05-01 22:32:45',
+                'created_at' => '2025-05-01 06:00:00',
+                'updated_at' => '2025-05-01 16:32:45',
             ),
-            107 => 
+            106 => 
             array (
                 'id' => 619,
                 'reference_no' => 'er-20250503-102637',
@@ -8574,10 +8560,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-03 12:00:00',
-                'updated_at' => '2025-05-03 22:26:37',
+                'created_at' => '2025-05-03 06:00:00',
+                'updated_at' => '2025-05-03 16:26:37',
             ),
-            108 => 
+            107 => 
             array (
                 'id' => 620,
                 'reference_no' => 'er-20250503-102659',
@@ -8588,10 +8574,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 240.0,
                 'note' => 'Water bill',
-                'created_at' => '2025-05-03 12:00:00',
-                'updated_at' => '2025-05-03 22:26:59',
+                'created_at' => '2025-05-03 06:00:00',
+                'updated_at' => '2025-05-03 16:26:59',
             ),
-            109 => 
+            108 => 
             array (
                 'id' => 621,
                 'reference_no' => 'er-20250503-102714',
@@ -8602,10 +8588,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => NULL,
-                'created_at' => '2025-05-03 12:00:00',
-                'updated_at' => '2025-05-03 22:27:14',
+                'created_at' => '2025-05-03 06:00:00',
+                'updated_at' => '2025-05-03 16:27:14',
             ),
-            110 => 
+            109 => 
             array (
                 'id' => 622,
                 'reference_no' => 'er-20250503-102731',
@@ -8616,10 +8602,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => NULL,
-                'created_at' => '2025-05-03 12:00:00',
-                'updated_at' => '2025-05-03 22:27:31',
+                'created_at' => '2025-05-03 06:00:00',
+                'updated_at' => '2025-05-03 16:27:31',
             ),
-            111 => 
+            110 => 
             array (
                 'id' => 623,
                 'reference_no' => 'er-20250504-101425',
@@ -8630,10 +8616,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-05-04 12:00:00',
-                'updated_at' => '2025-05-04 22:14:25',
+                'created_at' => '2025-05-04 06:00:00',
+                'updated_at' => '2025-05-04 16:14:25',
             ),
-            112 => 
+            111 => 
             array (
                 'id' => 624,
                 'reference_no' => 'er-20250504-101507',
@@ -8644,10 +8630,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-05-04 12:00:00',
-                'updated_at' => '2025-05-04 22:15:07',
+                'created_at' => '2025-05-04 06:00:00',
+                'updated_at' => '2025-05-04 16:15:07',
             ),
-            113 => 
+            112 => 
             array (
                 'id' => 625,
                 'reference_no' => 'er-20250504-101538',
@@ -8658,10 +8644,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-05-04 12:00:00',
-                'updated_at' => '2025-05-04 22:15:38',
+                'created_at' => '2025-05-04 06:00:00',
+                'updated_at' => '2025-05-04 16:15:38',
             ),
-            114 => 
+            113 => 
             array (
                 'id' => 626,
                 'reference_no' => 'er-20250504-101555',
@@ -8672,10 +8658,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-05-04 12:00:00',
-                'updated_at' => '2025-05-04 22:15:55',
+                'created_at' => '2025-05-04 06:00:00',
+                'updated_at' => '2025-05-04 16:15:55',
             ),
-            115 => 
+            114 => 
             array (
                 'id' => 627,
                 'reference_no' => 'er-20250505-101450',
@@ -8686,10 +8672,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-05 12:00:00',
-                'updated_at' => '2025-05-05 22:14:50',
+                'created_at' => '2025-05-05 06:00:00',
+                'updated_at' => '2025-05-05 16:14:50',
             ),
-            116 => 
+            115 => 
             array (
                 'id' => 628,
                 'reference_no' => 'er-20250506-102124',
@@ -8700,10 +8686,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-05-06 12:00:00',
-                'updated_at' => '2025-05-06 22:21:24',
+                'created_at' => '2025-05-06 06:00:00',
+                'updated_at' => '2025-05-06 16:21:24',
             ),
-            117 => 
+            116 => 
             array (
                 'id' => 629,
                 'reference_no' => 'er-20250506-102144',
@@ -8714,10 +8700,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-05-06 12:00:00',
-                'updated_at' => '2025-05-06 22:21:44',
+                'created_at' => '2025-05-06 06:00:00',
+                'updated_at' => '2025-05-06 16:21:44',
             ),
-            118 => 
+            117 => 
             array (
                 'id' => 630,
                 'reference_no' => 'er-20250506-102156',
@@ -8728,10 +8714,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-06 12:00:00',
-                'updated_at' => '2025-05-06 22:21:56',
+                'created_at' => '2025-05-06 06:00:00',
+                'updated_at' => '2025-05-06 16:21:56',
             ),
-            119 => 
+            118 => 
             array (
                 'id' => 631,
                 'reference_no' => 'er-20250507-100611',
@@ -8742,10 +8728,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-05-07 12:00:00',
-                'updated_at' => '2025-05-07 22:06:11',
+                'created_at' => '2025-05-07 06:00:00',
+                'updated_at' => '2025-05-07 16:06:11',
             ),
-            120 => 
+            119 => 
             array (
                 'id' => 632,
                 'reference_no' => 'er-20250507-100632',
@@ -8756,10 +8742,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => 'Jharu',
-                'created_at' => '2025-05-07 12:00:00',
-                'updated_at' => '2025-05-07 22:06:32',
+                'created_at' => '2025-05-07 06:00:00',
+                'updated_at' => '2025-05-07 16:06:32',
             ),
-            121 => 
+            120 => 
             array (
                 'id' => 633,
                 'reference_no' => 'er-20250507-100653',
@@ -8770,10 +8756,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-07 12:00:00',
-                'updated_at' => '2025-05-07 22:06:53',
+                'created_at' => '2025-05-07 06:00:00',
+                'updated_at' => '2025-05-07 16:06:53',
             ),
-            122 => 
+            121 => 
             array (
                 'id' => 634,
                 'reference_no' => 'er-20250507-100725',
@@ -8784,10 +8770,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-07 12:00:00',
-                'updated_at' => '2025-05-07 22:07:25',
+                'created_at' => '2025-05-07 06:00:00',
+                'updated_at' => '2025-05-07 16:07:25',
             ),
-            123 => 
+            122 => 
             array (
                 'id' => 635,
                 'reference_no' => 'er-20250507-100739',
@@ -8798,10 +8784,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-07 12:00:00',
-                'updated_at' => '2025-05-07 22:07:39',
+                'created_at' => '2025-05-07 06:00:00',
+                'updated_at' => '2025-05-07 16:07:39',
             ),
-            124 => 
+            123 => 
             array (
                 'id' => 636,
                 'reference_no' => 'er-20250507-100752',
@@ -8812,10 +8798,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-07 12:00:00',
-                'updated_at' => '2025-05-07 22:07:52',
+                'created_at' => '2025-05-07 06:00:00',
+                'updated_at' => '2025-05-07 16:07:52',
             ),
-            125 => 
+            124 => 
             array (
                 'id' => 637,
                 'reference_no' => 'er-20250508-094019',
@@ -8826,10 +8812,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1150.0,
                 'note' => NULL,
-                'created_at' => '2025-05-08 12:00:00',
-                'updated_at' => '2025-05-08 21:40:19',
+                'created_at' => '2025-05-08 06:00:00',
+                'updated_at' => '2025-05-08 15:40:19',
             ),
-            126 => 
+            125 => 
             array (
                 'id' => 638,
                 'reference_no' => 'er-20250508-094038',
@@ -8840,10 +8826,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-05-08 12:00:00',
-                'updated_at' => '2025-05-08 21:40:38',
+                'created_at' => '2025-05-08 06:00:00',
+                'updated_at' => '2025-05-08 15:40:38',
             ),
-            127 => 
+            126 => 
             array (
                 'id' => 639,
                 'reference_no' => 'er-20250508-094056',
@@ -8854,10 +8840,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-05-08 12:00:00',
-                'updated_at' => '2025-05-08 21:40:56',
+                'created_at' => '2025-05-08 06:00:00',
+                'updated_at' => '2025-05-08 15:40:56',
             ),
-            128 => 
+            127 => 
             array (
                 'id' => 640,
                 'reference_no' => 'er-20250508-094113',
@@ -8868,10 +8854,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-08 12:00:00',
-                'updated_at' => '2025-05-08 21:41:13',
+                'created_at' => '2025-05-08 06:00:00',
+                'updated_at' => '2025-05-08 15:41:13',
             ),
-            129 => 
+            128 => 
             array (
                 'id' => 641,
                 'reference_no' => 'er-20250511-095212',
@@ -8882,10 +8868,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-10 12:00:00',
-                'updated_at' => '2025-05-11 21:52:12',
+                'created_at' => '2025-05-10 06:00:00',
+                'updated_at' => '2025-05-11 15:52:12',
             ),
-            130 => 
+            129 => 
             array (
                 'id' => 642,
                 'reference_no' => 'er-20250511-095233',
@@ -8896,10 +8882,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-05-10 12:00:00',
-                'updated_at' => '2025-05-11 21:52:33',
+                'created_at' => '2025-05-10 06:00:00',
+                'updated_at' => '2025-05-11 15:52:33',
             ),
-            131 => 
+            130 => 
             array (
                 'id' => 643,
                 'reference_no' => 'er-20250511-101207',
@@ -8910,10 +8896,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-05-11 12:00:00',
-                'updated_at' => '2025-05-11 22:12:07',
+                'created_at' => '2025-05-11 06:00:00',
+                'updated_at' => '2025-05-11 16:12:07',
             ),
-            132 => 
+            131 => 
             array (
                 'id' => 644,
                 'reference_no' => 'er-20250511-101222',
@@ -8924,10 +8910,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-11 12:00:00',
-                'updated_at' => '2025-05-11 22:12:22',
+                'created_at' => '2025-05-11 06:00:00',
+                'updated_at' => '2025-05-11 16:12:22',
             ),
-            133 => 
+            132 => 
             array (
                 'id' => 645,
                 'reference_no' => 'er-20250512-095705',
@@ -8938,10 +8924,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-12 12:00:00',
-                'updated_at' => '2025-05-12 21:57:05',
+                'created_at' => '2025-05-12 06:00:00',
+                'updated_at' => '2025-05-12 15:57:05',
             ),
-            134 => 
+            133 => 
             array (
                 'id' => 646,
                 'reference_no' => 'er-20250512-095722',
@@ -8952,10 +8938,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-05-12 12:00:00',
-                'updated_at' => '2025-05-12 21:57:22',
+                'created_at' => '2025-05-12 06:00:00',
+                'updated_at' => '2025-05-12 15:57:22',
             ),
-            135 => 
+            134 => 
             array (
                 'id' => 647,
                 'reference_no' => 'er-20250513-095907',
@@ -8966,10 +8952,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-13 12:00:00',
-                'updated_at' => '2025-05-13 21:59:07',
+                'created_at' => '2025-05-13 06:00:00',
+                'updated_at' => '2025-05-13 15:59:07',
             ),
-            136 => 
+            135 => 
             array (
                 'id' => 648,
                 'reference_no' => 'er-20250513-095927',
@@ -8980,10 +8966,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-05-13 12:00:00',
-                'updated_at' => '2025-05-13 21:59:27',
+                'created_at' => '2025-05-13 06:00:00',
+                'updated_at' => '2025-05-13 15:59:27',
             ),
-            137 => 
+            136 => 
             array (
                 'id' => 649,
                 'reference_no' => 'er-20250513-095941',
@@ -8994,10 +8980,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-05-13 12:00:00',
-                'updated_at' => '2025-05-13 21:59:41',
+                'created_at' => '2025-05-13 06:00:00',
+                'updated_at' => '2025-05-13 15:59:41',
             ),
-            138 => 
+            137 => 
             array (
                 'id' => 650,
                 'reference_no' => 'er-20250513-100005',
@@ -9008,10 +8994,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 14340.0,
                 'note' => 'Jump Payment',
-                'created_at' => '2025-05-13 12:00:00',
-                'updated_at' => '2025-05-13 22:00:05',
+                'created_at' => '2025-05-13 06:00:00',
+                'updated_at' => '2025-05-13 16:00:05',
             ),
-            139 => 
+            138 => 
             array (
                 'id' => 651,
                 'reference_no' => 'er-20250514-100807',
@@ -9022,10 +9008,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-14 12:00:00',
-                'updated_at' => '2025-05-14 22:08:07',
+                'created_at' => '2025-05-14 06:00:00',
+                'updated_at' => '2025-05-14 16:08:07',
             ),
-            140 => 
+            139 => 
             array (
                 'id' => 652,
                 'reference_no' => 'er-20250514-100842',
@@ -9036,10 +9022,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 45.0,
                 'note' => NULL,
-                'created_at' => '2025-05-14 12:00:00',
-                'updated_at' => '2025-05-14 22:08:42',
+                'created_at' => '2025-05-14 06:00:00',
+                'updated_at' => '2025-05-14 16:08:42',
             ),
-            141 => 
+            140 => 
             array (
                 'id' => 653,
                 'reference_no' => 'er-20250514-100901',
@@ -9050,10 +9036,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Mosjid',
-                'created_at' => '2025-05-14 12:00:00',
-                'updated_at' => '2025-05-14 22:09:01',
+                'created_at' => '2025-05-14 06:00:00',
+                'updated_at' => '2025-05-14 16:09:01',
             ),
-            142 => 
+            141 => 
             array (
                 'id' => 654,
                 'reference_no' => 'er-20250514-100924',
@@ -9064,10 +9050,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-14 12:00:00',
-                'updated_at' => '2025-05-14 22:09:24',
+                'created_at' => '2025-05-14 06:00:00',
+                'updated_at' => '2025-05-14 16:09:24',
             ),
-            143 => 
+            142 => 
             array (
                 'id' => 655,
                 'reference_no' => 'er-20250514-100951',
@@ -9078,10 +9064,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-14 12:00:00',
-                'updated_at' => '2025-05-14 22:09:51',
+                'created_at' => '2025-05-14 06:00:00',
+                'updated_at' => '2025-05-14 16:09:51',
             ),
-            144 => 
+            143 => 
             array (
                 'id' => 656,
                 'reference_no' => 'er-20250514-101006',
@@ -9092,10 +9078,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-05-14 12:00:00',
-                'updated_at' => '2025-05-14 22:10:06',
+                'created_at' => '2025-05-14 06:00:00',
+                'updated_at' => '2025-05-14 16:10:06',
             ),
-            145 => 
+            144 => 
             array (
                 'id' => 657,
                 'reference_no' => 'er-20250515-094753',
@@ -9106,10 +9092,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-05-15 12:00:00',
-                'updated_at' => '2025-05-15 21:47:53',
+                'created_at' => '2025-05-15 06:00:00',
+                'updated_at' => '2025-05-15 15:47:53',
             ),
-            146 => 
+            145 => 
             array (
                 'id' => 658,
                 'reference_no' => 'er-20250515-094809',
@@ -9120,10 +9106,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-15 12:00:00',
-                'updated_at' => '2025-05-15 21:48:09',
+                'created_at' => '2025-05-15 06:00:00',
+                'updated_at' => '2025-05-15 15:48:09',
             ),
-            147 => 
+            146 => 
             array (
                 'id' => 659,
                 'reference_no' => 'er-20250515-094829',
@@ -9134,10 +9120,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-05-15 12:00:00',
-                'updated_at' => '2025-05-15 21:48:29',
+                'created_at' => '2025-05-15 06:00:00',
+                'updated_at' => '2025-05-15 15:48:29',
             ),
-            148 => 
+            147 => 
             array (
                 'id' => 660,
                 'reference_no' => 'er-20250515-094851',
@@ -9148,10 +9134,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'salary',
-                'created_at' => '2025-05-15 12:00:00',
-                'updated_at' => '2025-05-15 21:48:51',
+                'created_at' => '2025-05-15 06:00:00',
+                'updated_at' => '2025-05-15 15:48:51',
             ),
-            149 => 
+            148 => 
             array (
                 'id' => 661,
                 'reference_no' => 'er-20250515-094904',
@@ -9162,10 +9148,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-05-15 12:00:00',
-                'updated_at' => '2025-05-15 21:49:04',
+                'created_at' => '2025-05-15 06:00:00',
+                'updated_at' => '2025-05-15 15:49:04',
             ),
-            150 => 
+            149 => 
             array (
                 'id' => 662,
                 'reference_no' => 'er-20250517-095157',
@@ -9176,10 +9162,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 535.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-05-16 00:00:00',
-                'updated_at' => '2025-05-17 22:11:04',
+                'created_at' => '2025-05-15 18:00:00',
+                'updated_at' => '2025-05-17 16:11:04',
             ),
-            151 => 
+            150 => 
             array (
                 'id' => 663,
                 'reference_no' => 'er-20250517-095217',
@@ -9190,10 +9176,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 435.0,
                 'note' => 'Overtime',
-                'created_at' => '2025-05-16 00:00:00',
-                'updated_at' => '2025-05-17 22:10:50',
+                'created_at' => '2025-05-15 18:00:00',
+                'updated_at' => '2025-05-17 16:10:50',
             ),
-            152 => 
+            151 => 
             array (
                 'id' => 664,
                 'reference_no' => 'er-20250517-100748',
@@ -9204,10 +9190,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-17 12:00:00',
-                'updated_at' => '2025-05-17 22:07:48',
+                'created_at' => '2025-05-17 06:00:00',
+                'updated_at' => '2025-05-17 16:07:48',
             ),
-            153 => 
+            152 => 
             array (
                 'id' => 665,
                 'reference_no' => 'er-20250518-100618',
@@ -9218,10 +9204,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-18 12:00:00',
-                'updated_at' => '2025-05-18 22:06:18',
+                'created_at' => '2025-05-18 06:00:00',
+                'updated_at' => '2025-05-18 16:06:18',
             ),
-            154 => 
+            153 => 
             array (
                 'id' => 666,
                 'reference_no' => 'er-20250518-100638',
@@ -9232,10 +9218,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-18 12:00:00',
-                'updated_at' => '2025-05-18 22:06:38',
+                'created_at' => '2025-05-18 06:00:00',
+                'updated_at' => '2025-05-18 16:06:38',
             ),
-            155 => 
+            154 => 
             array (
                 'id' => 667,
                 'reference_no' => 'er-20250519-102759',
@@ -9246,10 +9232,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-19 12:00:00',
-                'updated_at' => '2025-05-19 22:27:59',
+                'created_at' => '2025-05-19 06:00:00',
+                'updated_at' => '2025-05-19 16:27:59',
             ),
-            156 => 
+            155 => 
             array (
                 'id' => 668,
                 'reference_no' => 'er-20250519-102819',
@@ -9260,10 +9246,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-19 12:00:00',
-                'updated_at' => '2025-05-19 22:28:19',
+                'created_at' => '2025-05-19 06:00:00',
+                'updated_at' => '2025-05-19 16:28:19',
             ),
-            157 => 
+            156 => 
             array (
                 'id' => 669,
                 'reference_no' => 'er-20250519-102837',
@@ -9274,10 +9260,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-05-19 12:00:00',
-                'updated_at' => '2025-05-19 22:28:37',
+                'created_at' => '2025-05-19 06:00:00',
+                'updated_at' => '2025-05-19 16:28:37',
             ),
-            158 => 
+            157 => 
             array (
                 'id' => 670,
                 'reference_no' => 'er-20250519-102900',
@@ -9288,10 +9274,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 140.0,
                 'note' => 'Cloth',
-                'created_at' => '2025-05-19 12:00:00',
-                'updated_at' => '2025-05-19 22:29:00',
+                'created_at' => '2025-05-19 06:00:00',
+                'updated_at' => '2025-05-19 16:29:00',
             ),
-            159 => 
+            158 => 
             array (
                 'id' => 671,
                 'reference_no' => 'er-20250520-101534',
@@ -9302,10 +9288,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-05-20 12:00:00',
-                'updated_at' => '2025-05-20 22:15:34',
+                'created_at' => '2025-05-20 06:00:00',
+                'updated_at' => '2025-05-20 16:15:34',
             ),
-            160 => 
+            159 => 
             array (
                 'id' => 672,
                 'reference_no' => 'er-20250520-101559',
@@ -9316,10 +9302,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 520.0,
                 'note' => 'Mobil',
-                'created_at' => '2025-05-20 12:00:00',
-                'updated_at' => '2025-05-20 22:15:59',
+                'created_at' => '2025-05-20 06:00:00',
+                'updated_at' => '2025-05-20 16:15:59',
             ),
-            161 => 
+            160 => 
             array (
                 'id' => 673,
                 'reference_no' => 'er-20250520-101632',
@@ -9330,10 +9316,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => 'Repair',
-                'created_at' => '2025-05-20 12:00:00',
-                'updated_at' => '2025-05-20 22:16:32',
+                'created_at' => '2025-05-20 06:00:00',
+                'updated_at' => '2025-05-20 16:16:32',
             ),
-            162 => 
+            161 => 
             array (
                 'id' => 674,
                 'reference_no' => 'er-20250520-101701',
@@ -9344,10 +9330,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Gen mistry',
-                'created_at' => '2025-05-20 12:00:00',
-                'updated_at' => '2025-05-20 22:17:01',
+                'created_at' => '2025-05-20 06:00:00',
+                'updated_at' => '2025-05-20 16:17:01',
             ),
-            163 => 
+            162 => 
             array (
                 'id' => 675,
                 'reference_no' => 'er-20250520-101717',
@@ -9358,10 +9344,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-05-20 12:00:00',
-                'updated_at' => '2025-05-20 22:17:17',
+                'created_at' => '2025-05-20 06:00:00',
+                'updated_at' => '2025-05-20 16:17:17',
             ),
-            164 => 
+            163 => 
             array (
                 'id' => 676,
                 'reference_no' => 'er-20250522-104115',
@@ -9372,10 +9358,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:41:15',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:41:15',
             ),
-            165 => 
+            164 => 
             array (
                 'id' => 677,
                 'reference_no' => 'er-20250522-104142',
@@ -9386,10 +9372,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1300.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:41:42',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:41:42',
             ),
-            166 => 
+            165 => 
             array (
                 'id' => 678,
                 'reference_no' => 'er-20250522-104159',
@@ -9400,10 +9386,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:41:59',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:41:59',
             ),
-            167 => 
+            166 => 
             array (
                 'id' => 679,
                 'reference_no' => 'er-20250522-104230',
@@ -9414,10 +9400,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 935.0,
                 'note' => 'Gen repair',
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:42:30',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:42:30',
             ),
-            168 => 
+            167 => 
             array (
                 'id' => 680,
                 'reference_no' => 'er-20250522-104253',
@@ -9428,10 +9414,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 1510.0,
                 'note' => NULL,
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:42:53',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:42:53',
             ),
-            169 => 
+            168 => 
             array (
                 'id' => 681,
                 'reference_no' => 'er-20250522-104313',
@@ -9442,10 +9428,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => 'Pin',
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:43:13',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:43:13',
             ),
-            170 => 
+            169 => 
             array (
                 'id' => 682,
                 'reference_no' => 'er-20250522-104330',
@@ -9456,10 +9442,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2785.0,
                 'note' => NULL,
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:43:30',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:43:30',
             ),
-            171 => 
+            170 => 
             array (
                 'id' => 683,
                 'reference_no' => 'er-20250522-104357',
@@ -9470,10 +9456,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Dhaka cost',
-                'created_at' => '2025-05-22 12:00:00',
-                'updated_at' => '2025-05-22 22:43:57',
+                'created_at' => '2025-05-22 06:00:00',
+                'updated_at' => '2025-05-22 16:43:57',
             ),
-            172 => 
+            171 => 
             array (
                 'id' => 684,
                 'reference_no' => 'er-20250522-104441',
@@ -9484,10 +9470,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-05-21 12:00:00',
-                'updated_at' => '2025-05-22 22:44:41',
+                'created_at' => '2025-05-21 06:00:00',
+                'updated_at' => '2025-05-22 16:44:41',
             ),
-            173 => 
+            172 => 
             array (
                 'id' => 685,
                 'reference_no' => 'er-20250522-104456',
@@ -9498,10 +9484,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-21 00:00:00',
-                'updated_at' => '2025-05-22 22:46:03',
+                'created_at' => '2025-05-20 18:00:00',
+                'updated_at' => '2025-05-22 16:46:03',
             ),
-            174 => 
+            173 => 
             array (
                 'id' => 686,
                 'reference_no' => 'er-20250522-104508',
@@ -9512,10 +9498,10 @@ Al-Amin - 485',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-05-21 00:00:00',
-                'updated_at' => '2025-05-22 22:45:55',
+                'created_at' => '2025-05-20 18:00:00',
+                'updated_at' => '2025-05-22 16:45:55',
             ),
-            175 => 
+            174 => 
             array (
                 'id' => 687,
                 'reference_no' => 'er-20250524-095452',
@@ -9527,10 +9513,10 @@ Al-Amin - 485',
                 'amount' => 1120.0,
                 'note' => 'Al-Amin - 585
 Kurban - 535',
-                'created_at' => '2025-05-23 12:00:00',
-                'updated_at' => '2025-05-24 21:54:52',
+                'created_at' => '2025-05-23 06:00:00',
+                'updated_at' => '2025-05-24 15:54:52',
             ),
-            176 => 
+            175 => 
             array (
                 'id' => 688,
                 'reference_no' => 'er-20250524-101603',
@@ -9541,10 +9527,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-24 12:00:00',
-                'updated_at' => '2025-05-24 22:16:03',
+                'created_at' => '2025-05-24 06:00:00',
+                'updated_at' => '2025-05-24 16:16:03',
             ),
-            177 => 
+            176 => 
             array (
                 'id' => 689,
                 'reference_no' => 'er-20250524-101639',
@@ -9555,10 +9541,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 2520.0,
                 'note' => 'Moja purchase',
-                'created_at' => '2025-05-24 12:00:00',
-                'updated_at' => '2025-05-24 22:16:39',
+                'created_at' => '2025-05-24 06:00:00',
+                'updated_at' => '2025-05-24 16:16:39',
             ),
-            178 => 
+            177 => 
             array (
                 'id' => 690,
                 'reference_no' => 'er-20250524-101700',
@@ -9569,10 +9555,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Repair',
-                'created_at' => '2025-05-24 12:00:00',
-                'updated_at' => '2025-05-24 22:17:00',
+                'created_at' => '2025-05-24 06:00:00',
+                'updated_at' => '2025-05-24 16:17:00',
             ),
-            179 => 
+            178 => 
             array (
                 'id' => 691,
                 'reference_no' => 'er-20250524-101717',
@@ -9583,10 +9569,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-05-24 12:00:00',
-                'updated_at' => '2025-05-24 22:17:17',
+                'created_at' => '2025-05-24 06:00:00',
+                'updated_at' => '2025-05-24 16:17:17',
             ),
-            180 => 
+            179 => 
             array (
                 'id' => 692,
                 'reference_no' => 'er-20250524-102015',
@@ -9597,10 +9583,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 60000.0,
                 'note' => 'January & May',
-                'created_at' => '2025-05-24 12:00:00',
-                'updated_at' => '2025-05-24 22:20:15',
+                'created_at' => '2025-05-24 06:00:00',
+                'updated_at' => '2025-05-24 16:20:15',
             ),
-            181 => 
+            180 => 
             array (
                 'id' => 693,
                 'reference_no' => 'er-20250524-102035',
@@ -9611,10 +9597,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => 'Super glue',
-                'created_at' => '2025-05-24 12:00:00',
-                'updated_at' => '2025-05-24 22:20:35',
+                'created_at' => '2025-05-24 06:00:00',
+                'updated_at' => '2025-05-24 16:20:35',
             ),
-            182 => 
+            181 => 
             array (
                 'id' => 694,
                 'reference_no' => 'er-20250525-102851',
@@ -9625,10 +9611,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-25 12:00:00',
-                'updated_at' => '2025-05-25 22:28:51',
+                'created_at' => '2025-05-25 06:00:00',
+                'updated_at' => '2025-05-25 16:28:51',
             ),
-            183 => 
+            182 => 
             array (
                 'id' => 695,
                 'reference_no' => 'er-20250525-102915',
@@ -9639,10 +9625,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Hijra',
-                'created_at' => '2025-05-25 12:00:00',
-                'updated_at' => '2025-05-25 22:29:15',
+                'created_at' => '2025-05-25 06:00:00',
+                'updated_at' => '2025-05-25 16:29:15',
             ),
-            184 => 
+            183 => 
             array (
                 'id' => 696,
                 'reference_no' => 'er-20250525-102929',
@@ -9653,10 +9639,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-05-25 12:00:00',
-                'updated_at' => '2025-05-25 22:29:29',
+                'created_at' => '2025-05-25 06:00:00',
+                'updated_at' => '2025-05-25 16:29:29',
             ),
-            185 => 
+            184 => 
             array (
                 'id' => 697,
                 'reference_no' => 'er-20250525-102943',
@@ -9667,10 +9653,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-05-25 12:00:00',
-                'updated_at' => '2025-05-25 22:29:43',
+                'created_at' => '2025-05-25 06:00:00',
+                'updated_at' => '2025-05-25 16:29:43',
             ),
-            186 => 
+            185 => 
             array (
                 'id' => 698,
                 'reference_no' => 'er-20250525-103015',
@@ -9681,10 +9667,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet bill',
-                'created_at' => '2025-05-25 12:00:00',
-                'updated_at' => '2025-05-25 22:30:15',
+                'created_at' => '2025-05-25 06:00:00',
+                'updated_at' => '2025-05-25 16:30:15',
             ),
-            187 => 
+            186 => 
             array (
                 'id' => 699,
                 'reference_no' => 'er-20250525-103042',
@@ -9695,10 +9681,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 3750.0,
                 'note' => NULL,
-                'created_at' => '2025-05-25 12:00:00',
-                'updated_at' => '2025-05-25 22:30:42',
+                'created_at' => '2025-05-25 06:00:00',
+                'updated_at' => '2025-05-25 16:30:42',
             ),
-            188 => 
+            187 => 
             array (
                 'id' => 700,
                 'reference_no' => 'er-20250526-102558',
@@ -9709,10 +9695,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 110.0,
                 'note' => NULL,
-                'created_at' => '2025-05-26 12:00:00',
-                'updated_at' => '2025-05-26 22:25:58',
+                'created_at' => '2025-05-26 06:00:00',
+                'updated_at' => '2025-05-26 16:25:58',
             ),
-            189 => 
+            188 => 
             array (
                 'id' => 701,
                 'reference_no' => 'er-20250526-102613',
@@ -9723,10 +9709,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-26 12:00:00',
-                'updated_at' => '2025-05-26 22:26:13',
+                'created_at' => '2025-05-26 06:00:00',
+                'updated_at' => '2025-05-26 16:26:13',
             ),
-            190 => 
+            189 => 
             array (
                 'id' => 702,
                 'reference_no' => 'er-20250528-105358',
@@ -9737,10 +9723,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-27 00:00:00',
-                'updated_at' => '2025-05-28 22:54:18',
+                'created_at' => '2025-05-26 18:00:00',
+                'updated_at' => '2025-05-28 16:54:18',
             ),
-            191 => 
+            190 => 
             array (
                 'id' => 703,
                 'reference_no' => 'er-20250528-105455',
@@ -9751,10 +9737,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-05-27 12:00:00',
-                'updated_at' => '2025-05-28 22:54:55',
+                'created_at' => '2025-05-27 06:00:00',
+                'updated_at' => '2025-05-28 16:54:55',
             ),
-            192 => 
+            191 => 
             array (
                 'id' => 704,
                 'reference_no' => 'er-20250528-105519',
@@ -9765,10 +9751,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-27 12:00:00',
-                'updated_at' => '2025-05-28 22:55:19',
+                'created_at' => '2025-05-27 06:00:00',
+                'updated_at' => '2025-05-28 16:55:19',
             ),
-            193 => 
+            192 => 
             array (
                 'id' => 705,
                 'reference_no' => 'er-20250528-105619',
@@ -9779,10 +9765,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 350.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-27 12:00:00',
-                'updated_at' => '2025-05-28 22:56:19',
+                'created_at' => '2025-05-27 06:00:00',
+                'updated_at' => '2025-05-28 16:56:19',
             ),
-            194 => 
+            193 => 
             array (
                 'id' => 706,
                 'reference_no' => 'er-20250528-105712',
@@ -9793,10 +9779,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => 'Dishan+kurban+said+sabbir+alamin',
-                'created_at' => '2025-05-28 00:00:00',
-                'updated_at' => '2025-05-28 22:58:42',
+                'created_at' => '2025-05-27 18:00:00',
+                'updated_at' => '2025-05-28 16:58:42',
             ),
-            195 => 
+            194 => 
             array (
                 'id' => 707,
                 'reference_no' => 'er-20250528-110009',
@@ -9807,10 +9793,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 70000.0,
                 'note' => NULL,
-                'created_at' => '2025-05-28 12:00:00',
-                'updated_at' => '2025-05-28 23:00:09',
+                'created_at' => '2025-05-28 06:00:00',
+                'updated_at' => '2025-05-28 17:00:09',
             ),
-            196 => 
+            195 => 
             array (
                 'id' => 708,
                 'reference_no' => 'er-20250528-110105',
@@ -9821,10 +9807,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 490.0,
                 'note' => NULL,
-                'created_at' => '2025-05-28 12:00:00',
-                'updated_at' => '2025-05-28 23:01:05',
+                'created_at' => '2025-05-28 06:00:00',
+                'updated_at' => '2025-05-28 17:01:05',
             ),
-            197 => 
+            196 => 
             array (
                 'id' => 709,
                 'reference_no' => 'er-20250528-110133',
@@ -9835,10 +9821,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'Repair',
-                'created_at' => '2025-05-28 12:00:00',
-                'updated_at' => '2025-05-28 23:01:33',
+                'created_at' => '2025-05-28 06:00:00',
+                'updated_at' => '2025-05-28 17:01:33',
             ),
-            198 => 
+            197 => 
             array (
                 'id' => 710,
                 'reference_no' => 'er-20250528-110147',
@@ -9849,10 +9835,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-05-28 12:00:00',
-                'updated_at' => '2025-05-28 23:01:47',
+                'created_at' => '2025-05-28 06:00:00',
+                'updated_at' => '2025-05-28 17:01:47',
             ),
-            199 => 
+            198 => 
             array (
                 'id' => 711,
                 'reference_no' => 'er-20250528-110208',
@@ -9863,10 +9849,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 6325.0,
                 'note' => NULL,
-                'created_at' => '2025-05-28 12:00:00',
-                'updated_at' => '2025-05-28 23:02:08',
+                'created_at' => '2025-05-28 06:00:00',
+                'updated_at' => '2025-05-28 17:02:08',
             ),
-            200 => 
+            199 => 
             array (
                 'id' => 712,
                 'reference_no' => 'er-20250528-110229',
@@ -9877,10 +9863,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-05-28 12:00:00',
-                'updated_at' => '2025-05-28 23:02:29',
+                'created_at' => '2025-05-28 06:00:00',
+                'updated_at' => '2025-05-28 17:02:29',
             ),
-            201 => 
+            200 => 
             array (
                 'id' => 713,
                 'reference_no' => 'er-20250529-102408',
@@ -9891,10 +9877,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-05-29 12:00:00',
-                'updated_at' => '2025-05-29 22:24:08',
+                'created_at' => '2025-05-29 06:00:00',
+                'updated_at' => '2025-05-29 16:24:08',
             ),
-            202 => 
+            201 => 
             array (
                 'id' => 714,
                 'reference_no' => 'er-20250529-102429',
@@ -9905,10 +9891,10 @@ Kurban - 535',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'Food',
-                'created_at' => '2025-05-29 12:00:00',
-                'updated_at' => '2025-05-29 22:24:29',
+                'created_at' => '2025-05-29 06:00:00',
+                'updated_at' => '2025-05-29 16:24:29',
             ),
-            203 => 
+            202 => 
             array (
                 'id' => 715,
                 'reference_no' => 'er-20250529-102516',
@@ -9920,10 +9906,10 @@ Kurban - 535',
                 'amount' => 2800.0,
                 'note' => 'Afzal - 800
 Ahad - 2000',
-                'created_at' => '2025-05-29 12:00:00',
-                'updated_at' => '2025-05-29 22:25:16',
+                'created_at' => '2025-05-29 06:00:00',
+                'updated_at' => '2025-05-29 16:25:16',
             ),
-            204 => 
+            203 => 
             array (
                 'id' => 716,
                 'reference_no' => 'er-20250529-102532',
@@ -9934,10 +9920,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-05-29 12:00:00',
-                'updated_at' => '2025-05-29 22:25:32',
+                'created_at' => '2025-05-29 06:00:00',
+                'updated_at' => '2025-05-29 16:25:32',
             ),
-            205 => 
+            204 => 
             array (
                 'id' => 717,
                 'reference_no' => 'er-20250530-100459',
@@ -9948,10 +9934,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 535.0,
                 'note' => 'Kurban',
-                'created_at' => '2025-05-30 12:00:00',
-                'updated_at' => '2025-05-30 22:04:59',
+                'created_at' => '2025-05-30 06:00:00',
+                'updated_at' => '2025-05-30 16:04:59',
             ),
-            206 => 
+            205 => 
             array (
                 'id' => 718,
                 'reference_no' => 'er-20250530-100519',
@@ -9962,10 +9948,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'Al amin',
-                'created_at' => '2025-05-30 12:00:00',
-                'updated_at' => '2025-05-30 22:05:19',
+                'created_at' => '2025-05-30 06:00:00',
+                'updated_at' => '2025-05-30 16:05:19',
             ),
-            207 => 
+            206 => 
             array (
                 'id' => 719,
                 'reference_no' => 'er-20250530-100539',
@@ -9976,10 +9962,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 600.0,
                 'note' => 'Imrul',
-                'created_at' => '2025-05-30 12:00:00',
-                'updated_at' => '2025-05-30 22:05:39',
+                'created_at' => '2025-05-30 06:00:00',
+                'updated_at' => '2025-05-30 16:05:39',
             ),
-            208 => 
+            207 => 
             array (
                 'id' => 720,
                 'reference_no' => 'er-20250530-100555',
@@ -9990,10 +9976,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-05-30 12:00:00',
-                'updated_at' => '2025-05-30 22:05:55',
+                'created_at' => '2025-05-30 06:00:00',
+                'updated_at' => '2025-05-30 16:05:55',
             ),
-            209 => 
+            208 => 
             array (
                 'id' => 721,
                 'reference_no' => 'er-20250531-105123',
@@ -10004,10 +9990,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3295.0,
                 'note' => NULL,
-                'created_at' => '2025-05-31 12:00:00',
-                'updated_at' => '2025-05-31 22:51:23',
+                'created_at' => '2025-05-31 06:00:00',
+                'updated_at' => '2025-05-31 16:51:23',
             ),
-            210 => 
+            209 => 
             array (
                 'id' => 722,
                 'reference_no' => 'er-20250531-105154',
@@ -10018,10 +10004,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => 'Repair',
-                'created_at' => '2025-05-31 12:00:00',
-                'updated_at' => '2025-05-31 22:51:54',
+                'created_at' => '2025-05-31 06:00:00',
+                'updated_at' => '2025-05-31 16:51:54',
             ),
-            211 => 
+            210 => 
             array (
                 'id' => 723,
                 'reference_no' => 'er-20250531-105205',
@@ -10032,10 +10018,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-05-31 12:00:00',
-                'updated_at' => '2025-05-31 22:52:05',
+                'created_at' => '2025-05-31 06:00:00',
+                'updated_at' => '2025-05-31 16:52:05',
             ),
-            212 => 
+            211 => 
             array (
                 'id' => 724,
                 'reference_no' => 'er-20250531-105219',
@@ -10046,10 +10032,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-05-31 12:00:00',
-                'updated_at' => '2025-05-31 22:52:19',
+                'created_at' => '2025-05-31 06:00:00',
+                'updated_at' => '2025-05-31 16:52:19',
             ),
-            213 => 
+            212 => 
             array (
                 'id' => 725,
                 'reference_no' => 'er-20250531-105242',
@@ -10060,10 +10046,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => 'Tester',
-                'created_at' => '2025-05-31 12:00:00',
-                'updated_at' => '2025-05-31 22:52:42',
+                'created_at' => '2025-05-31 06:00:00',
+                'updated_at' => '2025-05-31 16:52:42',
             ),
-            214 => 
+            213 => 
             array (
                 'id' => 726,
                 'reference_no' => 'er-20250601-105910',
@@ -10074,10 +10060,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 60000.0,
                 'note' => 'March+April',
-                'created_at' => '2025-06-01 12:00:00',
-                'updated_at' => '2025-06-01 22:59:10',
+                'created_at' => '2025-06-01 06:00:00',
+                'updated_at' => '2025-06-01 16:59:10',
             ),
-            215 => 
+            214 => 
             array (
                 'id' => 727,
                 'reference_no' => 'er-20250601-105928',
@@ -10088,10 +10074,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-06-01 12:00:00',
-                'updated_at' => '2025-06-01 22:59:28',
+                'created_at' => '2025-06-01 06:00:00',
+                'updated_at' => '2025-06-01 16:59:28',
             ),
-            216 => 
+            215 => 
             array (
                 'id' => 728,
                 'reference_no' => 'er-20250601-110015',
@@ -10102,10 +10088,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => 'notun 2 jon soho jon',
-                'created_at' => '2025-06-01 12:00:00',
-                'updated_at' => '2025-06-01 23:00:15',
+                'created_at' => '2025-06-01 06:00:00',
+                'updated_at' => '2025-06-01 17:00:15',
             ),
-            217 => 
+            216 => 
             array (
                 'id' => 729,
                 'reference_no' => 'er-20250601-110043',
@@ -10116,10 +10102,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2890.0,
                 'note' => NULL,
-                'created_at' => '2025-06-01 12:00:00',
-                'updated_at' => '2025-06-01 23:00:43',
+                'created_at' => '2025-06-01 06:00:00',
+                'updated_at' => '2025-06-01 17:00:43',
             ),
-            218 => 
+            217 => 
             array (
                 'id' => 730,
                 'reference_no' => 'er-20250601-110140',
@@ -10130,10 +10116,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 5500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-01 12:00:00',
-                'updated_at' => '2025-06-01 23:01:40',
+                'created_at' => '2025-06-01 06:00:00',
+                'updated_at' => '2025-06-01 17:01:40',
             ),
-            219 => 
+            218 => 
             array (
                 'id' => 731,
                 'reference_no' => 'er-20250601-110155',
@@ -10144,10 +10130,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-01 12:00:00',
-                'updated_at' => '2025-06-01 23:01:55',
+                'created_at' => '2025-06-01 06:00:00',
+                'updated_at' => '2025-06-01 17:01:55',
             ),
-            220 => 
+            219 => 
             array (
                 'id' => 732,
                 'reference_no' => 'er-20250602-103557',
@@ -10158,10 +10144,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:35:57',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:35:57',
             ),
-            221 => 
+            220 => 
             array (
                 'id' => 733,
                 'reference_no' => 'er-20250602-103713',
@@ -10172,10 +10158,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => 'Van vara',
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:37:13',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:37:13',
             ),
-            222 => 
+            221 => 
             array (
                 'id' => 734,
                 'reference_no' => 'er-20250602-103729',
@@ -10186,10 +10172,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:37:29',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:37:29',
             ),
-            223 => 
+            222 => 
             array (
                 'id' => 735,
                 'reference_no' => 'er-20250602-103812',
@@ -10200,10 +10186,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 175.0,
                 'note' => 'Holder+Wair',
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:38:12',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:38:12',
             ),
-            224 => 
+            223 => 
             array (
                 'id' => 736,
                 'reference_no' => 'er-20250602-103843',
@@ -10214,10 +10200,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:38:43',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:38:43',
             ),
-            225 => 
+            224 => 
             array (
                 'id' => 737,
                 'reference_no' => 'er-20250602-103906',
@@ -10228,10 +10214,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 995.0,
                 'note' => NULL,
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:39:06',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:39:06',
             ),
-            226 => 
+            225 => 
             array (
                 'id' => 738,
                 'reference_no' => 'er-20250602-103925',
@@ -10242,10 +10228,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Water Bill',
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:39:25',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:39:25',
             ),
-            227 => 
+            226 => 
             array (
                 'id' => 739,
                 'reference_no' => 'er-20250602-103949',
@@ -10256,10 +10242,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:39:49',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:39:49',
             ),
-            228 => 
+            227 => 
             array (
                 'id' => 740,
                 'reference_no' => 'er-20250602-104439',
@@ -10270,10 +10256,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-02 12:00:00',
-                'updated_at' => '2025-06-02 22:44:39',
+                'created_at' => '2025-06-02 06:00:00',
+                'updated_at' => '2025-06-02 16:44:39',
             ),
-            229 => 
+            228 => 
             array (
                 'id' => 741,
                 'reference_no' => 'er-20250603-105417',
@@ -10284,10 +10270,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1095.0,
                 'note' => NULL,
-                'created_at' => '2025-06-03 12:00:00',
-                'updated_at' => '2025-06-03 22:54:17',
+                'created_at' => '2025-06-03 06:00:00',
+                'updated_at' => '2025-06-03 16:54:17',
             ),
-            230 => 
+            229 => 
             array (
                 'id' => 742,
                 'reference_no' => 'er-20250603-105459',
@@ -10298,10 +10284,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 25.0,
                 'note' => NULL,
-                'created_at' => '2025-06-03 12:00:00',
-                'updated_at' => '2025-06-03 22:54:59',
+                'created_at' => '2025-06-03 06:00:00',
+                'updated_at' => '2025-06-03 16:54:59',
             ),
-            231 => 
+            230 => 
             array (
                 'id' => 743,
                 'reference_no' => 'er-20250603-105517',
@@ -10312,10 +10298,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Repair',
-                'created_at' => '2025-06-03 12:00:00',
-                'updated_at' => '2025-06-03 22:55:17',
+                'created_at' => '2025-06-03 06:00:00',
+                'updated_at' => '2025-06-03 16:55:17',
             ),
-            232 => 
+            231 => 
             array (
                 'id' => 744,
                 'reference_no' => 'er-20250603-105944',
@@ -10326,10 +10312,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1680.0,
                 'note' => 'Imrul',
-                'created_at' => '2025-06-03 12:00:00',
-                'updated_at' => '2025-06-03 22:59:44',
+                'created_at' => '2025-06-03 06:00:00',
+                'updated_at' => '2025-06-03 16:59:44',
             ),
-            233 => 
+            232 => 
             array (
                 'id' => 745,
                 'reference_no' => 'er-20250603-105957',
@@ -10340,10 +10326,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-06-03 12:00:00',
-                'updated_at' => '2025-06-03 22:59:57',
+                'created_at' => '2025-06-03 06:00:00',
+                'updated_at' => '2025-06-03 16:59:57',
             ),
-            234 => 
+            233 => 
             array (
                 'id' => 746,
                 'reference_no' => 'er-20250605-122331',
@@ -10354,10 +10340,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:26:31',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:26:31',
             ),
-            235 => 
+            234 => 
             array (
                 'id' => 747,
                 'reference_no' => 'er-20250605-122347',
@@ -10368,10 +10354,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:26:37',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:26:37',
             ),
-            236 => 
+            235 => 
             array (
                 'id' => 748,
                 'reference_no' => 'er-20250605-122422',
@@ -10382,10 +10368,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 225.0,
                 'note' => 'Food',
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:26:43',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:26:43',
             ),
-            237 => 
+            236 => 
             array (
                 'id' => 749,
                 'reference_no' => 'er-20250605-122442',
@@ -10396,10 +10382,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 7000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:26:49',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:26:49',
             ),
-            238 => 
+            237 => 
             array (
                 'id' => 750,
                 'reference_no' => 'er-20250605-122502',
@@ -10410,10 +10396,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:26:56',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:26:56',
             ),
-            239 => 
+            238 => 
             array (
                 'id' => 751,
                 'reference_no' => 'er-20250605-122523',
@@ -10424,10 +10410,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:27:02',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:27:02',
             ),
-            240 => 
+            239 => 
             array (
                 'id' => 752,
                 'reference_no' => 'er-20250605-122536',
@@ -10438,10 +10424,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:27:08',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:27:08',
             ),
-            241 => 
+            240 => 
             array (
                 'id' => 753,
                 'reference_no' => 'er-20250605-122603',
@@ -10452,10 +10438,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2490.0,
                 'note' => NULL,
-                'created_at' => '2025-06-04 00:00:00',
-                'updated_at' => '2025-06-05 00:26:16',
+                'created_at' => '2025-06-03 18:00:00',
+                'updated_at' => '2025-06-04 18:26:16',
             ),
-            242 => 
+            241 => 
             array (
                 'id' => 754,
                 'reference_no' => 'er-20250606-125105',
@@ -10466,10 +10452,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:51:05',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:51:05',
             ),
-            243 => 
+            242 => 
             array (
                 'id' => 755,
                 'reference_no' => 'er-20250606-125128',
@@ -10480,10 +10466,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:51:28',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:51:28',
             ),
-            244 => 
+            243 => 
             array (
                 'id' => 756,
                 'reference_no' => 'er-20250606-125140',
@@ -10494,10 +10480,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 350.0,
                 'note' => NULL,
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:51:40',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:51:40',
             ),
-            245 => 
+            244 => 
             array (
                 'id' => 757,
                 'reference_no' => 'er-20250606-125209',
@@ -10508,10 +10494,10 @@ Ahad - 2000',
                 'cash_register_id' => 2,
                 'amount' => 600.0,
                 'note' => 'Emon salary',
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:52:09',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:52:09',
             ),
-            246 => 
+            245 => 
             array (
                 'id' => 758,
                 'reference_no' => 'er-20250606-125233',
@@ -10522,10 +10508,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1100.0,
                 'note' => 'Sakil salary',
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:52:33',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:52:33',
             ),
-            247 => 
+            246 => 
             array (
                 'id' => 759,
                 'reference_no' => 'er-20250606-125255',
@@ -10536,10 +10522,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 7500.0,
                 'note' => 'Bonus',
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:52:55',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:52:55',
             ),
-            248 => 
+            247 => 
             array (
                 'id' => 760,
                 'reference_no' => 'er-20250606-125340',
@@ -10550,10 +10536,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 6250.0,
                 'note' => 'Bonus',
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:53:40',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:53:40',
             ),
-            249 => 
+            248 => 
             array (
                 'id' => 761,
                 'reference_no' => 'er-20250606-125540',
@@ -10564,10 +10550,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 180.0,
                 'note' => NULL,
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:55:40',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:55:40',
             ),
-            250 => 
+            249 => 
             array (
                 'id' => 762,
                 'reference_no' => 'er-20250606-125731',
@@ -10578,10 +10564,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 7250.0,
                 'note' => 'Bonus',
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:57:31',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:57:31',
             ),
-            251 => 
+            250 => 
             array (
                 'id' => 763,
                 'reference_no' => 'er-20250606-125754',
@@ -10592,10 +10578,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Bonus',
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:57:54',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:57:54',
             ),
-            252 => 
+            251 => 
             array (
                 'id' => 764,
                 'reference_no' => 'er-20250606-125808',
@@ -10606,10 +10592,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 00:58:08',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 18:58:08',
             ),
-            253 => 
+            252 => 
             array (
                 'id' => 765,
                 'reference_no' => 'er-20250606-010322',
@@ -10620,10 +10606,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2285.0,
                 'note' => NULL,
-                'created_at' => '2025-06-05 12:00:00',
-                'updated_at' => '2025-06-06 01:03:22',
+                'created_at' => '2025-06-05 06:00:00',
+                'updated_at' => '2025-06-05 19:03:22',
             ),
-            254 => 
+            253 => 
             array (
                 'id' => 766,
                 'reference_no' => 'er-20250615-075434',
@@ -10634,10 +10620,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 19:54:34',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 13:54:34',
             ),
-            255 => 
+            254 => 
             array (
                 'id' => 767,
                 'reference_no' => 'er-20250615-075543',
@@ -10648,10 +10634,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3175.0,
                 'note' => 'FOOD',
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 19:55:43',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 13:55:43',
             ),
-            256 => 
+            255 => 
             array (
                 'id' => 768,
                 'reference_no' => 'er-20250615-075624',
@@ -10662,10 +10648,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 19:56:24',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 13:56:24',
             ),
-            257 => 
+            256 => 
             array (
                 'id' => 769,
                 'reference_no' => 'er-20250615-075737',
@@ -10676,10 +10662,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 10000.0,
                 'note' => 'SALARY',
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 19:57:37',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 13:57:37',
             ),
-            258 => 
+            257 => 
             array (
                 'id' => 770,
                 'reference_no' => 'er-20250615-075800',
@@ -10690,10 +10676,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 6230.0,
                 'note' => NULL,
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 19:58:00',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 13:58:00',
             ),
-            259 => 
+            258 => 
             array (
                 'id' => 771,
                 'reference_no' => 'er-20250615-081508',
@@ -10704,10 +10690,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3400.0,
                 'note' => 'EMON SALARY',
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 20:15:08',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 14:15:08',
             ),
-            260 => 
+            259 => 
             array (
                 'id' => 772,
                 'reference_no' => 'er-20250615-081626',
@@ -10718,10 +10704,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2900.0,
                 'note' => 'SAKIL SALARY',
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 20:16:26',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 14:16:26',
             ),
-            261 => 
+            260 => 
             array (
                 'id' => 773,
                 'reference_no' => 'er-20250615-081651',
@@ -10732,10 +10718,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 380.0,
                 'note' => NULL,
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 20:16:51',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 14:16:51',
             ),
-            262 => 
+            261 => 
             array (
                 'id' => 774,
                 'reference_no' => 'er-20250615-081719',
@@ -10746,10 +10732,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'BONUS',
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 20:17:19',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 14:17:19',
             ),
-            263 => 
+            262 => 
             array (
                 'id' => 775,
                 'reference_no' => 'er-20250615-081736',
@@ -10760,10 +10746,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 600.0,
                 'note' => NULL,
-                'created_at' => '2025-06-06 12:00:00',
-                'updated_at' => '2025-06-15 20:17:36',
+                'created_at' => '2025-06-06 06:00:00',
+                'updated_at' => '2025-06-15 14:17:36',
             ),
-            264 => 
+            263 => 
             array (
                 'id' => 776,
                 'reference_no' => 'er-20250615-081955',
@@ -10774,10 +10760,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1600.0,
                 'note' => 'SALE COMISSION',
-                'created_at' => '2025-06-09 12:00:00',
-                'updated_at' => '2025-06-15 20:19:55',
+                'created_at' => '2025-06-09 06:00:00',
+                'updated_at' => '2025-06-15 14:19:55',
             ),
-            265 => 
+            264 => 
             array (
                 'id' => 777,
                 'reference_no' => 'er-20250615-082039',
@@ -10788,10 +10774,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-10 12:00:00',
-                'updated_at' => '2025-06-15 20:20:39',
+                'created_at' => '2025-06-10 06:00:00',
+                'updated_at' => '2025-06-15 14:20:39',
             ),
-            266 => 
+            265 => 
             array (
                 'id' => 778,
                 'reference_no' => 'er-20250615-082141',
@@ -10802,10 +10788,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'SALARY',
-                'created_at' => '2025-06-10 12:00:00',
-                'updated_at' => '2025-06-15 20:21:41',
+                'created_at' => '2025-06-10 06:00:00',
+                'updated_at' => '2025-06-15 14:21:41',
             ),
-            267 => 
+            266 => 
             array (
                 'id' => 779,
                 'reference_no' => 'er-20250615-082239',
@@ -10816,10 +10802,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 1325.0,
                 'note' => 'GEN OIL',
-                'created_at' => '2025-06-10 12:00:00',
-                'updated_at' => '2025-06-15 20:22:39',
+                'created_at' => '2025-06-10 06:00:00',
+                'updated_at' => '2025-06-15 14:22:39',
             ),
-            268 => 
+            267 => 
             array (
                 'id' => 780,
                 'reference_no' => 'er-20250615-082327',
@@ -10830,10 +10816,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-11 12:00:00',
-                'updated_at' => '2025-06-15 20:23:27',
+                'created_at' => '2025-06-11 06:00:00',
+                'updated_at' => '2025-06-15 14:23:27',
             ),
-            269 => 
+            268 => 
             array (
                 'id' => 781,
                 'reference_no' => 'er-20250615-082410',
@@ -10844,10 +10830,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'MOYLAWALA',
-                'created_at' => '2025-06-11 12:00:00',
-                'updated_at' => '2025-06-15 20:24:10',
+                'created_at' => '2025-06-11 06:00:00',
+                'updated_at' => '2025-06-15 14:24:10',
             ),
-            270 => 
+            269 => 
             array (
                 'id' => 782,
                 'reference_no' => 'er-20250615-100245',
@@ -10858,10 +10844,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-15 12:00:00',
-                'updated_at' => '2025-06-15 22:02:45',
+                'created_at' => '2025-06-15 06:00:00',
+                'updated_at' => '2025-06-15 16:02:45',
             ),
-            271 => 
+            270 => 
             array (
                 'id' => 783,
                 'reference_no' => 'er-20250615-100419',
@@ -10872,10 +10858,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 49000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-15 12:00:00',
-                'updated_at' => '2025-06-15 22:04:19',
+                'created_at' => '2025-06-15 06:00:00',
+                'updated_at' => '2025-06-15 16:04:19',
             ),
-            272 => 
+            271 => 
             array (
                 'id' => 784,
                 'reference_no' => 'er-20250615-100441',
@@ -10886,10 +10872,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'REPAIR',
-                'created_at' => '2025-06-15 12:00:00',
-                'updated_at' => '2025-06-15 22:04:41',
+                'created_at' => '2025-06-15 06:00:00',
+                'updated_at' => '2025-06-15 16:04:41',
             ),
-            273 => 
+            272 => 
             array (
                 'id' => 785,
                 'reference_no' => 'er-20250615-100503',
@@ -10900,10 +10886,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => 'TISSUE',
-                'created_at' => '2025-06-15 12:00:00',
-                'updated_at' => '2025-06-15 22:05:03',
+                'created_at' => '2025-06-15 06:00:00',
+                'updated_at' => '2025-06-15 16:05:03',
             ),
-            274 => 
+            273 => 
             array (
                 'id' => 786,
                 'reference_no' => 'er-20250617-090347',
@@ -10914,10 +10900,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-16 12:00:00',
-                'updated_at' => '2025-06-17 21:03:47',
+                'created_at' => '2025-06-16 06:00:00',
+                'updated_at' => '2025-06-17 15:03:47',
             ),
-            275 => 
+            274 => 
             array (
                 'id' => 787,
                 'reference_no' => 'er-20250617-090410',
@@ -10928,10 +10914,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => 'May',
-                'created_at' => '2025-06-16 00:00:00',
-                'updated_at' => '2025-07-15 21:48:23',
+                'created_at' => '2025-06-15 18:00:00',
+                'updated_at' => '2025-07-15 15:48:23',
             ),
-            276 => 
+            275 => 
             array (
                 'id' => 788,
                 'reference_no' => 'er-20250617-090426',
@@ -10942,10 +10928,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-16 12:00:00',
-                'updated_at' => '2025-06-17 21:04:26',
+                'created_at' => '2025-06-16 06:00:00',
+                'updated_at' => '2025-06-17 15:04:26',
             ),
-            277 => 
+            276 => 
             array (
                 'id' => 789,
                 'reference_no' => 'er-20250617-090444',
@@ -10956,10 +10942,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2485.0,
                 'note' => NULL,
-                'created_at' => '2025-06-16 12:00:00',
-                'updated_at' => '2025-06-17 21:04:44',
+                'created_at' => '2025-06-16 06:00:00',
+                'updated_at' => '2025-06-17 15:04:44',
             ),
-            278 => 
+            277 => 
             array (
                 'id' => 790,
                 'reference_no' => 'er-20250617-090504',
@@ -10970,10 +10956,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-16 12:00:00',
-                'updated_at' => '2025-06-17 21:05:04',
+                'created_at' => '2025-06-16 06:00:00',
+                'updated_at' => '2025-06-17 15:05:04',
             ),
-            279 => 
+            278 => 
             array (
                 'id' => 791,
                 'reference_no' => 'er-20250617-092102',
@@ -10984,10 +10970,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-12 12:00:00',
-                'updated_at' => '2025-06-17 21:21:02',
+                'created_at' => '2025-06-12 06:00:00',
+                'updated_at' => '2025-06-17 15:21:02',
             ),
-            280 => 
+            279 => 
             array (
                 'id' => 792,
                 'reference_no' => 'er-20250617-092302',
@@ -10998,10 +10984,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-06-12 12:00:00',
-                'updated_at' => '2025-06-17 21:23:02',
+                'created_at' => '2025-06-12 06:00:00',
+                'updated_at' => '2025-06-17 15:23:02',
             ),
-            281 => 
+            280 => 
             array (
                 'id' => 793,
                 'reference_no' => 'er-20250617-092349',
@@ -11012,10 +10998,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-12 12:00:00',
-                'updated_at' => '2025-06-17 21:23:49',
+                'created_at' => '2025-06-12 06:00:00',
+                'updated_at' => '2025-06-17 15:23:49',
             ),
-            282 => 
+            281 => 
             array (
                 'id' => 794,
                 'reference_no' => 'er-20250617-092413',
@@ -11026,10 +11012,10 @@ Ahad - 2000',
                 'cash_register_id' => 1,
                 'amount' => 2890.0,
                 'note' => NULL,
-                'created_at' => '2025-06-12 12:00:00',
-                'updated_at' => '2025-06-17 21:24:13',
+                'created_at' => '2025-06-12 06:00:00',
+                'updated_at' => '2025-06-17 15:24:13',
             ),
-            283 => 
+            282 => 
             array (
                 'id' => 795,
                 'reference_no' => 'er-20250617-092600',
@@ -11041,10 +11027,10 @@ Ahad - 2000',
                 'amount' => 1105.0,
                 'note' => 'Al amin - 585
 Kurban - 520',
-                'created_at' => '2025-06-13 12:00:00',
-                'updated_at' => '2025-06-17 21:26:00',
+                'created_at' => '2025-06-13 06:00:00',
+                'updated_at' => '2025-06-17 15:26:00',
             ),
-            284 => 
+            283 => 
             array (
                 'id' => 796,
                 'reference_no' => 'er-20250617-092650',
@@ -11055,10 +11041,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-14 12:00:00',
-                'updated_at' => '2025-06-17 21:26:50',
+                'created_at' => '2025-06-14 06:00:00',
+                'updated_at' => '2025-06-17 15:26:50',
             ),
-            285 => 
+            284 => 
             array (
                 'id' => 797,
                 'reference_no' => 'er-20250617-092740',
@@ -11069,10 +11055,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-14 12:00:00',
-                'updated_at' => '2025-06-17 21:27:40',
+                'created_at' => '2025-06-14 06:00:00',
+                'updated_at' => '2025-06-17 15:27:40',
             ),
-            286 => 
+            285 => 
             array (
                 'id' => 798,
                 'reference_no' => 'er-20250617-092800',
@@ -11083,10 +11069,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2095.0,
                 'note' => NULL,
-                'created_at' => '2025-06-14 12:00:00',
-                'updated_at' => '2025-06-17 21:28:00',
+                'created_at' => '2025-06-14 06:00:00',
+                'updated_at' => '2025-06-17 15:28:00',
             ),
-            287 => 
+            286 => 
             array (
                 'id' => 799,
                 'reference_no' => 'er-20250617-093305',
@@ -11097,10 +11083,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-17 12:00:00',
-                'updated_at' => '2025-06-17 21:33:05',
+                'created_at' => '2025-06-17 06:00:00',
+                'updated_at' => '2025-06-17 15:33:05',
             ),
-            288 => 
+            287 => 
             array (
                 'id' => 800,
                 'reference_no' => 'er-20250617-093322',
@@ -11111,10 +11097,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-17 12:00:00',
-                'updated_at' => '2025-06-17 21:33:22',
+                'created_at' => '2025-06-17 06:00:00',
+                'updated_at' => '2025-06-17 15:33:22',
             ),
-            289 => 
+            288 => 
             array (
                 'id' => 801,
                 'reference_no' => 'er-20250617-093335',
@@ -11125,10 +11111,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-06-17 12:00:00',
-                'updated_at' => '2025-06-17 21:33:35',
+                'created_at' => '2025-06-17 06:00:00',
+                'updated_at' => '2025-06-17 15:33:35',
             ),
-            290 => 
+            289 => 
             array (
                 'id' => 802,
                 'reference_no' => 'er-20250617-100100',
@@ -11139,10 +11125,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-17 12:00:00',
-                'updated_at' => '2025-06-17 22:01:00',
+                'created_at' => '2025-06-17 06:00:00',
+                'updated_at' => '2025-06-17 16:01:00',
             ),
-            291 => 
+            290 => 
             array (
                 'id' => 803,
                 'reference_no' => 'er-20250618-100146',
@@ -11153,10 +11139,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-18 12:00:00',
-                'updated_at' => '2025-06-18 22:01:46',
+                'created_at' => '2025-06-18 06:00:00',
+                'updated_at' => '2025-06-18 16:01:46',
             ),
-            292 => 
+            291 => 
             array (
                 'id' => 804,
                 'reference_no' => 'er-20250618-100200',
@@ -11167,10 +11153,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 45000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-18 12:00:00',
-                'updated_at' => '2025-06-18 22:02:00',
+                'created_at' => '2025-06-18 06:00:00',
+                'updated_at' => '2025-06-18 16:02:00',
             ),
-            293 => 
+            292 => 
             array (
                 'id' => 805,
                 'reference_no' => 'er-20250618-100212',
@@ -11181,10 +11167,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-06-18 12:00:00',
-                'updated_at' => '2025-06-18 22:02:12',
+                'created_at' => '2025-06-18 06:00:00',
+                'updated_at' => '2025-06-18 16:02:12',
             ),
-            294 => 
+            293 => 
             array (
                 'id' => 806,
                 'reference_no' => 'er-20250622-093703',
@@ -11195,10 +11181,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-19 12:00:00',
-                'updated_at' => '2025-06-22 21:37:03',
+                'created_at' => '2025-06-19 06:00:00',
+                'updated_at' => '2025-06-22 15:37:03',
             ),
-            295 => 
+            294 => 
             array (
                 'id' => 807,
                 'reference_no' => 'er-20250622-093717',
@@ -11209,10 +11195,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1390.0,
                 'note' => NULL,
-                'created_at' => '2025-06-19 12:00:00',
-                'updated_at' => '2025-06-22 21:37:17',
+                'created_at' => '2025-06-19 06:00:00',
+                'updated_at' => '2025-06-22 15:37:17',
             ),
-            296 => 
+            295 => 
             array (
                 'id' => 808,
                 'reference_no' => 'er-20250622-093737',
@@ -11223,10 +11209,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-06-19 12:00:00',
-                'updated_at' => '2025-06-22 21:37:37',
+                'created_at' => '2025-06-19 06:00:00',
+                'updated_at' => '2025-06-22 15:37:37',
             ),
-            297 => 
+            296 => 
             array (
                 'id' => 809,
                 'reference_no' => 'er-20250622-093756',
@@ -11237,10 +11223,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-21 00:00:00',
-                'updated_at' => '2025-06-22 21:39:14',
+                'created_at' => '2025-06-20 18:00:00',
+                'updated_at' => '2025-06-22 15:39:14',
             ),
-            298 => 
+            297 => 
             array (
                 'id' => 810,
                 'reference_no' => 'er-20250622-093828',
@@ -11251,10 +11237,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 7260.0,
                 'note' => 'Jump Payment',
-                'created_at' => '2025-06-21 00:00:00',
-                'updated_at' => '2025-06-22 21:39:21',
+                'created_at' => '2025-06-20 18:00:00',
+                'updated_at' => '2025-06-22 15:39:21',
             ),
-            299 => 
+            298 => 
             array (
                 'id' => 811,
                 'reference_no' => 'er-20250622-093849',
@@ -11265,10 +11251,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-06-21 00:00:00',
-                'updated_at' => '2025-06-22 21:39:29',
+                'created_at' => '2025-06-20 18:00:00',
+                'updated_at' => '2025-06-22 15:39:29',
             ),
-            300 => 
+            299 => 
             array (
                 'id' => 812,
                 'reference_no' => 'er-20250622-093955',
@@ -11279,10 +11265,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-22 12:00:00',
-                'updated_at' => '2025-06-22 21:39:55',
+                'created_at' => '2025-06-22 06:00:00',
+                'updated_at' => '2025-06-22 15:39:55',
             ),
-            301 => 
+            300 => 
             array (
                 'id' => 813,
                 'reference_no' => 'er-20250622-094030',
@@ -11293,10 +11279,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Mosjid',
-                'created_at' => '2025-06-22 12:00:00',
-                'updated_at' => '2025-06-22 21:40:30',
+                'created_at' => '2025-06-22 06:00:00',
+                'updated_at' => '2025-06-22 15:40:30',
             ),
-            302 => 
+            301 => 
             array (
                 'id' => 814,
                 'reference_no' => 'er-20250623-090626',
@@ -11307,10 +11293,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Godown',
-                'created_at' => '2025-06-22 12:00:00',
-                'updated_at' => '2025-06-23 21:06:26',
+                'created_at' => '2025-06-22 06:00:00',
+                'updated_at' => '2025-06-23 15:06:26',
             ),
-            303 => 
+            302 => 
             array (
                 'id' => 815,
                 'reference_no' => 'er-20250623-090736',
@@ -11321,10 +11307,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 45000.0,
                 'note' => NULL,
-                'created_at' => '2025-06-23 12:00:00',
-                'updated_at' => '2025-06-23 21:07:36',
+                'created_at' => '2025-06-23 06:00:00',
+                'updated_at' => '2025-06-23 15:07:36',
             ),
-            304 => 
+            303 => 
             array (
                 'id' => 816,
                 'reference_no' => 'er-20250623-093604',
@@ -11335,10 +11321,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-23 12:00:00',
-                'updated_at' => '2025-06-23 21:36:04',
+                'created_at' => '2025-06-23 06:00:00',
+                'updated_at' => '2025-06-23 15:36:04',
             ),
-            305 => 
+            304 => 
             array (
                 'id' => 817,
                 'reference_no' => 'er-20250623-093736',
@@ -11349,10 +11335,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Glass cleaner',
-                'created_at' => '2025-06-23 12:00:00',
-                'updated_at' => '2025-06-23 21:37:36',
+                'created_at' => '2025-06-23 06:00:00',
+                'updated_at' => '2025-06-23 15:37:36',
             ),
-            306 => 
+            305 => 
             array (
                 'id' => 818,
                 'reference_no' => 'er-20250623-093753',
@@ -11363,10 +11349,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-06-23 12:00:00',
-                'updated_at' => '2025-06-23 21:37:53',
+                'created_at' => '2025-06-23 06:00:00',
+                'updated_at' => '2025-06-23 15:37:53',
             ),
-            307 => 
+            306 => 
             array (
                 'id' => 819,
                 'reference_no' => 'er-20250623-093816',
@@ -11377,10 +11363,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-23 12:00:00',
-                'updated_at' => '2025-06-23 21:38:16',
+                'created_at' => '2025-06-23 06:00:00',
+                'updated_at' => '2025-06-23 15:38:16',
             ),
-            308 => 
+            307 => 
             array (
                 'id' => 820,
                 'reference_no' => 'er-20250624-094215',
@@ -11391,10 +11377,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-24 12:00:00',
-                'updated_at' => '2025-06-24 21:42:15',
+                'created_at' => '2025-06-24 06:00:00',
+                'updated_at' => '2025-06-24 15:42:15',
             ),
-            309 => 
+            308 => 
             array (
                 'id' => 821,
                 'reference_no' => 'er-20250625-100130',
@@ -11405,10 +11391,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-25 12:00:00',
-                'updated_at' => '2025-06-25 22:01:30',
+                'created_at' => '2025-06-25 06:00:00',
+                'updated_at' => '2025-06-25 16:01:30',
             ),
-            310 => 
+            309 => 
             array (
                 'id' => 822,
                 'reference_no' => 'er-20250625-100146',
@@ -11419,10 +11405,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 170.0,
                 'note' => NULL,
-                'created_at' => '2025-06-25 12:00:00',
-                'updated_at' => '2025-06-25 22:01:46',
+                'created_at' => '2025-06-25 06:00:00',
+                'updated_at' => '2025-06-25 16:01:46',
             ),
-            311 => 
+            310 => 
             array (
                 'id' => 823,
                 'reference_no' => 'er-20250625-100217',
@@ -11433,10 +11419,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet Bill',
-                'created_at' => '2025-06-25 12:00:00',
-                'updated_at' => '2025-06-25 22:02:17',
+                'created_at' => '2025-06-25 06:00:00',
+                'updated_at' => '2025-06-25 16:02:17',
             ),
-            312 => 
+            311 => 
             array (
                 'id' => 824,
                 'reference_no' => 'er-20250625-100234',
@@ -11447,10 +11433,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-25 12:00:00',
-                'updated_at' => '2025-06-25 22:02:34',
+                'created_at' => '2025-06-25 06:00:00',
+                'updated_at' => '2025-06-25 16:02:34',
             ),
-            313 => 
+            312 => 
             array (
                 'id' => 825,
                 'reference_no' => 'er-20250625-100252',
@@ -11461,10 +11447,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-25 12:00:00',
-                'updated_at' => '2025-06-25 22:02:52',
+                'created_at' => '2025-06-25 06:00:00',
+                'updated_at' => '2025-06-25 16:02:52',
             ),
-            314 => 
+            313 => 
             array (
                 'id' => 826,
                 'reference_no' => 'er-20250626-095912',
@@ -11475,10 +11461,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-26 12:00:00',
-                'updated_at' => '2025-06-26 21:59:12',
+                'created_at' => '2025-06-26 06:00:00',
+                'updated_at' => '2025-06-26 15:59:12',
             ),
-            315 => 
+            314 => 
             array (
                 'id' => 827,
                 'reference_no' => 'er-20250626-095936',
@@ -11489,10 +11475,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-06-26 12:00:00',
-                'updated_at' => '2025-06-26 21:59:36',
+                'created_at' => '2025-06-26 06:00:00',
+                'updated_at' => '2025-06-26 15:59:36',
             ),
-            316 => 
+            315 => 
             array (
                 'id' => 828,
                 'reference_no' => 'er-20250628-100847',
@@ -11503,10 +11489,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-28 12:00:00',
-                'updated_at' => '2025-06-28 22:08:47',
+                'created_at' => '2025-06-28 06:00:00',
+                'updated_at' => '2025-06-28 16:08:47',
             ),
-            317 => 
+            316 => 
             array (
                 'id' => 829,
                 'reference_no' => 'er-20250628-100905',
@@ -11517,10 +11503,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2485.0,
                 'note' => NULL,
-                'created_at' => '2025-06-28 12:00:00',
-                'updated_at' => '2025-06-28 22:09:05',
+                'created_at' => '2025-06-28 06:00:00',
+                'updated_at' => '2025-06-28 16:09:05',
             ),
-            318 => 
+            317 => 
             array (
                 'id' => 830,
                 'reference_no' => 'er-20250629-095943',
@@ -11531,10 +11517,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-06-29 12:00:00',
-                'updated_at' => '2025-06-29 21:59:43',
+                'created_at' => '2025-06-29 06:00:00',
+                'updated_at' => '2025-06-29 15:59:43',
             ),
-            319 => 
+            318 => 
             array (
                 'id' => 831,
                 'reference_no' => 'er-20250630-095433',
@@ -11545,10 +11531,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 11500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-06-30 12:00:00',
-                'updated_at' => '2025-06-30 21:54:33',
+                'created_at' => '2025-06-30 06:00:00',
+                'updated_at' => '2025-06-30 15:54:33',
             ),
-            320 => 
+            319 => 
             array (
                 'id' => 832,
                 'reference_no' => 'er-20250630-095445',
@@ -11559,10 +11545,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-06-30 12:00:00',
-                'updated_at' => '2025-06-30 21:54:45',
+                'created_at' => '2025-06-30 06:00:00',
+                'updated_at' => '2025-06-30 15:54:45',
             ),
-            321 => 
+            320 => 
             array (
                 'id' => 833,
                 'reference_no' => 'er-20250701-094758',
@@ -11573,10 +11559,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-07-01 12:00:00',
-                'updated_at' => '2025-07-01 21:47:58',
+                'created_at' => '2025-07-01 06:00:00',
+                'updated_at' => '2025-07-01 15:47:58',
             ),
-            322 => 
+            321 => 
             array (
                 'id' => 834,
                 'reference_no' => 'er-20250701-094824',
@@ -11587,10 +11573,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-01 12:00:00',
-                'updated_at' => '2025-07-01 21:48:24',
+                'created_at' => '2025-07-01 06:00:00',
+                'updated_at' => '2025-07-01 15:48:24',
             ),
-            323 => 
+            322 => 
             array (
                 'id' => 835,
                 'reference_no' => 'er-20250702-095608',
@@ -11601,10 +11587,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-07-02 12:00:00',
-                'updated_at' => '2025-07-02 21:56:08',
+                'created_at' => '2025-07-02 06:00:00',
+                'updated_at' => '2025-07-02 15:56:08',
             ),
-            324 => 
+            323 => 
             array (
                 'id' => 836,
                 'reference_no' => 'er-20250703-100505',
@@ -11615,10 +11601,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-07-03 12:00:00',
-                'updated_at' => '2025-07-03 22:05:05',
+                'created_at' => '2025-07-03 06:00:00',
+                'updated_at' => '2025-07-03 16:05:05',
             ),
-            325 => 
+            324 => 
             array (
                 'id' => 837,
                 'reference_no' => 'er-20250703-100526',
@@ -11629,10 +11615,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 4500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-03 12:00:00',
-                'updated_at' => '2025-07-03 22:05:26',
+                'created_at' => '2025-07-03 06:00:00',
+                'updated_at' => '2025-07-03 16:05:26',
             ),
-            326 => 
+            325 => 
             array (
                 'id' => 838,
                 'reference_no' => 'er-20250703-100546',
@@ -11643,10 +11629,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => NULL,
-                'created_at' => '2025-07-03 12:00:00',
-                'updated_at' => '2025-07-03 22:05:46',
+                'created_at' => '2025-07-03 06:00:00',
+                'updated_at' => '2025-07-03 16:05:46',
             ),
-            327 => 
+            326 => 
             array (
                 'id' => 839,
                 'reference_no' => 'er-20250703-100602',
@@ -11657,10 +11643,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-07-03 12:00:00',
-                'updated_at' => '2025-07-03 22:06:02',
+                'created_at' => '2025-07-03 06:00:00',
+                'updated_at' => '2025-07-03 16:06:02',
             ),
-            328 => 
+            327 => 
             array (
                 'id' => 840,
                 'reference_no' => 'er-20250705-095156',
@@ -11671,10 +11657,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-07-05 12:00:00',
-                'updated_at' => '2025-07-05 21:51:56',
+                'created_at' => '2025-07-05 06:00:00',
+                'updated_at' => '2025-07-05 15:51:56',
             ),
-            329 => 
+            328 => 
             array (
                 'id' => 841,
                 'reference_no' => 'er-20250705-095205',
@@ -11685,10 +11671,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-05 12:00:00',
-                'updated_at' => '2025-07-05 21:52:05',
+                'created_at' => '2025-07-05 06:00:00',
+                'updated_at' => '2025-07-05 15:52:05',
             ),
-            330 => 
+            329 => 
             array (
                 'id' => 842,
                 'reference_no' => 'er-20250712-082425',
@@ -11699,10 +11685,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-06 12:00:00',
-                'updated_at' => '2025-07-12 20:24:25',
+                'created_at' => '2025-07-06 06:00:00',
+                'updated_at' => '2025-07-12 14:24:25',
             ),
-            331 => 
+            330 => 
             array (
                 'id' => 843,
                 'reference_no' => 'er-20250712-082440',
@@ -11713,10 +11699,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-06 12:00:00',
-                'updated_at' => '2025-07-12 20:24:40',
+                'created_at' => '2025-07-06 06:00:00',
+                'updated_at' => '2025-07-12 14:24:40',
             ),
-            332 => 
+            331 => 
             array (
                 'id' => 844,
                 'reference_no' => 'er-20250712-082510',
@@ -11727,10 +11713,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-06 12:00:00',
-                'updated_at' => '2025-07-12 20:25:10',
+                'created_at' => '2025-07-06 06:00:00',
+                'updated_at' => '2025-07-12 14:25:10',
             ),
-            333 => 
+            332 => 
             array (
                 'id' => 845,
                 'reference_no' => 'er-20250712-082539',
@@ -11741,10 +11727,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-06 12:00:00',
-                'updated_at' => '2025-07-12 20:25:39',
+                'created_at' => '2025-07-06 06:00:00',
+                'updated_at' => '2025-07-12 14:25:39',
             ),
-            334 => 
+            333 => 
             array (
                 'id' => 846,
                 'reference_no' => 'er-20250712-082732',
@@ -11755,10 +11741,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-07 12:00:00',
-                'updated_at' => '2025-07-12 20:27:32',
+                'created_at' => '2025-07-07 06:00:00',
+                'updated_at' => '2025-07-12 14:27:32',
             ),
-            335 => 
+            334 => 
             array (
                 'id' => 847,
                 'reference_no' => 'er-20250712-082747',
@@ -11769,10 +11755,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 850.0,
                 'note' => NULL,
-                'created_at' => '2025-07-07 12:00:00',
-                'updated_at' => '2025-07-12 20:27:47',
+                'created_at' => '2025-07-07 06:00:00',
+                'updated_at' => '2025-07-12 14:27:47',
             ),
-            336 => 
+            335 => 
             array (
                 'id' => 848,
                 'reference_no' => 'er-20250712-082818',
@@ -11783,10 +11769,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-07-08 12:00:00',
-                'updated_at' => '2025-07-12 20:28:18',
+                'created_at' => '2025-07-08 06:00:00',
+                'updated_at' => '2025-07-12 14:28:18',
             ),
-            337 => 
+            336 => 
             array (
                 'id' => 849,
                 'reference_no' => 'er-20250712-082840',
@@ -11797,10 +11783,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-08 12:00:00',
-                'updated_at' => '2025-07-12 20:28:40',
+                'created_at' => '2025-07-08 06:00:00',
+                'updated_at' => '2025-07-12 14:28:40',
             ),
-            338 => 
+            337 => 
             array (
                 'id' => 850,
                 'reference_no' => 'er-20250712-082959',
@@ -11811,10 +11797,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-09 12:00:00',
-                'updated_at' => '2025-07-12 20:29:59',
+                'created_at' => '2025-07-09 06:00:00',
+                'updated_at' => '2025-07-12 14:29:59',
             ),
-            339 => 
+            338 => 
             array (
                 'id' => 851,
                 'reference_no' => 'er-20250712-083019',
@@ -11825,10 +11811,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-07-09 12:00:00',
-                'updated_at' => '2025-07-12 20:30:19',
+                'created_at' => '2025-07-09 06:00:00',
+                'updated_at' => '2025-07-12 14:30:19',
             ),
-            340 => 
+            339 => 
             array (
                 'id' => 852,
                 'reference_no' => 'er-20250712-083037',
@@ -11839,10 +11825,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Repair',
-                'created_at' => '2025-07-09 12:00:00',
-                'updated_at' => '2025-07-12 20:30:37',
+                'created_at' => '2025-07-09 06:00:00',
+                'updated_at' => '2025-07-12 14:30:37',
             ),
-            341 => 
+            340 => 
             array (
                 'id' => 853,
                 'reference_no' => 'er-20250712-094545',
@@ -11853,10 +11839,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-10 12:00:00',
-                'updated_at' => '2025-07-12 21:45:45',
+                'created_at' => '2025-07-10 06:00:00',
+                'updated_at' => '2025-07-12 15:45:45',
             ),
-            342 => 
+            341 => 
             array (
                 'id' => 854,
                 'reference_no' => 'er-20250712-094614',
@@ -11867,10 +11853,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-07-10 12:00:00',
-                'updated_at' => '2025-07-12 21:46:14',
+                'created_at' => '2025-07-10 06:00:00',
+                'updated_at' => '2025-07-12 15:46:14',
             ),
-            343 => 
+            342 => 
             array (
                 'id' => 855,
                 'reference_no' => 'er-20250712-094639',
@@ -11881,10 +11867,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1495.0,
                 'note' => NULL,
-                'created_at' => '2025-07-10 12:00:00',
-                'updated_at' => '2025-07-12 21:46:39',
+                'created_at' => '2025-07-10 06:00:00',
+                'updated_at' => '2025-07-12 15:46:39',
             ),
-            344 => 
+            343 => 
             array (
                 'id' => 856,
                 'reference_no' => 'er-20250712-100125',
@@ -11895,10 +11881,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-12 12:00:00',
-                'updated_at' => '2025-07-12 22:01:25',
+                'created_at' => '2025-07-12 06:00:00',
+                'updated_at' => '2025-07-12 16:01:25',
             ),
-            345 => 
+            344 => 
             array (
                 'id' => 857,
                 'reference_no' => 'er-20250712-100142',
@@ -11909,10 +11895,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-07-12 12:00:00',
-                'updated_at' => '2025-07-12 22:01:42',
+                'created_at' => '2025-07-12 06:00:00',
+                'updated_at' => '2025-07-12 16:01:42',
             ),
-            346 => 
+            345 => 
             array (
                 'id' => 858,
                 'reference_no' => 'er-20250712-100209',
@@ -11923,10 +11909,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1990.0,
                 'note' => NULL,
-                'created_at' => '2025-07-12 12:00:00',
-                'updated_at' => '2025-07-12 22:02:09',
+                'created_at' => '2025-07-12 06:00:00',
+                'updated_at' => '2025-07-12 16:02:09',
             ),
-            347 => 
+            346 => 
             array (
                 'id' => 859,
                 'reference_no' => 'er-20250712-100225',
@@ -11937,10 +11923,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-12 12:00:00',
-                'updated_at' => '2025-07-12 22:02:25',
+                'created_at' => '2025-07-12 06:00:00',
+                'updated_at' => '2025-07-12 16:02:25',
             ),
-            348 => 
+            347 => 
             array (
                 'id' => 860,
                 'reference_no' => 'er-20250713-095337',
@@ -11951,10 +11937,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-13 12:00:00',
-                'updated_at' => '2025-07-13 21:53:37',
+                'created_at' => '2025-07-13 06:00:00',
+                'updated_at' => '2025-07-13 15:53:37',
             ),
-            349 => 
+            348 => 
             array (
                 'id' => 861,
                 'reference_no' => 'er-20250713-095351',
@@ -11965,10 +11951,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-07-13 12:00:00',
-                'updated_at' => '2025-07-13 21:53:51',
+                'created_at' => '2025-07-13 06:00:00',
+                'updated_at' => '2025-07-13 15:53:51',
             ),
-            350 => 
+            349 => 
             array (
                 'id' => 862,
                 'reference_no' => 'er-20250713-095404',
@@ -11979,10 +11965,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-07-13 12:00:00',
-                'updated_at' => '2025-07-13 21:54:04',
+                'created_at' => '2025-07-13 06:00:00',
+                'updated_at' => '2025-07-13 15:54:04',
             ),
-            351 => 
+            350 => 
             array (
                 'id' => 863,
                 'reference_no' => 'er-20250713-095424',
@@ -11993,10 +11979,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-13 12:00:00',
-                'updated_at' => '2025-07-13 21:54:24',
+                'created_at' => '2025-07-13 06:00:00',
+                'updated_at' => '2025-07-13 15:54:24',
             ),
-            352 => 
+            351 => 
             array (
                 'id' => 864,
                 'reference_no' => 'er-20250714-065140',
@@ -12007,10 +11993,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 411000.0,
                 'note' => 'Bank Deposite',
-                'created_at' => '2025-03-29 12:00:00',
-                'updated_at' => '2025-07-14 18:51:40',
+                'created_at' => '2025-03-29 06:00:00',
+                'updated_at' => '2025-07-14 12:51:40',
             ),
-            353 => 
+            352 => 
             array (
                 'id' => 865,
                 'reference_no' => 'er-20250714-065942',
@@ -12021,10 +12007,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => NULL,
-                'created_at' => '2025-04-05 12:00:00',
-                'updated_at' => '2025-07-14 18:59:42',
+                'created_at' => '2025-04-05 06:00:00',
+                'updated_at' => '2025-07-14 12:59:42',
             ),
-            354 => 
+            353 => 
             array (
                 'id' => 866,
                 'reference_no' => 'er-20250714-101308',
@@ -12035,10 +12021,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-14 12:00:00',
-                'updated_at' => '2025-07-14 22:13:08',
+                'created_at' => '2025-07-14 06:00:00',
+                'updated_at' => '2025-07-14 16:13:08',
             ),
-            355 => 
+            354 => 
             array (
                 'id' => 867,
                 'reference_no' => 'er-20250715-101603',
@@ -12049,10 +12035,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-15 12:00:00',
-                'updated_at' => '2025-07-15 22:16:03',
+                'created_at' => '2025-07-15 06:00:00',
+                'updated_at' => '2025-07-15 16:16:03',
             ),
-            356 => 
+            355 => 
             array (
                 'id' => 868,
                 'reference_no' => 'er-20250715-101625',
@@ -12063,10 +12049,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-15 12:00:00',
-                'updated_at' => '2025-07-15 22:16:25',
+                'created_at' => '2025-07-15 06:00:00',
+                'updated_at' => '2025-07-15 16:16:25',
             ),
-            357 => 
+            356 => 
             array (
                 'id' => 869,
                 'reference_no' => 'er-20250715-101646',
@@ -12077,10 +12063,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2340.0,
                 'note' => NULL,
-                'created_at' => '2025-07-15 12:00:00',
-                'updated_at' => '2025-07-15 22:16:46',
+                'created_at' => '2025-07-15 06:00:00',
+                'updated_at' => '2025-07-15 16:16:46',
             ),
-            358 => 
+            357 => 
             array (
                 'id' => 870,
                 'reference_no' => 'er-20250716-102534',
@@ -12091,10 +12077,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-16 12:00:00',
-                'updated_at' => '2025-07-16 22:25:34',
+                'created_at' => '2025-07-16 06:00:00',
+                'updated_at' => '2025-07-16 16:25:34',
             ),
-            359 => 
+            358 => 
             array (
                 'id' => 871,
                 'reference_no' => 'er-20250716-102558',
@@ -12105,10 +12091,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-07-16 12:00:00',
-                'updated_at' => '2025-07-16 22:25:58',
+                'created_at' => '2025-07-16 06:00:00',
+                'updated_at' => '2025-07-16 16:25:58',
             ),
-            360 => 
+            359 => 
             array (
                 'id' => 872,
                 'reference_no' => 'er-20250717-100239',
@@ -12119,10 +12105,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-17 12:00:00',
-                'updated_at' => '2025-07-17 22:02:39',
+                'created_at' => '2025-07-17 06:00:00',
+                'updated_at' => '2025-07-17 16:02:39',
             ),
-            361 => 
+            360 => 
             array (
                 'id' => 873,
                 'reference_no' => 'er-20250717-100300',
@@ -12133,10 +12119,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-17 12:00:00',
-                'updated_at' => '2025-07-17 22:03:00',
+                'created_at' => '2025-07-17 06:00:00',
+                'updated_at' => '2025-07-17 16:03:00',
             ),
-            362 => 
+            361 => 
             array (
                 'id' => 874,
                 'reference_no' => 'er-20250717-100334',
@@ -12147,10 +12133,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-07-17 12:00:00',
-                'updated_at' => '2025-07-17 22:03:34',
+                'created_at' => '2025-07-17 06:00:00',
+                'updated_at' => '2025-07-17 16:03:34',
             ),
-            363 => 
+            362 => 
             array (
                 'id' => 875,
                 'reference_no' => 'er-20250719-100401',
@@ -12161,10 +12147,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-19 12:00:00',
-                'updated_at' => '2025-07-19 22:04:01',
+                'created_at' => '2025-07-19 06:00:00',
+                'updated_at' => '2025-07-19 16:04:01',
             ),
-            364 => 
+            363 => 
             array (
                 'id' => 876,
                 'reference_no' => 'er-20250720-095946',
@@ -12175,10 +12161,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-07-20 12:00:00',
-                'updated_at' => '2025-07-20 21:59:46',
+                'created_at' => '2025-07-20 06:00:00',
+                'updated_at' => '2025-07-20 15:59:46',
             ),
-            365 => 
+            364 => 
             array (
                 'id' => 877,
                 'reference_no' => 'er-20250720-100019',
@@ -12189,10 +12175,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-20 12:00:00',
-                'updated_at' => '2025-07-20 22:00:19',
+                'created_at' => '2025-07-20 06:00:00',
+                'updated_at' => '2025-07-20 16:00:19',
             ),
-            366 => 
+            365 => 
             array (
                 'id' => 878,
                 'reference_no' => 'er-20250720-100033',
@@ -12203,10 +12189,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-20 12:00:00',
-                'updated_at' => '2025-07-20 22:00:33',
+                'created_at' => '2025-07-20 06:00:00',
+                'updated_at' => '2025-07-20 16:00:33',
             ),
-            367 => 
+            366 => 
             array (
                 'id' => 879,
                 'reference_no' => 'er-20250720-100054',
@@ -12217,10 +12203,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => 'June',
-                'created_at' => '2025-07-20 00:00:00',
-                'updated_at' => '2025-07-23 12:16:14',
+                'created_at' => '2025-07-19 18:00:00',
+                'updated_at' => '2025-07-23 06:16:14',
             ),
-            368 => 
+            367 => 
             array (
                 'id' => 880,
                 'reference_no' => 'er-20250720-100107',
@@ -12231,10 +12217,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-20 12:00:00',
-                'updated_at' => '2025-07-20 22:01:07',
+                'created_at' => '2025-07-20 06:00:00',
+                'updated_at' => '2025-07-20 16:01:07',
             ),
-            369 => 
+            368 => 
             array (
                 'id' => 881,
                 'reference_no' => 'er-20250721-095402',
@@ -12245,10 +12231,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-21 12:00:00',
-                'updated_at' => '2025-07-21 21:54:02',
+                'created_at' => '2025-07-21 06:00:00',
+                'updated_at' => '2025-07-21 15:54:02',
             ),
-            370 => 
+            369 => 
             array (
                 'id' => 882,
                 'reference_no' => 'er-20250721-095433',
@@ -12259,10 +12245,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 620.0,
                 'note' => 'Mobil+Cloth',
-                'created_at' => '2025-07-21 12:00:00',
-                'updated_at' => '2025-07-21 21:54:33',
+                'created_at' => '2025-07-21 06:00:00',
+                'updated_at' => '2025-07-21 15:54:33',
             ),
-            371 => 
+            370 => 
             array (
                 'id' => 883,
                 'reference_no' => 'er-20250722-100255',
@@ -12273,10 +12259,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-22 12:00:00',
-                'updated_at' => '2025-07-22 22:02:55',
+                'created_at' => '2025-07-22 06:00:00',
+                'updated_at' => '2025-07-22 16:02:55',
             ),
-            372 => 
+            371 => 
             array (
                 'id' => 884,
                 'reference_no' => 'er-20250722-100334',
@@ -12287,10 +12273,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Ditergent Powder',
-                'created_at' => '2025-07-22 12:00:00',
-                'updated_at' => '2025-07-22 22:03:34',
+                'created_at' => '2025-07-22 06:00:00',
+                'updated_at' => '2025-07-22 16:03:34',
             ),
-            373 => 
+            372 => 
             array (
                 'id' => 885,
                 'reference_no' => 'er-20250722-100350',
@@ -12301,10 +12287,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-22 12:00:00',
-                'updated_at' => '2025-07-22 22:03:50',
+                'created_at' => '2025-07-22 06:00:00',
+                'updated_at' => '2025-07-22 16:03:50',
             ),
-            374 => 
+            373 => 
             array (
                 'id' => 886,
                 'reference_no' => 'er-20250723-100037',
@@ -12315,10 +12301,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-07-23 12:00:00',
-                'updated_at' => '2025-07-23 22:00:37',
+                'created_at' => '2025-07-23 06:00:00',
+                'updated_at' => '2025-07-23 16:00:37',
             ),
-            375 => 
+            374 => 
             array (
                 'id' => 887,
                 'reference_no' => 'er-20250723-100059',
@@ -12329,10 +12315,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-23 12:00:00',
-                'updated_at' => '2025-07-23 22:00:59',
+                'created_at' => '2025-07-23 06:00:00',
+                'updated_at' => '2025-07-23 16:00:59',
             ),
-            376 => 
+            375 => 
             array (
                 'id' => 888,
                 'reference_no' => 'er-20250723-100112',
@@ -12343,10 +12329,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => NULL,
-                'created_at' => '2025-07-23 12:00:00',
-                'updated_at' => '2025-07-23 22:01:12',
+                'created_at' => '2025-07-23 06:00:00',
+                'updated_at' => '2025-07-23 16:01:12',
             ),
-            377 => 
+            376 => 
             array (
                 'id' => 889,
                 'reference_no' => 'er-20250724-100223',
@@ -12357,10 +12343,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-07-24 12:00:00',
-                'updated_at' => '2025-07-24 22:02:23',
+                'created_at' => '2025-07-24 06:00:00',
+                'updated_at' => '2025-07-24 16:02:23',
             ),
-            378 => 
+            377 => 
             array (
                 'id' => 890,
                 'reference_no' => 'er-20250724-100249',
@@ -12371,10 +12357,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-24 12:00:00',
-                'updated_at' => '2025-07-24 22:02:49',
+                'created_at' => '2025-07-24 06:00:00',
+                'updated_at' => '2025-07-24 16:02:49',
             ),
-            379 => 
+            378 => 
             array (
                 'id' => 891,
                 'reference_no' => 'er-20250724-100313',
@@ -12385,10 +12371,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-07-24 12:00:00',
-                'updated_at' => '2025-07-24 22:03:13',
+                'created_at' => '2025-07-24 06:00:00',
+                'updated_at' => '2025-07-24 16:03:13',
             ),
-            380 => 
+            379 => 
             array (
                 'id' => 892,
                 'reference_no' => 'er-20250724-100330',
@@ -12399,10 +12385,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-07-24 12:00:00',
-                'updated_at' => '2025-07-24 22:03:30',
+                'created_at' => '2025-07-24 06:00:00',
+                'updated_at' => '2025-07-24 16:03:30',
             ),
-            381 => 
+            380 => 
             array (
                 'id' => 893,
                 'reference_no' => 'er-20250724-100354',
@@ -12413,10 +12399,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 330.0,
                 'note' => 'Water bill',
-                'created_at' => '2025-07-24 12:00:00',
-                'updated_at' => '2025-07-24 22:03:54',
+                'created_at' => '2025-07-24 06:00:00',
+                'updated_at' => '2025-07-24 16:03:54',
             ),
-            382 => 
+            381 => 
             array (
                 'id' => 894,
                 'reference_no' => 'er-20250724-100411',
@@ -12427,10 +12413,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-24 12:00:00',
-                'updated_at' => '2025-07-24 22:04:11',
+                'created_at' => '2025-07-24 06:00:00',
+                'updated_at' => '2025-07-24 16:04:11',
             ),
-            383 => 
+            382 => 
             array (
                 'id' => 895,
                 'reference_no' => 'er-20250726-100857',
@@ -12441,10 +12427,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-26 12:00:00',
-                'updated_at' => '2025-07-26 22:08:57',
+                'created_at' => '2025-07-26 06:00:00',
+                'updated_at' => '2025-07-26 16:08:57',
             ),
-            384 => 
+            383 => 
             array (
                 'id' => 896,
                 'reference_no' => 'er-20250726-100947',
@@ -12455,10 +12441,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet Bill',
-                'created_at' => '2025-07-26 12:00:00',
-                'updated_at' => '2025-07-26 22:09:47',
+                'created_at' => '2025-07-26 06:00:00',
+                'updated_at' => '2025-07-26 16:09:47',
             ),
-            385 => 
+            384 => 
             array (
                 'id' => 897,
                 'reference_no' => 'er-20250727-100208',
@@ -12469,10 +12455,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-27 12:00:00',
-                'updated_at' => '2025-07-27 22:02:08',
+                'created_at' => '2025-07-27 06:00:00',
+                'updated_at' => '2025-07-27 16:02:08',
             ),
-            386 => 
+            385 => 
             array (
                 'id' => 898,
                 'reference_no' => 'er-20250727-100225',
@@ -12483,10 +12469,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 25000.0,
                 'note' => NULL,
-                'created_at' => '2025-07-27 12:00:00',
-                'updated_at' => '2025-07-27 22:02:25',
+                'created_at' => '2025-07-27 06:00:00',
+                'updated_at' => '2025-07-27 16:02:25',
             ),
-            387 => 
+            386 => 
             array (
                 'id' => 899,
                 'reference_no' => 'er-20250727-100238',
@@ -12497,10 +12483,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-07-27 12:00:00',
-                'updated_at' => '2025-07-27 22:02:38',
+                'created_at' => '2025-07-27 06:00:00',
+                'updated_at' => '2025-07-27 16:02:38',
             ),
-            388 => 
+            387 => 
             array (
                 'id' => 900,
                 'reference_no' => 'er-20250727-100404',
@@ -12511,10 +12497,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-27 12:00:00',
-                'updated_at' => '2025-07-27 22:04:04',
+                'created_at' => '2025-07-27 06:00:00',
+                'updated_at' => '2025-07-27 16:04:04',
             ),
-            389 => 
+            388 => 
             array (
                 'id' => 901,
                 'reference_no' => 'er-20250727-100621',
@@ -12525,10 +12511,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => '2 pair',
-                'created_at' => '2025-07-27 12:00:00',
-                'updated_at' => '2025-07-27 22:06:21',
+                'created_at' => '2025-07-27 06:00:00',
+                'updated_at' => '2025-07-27 16:06:21',
             ),
-            390 => 
+            389 => 
             array (
                 'id' => 902,
                 'reference_no' => 'er-20250728-095102',
@@ -12539,10 +12525,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-07-28 12:00:00',
-                'updated_at' => '2025-07-28 21:51:02',
+                'created_at' => '2025-07-28 06:00:00',
+                'updated_at' => '2025-07-28 15:51:02',
             ),
-            391 => 
+            390 => 
             array (
                 'id' => 903,
                 'reference_no' => 'er-20250728-095123',
@@ -12553,10 +12539,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-28 12:00:00',
-                'updated_at' => '2025-07-28 21:51:23',
+                'created_at' => '2025-07-28 06:00:00',
+                'updated_at' => '2025-07-28 15:51:23',
             ),
-            392 => 
+            391 => 
             array (
                 'id' => 904,
                 'reference_no' => 'er-20250729-095027',
@@ -12567,10 +12553,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-07-29 12:00:00',
-                'updated_at' => '2025-07-29 21:50:27',
+                'created_at' => '2025-07-29 06:00:00',
+                'updated_at' => '2025-07-29 15:50:27',
             ),
-            393 => 
+            392 => 
             array (
                 'id' => 905,
                 'reference_no' => 'er-20250729-095953',
@@ -12581,10 +12567,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1255.0,
                 'note' => NULL,
-                'created_at' => '2025-07-29 12:00:00',
-                'updated_at' => '2025-07-29 21:59:53',
+                'created_at' => '2025-07-29 06:00:00',
+                'updated_at' => '2025-07-29 15:59:53',
             ),
-            394 => 
+            393 => 
             array (
                 'id' => 906,
                 'reference_no' => 'er-20250729-100011',
@@ -12595,10 +12581,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1650.0,
                 'note' => 'Imrul',
-                'created_at' => '2025-07-29 12:00:00',
-                'updated_at' => '2025-07-29 22:00:11',
+                'created_at' => '2025-07-29 06:00:00',
+                'updated_at' => '2025-07-29 16:00:11',
             ),
-            395 => 
+            394 => 
             array (
                 'id' => 907,
                 'reference_no' => 'er-20250730-100736',
@@ -12609,10 +12595,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-30 12:00:00',
-                'updated_at' => '2025-07-30 22:07:36',
+                'created_at' => '2025-07-30 06:00:00',
+                'updated_at' => '2025-07-30 16:07:36',
             ),
-            396 => 
+            395 => 
             array (
                 'id' => 908,
                 'reference_no' => 'er-20250730-100752',
@@ -12623,10 +12609,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 35.0,
                 'note' => 'Tissue',
-                'created_at' => '2025-07-30 12:00:00',
-                'updated_at' => '2025-07-30 22:07:52',
+                'created_at' => '2025-07-30 06:00:00',
+                'updated_at' => '2025-07-30 16:07:52',
             ),
-            397 => 
+            396 => 
             array (
                 'id' => 909,
                 'reference_no' => 'er-20250731-100825',
@@ -12637,10 +12623,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-07-31 12:00:00',
-                'updated_at' => '2025-07-31 22:08:25',
+                'created_at' => '2025-07-31 06:00:00',
+                'updated_at' => '2025-07-31 16:08:25',
             ),
-            398 => 
+            397 => 
             array (
                 'id' => 910,
                 'reference_no' => 'er-20250731-100849',
@@ -12651,10 +12637,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-31 12:00:00',
-                'updated_at' => '2025-07-31 22:08:49',
+                'created_at' => '2025-07-31 06:00:00',
+                'updated_at' => '2025-07-31 16:08:49',
             ),
-            399 => 
+            398 => 
             array (
                 'id' => 911,
                 'reference_no' => 'er-20250731-100936',
@@ -12665,10 +12651,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-07-31 12:00:00',
-                'updated_at' => '2025-07-31 22:09:36',
+                'created_at' => '2025-07-31 06:00:00',
+                'updated_at' => '2025-07-31 16:09:36',
             ),
-            400 => 
+            399 => 
             array (
                 'id' => 912,
                 'reference_no' => 'er-20250731-101006',
@@ -12679,10 +12665,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 7500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-07-31 12:00:00',
-                'updated_at' => '2025-07-31 22:10:06',
+                'created_at' => '2025-07-31 06:00:00',
+                'updated_at' => '2025-07-31 16:10:06',
             ),
-            401 => 
+            400 => 
             array (
                 'id' => 913,
                 'reference_no' => 'er-20250731-101148',
@@ -12693,10 +12679,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-07-31 12:00:00',
-                'updated_at' => '2025-07-31 22:11:48',
+                'created_at' => '2025-07-31 06:00:00',
+                'updated_at' => '2025-07-31 16:11:48',
             ),
-            402 => 
+            401 => 
             array (
                 'id' => 914,
                 'reference_no' => 'er-20250802-095250',
@@ -12707,10 +12693,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-08-02 12:00:00',
-                'updated_at' => '2025-08-02 21:52:50',
+                'created_at' => '2025-08-02 06:00:00',
+                'updated_at' => '2025-08-02 15:52:50',
             ),
-            403 => 
+            402 => 
             array (
                 'id' => 915,
                 'reference_no' => 'er-20250802-095404',
@@ -12721,10 +12707,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 9020.0,
                 'note' => 'Jump Payment',
-                'created_at' => '2025-08-02 12:00:00',
-                'updated_at' => '2025-08-02 21:54:04',
+                'created_at' => '2025-08-02 06:00:00',
+                'updated_at' => '2025-08-02 15:54:04',
             ),
-            404 => 
+            403 => 
             array (
                 'id' => 916,
                 'reference_no' => 'er-20250802-095424',
@@ -12735,10 +12721,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-08-02 12:00:00',
-                'updated_at' => '2025-08-02 21:54:24',
+                'created_at' => '2025-08-02 06:00:00',
+                'updated_at' => '2025-08-02 15:54:24',
             ),
-            405 => 
+            404 => 
             array (
                 'id' => 917,
                 'reference_no' => 'er-20250802-095437',
@@ -12749,10 +12735,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-08-02 12:00:00',
-                'updated_at' => '2025-08-02 21:54:37',
+                'created_at' => '2025-08-02 06:00:00',
+                'updated_at' => '2025-08-02 15:54:37',
             ),
-            406 => 
+            405 => 
             array (
                 'id' => 918,
                 'reference_no' => 'er-20250802-095458',
@@ -12763,10 +12749,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'Repair',
-                'created_at' => '2025-08-02 12:00:00',
-                'updated_at' => '2025-08-02 21:54:58',
+                'created_at' => '2025-08-02 06:00:00',
+                'updated_at' => '2025-08-02 15:54:58',
             ),
-            407 => 
+            406 => 
             array (
                 'id' => 919,
                 'reference_no' => 'er-20250803-101040',
@@ -12777,10 +12763,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-08-03 12:00:00',
-                'updated_at' => '2025-08-03 22:10:40',
+                'created_at' => '2025-08-03 06:00:00',
+                'updated_at' => '2025-08-03 16:10:40',
             ),
-            408 => 
+            407 => 
             array (
                 'id' => 920,
                 'reference_no' => 'er-20250803-101058',
@@ -12791,10 +12777,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 6000.0,
                 'note' => NULL,
-                'created_at' => '2025-08-03 12:00:00',
-                'updated_at' => '2025-08-03 22:10:58',
+                'created_at' => '2025-08-03 06:00:00',
+                'updated_at' => '2025-08-03 16:10:58',
             ),
-            409 => 
+            408 => 
             array (
                 'id' => 921,
                 'reference_no' => 'er-20250803-101126',
@@ -12805,10 +12791,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 170.0,
                 'note' => NULL,
-                'created_at' => '2025-08-03 12:00:00',
-                'updated_at' => '2025-08-03 22:11:26',
+                'created_at' => '2025-08-03 06:00:00',
+                'updated_at' => '2025-08-03 16:11:26',
             ),
-            410 => 
+            409 => 
             array (
                 'id' => 922,
                 'reference_no' => 'er-20250804-100105',
@@ -12819,10 +12805,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-08-04 12:00:00',
-                'updated_at' => '2025-08-04 22:01:05',
+                'created_at' => '2025-08-04 06:00:00',
+                'updated_at' => '2025-08-04 16:01:05',
             ),
-            411 => 
+            410 => 
             array (
                 'id' => 923,
                 'reference_no' => 'er-20250804-100131',
@@ -12833,10 +12819,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-08-04 12:00:00',
-                'updated_at' => '2025-08-04 22:01:31',
+                'created_at' => '2025-08-04 06:00:00',
+                'updated_at' => '2025-08-04 16:01:31',
             ),
-            412 => 
+            411 => 
             array (
                 'id' => 924,
                 'reference_no' => 'er-20250804-100142',
@@ -12847,10 +12833,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => NULL,
-                'created_at' => '2025-08-04 12:00:00',
-                'updated_at' => '2025-08-04 22:01:42',
+                'created_at' => '2025-08-04 06:00:00',
+                'updated_at' => '2025-08-04 16:01:42',
             ),
-            413 => 
+            412 => 
             array (
                 'id' => 925,
                 'reference_no' => 'er-20250806-095806',
@@ -12861,10 +12847,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-05 12:00:00',
-                'updated_at' => '2025-08-06 21:58:06',
+                'created_at' => '2025-08-05 06:00:00',
+                'updated_at' => '2025-08-06 15:58:06',
             ),
-            414 => 
+            413 => 
             array (
                 'id' => 926,
                 'reference_no' => 'er-20250806-095818',
@@ -12875,10 +12861,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-08-05 12:00:00',
-                'updated_at' => '2025-08-06 21:58:18',
+                'created_at' => '2025-08-05 06:00:00',
+                'updated_at' => '2025-08-06 15:58:18',
             ),
-            415 => 
+            414 => 
             array (
                 'id' => 927,
                 'reference_no' => 'er-20250806-095945',
@@ -12889,10 +12875,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-06 12:00:00',
-                'updated_at' => '2025-08-06 21:59:45',
+                'created_at' => '2025-08-06 06:00:00',
+                'updated_at' => '2025-08-06 15:59:45',
             ),
-            416 => 
+            415 => 
             array (
                 'id' => 928,
                 'reference_no' => 'er-20250806-100002',
@@ -12903,10 +12889,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-08-06 12:00:00',
-                'updated_at' => '2025-08-06 22:00:02',
+                'created_at' => '2025-08-06 06:00:00',
+                'updated_at' => '2025-08-06 16:00:02',
             ),
-            417 => 
+            416 => 
             array (
                 'id' => 929,
                 'reference_no' => 'er-20250806-100016',
@@ -12917,10 +12903,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-08-06 12:00:00',
-                'updated_at' => '2025-08-06 22:00:16',
+                'created_at' => '2025-08-06 06:00:00',
+                'updated_at' => '2025-08-06 16:00:16',
             ),
-            418 => 
+            417 => 
             array (
                 'id' => 930,
                 'reference_no' => 'er-20250806-100028',
@@ -12931,10 +12917,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 140.0,
                 'note' => NULL,
-                'created_at' => '2025-08-06 12:00:00',
-                'updated_at' => '2025-08-06 22:00:28',
+                'created_at' => '2025-08-06 06:00:00',
+                'updated_at' => '2025-08-06 16:00:28',
             ),
-            419 => 
+            418 => 
             array (
                 'id' => 931,
                 'reference_no' => 'er-20250807-100013',
@@ -12945,10 +12931,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-07 12:00:00',
-                'updated_at' => '2025-08-07 22:00:13',
+                'created_at' => '2025-08-07 06:00:00',
+                'updated_at' => '2025-08-07 16:00:13',
             ),
-            420 => 
+            419 => 
             array (
                 'id' => 932,
                 'reference_no' => 'er-20250807-100029',
@@ -12959,10 +12945,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-07 12:00:00',
-                'updated_at' => '2025-08-07 22:00:29',
+                'created_at' => '2025-08-07 06:00:00',
+                'updated_at' => '2025-08-07 16:00:29',
             ),
-            421 => 
+            420 => 
             array (
                 'id' => 933,
                 'reference_no' => 'er-20250807-100052',
@@ -12973,10 +12959,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3435.0,
                 'note' => NULL,
-                'created_at' => '2025-08-07 12:00:00',
-                'updated_at' => '2025-08-07 22:00:52',
+                'created_at' => '2025-08-07 06:00:00',
+                'updated_at' => '2025-08-07 16:00:52',
             ),
-            422 => 
+            421 => 
             array (
                 'id' => 934,
                 'reference_no' => 'er-20250807-100112',
@@ -12987,10 +12973,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-08-07 12:00:00',
-                'updated_at' => '2025-08-07 22:01:12',
+                'created_at' => '2025-08-07 06:00:00',
+                'updated_at' => '2025-08-07 16:01:12',
             ),
-            423 => 
+            422 => 
             array (
                 'id' => 935,
                 'reference_no' => 'er-20250807-100130',
@@ -13001,10 +12987,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-08-07 12:00:00',
-                'updated_at' => '2025-08-07 22:01:30',
+                'created_at' => '2025-08-07 06:00:00',
+                'updated_at' => '2025-08-07 16:01:30',
             ),
-            424 => 
+            423 => 
             array (
                 'id' => 936,
                 'reference_no' => 'er-20250807-100144',
@@ -13015,10 +13001,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-08-07 12:00:00',
-                'updated_at' => '2025-08-07 22:01:44',
+                'created_at' => '2025-08-07 06:00:00',
+                'updated_at' => '2025-08-07 16:01:44',
             ),
-            425 => 
+            424 => 
             array (
                 'id' => 937,
                 'reference_no' => 'er-20250808-085914',
@@ -13029,10 +13015,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'Al amin',
-                'created_at' => '2025-08-08 12:00:00',
-                'updated_at' => '2025-08-08 20:59:14',
+                'created_at' => '2025-08-08 06:00:00',
+                'updated_at' => '2025-08-08 14:59:14',
             ),
-            426 => 
+            425 => 
             array (
                 'id' => 938,
                 'reference_no' => 'er-20250808-085930',
@@ -13043,10 +13029,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 485.0,
                 'note' => 'Said',
-                'created_at' => '2025-08-08 12:00:00',
-                'updated_at' => '2025-08-08 20:59:30',
+                'created_at' => '2025-08-08 06:00:00',
+                'updated_at' => '2025-08-08 14:59:30',
             ),
-            427 => 
+            426 => 
             array (
                 'id' => 939,
                 'reference_no' => 'er-20250808-085947',
@@ -13057,10 +13043,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 600.0,
                 'note' => 'Emrul',
-                'created_at' => '2025-08-08 12:00:00',
-                'updated_at' => '2025-08-08 20:59:47',
+                'created_at' => '2025-08-08 06:00:00',
+                'updated_at' => '2025-08-08 14:59:47',
             ),
-            428 => 
+            427 => 
             array (
                 'id' => 940,
                 'reference_no' => 'er-20250809-101858',
@@ -13071,10 +13057,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-09 12:00:00',
-                'updated_at' => '2025-08-09 22:18:58',
+                'created_at' => '2025-08-09 06:00:00',
+                'updated_at' => '2025-08-09 16:18:58',
             ),
-            429 => 
+            428 => 
             array (
                 'id' => 941,
                 'reference_no' => 'er-20250810-100234',
@@ -13085,10 +13071,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-10 12:00:00',
-                'updated_at' => '2025-08-10 22:02:34',
+                'created_at' => '2025-08-10 06:00:00',
+                'updated_at' => '2025-08-10 16:02:34',
             ),
-            430 => 
+            429 => 
             array (
                 'id' => 942,
                 'reference_no' => 'er-20250811-100941',
@@ -13099,10 +13085,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-11 12:00:00',
-                'updated_at' => '2025-08-11 22:09:41',
+                'created_at' => '2025-08-11 06:00:00',
+                'updated_at' => '2025-08-11 16:09:41',
             ),
-            431 => 
+            430 => 
             array (
                 'id' => 943,
                 'reference_no' => 'er-20250811-100959',
@@ -13113,10 +13099,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Repair',
-                'created_at' => '2025-08-11 12:00:00',
-                'updated_at' => '2025-08-11 22:09:59',
+                'created_at' => '2025-08-11 06:00:00',
+                'updated_at' => '2025-08-11 16:09:59',
             ),
-            432 => 
+            431 => 
             array (
                 'id' => 944,
                 'reference_no' => 'er-20250811-101030',
@@ -13127,10 +13113,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 4000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-08-11 12:00:00',
-                'updated_at' => '2025-08-11 22:10:30',
+                'created_at' => '2025-08-11 06:00:00',
+                'updated_at' => '2025-08-11 16:10:30',
             ),
-            433 => 
+            432 => 
             array (
                 'id' => 945,
                 'reference_no' => 'er-20250811-101335',
@@ -13141,10 +13127,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-08-11 12:00:00',
-                'updated_at' => '2025-08-11 22:13:35',
+                'created_at' => '2025-08-11 06:00:00',
+                'updated_at' => '2025-08-11 16:13:35',
             ),
-            434 => 
+            433 => 
             array (
                 'id' => 946,
                 'reference_no' => 'er-20250812-100255',
@@ -13155,10 +13141,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-12 12:00:00',
-                'updated_at' => '2025-08-12 22:02:55',
+                'created_at' => '2025-08-12 06:00:00',
+                'updated_at' => '2025-08-12 16:02:55',
             ),
-            435 => 
+            434 => 
             array (
                 'id' => 947,
                 'reference_no' => 'er-20250813-101306',
@@ -13169,10 +13155,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-13 12:00:00',
-                'updated_at' => '2025-08-13 22:13:06',
+                'created_at' => '2025-08-13 06:00:00',
+                'updated_at' => '2025-08-13 16:13:06',
             ),
-            436 => 
+            435 => 
             array (
                 'id' => 948,
                 'reference_no' => 'er-20250813-101323',
@@ -13183,10 +13169,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => 'Grise',
-                'created_at' => '2025-08-13 12:00:00',
-                'updated_at' => '2025-08-13 22:13:23',
+                'created_at' => '2025-08-13 06:00:00',
+                'updated_at' => '2025-08-13 16:13:23',
             ),
-            437 => 
+            436 => 
             array (
                 'id' => 949,
                 'reference_no' => 'er-20250813-101406',
@@ -13197,10 +13183,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Labor court',
-                'created_at' => '2025-08-13 12:00:00',
-                'updated_at' => '2025-08-13 22:14:06',
+                'created_at' => '2025-08-13 06:00:00',
+                'updated_at' => '2025-08-13 16:14:06',
             ),
-            438 => 
+            437 => 
             array (
                 'id' => 950,
                 'reference_no' => 'er-20250813-101422',
@@ -13211,10 +13197,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Mosjid',
-                'created_at' => '2025-08-13 12:00:00',
-                'updated_at' => '2025-08-13 22:14:22',
+                'created_at' => '2025-08-13 06:00:00',
+                'updated_at' => '2025-08-13 16:14:22',
             ),
-            439 => 
+            438 => 
             array (
                 'id' => 951,
                 'reference_no' => 'er-20250813-101734',
@@ -13225,10 +13211,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-08-13 12:00:00',
-                'updated_at' => '2025-08-13 22:17:34',
+                'created_at' => '2025-08-13 06:00:00',
+                'updated_at' => '2025-08-13 16:17:34',
             ),
-            440 => 
+            439 => 
             array (
                 'id' => 952,
                 'reference_no' => 'er-20250814-095019',
@@ -13239,10 +13225,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-14 12:00:00',
-                'updated_at' => '2025-08-14 21:50:19',
+                'created_at' => '2025-08-14 06:00:00',
+                'updated_at' => '2025-08-14 15:50:19',
             ),
-            441 => 
+            440 => 
             array (
                 'id' => 953,
                 'reference_no' => 'er-20250814-095033',
@@ -13253,10 +13239,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-08-14 12:00:00',
-                'updated_at' => '2025-08-14 21:50:33',
+                'created_at' => '2025-08-14 06:00:00',
+                'updated_at' => '2025-08-14 15:50:33',
             ),
-            442 => 
+            441 => 
             array (
                 'id' => 954,
                 'reference_no' => 'er-20250814-095132',
@@ -13267,10 +13253,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 130.0,
                 'note' => NULL,
-                'created_at' => '2025-08-14 12:00:00',
-                'updated_at' => '2025-08-14 21:51:32',
+                'created_at' => '2025-08-14 06:00:00',
+                'updated_at' => '2025-08-14 15:51:32',
             ),
-            443 => 
+            442 => 
             array (
                 'id' => 955,
                 'reference_no' => 'er-20250909-092255',
@@ -13281,10 +13267,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'Al-amin',
-                'created_at' => '2025-08-15 12:00:00',
-                'updated_at' => '2025-09-09 21:22:55',
+                'created_at' => '2025-08-15 06:00:00',
+                'updated_at' => '2025-09-09 15:22:55',
             ),
-            444 => 
+            443 => 
             array (
                 'id' => 956,
                 'reference_no' => 'er-20250909-092343',
@@ -13295,10 +13281,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 365.0,
                 'note' => 'Sakil',
-                'created_at' => '2025-08-15 12:00:00',
-                'updated_at' => '2025-09-09 21:23:43',
+                'created_at' => '2025-08-15 06:00:00',
+                'updated_at' => '2025-09-09 15:23:43',
             ),
-            445 => 
+            444 => 
             array (
                 'id' => 957,
                 'reference_no' => 'er-20250909-092402',
@@ -13309,10 +13295,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-08-15 12:00:00',
-                'updated_at' => '2025-09-09 21:24:02',
+                'created_at' => '2025-08-15 06:00:00',
+                'updated_at' => '2025-09-09 15:24:02',
             ),
-            446 => 
+            445 => 
             array (
                 'id' => 958,
                 'reference_no' => 'er-20250909-092451',
@@ -13323,10 +13309,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-16 12:00:00',
-                'updated_at' => '2025-09-09 21:24:51',
+                'created_at' => '2025-08-16 06:00:00',
+                'updated_at' => '2025-09-09 15:24:51',
             ),
-            447 => 
+            446 => 
             array (
                 'id' => 959,
                 'reference_no' => 'er-20250909-092516',
@@ -13337,10 +13323,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-08-16 12:00:00',
-                'updated_at' => '2025-09-09 21:25:16',
+                'created_at' => '2025-08-16 06:00:00',
+                'updated_at' => '2025-09-09 15:25:16',
             ),
-            448 => 
+            447 => 
             array (
                 'id' => 960,
                 'reference_no' => 'er-20250909-092608',
@@ -13351,10 +13337,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-08-16 12:00:00',
-                'updated_at' => '2025-09-09 21:26:08',
+                'created_at' => '2025-08-16 06:00:00',
+                'updated_at' => '2025-09-09 15:26:08',
             ),
-            449 => 
+            448 => 
             array (
                 'id' => 961,
                 'reference_no' => 'er-20250909-092745',
@@ -13365,10 +13351,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50000.0,
                 'note' => 'New Godown Advance',
-                'created_at' => '2025-08-17 12:00:00',
-                'updated_at' => '2025-09-09 21:27:45',
+                'created_at' => '2025-08-17 06:00:00',
+                'updated_at' => '2025-09-09 15:27:45',
             ),
-            450 => 
+            449 => 
             array (
                 'id' => 962,
                 'reference_no' => 'er-20250909-093434',
@@ -13379,10 +13365,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-17 12:00:00',
-                'updated_at' => '2025-09-09 21:34:34',
+                'created_at' => '2025-08-17 06:00:00',
+                'updated_at' => '2025-09-09 15:34:34',
             ),
-            451 => 
+            450 => 
             array (
                 'id' => 963,
                 'reference_no' => 'er-20250909-093515',
@@ -13393,10 +13379,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Repair',
-                'created_at' => '2025-08-17 12:00:00',
-                'updated_at' => '2025-09-09 21:35:15',
+                'created_at' => '2025-08-17 06:00:00',
+                'updated_at' => '2025-09-09 15:35:15',
             ),
-            452 => 
+            451 => 
             array (
                 'id' => 964,
                 'reference_no' => 'er-20250909-093557',
@@ -13407,10 +13393,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-08-17 12:00:00',
-                'updated_at' => '2025-09-09 21:35:57',
+                'created_at' => '2025-08-17 06:00:00',
+                'updated_at' => '2025-09-09 15:35:57',
             ),
-            453 => 
+            452 => 
             array (
                 'id' => 965,
                 'reference_no' => 'er-20250909-093649',
@@ -13421,10 +13407,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Jharu',
-                'created_at' => '2025-08-18 00:00:00',
-                'updated_at' => '2025-09-09 21:37:30',
+                'created_at' => '2025-08-17 18:00:00',
+                'updated_at' => '2025-09-09 15:37:30',
             ),
-            454 => 
+            453 => 
             array (
                 'id' => 966,
                 'reference_no' => 'er-20250909-093721',
@@ -13435,10 +13421,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-08-18 12:00:00',
-                'updated_at' => '2025-09-09 21:37:21',
+                'created_at' => '2025-08-18 06:00:00',
+                'updated_at' => '2025-09-09 15:37:21',
             ),
-            455 => 
+            454 => 
             array (
                 'id' => 967,
                 'reference_no' => 'er-20250909-094845',
@@ -13449,10 +13435,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-18 12:00:00',
-                'updated_at' => '2025-09-09 21:48:45',
+                'created_at' => '2025-08-18 06:00:00',
+                'updated_at' => '2025-09-09 15:48:45',
             ),
-            456 => 
+            455 => 
             array (
                 'id' => 968,
                 'reference_no' => 'er-20250909-094908',
@@ -13463,10 +13449,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-08-18 12:00:00',
-                'updated_at' => '2025-09-09 21:49:08',
+                'created_at' => '2025-08-18 06:00:00',
+                'updated_at' => '2025-09-09 15:49:08',
             ),
-            457 => 
+            456 => 
             array (
                 'id' => 969,
                 'reference_no' => 'er-20250909-094944',
@@ -13477,10 +13463,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-19 12:00:00',
-                'updated_at' => '2025-09-09 21:49:44',
+                'created_at' => '2025-08-19 06:00:00',
+                'updated_at' => '2025-09-09 15:49:44',
             ),
-            458 => 
+            457 => 
             array (
                 'id' => 970,
                 'reference_no' => 'er-20250909-095036',
@@ -13491,10 +13477,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-20 12:00:00',
-                'updated_at' => '2025-09-09 21:50:36',
+                'created_at' => '2025-08-20 06:00:00',
+                'updated_at' => '2025-09-09 15:50:36',
             ),
-            459 => 
+            458 => 
             array (
                 'id' => 971,
                 'reference_no' => 'er-20250909-095102',
@@ -13505,10 +13491,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'Repair',
-                'created_at' => '2025-08-20 12:00:00',
-                'updated_at' => '2025-09-09 21:51:02',
+                'created_at' => '2025-08-20 06:00:00',
+                'updated_at' => '2025-09-09 15:51:02',
             ),
-            460 => 
+            459 => 
             array (
                 'id' => 972,
                 'reference_no' => 'er-20250909-095121',
@@ -13519,10 +13505,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-08-20 12:00:00',
-                'updated_at' => '2025-09-09 21:51:21',
+                'created_at' => '2025-08-20 06:00:00',
+                'updated_at' => '2025-09-09 15:51:21',
             ),
-            461 => 
+            460 => 
             array (
                 'id' => 973,
                 'reference_no' => 'er-20250909-095136',
@@ -13533,10 +13519,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-08-20 12:00:00',
-                'updated_at' => '2025-09-09 21:51:36',
+                'created_at' => '2025-08-20 06:00:00',
+                'updated_at' => '2025-09-09 15:51:36',
             ),
-            462 => 
+            461 => 
             array (
                 'id' => 974,
                 'reference_no' => 'er-20250909-095206',
@@ -13547,10 +13533,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-21 12:00:00',
-                'updated_at' => '2025-09-09 21:52:06',
+                'created_at' => '2025-08-21 06:00:00',
+                'updated_at' => '2025-09-09 15:52:06',
             ),
-            463 => 
+            462 => 
             array (
                 'id' => 975,
                 'reference_no' => 'er-20250909-095219',
@@ -13561,10 +13547,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-08-21 12:00:00',
-                'updated_at' => '2025-09-09 21:52:19',
+                'created_at' => '2025-08-21 06:00:00',
+                'updated_at' => '2025-09-09 15:52:19',
             ),
-            464 => 
+            463 => 
             array (
                 'id' => 976,
                 'reference_no' => 'er-20250909-095258',
@@ -13575,10 +13561,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-23 12:00:00',
-                'updated_at' => '2025-09-09 21:52:58',
+                'created_at' => '2025-08-23 06:00:00',
+                'updated_at' => '2025-09-09 15:52:58',
             ),
-            465 => 
+            464 => 
             array (
                 'id' => 977,
                 'reference_no' => 'er-20250909-095315',
@@ -13589,10 +13575,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-08-23 12:00:00',
-                'updated_at' => '2025-09-09 21:53:15',
+                'created_at' => '2025-08-23 06:00:00',
+                'updated_at' => '2025-09-09 15:53:15',
             ),
-            466 => 
+            465 => 
             array (
                 'id' => 978,
                 'reference_no' => 'er-20250909-095353',
@@ -13603,10 +13589,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-07-24 12:00:00',
-                'updated_at' => '2025-09-09 21:53:53',
+                'created_at' => '2025-07-24 06:00:00',
+                'updated_at' => '2025-09-09 15:53:53',
             ),
-            467 => 
+            466 => 
             array (
                 'id' => 979,
                 'reference_no' => 'er-20250909-095615',
@@ -13617,10 +13603,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-24 12:00:00',
-                'updated_at' => '2025-09-09 21:56:15',
+                'created_at' => '2025-08-24 06:00:00',
+                'updated_at' => '2025-09-09 15:56:15',
             ),
-            468 => 
+            467 => 
             array (
                 'id' => 980,
                 'reference_no' => 'er-20250909-095640',
@@ -13631,10 +13617,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 8000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-08-24 12:00:00',
-                'updated_at' => '2025-09-09 21:56:40',
+                'created_at' => '2025-08-24 06:00:00',
+                'updated_at' => '2025-09-09 15:56:40',
             ),
-            469 => 
+            468 => 
             array (
                 'id' => 981,
                 'reference_no' => 'er-20250909-095659',
@@ -13645,10 +13631,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-08-24 12:00:00',
-                'updated_at' => '2025-09-09 21:56:59',
+                'created_at' => '2025-08-24 06:00:00',
+                'updated_at' => '2025-09-09 15:56:59',
             ),
-            470 => 
+            469 => 
             array (
                 'id' => 982,
                 'reference_no' => 'er-20250909-095725',
@@ -13659,10 +13645,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Repair',
-                'created_at' => '2025-08-24 12:00:00',
-                'updated_at' => '2025-09-09 21:57:25',
+                'created_at' => '2025-08-24 06:00:00',
+                'updated_at' => '2025-09-09 15:57:25',
             ),
-            471 => 
+            470 => 
             array (
                 'id' => 983,
                 'reference_no' => 'er-20250909-095750',
@@ -13673,10 +13659,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-08-24 12:00:00',
-                'updated_at' => '2025-09-09 21:57:50',
+                'created_at' => '2025-08-24 06:00:00',
+                'updated_at' => '2025-09-09 15:57:50',
             ),
-            472 => 
+            471 => 
             array (
                 'id' => 984,
                 'reference_no' => 'er-20250909-095833',
@@ -13687,10 +13673,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-25 12:00:00',
-                'updated_at' => '2025-09-09 21:58:33',
+                'created_at' => '2025-08-25 06:00:00',
+                'updated_at' => '2025-09-09 15:58:33',
             ),
-            473 => 
+            472 => 
             array (
                 'id' => 985,
                 'reference_no' => 'er-20250909-095913',
@@ -13701,10 +13687,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet Bill',
-                'created_at' => '2025-08-25 12:00:00',
-                'updated_at' => '2025-09-09 21:59:13',
+                'created_at' => '2025-08-25 06:00:00',
+                'updated_at' => '2025-09-09 15:59:13',
             ),
-            474 => 
+            473 => 
             array (
                 'id' => 986,
                 'reference_no' => 'er-20250909-095942',
@@ -13715,10 +13701,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Repair',
-                'created_at' => '2025-08-25 12:00:00',
-                'updated_at' => '2025-09-09 21:59:42',
+                'created_at' => '2025-08-25 06:00:00',
+                'updated_at' => '2025-09-09 15:59:42',
             ),
-            475 => 
+            474 => 
             array (
                 'id' => 987,
                 'reference_no' => 'er-20250909-095956',
@@ -13729,10 +13715,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-08-25 12:00:00',
-                'updated_at' => '2025-09-09 21:59:56',
+                'created_at' => '2025-08-25 06:00:00',
+                'updated_at' => '2025-09-09 15:59:56',
             ),
-            476 => 
+            475 => 
             array (
                 'id' => 988,
                 'reference_no' => 'er-20250909-100041',
@@ -13743,10 +13729,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-26 12:00:00',
-                'updated_at' => '2025-09-09 22:00:41',
+                'created_at' => '2025-08-26 06:00:00',
+                'updated_at' => '2025-09-09 16:00:41',
             ),
-            477 => 
+            476 => 
             array (
                 'id' => 989,
                 'reference_no' => 'er-20250909-100126',
@@ -13757,10 +13743,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Detergent',
-                'created_at' => '2025-08-26 12:00:00',
-                'updated_at' => '2025-09-09 22:01:26',
+                'created_at' => '2025-08-26 06:00:00',
+                'updated_at' => '2025-09-09 16:01:26',
             ),
-            478 => 
+            477 => 
             array (
                 'id' => 990,
                 'reference_no' => 'er-20250909-100147',
@@ -13771,10 +13757,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-08-26 12:00:00',
-                'updated_at' => '2025-09-09 22:01:47',
+                'created_at' => '2025-08-26 06:00:00',
+                'updated_at' => '2025-09-09 16:01:47',
             ),
-            479 => 
+            478 => 
             array (
                 'id' => 991,
                 'reference_no' => 'er-20250909-100211',
@@ -13785,10 +13771,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-08-26 12:00:00',
-                'updated_at' => '2025-09-09 22:02:11',
+                'created_at' => '2025-08-26 06:00:00',
+                'updated_at' => '2025-09-09 16:02:11',
             ),
-            480 => 
+            479 => 
             array (
                 'id' => 992,
                 'reference_no' => 'er-20250909-100245',
@@ -13799,10 +13785,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-08-26 12:00:00',
-                'updated_at' => '2025-09-09 22:02:45',
+                'created_at' => '2025-08-26 06:00:00',
+                'updated_at' => '2025-09-09 16:02:45',
             ),
-            481 => 
+            480 => 
             array (
                 'id' => 993,
                 'reference_no' => 'er-20250909-100322',
@@ -13813,10 +13799,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-27 12:00:00',
-                'updated_at' => '2025-09-09 22:03:22',
+                'created_at' => '2025-08-27 06:00:00',
+                'updated_at' => '2025-09-09 16:03:22',
             ),
-            482 => 
+            481 => 
             array (
                 'id' => 994,
                 'reference_no' => 'er-20250909-100338',
@@ -13827,10 +13813,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-08-27 12:00:00',
-                'updated_at' => '2025-09-09 22:03:38',
+                'created_at' => '2025-08-27 06:00:00',
+                'updated_at' => '2025-09-09 16:03:38',
             ),
-            483 => 
+            482 => 
             array (
                 'id' => 995,
                 'reference_no' => 'er-20250909-100355',
@@ -13841,10 +13827,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-08-27 12:00:00',
-                'updated_at' => '2025-09-09 22:03:55',
+                'created_at' => '2025-08-27 06:00:00',
+                'updated_at' => '2025-09-09 16:03:55',
             ),
-            484 => 
+            483 => 
             array (
                 'id' => 996,
                 'reference_no' => 'er-20250909-100433',
@@ -13855,10 +13841,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-28 12:00:00',
-                'updated_at' => '2025-09-09 22:04:33',
+                'created_at' => '2025-08-28 06:00:00',
+                'updated_at' => '2025-09-09 16:04:33',
             ),
-            485 => 
+            484 => 
             array (
                 'id' => 997,
                 'reference_no' => 'er-20250909-100513',
@@ -13869,10 +13855,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 470.0,
                 'note' => NULL,
-                'created_at' => '2025-08-28 12:00:00',
-                'updated_at' => '2025-09-09 22:05:13',
+                'created_at' => '2025-08-28 06:00:00',
+                'updated_at' => '2025-09-09 16:05:13',
             ),
-            486 => 
+            485 => 
             array (
                 'id' => 998,
                 'reference_no' => 'er-20250909-100540',
@@ -13883,10 +13869,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-08-28 12:00:00',
-                'updated_at' => '2025-09-09 22:05:40',
+                'created_at' => '2025-08-28 06:00:00',
+                'updated_at' => '2025-09-09 16:05:40',
             ),
-            487 => 
+            486 => 
             array (
                 'id' => 999,
                 'reference_no' => 'er-20250909-100600',
@@ -13897,10 +13883,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-08-28 12:00:00',
-                'updated_at' => '2025-09-09 22:06:00',
+                'created_at' => '2025-08-28 06:00:00',
+                'updated_at' => '2025-09-09 16:06:00',
             ),
-            488 => 
+            487 => 
             array (
                 'id' => 1000,
                 'reference_no' => 'er-20250909-100643',
@@ -13911,10 +13897,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 485.0,
                 'note' => 'Saihd',
-                'created_at' => '2025-08-29 12:00:00',
-                'updated_at' => '2025-09-09 22:06:43',
+                'created_at' => '2025-08-29 06:00:00',
+                'updated_at' => '2025-09-09 16:06:43',
             ),
-            489 => 
+            488 => 
             array (
                 'id' => 1001,
                 'reference_no' => 'er-20250909-101021',
@@ -13925,10 +13911,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 365.0,
                 'note' => 'Sakil',
-                'created_at' => '2025-08-29 12:00:00',
-                'updated_at' => '2025-09-09 22:10:21',
+                'created_at' => '2025-08-29 06:00:00',
+                'updated_at' => '2025-09-09 16:10:21',
             ),
-            490 => 
+            489 => 
             array (
                 'id' => 1002,
                 'reference_no' => 'er-20250909-101100',
@@ -13939,10 +13925,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-08-29 12:00:00',
-                'updated_at' => '2025-09-09 22:11:00',
+                'created_at' => '2025-08-29 06:00:00',
+                'updated_at' => '2025-09-09 16:11:00',
             ),
-            491 => 
+            490 => 
             array (
                 'id' => 1003,
                 'reference_no' => 'er-20250909-101229',
@@ -13953,10 +13939,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-30 12:00:00',
-                'updated_at' => '2025-09-09 22:12:29',
+                'created_at' => '2025-08-30 06:00:00',
+                'updated_at' => '2025-09-09 16:12:29',
             ),
-            492 => 
+            491 => 
             array (
                 'id' => 1004,
                 'reference_no' => 'er-20250909-101647',
@@ -13967,10 +13953,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => 'Marker',
-                'created_at' => '2025-08-30 12:00:00',
-                'updated_at' => '2025-09-09 22:16:47',
+                'created_at' => '2025-08-30 06:00:00',
+                'updated_at' => '2025-09-09 16:16:47',
             ),
-            493 => 
+            492 => 
             array (
                 'id' => 1005,
                 'reference_no' => 'er-20250909-101703',
@@ -13981,10 +13967,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 250.0,
                 'note' => NULL,
-                'created_at' => '2025-08-30 12:00:00',
-                'updated_at' => '2025-09-09 22:17:03',
+                'created_at' => '2025-08-30 06:00:00',
+                'updated_at' => '2025-09-09 16:17:03',
             ),
-            494 => 
+            493 => 
             array (
                 'id' => 1006,
                 'reference_no' => 'er-20250909-101718',
@@ -13995,10 +13981,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-08-30 12:00:00',
-                'updated_at' => '2025-09-09 22:17:18',
+                'created_at' => '2025-08-30 06:00:00',
+                'updated_at' => '2025-09-09 16:17:18',
             ),
-            495 => 
+            494 => 
             array (
                 'id' => 1007,
                 'reference_no' => 'er-20250909-101740',
@@ -14009,10 +13995,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-08-31 12:00:00',
-                'updated_at' => '2025-09-09 22:17:40',
+                'created_at' => '2025-08-31 06:00:00',
+                'updated_at' => '2025-09-09 16:17:40',
             ),
-            496 => 
+            495 => 
             array (
                 'id' => 1008,
                 'reference_no' => 'er-20250909-101803',
@@ -14023,10 +14009,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-08-31 12:00:00',
-                'updated_at' => '2025-09-09 22:18:03',
+                'created_at' => '2025-08-31 06:00:00',
+                'updated_at' => '2025-09-09 16:18:03',
             ),
-            497 => 
+            496 => 
             array (
                 'id' => 1009,
                 'reference_no' => 'er-20250910-081238',
@@ -14037,10 +14023,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 50000.0,
                 'note' => 'Godown Advance',
-                'created_at' => '2025-08-30 12:00:00',
-                'updated_at' => '2025-09-10 20:12:38',
+                'created_at' => '2025-08-30 06:00:00',
+                'updated_at' => '2025-09-10 14:12:38',
             ),
-            498 => 
+            497 => 
             array (
                 'id' => 1010,
                 'reference_no' => 'er-20250910-085221',
@@ -14051,10 +14037,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 14500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-08-31 12:00:00',
-                'updated_at' => '2025-09-10 20:52:21',
+                'created_at' => '2025-08-31 06:00:00',
+                'updated_at' => '2025-09-10 14:52:21',
             ),
-            499 => 
+            498 => 
             array (
                 'id' => 1011,
                 'reference_no' => 'er-20250910-085312',
@@ -14065,12 +14051,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 8000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-08-31 12:00:00',
-                'updated_at' => '2025-09-10 20:53:12',
+                'created_at' => '2025-08-31 06:00:00',
+                'updated_at' => '2025-09-10 14:53:12',
             ),
-        ));
-        \DB::table('expenses')->insert(array (
-            0 => 
+            499 => 
             array (
                 'id' => 1012,
                 'reference_no' => 'er-20250910-102318',
@@ -14081,10 +14065,12 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-01 12:00:00',
-                'updated_at' => '2025-09-10 22:23:18',
+                'created_at' => '2025-09-01 06:00:00',
+                'updated_at' => '2025-09-10 16:23:18',
             ),
-            1 => 
+        ));
+        \DB::table('expenses')->insert(array (
+            0 => 
             array (
                 'id' => 1013,
                 'reference_no' => 'er-20250910-102407',
@@ -14095,10 +14081,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-09-01 12:00:00',
-                'updated_at' => '2025-09-10 22:24:07',
+                'created_at' => '2025-09-01 06:00:00',
+                'updated_at' => '2025-09-10 16:24:07',
             ),
-            2 => 
+            1 => 
             array (
                 'id' => 1014,
                 'reference_no' => 'er-20250910-102424',
@@ -14109,10 +14095,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 23.0,
                 'note' => NULL,
-                'created_at' => '2025-09-01 00:00:00',
-                'updated_at' => '2025-09-13 16:09:59',
+                'created_at' => '2025-08-31 18:00:00',
+                'updated_at' => '2025-09-13 10:09:59',
             ),
-            3 => 
+            2 => 
             array (
                 'id' => 1015,
                 'reference_no' => 'er-20250910-102632',
@@ -14123,10 +14109,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-02 12:00:00',
-                'updated_at' => '2025-09-10 22:26:32',
+                'created_at' => '2025-09-02 06:00:00',
+                'updated_at' => '2025-09-10 16:26:32',
             ),
-            4 => 
+            3 => 
             array (
                 'id' => 1016,
                 'reference_no' => 'er-20250910-102710',
@@ -14137,10 +14123,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 210.0,
                 'note' => 'HAPKA',
-                'created_at' => '2025-09-02 12:00:00',
-                'updated_at' => '2025-09-10 22:27:10',
+                'created_at' => '2025-09-02 06:00:00',
+                'updated_at' => '2025-09-10 16:27:10',
             ),
-            5 => 
+            4 => 
             array (
                 'id' => 1017,
                 'reference_no' => 'er-20250910-102733',
@@ -14151,10 +14137,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => 'Pen',
-                'created_at' => '2025-09-02 12:00:00',
-                'updated_at' => '2025-09-10 22:27:33',
+                'created_at' => '2025-09-02 06:00:00',
+                'updated_at' => '2025-09-10 16:27:33',
             ),
-            6 => 
+            5 => 
             array (
                 'id' => 1018,
                 'reference_no' => 'er-20250910-102747',
@@ -14165,10 +14151,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => NULL,
-                'created_at' => '2025-09-02 12:00:00',
-                'updated_at' => '2025-09-10 22:27:47',
+                'created_at' => '2025-09-02 06:00:00',
+                'updated_at' => '2025-09-10 16:27:47',
             ),
-            7 => 
+            6 => 
             array (
                 'id' => 1019,
                 'reference_no' => 'er-20250911-080905',
@@ -14179,10 +14165,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 7620.0,
                 'note' => NULL,
-                'created_at' => '2025-08-18 12:00:00',
-                'updated_at' => '2025-09-11 20:09:05',
+                'created_at' => '2025-08-18 06:00:00',
+                'updated_at' => '2025-09-11 14:09:05',
             ),
-            8 => 
+            7 => 
             array (
                 'id' => 1020,
                 'reference_no' => 'er-20250913-023937',
@@ -14193,10 +14179,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-03 12:00:00',
-                'updated_at' => '2025-09-13 14:39:37',
+                'created_at' => '2025-09-03 06:00:00',
+                'updated_at' => '2025-09-13 08:39:37',
             ),
-            9 => 
+            8 => 
             array (
                 'id' => 1021,
                 'reference_no' => 'er-20250913-024016',
@@ -14207,10 +14193,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'GODOWN ELLECT. BILL',
-                'created_at' => '2025-09-03 12:00:00',
-                'updated_at' => '2025-09-13 14:40:16',
+                'created_at' => '2025-09-03 06:00:00',
+                'updated_at' => '2025-09-13 08:40:16',
             ),
-            10 => 
+            9 => 
             array (
                 'id' => 1022,
                 'reference_no' => 'er-20250913-024110',
@@ -14221,10 +14207,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 210.0,
                 'note' => 'WATER BILL',
-                'created_at' => '2025-09-03 12:00:00',
-                'updated_at' => '2025-09-13 14:41:10',
+                'created_at' => '2025-09-03 06:00:00',
+                'updated_at' => '2025-09-13 08:41:10',
             ),
-            11 => 
+            10 => 
             array (
                 'id' => 1023,
                 'reference_no' => 'er-20250913-024125',
@@ -14235,10 +14221,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-09-03 12:00:00',
-                'updated_at' => '2025-09-13 14:41:25',
+                'created_at' => '2025-09-03 06:00:00',
+                'updated_at' => '2025-09-13 08:41:25',
             ),
-            12 => 
+            11 => 
             array (
                 'id' => 1024,
                 'reference_no' => 'er-20250913-024151',
@@ -14249,10 +14235,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 15000.0,
                 'note' => 'SALARY',
-                'created_at' => '2025-09-03 00:00:00',
-                'updated_at' => '2025-09-13 14:42:16',
+                'created_at' => '2025-09-02 18:00:00',
+                'updated_at' => '2025-09-13 08:42:16',
             ),
-            13 => 
+            12 => 
             array (
                 'id' => 1025,
                 'reference_no' => 'er-20250913-024307',
@@ -14263,10 +14249,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-04 12:00:00',
-                'updated_at' => '2025-09-13 14:43:07',
+                'created_at' => '2025-09-04 06:00:00',
+                'updated_at' => '2025-09-13 08:43:07',
             ),
-            14 => 
+            13 => 
             array (
                 'id' => 1026,
                 'reference_no' => 'er-20250913-024323',
@@ -14277,10 +14263,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-09-04 12:00:00',
-                'updated_at' => '2025-09-13 14:43:23',
+                'created_at' => '2025-09-04 06:00:00',
+                'updated_at' => '2025-09-13 08:43:23',
             ),
-            15 => 
+            14 => 
             array (
                 'id' => 1027,
                 'reference_no' => 'er-20250913-024341',
@@ -14291,10 +14277,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-09-04 12:00:00',
-                'updated_at' => '2025-09-13 14:43:41',
+                'created_at' => '2025-09-04 06:00:00',
+                'updated_at' => '2025-09-13 08:43:41',
             ),
-            16 => 
+            15 => 
             array (
                 'id' => 1028,
                 'reference_no' => 'er-20250913-024401',
@@ -14305,10 +14291,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'SALARY',
-                'created_at' => '2025-09-04 12:00:00',
-                'updated_at' => '2025-09-13 14:44:01',
+                'created_at' => '2025-09-04 06:00:00',
+                'updated_at' => '2025-09-13 08:44:01',
             ),
-            17 => 
+            16 => 
             array (
                 'id' => 1029,
                 'reference_no' => 'er-20250913-024651',
@@ -14319,10 +14305,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'AL-AMIN',
-                'created_at' => '2025-09-05 12:00:00',
-                'updated_at' => '2025-09-13 14:46:51',
+                'created_at' => '2025-09-05 06:00:00',
+                'updated_at' => '2025-09-13 08:46:51',
             ),
-            18 => 
+            17 => 
             array (
                 'id' => 1030,
                 'reference_no' => 'er-20250913-024752',
@@ -14333,10 +14319,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 365.0,
                 'note' => 'SAKIL',
-                'created_at' => '2025-09-05 12:00:00',
-                'updated_at' => '2025-09-13 14:47:52',
+                'created_at' => '2025-09-05 06:00:00',
+                'updated_at' => '2025-09-13 08:47:52',
             ),
-            19 => 
+            18 => 
             array (
                 'id' => 1031,
                 'reference_no' => 'er-20250913-024816',
@@ -14347,10 +14333,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-09-05 12:00:00',
-                'updated_at' => '2025-09-13 14:48:16',
+                'created_at' => '2025-09-05 06:00:00',
+                'updated_at' => '2025-09-13 08:48:16',
             ),
-            20 => 
+            19 => 
             array (
                 'id' => 1032,
                 'reference_no' => 'er-20250913-024843',
@@ -14361,10 +14347,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-06 12:00:00',
-                'updated_at' => '2025-09-13 14:48:43',
+                'created_at' => '2025-09-06 06:00:00',
+                'updated_at' => '2025-09-13 08:48:43',
             ),
-            21 => 
+            20 => 
             array (
                 'id' => 1033,
                 'reference_no' => 'er-20250913-024907',
@@ -14375,10 +14361,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => 'JHARU',
-                'created_at' => '2025-09-06 12:00:00',
-                'updated_at' => '2025-09-13 14:49:07',
+                'created_at' => '2025-09-06 06:00:00',
+                'updated_at' => '2025-09-13 08:49:07',
             ),
-            22 => 
+            21 => 
             array (
                 'id' => 1034,
                 'reference_no' => 'er-20250913-024929',
@@ -14389,10 +14375,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-06 12:00:00',
-                'updated_at' => '2025-09-13 14:49:29',
+                'created_at' => '2025-09-06 06:00:00',
+                'updated_at' => '2025-09-13 08:49:29',
             ),
-            23 => 
+            22 => 
             array (
                 'id' => 1035,
                 'reference_no' => 'er-20250913-025006',
@@ -14403,10 +14389,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-07 12:00:00',
-                'updated_at' => '2025-09-13 14:50:06',
+                'created_at' => '2025-09-07 06:00:00',
+                'updated_at' => '2025-09-13 08:50:06',
             ),
-            24 => 
+            23 => 
             array (
                 'id' => 1036,
                 'reference_no' => 'er-20250913-025028',
@@ -14417,10 +14403,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-07 12:00:00',
-                'updated_at' => '2025-09-13 14:50:28',
+                'created_at' => '2025-09-07 06:00:00',
+                'updated_at' => '2025-09-13 08:50:28',
             ),
-            25 => 
+            24 => 
             array (
                 'id' => 1037,
                 'reference_no' => 'er-20250913-025043',
@@ -14431,10 +14417,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-09-07 12:00:00',
-                'updated_at' => '2025-09-13 14:50:43',
+                'created_at' => '2025-09-07 06:00:00',
+                'updated_at' => '2025-09-13 08:50:43',
             ),
-            26 => 
+            25 => 
             array (
                 'id' => 1038,
                 'reference_no' => 'er-20250913-025059',
@@ -14445,10 +14431,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-08 12:00:00',
-                'updated_at' => '2025-09-13 14:50:59',
+                'created_at' => '2025-09-08 06:00:00',
+                'updated_at' => '2025-09-13 08:50:59',
             ),
-            27 => 
+            26 => 
             array (
                 'id' => 1039,
                 'reference_no' => 'er-20250913-025129',
@@ -14459,10 +14445,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-09 12:00:00',
-                'updated_at' => '2025-09-13 14:51:29',
+                'created_at' => '2025-09-09 06:00:00',
+                'updated_at' => '2025-09-13 08:51:29',
             ),
-            28 => 
+            27 => 
             array (
                 'id' => 1040,
                 'reference_no' => 'er-20250913-025144',
@@ -14473,10 +14459,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-09-09 00:00:00',
-                'updated_at' => '2025-09-13 16:14:10',
+                'created_at' => '2025-09-08 18:00:00',
+                'updated_at' => '2025-09-13 10:14:10',
             ),
-            29 => 
+            28 => 
             array (
                 'id' => 1041,
                 'reference_no' => 'er-20250913-025220',
@@ -14487,10 +14473,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => 'DHAKA TRANSPORT',
-                'created_at' => '2025-09-09 12:00:00',
-                'updated_at' => '2025-09-13 14:52:20',
+                'created_at' => '2025-09-09 06:00:00',
+                'updated_at' => '2025-09-13 08:52:20',
             ),
-            30 => 
+            29 => 
             array (
                 'id' => 1042,
                 'reference_no' => 'er-20250913-025251',
@@ -14501,10 +14487,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 14310.0,
                 'note' => NULL,
-                'created_at' => '2025-09-09 12:00:00',
-                'updated_at' => '2025-09-13 14:52:51',
+                'created_at' => '2025-09-09 06:00:00',
+                'updated_at' => '2025-09-13 08:52:51',
             ),
-            31 => 
+            30 => 
             array (
                 'id' => 1043,
                 'reference_no' => 'er-20250913-025318',
@@ -14515,10 +14501,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-10 12:00:00',
-                'updated_at' => '2025-09-13 14:53:18',
+                'created_at' => '2025-09-10 06:00:00',
+                'updated_at' => '2025-09-13 08:53:18',
             ),
-            32 => 
+            31 => 
             array (
                 'id' => 1044,
                 'reference_no' => 'er-20250913-025405',
@@ -14529,10 +14515,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 9930.0,
                 'note' => 'JUMP PURCH.',
-                'created_at' => '2025-09-10 12:00:00',
-                'updated_at' => '2025-09-13 14:54:05',
+                'created_at' => '2025-09-10 06:00:00',
+                'updated_at' => '2025-09-13 08:54:05',
             ),
-            33 => 
+            32 => 
             array (
                 'id' => 1045,
                 'reference_no' => 'er-20250913-025429',
@@ -14543,10 +14529,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-11 12:00:00',
-                'updated_at' => '2025-09-13 14:54:29',
+                'created_at' => '2025-09-11 06:00:00',
+                'updated_at' => '2025-09-13 08:54:29',
             ),
-            34 => 
+            33 => 
             array (
                 'id' => 1046,
                 'reference_no' => 'er-20250913-025445',
@@ -14557,10 +14543,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-09-11 12:00:00',
-                'updated_at' => '2025-09-13 14:54:45',
+                'created_at' => '2025-09-11 06:00:00',
+                'updated_at' => '2025-09-13 08:54:45',
             ),
-            35 => 
+            34 => 
             array (
                 'id' => 1047,
                 'reference_no' => 'er-20250913-025530',
@@ -14571,10 +14557,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 4920.0,
                 'note' => 'GODOWN CAMERA',
-                'created_at' => '2025-09-11 12:00:00',
-                'updated_at' => '2025-09-13 14:55:30',
+                'created_at' => '2025-09-11 06:00:00',
+                'updated_at' => '2025-09-13 08:55:30',
             ),
-            36 => 
+            35 => 
             array (
                 'id' => 1048,
                 'reference_no' => 'er-20250913-025558',
@@ -14585,10 +14571,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3700.0,
                 'note' => 'TRADE LICENCE',
-                'created_at' => '2025-09-11 12:00:00',
-                'updated_at' => '2025-09-13 14:55:58',
+                'created_at' => '2025-09-11 06:00:00',
+                'updated_at' => '2025-09-13 08:55:58',
             ),
-            37 => 
+            36 => 
             array (
                 'id' => 1049,
                 'reference_no' => 'er-20250913-025614',
@@ -14599,10 +14585,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-09-11 12:00:00',
-                'updated_at' => '2025-09-13 14:56:14',
+                'created_at' => '2025-09-11 06:00:00',
+                'updated_at' => '2025-09-13 08:56:14',
             ),
-            38 => 
+            37 => 
             array (
                 'id' => 1050,
                 'reference_no' => 'er-20250913-025631',
@@ -14613,10 +14599,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'SALARY',
-                'created_at' => '2025-09-11 00:00:00',
-                'updated_at' => '2025-09-13 16:16:25',
+                'created_at' => '2025-09-10 18:00:00',
+                'updated_at' => '2025-09-13 10:16:25',
             ),
-            39 => 
+            38 => 
             array (
                 'id' => 1051,
                 'reference_no' => 'er-20250913-025705',
@@ -14627,10 +14613,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'AL-AMIN',
-                'created_at' => '2025-09-12 12:00:00',
-                'updated_at' => '2025-09-13 14:57:05',
+                'created_at' => '2025-09-12 06:00:00',
+                'updated_at' => '2025-09-13 08:57:05',
             ),
-            40 => 
+            39 => 
             array (
                 'id' => 1052,
                 'reference_no' => 'er-20250913-025848',
@@ -14641,10 +14627,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 485.0,
                 'note' => 'SAID',
-                'created_at' => '2025-09-12 00:00:00',
-                'updated_at' => '2025-09-13 15:45:23',
+                'created_at' => '2025-09-11 18:00:00',
+                'updated_at' => '2025-09-13 09:45:23',
             ),
-            41 => 
+            40 => 
             array (
                 'id' => 1053,
                 'reference_no' => 'er-20250913-040523',
@@ -14655,10 +14641,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'SALARY',
-                'created_at' => '2025-08-28 12:00:00',
-                'updated_at' => '2025-09-13 16:05:23',
+                'created_at' => '2025-08-28 06:00:00',
+                'updated_at' => '2025-09-13 10:05:23',
             ),
-            42 => 
+            41 => 
             array (
                 'id' => 1054,
                 'reference_no' => 'er-20250913-103911',
@@ -14669,10 +14655,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-13 12:00:00',
-                'updated_at' => '2025-09-13 22:39:11',
+                'created_at' => '2025-09-13 06:00:00',
+                'updated_at' => '2025-09-13 16:39:11',
             ),
-            43 => 
+            42 => 
             array (
                 'id' => 1055,
                 'reference_no' => 'er-20250913-103924',
@@ -14683,10 +14669,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 950.0,
                 'note' => NULL,
-                'created_at' => '2025-09-13 12:00:00',
-                'updated_at' => '2025-09-13 22:39:24',
+                'created_at' => '2025-09-13 06:00:00',
+                'updated_at' => '2025-09-13 16:39:24',
             ),
-            44 => 
+            43 => 
             array (
                 'id' => 1056,
                 'reference_no' => 'er-20250914-101440',
@@ -14697,10 +14683,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-14 12:00:00',
-                'updated_at' => '2025-09-14 22:14:40',
+                'created_at' => '2025-09-14 06:00:00',
+                'updated_at' => '2025-09-14 16:14:40',
             ),
-            45 => 
+            44 => 
             array (
                 'id' => 1057,
                 'reference_no' => 'er-20250914-101459',
@@ -14711,10 +14697,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 380.0,
                 'note' => NULL,
-                'created_at' => '2025-09-14 12:00:00',
-                'updated_at' => '2025-09-14 22:14:59',
+                'created_at' => '2025-09-14 06:00:00',
+                'updated_at' => '2025-09-14 16:14:59',
             ),
-            46 => 
+            45 => 
             array (
                 'id' => 1058,
                 'reference_no' => 'er-20250914-101540',
@@ -14725,10 +14711,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-09-14 12:00:00',
-                'updated_at' => '2025-09-14 22:15:40',
+                'created_at' => '2025-09-14 06:00:00',
+                'updated_at' => '2025-09-14 16:15:40',
             ),
-            47 => 
+            46 => 
             array (
                 'id' => 1059,
                 'reference_no' => 'er-20250914-101554',
@@ -14739,10 +14725,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-14 12:00:00',
-                'updated_at' => '2025-09-14 22:15:54',
+                'created_at' => '2025-09-14 06:00:00',
+                'updated_at' => '2025-09-14 16:15:54',
             ),
-            48 => 
+            47 => 
             array (
                 'id' => 1060,
                 'reference_no' => 'er-20250914-101659',
@@ -14753,10 +14739,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 450.0,
                 'note' => 'Discount Pena+Sticker',
-                'created_at' => '2025-09-14 12:00:00',
-                'updated_at' => '2025-09-14 22:16:59',
+                'created_at' => '2025-09-14 06:00:00',
+                'updated_at' => '2025-09-14 16:16:59',
             ),
-            49 => 
+            48 => 
             array (
                 'id' => 1061,
                 'reference_no' => 'er-20250914-101724',
@@ -14767,10 +14753,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => 'July',
-                'created_at' => '2025-09-14 12:00:00',
-                'updated_at' => '2025-09-14 22:17:24',
+                'created_at' => '2025-09-14 06:00:00',
+                'updated_at' => '2025-09-14 16:17:24',
             ),
-            50 => 
+            49 => 
             array (
                 'id' => 1062,
                 'reference_no' => 'er-20250914-103850',
@@ -14781,10 +14767,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2880.0,
                 'note' => NULL,
-                'created_at' => '2025-09-14 12:00:00',
-                'updated_at' => '2025-09-14 22:38:50',
+                'created_at' => '2025-09-14 06:00:00',
+                'updated_at' => '2025-09-14 16:38:50',
             ),
-            51 => 
+            50 => 
             array (
                 'id' => 1063,
                 'reference_no' => 'er-20250915-110917',
@@ -14795,10 +14781,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-15 12:00:00',
-                'updated_at' => '2025-09-15 23:09:17',
+                'created_at' => '2025-09-15 06:00:00',
+                'updated_at' => '2025-09-15 17:09:17',
             ),
-            52 => 
+            51 => 
             array (
                 'id' => 1064,
                 'reference_no' => 'er-20250915-110930',
@@ -14809,10 +14795,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-09-15 12:00:00',
-                'updated_at' => '2025-09-15 23:09:30',
+                'created_at' => '2025-09-15 06:00:00',
+                'updated_at' => '2025-09-15 17:09:30',
             ),
-            53 => 
+            52 => 
             array (
                 'id' => 1065,
                 'reference_no' => 'er-20250915-110946',
@@ -14823,10 +14809,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-09-15 12:00:00',
-                'updated_at' => '2025-09-15 23:09:46',
+                'created_at' => '2025-09-15 06:00:00',
+                'updated_at' => '2025-09-15 17:09:46',
             ),
-            54 => 
+            53 => 
             array (
                 'id' => 1066,
                 'reference_no' => 'er-20250915-111027',
@@ -14837,10 +14823,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => 'August',
-                'created_at' => '2025-09-15 12:00:00',
-                'updated_at' => '2025-09-15 23:10:27',
+                'created_at' => '2025-09-15 06:00:00',
+                'updated_at' => '2025-09-15 17:10:27',
             ),
-            55 => 
+            54 => 
             array (
                 'id' => 1067,
                 'reference_no' => 'er-20250915-111047',
@@ -14851,10 +14837,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 210.0,
                 'note' => 'Food',
-                'created_at' => '2025-09-15 12:00:00',
-                'updated_at' => '2025-09-15 23:10:47',
+                'created_at' => '2025-09-15 06:00:00',
+                'updated_at' => '2025-09-15 17:10:47',
             ),
-            56 => 
+            55 => 
             array (
                 'id' => 1068,
                 'reference_no' => 'er-20250915-111108',
@@ -14865,10 +14851,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-09-15 12:00:00',
-                'updated_at' => '2025-09-15 23:11:08',
+                'created_at' => '2025-09-15 06:00:00',
+                'updated_at' => '2025-09-15 17:11:08',
             ),
-            57 => 
+            56 => 
             array (
                 'id' => 1069,
                 'reference_no' => 'er-20250915-111147',
@@ -14879,10 +14865,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3609.0,
                 'note' => 'Glass Rack',
-                'created_at' => '2025-09-15 12:00:00',
-                'updated_at' => '2025-09-15 23:11:47',
+                'created_at' => '2025-09-15 06:00:00',
+                'updated_at' => '2025-09-15 17:11:47',
             ),
-            58 => 
+            57 => 
             array (
                 'id' => 1070,
                 'reference_no' => 'er-20250916-103253',
@@ -14893,10 +14879,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:00:00',
-                'updated_at' => '2025-09-16 22:32:53',
+                'created_at' => '2025-09-16 06:00:00',
+                'updated_at' => '2025-09-16 16:32:53',
             ),
-            59 => 
+            58 => 
             array (
                 'id' => 1071,
                 'reference_no' => 'er-20250916-103356',
@@ -14907,10 +14893,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Mosjid',
-                'created_at' => '2025-09-16 12:00:00',
-                'updated_at' => '2025-09-16 22:33:56',
+                'created_at' => '2025-09-16 06:00:00',
+                'updated_at' => '2025-09-16 16:33:56',
             ),
-            60 => 
+            59 => 
             array (
                 'id' => 1072,
                 'reference_no' => 'er-20250916-103410',
@@ -14921,10 +14907,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 2500.0,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:00:00',
-                'updated_at' => '2025-09-16 22:34:10',
+                'created_at' => '2025-09-16 06:00:00',
+                'updated_at' => '2025-09-16 16:34:10',
             ),
-            61 => 
+            60 => 
             array (
                 'id' => 1073,
                 'reference_no' => 'er-20250916-103427',
@@ -14935,10 +14921,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:00:00',
-                'updated_at' => '2025-09-16 22:34:27',
+                'created_at' => '2025-09-16 06:00:00',
+                'updated_at' => '2025-09-16 16:34:27',
             ),
-            62 => 
+            61 => 
             array (
                 'id' => 1074,
                 'reference_no' => 'er-20250916-103453',
@@ -14949,10 +14935,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 350.0,
                 'note' => 'Tag Loop',
-                'created_at' => '2025-09-16 12:00:00',
-                'updated_at' => '2025-09-16 22:34:53',
+                'created_at' => '2025-09-16 06:00:00',
+                'updated_at' => '2025-09-16 16:34:53',
             ),
-            63 => 
+            62 => 
             array (
                 'id' => 1075,
                 'reference_no' => 'er-20250916-104630',
@@ -14963,10 +14949,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 1000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-09-16 12:00:00',
-                'updated_at' => '2025-09-16 22:46:30',
+                'created_at' => '2025-09-16 06:00:00',
+                'updated_at' => '2025-09-16 16:46:30',
             ),
-            64 => 
+            63 => 
             array (
                 'id' => 1076,
                 'reference_no' => 'er-20250917-110102',
@@ -14977,10 +14963,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-17 12:00:00',
-                'updated_at' => '2025-09-17 23:01:02',
+                'created_at' => '2025-09-17 06:00:00',
+                'updated_at' => '2025-09-17 17:01:02',
             ),
-            65 => 
+            64 => 
             array (
                 'id' => 1077,
                 'reference_no' => 'er-20250917-110119',
@@ -14991,10 +14977,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-09-17 12:00:00',
-                'updated_at' => '2025-09-17 23:01:19',
+                'created_at' => '2025-09-17 06:00:00',
+                'updated_at' => '2025-09-17 17:01:19',
             ),
-            66 => 
+            65 => 
             array (
                 'id' => 1078,
                 'reference_no' => 'er-20250917-110253',
@@ -15005,10 +14991,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 60000.0,
                 'note' => 'July + August',
-                'created_at' => '2025-09-17 12:00:00',
-                'updated_at' => '2025-09-17 23:02:53',
+                'created_at' => '2025-09-17 06:00:00',
+                'updated_at' => '2025-09-17 17:02:53',
             ),
-            67 => 
+            66 => 
             array (
                 'id' => 1079,
                 'reference_no' => 'er-20250917-110611',
@@ -15019,10 +15005,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-09-17 12:00:00',
-                'updated_at' => '2025-09-17 23:06:11',
+                'created_at' => '2025-09-17 06:00:00',
+                'updated_at' => '2025-09-17 17:06:11',
             ),
-            68 => 
+            67 => 
             array (
                 'id' => 1080,
                 'reference_no' => 'er-20250918-111103',
@@ -15033,10 +15019,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-18 12:00:00',
-                'updated_at' => '2025-09-18 23:11:03',
+                'created_at' => '2025-09-18 06:00:00',
+                'updated_at' => '2025-09-18 17:11:03',
             ),
-            69 => 
+            68 => 
             array (
                 'id' => 1081,
                 'reference_no' => 'er-20250918-111147',
@@ -15047,10 +15033,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-09-18 12:00:00',
-                'updated_at' => '2025-09-18 23:11:47',
+                'created_at' => '2025-09-18 06:00:00',
+                'updated_at' => '2025-09-18 17:11:47',
             ),
-            70 => 
+            69 => 
             array (
                 'id' => 1082,
                 'reference_no' => 'er-20250918-111303',
@@ -15061,10 +15047,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => 'Print',
-                'created_at' => '2025-09-18 12:00:00',
-                'updated_at' => '2025-09-18 23:13:03',
+                'created_at' => '2025-09-18 06:00:00',
+                'updated_at' => '2025-09-18 17:13:03',
             ),
-            71 => 
+            70 => 
             array (
                 'id' => 1083,
                 'reference_no' => 'er-20250918-111327',
@@ -15075,10 +15061,10 @@ Kurban - 520',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-09-18 12:00:00',
-                'updated_at' => '2025-09-18 23:13:27',
+                'created_at' => '2025-09-18 06:00:00',
+                'updated_at' => '2025-09-18 17:13:27',
             ),
-            72 => 
+            71 => 
             array (
                 'id' => 1084,
                 'reference_no' => 'er-20250919-101145',
@@ -15092,10 +15078,10 @@ Kurban - 520',
 Said Overtime	- 485
 Imrul Overtime - 600
 Sakil Overtime	 - 365',
-                'created_at' => '2025-09-19 12:00:00',
-                'updated_at' => '2025-09-19 22:11:45',
+                'created_at' => '2025-09-19 06:00:00',
+                'updated_at' => '2025-09-19 16:11:45',
             ),
-            73 => 
+            72 => 
             array (
                 'id' => 1085,
                 'reference_no' => 'er-20250920-105118',
@@ -15106,10 +15092,10 @@ Sakil Overtime	 - 365',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-20 12:00:00',
-                'updated_at' => '2025-09-20 22:51:18',
+                'created_at' => '2025-09-20 06:00:00',
+                'updated_at' => '2025-09-20 16:51:18',
             ),
-            74 => 
+            73 => 
             array (
                 'id' => 1086,
                 'reference_no' => 'er-20250920-105141',
@@ -15120,10 +15106,10 @@ Sakil Overtime	 - 365',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-09-20 12:00:00',
-                'updated_at' => '2025-09-20 22:51:41',
+                'created_at' => '2025-09-20 06:00:00',
+                'updated_at' => '2025-09-20 16:51:41',
             ),
-            75 => 
+            74 => 
             array (
                 'id' => 1087,
                 'reference_no' => 'er-20250920-105155',
@@ -15134,10 +15120,10 @@ Sakil Overtime	 - 365',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-20 12:00:00',
-                'updated_at' => '2025-09-20 22:51:55',
+                'created_at' => '2025-09-20 06:00:00',
+                'updated_at' => '2025-09-20 16:51:55',
             ),
-            76 => 
+            75 => 
             array (
                 'id' => 1088,
                 'reference_no' => 'er-20250920-105219',
@@ -15148,10 +15134,10 @@ Sakil Overtime	 - 365',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => 'Print',
-                'created_at' => '2025-09-20 12:00:00',
-                'updated_at' => '2025-09-20 22:52:19',
+                'created_at' => '2025-09-20 06:00:00',
+                'updated_at' => '2025-09-20 16:52:19',
             ),
-            77 => 
+            76 => 
             array (
                 'id' => 1089,
                 'reference_no' => 'er-20250921-105330',
@@ -15162,10 +15148,10 @@ Sakil Overtime	 - 365',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-21 12:00:00',
-                'updated_at' => '2025-09-21 22:53:30',
+                'created_at' => '2025-09-21 06:00:00',
+                'updated_at' => '2025-09-21 16:53:30',
             ),
-            78 => 
+            77 => 
             array (
                 'id' => 1090,
                 'reference_no' => 'er-20250921-105404',
@@ -15176,10 +15162,10 @@ Sakil Overtime	 - 365',
                 'cash_register_id' => 1,
                 'amount' => 260.0,
                 'note' => NULL,
-                'created_at' => '2025-09-21 12:00:00',
-                'updated_at' => '2025-09-21 22:54:04',
+                'created_at' => '2025-09-21 06:00:00',
+                'updated_at' => '2025-09-21 16:54:04',
             ),
-            79 => 
+            78 => 
             array (
                 'id' => 1091,
                 'reference_no' => 'er-20250921-105514',
@@ -15194,10 +15180,10 @@ Gen oil - 1210
 Supari - 130
 Repair - 70
 Ellect. Problem - 30',
-                'created_at' => '2025-09-21 00:00:00',
-                'updated_at' => '2025-09-21 23:11:24',
+                'created_at' => '2025-09-20 18:00:00',
+                'updated_at' => '2025-09-21 17:11:24',
             ),
-            80 => 
+            79 => 
             array (
                 'id' => 1092,
                 'reference_no' => 'er-20250921-105709',
@@ -15208,10 +15194,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-09-21 12:00:00',
-                'updated_at' => '2025-09-21 22:57:09',
+                'created_at' => '2025-09-21 06:00:00',
+                'updated_at' => '2025-09-21 16:57:09',
             ),
-            81 => 
+            80 => 
             array (
                 'id' => 1093,
                 'reference_no' => 'er-20250921-110048',
@@ -15222,10 +15208,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 45000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-21 12:00:00',
-                'updated_at' => '2025-09-21 23:00:48',
+                'created_at' => '2025-09-21 06:00:00',
+                'updated_at' => '2025-09-21 17:00:48',
             ),
-            82 => 
+            81 => 
             array (
                 'id' => 1094,
                 'reference_no' => 'er-20250921-110107',
@@ -15236,10 +15222,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 6410.0,
                 'note' => NULL,
-                'created_at' => '2025-09-21 12:00:00',
-                'updated_at' => '2025-09-21 23:01:07',
+                'created_at' => '2025-09-21 06:00:00',
+                'updated_at' => '2025-09-21 17:01:07',
             ),
-            83 => 
+            82 => 
             array (
                 'id' => 1095,
                 'reference_no' => 'er-20250921-110145',
@@ -15250,10 +15236,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-09-21 12:00:00',
-                'updated_at' => '2025-09-21 23:01:45',
+                'created_at' => '2025-09-21 06:00:00',
+                'updated_at' => '2025-09-21 17:01:45',
             ),
-            84 => 
+            83 => 
             array (
                 'id' => 1096,
                 'reference_no' => 'er-20250922-104124',
@@ -15264,10 +15250,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-22 12:00:00',
-                'updated_at' => '2025-09-22 22:41:24',
+                'created_at' => '2025-09-22 06:00:00',
+                'updated_at' => '2025-09-22 16:41:24',
             ),
-            85 => 
+            84 => 
             array (
                 'id' => 1097,
                 'reference_no' => 'er-20250922-104300',
@@ -15278,10 +15264,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 330.0,
                 'note' => 'Room Spray+Daroan',
-                'created_at' => '2025-09-22 12:00:00',
-                'updated_at' => '2025-09-22 22:43:00',
+                'created_at' => '2025-09-22 06:00:00',
+                'updated_at' => '2025-09-22 16:43:00',
             ),
-            86 => 
+            85 => 
             array (
                 'id' => 1098,
                 'reference_no' => 'er-20250922-104316',
@@ -15292,10 +15278,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 45000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-22 12:00:00',
-                'updated_at' => '2025-09-22 22:43:16',
+                'created_at' => '2025-09-22 06:00:00',
+                'updated_at' => '2025-09-22 16:43:16',
             ),
-            87 => 
+            86 => 
             array (
                 'id' => 1099,
                 'reference_no' => 'er-20250923-105829',
@@ -15306,10 +15292,10 @@ Ellect. Problem - 30',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-23 12:00:00',
-                'updated_at' => '2025-09-23 22:58:29',
+                'created_at' => '2025-09-23 06:00:00',
+                'updated_at' => '2025-09-23 16:58:29',
             ),
-            88 => 
+            87 => 
             array (
                 'id' => 1100,
                 'reference_no' => 'er-20250923-110031',
@@ -15323,10 +15309,10 @@ Ellect. Problem - 30',
 Tax - 1200
 Brush - 20
 Cleaner - 60',
-                'created_at' => '2025-09-23 12:00:00',
-                'updated_at' => '2025-09-23 23:00:31',
+                'created_at' => '2025-09-23 06:00:00',
+                'updated_at' => '2025-09-23 17:00:31',
             ),
-            89 => 
+            88 => 
             array (
                 'id' => 1101,
                 'reference_no' => 'er-20250923-110051',
@@ -15337,10 +15323,10 @@ Cleaner - 60',
                 'cash_register_id' => 1,
                 'amount' => 2340.0,
                 'note' => NULL,
-                'created_at' => '2025-09-23 12:00:00',
-                'updated_at' => '2025-09-23 23:00:51',
+                'created_at' => '2025-09-23 06:00:00',
+                'updated_at' => '2025-09-23 17:00:51',
             ),
-            90 => 
+            89 => 
             array (
                 'id' => 1102,
                 'reference_no' => 'er-20250924-110259',
@@ -15351,10 +15337,10 @@ Cleaner - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-24 12:00:00',
-                'updated_at' => '2025-09-24 23:02:59',
+                'created_at' => '2025-09-24 06:00:00',
+                'updated_at' => '2025-09-24 17:02:59',
             ),
-            91 => 
+            90 => 
             array (
                 'id' => 1103,
                 'reference_no' => 'er-20250924-110318',
@@ -15365,10 +15351,10 @@ Cleaner - 60',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => 'September',
-                'created_at' => '2025-09-24 12:00:00',
-                'updated_at' => '2025-09-24 23:03:18',
+                'created_at' => '2025-09-24 06:00:00',
+                'updated_at' => '2025-09-24 17:03:18',
             ),
-            92 => 
+            91 => 
             array (
                 'id' => 1104,
                 'reference_no' => 'er-20250924-110400',
@@ -15379,10 +15365,10 @@ Cleaner - 60',
                 'cash_register_id' => 1,
                 'amount' => 30000.0,
                 'note' => 'September',
-                'created_at' => '2025-09-24 12:00:00',
-                'updated_at' => '2025-09-24 23:04:00',
+                'created_at' => '2025-09-24 06:00:00',
+                'updated_at' => '2025-09-24 17:04:00',
             ),
-            93 => 
+            92 => 
             array (
                 'id' => 1105,
                 'reference_no' => 'er-20250924-110425',
@@ -15393,10 +15379,10 @@ Cleaner - 60',
                 'cash_register_id' => 1,
                 'amount' => 45000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-24 12:00:00',
-                'updated_at' => '2025-09-24 23:04:25',
+                'created_at' => '2025-09-24 06:00:00',
+                'updated_at' => '2025-09-24 17:04:25',
             ),
-            94 => 
+            93 => 
             array (
                 'id' => 1106,
                 'reference_no' => 'er-20250924-110532',
@@ -15408,10 +15394,10 @@ Cleaner - 60',
                 'amount' => 190.0,
                 'note' => 'Repair
 id card',
-                'created_at' => '2025-09-24 00:00:00',
-                'updated_at' => '2025-09-24 23:06:52',
+                'created_at' => '2025-09-23 18:00:00',
+                'updated_at' => '2025-09-24 17:06:52',
             ),
-            95 => 
+            94 => 
             array (
                 'id' => 1107,
                 'reference_no' => 'er-20250926-121404',
@@ -15422,10 +15408,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-09-25 00:00:00',
-                'updated_at' => '2025-09-26 00:14:39',
+                'created_at' => '2025-09-24 18:00:00',
+                'updated_at' => '2025-09-25 18:14:39',
             ),
-            96 => 
+            95 => 
             array (
                 'id' => 1108,
                 'reference_no' => 'er-20250926-121458',
@@ -15436,10 +15422,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Internet Bill',
-                'created_at' => '2025-09-25 12:00:00',
-                'updated_at' => '2025-09-26 00:14:58',
+                'created_at' => '2025-09-25 06:00:00',
+                'updated_at' => '2025-09-25 18:14:58',
             ),
-            97 => 
+            96 => 
             array (
                 'id' => 1109,
                 'reference_no' => 'er-20250926-121516',
@@ -15450,10 +15436,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 1500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-09-25 12:00:00',
-                'updated_at' => '2025-09-26 00:15:16',
+                'created_at' => '2025-09-25 06:00:00',
+                'updated_at' => '2025-09-25 18:15:16',
             ),
-            98 => 
+            97 => 
             array (
                 'id' => 1110,
                 'reference_no' => 'er-20250926-121534',
@@ -15464,10 +15450,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 995.0,
                 'note' => NULL,
-                'created_at' => '2025-09-25 12:00:00',
-                'updated_at' => '2025-09-26 00:15:34',
+                'created_at' => '2025-09-25 06:00:00',
+                'updated_at' => '2025-09-25 18:15:34',
             ),
-            99 => 
+            98 => 
             array (
                 'id' => 1111,
                 'reference_no' => 'er-20250926-104440',
@@ -15478,10 +15464,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-09-26 12:00:00',
-                'updated_at' => '2025-09-26 22:44:40',
+                'created_at' => '2025-09-26 06:00:00',
+                'updated_at' => '2025-09-26 16:44:40',
             ),
-            100 => 
+            99 => 
             array (
                 'id' => 1112,
                 'reference_no' => 'er-20250926-104458',
@@ -15492,10 +15478,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 200.0,
                 'note' => 'Food',
-                'created_at' => '2025-09-26 12:00:00',
-                'updated_at' => '2025-09-26 22:44:58',
+                'created_at' => '2025-09-26 06:00:00',
+                'updated_at' => '2025-09-26 16:44:58',
             ),
-            101 => 
+            100 => 
             array (
                 'id' => 1113,
                 'reference_no' => 'er-20250926-104530',
@@ -15506,10 +15492,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 585.0,
                 'note' => 'Alamin',
-                'created_at' => '2025-09-26 12:00:00',
-                'updated_at' => '2025-09-26 22:45:30',
+                'created_at' => '2025-09-26 06:00:00',
+                'updated_at' => '2025-09-26 16:45:30',
             ),
-            102 => 
+            101 => 
             array (
                 'id' => 1114,
                 'reference_no' => 'er-20250926-104641',
@@ -15520,10 +15506,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 485.0,
                 'note' => 'Said',
-                'created_at' => '2025-09-26 12:00:00',
-                'updated_at' => '2025-09-26 22:46:41',
+                'created_at' => '2025-09-26 06:00:00',
+                'updated_at' => '2025-09-26 16:46:41',
             ),
-            103 => 
+            102 => 
             array (
                 'id' => 1115,
                 'reference_no' => 'er-20250926-104713',
@@ -15534,10 +15520,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 365.0,
                 'note' => 'Sakil',
-                'created_at' => '2025-09-26 12:00:00',
-                'updated_at' => '2025-09-26 22:47:13',
+                'created_at' => '2025-09-26 06:00:00',
+                'updated_at' => '2025-09-26 16:47:13',
             ),
-            104 => 
+            103 => 
             array (
                 'id' => 1116,
                 'reference_no' => 'er-20250926-104740',
@@ -15548,10 +15534,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 600.0,
                 'note' => 'Imrul',
-                'created_at' => '2025-09-26 12:00:00',
-                'updated_at' => '2025-09-26 22:47:40',
+                'created_at' => '2025-09-26 06:00:00',
+                'updated_at' => '2025-09-26 16:47:40',
             ),
-            105 => 
+            104 => 
             array (
                 'id' => 1117,
                 'reference_no' => 'er-20250927-113207',
@@ -15562,10 +15548,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-27 12:00:00',
-                'updated_at' => '2025-09-27 23:32:07',
+                'created_at' => '2025-09-27 06:00:00',
+                'updated_at' => '2025-09-27 17:32:07',
             ),
-            106 => 
+            105 => 
             array (
                 'id' => 1118,
                 'reference_no' => 'er-20250927-113224',
@@ -15576,10 +15562,10 @@ id card',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-27 12:00:00',
-                'updated_at' => '2025-09-27 23:32:24',
+                'created_at' => '2025-09-27 06:00:00',
+                'updated_at' => '2025-09-27 17:32:24',
             ),
-            107 => 
+            106 => 
             array (
                 'id' => 1119,
                 'reference_no' => 'er-20250927-113245',
@@ -15591,10 +15577,10 @@ id card',
                 'amount' => 360.0,
                 'note' => 'Repair - 160
 Food - 200',
-                'created_at' => '2025-09-27 00:00:00',
-                'updated_at' => '2025-09-27 23:34:04',
+                'created_at' => '2025-09-26 18:00:00',
+                'updated_at' => '2025-09-27 17:34:04',
             ),
-            108 => 
+            107 => 
             array (
                 'id' => 1120,
                 'reference_no' => 'er-20250927-113310',
@@ -15605,10 +15591,10 @@ Food - 200',
                 'cash_register_id' => 1,
                 'amount' => 230.0,
                 'note' => NULL,
-                'created_at' => '2025-09-27 12:00:00',
-                'updated_at' => '2025-09-27 23:33:10',
+                'created_at' => '2025-09-27 06:00:00',
+                'updated_at' => '2025-09-27 17:33:10',
             ),
-            109 => 
+            108 => 
             array (
                 'id' => 1121,
                 'reference_no' => 'er-20250927-113326',
@@ -15619,10 +15605,10 @@ Food - 200',
                 'cash_register_id' => 1,
                 'amount' => 3000.0,
                 'note' => 'Salary',
-                'created_at' => '2025-09-27 12:00:00',
-                'updated_at' => '2025-09-27 23:33:26',
+                'created_at' => '2025-09-27 06:00:00',
+                'updated_at' => '2025-09-27 17:33:26',
             ),
-            110 => 
+            109 => 
             array (
                 'id' => 1122,
                 'reference_no' => 'er-20250929-120816',
@@ -15633,10 +15619,10 @@ Food - 200',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-28 00:00:00',
-                'updated_at' => '2025-09-29 00:08:36',
+                'created_at' => '2025-09-27 18:00:00',
+                'updated_at' => '2025-09-28 18:08:36',
             ),
-            111 => 
+            110 => 
             array (
                 'id' => 1123,
                 'reference_no' => 'er-20250929-120918',
@@ -15647,10 +15633,10 @@ Food - 200',
                 'cash_register_id' => 1,
                 'amount' => 165000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-28 12:00:00',
-                'updated_at' => '2025-09-29 00:09:18',
+                'created_at' => '2025-09-28 06:00:00',
+                'updated_at' => '2025-09-28 18:09:18',
             ),
-            112 => 
+            111 => 
             array (
                 'id' => 1124,
                 'reference_no' => 'er-20250929-121341',
@@ -15661,10 +15647,10 @@ Food - 200',
                 'cash_register_id' => 1,
                 'amount' => 2275.0,
                 'note' => NULL,
-                'created_at' => '2025-09-28 12:00:00',
-                'updated_at' => '2025-09-29 00:13:41',
+                'created_at' => '2025-09-28 06:00:00',
+                'updated_at' => '2025-09-28 18:13:41',
             ),
-            113 => 
+            112 => 
             array (
                 'id' => 1125,
                 'reference_no' => 'er-20250929-121421',
@@ -15676,10 +15662,10 @@ Food - 200',
                 'amount' => 210.0,
                 'note' => 'Photocopy - 10
 Food - 200',
-                'created_at' => '2025-09-28 12:00:00',
-                'updated_at' => '2025-09-29 00:14:21',
+                'created_at' => '2025-09-28 06:00:00',
+                'updated_at' => '2025-09-28 18:14:21',
             ),
-            114 => 
+            113 => 
             array (
                 'id' => 1126,
                 'reference_no' => 'er-20250929-104248',
@@ -15690,10 +15676,10 @@ Food - 200',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-09-29 12:00:00',
-                'updated_at' => '2025-09-29 22:42:48',
+                'created_at' => '2025-09-29 06:00:00',
+                'updated_at' => '2025-09-29 16:42:48',
             ),
-            115 => 
+            114 => 
             array (
                 'id' => 1127,
                 'reference_no' => 'er-20250929-104402',
@@ -15706,10 +15692,10 @@ Food - 200',
                 'note' => 'Scale - 35
 Food - 150
 Godown Light - 320',
-                'created_at' => '2025-09-29 12:00:00',
-                'updated_at' => '2025-09-29 22:44:02',
+                'created_at' => '2025-09-29 06:00:00',
+                'updated_at' => '2025-09-29 16:44:02',
             ),
-            116 => 
+            115 => 
             array (
                 'id' => 1128,
                 'reference_no' => 'er-20250929-104423',
@@ -15720,10 +15706,10 @@ Godown Light - 320',
                 'cash_register_id' => 1,
                 'amount' => 1540.0,
                 'note' => NULL,
-                'created_at' => '2025-09-29 12:00:00',
-                'updated_at' => '2025-09-29 22:44:23',
+                'created_at' => '2025-09-29 06:00:00',
+                'updated_at' => '2025-09-29 16:44:23',
             ),
-            117 => 
+            116 => 
             array (
                 'id' => 1129,
                 'reference_no' => 'er-20250930-100956',
@@ -15734,10 +15720,10 @@ Godown Light - 320',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-09-30 12:00:00',
-                'updated_at' => '2025-09-30 22:09:56',
+                'created_at' => '2025-09-30 06:00:00',
+                'updated_at' => '2025-09-30 16:09:56',
             ),
-            118 => 
+            117 => 
             array (
                 'id' => 1130,
                 'reference_no' => 'er-20250930-101018',
@@ -15748,10 +15734,10 @@ Godown Light - 320',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-30 12:00:00',
-                'updated_at' => '2025-09-30 22:10:18',
+                'created_at' => '2025-09-30 06:00:00',
+                'updated_at' => '2025-09-30 16:10:18',
             ),
-            119 => 
+            118 => 
             array (
                 'id' => 1131,
                 'reference_no' => 'er-20250930-101032',
@@ -15762,10 +15748,10 @@ Godown Light - 320',
                 'cash_register_id' => 1,
                 'amount' => 25000.0,
                 'note' => NULL,
-                'created_at' => '2025-09-30 12:00:00',
-                'updated_at' => '2025-09-30 22:10:32',
+                'created_at' => '2025-09-30 06:00:00',
+                'updated_at' => '2025-09-30 16:10:32',
             ),
-            120 => 
+            119 => 
             array (
                 'id' => 1132,
                 'reference_no' => 'er-20250930-101219',
@@ -15777,10 +15763,10 @@ Godown Light - 320',
                 'amount' => 475.0,
                 'note' => 'Food - 250
 Bag - 225',
-                'created_at' => '2025-09-30 12:00:00',
-                'updated_at' => '2025-09-30 22:12:19',
+                'created_at' => '2025-09-30 06:00:00',
+                'updated_at' => '2025-09-30 16:12:19',
             ),
-            121 => 
+            120 => 
             array (
                 'id' => 1133,
                 'reference_no' => 'er-20250930-101243',
@@ -15791,10 +15777,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 1890.0,
                 'note' => 'Imrul',
-                'created_at' => '2025-09-30 12:00:00',
-                'updated_at' => '2025-09-30 22:12:43',
+                'created_at' => '2025-09-30 06:00:00',
+                'updated_at' => '2025-09-30 16:12:43',
             ),
-            122 => 
+            121 => 
             array (
                 'id' => 1134,
                 'reference_no' => 'er-20251001-111827',
@@ -15805,10 +15791,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-10-01 12:00:00',
-                'updated_at' => '2025-10-01 23:18:27',
+                'created_at' => '2025-10-01 06:00:00',
+                'updated_at' => '2025-10-01 17:18:27',
             ),
-            123 => 
+            122 => 
             array (
                 'id' => 1135,
                 'reference_no' => 'er-20251001-111929',
@@ -15819,10 +15805,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 270.0,
                 'note' => 'Water Bill',
-                'created_at' => '2025-10-01 12:00:00',
-                'updated_at' => '2025-10-01 23:19:29',
+                'created_at' => '2025-10-01 06:00:00',
+                'updated_at' => '2025-10-01 17:19:29',
             ),
-            124 => 
+            123 => 
             array (
                 'id' => 1136,
                 'reference_no' => 'er-20251001-112005',
@@ -15833,10 +15819,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-10-01 12:00:00',
-                'updated_at' => '2025-10-01 23:20:05',
+                'created_at' => '2025-10-01 06:00:00',
+                'updated_at' => '2025-10-01 17:20:05',
             ),
-            125 => 
+            124 => 
             array (
                 'id' => 1137,
                 'reference_no' => 'er-20251002-095211',
@@ -15847,10 +15833,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-10-02 12:00:00',
-                'updated_at' => '2025-10-02 21:52:11',
+                'created_at' => '2025-10-02 06:00:00',
+                'updated_at' => '2025-10-02 15:52:11',
             ),
-            126 => 
+            125 => 
             array (
                 'id' => 1138,
                 'reference_no' => 'er-20251002-095237',
@@ -15861,10 +15847,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-10-02 12:00:00',
-                'updated_at' => '2025-10-02 21:52:37',
+                'created_at' => '2025-10-02 06:00:00',
+                'updated_at' => '2025-10-02 15:52:37',
             ),
-            127 => 
+            126 => 
             array (
                 'id' => 1139,
                 'reference_no' => 'er-20251002-095254',
@@ -15875,10 +15861,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-10-02 12:00:00',
-                'updated_at' => '2025-10-02 21:52:54',
+                'created_at' => '2025-10-02 06:00:00',
+                'updated_at' => '2025-10-02 15:52:54',
             ),
-            128 => 
+            127 => 
             array (
                 'id' => 1140,
                 'reference_no' => 'er-20251002-095315',
@@ -15889,10 +15875,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 2190.0,
                 'note' => NULL,
-                'created_at' => '2025-10-02 12:00:00',
-                'updated_at' => '2025-10-02 21:53:15',
+                'created_at' => '2025-10-02 06:00:00',
+                'updated_at' => '2025-10-02 15:53:15',
             ),
-            129 => 
+            128 => 
             array (
                 'id' => 1141,
                 'reference_no' => 'er-20251002-095341',
@@ -15903,10 +15889,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 165.0,
                 'note' => 'Print',
-                'created_at' => '2025-10-02 12:00:00',
-                'updated_at' => '2025-10-02 21:53:41',
+                'created_at' => '2025-10-02 06:00:00',
+                'updated_at' => '2025-10-02 15:53:41',
             ),
-            130 => 
+            129 => 
             array (
                 'id' => 1142,
                 'reference_no' => 'er-20251002-095412',
@@ -15917,10 +15903,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 290.0,
                 'note' => NULL,
-                'created_at' => '2025-10-02 12:00:00',
-                'updated_at' => '2025-10-02 21:54:12',
+                'created_at' => '2025-10-02 06:00:00',
+                'updated_at' => '2025-10-02 15:54:12',
             ),
-            131 => 
+            130 => 
             array (
                 'id' => 1143,
                 'reference_no' => 'er-20251002-095430',
@@ -15931,10 +15917,10 @@ Bag - 225',
                 'cash_register_id' => 1,
                 'amount' => 3500.0,
                 'note' => 'Salary',
-                'created_at' => '2025-10-02 12:00:00',
-                'updated_at' => '2025-10-02 21:54:30',
+                'created_at' => '2025-10-02 06:00:00',
+                'updated_at' => '2025-10-02 15:54:30',
             ),
-            132 => 
+            131 => 
             array (
                 'id' => 1144,
                 'reference_no' => 'er-20251003-113622',
@@ -15948,10 +15934,10 @@ Bag - 225',
 Emrul Overtime	600
 Said Overtime 	485
 Sakil Overtime	        365',
-                'created_at' => '2025-10-03 12:00:00',
-                'updated_at' => '2025-10-03 23:36:22',
+                'created_at' => '2025-10-03 06:00:00',
+                'updated_at' => '2025-10-03 17:36:22',
             ),
-            133 => 
+            132 => 
             array (
                 'id' => 1145,
                 'reference_no' => 'er-20251003-113648',
@@ -15962,10 +15948,10 @@ Sakil Overtime	        365',
                 'cash_register_id' => 1,
                 'amount' => 215.0,
                 'note' => NULL,
-                'created_at' => '2025-10-03 12:00:00',
-                'updated_at' => '2025-10-03 23:36:48',
+                'created_at' => '2025-10-03 06:00:00',
+                'updated_at' => '2025-10-03 17:36:48',
             ),
-            134 => 
+            133 => 
             array (
                 'id' => 1146,
                 'reference_no' => 'er-20251003-113714',
@@ -15976,10 +15962,10 @@ Sakil Overtime	        365',
                 'cash_register_id' => 1,
                 'amount' => 455.0,
                 'note' => 'Food',
-                'created_at' => '2025-10-03 12:00:00',
-                'updated_at' => '2025-10-03 23:37:14',
+                'created_at' => '2025-10-03 06:00:00',
+                'updated_at' => '2025-10-03 17:37:14',
             ),
-            135 => 
+            134 => 
             array (
                 'id' => 1147,
                 'reference_no' => 'er-20251004-112021',
@@ -15990,10 +15976,10 @@ Sakil Overtime	        365',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-10-04 12:00:00',
-                'updated_at' => '2025-10-04 23:20:21',
+                'created_at' => '2025-10-04 06:00:00',
+                'updated_at' => '2025-10-04 17:20:21',
             ),
-            136 => 
+            135 => 
             array (
                 'id' => 1148,
                 'reference_no' => 'er-20251004-112047',
@@ -16005,10 +15991,10 @@ Sakil Overtime	        365',
                 'amount' => 5715.0,
                 'note' => 'Godown Key 60
 Bkash Payment 5655',
-                'created_at' => '2025-10-04 00:00:00',
-                'updated_at' => '2025-10-04 23:22:39',
+                'created_at' => '2025-10-03 18:00:00',
+                'updated_at' => '2025-10-04 17:22:39',
             ),
-            137 => 
+            136 => 
             array (
                 'id' => 1149,
                 'reference_no' => 'er-20251005-112257',
@@ -16019,10 +16005,10 @@ Bkash Payment 5655',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-10-05 12:00:00',
-                'updated_at' => '2025-10-05 23:22:57',
+                'created_at' => '2025-10-05 06:00:00',
+                'updated_at' => '2025-10-05 17:22:57',
             ),
-            138 => 
+            137 => 
             array (
                 'id' => 1150,
                 'reference_no' => 'er-20251005-112324',
@@ -16033,10 +16019,10 @@ Bkash Payment 5655',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => NULL,
-                'created_at' => '2025-10-05 12:00:00',
-                'updated_at' => '2025-10-05 23:23:24',
+                'created_at' => '2025-10-05 06:00:00',
+                'updated_at' => '2025-10-05 17:23:24',
             ),
-            139 => 
+            138 => 
             array (
                 'id' => 1151,
                 'reference_no' => 'er-20251005-112349',
@@ -16048,10 +16034,10 @@ Bkash Payment 5655',
                 'amount' => 60.0,
                 'note' => 'Polythene - 50
 Print - 10',
-                'created_at' => '2025-10-05 00:00:00',
-                'updated_at' => '2025-10-05 23:25:29',
+                'created_at' => '2025-10-04 18:00:00',
+                'updated_at' => '2025-10-05 17:25:29',
             ),
-            140 => 
+            139 => 
             array (
                 'id' => 1152,
                 'reference_no' => 'er-20251005-112430',
@@ -16062,10 +16048,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 1355.0,
                 'note' => NULL,
-                'created_at' => '2025-10-05 12:00:00',
-                'updated_at' => '2025-10-05 23:24:30',
+                'created_at' => '2025-10-05 06:00:00',
+                'updated_at' => '2025-10-05 17:24:30',
             ),
-            141 => 
+            140 => 
             array (
                 'id' => 1153,
                 'reference_no' => 'er-20251007-103434',
@@ -16076,10 +16062,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-10-06 12:00:00',
-                'updated_at' => '2025-10-07 22:34:34',
+                'created_at' => '2025-10-06 06:00:00',
+                'updated_at' => '2025-10-07 16:34:34',
             ),
-            142 => 
+            141 => 
             array (
                 'id' => 1154,
                 'reference_no' => 'er-20251007-103459',
@@ -16090,10 +16076,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 75.0,
                 'note' => 'Cash Short',
-                'created_at' => '2025-10-06 12:00:00',
-                'updated_at' => '2025-10-07 22:34:59',
+                'created_at' => '2025-10-06 06:00:00',
+                'updated_at' => '2025-10-07 16:34:59',
             ),
-            143 => 
+            142 => 
             array (
                 'id' => 1155,
                 'reference_no' => 'er-20251007-103527',
@@ -16104,10 +16090,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-10-06 12:00:00',
-                'updated_at' => '2025-10-07 22:35:27',
+                'created_at' => '2025-10-06 06:00:00',
+                'updated_at' => '2025-10-07 16:35:27',
             ),
-            144 => 
+            143 => 
             array (
                 'id' => 1156,
                 'reference_no' => 'er-20251007-103602',
@@ -16118,10 +16104,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-10-06 12:00:00',
-                'updated_at' => '2025-10-07 22:36:02',
+                'created_at' => '2025-10-06 06:00:00',
+                'updated_at' => '2025-10-07 16:36:02',
             ),
-            145 => 
+            144 => 
             array (
                 'id' => 1157,
                 'reference_no' => 'er-20251007-103723',
@@ -16132,10 +16118,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-10-07 12:00:00',
-                'updated_at' => '2025-10-07 22:37:23',
+                'created_at' => '2025-10-07 06:00:00',
+                'updated_at' => '2025-10-07 16:37:23',
             ),
-            146 => 
+            145 => 
             array (
                 'id' => 1158,
                 'reference_no' => 'er-20251007-103751',
@@ -16146,10 +16132,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 13000.0,
                 'note' => NULL,
-                'created_at' => '2025-10-07 12:00:00',
-                'updated_at' => '2025-10-07 22:37:51',
+                'created_at' => '2025-10-07 06:00:00',
+                'updated_at' => '2025-10-07 16:37:51',
             ),
-            147 => 
+            146 => 
             array (
                 'id' => 1159,
                 'reference_no' => 'er-20251008-095800',
@@ -16160,10 +16146,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-10-08 12:00:00',
-                'updated_at' => '2025-10-08 21:58:00',
+                'created_at' => '2025-10-08 06:00:00',
+                'updated_at' => '2025-10-08 15:58:00',
             ),
-            148 => 
+            147 => 
             array (
                 'id' => 1160,
                 'reference_no' => 'er-20251008-095830',
@@ -16174,10 +16160,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 450.0,
                 'note' => NULL,
-                'created_at' => '2025-10-08 12:00:00',
-                'updated_at' => '2025-10-08 21:58:30',
+                'created_at' => '2025-10-08 06:00:00',
+                'updated_at' => '2025-10-08 15:58:30',
             ),
-            149 => 
+            148 => 
             array (
                 'id' => 1161,
                 'reference_no' => 'er-20251008-095904',
@@ -16188,10 +16174,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 400.0,
                 'note' => NULL,
-                'created_at' => '2025-10-08 12:00:00',
-                'updated_at' => '2025-10-08 21:59:04',
+                'created_at' => '2025-10-08 06:00:00',
+                'updated_at' => '2025-10-08 15:59:04',
             ),
-            150 => 
+            149 => 
             array (
                 'id' => 1162,
                 'reference_no' => 'er-20251008-095919',
@@ -16202,10 +16188,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => 'Pin',
-                'created_at' => '2025-10-08 12:00:00',
-                'updated_at' => '2025-10-08 21:59:19',
+                'created_at' => '2025-10-08 06:00:00',
+                'updated_at' => '2025-10-08 15:59:19',
             ),
-            151 => 
+            150 => 
             array (
                 'id' => 1163,
                 'reference_no' => 'er-20251009-100356',
@@ -16216,10 +16202,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-09 12:00:00',
-                'updated_at' => '2025-10-09 22:03:56',
+                'created_at' => '2025-10-09 06:00:00',
+                'updated_at' => '2025-10-09 16:03:56',
             ),
-            152 => 
+            151 => 
             array (
                 'id' => 1164,
                 'reference_no' => 'er-20251009-100441',
@@ -16230,10 +16216,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Repair',
-                'created_at' => '2025-10-09 12:00:00',
-                'updated_at' => '2025-10-09 22:04:41',
+                'created_at' => '2025-10-09 06:00:00',
+                'updated_at' => '2025-10-09 16:04:41',
             ),
-            153 => 
+            152 => 
             array (
                 'id' => 1165,
                 'reference_no' => 'er-20251009-100453',
@@ -16244,10 +16230,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-10-09 12:00:00',
-                'updated_at' => '2025-10-09 22:04:53',
+                'created_at' => '2025-10-09 06:00:00',
+                'updated_at' => '2025-10-09 16:04:53',
             ),
-            154 => 
+            153 => 
             array (
                 'id' => 1166,
                 'reference_no' => 'er-20251009-100516',
@@ -16258,10 +16244,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 6475.0,
                 'note' => NULL,
-                'created_at' => '2025-10-09 12:00:00',
-                'updated_at' => '2025-10-09 22:05:16',
+                'created_at' => '2025-10-09 06:00:00',
+                'updated_at' => '2025-10-09 16:05:16',
             ),
-            155 => 
+            154 => 
             array (
                 'id' => 1167,
                 'reference_no' => 'er-20251009-100534',
@@ -16272,10 +16258,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 240.0,
                 'note' => NULL,
-                'created_at' => '2025-10-09 12:00:00',
-                'updated_at' => '2025-10-09 22:05:34',
+                'created_at' => '2025-10-09 06:00:00',
+                'updated_at' => '2025-10-09 16:05:34',
             ),
-            156 => 
+            155 => 
             array (
                 'id' => 1168,
                 'reference_no' => 'er-20251011-095828',
@@ -16286,10 +16272,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-11 12:00:00',
-                'updated_at' => '2025-10-11 21:58:28',
+                'created_at' => '2025-10-11 06:00:00',
+                'updated_at' => '2025-10-11 15:58:28',
             ),
-            157 => 
+            156 => 
             array (
                 'id' => 1169,
                 'reference_no' => 'er-20251011-095842',
@@ -16300,10 +16286,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 240.0,
                 'note' => NULL,
-                'created_at' => '2025-10-11 12:00:00',
-                'updated_at' => '2025-10-11 21:58:42',
+                'created_at' => '2025-10-11 06:00:00',
+                'updated_at' => '2025-10-11 15:58:42',
             ),
-            158 => 
+            157 => 
             array (
                 'id' => 1170,
                 'reference_no' => 'er-20251011-095902',
@@ -16314,10 +16300,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-10-11 12:00:00',
-                'updated_at' => '2025-10-11 21:59:02',
+                'created_at' => '2025-10-11 06:00:00',
+                'updated_at' => '2025-10-11 15:59:02',
             ),
-            159 => 
+            158 => 
             array (
                 'id' => 1171,
                 'reference_no' => 'er-20251011-095925',
@@ -16328,10 +16314,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-10-11 12:00:00',
-                'updated_at' => '2025-10-11 21:59:25',
+                'created_at' => '2025-10-11 06:00:00',
+                'updated_at' => '2025-10-11 15:59:25',
             ),
-            160 => 
+            159 => 
             array (
                 'id' => 1172,
                 'reference_no' => 'er-20251011-095940',
@@ -16342,10 +16328,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-10-11 12:00:00',
-                'updated_at' => '2025-10-11 21:59:40',
+                'created_at' => '2025-10-11 06:00:00',
+                'updated_at' => '2025-10-11 15:59:40',
             ),
-            161 => 
+            160 => 
             array (
                 'id' => 1173,
                 'reference_no' => 'er-20251012-095242',
@@ -16356,10 +16342,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-12 12:00:00',
-                'updated_at' => '2025-10-12 21:52:42',
+                'created_at' => '2025-10-12 06:00:00',
+                'updated_at' => '2025-10-12 15:52:42',
             ),
-            162 => 
+            161 => 
             array (
                 'id' => 1174,
                 'reference_no' => 'er-20251012-095306',
@@ -16370,10 +16356,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-10-12 12:00:00',
-                'updated_at' => '2025-10-12 21:53:06',
+                'created_at' => '2025-10-12 06:00:00',
+                'updated_at' => '2025-10-12 15:53:06',
             ),
-            163 => 
+            162 => 
             array (
                 'id' => 1175,
                 'reference_no' => 'er-20251013-101510',
@@ -16384,10 +16370,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-13 12:00:00',
-                'updated_at' => '2025-10-13 22:15:10',
+                'created_at' => '2025-10-13 06:00:00',
+                'updated_at' => '2025-10-13 16:15:10',
             ),
-            164 => 
+            163 => 
             array (
                 'id' => 1176,
                 'reference_no' => 'er-20251013-101523',
@@ -16398,10 +16384,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-10-13 12:00:00',
-                'updated_at' => '2025-10-13 22:15:23',
+                'created_at' => '2025-10-13 06:00:00',
+                'updated_at' => '2025-10-13 16:15:23',
             ),
-            165 => 
+            164 => 
             array (
                 'id' => 1177,
                 'reference_no' => 'er-20251013-101536',
@@ -16412,10 +16398,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-10-13 12:00:00',
-                'updated_at' => '2025-10-13 22:15:36',
+                'created_at' => '2025-10-13 06:00:00',
+                'updated_at' => '2025-10-13 16:15:36',
             ),
-            166 => 
+            165 => 
             array (
                 'id' => 1178,
                 'reference_no' => 'er-20251013-101617',
@@ -16426,10 +16412,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 7350.0,
                 'note' => 'Bkash Payment',
-                'created_at' => '2025-10-13 12:00:00',
-                'updated_at' => '2025-10-13 22:16:17',
+                'created_at' => '2025-10-13 06:00:00',
+                'updated_at' => '2025-10-13 16:16:17',
             ),
-            167 => 
+            166 => 
             array (
                 'id' => 1179,
                 'reference_no' => 'er-20251014-101019',
@@ -16440,10 +16426,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-10-14 12:00:00',
-                'updated_at' => '2025-10-14 22:10:19',
+                'created_at' => '2025-10-14 06:00:00',
+                'updated_at' => '2025-10-14 16:10:19',
             ),
-            168 => 
+            167 => 
             array (
                 'id' => 1180,
                 'reference_no' => 'er-20251014-101030',
@@ -16454,10 +16440,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-14 12:00:00',
-                'updated_at' => '2025-10-14 22:10:30',
+                'created_at' => '2025-10-14 06:00:00',
+                'updated_at' => '2025-10-14 16:10:30',
             ),
-            169 => 
+            168 => 
             array (
                 'id' => 1181,
                 'reference_no' => 'er-20251014-101046',
@@ -16468,10 +16454,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Repair',
-                'created_at' => '2025-10-14 12:00:00',
-                'updated_at' => '2025-10-14 22:10:46',
+                'created_at' => '2025-10-14 06:00:00',
+                'updated_at' => '2025-10-14 16:10:46',
             ),
-            170 => 
+            169 => 
             array (
                 'id' => 1182,
                 'reference_no' => 'er-20251015-095927',
@@ -16482,10 +16468,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-15 12:00:00',
-                'updated_at' => '2025-10-15 21:59:27',
+                'created_at' => '2025-10-15 06:00:00',
+                'updated_at' => '2025-10-15 15:59:27',
             ),
-            171 => 
+            170 => 
             array (
                 'id' => 1183,
                 'reference_no' => 'er-20251015-100038',
@@ -16496,10 +16482,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 15.0,
                 'note' => NULL,
-                'created_at' => '2025-10-15 12:00:00',
-                'updated_at' => '2025-10-15 22:00:38',
+                'created_at' => '2025-10-15 06:00:00',
+                'updated_at' => '2025-10-15 16:00:38',
             ),
-            172 => 
+            171 => 
             array (
                 'id' => 1184,
                 'reference_no' => 'er-20251015-100149',
@@ -16510,10 +16496,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => 'Mahfil',
-                'created_at' => '2025-10-15 12:00:00',
-                'updated_at' => '2025-10-15 22:01:49',
+                'created_at' => '2025-10-15 06:00:00',
+                'updated_at' => '2025-10-15 16:01:49',
             ),
-            173 => 
+            172 => 
             array (
                 'id' => 1185,
                 'reference_no' => 'er-20251016-102328',
@@ -16524,10 +16510,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-16 12:00:00',
-                'updated_at' => '2025-10-16 22:23:28',
+                'created_at' => '2025-10-16 06:00:00',
+                'updated_at' => '2025-10-16 16:23:28',
             ),
-            174 => 
+            173 => 
             array (
                 'id' => 1186,
                 'reference_no' => 'er-20251016-102348',
@@ -16538,10 +16524,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 5230.0,
                 'note' => NULL,
-                'created_at' => '2025-10-16 12:00:00',
-                'updated_at' => '2025-10-16 22:23:48',
+                'created_at' => '2025-10-16 06:00:00',
+                'updated_at' => '2025-10-16 16:23:48',
             ),
-            175 => 
+            174 => 
             array (
                 'id' => 1187,
                 'reference_no' => 'er-20251016-102437',
@@ -16552,10 +16538,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 170.0,
                 'note' => NULL,
-                'created_at' => '2025-10-16 12:00:00',
-                'updated_at' => '2025-10-16 22:24:37',
+                'created_at' => '2025-10-16 06:00:00',
+                'updated_at' => '2025-10-16 16:24:37',
             ),
-            176 => 
+            175 => 
             array (
                 'id' => 1188,
                 'reference_no' => 'er-20251018-100249',
@@ -16566,10 +16552,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-18 12:00:00',
-                'updated_at' => '2025-10-18 22:02:49',
+                'created_at' => '2025-10-18 06:00:00',
+                'updated_at' => '2025-10-18 16:02:49',
             ),
-            177 => 
+            176 => 
             array (
                 'id' => 1189,
                 'reference_no' => 'er-20251018-100303',
@@ -16580,10 +16566,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 1430.0,
                 'note' => NULL,
-                'created_at' => '2025-10-18 12:00:00',
-                'updated_at' => '2025-10-18 22:03:03',
+                'created_at' => '2025-10-18 06:00:00',
+                'updated_at' => '2025-10-18 16:03:03',
             ),
-            178 => 
+            177 => 
             array (
                 'id' => 1190,
                 'reference_no' => 'er-20251018-100317',
@@ -16594,10 +16580,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 140.0,
                 'note' => NULL,
-                'created_at' => '2025-10-18 12:00:00',
-                'updated_at' => '2025-10-18 22:03:17',
+                'created_at' => '2025-10-18 06:00:00',
+                'updated_at' => '2025-10-18 16:03:17',
             ),
-            179 => 
+            178 => 
             array (
                 'id' => 1191,
                 'reference_no' => 'er-20251018-100329',
@@ -16608,10 +16594,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 15.0,
                 'note' => NULL,
-                'created_at' => '2025-10-18 12:00:00',
-                'updated_at' => '2025-10-18 22:03:29',
+                'created_at' => '2025-10-18 06:00:00',
+                'updated_at' => '2025-10-18 16:03:29',
             ),
-            180 => 
+            179 => 
             array (
                 'id' => 1192,
                 'reference_no' => 'er-20251019-100426',
@@ -16622,10 +16608,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-19 12:00:00',
-                'updated_at' => '2025-10-19 22:04:26',
+                'created_at' => '2025-10-19 06:00:00',
+                'updated_at' => '2025-10-19 16:04:26',
             ),
-            181 => 
+            180 => 
             array (
                 'id' => 1193,
                 'reference_no' => 'er-20251019-100441',
@@ -16636,10 +16622,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 3080.0,
                 'note' => NULL,
-                'created_at' => '2025-10-19 12:00:00',
-                'updated_at' => '2025-10-19 22:04:41',
+                'created_at' => '2025-10-19 06:00:00',
+                'updated_at' => '2025-10-19 16:04:41',
             ),
-            182 => 
+            181 => 
             array (
                 'id' => 1194,
                 'reference_no' => 'er-20251019-100456',
@@ -16650,10 +16636,10 @@ Print - 10',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-10-19 12:00:00',
-                'updated_at' => '2025-10-19 22:04:56',
+                'created_at' => '2025-10-19 06:00:00',
+                'updated_at' => '2025-10-19 16:04:56',
             ),
-            183 => 
+            182 => 
             array (
                 'id' => 1196,
                 'reference_no' => 'er-20251019-100554',
@@ -16665,10 +16651,10 @@ Print - 10',
                 'amount' => 1110.0,
                 'note' => 'Godown Internet bill - 1050
 Repair - 60',
-                'created_at' => '2025-10-19 00:00:00',
-                'updated_at' => '2025-10-19 22:06:31',
+                'created_at' => '2025-10-18 18:00:00',
+                'updated_at' => '2025-10-19 16:06:31',
             ),
-            184 => 
+            183 => 
             array (
                 'id' => 1197,
                 'reference_no' => 'er-20251020-101038',
@@ -16679,10 +16665,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-20 12:00:00',
-                'updated_at' => '2025-10-20 22:10:38',
+                'created_at' => '2025-10-20 06:00:00',
+                'updated_at' => '2025-10-20 16:10:38',
             ),
-            185 => 
+            184 => 
             array (
                 'id' => 1198,
                 'reference_no' => 'er-20251020-101055',
@@ -16693,10 +16679,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 1295.0,
                 'note' => NULL,
-                'created_at' => '2025-10-20 12:00:00',
-                'updated_at' => '2025-10-20 22:10:55',
+                'created_at' => '2025-10-20 06:00:00',
+                'updated_at' => '2025-10-20 16:10:55',
             ),
-            186 => 
+            185 => 
             array (
                 'id' => 1199,
                 'reference_no' => 'er-20251020-101120',
@@ -16707,10 +16693,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 30.0,
                 'note' => NULL,
-                'created_at' => '2025-10-20 12:00:00',
-                'updated_at' => '2025-10-20 22:11:20',
+                'created_at' => '2025-10-20 06:00:00',
+                'updated_at' => '2025-10-20 16:11:20',
             ),
-            187 => 
+            186 => 
             array (
                 'id' => 1200,
                 'reference_no' => 'er-20251022-095355',
@@ -16721,10 +16707,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-22 12:00:00',
-                'updated_at' => '2025-10-22 21:53:55',
+                'created_at' => '2025-10-22 06:00:00',
+                'updated_at' => '2025-10-22 15:53:55',
             ),
-            188 => 
+            187 => 
             array (
                 'id' => 1201,
                 'reference_no' => 'er-20251022-095418',
@@ -16735,10 +16721,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => 'Repair',
-                'created_at' => '2025-10-22 12:00:00',
-                'updated_at' => '2025-10-22 21:54:18',
+                'created_at' => '2025-10-22 06:00:00',
+                'updated_at' => '2025-10-22 15:54:18',
             ),
-            189 => 
+            188 => 
             array (
                 'id' => 1202,
                 'reference_no' => 'er-20251022-095441',
@@ -16749,10 +16735,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-10-22 12:00:00',
-                'updated_at' => '2025-10-22 21:54:41',
+                'created_at' => '2025-10-22 06:00:00',
+                'updated_at' => '2025-10-22 15:54:41',
             ),
-            190 => 
+            189 => 
             array (
                 'id' => 1203,
                 'reference_no' => 'er-20251022-095959',
@@ -16763,10 +16749,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-21 12:00:00',
-                'updated_at' => '2025-10-22 21:59:59',
+                'created_at' => '2025-10-21 06:00:00',
+                'updated_at' => '2025-10-22 15:59:59',
             ),
-            191 => 
+            190 => 
             array (
                 'id' => 1204,
                 'reference_no' => 'er-20251022-100015',
@@ -16777,10 +16763,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-10-21 12:00:00',
-                'updated_at' => '2025-10-22 22:00:15',
+                'created_at' => '2025-10-21 06:00:00',
+                'updated_at' => '2025-10-22 16:00:15',
             ),
-            192 => 
+            191 => 
             array (
                 'id' => 1205,
                 'reference_no' => 'er-20251022-100025',
@@ -16791,10 +16777,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-10-21 12:00:00',
-                'updated_at' => '2025-10-22 22:00:25',
+                'created_at' => '2025-10-21 06:00:00',
+                'updated_at' => '2025-10-22 16:00:25',
             ),
-            193 => 
+            192 => 
             array (
                 'id' => 1206,
                 'reference_no' => 'er-20251023-094351',
@@ -16805,10 +16791,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-23 12:00:00',
-                'updated_at' => '2025-10-23 21:43:51',
+                'created_at' => '2025-10-23 06:00:00',
+                'updated_at' => '2025-10-23 15:43:51',
             ),
-            194 => 
+            193 => 
             array (
                 'id' => 1207,
                 'reference_no' => 'er-20251023-094404',
@@ -16819,10 +16805,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 2000.0,
                 'note' => NULL,
-                'created_at' => '2025-10-23 12:00:00',
-                'updated_at' => '2025-10-23 21:44:04',
+                'created_at' => '2025-10-23 06:00:00',
+                'updated_at' => '2025-10-23 15:44:04',
             ),
-            195 => 
+            194 => 
             array (
                 'id' => 1208,
                 'reference_no' => 'er-20251023-095051',
@@ -16833,10 +16819,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 1755.0,
                 'note' => NULL,
-                'created_at' => '2025-10-23 12:00:00',
-                'updated_at' => '2025-10-23 21:50:51',
+                'created_at' => '2025-10-23 06:00:00',
+                'updated_at' => '2025-10-23 15:50:51',
             ),
-            196 => 
+            195 => 
             array (
                 'id' => 1209,
                 'reference_no' => 'er-20251025-094954',
@@ -16847,10 +16833,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-25 12:00:00',
-                'updated_at' => '2025-10-25 21:49:54',
+                'created_at' => '2025-10-25 06:00:00',
+                'updated_at' => '2025-10-25 15:49:54',
             ),
-            197 => 
+            196 => 
             array (
                 'id' => 1210,
                 'reference_no' => 'er-20251025-095013',
@@ -16861,10 +16847,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-10-25 12:00:00',
-                'updated_at' => '2025-10-25 21:50:13',
+                'created_at' => '2025-10-25 06:00:00',
+                'updated_at' => '2025-10-25 15:50:13',
             ),
-            198 => 
+            197 => 
             array (
                 'id' => 1211,
                 'reference_no' => 'er-20251025-095029',
@@ -16875,10 +16861,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-10-25 12:00:00',
-                'updated_at' => '2025-10-25 21:50:29',
+                'created_at' => '2025-10-25 06:00:00',
+                'updated_at' => '2025-10-25 15:50:29',
             ),
-            199 => 
+            198 => 
             array (
                 'id' => 1212,
                 'reference_no' => 'er-20251025-095100',
@@ -16889,10 +16875,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => 'Repair',
-                'created_at' => '2025-10-25 12:00:00',
-                'updated_at' => '2025-10-25 21:51:00',
+                'created_at' => '2025-10-25 06:00:00',
+                'updated_at' => '2025-10-25 15:51:00',
             ),
-            200 => 
+            199 => 
             array (
                 'id' => 1213,
                 'reference_no' => 'er-20251026-093905',
@@ -16903,10 +16889,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-10-26 12:00:00',
-                'updated_at' => '2025-10-26 21:39:05',
+                'created_at' => '2025-10-26 06:00:00',
+                'updated_at' => '2025-10-26 15:39:05',
             ),
-            201 => 
+            200 => 
             array (
                 'id' => 1214,
                 'reference_no' => 'er-20251026-093918',
@@ -16917,10 +16903,10 @@ Repair - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-26 12:00:00',
-                'updated_at' => '2025-10-26 21:39:18',
+                'created_at' => '2025-10-26 06:00:00',
+                'updated_at' => '2025-10-26 15:39:18',
             ),
-            202 => 
+            201 => 
             array (
                 'id' => 1215,
                 'reference_no' => 'er-20251026-093946',
@@ -16932,10 +16918,10 @@ Repair - 60',
                 'amount' => 1110.0,
                 'note' => 'Internet Bill - 1050
 Cleaner - 60',
-                'created_at' => '2025-10-26 00:00:00',
-                'updated_at' => '2025-10-26 21:40:25',
+                'created_at' => '2025-10-25 18:00:00',
+                'updated_at' => '2025-10-26 15:40:25',
             ),
-            203 => 
+            202 => 
             array (
                 'id' => 1216,
                 'reference_no' => 'er-20251027-095031',
@@ -16946,10 +16932,10 @@ Cleaner - 60',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-27 12:00:00',
-                'updated_at' => '2025-10-27 21:50:31',
+                'created_at' => '2025-10-27 06:00:00',
+                'updated_at' => '2025-10-27 15:50:31',
             ),
-            204 => 
+            203 => 
             array (
                 'id' => 1217,
                 'reference_no' => 'er-20251027-095151',
@@ -16962,10 +16948,10 @@ Cleaner - 60',
                 'note' => 'Sutter Grease	80
 Pin	30
 Ditergent	70',
-                'created_at' => '2025-10-27 12:00:00',
-                'updated_at' => '2025-10-27 21:51:51',
+                'created_at' => '2025-10-27 06:00:00',
+                'updated_at' => '2025-10-27 15:51:51',
             ),
-            205 => 
+            204 => 
             array (
                 'id' => 1218,
                 'reference_no' => 'er-20251028-094916',
@@ -16976,10 +16962,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-28 12:00:00',
-                'updated_at' => '2025-10-28 21:49:16',
+                'created_at' => '2025-10-28 06:00:00',
+                'updated_at' => '2025-10-28 15:49:16',
             ),
-            206 => 
+            205 => 
             array (
                 'id' => 1219,
                 'reference_no' => 'er-20251028-094936',
@@ -16990,10 +16976,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-10-28 12:00:00',
-                'updated_at' => '2025-10-28 21:49:36',
+                'created_at' => '2025-10-28 06:00:00',
+                'updated_at' => '2025-10-28 15:49:36',
             ),
-            207 => 
+            206 => 
             array (
                 'id' => 1220,
                 'reference_no' => 'er-20251028-095000',
@@ -17004,10 +16990,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 150.0,
                 'note' => 'Repair',
-                'created_at' => '2025-10-28 12:00:00',
-                'updated_at' => '2025-10-28 21:50:00',
+                'created_at' => '2025-10-28 06:00:00',
+                'updated_at' => '2025-10-28 15:50:00',
             ),
-            208 => 
+            207 => 
             array (
                 'id' => 1221,
                 'reference_no' => 'er-20251029-094600',
@@ -17018,10 +17004,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-29 12:00:00',
-                'updated_at' => '2025-10-29 21:46:00',
+                'created_at' => '2025-10-29 06:00:00',
+                'updated_at' => '2025-10-29 15:46:00',
             ),
-            209 => 
+            208 => 
             array (
                 'id' => 1222,
                 'reference_no' => 'er-20251029-094615',
@@ -17032,10 +17018,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-10-29 12:00:00',
-                'updated_at' => '2025-10-29 21:46:15',
+                'created_at' => '2025-10-29 06:00:00',
+                'updated_at' => '2025-10-29 15:46:15',
             ),
-            210 => 
+            209 => 
             array (
                 'id' => 1223,
                 'reference_no' => 'er-20251029-094634',
@@ -17046,10 +17032,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-10-29 12:00:00',
-                'updated_at' => '2025-10-29 21:46:34',
+                'created_at' => '2025-10-29 06:00:00',
+                'updated_at' => '2025-10-29 15:46:34',
             ),
-            211 => 
+            210 => 
             array (
                 'id' => 1224,
                 'reference_no' => 'er-20251030-100621',
@@ -17060,10 +17046,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-10-30 12:00:00',
-                'updated_at' => '2025-10-30 22:06:21',
+                'created_at' => '2025-10-30 06:00:00',
+                'updated_at' => '2025-10-30 16:06:21',
             ),
-            212 => 
+            211 => 
             array (
                 'id' => 1225,
                 'reference_no' => 'er-20251030-100637',
@@ -17074,10 +17060,10 @@ Ditergent	70',
                 'cash_register_id' => 2,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-10-30 12:00:00',
-                'updated_at' => '2025-10-30 22:06:37',
+                'created_at' => '2025-10-30 06:00:00',
+                'updated_at' => '2025-10-30 16:06:37',
             ),
-            213 => 
+            212 => 
             array (
                 'id' => 1226,
                 'reference_no' => 'er-20251030-100656',
@@ -17088,10 +17074,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-10-30 12:00:00',
-                'updated_at' => '2025-10-30 22:06:56',
+                'created_at' => '2025-10-30 06:00:00',
+                'updated_at' => '2025-10-30 16:06:56',
             ),
-            214 => 
+            213 => 
             array (
                 'id' => 1229,
                 'reference_no' => 'er-20251102-092432',
@@ -17102,10 +17088,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-02 12:00:00',
-                'updated_at' => '2025-11-02 21:24:32',
+                'created_at' => '2025-11-02 06:00:00',
+                'updated_at' => '2025-11-02 15:24:32',
             ),
-            215 => 
+            214 => 
             array (
                 'id' => 1230,
                 'reference_no' => 'er-20251102-092728',
@@ -17116,10 +17102,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-01 12:00:00',
-                'updated_at' => '2025-11-02 21:27:28',
+                'created_at' => '2025-11-01 06:00:00',
+                'updated_at' => '2025-11-02 15:27:28',
             ),
-            216 => 
+            215 => 
             array (
                 'id' => 1231,
                 'reference_no' => 'er-20251102-092753',
@@ -17130,10 +17116,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-11-01 12:00:00',
-                'updated_at' => '2025-11-02 21:27:53',
+                'created_at' => '2025-11-01 06:00:00',
+                'updated_at' => '2025-11-02 15:27:53',
             ),
-            217 => 
+            216 => 
             array (
                 'id' => 1232,
                 'reference_no' => 'er-20251103-095221',
@@ -17144,10 +17130,10 @@ Ditergent	70',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-03 12:00:00',
-                'updated_at' => '2025-11-03 21:52:21',
+                'created_at' => '2025-11-03 06:00:00',
+                'updated_at' => '2025-11-03 15:52:21',
             ),
-            218 => 
+            217 => 
             array (
                 'id' => 1233,
                 'reference_no' => 'er-20251103-095240',
@@ -17159,10 +17145,10 @@ Ditergent	70',
                 'amount' => 260.0,
                 'note' => 'Hapka - 210
 Repair - 50',
-                'created_at' => '2025-11-03 00:00:00',
-                'updated_at' => '2025-11-03 21:53:11',
+                'created_at' => '2025-11-02 18:00:00',
+                'updated_at' => '2025-11-03 15:53:11',
             ),
-            219 => 
+            218 => 
             array (
                 'id' => 1234,
                 'reference_no' => 'er-20251103-095324',
@@ -17173,10 +17159,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 11000.0,
                 'note' => NULL,
-                'created_at' => '2025-11-03 12:00:00',
-                'updated_at' => '2025-11-03 21:53:24',
+                'created_at' => '2025-11-03 06:00:00',
+                'updated_at' => '2025-11-03 15:53:24',
             ),
-            220 => 
+            219 => 
             array (
                 'id' => 1235,
                 'reference_no' => 'er-20251104-094058',
@@ -17187,10 +17173,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-04 12:00:00',
-                'updated_at' => '2025-11-04 21:40:58',
+                'created_at' => '2025-11-04 06:00:00',
+                'updated_at' => '2025-11-04 15:40:58',
             ),
-            221 => 
+            220 => 
             array (
                 'id' => 1236,
                 'reference_no' => 'er-20251104-094147',
@@ -17201,10 +17187,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 1050.0,
                 'note' => 'Imrul',
-                'created_at' => '2025-11-04 12:00:00',
-                'updated_at' => '2025-11-04 21:41:47',
+                'created_at' => '2025-11-04 06:00:00',
+                'updated_at' => '2025-11-04 15:41:47',
             ),
-            222 => 
+            221 => 
             array (
                 'id' => 1237,
                 'reference_no' => 'er-20251104-094214',
@@ -17215,10 +17201,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 1180.0,
                 'note' => 'Gen. Oil',
-                'created_at' => '2025-11-04 12:00:00',
-                'updated_at' => '2025-11-04 21:42:14',
+                'created_at' => '2025-11-04 06:00:00',
+                'updated_at' => '2025-11-04 15:42:14',
             ),
-            223 => 
+            222 => 
             array (
                 'id' => 1238,
                 'reference_no' => 'er-20251105-095858',
@@ -17229,10 +17215,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-05 12:00:00',
-                'updated_at' => '2025-11-05 21:58:58',
+                'created_at' => '2025-11-05 06:00:00',
+                'updated_at' => '2025-11-05 15:58:58',
             ),
-            224 => 
+            223 => 
             array (
                 'id' => 1239,
                 'reference_no' => 'er-20251105-095909',
@@ -17243,10 +17229,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => NULL,
-                'created_at' => '2025-11-05 12:00:00',
-                'updated_at' => '2025-11-05 21:59:09',
+                'created_at' => '2025-11-05 06:00:00',
+                'updated_at' => '2025-11-05 15:59:09',
             ),
-            225 => 
+            224 => 
             array (
                 'id' => 1240,
                 'reference_no' => 'er-20251105-100005',
@@ -17257,10 +17243,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 420.0,
                 'note' => 'Mosjid - 400',
-                'created_at' => '2025-11-05 12:00:00',
-                'updated_at' => '2025-11-05 22:00:05',
+                'created_at' => '2025-11-05 06:00:00',
+                'updated_at' => '2025-11-05 16:00:05',
             ),
-            226 => 
+            225 => 
             array (
                 'id' => 1241,
                 'reference_no' => 'er-20251106-092316',
@@ -17271,10 +17257,10 @@ Repair - 50',
                 'cash_register_id' => 1,
                 'amount' => 90.0,
                 'note' => NULL,
-                'created_at' => '2025-11-06 12:00:00',
-                'updated_at' => '2025-11-06 21:23:16',
+                'created_at' => '2025-11-06 06:00:00',
+                'updated_at' => '2025-11-06 15:23:16',
             ),
-            227 => 
+            226 => 
             array (
                 'id' => 1242,
                 'reference_no' => 'er-20251106-092343',
@@ -17286,10 +17272,10 @@ Repair - 50',
                 'amount' => 100.0,
                 'note' => 'Gum - 80
 Pen - 20',
-                'created_at' => '2025-11-06 00:00:00',
-                'updated_at' => '2025-11-06 21:24:10',
+                'created_at' => '2025-11-05 18:00:00',
+                'updated_at' => '2025-11-06 15:24:10',
             ),
-            228 => 
+            227 => 
             array (
                 'id' => 1243,
                 'reference_no' => 'er-20251106-092730',
@@ -17300,10 +17286,10 @@ Pen - 20',
                 'cash_register_id' => 1,
                 'amount' => 100.0,
                 'note' => NULL,
-                'created_at' => '2025-11-06 12:00:00',
-                'updated_at' => '2025-11-06 21:27:30',
+                'created_at' => '2025-11-06 06:00:00',
+                'updated_at' => '2025-11-06 15:27:30',
             ),
-            229 => 
+            228 => 
             array (
                 'id' => 1244,
                 'reference_no' => 'er-20251106-092823',
@@ -17314,10 +17300,10 @@ Pen - 20',
                 'cash_register_id' => 1,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-11-06 12:00:00',
-                'updated_at' => '2025-11-06 21:28:23',
+                'created_at' => '2025-11-06 06:00:00',
+                'updated_at' => '2025-11-06 15:28:23',
             ),
-            230 => 
+            229 => 
             array (
                 'id' => 1245,
                 'reference_no' => 'er-20251106-093602',
@@ -17328,10 +17314,10 @@ Pen - 20',
                 'cash_register_id' => 1,
                 'amount' => 1790.0,
                 'note' => NULL,
-                'created_at' => '2025-11-06 12:00:00',
-                'updated_at' => '2025-11-06 21:36:02',
+                'created_at' => '2025-11-06 06:00:00',
+                'updated_at' => '2025-11-06 15:36:02',
             ),
-            231 => 
+            230 => 
             array (
                 'id' => 1246,
                 'reference_no' => 'er-20251108-095411',
@@ -17342,10 +17328,10 @@ Pen - 20',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-08 12:00:00',
-                'updated_at' => '2025-11-08 21:54:11',
+                'created_at' => '2025-11-08 06:00:00',
+                'updated_at' => '2025-11-08 15:54:11',
             ),
-            232 => 
+            231 => 
             array (
                 'id' => 1247,
                 'reference_no' => 'er-20251108-095436',
@@ -17356,10 +17342,10 @@ Pen - 20',
                 'cash_register_id' => 1,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-11-08 12:00:00',
-                'updated_at' => '2025-11-08 21:54:36',
+                'created_at' => '2025-11-08 06:00:00',
+                'updated_at' => '2025-11-08 15:54:36',
             ),
-            233 => 
+            232 => 
             array (
                 'id' => 1248,
                 'reference_no' => 'er-20251108-095543',
@@ -17371,10 +17357,10 @@ Pen - 20',
                 'amount' => 4380.0,
                 'note' => 'Dhaka - 2500
 Transport - 1880',
-                'created_at' => '2025-11-08 12:00:00',
-                'updated_at' => '2025-11-08 21:55:43',
+                'created_at' => '2025-11-08 06:00:00',
+                'updated_at' => '2025-11-08 15:55:43',
             ),
-            234 => 
+            233 => 
             array (
                 'id' => 1249,
                 'reference_no' => 'er-20251108-095604',
@@ -17385,10 +17371,10 @@ Transport - 1880',
                 'cash_register_id' => 1,
                 'amount' => 2540.0,
                 'note' => NULL,
-                'created_at' => '2025-11-08 12:00:00',
-                'updated_at' => '2025-11-08 21:56:04',
+                'created_at' => '2025-11-08 06:00:00',
+                'updated_at' => '2025-11-08 15:56:04',
             ),
-            235 => 
+            234 => 
             array (
                 'id' => 1250,
                 'reference_no' => 'er-20251109-095911',
@@ -17399,10 +17385,10 @@ Transport - 1880',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-09 12:00:00',
-                'updated_at' => '2025-11-09 21:59:11',
+                'created_at' => '2025-11-09 06:00:00',
+                'updated_at' => '2025-11-09 15:59:11',
             ),
-            236 => 
+            235 => 
             array (
                 'id' => 1251,
                 'reference_no' => 'er-20251109-095941',
@@ -17413,10 +17399,10 @@ Transport - 1880',
                 'cash_register_id' => 1,
                 'amount' => 500.0,
                 'note' => 'Shoe wash',
-                'created_at' => '2025-11-09 12:00:00',
-                'updated_at' => '2025-11-09 21:59:41',
+                'created_at' => '2025-11-09 06:00:00',
+                'updated_at' => '2025-11-09 15:59:41',
             ),
-            237 => 
+            236 => 
             array (
                 'id' => 1252,
                 'reference_no' => 'er-20251110-095343',
@@ -17427,10 +17413,10 @@ Transport - 1880',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-10 12:00:00',
-                'updated_at' => '2025-11-10 21:53:43',
+                'created_at' => '2025-11-10 06:00:00',
+                'updated_at' => '2025-11-10 15:53:43',
             ),
-            238 => 
+            237 => 
             array (
                 'id' => 1253,
                 'reference_no' => 'er-20251110-095406',
@@ -17441,10 +17427,10 @@ Transport - 1880',
                 'cash_register_id' => 1,
                 'amount' => 50.0,
                 'note' => NULL,
-                'created_at' => '2025-11-10 12:00:00',
-                'updated_at' => '2025-11-10 21:54:06',
+                'created_at' => '2025-11-10 06:00:00',
+                'updated_at' => '2025-11-10 15:54:06',
             ),
-            239 => 
+            238 => 
             array (
                 'id' => 1254,
                 'reference_no' => 'er-20251110-095420',
@@ -17455,10 +17441,10 @@ Transport - 1880',
                 'cash_register_id' => 1,
                 'amount' => 40.0,
                 'note' => NULL,
-                'created_at' => '2025-11-10 12:00:00',
-                'updated_at' => '2025-11-10 21:54:20',
+                'created_at' => '2025-11-10 06:00:00',
+                'updated_at' => '2025-11-10 15:54:20',
             ),
-            240 => 
+            239 => 
             array (
                 'id' => 1255,
                 'reference_no' => 'er-20251110-095437',
@@ -17469,10 +17455,10 @@ Transport - 1880',
                 'cash_register_id' => 1,
                 'amount' => 40000.0,
                 'note' => NULL,
-                'created_at' => '2025-11-10 12:00:00',
-                'updated_at' => '2025-11-10 21:54:37',
+                'created_at' => '2025-11-10 06:00:00',
+                'updated_at' => '2025-11-10 15:54:37',
             ),
-            241 => 
+            240 => 
             array (
                 'id' => 1256,
                 'reference_no' => 'er-20251110-095541',
@@ -17484,10 +17470,10 @@ Transport - 1880',
                 'amount' => 2570.0,
                 'note' => 'AC Wash - 2000
 Elect. Wire - 570',
-                'created_at' => '2025-11-10 12:00:00',
-                'updated_at' => '2025-11-10 21:55:41',
+                'created_at' => '2025-11-10 06:00:00',
+                'updated_at' => '2025-11-10 15:55:41',
             ),
-            242 => 
+            241 => 
             array (
                 'id' => 1257,
                 'reference_no' => 'er-20251111-095223',
@@ -17498,10 +17484,10 @@ Elect. Wire - 570',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-11 12:00:00',
-                'updated_at' => '2025-11-11 21:52:23',
+                'created_at' => '2025-11-11 06:00:00',
+                'updated_at' => '2025-11-11 15:52:23',
             ),
-            243 => 
+            242 => 
             array (
                 'id' => 1258,
                 'reference_no' => 'er-20251111-095257',
@@ -17513,10 +17499,10 @@ Elect. Wire - 570',
                 'amount' => 450.0,
                 'note' => 'Ell. eq - 370
 Repair - 80',
-                'created_at' => '2025-11-11 00:00:00',
-                'updated_at' => '2025-11-11 21:53:30',
+                'created_at' => '2025-11-10 18:00:00',
+                'updated_at' => '2025-11-11 15:53:30',
             ),
-            244 => 
+            243 => 
             array (
                 'id' => 1259,
                 'reference_no' => 'er-20251111-095356',
@@ -17527,10 +17513,10 @@ Repair - 80',
                 'cash_register_id' => 1,
                 'amount' => 425.0,
                 'note' => NULL,
-                'created_at' => '2025-11-11 12:00:00',
-                'updated_at' => '2025-11-11 21:53:56',
+                'created_at' => '2025-11-11 06:00:00',
+                'updated_at' => '2025-11-11 15:53:56',
             ),
-            245 => 
+            244 => 
             array (
                 'id' => 1260,
                 'reference_no' => 'er-20251112-094205',
@@ -17541,10 +17527,10 @@ Repair - 80',
                 'cash_register_id' => 1,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-12 12:00:00',
-                'updated_at' => '2025-11-12 21:42:05',
+                'created_at' => '2025-11-12 06:00:00',
+                'updated_at' => '2025-11-12 15:42:05',
             ),
-            246 => 
+            245 => 
             array (
                 'id' => 1261,
                 'reference_no' => 'er-20251112-094238',
@@ -17555,10 +17541,10 @@ Repair - 80',
                 'cash_register_id' => 1,
                 'amount' => 300.0,
                 'note' => 'Water Bill',
-                'created_at' => '2025-11-12 12:00:00',
-                'updated_at' => '2025-11-12 21:42:38',
+                'created_at' => '2025-11-12 06:00:00',
+                'updated_at' => '2025-11-12 15:42:38',
             ),
-            247 => 
+            246 => 
             array (
                 'id' => 1262,
                 'reference_no' => 'er-20251112-094251',
@@ -17569,10 +17555,10 @@ Repair - 80',
                 'cash_register_id' => 1,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-11-12 12:00:00',
-                'updated_at' => '2025-11-12 21:42:51',
+                'created_at' => '2025-11-12 06:00:00',
+                'updated_at' => '2025-11-12 15:42:51',
             ),
-            248 => 
+            247 => 
             array (
                 'id' => 1263,
                 'reference_no' => 'er-20251112-094317',
@@ -17583,10 +17569,10 @@ Repair - 80',
                 'cash_register_id' => 1,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-11-12 12:00:00',
-                'updated_at' => '2025-11-12 21:43:17',
+                'created_at' => '2025-11-12 06:00:00',
+                'updated_at' => '2025-11-12 15:43:17',
             ),
-            249 => 
+            248 => 
             array (
                 'id' => 1264,
                 'reference_no' => 'er-20251115-104216',
@@ -17597,10 +17583,10 @@ Repair - 80',
                 'cash_register_id' => NULL,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-13 12:00:00',
-                'updated_at' => '2025-11-15 22:42:16',
+                'created_at' => '2025-11-13 06:00:00',
+                'updated_at' => '2025-11-15 16:42:16',
             ),
-            250 => 
+            249 => 
             array (
                 'id' => 1265,
                 'reference_no' => 'er-20251115-104316',
@@ -17612,10 +17598,10 @@ Repair - 80',
                 'amount' => 410.0,
                 'note' => 'Donate - 110
 Mosjid - 300',
-                'created_at' => '2025-11-13 12:00:00',
-                'updated_at' => '2025-11-15 22:43:16',
+                'created_at' => '2025-11-13 06:00:00',
+                'updated_at' => '2025-11-15 16:43:16',
             ),
-            251 => 
+            250 => 
             array (
                 'id' => 1266,
                 'reference_no' => 'er-20251115-104340',
@@ -17626,10 +17612,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 80.0,
                 'note' => NULL,
-                'created_at' => '2025-11-13 12:00:00',
-                'updated_at' => '2025-11-15 22:43:40',
+                'created_at' => '2025-11-13 06:00:00',
+                'updated_at' => '2025-11-15 16:43:40',
             ),
-            252 => 
+            251 => 
             array (
                 'id' => 1267,
                 'reference_no' => 'er-20251115-104407',
@@ -17640,10 +17626,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 10.0,
                 'note' => NULL,
-                'created_at' => '2025-11-13 12:00:00',
-                'updated_at' => '2025-11-15 22:44:07',
+                'created_at' => '2025-11-13 06:00:00',
+                'updated_at' => '2025-11-15 16:44:07',
             ),
-            253 => 
+            252 => 
             array (
                 'id' => 1268,
                 'reference_no' => 'er-20251115-104541',
@@ -17654,10 +17640,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-15 12:00:00',
-                'updated_at' => '2025-11-15 22:45:41',
+                'created_at' => '2025-11-15 06:00:00',
+                'updated_at' => '2025-11-15 16:45:41',
             ),
-            254 => 
+            253 => 
             array (
                 'id' => 1269,
                 'reference_no' => 'er-20251115-104556',
@@ -17668,10 +17654,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-11-15 12:00:00',
-                'updated_at' => '2025-11-15 22:45:56',
+                'created_at' => '2025-11-15 06:00:00',
+                'updated_at' => '2025-11-15 16:45:56',
             ),
-            255 => 
+            254 => 
             array (
                 'id' => 1270,
                 'reference_no' => 'er-20251115-104611',
@@ -17682,10 +17668,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 70.0,
                 'note' => NULL,
-                'created_at' => '2025-11-15 12:00:00',
-                'updated_at' => '2025-11-15 22:46:11',
+                'created_at' => '2025-11-15 06:00:00',
+                'updated_at' => '2025-11-15 16:46:11',
             ),
-            256 => 
+            255 => 
             array (
                 'id' => 1271,
                 'reference_no' => 'er-20251115-104624',
@@ -17696,10 +17682,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 20.0,
                 'note' => NULL,
-                'created_at' => '2025-11-15 12:00:00',
-                'updated_at' => '2025-11-15 22:46:24',
+                'created_at' => '2025-11-15 06:00:00',
+                'updated_at' => '2025-11-15 16:46:24',
             ),
-            257 => 
+            256 => 
             array (
                 'id' => 1272,
                 'reference_no' => 'er-20251117-095812',
@@ -17710,10 +17696,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-16 12:00:00',
-                'updated_at' => '2025-11-17 21:58:12',
+                'created_at' => '2025-11-16 06:00:00',
+                'updated_at' => '2025-11-17 15:58:12',
             ),
-            258 => 
+            257 => 
             array (
                 'id' => 1273,
                 'reference_no' => 'er-20251117-095831',
@@ -17724,10 +17710,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 5000.0,
                 'note' => NULL,
-                'created_at' => '2025-11-16 12:00:00',
-                'updated_at' => '2025-11-17 21:58:31',
+                'created_at' => '2025-11-16 06:00:00',
+                'updated_at' => '2025-11-17 15:58:31',
             ),
-            259 => 
+            258 => 
             array (
                 'id' => 1274,
                 'reference_no' => 'er-20251117-095902',
@@ -17738,10 +17724,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 3420.0,
                 'note' => 'Jump pur.',
-                'created_at' => '2025-11-16 12:00:00',
-                'updated_at' => '2025-11-17 21:59:02',
+                'created_at' => '2025-11-16 06:00:00',
+                'updated_at' => '2025-11-17 15:59:02',
             ),
-            260 => 
+            259 => 
             array (
                 'id' => 1275,
                 'reference_no' => 'er-20251117-095920',
@@ -17752,10 +17738,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 1950.0,
                 'note' => NULL,
-                'created_at' => '2025-11-16 12:00:00',
-                'updated_at' => '2025-11-17 21:59:20',
+                'created_at' => '2025-11-16 06:00:00',
+                'updated_at' => '2025-11-17 15:59:20',
             ),
-            261 => 
+            260 => 
             array (
                 'id' => 1276,
                 'reference_no' => 'er-20251117-095934',
@@ -17766,10 +17752,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 60.0,
                 'note' => NULL,
-                'created_at' => '2025-11-16 12:00:00',
-                'updated_at' => '2025-11-17 21:59:34',
+                'created_at' => '2025-11-16 06:00:00',
+                'updated_at' => '2025-11-17 15:59:34',
             ),
-            262 => 
+            261 => 
             array (
                 'id' => 1277,
                 'reference_no' => 'er-20251117-100242',
@@ -17780,10 +17766,10 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 120.0,
                 'note' => NULL,
-                'created_at' => '2025-11-17 12:00:00',
-                'updated_at' => '2025-11-17 22:02:42',
+                'created_at' => '2025-11-17 06:00:00',
+                'updated_at' => '2025-11-17 16:02:42',
             ),
-            263 => 
+            262 => 
             array (
                 'id' => 1278,
                 'reference_no' => 'er-20251117-100257',
@@ -17794,8 +17780,3933 @@ Mosjid - 300',
                 'cash_register_id' => NULL,
                 'amount' => 20.0,
                 'note' => 'Super glue',
-                'created_at' => '2025-11-17 12:00:00',
-                'updated_at' => '2025-11-17 22:02:57',
+                'created_at' => '2025-11-17 06:00:00',
+                'updated_at' => '2025-11-17 16:02:57',
+            ),
+            263 => 
+            array (
+                'id' => 1279,
+                'reference_no' => 'er-20251119-061030',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-18 06:00:00',
+                'updated_at' => '2025-11-19 12:10:30',
+            ),
+            264 => 
+            array (
+                'id' => 1280,
+                'reference_no' => 'er-20251119-093703',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-19 06:00:00',
+                'updated_at' => '2025-11-19 15:37:03',
+            ),
+            265 => 
+            array (
+                'id' => 1281,
+                'reference_no' => 'er-20251119-093739',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1950.0,
+                'note' => NULL,
+                'created_at' => '2025-11-19 06:00:00',
+                'updated_at' => '2025-11-19 15:37:39',
+            ),
+            266 => 
+            array (
+                'id' => 1282,
+                'reference_no' => 'er-20251120-095024',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-20 12:00:00',
+                'updated_at' => '2025-11-20 21:50:24',
+            ),
+            267 => 
+            array (
+                'id' => 1283,
+                'reference_no' => 'er-20251120-095123',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60.0,
+                'note' => NULL,
+                'created_at' => '2025-11-20 12:00:00',
+                'updated_at' => '2025-11-20 21:51:23',
+            ),
+            268 => 
+            array (
+                'id' => 1284,
+                'reference_no' => 'er-20251120-095136',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2025-11-20 12:00:00',
+                'updated_at' => '2025-11-20 21:51:36',
+            ),
+            269 => 
+            array (
+                'id' => 1285,
+                'reference_no' => 'er-20251120-095230',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 70.0,
+                'note' => 'Repair',
+                'created_at' => '2025-11-20 12:00:00',
+                'updated_at' => '2025-11-20 21:52:30',
+            ),
+            270 => 
+            array (
+                'id' => 1286,
+                'reference_no' => 'er-20251122-101842',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-11-21 12:00:00',
+                'updated_at' => '2025-11-22 22:18:42',
+            ),
+            271 => 
+            array (
+                'id' => 1287,
+                'reference_no' => 'er-20251122-101901',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-11-21 12:00:00',
+                'updated_at' => '2025-11-22 22:19:01',
+            ),
+            272 => 
+            array (
+                'id' => 1288,
+                'reference_no' => 'er-20251122-102055',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-11-22 12:00:00',
+                'updated_at' => '2025-11-22 22:20:55',
+            ),
+            273 => 
+            array (
+                'id' => 1289,
+                'reference_no' => 'er-20251122-102106',
+                'expense_category_id' => 30,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2025-11-22 12:00:00',
+                'updated_at' => '2025-11-22 22:21:06',
+            ),
+            274 => 
+            array (
+                'id' => 1290,
+                'reference_no' => 'er-20251122-102121',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2025-11-22 12:00:00',
+                'updated_at' => '2025-11-22 22:21:21',
+            ),
+            275 => 
+            array (
+                'id' => 1291,
+                'reference_no' => 'er-20251124-100232',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-11-23 12:00:00',
+                'updated_at' => '2025-11-24 22:02:32',
+            ),
+            276 => 
+            array (
+                'id' => 1292,
+                'reference_no' => 'er-20251124-100247',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-11-23 12:00:00',
+                'updated_at' => '2025-11-24 22:02:47',
+            ),
+            277 => 
+            array (
+                'id' => 1293,
+                'reference_no' => 'er-20251124-100309',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2025-11-23 12:00:00',
+                'updated_at' => '2025-11-24 22:03:09',
+            ),
+            278 => 
+            array (
+                'id' => 1294,
+                'reference_no' => 'er-20251124-100403',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-24 12:00:00',
+                'updated_at' => '2025-11-24 22:04:03',
+            ),
+            279 => 
+            array (
+                'id' => 1295,
+                'reference_no' => 'er-20251124-100428',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 4825.0,
+                'note' => NULL,
+                'created_at' => '2025-11-24 12:00:00',
+                'updated_at' => '2025-11-24 22:04:28',
+            ),
+            280 => 
+            array (
+                'id' => 1296,
+                'reference_no' => 'er-20251124-100448',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60.0,
+                'note' => 'Repair',
+                'created_at' => '2025-11-24 12:00:00',
+                'updated_at' => '2025-11-24 22:04:48',
+            ),
+            281 => 
+            array (
+                'id' => 1297,
+                'reference_no' => 'er-20251125-095259',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-25 12:00:00',
+                'updated_at' => '2025-11-25 21:52:59',
+            ),
+            282 => 
+            array (
+                'id' => 1298,
+                'reference_no' => 'er-20251125-095412',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => NULL,
+                'created_at' => '2025-11-25 12:00:00',
+                'updated_at' => '2025-11-25 21:54:12',
+            ),
+            283 => 
+            array (
+                'id' => 1299,
+                'reference_no' => 'er-20251125-095440',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => 'Repair',
+                'created_at' => '2025-11-25 12:00:00',
+                'updated_at' => '2025-11-25 21:54:40',
+            ),
+            284 => 
+            array (
+                'id' => 1300,
+                'reference_no' => 'er-20251126-095937',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-26 12:00:00',
+                'updated_at' => '2025-11-26 21:59:37',
+            ),
+            285 => 
+            array (
+                'id' => 1301,
+                'reference_no' => 'er-20251126-100028',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1210.0,
+                'note' => 'Internet bill - 1050
+El. wire - 160',
+                'created_at' => '2025-11-26 00:00:00',
+                'updated_at' => '2025-11-26 22:01:26',
+            ),
+            286 => 
+            array (
+                'id' => 1302,
+                'reference_no' => 'er-20251126-100141',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 3835.0,
+                'note' => NULL,
+                'created_at' => '2025-11-26 12:00:00',
+                'updated_at' => '2025-11-26 22:01:41',
+            ),
+            287 => 
+            array (
+                'id' => 1303,
+                'reference_no' => 'er-20251127-095810',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-27 12:00:00',
+                'updated_at' => '2025-11-27 21:58:10',
+            ),
+            288 => 
+            array (
+                'id' => 1304,
+                'reference_no' => 'er-20251127-095848',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2025-11-27 12:00:00',
+                'updated_at' => '2025-11-27 21:58:48',
+            ),
+            289 => 
+            array (
+                'id' => 1305,
+                'reference_no' => 'er-20251127-095928',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 690.0,
+                'note' => NULL,
+                'created_at' => '2025-11-27 12:00:00',
+                'updated_at' => '2025-11-27 21:59:28',
+            ),
+            290 => 
+            array (
+                'id' => 1306,
+                'reference_no' => 'er-20251209-084432',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-11-28 12:00:00',
+                'updated_at' => '2025-12-09 20:44:32',
+            ),
+            291 => 
+            array (
+                'id' => 1307,
+                'reference_no' => 'er-20251209-093909',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-28 12:00:00',
+                'updated_at' => '2025-12-09 21:39:09',
+            ),
+            292 => 
+            array (
+                'id' => 1308,
+                'reference_no' => 'er-20251209-094843',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-29 12:00:00',
+                'updated_at' => '2025-12-09 21:48:43',
+            ),
+            293 => 
+            array (
+                'id' => 1309,
+                'reference_no' => 'er-20251209-094859',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 92.0,
+                'note' => NULL,
+                'created_at' => '2025-11-29 12:00:00',
+                'updated_at' => '2025-12-09 21:48:59',
+            ),
+            294 => 
+            array (
+                'id' => 1310,
+                'reference_no' => 'er-20251209-094914',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2025-11-29 12:00:00',
+                'updated_at' => '2025-12-09 21:49:14',
+            ),
+            295 => 
+            array (
+                'id' => 1311,
+                'reference_no' => 'er-20251209-095029',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-11-30 12:00:00',
+                'updated_at' => '2025-12-09 21:50:29',
+            ),
+            296 => 
+            array (
+                'id' => 1312,
+                'reference_no' => 'er-20251209-095229',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-11-30 12:00:00',
+                'updated_at' => '2025-12-09 21:52:29',
+            ),
+            297 => 
+            array (
+                'id' => 1313,
+                'reference_no' => 'er-20251209-095415',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 300.0,
+                'note' => 'Labour court',
+                'created_at' => '2025-11-30 12:00:00',
+                'updated_at' => '2025-12-09 21:54:15',
+            ),
+            298 => 
+            array (
+                'id' => 1314,
+                'reference_no' => 'er-20251209-095520',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2025-11-30 12:00:00',
+                'updated_at' => '2025-12-09 21:55:20',
+            ),
+            299 => 
+            array (
+                'id' => 1315,
+                'reference_no' => 'er-20251209-095551',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2025-11-30 12:00:00',
+                'updated_at' => '2025-12-09 21:55:51',
+            ),
+            300 => 
+            array (
+                'id' => 1316,
+                'reference_no' => 'er-20251209-095700',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-01 12:00:00',
+                'updated_at' => '2025-12-09 21:57:00',
+            ),
+            301 => 
+            array (
+                'id' => 1317,
+                'reference_no' => 'er-20251209-095839',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-02 12:00:00',
+                'updated_at' => '2025-12-09 21:58:39',
+            ),
+            302 => 
+            array (
+                'id' => 1318,
+                'reference_no' => 'er-20251209-095907',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 200.0,
+                'note' => NULL,
+                'created_at' => '2025-12-02 12:00:00',
+                'updated_at' => '2025-12-09 21:59:07',
+            ),
+            303 => 
+            array (
+                'id' => 1319,
+                'reference_no' => 'er-20251209-095953',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 210.0,
+                'note' => 'Water Bill - 150
+Repair - 60',
+                'created_at' => '2025-12-02 12:00:00',
+                'updated_at' => '2025-12-09 21:59:53',
+            ),
+            304 => 
+            array (
+                'id' => 1320,
+                'reference_no' => 'er-20251209-100010',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2025-12-02 12:00:00',
+                'updated_at' => '2025-12-09 22:00:10',
+            ),
+            305 => 
+            array (
+                'id' => 1321,
+                'reference_no' => 'er-20251209-100131',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-03 12:00:00',
+                'updated_at' => '2025-12-09 22:01:31',
+            ),
+            306 => 
+            array (
+                'id' => 1322,
+                'reference_no' => 'er-20251209-100248',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-04 12:00:00',
+                'updated_at' => '2025-12-09 22:02:48',
+            ),
+            307 => 
+            array (
+                'id' => 1323,
+                'reference_no' => 'er-20251209-100318',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-04 12:00:00',
+                'updated_at' => '2025-12-09 22:03:18',
+            ),
+            308 => 
+            array (
+                'id' => 1324,
+                'reference_no' => 'er-20251209-100336',
+                'expense_category_id' => 29,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40000.0,
+                'note' => NULL,
+                'created_at' => '2025-12-04 12:00:00',
+                'updated_at' => '2025-12-09 22:03:36',
+            ),
+            309 => 
+            array (
+                'id' => 1325,
+                'reference_no' => 'er-20251209-100400',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-12-04 12:00:00',
+                'updated_at' => '2025-12-09 22:04:00',
+            ),
+            310 => 
+            array (
+                'id' => 1326,
+                'reference_no' => 'er-20251209-101539',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 70.0,
+                'note' => 'Repair',
+                'created_at' => '2025-12-05 12:00:00',
+                'updated_at' => '2025-12-09 22:15:39',
+            ),
+            311 => 
+            array (
+                'id' => 1327,
+                'reference_no' => 'er-20251209-101559',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-12-05 12:00:00',
+                'updated_at' => '2025-12-09 22:15:59',
+            ),
+            312 => 
+            array (
+                'id' => 1328,
+                'reference_no' => 'er-20251209-101813',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-06 12:00:00',
+                'updated_at' => '2025-12-09 22:18:13',
+            ),
+            313 => 
+            array (
+                'id' => 1329,
+                'reference_no' => 'er-20251209-101827',
+                'expense_category_id' => 26,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 500.0,
+                'note' => NULL,
+                'created_at' => '2025-12-06 12:00:00',
+                'updated_at' => '2025-12-09 22:18:27',
+            ),
+            314 => 
+            array (
+                'id' => 1330,
+                'reference_no' => 'er-20251209-101937',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => NULL,
+                'created_at' => '2025-12-06 12:00:00',
+                'updated_at' => '2025-12-09 22:19:37',
+            ),
+            315 => 
+            array (
+                'id' => 1331,
+                'reference_no' => 'er-20251209-102107',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 525.0,
+                'note' => 'Godown Internet bill',
+                'created_at' => '2025-12-06 12:00:00',
+                'updated_at' => '2025-12-09 22:21:07',
+            ),
+            316 => 
+            array (
+                'id' => 1332,
+                'reference_no' => 'er-20251209-102127',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-12-06 12:00:00',
+                'updated_at' => '2025-12-09 22:21:27',
+            ),
+            317 => 
+            array (
+                'id' => 1333,
+                'reference_no' => 'er-20251209-102326',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-07 12:00:00',
+                'updated_at' => '2025-12-09 22:23:26',
+            ),
+            318 => 
+            array (
+                'id' => 1334,
+                'reference_no' => 'er-20251209-102402',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 80.0,
+                'note' => 'Repair',
+                'created_at' => '2025-12-07 12:00:00',
+                'updated_at' => '2025-12-09 22:24:02',
+            ),
+            319 => 
+            array (
+                'id' => 1335,
+                'reference_no' => 'er-20251209-102421',
+                'expense_category_id' => 23,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 13000.0,
+                'note' => NULL,
+                'created_at' => '2025-12-07 12:00:00',
+                'updated_at' => '2025-12-09 22:24:21',
+            ),
+            320 => 
+            array (
+                'id' => 1336,
+                'reference_no' => 'er-20251209-102437',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2025-12-07 12:00:00',
+                'updated_at' => '2025-12-09 22:24:37',
+            ),
+            321 => 
+            array (
+                'id' => 1337,
+                'reference_no' => 'er-20251209-103117',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-08 12:00:00',
+                'updated_at' => '2025-12-09 22:31:17',
+            ),
+            322 => 
+            array (
+                'id' => 1338,
+                'reference_no' => 'er-20251209-103213',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1000.0,
+                'note' => 'Ellect. mistri',
+                'created_at' => '2025-12-08 00:00:00',
+                'updated_at' => '2025-12-09 22:32:27',
+            ),
+            323 => 
+            array (
+                'id' => 1339,
+                'reference_no' => 'er-20251209-103344',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2500.0,
+                'note' => 'Dhaka Transport',
+                'created_at' => '2025-12-08 12:00:00',
+                'updated_at' => '2025-12-09 22:33:44',
+            ),
+            324 => 
+            array (
+                'id' => 1340,
+                'reference_no' => 'er-20251209-103403',
+                'expense_category_id' => 30,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 400.0,
+                'note' => NULL,
+                'created_at' => '2025-12-08 12:00:00',
+                'updated_at' => '2025-12-09 22:34:03',
+            ),
+            325 => 
+            array (
+                'id' => 1341,
+                'reference_no' => 'er-20251209-103429',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 6865.0,
+                'note' => NULL,
+                'created_at' => '2025-12-08 12:00:00',
+                'updated_at' => '2025-12-09 22:34:29',
+            ),
+            326 => 
+            array (
+                'id' => 1342,
+                'reference_no' => 'er-20251209-103451',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 80.0,
+                'note' => NULL,
+                'created_at' => '2025-12-08 12:00:00',
+                'updated_at' => '2025-12-09 22:34:51',
+            ),
+            327 => 
+            array (
+                'id' => 1343,
+                'reference_no' => 'er-20251209-103510',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-12-08 12:00:00',
+                'updated_at' => '2025-12-09 22:35:10',
+            ),
+            328 => 
+            array (
+                'id' => 1344,
+                'reference_no' => 'er-20251209-103755',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-09 12:00:00',
+                'updated_at' => '2025-12-09 22:37:55',
+            ),
+            329 => 
+            array (
+                'id' => 1345,
+                'reference_no' => 'er-20251209-103848',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 8300.0,
+                'note' => 'Signboard advance - 2000
+Chair - 6300',
+                'created_at' => '2025-12-09 12:00:00',
+                'updated_at' => '2025-12-09 22:38:48',
+            ),
+            330 => 
+            array (
+                'id' => 1346,
+                'reference_no' => 'er-20251209-104004',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1450.0,
+                'note' => NULL,
+                'created_at' => '2025-12-09 12:00:00',
+                'updated_at' => '2025-12-09 22:40:04',
+            ),
+            331 => 
+            array (
+                'id' => 1347,
+                'reference_no' => 'er-20251210-102124',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-10 12:00:00',
+                'updated_at' => '2025-12-10 22:21:24',
+            ),
+            332 => 
+            array (
+                'id' => 1348,
+                'reference_no' => 'er-20251210-102153',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1000.0,
+                'note' => 'Muajjin',
+                'created_at' => '2025-12-10 12:00:00',
+                'updated_at' => '2025-12-10 22:21:53',
+            ),
+            333 => 
+            array (
+                'id' => 1349,
+                'reference_no' => 'er-20251210-102208',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2025-12-10 12:00:00',
+                'updated_at' => '2025-12-10 22:22:08',
+            ),
+            334 => 
+            array (
+                'id' => 1350,
+                'reference_no' => 'er-20251210-102228',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 80.0,
+                'note' => 'Jharu',
+                'created_at' => '2025-12-10 12:00:00',
+                'updated_at' => '2025-12-10 22:22:28',
+            ),
+            335 => 
+            array (
+                'id' => 1351,
+                'reference_no' => 'er-20251211-114114',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-11 12:00:00',
+                'updated_at' => '2025-12-11 23:41:14',
+            ),
+            336 => 
+            array (
+                'id' => 1352,
+                'reference_no' => 'er-20251211-114136',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2025-12-11 12:00:00',
+                'updated_at' => '2025-12-11 23:41:36',
+            ),
+            337 => 
+            array (
+                'id' => 1353,
+                'reference_no' => 'er-20251211-114150',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1580.0,
+                'note' => NULL,
+                'created_at' => '2025-12-11 12:00:00',
+                'updated_at' => '2025-12-11 23:41:50',
+            ),
+            338 => 
+            array (
+                'id' => 1354,
+                'reference_no' => 'er-20251211-114212',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 200.0,
+                'note' => 'Food',
+                'created_at' => '2025-12-11 12:00:00',
+                'updated_at' => '2025-12-11 23:42:12',
+            ),
+            339 => 
+            array (
+                'id' => 1355,
+                'reference_no' => 'er-20251211-114230',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 4185.0,
+                'note' => NULL,
+                'created_at' => '2025-12-11 12:00:00',
+                'updated_at' => '2025-12-11 23:42:30',
+            ),
+            340 => 
+            array (
+                'id' => 1356,
+                'reference_no' => 'er-20251211-114813',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1110.0,
+                'note' => 'Imrul',
+                'created_at' => '2025-12-11 12:00:00',
+                'updated_at' => '2025-12-11 23:48:13',
+            ),
+            341 => 
+            array (
+                'id' => 1357,
+                'reference_no' => 'er-20251212-084549',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2025-12-12 12:00:00',
+                'updated_at' => '2025-12-12 20:45:49',
+            ),
+            342 => 
+            array (
+                'id' => 1358,
+                'reference_no' => 'er-20251213-090714',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-13 12:00:00',
+                'updated_at' => '2025-12-13 21:07:14',
+            ),
+            343 => 
+            array (
+                'id' => 1359,
+                'reference_no' => 'er-20251213-090733',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 300.0,
+                'note' => 'Mosjid',
+                'created_at' => '2025-12-13 12:00:00',
+                'updated_at' => '2025-12-13 21:07:33',
+            ),
+            344 => 
+            array (
+                'id' => 1360,
+                'reference_no' => 'er-20251213-091151',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 325.0,
+                'note' => 'Polythene	85
+Super Glue	30
+Repair	60
+Shoe Wash	150',
+                'created_at' => '2025-12-13 00:00:00',
+                'updated_at' => '2025-12-13 22:22:05',
+            ),
+            345 => 
+            array (
+                'id' => 1361,
+                'reference_no' => 'er-20251213-091213',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2025-12-13 12:00:00',
+                'updated_at' => '2025-12-13 21:12:13',
+            ),
+            346 => 
+            array (
+                'id' => 1362,
+                'reference_no' => 'er-20251213-091234',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-12-13 12:00:00',
+                'updated_at' => '2025-12-13 21:12:34',
+            ),
+            347 => 
+            array (
+                'id' => 1363,
+                'reference_no' => 'er-20251214-095248',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-14 12:00:00',
+                'updated_at' => '2025-12-14 21:52:48',
+            ),
+            348 => 
+            array (
+                'id' => 1364,
+                'reference_no' => 'er-20251214-095329',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 800.0,
+                'note' => 'Pos roll',
+                'created_at' => '2025-12-14 12:00:00',
+                'updated_at' => '2025-12-14 21:53:29',
+            ),
+            349 => 
+            array (
+                'id' => 1365,
+                'reference_no' => 'er-20251214-095344',
+                'expense_category_id' => 33,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60000.0,
+                'note' => NULL,
+                'created_at' => '2025-12-14 12:00:00',
+                'updated_at' => '2025-12-14 21:53:44',
+            ),
+            350 => 
+            array (
+                'id' => 1366,
+                'reference_no' => 'er-20251214-095357',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2025-12-14 12:00:00',
+                'updated_at' => '2025-12-14 21:53:57',
+            ),
+            351 => 
+            array (
+                'id' => 1367,
+                'reference_no' => 'er-20251214-095415',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2025-12-14 12:00:00',
+                'updated_at' => '2025-12-14 21:54:15',
+            ),
+            352 => 
+            array (
+                'id' => 1368,
+                'reference_no' => 'er-20251214-095431',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 4540.0,
+                'note' => NULL,
+                'created_at' => '2025-12-14 12:00:00',
+                'updated_at' => '2025-12-14 21:54:31',
+            ),
+            353 => 
+            array (
+                'id' => 1369,
+                'reference_no' => 'er-20251216-100414',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-15 12:00:00',
+                'updated_at' => '2025-12-16 22:04:14',
+            ),
+            354 => 
+            array (
+                'id' => 1370,
+                'reference_no' => 'er-20251216-100440',
+                'expense_category_id' => 32,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60000.0,
+                'note' => 'Oct+Nov',
+                'created_at' => '2025-12-15 00:00:00',
+                'updated_at' => '2025-12-30 20:39:30',
+            ),
+            355 => 
+            array (
+                'id' => 1371,
+                'reference_no' => 'er-20251216-100457',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-15 12:00:00',
+                'updated_at' => '2025-12-16 22:04:57',
+            ),
+            356 => 
+            array (
+                'id' => 1372,
+                'reference_no' => 'er-20251216-100523',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2025-12-15 12:00:00',
+                'updated_at' => '2025-12-16 22:05:23',
+            ),
+            357 => 
+            array (
+                'id' => 1373,
+                'reference_no' => 'er-20251216-101251',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-16 12:00:00',
+                'updated_at' => '2025-12-16 22:12:51',
+            ),
+            358 => 
+            array (
+                'id' => 1374,
+                'reference_no' => 'er-20251216-101308',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2025-12-16 12:00:00',
+                'updated_at' => '2025-12-16 22:13:08',
+            ),
+            359 => 
+            array (
+                'id' => 1375,
+                'reference_no' => 'er-20251216-101331',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60.0,
+                'note' => 'Repair',
+                'created_at' => '2025-12-16 12:00:00',
+                'updated_at' => '2025-12-16 22:13:31',
+            ),
+            360 => 
+            array (
+                'id' => 1376,
+                'reference_no' => 'er-20251216-101344',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2025-12-16 12:00:00',
+                'updated_at' => '2025-12-16 22:13:44',
+            ),
+            361 => 
+            array (
+                'id' => 1377,
+                'reference_no' => 'er-20251216-101358',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => NULL,
+                'created_at' => '2025-12-16 12:00:00',
+                'updated_at' => '2025-12-16 22:13:58',
+            ),
+            362 => 
+            array (
+                'id' => 1378,
+                'reference_no' => 'er-20251216-101418',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2790.0,
+                'note' => NULL,
+                'created_at' => '2025-12-16 12:00:00',
+                'updated_at' => '2025-12-16 22:14:18',
+            ),
+            363 => 
+            array (
+                'id' => 1379,
+                'reference_no' => 'er-20251217-095614',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-17 12:00:00',
+                'updated_at' => '2025-12-17 21:56:14',
+            ),
+            364 => 
+            array (
+                'id' => 1380,
+                'reference_no' => 'er-20251217-100311',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 4000.0,
+                'note' => 'Signboard advance',
+                'created_at' => '2025-12-17 12:00:00',
+                'updated_at' => '2025-12-17 22:03:11',
+            ),
+            365 => 
+            array (
+                'id' => 1381,
+                'reference_no' => 'er-20251217-100330',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1530.0,
+                'note' => NULL,
+                'created_at' => '2025-12-17 12:00:00',
+                'updated_at' => '2025-12-17 22:03:30',
+            ),
+            366 => 
+            array (
+                'id' => 1382,
+                'reference_no' => 'er-20251218-103311',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-18 12:00:00',
+                'updated_at' => '2025-12-18 22:33:11',
+            ),
+            367 => 
+            array (
+                'id' => 1383,
+                'reference_no' => 'er-20251218-103359',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2025-12-18 12:00:00',
+                'updated_at' => '2025-12-18 22:33:59',
+            ),
+            368 => 
+            array (
+                'id' => 1384,
+                'reference_no' => 'er-20251220-094823',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 6420.0,
+                'note' => NULL,
+                'created_at' => '2025-12-19 12:00:00',
+                'updated_at' => '2025-12-20 21:48:23',
+            ),
+            369 => 
+            array (
+                'id' => 1385,
+                'reference_no' => 'er-20251220-095341',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 850.0,
+                'note' => NULL,
+                'created_at' => '2025-12-20 00:00:00',
+                'updated_at' => '2025-12-20 22:08:56',
+            ),
+            370 => 
+            array (
+                'id' => 1386,
+                'reference_no' => 'er-20251220-095352',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 280.0,
+                'note' => NULL,
+                'created_at' => '2025-12-20 12:00:00',
+                'updated_at' => '2025-12-20 21:53:52',
+            ),
+            371 => 
+            array (
+                'id' => 1387,
+                'reference_no' => 'er-20251220-100323',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-12-20 12:00:00',
+                'updated_at' => '2025-12-20 22:03:23',
+            ),
+            372 => 
+            array (
+                'id' => 1388,
+                'reference_no' => 'er-20251221-101125',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-21 12:00:00',
+                'updated_at' => '2025-12-21 22:11:25',
+            ),
+            373 => 
+            array (
+                'id' => 1389,
+                'reference_no' => 'er-20251221-101141',
+                'expense_category_id' => 30,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2025-12-21 12:00:00',
+                'updated_at' => '2025-12-21 22:11:41',
+            ),
+            374 => 
+            array (
+                'id' => 1390,
+                'reference_no' => 'er-20251221-101205',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2245.0,
+                'note' => NULL,
+                'created_at' => '2025-12-21 12:00:00',
+                'updated_at' => '2025-12-21 22:12:05',
+            ),
+            375 => 
+            array (
+                'id' => 1391,
+                'reference_no' => 'er-20251221-101237',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 12000.0,
+                'note' => 'Bkash payment',
+                'created_at' => '2025-12-21 12:00:00',
+                'updated_at' => '2025-12-21 22:12:37',
+            ),
+            376 => 
+            array (
+                'id' => 1392,
+                'reference_no' => 'er-20251222-093918',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-22 12:00:00',
+                'updated_at' => '2025-12-22 21:39:18',
+            ),
+            377 => 
+            array (
+                'id' => 1393,
+                'reference_no' => 'er-20251222-093929',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1490.0,
+                'note' => NULL,
+                'created_at' => '2025-12-22 12:00:00',
+                'updated_at' => '2025-12-22 21:39:29',
+            ),
+            378 => 
+            array (
+                'id' => 1394,
+                'reference_no' => 'er-20251223-100713',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-23 12:00:00',
+                'updated_at' => '2025-12-23 22:07:13',
+            ),
+            379 => 
+            array (
+                'id' => 1395,
+                'reference_no' => 'er-20251223-100805',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-12-23 12:00:00',
+                'updated_at' => '2025-12-23 22:08:05',
+            ),
+            380 => 
+            array (
+                'id' => 1396,
+                'reference_no' => 'er-20251223-100846',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 220.0,
+                'note' => 'Room spray',
+                'created_at' => '2025-12-23 12:00:00',
+                'updated_at' => '2025-12-23 22:08:46',
+            ),
+            381 => 
+            array (
+                'id' => 1397,
+                'reference_no' => 'er-20251224-101041',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-24 12:00:00',
+                'updated_at' => '2025-12-24 22:10:41',
+            ),
+            382 => 
+            array (
+                'id' => 1398,
+                'reference_no' => 'er-20251224-101120',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 800.0,
+                'note' => 'Pyana',
+                'created_at' => '2025-12-24 12:00:00',
+                'updated_at' => '2025-12-24 22:11:20',
+            ),
+            383 => 
+            array (
+                'id' => 1399,
+                'reference_no' => 'er-20251225-101639',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-25 12:00:00',
+                'updated_at' => '2025-12-25 22:16:39',
+            ),
+            384 => 
+            array (
+                'id' => 1400,
+                'reference_no' => 'er-20251225-102157',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5100.0,
+                'note' => 'Signboard - 5000
+Print - 100',
+                'created_at' => '2025-12-25 12:00:00',
+                'updated_at' => '2025-12-25 22:21:57',
+            ),
+            385 => 
+            array (
+                'id' => 1401,
+                'reference_no' => 'er-20251225-102212',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2025-12-25 12:00:00',
+                'updated_at' => '2025-12-25 22:22:12',
+            ),
+            386 => 
+            array (
+                'id' => 1402,
+                'reference_no' => 'er-20251225-102247',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1450.0,
+                'note' => NULL,
+                'created_at' => '2025-12-25 12:00:00',
+                'updated_at' => '2025-12-25 22:22:47',
+            ),
+            387 => 
+            array (
+                'id' => 1403,
+                'reference_no' => 'er-20251226-093152',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 3985.0,
+                'note' => 'Decoration - 1500
+Print - 140
+Food - 1295
+Internet Bill - 1050',
+                'created_at' => '2025-12-26 00:00:00',
+                'updated_at' => '2025-12-26 21:33:22',
+            ),
+            388 => 
+            array (
+                'id' => 1404,
+                'reference_no' => 'er-20251226-093219',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1345.0,
+                'note' => NULL,
+                'created_at' => '2025-12-26 12:00:00',
+                'updated_at' => '2025-12-26 21:32:19',
+            ),
+            389 => 
+            array (
+                'id' => 1405,
+                'reference_no' => 'er-20251227-095920',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => NULL,
+                'created_at' => '2025-12-27 12:00:00',
+                'updated_at' => '2025-12-27 21:59:20',
+            ),
+            390 => 
+            array (
+                'id' => 1406,
+                'reference_no' => 'er-20251227-095952',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-12-27 12:00:00',
+                'updated_at' => '2025-12-27 21:59:52',
+            ),
+            391 => 
+            array (
+                'id' => 1407,
+                'reference_no' => 'er-20251227-100024',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-27 12:00:00',
+                'updated_at' => '2025-12-27 22:00:24',
+            ),
+            392 => 
+            array (
+                'id' => 1408,
+                'reference_no' => 'er-20251228-095932',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2025-12-28 12:00:00',
+                'updated_at' => '2025-12-28 21:59:32',
+            ),
+            393 => 
+            array (
+                'id' => 1409,
+                'reference_no' => 'er-20251228-095952',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 10.0,
+                'note' => NULL,
+                'created_at' => '2025-12-28 12:00:00',
+                'updated_at' => '2025-12-28 21:59:52',
+            ),
+            394 => 
+            array (
+                'id' => 1410,
+                'reference_no' => 'er-20251228-100014',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2625.0,
+                'note' => NULL,
+                'created_at' => '2025-12-28 12:00:00',
+                'updated_at' => '2025-12-28 22:00:14',
+            ),
+            395 => 
+            array (
+                'id' => 1411,
+                'reference_no' => 'er-20251228-100034',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => 'Super glue',
+                'created_at' => '2025-12-28 12:00:00',
+                'updated_at' => '2025-12-28 22:00:34',
+            ),
+            396 => 
+            array (
+                'id' => 1412,
+                'reference_no' => 'er-20251229-102946',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-29 12:00:00',
+                'updated_at' => '2025-12-29 22:29:46',
+            ),
+            397 => 
+            array (
+                'id' => 1413,
+                'reference_no' => 'er-20251229-103015',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 3910.0,
+                'note' => NULL,
+                'created_at' => '2025-12-29 12:00:00',
+                'updated_at' => '2025-12-29 22:30:15',
+            ),
+            398 => 
+            array (
+                'id' => 1414,
+                'reference_no' => 'er-20251229-103112',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2000.0,
+                'note' => 'Mistri',
+                'created_at' => '2025-12-29 12:00:00',
+                'updated_at' => '2025-12-29 22:31:12',
+            ),
+            399 => 
+            array (
+                'id' => 1415,
+                'reference_no' => 'er-20251230-094910',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-30 12:00:00',
+                'updated_at' => '2025-12-30 21:49:10',
+            ),
+            400 => 
+            array (
+                'id' => 1416,
+                'reference_no' => 'er-20251230-094947',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5805.0,
+                'note' => NULL,
+                'created_at' => '2025-12-30 12:00:00',
+                'updated_at' => '2025-12-30 21:49:47',
+            ),
+            401 => 
+            array (
+                'id' => 1417,
+                'reference_no' => 'er-20251230-095017',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => 'Cleaner',
+                'created_at' => '2025-12-30 12:00:00',
+                'updated_at' => '2025-12-30 21:50:17',
+            ),
+            402 => 
+            array (
+                'id' => 1418,
+                'reference_no' => 'er-20251230-095044',
+                'expense_category_id' => 32,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30000.0,
+                'note' => NULL,
+                'created_at' => '2025-12-30 12:00:00',
+                'updated_at' => '2025-12-30 21:50:44',
+            ),
+            403 => 
+            array (
+                'id' => 1419,
+                'reference_no' => 'er-20251230-095105',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 220.0,
+                'note' => NULL,
+                'created_at' => '2025-12-30 12:00:00',
+                'updated_at' => '2025-12-30 21:51:05',
+            ),
+            404 => 
+            array (
+                'id' => 1420,
+                'reference_no' => 'er-20260103-100559',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2025-12-31 12:00:00',
+                'updated_at' => '2026-01-03 22:05:59',
+            ),
+            405 => 
+            array (
+                'id' => 1421,
+                'reference_no' => 'er-20260103-100615',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 180.0,
+                'note' => NULL,
+                'created_at' => '2025-12-31 12:00:00',
+                'updated_at' => '2026-01-03 22:06:15',
+            ),
+            406 => 
+            array (
+                'id' => 1422,
+                'reference_no' => 'er-20260103-100915',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-01 12:00:00',
+                'updated_at' => '2026-01-03 22:09:15',
+            ),
+            407 => 
+            array (
+                'id' => 1423,
+                'reference_no' => 'er-20260103-100931',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-01-01 12:00:00',
+                'updated_at' => '2026-01-03 22:09:31',
+            ),
+            408 => 
+            array (
+                'id' => 1424,
+                'reference_no' => 'er-20260103-100953',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1800.0,
+                'note' => 'Mistri - 1000
+Wire - 800',
+                'created_at' => '2026-01-01 00:00:00',
+                'updated_at' => '2026-01-03 22:10:29',
+            ),
+            409 => 
+            array (
+                'id' => 1425,
+                'reference_no' => 'er-20260103-101050',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-01-01 12:00:00',
+                'updated_at' => '2026-01-03 22:10:50',
+            ),
+            410 => 
+            array (
+                'id' => 1426,
+                'reference_no' => 'er-20260103-101136',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-02 12:00:00',
+                'updated_at' => '2026-01-03 22:11:36',
+            ),
+            411 => 
+            array (
+                'id' => 1427,
+                'reference_no' => 'er-20260103-101157',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2026-01-02 12:00:00',
+                'updated_at' => '2026-01-03 22:11:57',
+            ),
+            412 => 
+            array (
+                'id' => 1428,
+                'reference_no' => 'er-20260103-101217',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2026-01-02 12:00:00',
+                'updated_at' => '2026-01-03 22:12:17',
+            ),
+            413 => 
+            array (
+                'id' => 1429,
+                'reference_no' => 'er-20260103-101336',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 595.0,
+                'note' => 'Ditergent - 70
+God. Int. bill - 525',
+                'created_at' => '2026-01-02 12:00:00',
+                'updated_at' => '2026-01-03 22:13:36',
+            ),
+            414 => 
+            array (
+                'id' => 1430,
+                'reference_no' => 'er-20260103-101456',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-03 12:00:00',
+                'updated_at' => '2026-01-03 22:14:56',
+            ),
+            415 => 
+            array (
+                'id' => 1431,
+                'reference_no' => 'er-20260103-101511',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2026-01-03 12:00:00',
+                'updated_at' => '2026-01-03 22:15:11',
+            ),
+            416 => 
+            array (
+                'id' => 1432,
+                'reference_no' => 'er-20260103-101529',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 8595.0,
+                'note' => NULL,
+                'created_at' => '2026-01-03 12:00:00',
+                'updated_at' => '2026-01-03 22:15:29',
+            ),
+            417 => 
+            array (
+                'id' => 1433,
+                'reference_no' => 'er-20260104-100924',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-04 12:00:00',
+                'updated_at' => '2026-01-04 22:09:24',
+            ),
+            418 => 
+            array (
+                'id' => 1434,
+                'reference_no' => 'er-20260104-100955',
+                'expense_category_id' => 33,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30000.0,
+                'note' => NULL,
+                'created_at' => '2026-01-04 12:00:00',
+                'updated_at' => '2026-01-04 22:09:55',
+            ),
+            419 => 
+            array (
+                'id' => 1435,
+                'reference_no' => 'er-20260104-101058',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2026-01-04 12:00:00',
+                'updated_at' => '2026-01-04 22:10:58',
+            ),
+            420 => 
+            array (
+                'id' => 1436,
+                'reference_no' => 'er-20260105-101325',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-05 12:00:00',
+                'updated_at' => '2026-01-05 22:13:25',
+            ),
+            421 => 
+            array (
+                'id' => 1437,
+                'reference_no' => 'er-20260105-101347',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2026-01-05 12:00:00',
+                'updated_at' => '2026-01-05 22:13:47',
+            ),
+            422 => 
+            array (
+                'id' => 1438,
+                'reference_no' => 'er-20260105-101402',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-01-05 12:00:00',
+                'updated_at' => '2026-01-05 22:14:02',
+            ),
+            423 => 
+            array (
+                'id' => 1439,
+                'reference_no' => 'er-20260106-100822',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-06 12:00:00',
+                'updated_at' => '2026-01-06 22:08:22',
+            ),
+            424 => 
+            array (
+                'id' => 1440,
+                'reference_no' => 'er-20260107-105809',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-07 12:00:00',
+                'updated_at' => '2026-01-07 22:58:09',
+            ),
+            425 => 
+            array (
+                'id' => 1441,
+                'reference_no' => 'er-20260107-105830',
+                'expense_category_id' => 23,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 13000.0,
+                'note' => NULL,
+                'created_at' => '2026-01-07 12:00:00',
+                'updated_at' => '2026-01-07 22:58:30',
+            ),
+            426 => 
+            array (
+                'id' => 1442,
+                'reference_no' => 'er-20260107-105901',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => 'Repair',
+                'created_at' => '2026-01-07 12:00:00',
+                'updated_at' => '2026-01-07 22:59:01',
+            ),
+            427 => 
+            array (
+                'id' => 1443,
+                'reference_no' => 'er-20260107-105915',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 15.0,
+                'note' => NULL,
+                'created_at' => '2026-01-07 12:00:00',
+                'updated_at' => '2026-01-07 22:59:15',
+            ),
+            428 => 
+            array (
+                'id' => 1444,
+                'reference_no' => 'er-20260107-105930',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 3090.0,
+                'note' => NULL,
+                'created_at' => '2026-01-07 12:00:00',
+                'updated_at' => '2026-01-07 22:59:30',
+            ),
+            429 => 
+            array (
+                'id' => 1445,
+                'reference_no' => 'er-20260108-100540',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-08 12:00:00',
+                'updated_at' => '2026-01-08 22:05:40',
+            ),
+            430 => 
+            array (
+                'id' => 1446,
+                'reference_no' => 'er-20260108-100557',
+                'expense_category_id' => 29,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40000.0,
+                'note' => NULL,
+                'created_at' => '2026-01-08 12:00:00',
+                'updated_at' => '2026-01-08 22:05:57',
+            ),
+            431 => 
+            array (
+                'id' => 1447,
+                'reference_no' => 'er-20260108-100614',
+                'expense_category_id' => 30,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 400.0,
+                'note' => NULL,
+                'created_at' => '2026-01-08 12:00:00',
+                'updated_at' => '2026-01-08 22:06:14',
+            ),
+            432 => 
+            array (
+                'id' => 1448,
+                'reference_no' => 'er-20260108-100629',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2026-01-08 12:00:00',
+                'updated_at' => '2026-01-08 22:06:29',
+            ),
+            433 => 
+            array (
+                'id' => 1449,
+                'reference_no' => 'er-20260108-100650',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 230.0,
+                'note' => NULL,
+                'created_at' => '2026-01-08 12:00:00',
+                'updated_at' => '2026-01-08 22:06:50',
+            ),
+            434 => 
+            array (
+                'id' => 1450,
+                'reference_no' => 'er-20260110-100220',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-10 12:00:00',
+                'updated_at' => '2026-01-10 22:02:20',
+            ),
+            435 => 
+            array (
+                'id' => 1451,
+                'reference_no' => 'er-20260110-100237',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2495.0,
+                'note' => NULL,
+                'created_at' => '2026-01-10 12:00:00',
+                'updated_at' => '2026-01-10 22:02:37',
+            ),
+            436 => 
+            array (
+                'id' => 1452,
+                'reference_no' => 'er-20260111-100600',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-11 00:00:00',
+                'updated_at' => '2026-01-11 22:07:39',
+            ),
+            437 => 
+            array (
+                'id' => 1453,
+                'reference_no' => 'er-20260111-100626',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => NULL,
+                'created_at' => '2026-01-11 00:00:00',
+                'updated_at' => '2026-01-11 22:07:33',
+            ),
+            438 => 
+            array (
+                'id' => 1454,
+                'reference_no' => 'er-20260111-100647',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-01-11 00:00:00',
+                'updated_at' => '2026-01-11 22:07:27',
+            ),
+            439 => 
+            array (
+                'id' => 1455,
+                'reference_no' => 'er-20260111-100706',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2026-01-11 12:00:00',
+                'updated_at' => '2026-01-11 22:07:06',
+            ),
+            440 => 
+            array (
+                'id' => 1456,
+                'reference_no' => 'er-20260112-102008',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-12 12:00:00',
+                'updated_at' => '2026-01-12 22:20:08',
+            ),
+            441 => 
+            array (
+                'id' => 1457,
+                'reference_no' => 'er-20260112-102029',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => 'Sutter Grese',
+                'created_at' => '2026-01-12 00:00:00',
+                'updated_at' => '2026-01-12 22:20:36',
+            ),
+            442 => 
+            array (
+                'id' => 1458,
+                'reference_no' => 'er-20260112-102103',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-01-12 12:00:00',
+                'updated_at' => '2026-01-12 22:21:03',
+            ),
+            443 => 
+            array (
+                'id' => 1459,
+                'reference_no' => 'er-20260113-100813',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-13 12:00:00',
+                'updated_at' => '2026-01-13 22:08:13',
+            ),
+            444 => 
+            array (
+                'id' => 1460,
+                'reference_no' => 'er-20260113-100833',
+                'expense_category_id' => 26,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 500.0,
+                'note' => NULL,
+                'created_at' => '2026-01-13 12:00:00',
+                'updated_at' => '2026-01-13 22:08:33',
+            ),
+            445 => 
+            array (
+                'id' => 1461,
+                'reference_no' => 'er-20260113-100931',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 45.0,
+                'note' => 'Cloth',
+                'created_at' => '2026-01-13 12:00:00',
+                'updated_at' => '2026-01-13 22:09:31',
+            ),
+            446 => 
+            array (
+                'id' => 1462,
+                'reference_no' => 'er-20260113-101006',
+                'expense_category_id' => 38,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 8890.0,
+                'note' => 'Jump Payment',
+                'created_at' => '2026-01-13 12:00:00',
+                'updated_at' => '2026-01-13 22:10:06',
+            ),
+            447 => 
+            array (
+                'id' => 1463,
+                'reference_no' => 'er-20260113-101031',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 300.0,
+                'note' => 'Mosjid',
+                'created_at' => '2026-01-13 12:00:00',
+                'updated_at' => '2026-01-13 22:10:31',
+            ),
+            448 => 
+            array (
+                'id' => 1464,
+                'reference_no' => 'er-20260113-101051',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1295.0,
+                'note' => NULL,
+                'created_at' => '2026-01-13 12:00:00',
+                'updated_at' => '2026-01-13 22:10:51',
+            ),
+            449 => 
+            array (
+                'id' => 1465,
+                'reference_no' => 'er-20260115-095205',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-14 12:00:00',
+                'updated_at' => '2026-01-15 21:52:05',
+            ),
+            450 => 
+            array (
+                'id' => 1466,
+                'reference_no' => 'er-20260115-095239',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 80.0,
+                'note' => 'Repair',
+                'created_at' => '2026-01-14 12:00:00',
+                'updated_at' => '2026-01-15 21:52:39',
+            ),
+            451 => 
+            array (
+                'id' => 1467,
+                'reference_no' => 'er-20260115-100816',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-15 12:00:00',
+                'updated_at' => '2026-01-15 22:08:16',
+            ),
+            452 => 
+            array (
+                'id' => 1468,
+                'reference_no' => 'er-20260115-100839',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2480.0,
+                'note' => NULL,
+                'created_at' => '2026-01-15 12:00:00',
+                'updated_at' => '2026-01-15 22:08:39',
+            ),
+            453 => 
+            array (
+                'id' => 1469,
+                'reference_no' => 'er-20260117-095013',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-17 12:00:00',
+                'updated_at' => '2026-01-17 21:50:13',
+            ),
+            454 => 
+            array (
+                'id' => 1470,
+                'reference_no' => 'er-20260117-095036',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60.0,
+                'note' => NULL,
+                'created_at' => '2026-01-17 12:00:00',
+                'updated_at' => '2026-01-17 21:50:36',
+            ),
+            455 => 
+            array (
+                'id' => 1471,
+                'reference_no' => 'er-20260117-095109',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-17 12:00:00',
+                'updated_at' => '2026-01-17 21:51:09',
+            ),
+            456 => 
+            array (
+                'id' => 1472,
+                'reference_no' => 'er-20260118-095958',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-18 12:00:00',
+                'updated_at' => '2026-01-18 21:59:58',
+            ),
+            457 => 
+            array (
+                'id' => 1473,
+                'reference_no' => 'er-20260118-100019',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-01-18 12:00:00',
+                'updated_at' => '2026-01-18 22:00:19',
+            ),
+            458 => 
+            array (
+                'id' => 1474,
+                'reference_no' => 'er-20260119-094825',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-19 12:00:00',
+                'updated_at' => '2026-01-19 21:48:25',
+            ),
+            459 => 
+            array (
+                'id' => 1475,
+                'reference_no' => 'er-20260119-094845',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2026-01-19 12:00:00',
+                'updated_at' => '2026-01-19 21:48:45',
+            ),
+            460 => 
+            array (
+                'id' => 1476,
+                'reference_no' => 'er-20260119-094906',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 10.0,
+                'note' => NULL,
+                'created_at' => '2026-01-19 12:00:00',
+                'updated_at' => '2026-01-19 21:49:06',
+            ),
+            461 => 
+            array (
+                'id' => 1477,
+                'reference_no' => 'er-20260119-094927',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2000.0,
+                'note' => NULL,
+                'created_at' => '2026-01-19 12:00:00',
+                'updated_at' => '2026-01-19 21:49:27',
+            ),
+            462 => 
+            array (
+                'id' => 1478,
+                'reference_no' => 'er-20260120-095917',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-20 12:00:00',
+                'updated_at' => '2026-01-20 21:59:17',
+            ),
+            463 => 
+            array (
+                'id' => 1479,
+                'reference_no' => 'er-20260121-095653',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-21 12:00:00',
+                'updated_at' => '2026-01-21 21:56:53',
+            ),
+            464 => 
+            array (
+                'id' => 1480,
+                'reference_no' => 'er-20260121-095954',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-01-21 12:00:00',
+                'updated_at' => '2026-01-21 21:59:54',
+            ),
+            465 => 
+            array (
+                'id' => 1481,
+                'reference_no' => 'er-20260121-100052',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5015.0,
+                'note' => NULL,
+                'created_at' => '2026-01-21 12:00:00',
+                'updated_at' => '2026-01-21 22:00:52',
+            ),
+            466 => 
+            array (
+                'id' => 1482,
+                'reference_no' => 'er-20260122-101429',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-22 12:00:00',
+                'updated_at' => '2026-01-22 22:14:29',
+            ),
+            467 => 
+            array (
+                'id' => 1483,
+                'reference_no' => 'er-20260122-101523',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2026-01-22 12:00:00',
+                'updated_at' => '2026-01-22 22:15:23',
+            ),
+            468 => 
+            array (
+                'id' => 1484,
+                'reference_no' => 'er-20260127-095838',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-24 12:00:00',
+                'updated_at' => '2026-01-27 21:58:38',
+            ),
+            469 => 
+            array (
+                'id' => 1485,
+                'reference_no' => 'er-20260127-095907',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => NULL,
+                'created_at' => '2026-01-24 12:00:00',
+                'updated_at' => '2026-01-27 21:59:07',
+            ),
+            470 => 
+            array (
+                'id' => 1486,
+                'reference_no' => 'er-20260127-095955',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 900.0,
+                'note' => 'Signboard',
+                'created_at' => '2026-01-24 12:00:00',
+                'updated_at' => '2026-01-27 21:59:55',
+            ),
+            471 => 
+            array (
+                'id' => 1487,
+                'reference_no' => 'er-20260127-100011',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-01-24 12:00:00',
+                'updated_at' => '2026-01-27 22:00:11',
+            ),
+            472 => 
+            array (
+                'id' => 1488,
+                'reference_no' => 'er-20260127-100124',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-25 12:00:00',
+                'updated_at' => '2026-01-27 22:01:24',
+            ),
+            473 => 
+            array (
+                'id' => 1489,
+                'reference_no' => 'er-20260127-100156',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60.0,
+                'note' => NULL,
+                'created_at' => '2026-01-25 12:00:00',
+                'updated_at' => '2026-01-27 22:01:56',
+            ),
+            474 => 
+            array (
+                'id' => 1490,
+                'reference_no' => 'er-20260127-100438',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-26 12:00:00',
+                'updated_at' => '2026-01-27 22:04:38',
+            ),
+            475 => 
+            array (
+                'id' => 1491,
+                'reference_no' => 'er-20260127-100507',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1080.0,
+                'note' => 'Internet bill - 1050
+Repair - 30',
+                'created_at' => '2026-01-26 00:00:00',
+                'updated_at' => '2026-01-27 22:06:19',
+            ),
+            476 => 
+            array (
+                'id' => 1492,
+                'reference_no' => 'er-20260127-100521',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-01-26 12:00:00',
+                'updated_at' => '2026-01-27 22:05:21',
+            ),
+            477 => 
+            array (
+                'id' => 1493,
+                'reference_no' => 'er-20260127-100645',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-01-26 12:00:00',
+                'updated_at' => '2026-01-27 22:06:45',
+            ),
+            478 => 
+            array (
+                'id' => 1494,
+                'reference_no' => 'er-20260127-100704',
+                'expense_category_id' => 30,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-01-26 12:00:00',
+                'updated_at' => '2026-01-27 22:07:04',
+            ),
+            479 => 
+            array (
+                'id' => 1495,
+                'reference_no' => 'er-20260127-100755',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-27 12:00:00',
+                'updated_at' => '2026-01-27 22:07:55',
+            ),
+            480 => 
+            array (
+                'id' => 1496,
+                'reference_no' => 'er-20260127-101043',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-01-27 12:00:00',
+                'updated_at' => '2026-01-27 22:10:43',
+            ),
+            481 => 
+            array (
+                'id' => 1497,
+                'reference_no' => 'er-20260127-101100',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-27 12:00:00',
+                'updated_at' => '2026-01-27 22:11:00',
+            ),
+            482 => 
+            array (
+                'id' => 1498,
+                'reference_no' => 'er-20260127-101125',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 810.0,
+                'note' => 'Imrul',
+                'created_at' => '2026-01-27 12:00:00',
+                'updated_at' => '2026-01-27 22:11:25',
+            ),
+            483 => 
+            array (
+                'id' => 1499,
+                'reference_no' => 'er-20260127-101146',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2980.0,
+                'note' => NULL,
+                'created_at' => '2026-01-27 12:00:00',
+                'updated_at' => '2026-01-27 22:11:46',
+            ),
+            484 => 
+            array (
+                'id' => 1500,
+                'reference_no' => 'er-20260128-100721',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-28 12:00:00',
+                'updated_at' => '2026-01-28 22:07:21',
+            ),
+            485 => 
+            array (
+                'id' => 1501,
+                'reference_no' => 'er-20260128-100913',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => 'Dhaka',
+                'created_at' => '2026-01-28 12:00:00',
+                'updated_at' => '2026-01-28 22:09:13',
+            ),
+            486 => 
+            array (
+                'id' => 1502,
+                'reference_no' => 'er-20260129-102421',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-29 12:00:00',
+                'updated_at' => '2026-01-29 22:24:21',
+            ),
+            487 => 
+            array (
+                'id' => 1503,
+                'reference_no' => 'er-20260129-102443',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 4600.0,
+                'note' => NULL,
+                'created_at' => '2026-01-29 12:00:00',
+                'updated_at' => '2026-01-29 22:24:43',
+            ),
+            488 => 
+            array (
+                'id' => 1504,
+                'reference_no' => 'er-20260129-102508',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 205.0,
+                'note' => 'Food',
+                'created_at' => '2026-01-29 12:00:00',
+                'updated_at' => '2026-01-29 22:25:08',
+            ),
+            489 => 
+            array (
+                'id' => 1505,
+                'reference_no' => 'er-20260129-102542',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-01-29 12:00:00',
+                'updated_at' => '2026-01-29 22:25:42',
+            ),
+            490 => 
+            array (
+                'id' => 1506,
+                'reference_no' => 'er-20260129-102600',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 70.0,
+                'note' => NULL,
+                'created_at' => '2026-01-29 12:00:00',
+                'updated_at' => '2026-01-29 22:26:00',
+            ),
+            491 => 
+            array (
+                'id' => 1507,
+                'reference_no' => 'er-20260131-110522',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2026-01-30 12:00:00',
+                'updated_at' => '2026-01-31 23:05:22',
+            ),
+            492 => 
+            array (
+                'id' => 1508,
+                'reference_no' => 'er-20260131-110608',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-01-31 12:00:00',
+                'updated_at' => '2026-01-31 23:06:08',
+            ),
+            493 => 
+            array (
+                'id' => 1509,
+                'reference_no' => 'er-20260131-110625',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60.0,
+                'note' => NULL,
+                'created_at' => '2026-01-31 12:00:00',
+                'updated_at' => '2026-01-31 23:06:25',
+            ),
+            494 => 
+            array (
+                'id' => 1510,
+                'reference_no' => 'er-20260131-110640',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2000.0,
+                'note' => NULL,
+                'created_at' => '2026-01-31 12:00:00',
+                'updated_at' => '2026-01-31 23:06:40',
+            ),
+            495 => 
+            array (
+                'id' => 1511,
+                'reference_no' => 'er-20260201-095823',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-02-01 12:00:00',
+                'updated_at' => '2026-02-01 21:58:23',
+            ),
+            496 => 
+            array (
+                'id' => 1512,
+                'reference_no' => 'er-20260201-095840',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-02-01 12:00:00',
+                'updated_at' => '2026-02-01 21:58:40',
+            ),
+            497 => 
+            array (
+                'id' => 1513,
+                'reference_no' => 'er-20260201-095924',
+                'expense_category_id' => 29,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40000.0,
+                'note' => NULL,
+                'created_at' => '2026-02-01 12:00:00',
+                'updated_at' => '2026-02-01 21:59:24',
+            ),
+            498 => 
+            array (
+                'id' => 1514,
+                'reference_no' => 'er-20260203-075651',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-02-02 12:00:00',
+                'updated_at' => '2026-02-03 19:56:51',
+            ),
+            499 => 
+            array (
+                'id' => 1515,
+                'reference_no' => 'er-20260203-075741',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-02-02 12:00:00',
+                'updated_at' => '2026-02-03 19:57:41',
+            ),
+        ));
+        \DB::table('expenses')->insert(array (
+            0 => 
+            array (
+                'id' => 1516,
+                'reference_no' => 'er-20260203-075759',
+                'expense_category_id' => 23,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 13000.0,
+                'note' => NULL,
+                'created_at' => '2026-02-02 12:00:00',
+                'updated_at' => '2026-02-03 19:57:59',
+            ),
+            1 => 
+            array (
+                'id' => 1517,
+                'reference_no' => 'er-20260205-101753',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 120.0,
+                'note' => NULL,
+                'created_at' => '2026-02-03 12:00:00',
+                'updated_at' => '2026-02-05 22:17:53',
+            ),
+            2 => 
+            array (
+                'id' => 1518,
+                'reference_no' => 'er-20260205-101822',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 3,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 2285.0,
+                'note' => NULL,
+                'created_at' => '2026-02-03 12:00:00',
+                'updated_at' => '2026-02-05 22:18:22',
+            ),
+            3 => 
+            array (
+                'id' => 1519,
+                'reference_no' => 'er-20260205-103313',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 180.0,
+                'note' => NULL,
+                'created_at' => '2026-02-05 12:00:00',
+                'updated_at' => '2026-02-05 22:33:13',
+            ),
+            4 => 
+            array (
+                'id' => 1520,
+                'reference_no' => 'er-20260205-103327',
+                'expense_category_id' => 30,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 400.0,
+                'note' => NULL,
+                'created_at' => '2026-02-05 00:00:00',
+                'updated_at' => '2026-02-05 22:33:38',
+            ),
+            5 => 
+            array (
+                'id' => 1521,
+                'reference_no' => 'er-20260209-104432',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2026-02-06 12:00:00',
+                'updated_at' => '2026-02-09 22:44:32',
+            ),
+            6 => 
+            array (
+                'id' => 1522,
+                'reference_no' => 'er-20260209-104641',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2026-02-06 12:00:00',
+                'updated_at' => '2026-02-09 22:46:41',
+            ),
+            7 => 
+            array (
+                'id' => 1523,
+                'reference_no' => 'er-20260209-104703',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2026-02-06 12:00:00',
+                'updated_at' => '2026-02-09 22:47:03',
+            ),
+            8 => 
+            array (
+                'id' => 1524,
+                'reference_no' => 'er-20260209-104718',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 30.0,
+                'note' => NULL,
+                'created_at' => '2026-02-06 12:00:00',
+                'updated_at' => '2026-02-09 22:47:18',
+            ),
+            9 => 
+            array (
+                'id' => 1525,
+                'reference_no' => 'er-20260209-104741',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => 'Bag',
+                'created_at' => '2026-02-06 12:00:00',
+                'updated_at' => '2026-02-09 22:47:41',
+            ),
+            10 => 
+            array (
+                'id' => 1526,
+                'reference_no' => 'er-20260209-104805',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 210.0,
+                'note' => NULL,
+                'created_at' => '2026-02-07 12:00:00',
+                'updated_at' => '2026-02-09 22:48:05',
+            ),
+            11 => 
+            array (
+                'id' => 1527,
+                'reference_no' => 'er-20260209-104830',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 10.0,
+                'note' => NULL,
+                'created_at' => '2026-02-07 12:00:00',
+                'updated_at' => '2026-02-09 22:48:30',
+            ),
+            12 => 
+            array (
+                'id' => 1528,
+                'reference_no' => 'er-20260209-104929',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 540.0,
+                'note' => 'Godown int. bill 525
+cement 15',
+                'created_at' => '2026-02-07 12:00:00',
+                'updated_at' => '2026-02-09 22:49:29',
+            ),
+            13 => 
+            array (
+                'id' => 1529,
+                'reference_no' => 'er-20260209-104952',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 60.0,
+                'note' => NULL,
+                'created_at' => '2026-02-07 12:00:00',
+                'updated_at' => '2026-02-09 22:49:52',
+            ),
+            14 => 
+            array (
+                'id' => 1530,
+                'reference_no' => 'er-20260209-105015',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 210.0,
+                'note' => NULL,
+                'created_at' => '2026-02-08 12:00:00',
+                'updated_at' => '2026-02-09 22:50:15',
+            ),
+            15 => 
+            array (
+                'id' => 1531,
+                'reference_no' => 'er-20260209-105034',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 25.0,
+                'note' => NULL,
+                'created_at' => '2026-02-08 12:00:00',
+                'updated_at' => '2026-02-09 22:50:34',
+            ),
+            16 => 
+            array (
+                'id' => 1532,
+                'reference_no' => 'er-20260209-105114',
+                'expense_category_id' => 8,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 220.0,
+                'note' => 'Mosjid',
+                'created_at' => '2026-02-08 12:00:00',
+                'updated_at' => '2026-02-09 22:51:14',
+            ),
+            17 => 
+            array (
+                'id' => 1533,
+                'reference_no' => 'er-20260209-105244',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 200.0,
+                'note' => 'Jharu 100
+Cloth 100',
+                'created_at' => '2026-02-08 12:00:00',
+                'updated_at' => '2026-02-09 22:52:44',
+            ),
+            18 => 
+            array (
+                'id' => 1534,
+                'reference_no' => 'er-20260209-105308',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-02-08 12:00:00',
+                'updated_at' => '2026-02-09 22:53:08',
+            ),
+            19 => 
+            array (
+                'id' => 1535,
+                'reference_no' => 'er-20260209-110009',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 210.0,
+                'note' => NULL,
+                'created_at' => '2026-02-09 12:00:00',
+                'updated_at' => '2026-02-09 23:00:09',
+            ),
+            20 => 
+            array (
+                'id' => 1536,
+                'reference_no' => 'er-20260209-110023',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => 'Pen 70
+Repair 30',
+                'created_at' => '2026-02-09 00:00:00',
+                'updated_at' => '2026-02-09 23:00:56',
+            ),
+            21 => 
+            array (
+                'id' => 1537,
+                'reference_no' => 'er-20260209-110111',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 40.0,
+                'note' => NULL,
+                'created_at' => '2026-02-09 12:00:00',
+                'updated_at' => '2026-02-09 23:01:11',
+            ),
+            22 => 
+            array (
+                'id' => 1538,
+                'reference_no' => 'er-20260209-110135',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 20.0,
+                'note' => NULL,
+                'created_at' => '2026-02-09 12:00:00',
+                'updated_at' => '2026-02-09 23:01:35',
+            ),
+            23 => 
+            array (
+                'id' => 1539,
+                'reference_no' => 'er-20260214-100608',
+                'expense_category_id' => 34,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1095.0,
+                'note' => NULL,
+                'created_at' => '2026-02-14 12:00:00',
+                'updated_at' => '2026-02-14 22:06:08',
+            ),
+            24 => 
+            array (
+                'id' => 1540,
+                'reference_no' => 'er-20260214-100634',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 180.0,
+                'note' => NULL,
+                'created_at' => '2026-02-14 12:00:00',
+                'updated_at' => '2026-02-14 22:06:34',
+            ),
+            25 => 
+            array (
+                'id' => 1541,
+                'reference_no' => 'er-20260214-100654',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 100.0,
+                'note' => NULL,
+                'created_at' => '2026-02-14 12:00:00',
+                'updated_at' => '2026-02-14 22:06:54',
+            ),
+            26 => 
+            array (
+                'id' => 1542,
+                'reference_no' => 'er-20260214-100711',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 110.0,
+                'note' => NULL,
+                'created_at' => '2026-02-14 12:00:00',
+                'updated_at' => '2026-02-14 22:07:11',
+            ),
+            27 => 
+            array (
+                'id' => 1543,
+                'reference_no' => 'er-20260214-100927',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 150.0,
+                'note' => NULL,
+                'created_at' => '2026-02-10 12:00:00',
+                'updated_at' => '2026-02-14 22:09:27',
+            ),
+            28 => 
+            array (
+                'id' => 1544,
+                'reference_no' => 'er-20260214-101246',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1260.0,
+                'note' => 'POWER ADAPTER - 1140
+HANGER - 120',
+                'created_at' => '2026-02-10 12:00:00',
+                'updated_at' => '2026-02-14 22:12:46',
+            ),
+            29 => 
+            array (
+                'id' => 1545,
+                'reference_no' => 'er-20260214-101439',
+                'expense_category_id' => 3,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 90.0,
+                'note' => NULL,
+                'created_at' => '2026-02-10 12:00:00',
+                'updated_at' => '2026-02-14 22:14:39',
+            ),
+            30 => 
+            array (
+                'id' => 1546,
+                'reference_no' => 'er-20260214-101453',
+                'expense_category_id' => 42,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 50.0,
+                'note' => NULL,
+                'created_at' => '2026-02-10 12:00:00',
+                'updated_at' => '2026-02-14 22:14:53',
+            ),
+            31 => 
+            array (
+                'id' => 1547,
+                'reference_no' => 'er-20260215-101214',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 210.0,
+                'note' => NULL,
+                'created_at' => '2026-02-15 00:00:00',
+                'updated_at' => '2026-02-15 22:12:35',
+            ),
+            32 => 
+            array (
+                'id' => 1548,
+                'reference_no' => 'er-20260215-101250',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 3000.0,
+                'note' => NULL,
+                'created_at' => '2026-02-15 12:00:00',
+                'updated_at' => '2026-02-15 22:12:50',
+            ),
+            33 => 
+            array (
+                'id' => 1549,
+                'reference_no' => 'er-20260216-103637',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 210.0,
+                'note' => NULL,
+                'created_at' => '2026-02-16 12:00:00',
+                'updated_at' => '2026-02-16 22:36:37',
+            ),
+            34 => 
+            array (
+                'id' => 1550,
+                'reference_no' => 'er-20260218-100505',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 150.0,
+                'note' => NULL,
+                'created_at' => '2026-02-17 12:00:00',
+                'updated_at' => '2026-02-18 22:05:05',
+            ),
+            35 => 
+            array (
+                'id' => 1551,
+                'reference_no' => 'er-20260218-100718',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 55.0,
+                'note' => 'Color',
+                'created_at' => '2026-02-17 12:00:00',
+                'updated_at' => '2026-02-18 22:07:18',
+            ),
+            36 => 
+            array (
+                'id' => 1552,
+                'reference_no' => 'er-20260218-100906',
+                'expense_category_id' => 38,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 13525.0,
+                'note' => 'Jump payment',
+                'created_at' => '2026-02-17 12:00:00',
+                'updated_at' => '2026-02-18 22:09:06',
+            ),
+            37 => 
+            array (
+                'id' => 1553,
+                'reference_no' => 'er-20260218-101119',
+                'expense_category_id' => 18,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 210.0,
+                'note' => NULL,
+                'created_at' => '2026-02-18 12:00:00',
+                'updated_at' => '2026-02-18 22:11:19',
+            ),
+            38 => 
+            array (
+                'id' => 1554,
+                'reference_no' => 'er-20260218-101144',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 10.0,
+                'note' => 'Screw',
+                'created_at' => '2026-02-18 12:00:00',
+                'updated_at' => '2026-02-18 22:11:44',
+            ),
+            39 => 
+            array (
+                'id' => 1555,
+                'reference_no' => 'er-20260218-101952',
+                'expense_category_id' => 25,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => 'Dhaka',
+                'created_at' => '2026-02-18 12:00:00',
+                'updated_at' => '2026-02-18 22:19:52',
+            ),
+            40 => 
+            array (
+                'id' => 1556,
+                'reference_no' => 'er-20260219-101641',
+                'expense_category_id' => 19,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 1730.0,
+                'note' => 'Efter and equipment',
+                'created_at' => '2026-02-19 12:00:00',
+                'updated_at' => '2026-02-19 22:16:41',
+            ),
+            41 => 
+            array (
+                'id' => 1557,
+                'reference_no' => 'er-20260219-101708',
+                'expense_category_id' => 22,
+                'warehouse_id' => 1,
+                'account_id' => 1,
+                'user_id' => 12,
+                'cash_register_id' => NULL,
+                'amount' => 5000.0,
+                'note' => NULL,
+                'created_at' => '2026-02-19 12:00:00',
+                'updated_at' => '2026-02-19 22:17:08',
             ),
         ));
         

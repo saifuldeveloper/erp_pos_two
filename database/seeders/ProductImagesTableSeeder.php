@@ -25,8 +25,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 410,
                 'color_id' => 1,
                 'image' => 'khulna_20250105125417red677983d9569d6.jpeg',
-                'created_at' => '2025-01-05 00:54:17',
-                'updated_at' => '2025-01-05 00:54:17',
+                'created_at' => '2025-01-04 18:54:17',
+                'updated_at' => '2025-01-04 18:54:17',
             ),
             1 => 
             array (
@@ -34,8 +34,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 410,
                 'color_id' => 2,
                 'image' => 'khulna_20250105125417gree677983d958157.jpeg',
-                'created_at' => '2025-01-05 00:54:17',
-                'updated_at' => '2025-01-05 00:54:17',
+                'created_at' => '2025-01-04 18:54:17',
+                'updated_at' => '2025-01-04 18:54:17',
             ),
             2 => 
             array (
@@ -43,8 +43,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 411,
                 'color_id' => 3,
                 'image' => 'khulna_20250105024654pink677a46fee6fe9.jpeg',
-                'created_at' => '2025-01-05 14:46:54',
-                'updated_at' => '2025-01-05 14:46:54',
+                'created_at' => '2025-01-05 08:46:54',
+                'updated_at' => '2025-01-05 08:46:54',
             ),
             3 => 
             array (
@@ -52,8 +52,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 411,
                 'color_id' => 4,
                 'image' => 'khulna_20250105024654black677a46fee8122.jpeg',
-                'created_at' => '2025-01-05 14:46:54',
-                'updated_at' => '2025-01-05 14:46:54',
+                'created_at' => '2025-01-05 08:46:54',
+                'updated_at' => '2025-01-05 08:46:54',
             ),
             4 => 
             array (
@@ -61,8 +61,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 421,
                 'color_id' => 5,
                 'image' => 'khulna_20250108114205BK677e102d05740.jpg',
-                'created_at' => '2025-01-08 11:42:05',
-                'updated_at' => '2025-01-08 11:42:05',
+                'created_at' => '2025-01-08 05:42:05',
+                'updated_at' => '2025-01-08 05:42:05',
             ),
             5 => 
             array (
@@ -70,8 +70,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 421,
                 'color_id' => 6,
                 'image' => 'khulna_20250108114205CH677e102d069e1.jpg',
-                'created_at' => '2025-01-08 11:42:05',
-                'updated_at' => '2025-01-08 11:42:05',
+                'created_at' => '2025-01-08 05:42:05',
+                'updated_at' => '2025-01-08 05:42:05',
             ),
             6 => 
             array (
@@ -79,8 +79,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 421,
                 'color_id' => 8,
                 'image' => 'khulna_20250108114205MR677e102d0767c.jpg',
-                'created_at' => '2025-01-08 11:42:05',
-                'updated_at' => '2025-01-08 11:42:05',
+                'created_at' => '2025-01-08 05:42:05',
+                'updated_at' => '2025-01-08 05:42:05',
             ),
             7 => 
             array (
@@ -88,8 +88,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 435,
                 'color_id' => 21,
                 'image' => 'khulna_20250112051752Brown6783a4e013f8e.jpg',
-                'created_at' => '2025-01-12 17:17:52',
-                'updated_at' => '2025-01-12 17:17:52',
+                'created_at' => '2025-01-12 11:17:52',
+                'updated_at' => '2025-01-12 11:17:52',
             ),
             8 => 
             array (
@@ -97,8 +97,8 @@ class ProductImagesTableSeeder extends Seeder
                 'product_id' => 435,
                 'color_id' => 20,
                 'image' => 'khulna_20250112051752Grey6783a4e016fbb.jpeg',
-                'created_at' => '2025-01-12 17:17:52',
-                'updated_at' => '2025-01-12 17:17:52',
+                'created_at' => '2025-01-12 11:17:52',
+                'updated_at' => '2025-01-12 11:17:52',
             ),
         ));
         

@@ -67,7 +67,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 2,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:52:55',
+                'updated_at' => '2024-12-12 01:52:55',
             ),
             5 => 
             array (
@@ -77,7 +77,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 2,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:04',
+                'updated_at' => '2024-12-12 01:53:04',
             ),
             6 => 
             array (
@@ -87,7 +87,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 3,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:18',
+                'updated_at' => '2024-12-12 01:53:18',
             ),
             7 => 
             array (
@@ -97,7 +97,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 3,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:22',
+                'updated_at' => '2024-12-12 01:53:22',
             ),
             8 => 
             array (
@@ -107,7 +107,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 3,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:28',
+                'updated_at' => '2024-12-12 01:53:28',
             ),
             9 => 
             array (
@@ -117,7 +117,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 3,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:33',
+                'updated_at' => '2024-12-12 01:53:33',
             ),
             10 => 
             array (
@@ -127,7 +127,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 1,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:52:51',
+                'updated_at' => '2024-12-12 01:52:51',
             ),
             11 => 
             array (
@@ -137,7 +137,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 3,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:41',
+                'updated_at' => '2024-12-12 01:53:41',
             ),
             12 => 
             array (
@@ -147,7 +147,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 3,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:52:42',
+                'updated_at' => '2024-12-12 01:52:42',
             ),
             13 => 
             array (
@@ -157,7 +157,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 4,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:12',
+                'updated_at' => '2024-12-12 01:53:12',
             ),
             14 => 
             array (
@@ -266,8 +266,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => NULL,
                 'is_active' => 1,
-                'created_at' => '2024-12-15 16:16:05',
-                'updated_at' => '2024-12-15 16:16:05',
+                'created_at' => '2024-12-15 10:16:05',
+                'updated_at' => '2024-12-15 10:16:05',
             ),
             25 => 
             array (
@@ -277,7 +277,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 2,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-27 11:59:17',
+                'updated_at' => '2024-12-27 05:59:17',
             ),
             26 => 
             array (
@@ -507,7 +507,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => NULL,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2025-01-01 15:21:22',
+                'updated_at' => '2025-01-01 09:21:22',
             ),
             49 => 
             array (
@@ -517,7 +517,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => 49,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2025-01-01 15:19:05',
+                'updated_at' => '2025-01-01 09:19:05',
             ),
             50 => 
             array (
@@ -527,7 +527,7 @@ class CategoriesTableSeeder extends Seeder
                 'parent_id' => NULL,
                 'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => '2025-01-01 15:27:50',
+                'updated_at' => '2025-01-01 09:27:50',
             ),
             51 => 
             array (
@@ -726,8 +726,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-27 10:10:25',
+                'updated_at' => '2025-05-27 10:10:25',
             ),
             71 => 
             array (
@@ -736,8 +736,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 71,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-27 10:10:25',
+                'updated_at' => '2025-05-27 10:10:25',
             ),
             72 => 
             array (
@@ -746,8 +746,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 25,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-27 10:10:25',
+                'updated_at' => '2025-05-27 10:10:25',
             ),
             73 => 
             array (
@@ -756,8 +756,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 25,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-27 10:10:25',
+                'updated_at' => '2025-05-27 10:10:25',
             ),
             74 => 
             array (
@@ -766,8 +766,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 71,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:26',
-                'updated_at' => '2025-05-27 16:10:26',
+                'created_at' => '2025-05-27 10:10:26',
+                'updated_at' => '2025-05-27 10:10:26',
             ),
             75 => 
             array (
@@ -776,8 +776,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 25,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:39:09',
-                'updated_at' => '2025-05-27 16:39:09',
+                'created_at' => '2025-05-27 10:39:09',
+                'updated_at' => '2025-05-27 10:39:09',
             ),
             76 => 
             array (
@@ -786,8 +786,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 25,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 20:10:34',
-                'updated_at' => '2025-05-27 20:10:34',
+                'created_at' => '2025-05-27 14:10:34',
+                'updated_at' => '2025-05-27 14:10:34',
             ),
             77 => 
             array (
@@ -796,8 +796,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 71,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:54',
-                'updated_at' => '2025-05-27 21:35:54',
+                'created_at' => '2025-05-27 15:35:54',
+                'updated_at' => '2025-05-27 15:35:54',
             ),
             78 => 
             array (
@@ -806,8 +806,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 71,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:54',
-                'updated_at' => '2025-05-27 21:35:54',
+                'created_at' => '2025-05-27 15:35:54',
+                'updated_at' => '2025-05-27 15:35:54',
             ),
             79 => 
             array (
@@ -816,8 +816,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 71,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:55',
-                'updated_at' => '2025-05-27 21:35:55',
+                'created_at' => '2025-05-27 15:35:55',
+                'updated_at' => '2025-05-27 15:35:55',
             ),
             80 => 
             array (
@@ -826,8 +826,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 71,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:55',
-                'updated_at' => '2025-05-27 21:35:55',
+                'created_at' => '2025-05-27 15:35:55',
+                'updated_at' => '2025-05-27 15:35:55',
             ),
             81 => 
             array (
@@ -836,8 +836,8 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 71,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 23:11:02',
-                'updated_at' => '2025-05-27 23:11:02',
+                'created_at' => '2025-05-27 17:11:02',
+                'updated_at' => '2025-05-27 17:11:02',
             ),
             82 => 
             array (
@@ -846,8 +846,18 @@ class CategoriesTableSeeder extends Seeder
                 'image' => NULL,
                 'parent_id' => 25,
                 'is_active' => 1,
-                'created_at' => '2025-09-14 18:29:51',
-                'updated_at' => '2025-09-14 18:29:51',
+                'created_at' => '2025-09-14 12:29:51',
+                'updated_at' => '2025-09-14 12:29:51',
+            ),
+            83 => 
+            array (
+                'id' => 84,
+                'name' => 'বুস্টন',
+                'image' => NULL,
+                'parent_id' => 71,
+                'is_active' => 1,
+                'created_at' => '2026-01-28 12:47:15',
+                'updated_at' => '2026-01-28 12:47:15',
             ),
         ));
         

@@ -8,7 +8,9 @@ return [
 	'Courier Track ID'=>'কুরিয়ার ট্র্যাক আইডি',
 	'commission' =>'কমিশন',
 	'memo id' =>'মেমো নং',
-
+	'Sale Type' =>'বিক্রয় ধরণ',
+	'website' =>'ওয়েবসাইট',
+	'Pos' =>'পস',
 	"language" => "ভাষা",
 	'Avijatry Purchase' => 'অভিযাত্রী ক্রয়',
 	'Filter' => 'ফিল্টার',

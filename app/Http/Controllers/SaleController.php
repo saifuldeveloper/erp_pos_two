@@ -99,6 +99,10 @@ class SaleController extends Controller
                 $brand_id = $request->input('brand_id');
             else
                 $brand_id = 0;
+            if($request->input('sale_type'))
+                $sale_type = $request->input('sale_type');
+            else
+                $sale_type = ''; 
 
             if($request->input('starting_date')) {
                 $starting_date = $request->input('starting_date');
@@ -130,7 +134,7 @@ class SaleController extends Controller
             }
 
             $lims_brand_list = Brand::where('is_active', true)->get();
-            return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission','options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list', 'lims_brand_list', 'brand_id'));
+            return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission','options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list', 'lims_brand_list', 'brand_id','sale_type'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -138,6 +142,7 @@ class SaleController extends Controller
 
     public function saleData(Request $request)
     {
+     
         $columns = array(
             1 => 'created_at',
             2 => 'reference_no',
@@ -149,8 +154,11 @@ class SaleController extends Controller
         $sale_status = $request->input('sale_status');
         $payment_status = $request->input('payment_status');
         $brand_id = $request->input('brand_id');
+        $sale_type = $request->input('sale_type');
 
         $q = Sale::whereDate('created_at', '>=' ,$request->input('starting_date'))->whereDate('created_at', '<=' ,$request->input('ending_date'));
+        if($sale_type)
+        $q = $q->where('sale_type', $sale_type);
 
         if(Auth::user()->role_id > 2 && config('staff_access') == 'own')
             $q = $q->where('user_id', Auth::id());
@@ -182,6 +190,7 @@ class SaleController extends Controller
             $q = Sale::with('biller', 'customer', 'warehouse', 'user')
                 ->whereDate('created_at', '>=' ,$request->input('starting_date'))
                 ->whereDate('created_at', '<=' ,$request->input('ending_date'))
+                
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order, $dir);
@@ -199,6 +208,8 @@ class SaleController extends Controller
                     $query->where('brand_id', $brand_id);
                 });
             }
+            if($sale_type)
+            $q = $q->where('sale_type', $sale_type);
             $sales = $q->get();
         }
         else
@@ -210,6 +221,8 @@ class SaleController extends Controller
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir);
+                if($sale_type)
+                  $q = $q->where('sales.sale_type', $sale_type);
             if(Auth::user()->role_id > 2 && config('staff_access') == 'own') {
                 $q = $q->select('sales.*')
                         ->with('biller', 'customer', 'warehouse', 'user')

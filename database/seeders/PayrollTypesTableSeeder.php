@@ -25,8 +25,8 @@ class PayrollTypesTableSeeder extends Seeder
                 'name' => 'Salary',
                 'slug' => 'salary',
                 'status' => 'Active',
-                'created_at' => '2025-04-08 21:38:02',
-                'updated_at' => '2025-04-08 21:49:13',
+                'created_at' => '2025-04-08 15:38:02',
+                'updated_at' => '2025-04-08 15:49:13',
             ),
             1 => 
             array (
@@ -34,8 +34,17 @@ class PayrollTypesTableSeeder extends Seeder
                 'name' => 'Overtime',
                 'slug' => 'overtime',
                 'status' => 'Active',
-                'created_at' => '2025-04-08 21:39:11',
-                'updated_at' => '2025-04-08 21:50:06',
+                'created_at' => '2025-04-08 15:39:11',
+                'updated_at' => '2025-04-08 15:50:06',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Bonus',
+                'slug' => 'bonus',
+                'status' => 'Active',
+                'created_at' => '2026-01-11 18:21:01',
+                'updated_at' => '2026-01-11 18:21:01',
             ),
         ));
         

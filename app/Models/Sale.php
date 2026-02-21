@@ -37,6 +37,7 @@ class Sale extends Model
         "document",
         "sale_note",
         "staff_note",
+        'sale_type',
         "created_at",
         "woocommerce_order_id"
     ];

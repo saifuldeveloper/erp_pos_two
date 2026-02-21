@@ -70,6 +70,15 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label><strong>{{trans('file.Sale Type')}}</strong></label>
+                       <select id="sale_type" class="form-control" name="sale_type">
+                            <option value="website" {{ $sale_type == 'website' ? 'selected' : '' }}>Website</option>
+                            <option value="pos" {{ $sale_type == 'pos' ? 'selected' : '' }}>POS</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="col-md-2 mt-4">
                     <div class="form-group">
                         <button class="btn btn-primary w-100" id="filter-btn" type="submit">{{trans('file.submit')}}</button>
@@ -516,6 +525,7 @@
     var sale_status = <?php echo json_encode($sale_status); ?>;
     var payment_status = <?php echo json_encode($payment_status); ?>;
     var brand_id = <?php echo json_encode($brand_id); ?>;
+    var sale_type = <?php echo json_encode($sale_type); ?>;
     var balance = <?php echo json_encode($balance) ?>;
     var expired_date = <?php echo json_encode($expired_date) ?>;
     var current_date = <?php echo json_encode(date("Y-m-d")) ?>;
@@ -538,6 +548,7 @@
     $("#sale-status").val(sale_status);
     $("#payment-status").val(payment_status);
     $("#brand_id").val(brand_id);
+    $("#sale_type").val(sale_type);
 
     $(".daterangepicker-field").daterangepicker({
       callback: function(startDate, endDate, period){
@@ -907,6 +918,7 @@
                 sale_status: sale_status,
                 payment_status: payment_status,
                 brand_id: brand_id,
+                sale_type: sale_type,
             },
             dataType: "json",
             type:"post"

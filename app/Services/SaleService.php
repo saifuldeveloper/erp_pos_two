@@ -71,6 +71,8 @@ class SaleService
                 $data['reference_no'] = $data['reference_no'];
             }
 
+
+
             // if (!isset($data['reference_no'])) {
             //     $timestamp = date("Ymd-His");
             //     if (($data['sale_type'] ?? '') === 'website') {
@@ -84,9 +86,9 @@ class SaleService
             //     // $data['reference_no'] = $prefix . $timestamp;
             //     $data['reference_no'] = $data['reference_no'];
             // }
-
-
-
+            if (isset($data['sale_type']) && $data['sale_type'] === 'website') {
+                $data['sale_type'] = 'website';
+            }
             // Payment Status
             if ($data['pos']) {
                 $balance = $data['grand_total'] - $data['paid_amount'];

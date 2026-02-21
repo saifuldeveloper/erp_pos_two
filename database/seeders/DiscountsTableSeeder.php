@@ -33,8 +33,8 @@ class DiscountsTableSeeder extends Seeder
                 'maximum_qty' => 200.0,
                 'days' => 'Mon,Tue,Wed,Thu,Fri,Sat,Sun',
                 'is_active' => 0,
-                'created_at' => '2024-12-27 12:31:55',
-                'updated_at' => '2024-12-31 17:18:56',
+                'created_at' => '2024-12-27 06:31:55',
+                'updated_at' => '2024-12-31 11:18:56',
             ),
         ));
         

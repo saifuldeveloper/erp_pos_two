@@ -35,8 +35,8 @@ class PosSettingTableSeeder extends Seeder
                 'paypal_live_api_secret' => NULL,
                 'payment_options' => 'cash',
                 'invoice_option' => 'thermal',
-                'created_at' => '2024-10-08 19:59:44',
-                'updated_at' => '2024-12-28 06:17:18',
+                'created_at' => '2024-10-08 13:59:44',
+                'updated_at' => '2024-12-28 00:17:18',
             ),
         ));
         

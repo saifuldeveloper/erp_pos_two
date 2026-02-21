@@ -34,8 +34,8 @@ class SuppliersTableSeeder extends Seeder
                 'postal_code' => NULL,
                 'country' => NULL,
                 'is_active' => 1,
-                'created_at' => '2024-10-07 18:25:04',
-                'updated_at' => '2025-10-07 22:23:57',
+                'created_at' => '2024-10-07 12:25:04',
+                'updated_at' => '2025-10-07 16:23:57',
             ),
             1 => 
             array (
@@ -52,8 +52,8 @@ class SuppliersTableSeeder extends Seeder
                 'postal_code' => NULL,
                 'country' => NULL,
                 'is_active' => 1,
-                'created_at' => '2024-12-22 12:45:29',
-                'updated_at' => '2024-12-22 12:45:29',
+                'created_at' => '2024-12-22 06:45:29',
+                'updated_at' => '2024-12-22 06:45:29',
             ),
             2 => 
             array (
@@ -70,8 +70,8 @@ class SuppliersTableSeeder extends Seeder
                 'postal_code' => NULL,
                 'country' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-01-18 19:06:53',
-                'updated_at' => '2025-01-18 19:08:23',
+                'created_at' => '2025-01-18 13:06:53',
+                'updated_at' => '2025-01-18 13:08:23',
             ),
             3 => 
             array (
@@ -88,8 +88,8 @@ class SuppliersTableSeeder extends Seeder
                 'postal_code' => NULL,
                 'country' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-01-19 20:08:02',
-                'updated_at' => '2025-01-19 20:08:02',
+                'created_at' => '2025-01-19 14:08:02',
+                'updated_at' => '2025-01-19 14:08:02',
             ),
             4 => 
             array (
@@ -106,8 +106,8 @@ class SuppliersTableSeeder extends Seeder
                 'postal_code' => NULL,
                 'country' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-05-24 20:33:48',
-                'updated_at' => '2025-05-24 20:33:48',
+                'created_at' => '2025-05-24 14:33:48',
+                'updated_at' => '2025-05-24 14:33:48',
             ),
         ));
         
