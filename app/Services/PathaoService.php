@@ -11,7 +11,8 @@ class PathaoService
 
     public function __construct(protected array $credentials)
     {
-        $this->baseUrl = 'https://courier-api-sandbox.pathao.com';
+        // $this->baseUrl = 'https://courier-api-sandbox.pathao.com';
+        $this->baseUrl = 'https://api-hermes.pathao.com';
         $this->token = $this->getToken();
     }
 

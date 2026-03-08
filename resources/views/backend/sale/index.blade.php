@@ -75,7 +75,7 @@
                         <label><strong>{{trans('file.Sale Type')}}</strong></label>
                        <select id="sale_type" class="form-control" name="sale_type">
                             <option value="website" {{ $sale_type == 'website' ? 'selected' : '' }}>Website</option>
-                            <option value="pos" {{ $sale_type == 'pos' ? 'selected' : '' }}>POS</option>
+                            <option value="" {{ $sale_type == 'pos' ? 'selected' : '' }}>POS</option>
                         </select>
                     </div>
                 </div>

@@ -25,12 +25,12 @@ class AccountsTableSeeder extends Seeder
                 'account_no' => 'Avijatry Khulna',
                 'name' => 'Hand Cash',
                 'initial_balance' => 0.0,
-                'total_balance' => -1219000.0,
+                'total_balance' => -1243500.0,
                 'note' => 'Khulna Branch',
                 'is_default' => NULL,
                 'is_active' => 1,
                 'created_at' => '2024-10-07 12:35:08',
-                'updated_at' => '2026-02-18 22:13:34',
+                'updated_at' => '2026-02-22 22:23:13',
             ),
             1 => 
             array (

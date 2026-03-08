@@ -371,6 +371,17 @@ class SupplierDuesTableSeeder extends Seeder
                 'created_at' => '2026-02-18 22:13:34',
                 'updated_at' => '2026-02-18 22:13:34',
             ),
+            32 => 
+            array (
+                'id' => 33,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '24500.00',
+                'payment_ids' => '[7036,7037,7038,7039]',
+                'note' => NULL,
+                'created_at' => '2026-02-22 22:23:13',
+                'updated_at' => '2026-02-22 22:23:13',
+            ),
         ));
         
         
