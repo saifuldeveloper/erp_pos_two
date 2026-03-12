@@ -2,34 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Sale;
-use App\Models\Returns;
-use App\Models\ReturnPurchase;
+use App\Models\Customer;
+use App\Models\Deposit;
+use App\Models\Expense;
+use App\Models\MoneyTransfer;
+use App\Models\Payment;
+use App\Models\Payroll;
+use App\Models\Product_Sale;
+use App\Models\Product_Warehouse;
+use App\Models\Product;
 use App\Models\ProductPurchase;
 use App\Models\Purchase;
-use App\Models\Expense;
-use App\Models\Payroll;
 use App\Models\Quotation;
-use App\Models\Payment;
-use App\Models\Supplier;
-use App\Models\Product_Sale;
-use App\Models\Customer;
-use App\Models\Product;
-use App\Models\MoneyTransfer;
-use App\Models\Deposit;
+use App\Models\ReturnPurchase;
+use App\Models\Returns;
 use App\Models\RewardPointSetting;
-use App\Models\Product_Warehouse;
+use App\Models\Sale;
+use App\Models\Supplier;
 use App\Models\Unit;
-use Cache;
-use DB;
-use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Printing;
 use Rawilk\Printing\Contracts\Printer;
 use Spatie\Permission\Models\Role;
-/*use vendor\autoload;
-use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
-use Mike42\Escpos\Printer;*/
 
 class HomeController extends Controller
 {
@@ -61,41 +59,9 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        /*$headers = array(
-            "Authorization: Bearer kRHXREZr1SmBu32lSZ26GB6VlyKhjWLpDOB",
-            "Content-Type: application/json",
-            "cache-control: no-cache"
-        );
-        $params = [
-            "sender" => "SEWI PAY",
-            "content" => "Hello akdjohnson",
-            "dlrUrl" => "",
-            "recipients" => ["2250709134185"]
-        ];
-        $params = json_encode($params);
-        $url = "https://api.smscloud.ci/v1/campaigns";
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, TRUE);
-        curl_setopt($curl, CURLOPT_POST, TRUE);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
-        $resp = curl_exec($curl);
-        curl_close($curl);
-        return dd($resp);*/
-        //return \Auth::user()->unreadNotifications->where('data.reminder_date', date('Y-m-d'));
-        //making strict mode false for this query
-        config()->set('database.connections.mysql.strict', false);
-        DB::reconnect();
         if (Auth::user()->role_id == 5) {
-
             $customer = Customer::select('id', 'points')->where('user_id', Auth::id())->first();
-
-            $customer = Customer::select('id', 'points')
-                ->where('user_id', Auth::id())
-                ->first();
-
+            $customer = Customer::select('id', 'points')->where('user_id', Auth::id())->first();
             if ($customer) {
                 $lims_sale_data = Sale::with('warehouse')
                     ->where('customer_id', $customer->id)
@@ -124,11 +90,6 @@ class HomeController extends Controller
                 $lims_return_data = collect();
                 $lims_quotation_data = collect();
             }
-
-
-
-
-
 
             $lims_reward_point_setting_data = RewardPointSetting::select('per_point_amount')->latest()->first();
             return view('backend.customer_index', compact('customer', 'lims_sale_data', 'lims_payment_data', 'lims_quotation_data', 'lims_return_data', 'lims_reward_point_setting_data'));
@@ -268,18 +229,7 @@ class HomeController extends Controller
             'total_due' => Purchase::selectRaw('sum(grand_total - paid_amount) as total_due_from_purchase')->first()->total_due_from_purchase,
             'customer_advance' => Deposit::sum('amount'),
         ]);
-        //making strict mode true for this query
-        config()->set('database.connections.mysql.strict', true);
-        DB::reconnect();
-        //fetching data for auto updates
-        if (Auth::user()->role_id <= 2 && isset($_COOKIE['login_now']) && $_COOKIE['login_now']) {
-            $autoUpdateData = $this->general();
-            $alertBugEnable = $autoUpdateData['alertBugEnable'];
-            $alertVersionUpgradeEnable = $autoUpdateData['alertVersionUpgradeEnable'];
-        } else {
-            $autoUpdateData = $alertBugEnable = $alertVersionUpgradeEnable = '';
-        }
-        return view('backend.index', compact('purchase_paid', 'purchase_due', 'due_payment_received', 'sale_due', 'sale_paid', 'salary', 'customers', 'suppliers', 'cash', 'liability', 'assets', 'revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'alertBugEnable', 'alertVersionUpgradeEnable'));
+        return view('backend.index', compact('purchase_paid', 'purchase_due', 'due_payment_received', 'sale_due', 'sale_paid', 'salary', 'customers', 'suppliers', 'cash', 'liability', 'assets', 'revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount'));
     }
 
     public function yearlyBestSellingPrice()

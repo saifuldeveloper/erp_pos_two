@@ -33,8 +33,8 @@ use App\Models\Variant;
 use App\Models\ProductVariant;
 use App\Models\Unit;
 use App\Models\CustomerGroup;
-use DB;
-use Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\MoneyTransfer;
 use Spatie\Permission\Models\Role;
@@ -211,9 +211,13 @@ class ReportController extends Controller
                 $sale_data = Sale::with('productSales.product.brand')
                     ->whereDate('created_at', $date)
                     ->get();
+                $return_data = Returns::whereDate('created_at', $date)->get();
+
                 $grand_total[$start] = 0;
                 $total_discount[$start] = 0;
                 $total_sale[$start] = 0;
+                $total_return[$start] = 0;
+
                 $brand_total[$start] = [];
                 foreach ($sale_data as $sale) {
                     $total_sale[$start] += $sale->total_price;
@@ -231,8 +235,17 @@ class ReportController extends Controller
                     $priority = ['Avijatry' => 1, 'China' => 2];
                     return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
                 });
+
+                // --- NEW: Calculate Total Return ---
+                foreach ($return_data as $return) {
+                    $total_return[$start] += $return->grand_total;
+                }
+
+                // *** Grand Total ***
+                $grand_total[$start] = $grand_total[$start] - $total_return[$start];
                 $start++;
             }
+
             $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
             $prev_year = date('Y', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
             $prev_month = date('m', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
@@ -241,7 +254,7 @@ class ReportController extends Controller
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $warehouse_id = 0;
 
-            return view('backend.report.daily_sale', compact('total_sale', 'grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
+            return view('backend.report.daily_sale', compact('total_sale', 'grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id', 'total_return'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
@@ -259,12 +272,20 @@ class ReportController extends Controller
             else
                 $date = $year . '-' . $month . '-' . $start;
             $sale_data = Sale::with('productSales.product.brand')->where('warehouse_id', $data['warehouse_id'])->whereDate('created_at', $date)->get();
+            // --- NEW: Return data fetch with warehouse data ---
+            $return_data = Returns::where('warehouse_id', $data['warehouse_id'])
+                ->whereDate('created_at', $date)
+                ->get();
             $grand_total[$start] = 0;
             $total_discount[$start] = 0;
+            $total_sale[$start] = 0;
+            $total_return[$start] = 0;
             $brand_total[$start] = [];
             foreach ($sale_data as $sale) {
+                $total_sale[$start] += $sale->total_price;
                 $grand_total[$start] += $sale->grand_total;
                 $total_discount[$start] += $sale->order_discount;
+
                 foreach ($sale->productSales as $productSale) {
                     $brand_name = $productSale->product->brand->title ?? 'Unknown';
                     if (!isset($brand_total[$start][$brand_name]))
@@ -272,6 +293,12 @@ class ReportController extends Controller
                     $brand_total[$start][$brand_name] += $productSale->total;
                 }
             }
+            foreach ($return_data as $return) {
+                $total_return[$start] += $return->grand_total;
+            }
+
+            // grand total to return minimize
+            $grand_total[$start] = $grand_total[$start] - $total_return[$start];
             $start++;
         }
         $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
@@ -281,7 +308,7 @@ class ReportController extends Controller
         $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $warehouse_id = $data['warehouse_id'];
-        return view('backend.report.daily_sale', compact('grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.daily_sale', compact('total_sale','grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id','total_return'));
     }
 
     public function dailyPurchase($year, $month)
