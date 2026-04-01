@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product_Warehouse;
-use App\Models\StockCount;
-use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductVariant;
+use App\Models\StockCount;
+use App\Models\StockCountItem;
 use App\Models\Warehouse;
-use DB;
 use Auth;
+use DB;
+use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class StockCountController extends Controller
@@ -40,11 +41,62 @@ class StockCountController extends Controller
             ->get();
     }
 
+    // public function productSearch(Request $request)
+    // {
+    //     $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
+    //     $product_code = explode("|", $request['data']);
+    //     $product_code[0] = rtrim($product_code[0], " ");
+    //     $product = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+    //         ->where([
+    //             ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
+    //             ['products.code', $product_code[0]],
+    //             ['products.is_active', true]
+    //         ])
+    //         ->select('products.*')
+    //         ->first();
+    //     if ($product && $product->is_variant) {
+    //         $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
+    //             ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+    //             ->where([
+    //                 ['product_variants.product_id', $product->id],
+    //                 ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
+    //                 ['products.is_active', true]
+    //             ])
+    //             ->select('products.*', 'product_variants.item_code', 'product_variants.qty')
+    //             ->groupBy('product_variants.id')
+    //             ->get();
+    //     } else {
+    //         $lims_product_data = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+    //             ->where([
+    //                 ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
+    //                 ['products.code', $product_code[0]],
+    //                 ['products.is_active', true]
+    //             ])
+    //             ->groupBy('products.id')
+    //             ->get();
+    //     }
+
+    //     $products = [];
+    //     foreach ($lims_product_data as $key => $product) {
+    //         $products[$key][] = $product->name;
+    //         $products[$key][] = $product->is_variant ? $product->item_code : $product->code;
+    //         $products[$key][] = $product->qty;
+    //         $products[$key][] = $product->id;
+    //     }
+    //     return $products;
+    // }
+
+
     public function productSearch(Request $request)
     {
-        $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
+        $stock_count = StockCount::where('is_completed', false)
+            ->orWhere('is_resolved', false)
+            ->first();
+
         $product_code = explode("|", $request['data']);
         $product_code[0] = rtrim($product_code[0], " ");
+
+        // Product find
         $product = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
             ->where([
                 ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
@@ -53,6 +105,7 @@ class StockCountController extends Controller
             ])
             ->select('products.*')
             ->first();
+
         if ($product && $product->is_variant) {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
                 ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
@@ -76,13 +129,24 @@ class StockCountController extends Controller
         }
 
         $products = [];
+
         foreach ($lims_product_data as $key => $product) {
-            $products[$key][] = $product->name;
-            $products[$key][] = $product->is_variant ? $product->item_code : $product->code;
-            $products[$key][] = $product->qty;
-            $products[$key][] = $product->id;
+
+            // 🔴 Duplicate check
+            $exists = StockCountItem::where('stock_count_id', $stock_count->id)
+                ->where('product_id', $product->id)
+                ->exists();
+
+            $products[$key] = [
+                'name' => $product->name,
+                'code' => $product->is_variant ? $product->item_code : $product->code,
+                'qty' => $product->qty,
+                'id' => $product->id,
+                'exists' => $exists // 🔥 important flag
+            ];
         }
-        return $products;
+
+        return response()->json($products);
     }
 
     public function store(Request $request)
@@ -187,7 +251,7 @@ class StockCountController extends Controller
                             }
                         }
 
-                    } 
+                    }
                     // else {
                     //     // 🔹 Ignore difference
                     //     foreach ($items as $item) {

@@ -164,6 +164,7 @@
     </section>
 @endsection
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         $("ul#product").siblings('a').attr('aria-expanded', 'true');
         $("ul#product").addClass("show");
@@ -221,6 +222,96 @@
             calculateTotal();
         });
 
+        // function productSearch(data) {
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: "{{ route('stock-count.search') }}",
+        //         data: {
+        //             data: data
+        //         },
+
+        //         success: function(datas) {
+
+        //             $("input[name='product_code_name']").val('');
+
+        //             datas.forEach(function(data) {
+
+        //                 if (data.exists) {
+        //                     if (!confirm(
+        //                             "⚠️ This product already exists in stock count. Do you want to add again?"
+        //                             )) {
+        //                         return;
+        //                     }
+        //                 }
+
+        //                 var newRow = $("<tr>");
+        //                 var cols = '';
+
+        //                 cols += '<td>' + data.name + '</td>';
+        //                 cols += '<td>' + data.code + '</td>';
+        //                 cols += '<td>' + data.qty + '</td>';
+
+        //                 cols +=
+        //                     '<td><input type="number" class="form-control qty" name="qty[]" value="' +
+        //                     data.qty + '" step="any" required/></td>';
+
+        //                 cols +=
+        //                     '<td><button type="button" class="ibtnDel btn btn-danger">Delete</button></td>';
+
+        //                 cols +=
+        //                     '<input type="hidden" class="product-code" name="product_code[]" value="' +
+        //                     data.code + '"/>';
+        //                 cols += '<input type="hidden" name="product_id[]" value="' + data.id + '"/>';
+        //                 cols += '<input type="hidden" name="current_qty[]" value="' + data.qty + '"/>';
+
+        //                 newRow.append(cols);
+        //                 $("table.order-list tbody").prepend(newRow);
+        //             });
+        //         }
+        //     });
+        // }
+
+        // function productSearch(data) {
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: "{{ route('stock-count.search') }}",
+        //         data: {
+        //             data: data
+        //         },
+
+        //         success: function(datas) {
+
+        //             $("input[name='product_code_name']").val('');
+
+        //             datas.forEach(function(data) {
+
+        //                 // 🔴 If already exists → show confirmation
+        //                 if (data.exists) {
+
+        //                     Swal.fire({
+        //                         title: '⚠️ Warning',
+        //                         text: "This product already exists in stock count. Do you want to add again?",
+        //                         icon: 'warning',
+        //                         showCancelButton: true,
+        //                         confirmButtonText: 'Yes, add it',
+        //                         cancelButtonText: 'No'
+        //                     }).then((result) => {
+
+        //                         if (result.isConfirmed) {
+        //                             addRow(data);
+        //                         }
+
+        //                     });
+
+        //                 } else {
+        //                     // 🔵 If not exists → direct add
+        //                     addRow(data);
+        //                 }
+
+        //             });
+        //         }
+        //     });
+        // }
         function productSearch(data) {
             $.ajax({
                 type: 'GET',
@@ -228,41 +319,71 @@
                 data: {
                     data: data
                 },
+
                 success: function(datas) {
-                    var flag = 1;
-                    var product_code = [];
-                    $(".product-code").each(function(i) {
-                        product_code.push($(this).val());
-                    });
+
                     $("input[name='product_code_name']").val('');
-                    if (flag) {
-                        datas.forEach(function(data) {
-                            var newRow = $("<tr>");
-                            var cols = '';
-                            cols += '<td>' + data[0] +
-                                '</td>';
-                            cols += '<td>' + data[1] + '</td>';
-                            cols += '<td>' + data[2] + '</td>';
-                            cols +=
-                                '<td><input type="number" class="form-control qty" name="qty[]" value="' + data[2] + '" step="any" required/></td>';
-                            cols +=
-                                '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button></td>';
-                            cols +=
-                                '<input type="hidden" class="product-code" name="product_code[]" value="' +
-                                data[1] + '"/>';
-                            cols +=
-                                '<input type="hidden" class="current-qty" name="current_qty[]" value="' +
-                                data[2] + '"/>';
-                            cols +=
-                                '<input type="hidden" class="product-id" name="product_id[]" value="' +
-                                data[3] + '"/>';
-                            newRow.append(cols);
-                            $("table.order-list tbody").prepend(newRow);
-                            rowindex = newRow.index();
-                        });
-                    }
+
+                    // 🔥 important: process one by one
+                    processProducts(0, datas);
                 }
             });
+        }
+
+        function processProducts(index, datas) {
+
+            if (index >= datas.length) return;
+
+            let data = datas[index];
+
+            if (data.exists) {
+
+                Swal.fire({
+                    title: '⚠️ Warning',
+                    text: "This product already exists in stock count. Do you want to add again?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, add it',
+                    cancelButtonText: 'No'
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        addRow(data);
+                    }
+
+                    // 🔥 next product
+                    processProducts(index + 1, datas);
+                });
+
+            } else {
+
+                addRow(data);
+
+                // 🔥 next product
+                processProducts(index + 1, datas);
+            }
+        }
+
+        function addRow(data) {
+
+            var newRow = $("<tr>");
+            var cols = '';
+
+            cols += '<td>' + data.name + '</td>';
+            cols += '<td>' + data.code + '</td>';
+            cols += '<td>' + data.qty + '</td>';
+
+            cols += '<td><input type="number" class="form-control qty" name="qty[]" value="' + data.qty +
+                '" step="any" required/></td>';
+
+            cols += '<td><button type="button" class="ibtnDel btn btn-danger">Delete</button></td>';
+
+            cols += '<input type="hidden" class="product-code" name="product_code[]" value="' + data.code + '"/>';
+            cols += '<input type="hidden" name="product_id[]" value="' + data.id + '"/>';
+            cols += '<input type="hidden" name="current_qty[]" value="' + data.qty + '"/>';
+
+            newRow.append(cols);
+            $("table.order-list tbody").prepend(newRow);
         }
 
         $(window).keydown(function(e) {
