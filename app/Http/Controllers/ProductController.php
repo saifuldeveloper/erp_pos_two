@@ -2,37 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Keygen\Keygen;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
-use App\Models\Unit;
-use App\Models\Tax;
-use App\Models\Warehouse;
-use App\Models\Supplier;
+use App\Models\CustomField;
+use App\Models\Payment;
+use App\Models\Product_Supplier;
+use App\Models\Product_Warehouse;
 use App\Models\Product;
 use App\Models\ProductBatch;
-use App\Models\Product_Warehouse;
-use App\Models\Product_Supplier;
-use App\Models\CustomField;
-use Auth;
-use DNS1D;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Validation\Rule;
-use DB;
-use App\Models\Variant;
-use App\Models\ProductVariant;
 use App\Models\ProductImage;
-use App\Models\Purchase;
 use App\Models\ProductPurchase;
-use App\Models\Payment;
-use App\Traits\TenantInfo;
+use App\Models\ProductVariant;
+use App\Models\Purchase;
+use App\Models\Supplier;
+use App\Models\Tax;
+use App\Models\Unit;
+use App\Models\Variant;
+use App\Models\Warehouse;
 use App\Traits\CacheForget;
-use Intervention\Image\Facades\Image;
+use App\Traits\TenantInfo;
+use DNS1D;
 use File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
+use Keygen\Keygen;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class ProductController extends Controller
 {
@@ -72,13 +72,18 @@ class ProductController extends Controller
             foreach ($custom_fields as $fieldName) {
                 $field_name[] = str_replace(" ", "_", strtolower($fieldName));
             }
-            $total = Product::select(DB::raw('SUM(qty) as qty'), DB::raw('SUM(qty * cost) as cost'), DB::raw('SUM(qty * price) as price'))
+            $total = Product::query()
                 ->where('is_active', true)
+                ->selectRaw('
+                        COALESCE(SUM(qty), 0) as total_qty,
+                        COALESCE(SUM(qty * cost), 0) as total_cost,
+                        COALESCE(SUM(qty * price), 0) as total_price
+                    ')
                 ->first();
             $count_data = array(
-                'total_qty' => $total->qty,
-                'total_cost' => $total->cost,
-                'total_price' => $total->price
+                'total_qty' => $total->total_qty,
+                'total_cost' => $total->total_cost,
+                'total_price' => $total->total_price
             );
 
             $brands = Brand::where('is_active', true)->get();

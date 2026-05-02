@@ -35,8 +35,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '50000.00',
                 'salary_history' => NULL,
                 'is_active' => 0,
-                'created_at' => '2024-12-19 05:52:31',
-                'updated_at' => '2024-12-28 03:03:49',
+                'created_at' => '2024-12-19 11:52:31',
+                'updated_at' => '2024-12-28 09:03:49',
             ),
             1 => 
             array (
@@ -54,8 +54,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '12500.00',
                 'salary_history' => NULL,
                 'is_active' => 0,
-                'created_at' => '2025-02-15 15:54:25',
-                'updated_at' => '2025-03-20 17:05:02',
+                'created_at' => '2025-02-15 21:54:25',
+                'updated_at' => '2025-03-20 23:05:02',
             ),
             2 => 
             array (
@@ -73,8 +73,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '8000.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-10-05 17:03:15',
-                'updated_at' => '2025-10-05 17:03:15',
+                'created_at' => '2025-10-05 23:03:15',
+                'updated_at' => '2025-10-05 23:03:15',
             ),
             3 => 
             array (
@@ -92,8 +92,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '14500.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-10-07 16:31:48',
-                'updated_at' => '2025-10-07 16:31:48',
+                'created_at' => '2025-10-07 22:31:48',
+                'updated_at' => '2025-10-07 22:31:48',
             ),
             4 => 
             array (
@@ -111,8 +111,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '3000.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-10-09 16:08:33',
-                'updated_at' => '2025-10-09 16:09:04',
+                'created_at' => '2025-10-09 22:08:33',
+                'updated_at' => '2025-10-09 22:09:04',
             ),
             5 => 
             array (
@@ -130,8 +130,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '11500.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-10-20 16:00:44',
-                'updated_at' => '2025-10-20 16:00:44',
+                'created_at' => '2025-10-20 22:00:44',
+                'updated_at' => '2025-10-20 22:00:44',
             ),
             6 => 
             array (
@@ -149,8 +149,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '15000.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-10-20 16:01:26',
-                'updated_at' => '2025-10-20 16:01:26',
+                'created_at' => '2025-10-20 22:01:26',
+                'updated_at' => '2025-10-20 22:01:26',
             ),
             7 => 
             array (
@@ -168,8 +168,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '12500.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2026-01-12 13:01:24',
-                'updated_at' => '2026-01-12 13:01:24',
+                'created_at' => '2026-01-12 19:01:24',
+                'updated_at' => '2026-01-12 19:01:24',
             ),
             8 => 
             array (
@@ -187,8 +187,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '2500.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2026-01-12 21:28:27',
-                'updated_at' => '2026-01-12 21:28:27',
+                'created_at' => '2026-01-13 03:28:27',
+                'updated_at' => '2026-01-13 03:28:27',
             ),
             9 => 
             array (
@@ -206,8 +206,8 @@ class EmployeesTableSeeder extends Seeder
                 'salary' => '3000.00',
                 'salary_history' => NULL,
                 'is_active' => 1,
-                'created_at' => '2026-01-22 22:22:40',
-                'updated_at' => '2026-01-22 22:22:40',
+                'created_at' => '2026-01-23 04:22:40',
+                'updated_at' => '2026-01-23 04:22:40',
             ),
         ));
         

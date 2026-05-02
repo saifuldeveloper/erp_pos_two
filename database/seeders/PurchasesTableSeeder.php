@@ -43,8 +43,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 06:45:45',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-22 12:45:45',
             ),
             1 => 
             array (
@@ -70,8 +70,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:14:11',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:14:11',
             ),
             2 => 
             array (
@@ -97,8 +97,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:14:25',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:14:25',
             ),
             3 => 
             array (
@@ -124,8 +124,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:14:46',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:14:46',
             ),
             4 => 
             array (
@@ -151,8 +151,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:14:58',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:14:58',
             ),
             5 => 
             array (
@@ -178,8 +178,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:15:09',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:15:09',
             ),
             6 => 
             array (
@@ -205,8 +205,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:14:35',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:14:35',
             ),
             7 => 
             array (
@@ -232,8 +232,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:15:19',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:15:19',
             ),
             8 => 
             array (
@@ -259,8 +259,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:15:28',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:15:28',
             ),
             9 => 
             array (
@@ -286,8 +286,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:52:31',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:52:31',
             ),
             10 => 
             array (
@@ -313,8 +313,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:52:43',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:52:43',
             ),
             11 => 
             array (
@@ -340,8 +340,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:52:57',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:52:57',
             ),
             12 => 
             array (
@@ -367,8 +367,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 22:00:47',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 04:00:47',
             ),
             13 => 
             array (
@@ -394,8 +394,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:17:12',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:17:12',
             ),
             14 => 
             array (
@@ -421,8 +421,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:17:25',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:17:25',
             ),
             15 => 
             array (
@@ -448,8 +448,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:16:03',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:16:03',
             ),
             16 => 
             array (
@@ -475,8 +475,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 22:01:00',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 04:01:00',
             ),
             17 => 
             array (
@@ -502,8 +502,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 22:01:13',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 04:01:13',
             ),
             18 => 
             array (
@@ -529,8 +529,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 22:01:25',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 04:01:25',
             ),
             19 => 
             array (
@@ -556,8 +556,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:16:37',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:16:37',
             ),
             20 => 
             array (
@@ -583,8 +583,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:53:10',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:53:10',
             ),
             21 => 
             array (
@@ -610,8 +610,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:58:51',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:58:51',
             ),
             22 => 
             array (
@@ -637,8 +637,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:59:09',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:59:09',
             ),
             23 => 
             array (
@@ -664,8 +664,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:59:22',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:59:22',
             ),
             24 => 
             array (
@@ -691,8 +691,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:59:35',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:59:35',
             ),
             25 => 
             array (
@@ -718,8 +718,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:59:47',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:59:47',
             ),
             26 => 
             array (
@@ -745,8 +745,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 22:00:01',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 04:00:01',
             ),
             27 => 
             array (
@@ -772,8 +772,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 22:00:21',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 04:00:21',
             ),
             28 => 
             array (
@@ -799,8 +799,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 22:00:34',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 04:00:34',
             ),
             29 => 
             array (
@@ -826,8 +826,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:56:54',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:56:54',
             ),
             30 => 
             array (
@@ -853,8 +853,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:57:04',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:57:04',
             ),
             31 => 
             array (
@@ -880,8 +880,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:57:19',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:57:19',
             ),
             32 => 
             array (
@@ -907,8 +907,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:57:31',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:57:31',
             ),
             33 => 
             array (
@@ -934,8 +934,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:57:42',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:57:42',
             ),
             34 => 
             array (
@@ -961,8 +961,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:57:52',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:57:52',
             ),
             35 => 
             array (
@@ -988,8 +988,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:58:05',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:58:05',
             ),
             36 => 
             array (
@@ -1015,8 +1015,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:58:18',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:58:18',
             ),
             37 => 
             array (
@@ -1042,8 +1042,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:58:27',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:58:27',
             ),
             38 => 
             array (
@@ -1069,8 +1069,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:58:41',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:58:41',
             ),
             39 => 
             array (
@@ -1096,8 +1096,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:56:05',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:56:05',
             ),
             40 => 
             array (
@@ -1123,8 +1123,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:56:19',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:56:19',
             ),
             41 => 
             array (
@@ -1150,8 +1150,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:56:31',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:56:31',
             ),
             42 => 
             array (
@@ -1177,8 +1177,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:56:42',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:56:42',
             ),
             43 => 
             array (
@@ -1204,8 +1204,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:55:51',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:55:51',
             ),
             44 => 
             array (
@@ -1231,8 +1231,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:55:38',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:55:38',
             ),
             45 => 
             array (
@@ -1258,8 +1258,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:55:25',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:55:25',
             ),
             46 => 
             array (
@@ -1285,8 +1285,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:55:15',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:55:15',
             ),
             47 => 
             array (
@@ -1312,8 +1312,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:55:01',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:55:01',
             ),
             48 => 
             array (
@@ -1339,8 +1339,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:54:50',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:54:50',
             ),
             49 => 
             array (
@@ -1366,8 +1366,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:53:42',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:53:42',
             ),
             50 => 
             array (
@@ -1393,8 +1393,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:53:54',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:53:54',
             ),
             51 => 
             array (
@@ -1420,8 +1420,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:54:04',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:54:04',
             ),
             52 => 
             array (
@@ -1447,8 +1447,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:54:15',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:54:15',
             ),
             53 => 
             array (
@@ -1474,8 +1474,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:54:26',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:54:26',
             ),
             54 => 
             array (
@@ -1501,8 +1501,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:54:37',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:54:37',
             ),
             55 => 
             array (
@@ -1528,8 +1528,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:53:33',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:53:33',
             ),
             56 => 
             array (
@@ -1555,8 +1555,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-11 18:00:00',
-                'updated_at' => '2024-12-22 21:53:22',
+                'created_at' => '2024-12-12 00:00:00',
+                'updated_at' => '2024-12-23 03:53:22',
             ),
             57 => 
             array (
@@ -1582,8 +1582,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             58 => 
             array (
@@ -1609,8 +1609,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             59 => 
             array (
@@ -1636,8 +1636,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             60 => 
             array (
@@ -1663,8 +1663,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             61 => 
             array (
@@ -1690,8 +1690,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             62 => 
             array (
@@ -1717,8 +1717,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             63 => 
             array (
@@ -1744,8 +1744,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             64 => 
             array (
@@ -1771,8 +1771,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:41:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:41:55',
             ),
             65 => 
             array (
@@ -1798,8 +1798,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             66 => 
             array (
@@ -1825,8 +1825,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             67 => 
             array (
@@ -1852,8 +1852,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             68 => 
             array (
@@ -1879,8 +1879,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             69 => 
             array (
@@ -1906,8 +1906,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             70 => 
             array (
@@ -1933,8 +1933,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             71 => 
             array (
@@ -1960,8 +1960,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             72 => 
             array (
@@ -1987,8 +1987,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             73 => 
             array (
@@ -2014,8 +2014,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             74 => 
             array (
@@ -2041,8 +2041,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             75 => 
             array (
@@ -2068,8 +2068,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             76 => 
             array (
@@ -2095,8 +2095,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             77 => 
             array (
@@ -2122,8 +2122,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             78 => 
             array (
@@ -2149,8 +2149,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             79 => 
             array (
@@ -2176,8 +2176,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-01-04 07:44:49',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-01-04 13:44:49',
             ),
             80 => 
             array (
@@ -2203,8 +2203,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             81 => 
             array (
@@ -2230,8 +2230,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             82 => 
             array (
@@ -2257,8 +2257,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             83 => 
             array (
@@ -2284,8 +2284,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             84 => 
             array (
@@ -2311,8 +2311,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             85 => 
             array (
@@ -2338,8 +2338,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             86 => 
             array (
@@ -2365,8 +2365,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             87 => 
             array (
@@ -2392,8 +2392,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             88 => 
             array (
@@ -2419,8 +2419,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             89 => 
             array (
@@ -2446,8 +2446,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             90 => 
             array (
@@ -2473,8 +2473,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             91 => 
             array (
@@ -2500,8 +2500,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             92 => 
             array (
@@ -2527,8 +2527,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             93 => 
             array (
@@ -2554,8 +2554,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             94 => 
             array (
@@ -2581,8 +2581,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             95 => 
             array (
@@ -2608,8 +2608,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             96 => 
             array (
@@ -2635,8 +2635,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             97 => 
             array (
@@ -2662,8 +2662,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             98 => 
             array (
@@ -2689,8 +2689,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             99 => 
             array (
@@ -2716,8 +2716,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-05 17:00:55',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-05 23:00:55',
             ),
             100 => 
             array (
@@ -2743,8 +2743,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-07 16:26:47',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-07 22:26:47',
             ),
             101 => 
             array (
@@ -2770,8 +2770,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-07 16:26:47',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-07 22:26:47',
             ),
             102 => 
             array (
@@ -2797,8 +2797,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-07 16:26:47',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-07 22:26:47',
             ),
             103 => 
             array (
@@ -2824,8 +2824,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-12 15:51:11',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-12 21:51:11',
             ),
             104 => 
             array (
@@ -2851,8 +2851,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-12 15:51:11',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-12 21:51:11',
             ),
             105 => 
             array (
@@ -2878,8 +2878,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-12 15:51:11',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-12 21:51:11',
             ),
             106 => 
             array (
@@ -2905,8 +2905,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-12 15:51:11',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-12 21:51:11',
             ),
             107 => 
             array (
@@ -2932,8 +2932,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-20 15:26:20',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-20 21:26:20',
             ),
             108 => 
             array (
@@ -2959,8 +2959,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-20 15:26:20',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-20 21:26:20',
             ),
             109 => 
             array (
@@ -2986,8 +2986,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-20 15:26:20',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-20 21:26:20',
             ),
             110 => 
             array (
@@ -3013,8 +3013,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-20 15:26:20',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-20 21:26:20',
             ),
             111 => 
             array (
@@ -3040,8 +3040,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-20 15:26:20',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-20 21:26:20',
             ),
             112 => 
             array (
@@ -3067,8 +3067,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-20 15:26:20',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-20 21:26:20',
             ),
             113 => 
             array (
@@ -3094,8 +3094,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             114 => 
             array (
@@ -3121,8 +3121,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             115 => 
             array (
@@ -3148,8 +3148,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             116 => 
             array (
@@ -3175,8 +3175,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             117 => 
             array (
@@ -3202,8 +3202,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             118 => 
             array (
@@ -3229,8 +3229,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             119 => 
             array (
@@ -3256,8 +3256,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             120 => 
             array (
@@ -3283,8 +3283,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             121 => 
             array (
@@ -3310,8 +3310,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-22 15:55:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-22 21:55:38',
             ),
             122 => 
             array (
@@ -3337,8 +3337,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-27 15:53:14',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-27 21:53:14',
             ),
             123 => 
             array (
@@ -3364,8 +3364,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-27 15:53:14',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-27 21:53:14',
             ),
             124 => 
             array (
@@ -3391,8 +3391,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-27 15:53:14',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-27 21:53:14',
             ),
             125 => 
             array (
@@ -3418,8 +3418,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-27 15:53:14',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-27 21:53:14',
             ),
             126 => 
             array (
@@ -3445,8 +3445,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-27 15:53:14',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-27 21:53:14',
             ),
             127 => 
             array (
@@ -3472,8 +3472,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-10-27 15:53:14',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-10-27 21:53:14',
             ),
             128 => 
             array (
@@ -3499,8 +3499,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-15 16:48:10',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-15 22:48:10',
             ),
             129 => 
             array (
@@ -3526,8 +3526,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-15 16:48:10',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-15 22:48:10',
             ),
             130 => 
             array (
@@ -3553,8 +3553,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-15 16:48:10',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-15 22:48:10',
             ),
             131 => 
             array (
@@ -3580,8 +3580,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-15 16:48:10',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-15 22:48:10',
             ),
             132 => 
             array (
@@ -3607,8 +3607,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-15 16:48:10',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-15 22:48:10',
             ),
             133 => 
             array (
@@ -3634,8 +3634,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-15 16:48:10',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-15 22:48:10',
             ),
             134 => 
             array (
@@ -3661,8 +3661,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:41',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:41',
             ),
             135 => 
             array (
@@ -3688,8 +3688,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:41',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:41',
             ),
             136 => 
             array (
@@ -3715,8 +3715,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:42',
             ),
             137 => 
             array (
@@ -3742,8 +3742,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:42',
             ),
             138 => 
             array (
@@ -3769,8 +3769,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:42',
             ),
             139 => 
             array (
@@ -3796,8 +3796,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:42',
             ),
             140 => 
             array (
@@ -3823,8 +3823,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:42',
             ),
             141 => 
             array (
@@ -3850,8 +3850,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:42',
             ),
             142 => 
             array (
@@ -3877,8 +3877,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-17 16:00:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-17 22:00:42',
             ),
             143 => 
             array (
@@ -3904,8 +3904,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-20 21:55:19',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-21 03:55:19',
             ),
             144 => 
             array (
@@ -3931,8 +3931,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-20 21:55:19',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-21 03:55:19',
             ),
             145 => 
             array (
@@ -3958,8 +3958,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-20 21:55:19',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-21 03:55:19',
             ),
             146 => 
             array (
@@ -3985,8 +3985,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-20 21:55:19',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-21 03:55:19',
             ),
             147 => 
             array (
@@ -4012,8 +4012,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-20 21:55:19',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-21 03:55:19',
             ),
             148 => 
             array (
@@ -4039,8 +4039,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-24 22:06:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-25 04:06:38',
             ),
             149 => 
             array (
@@ -4066,8 +4066,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-24 22:06:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-25 04:06:38',
             ),
             150 => 
             array (
@@ -4093,8 +4093,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-24 22:06:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-25 04:06:38',
             ),
             151 => 
             array (
@@ -4120,8 +4120,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-24 22:06:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-25 04:06:38',
             ),
             152 => 
             array (
@@ -4147,8 +4147,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-24 22:06:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-25 04:06:38',
             ),
             153 => 
             array (
@@ -4174,8 +4174,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-24 22:06:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-25 04:06:38',
             ),
             154 => 
             array (
@@ -4201,8 +4201,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-24 22:06:38',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-25 04:06:38',
             ),
             155 => 
             array (
@@ -4228,8 +4228,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-25 21:56:00',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-26 03:56:00',
             ),
             156 => 
             array (
@@ -4255,8 +4255,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-11-25 21:56:00',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-11-26 03:56:00',
             ),
             157 => 
             array (
@@ -4282,8 +4282,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             158 => 
             array (
@@ -4309,8 +4309,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             159 => 
             array (
@@ -4336,8 +4336,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             160 => 
             array (
@@ -4363,8 +4363,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             161 => 
             array (
@@ -4390,8 +4390,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             162 => 
             array (
@@ -4417,8 +4417,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             163 => 
             array (
@@ -4444,8 +4444,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             164 => 
             array (
@@ -4471,8 +4471,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             165 => 
             array (
@@ -4498,8 +4498,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             166 => 
             array (
@@ -4525,8 +4525,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             167 => 
             array (
@@ -4552,8 +4552,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             168 => 
             array (
@@ -4579,8 +4579,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             169 => 
             array (
@@ -4606,8 +4606,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             170 => 
             array (
@@ -4633,8 +4633,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             171 => 
             array (
@@ -4660,8 +4660,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             172 => 
             array (
@@ -4687,8 +4687,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             173 => 
             array (
@@ -4714,8 +4714,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-08 22:13:27',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-09 04:13:27',
             ),
             174 => 
             array (
@@ -4741,8 +4741,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-09 22:41:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-10 04:41:13',
             ),
             175 => 
             array (
@@ -4768,8 +4768,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-09 22:41:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-10 04:41:13',
             ),
             176 => 
             array (
@@ -4795,8 +4795,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-09 22:41:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-10 04:41:13',
             ),
             177 => 
             array (
@@ -4822,8 +4822,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-09 22:41:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-10 04:41:13',
             ),
             178 => 
             array (
@@ -4849,8 +4849,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-09 22:41:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-10 04:41:13',
             ),
             179 => 
             array (
@@ -4876,8 +4876,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-09 22:41:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-10 04:41:13',
             ),
             180 => 
             array (
@@ -4903,8 +4903,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-17 22:08:50',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-18 04:08:50',
             ),
             181 => 
             array (
@@ -4930,8 +4930,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-17 22:08:50',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-18 04:08:50',
             ),
             182 => 
             array (
@@ -4957,8 +4957,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-17 22:08:50',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-18 04:08:50',
             ),
             183 => 
             array (
@@ -4984,8 +4984,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-17 22:08:50',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-18 04:08:50',
             ),
             184 => 
             array (
@@ -5011,8 +5011,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-17 22:08:50',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-18 04:08:50',
             ),
             185 => 
             array (
@@ -5038,8 +5038,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             186 => 
             array (
@@ -5065,8 +5065,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             187 => 
             array (
@@ -5092,8 +5092,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             188 => 
             array (
@@ -5119,8 +5119,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             189 => 
             array (
@@ -5146,8 +5146,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             190 => 
             array (
@@ -5173,8 +5173,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             191 => 
             array (
@@ -5200,8 +5200,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             192 => 
             array (
@@ -5227,8 +5227,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-18 22:36:29',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-19 04:36:29',
             ),
             193 => 
             array (
@@ -5254,8 +5254,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             194 => 
             array (
@@ -5281,8 +5281,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             195 => 
             array (
@@ -5308,8 +5308,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             196 => 
             array (
@@ -5335,8 +5335,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             197 => 
             array (
@@ -5362,8 +5362,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             198 => 
             array (
@@ -5389,8 +5389,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             199 => 
             array (
@@ -5416,8 +5416,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             200 => 
             array (
@@ -5443,8 +5443,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             201 => 
             array (
@@ -5470,8 +5470,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             202 => 
             array (
@@ -5497,8 +5497,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             203 => 
             array (
@@ -5524,8 +5524,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-21 22:14:07',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-22 04:14:07',
             ),
             204 => 
             array (
@@ -5551,8 +5551,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-24 22:12:44',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-25 04:12:44',
             ),
             205 => 
             array (
@@ -5578,8 +5578,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-24 22:12:44',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-25 04:12:44',
             ),
             206 => 
             array (
@@ -5605,8 +5605,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-24 22:12:44',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-25 04:12:44',
             ),
             207 => 
             array (
@@ -5632,8 +5632,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-24 22:12:44',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-25 04:12:44',
             ),
             208 => 
             array (
@@ -5659,8 +5659,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-24 22:12:44',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-25 04:12:44',
             ),
             209 => 
             array (
@@ -5686,8 +5686,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-24 22:12:44',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-25 04:12:44',
             ),
             210 => 
             array (
@@ -5713,8 +5713,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             211 => 
             array (
@@ -5740,8 +5740,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             212 => 
             array (
@@ -5767,8 +5767,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             213 => 
             array (
@@ -5794,8 +5794,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             214 => 
             array (
@@ -5821,8 +5821,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             215 => 
             array (
@@ -5848,8 +5848,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             216 => 
             array (
@@ -5875,8 +5875,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             217 => 
             array (
@@ -5902,8 +5902,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             218 => 
             array (
@@ -5929,8 +5929,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             219 => 
             array (
@@ -5956,8 +5956,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             220 => 
             array (
@@ -5983,8 +5983,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             221 => 
             array (
@@ -6010,8 +6010,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2025-12-28 22:01:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2025-12-29 04:01:37',
             ),
             222 => 
             array (
@@ -6037,8 +6037,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             223 => 
             array (
@@ -6064,8 +6064,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             224 => 
             array (
@@ -6091,8 +6091,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             225 => 
             array (
@@ -6118,8 +6118,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             226 => 
             array (
@@ -6145,8 +6145,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             227 => 
             array (
@@ -6172,8 +6172,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             228 => 
             array (
@@ -6199,8 +6199,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             229 => 
             array (
@@ -6226,8 +6226,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             230 => 
             array (
@@ -6253,8 +6253,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-05 22:15:33',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-06 04:15:33',
             ),
             231 => 
             array (
@@ -6280,8 +6280,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-06 22:11:19',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-07 04:11:19',
             ),
             232 => 
             array (
@@ -6307,8 +6307,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-07 23:00:47',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-08 05:00:47',
             ),
             233 => 
             array (
@@ -6334,8 +6334,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-07 23:00:47',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-08 05:00:47',
             ),
             234 => 
             array (
@@ -6361,8 +6361,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             235 => 
             array (
@@ -6388,8 +6388,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             236 => 
             array (
@@ -6415,8 +6415,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             237 => 
             array (
@@ -6442,8 +6442,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             238 => 
             array (
@@ -6469,8 +6469,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             239 => 
             array (
@@ -6496,8 +6496,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             240 => 
             array (
@@ -6523,8 +6523,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             241 => 
             array (
@@ -6550,8 +6550,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-11 22:09:18',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-12 04:09:18',
             ),
             242 => 
             array (
@@ -6577,8 +6577,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-13 22:11:47',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-14 04:11:47',
             ),
             243 => 
             array (
@@ -6604,8 +6604,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-13 22:11:47',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-14 04:11:47',
             ),
             244 => 
             array (
@@ -6631,8 +6631,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-15 21:53:43',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-16 03:53:43',
             ),
             245 => 
             array (
@@ -6658,8 +6658,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-15 21:53:43',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-16 03:53:43',
             ),
             246 => 
             array (
@@ -6685,8 +6685,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-19 21:54:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-20 03:54:04',
             ),
             247 => 
             array (
@@ -6712,8 +6712,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-19 21:54:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-20 03:54:04',
             ),
             248 => 
             array (
@@ -6739,8 +6739,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-19 21:54:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-20 03:54:04',
             ),
             249 => 
             array (
@@ -6766,8 +6766,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-19 21:54:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-20 03:54:04',
             ),
             250 => 
             array (
@@ -6793,8 +6793,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:03:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:03:04',
             ),
             251 => 
             array (
@@ -6820,8 +6820,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:03:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:03:04',
             ),
             252 => 
             array (
@@ -6847,8 +6847,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:03:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:03:04',
             ),
             253 => 
             array (
@@ -6874,8 +6874,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:03:04',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:03:04',
             ),
             254 => 
             array (
@@ -6901,8 +6901,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:03:05',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:03:05',
             ),
             255 => 
             array (
@@ -6928,8 +6928,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:03:05',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:03:05',
             ),
             256 => 
             array (
@@ -6955,8 +6955,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:12:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:12:37',
             ),
             257 => 
             array (
@@ -6982,8 +6982,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:12:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:12:37',
             ),
             258 => 
             array (
@@ -7009,8 +7009,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-01-27 22:12:37',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-01-28 04:12:37',
             ),
             259 => 
             array (
@@ -7036,8 +7036,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-05 22:21:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-06 04:21:13',
             ),
             260 => 
             array (
@@ -7063,8 +7063,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-05 22:21:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-06 04:21:13',
             ),
             261 => 
             array (
@@ -7090,8 +7090,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-05 22:21:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-06 04:21:13',
             ),
             262 => 
             array (
@@ -7117,8 +7117,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-09 22:53:48',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-10 04:53:48',
             ),
             263 => 
             array (
@@ -7144,8 +7144,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-09 22:53:48',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-10 04:53:48',
             ),
             264 => 
             array (
@@ -7171,8 +7171,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-09 22:53:48',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-10 04:53:48',
             ),
             265 => 
             array (
@@ -7198,8 +7198,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-09 22:53:48',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-10 04:53:48',
             ),
             266 => 
             array (
@@ -7225,8 +7225,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-09 22:53:48',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-10 04:53:48',
             ),
             267 => 
             array (
@@ -7252,8 +7252,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-15 22:15:25',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-16 04:15:25',
             ),
             268 => 
             array (
@@ -7279,8 +7279,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-15 22:15:25',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-16 04:15:25',
             ),
             269 => 
             array (
@@ -7306,8 +7306,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-15 22:15:25',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-16 04:15:25',
             ),
             270 => 
             array (
@@ -7333,8 +7333,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-15 22:15:25',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-16 04:15:25',
             ),
             271 => 
             array (
@@ -7360,8 +7360,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-16 22:39:00',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-17 04:39:00',
             ),
             272 => 
             array (
@@ -7387,8 +7387,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-16 22:39:00',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-17 04:39:00',
             ),
             273 => 
             array (
@@ -7414,8 +7414,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-16 22:39:00',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-17 04:39:00',
             ),
             274 => 
             array (
@@ -7441,8 +7441,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-16 22:39:00',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-17 04:39:00',
             ),
             275 => 
             array (
@@ -7468,8 +7468,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-18 22:13:34',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-19 04:13:34',
             ),
             276 => 
             array (
@@ -7495,8 +7495,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-18 22:13:34',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-19 04:13:34',
             ),
             277 => 
             array (
@@ -7522,8 +7522,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-18 22:13:34',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-19 04:13:34',
             ),
             278 => 
             array (
@@ -7549,8 +7549,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-22 22:23:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-23 04:23:13',
             ),
             279 => 
             array (
@@ -7576,8 +7576,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-22 22:23:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-23 04:23:13',
             ),
             280 => 
             array (
@@ -7603,8 +7603,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-22 22:23:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-23 04:23:13',
             ),
             281 => 
             array (
@@ -7625,13 +7625,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 10776.0,
-                'paid_amount' => 8240.0,
+                'paid_amount' => 10776.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2026-02-22 22:23:13',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-25 05:08:34',
             ),
             282 => 
             array (
@@ -7652,13 +7652,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 10260.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 10260.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2024-12-23 09:34:26',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-25 05:08:34',
             ),
             283 => 
             array (
@@ -7679,13 +7679,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2024-12-23 09:36:42',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-25 05:08:34',
             ),
             284 => 
             array (
@@ -7706,13 +7706,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2024-12-23 09:37:57',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             285 => 
             array (
@@ -7733,13 +7733,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-22 18:00:00',
-                'updated_at' => '2024-12-23 09:41:09',
+                'created_at' => '2024-12-23 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             286 => 
             array (
@@ -7765,8 +7765,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-23 18:00:00',
-                'updated_at' => '2024-12-24 07:41:16',
+                'created_at' => '2024-12-24 00:00:00',
+                'updated_at' => '2024-12-24 13:41:16',
             ),
             287 => 
             array (
@@ -7787,13 +7787,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6696.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6696.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 00:19:00',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             288 => 
             array (
@@ -7814,13 +7814,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6696.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6696.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 00:53:06',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             289 => 
             array (
@@ -7841,13 +7841,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4536.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4536.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 01:00:33',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             290 => 
             array (
@@ -7868,13 +7868,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4536.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4536.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 01:05:35',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             291 => 
             array (
@@ -7889,19 +7889,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 3434.40000000000009094947017729282379150390625,
+                'total_cost' => 3434.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 3434.40000000000009094947017729282379150390625,
-                'paid_amount' => 0.0,
+                'grand_total' => 3434.4,
+                'paid_amount' => 3434.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 01:11:48',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             292 => 
             array (
@@ -7916,19 +7916,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 3434.40000000000009094947017729282379150390625,
+                'total_cost' => 3434.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 3434.40000000000009094947017729282379150390625,
-                'paid_amount' => 0.0,
+                'grand_total' => 3434.4,
+                'paid_amount' => 3434.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 01:15:51',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             293 => 
             array (
@@ -7943,19 +7943,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4298.399999999999636202119290828704833984375,
+                'total_cost' => 4298.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4298.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4298.4,
+                'paid_amount' => 4298.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 01:46:57',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             294 => 
             array (
@@ -7970,19 +7970,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4298.399999999999636202119290828704833984375,
+                'total_cost' => 4298.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4298.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4298.4,
+                'paid_amount' => 4298.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 01:49:25',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             295 => 
             array (
@@ -7997,19 +7997,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 3412.8000000000001818989403545856475830078125,
+                'total_cost' => 3412.8,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 3412.8000000000001818989403545856475830078125,
-                'paid_amount' => 0.0,
+                'grand_total' => 3412.8,
+                'paid_amount' => 3412.8,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 01:59:58',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             296 => 
             array (
@@ -8024,19 +8024,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 3412.8000000000001818989403545856475830078125,
+                'total_cost' => 3412.8,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 3412.8000000000001818989403545856475830078125,
-                'paid_amount' => 0.0,
+                'grand_total' => 3412.8,
+                'paid_amount' => 3412.8,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 02:07:21',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             297 => 
             array (
@@ -8051,19 +8051,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 10778.399999999999636202119290828704833984375,
+                'total_cost' => 10778.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 10778.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 10778.4,
+                'paid_amount' => 10778.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 02:42:06',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-02-27 07:14:26',
             ),
             298 => 
             array (
@@ -8078,19 +8078,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 10778.399999999999636202119290828704833984375,
+                'total_cost' => 10778.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 10778.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 10778.4,
+                'paid_amount' => 10778.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 02:56:11',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             299 => 
             array (
@@ -8105,19 +8105,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 9482.399999999999636202119290828704833984375,
+                'total_cost' => 9482.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 9482.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 9482.4,
+                'paid_amount' => 9482.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 03:22:18',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             300 => 
             array (
@@ -8132,19 +8132,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 9482.399999999999636202119290828704833984375,
+                'total_cost' => 9482.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 9482.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 9482.4,
+                'paid_amount' => 9482.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 03:31:09',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             301 => 
             array (
@@ -8159,19 +8159,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4730.399999999999636202119290828704833984375,
+                'total_cost' => 4730.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4730.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4730.4,
+                'paid_amount' => 4730.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 04:09:44',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             302 => 
             array (
@@ -8186,19 +8186,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 6890.399999999999636202119290828704833984375,
+                'total_cost' => 6890.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 6890.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 6890.4,
+                'paid_amount' => 6890.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 03:51:20',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             303 => 
             array (
@@ -8213,19 +8213,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4730.399999999999636202119290828704833984375,
+                'total_cost' => 4730.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4730.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4730.4,
+                'paid_amount' => 4730.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 03:56:15',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             304 => 
             array (
@@ -8240,19 +8240,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4730.399999999999636202119290828704833984375,
+                'total_cost' => 4730.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4730.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4730.4,
+                'paid_amount' => 4730.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 04:06:19',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             305 => 
             array (
@@ -8273,13 +8273,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5913.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5913.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 06:26:13',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             306 => 
             array (
@@ -8294,19 +8294,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 6890.399999999999636202119290828704833984375,
+                'total_cost' => 6890.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 6890.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 6890.4,
+                'paid_amount' => 6890.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 06:24:45',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 06:13:28',
             ),
             307 => 
             array (
@@ -8327,13 +8327,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5742.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5742.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 06:42:50',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 21:04:27',
             ),
             308 => 
             array (
@@ -8348,19 +8348,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4730.399999999999636202119290828704833984375,
+                'total_cost' => 4730.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4730.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4730.4,
+                'paid_amount' => 4730.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 06:48:01',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 21:04:27',
             ),
             309 => 
             array (
@@ -8375,19 +8375,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 5594.399999999999636202119290828704833984375,
+                'total_cost' => 5594.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 5594.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 5594.4,
+                'paid_amount' => 5594.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 06:53:40',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 21:04:27',
             ),
             310 => 
             array (
@@ -8402,19 +8402,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4730.399999999999636202119290828704833984375,
+                'total_cost' => 4730.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4730.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4730.4,
+                'paid_amount' => 4730.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 07:15:37',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 21:04:27',
             ),
             311 => 
             array (
@@ -8429,19 +8429,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 6458.399999999999636202119290828704833984375,
+                'total_cost' => 6458.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 6458.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 6458.4,
+                'paid_amount' => 6458.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 11:31:09',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 21:04:27',
             ),
             312 => 
             array (
@@ -8456,19 +8456,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 3002.40000000000009094947017729282379150390625,
+                'total_cost' => 3002.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 3002.40000000000009094947017729282379150390625,
-                'paid_amount' => 0.0,
+                'grand_total' => 3002.4,
+                'paid_amount' => 3002.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 08:38:32',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-01 21:04:27',
             ),
             313 => 
             array (
@@ -8483,19 +8483,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 12,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 5140.8000000000001818989403545856475830078125,
+                'total_cost' => 5140.8,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 5140.8000000000001818989403545856475830078125,
-                'paid_amount' => 0.0,
+                'grand_total' => 5140.8,
+                'paid_amount' => 5140.8,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-30 18:00:00',
-                'updated_at' => '2024-12-31 09:26:51',
+                'created_at' => '2024-12-31 00:00:00',
+                'updated_at' => '2026-03-07 07:49:01',
             ),
             314 => 
             array (
@@ -8516,13 +8516,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2024-12-31 23:55:11',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:49:01',
             ),
             315 => 
             array (
@@ -8543,13 +8543,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3564.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3564.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 00:05:29',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             316 => 
             array (
@@ -8570,13 +8570,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3564.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3564.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 00:28:55',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             317 => 
             array (
@@ -8591,19 +8591,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 3002.40000000000009094947017729282379150390625,
+                'total_cost' => 3002.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 3002.40000000000009094947017729282379150390625,
-                'paid_amount' => 0.0,
+                'grand_total' => 3002.4,
+                'paid_amount' => 3002.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 00:34:00',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             318 => 
             array (
@@ -8618,19 +8618,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 12,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 5140.8000000000001818989403545856475830078125,
+                'total_cost' => 5140.8,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 5140.8000000000001818989403545856475830078125,
-                'paid_amount' => 0.0,
+                'grand_total' => 5140.8,
+                'paid_amount' => 5140.8,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 00:46:07',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             319 => 
             array (
@@ -8645,19 +8645,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4557.600000000000363797880709171295166015625,
+                'total_cost' => 4557.6,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4557.600000000000363797880709171295166015625,
-                'paid_amount' => 0.0,
+                'grand_total' => 4557.6,
+                'paid_amount' => 4557.6,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 00:59:09',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             320 => 
             array (
@@ -8672,19 +8672,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4557.600000000000363797880709171295166015625,
+                'total_cost' => 4557.6,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4557.600000000000363797880709171295166015625,
-                'paid_amount' => 0.0,
+                'grand_total' => 4557.6,
+                'paid_amount' => 4557.6,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 01:07:48',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             321 => 
             array (
@@ -8699,19 +8699,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4298.399999999999636202119290828704833984375,
+                'total_cost' => 4298.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4298.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4298.4,
+                'paid_amount' => 4298.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 01:34:40',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             322 => 
             array (
@@ -8726,19 +8726,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 4298.399999999999636202119290828704833984375,
+                'total_cost' => 4298.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 4298.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 4298.4,
+                'paid_amount' => 4298.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 01:43:15',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             323 => 
             array (
@@ -8764,8 +8764,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 05:24:07',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 11:24:07',
             ),
             324 => 
             array (
@@ -8791,8 +8791,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 05:30:12',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 11:30:12',
             ),
             325 => 
             array (
@@ -8818,8 +8818,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 05:34:41',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 11:34:41',
             ),
             326 => 
             array (
@@ -8845,8 +8845,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 05:45:20',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 11:45:20',
             ),
             327 => 
             array (
@@ -8872,8 +8872,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 05:48:47',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 11:48:47',
             ),
             328 => 
             array (
@@ -8899,8 +8899,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 06:03:27',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 12:03:27',
             ),
             329 => 
             array (
@@ -8926,8 +8926,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 06:07:35',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 12:07:35',
             ),
             330 => 
             array (
@@ -8953,8 +8953,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 06:34:16',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 12:34:16',
             ),
             331 => 
             array (
@@ -8980,8 +8980,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 06:37:45',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 12:37:45',
             ),
             332 => 
             array (
@@ -9007,8 +9007,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 06:54:52',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 12:54:52',
             ),
             333 => 
             array (
@@ -9034,8 +9034,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 07:04:46',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 13:04:46',
             ),
             334 => 
             array (
@@ -9061,8 +9061,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 07:18:59',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 13:18:59',
             ),
             335 => 
             array (
@@ -9088,8 +9088,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 07:29:56',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 13:29:56',
             ),
             336 => 
             array (
@@ -9115,8 +9115,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 07:36:51',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 13:36:51',
             ),
             337 => 
             array (
@@ -9142,8 +9142,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 07:47:59',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 13:47:59',
             ),
             338 => 
             array (
@@ -9169,8 +9169,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 09:02:03',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 15:02:03',
             ),
             339 => 
             array (
@@ -9196,8 +9196,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 08:03:28',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 14:03:28',
             ),
             340 => 
             array (
@@ -9223,8 +9223,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 08:06:19',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 14:06:19',
             ),
             341 => 
             array (
@@ -9250,8 +9250,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 08:15:27',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 14:15:27',
             ),
             342 => 
             array (
@@ -9277,8 +9277,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 08:23:57',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 14:23:57',
             ),
             343 => 
             array (
@@ -9304,8 +9304,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 08:37:12',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 14:37:12',
             ),
             344 => 
             array (
@@ -9331,8 +9331,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 08:52:50',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 14:52:50',
             ),
             345 => 
             array (
@@ -9358,8 +9358,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 08:56:24',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 14:56:24',
             ),
             346 => 
             array (
@@ -9385,8 +9385,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 09:01:00',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 15:01:00',
             ),
             347 => 
             array (
@@ -9412,8 +9412,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 09:36:39',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 15:36:39',
             ),
             348 => 
             array (
@@ -9439,8 +9439,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 09:41:35',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 15:41:35',
             ),
             349 => 
             array (
@@ -9466,8 +9466,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2024-12-31 18:00:00',
-                'updated_at' => '2025-01-01 09:44:48',
+                'created_at' => '2025-01-01 00:00:00',
+                'updated_at' => '2025-01-01 15:44:48',
             ),
             350 => 
             array (
@@ -9493,8 +9493,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 06:10:57',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 12:10:57',
             ),
             351 => 
             array (
@@ -9520,8 +9520,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 06:34:36',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 12:34:36',
             ),
             352 => 
             array (
@@ -9547,8 +9547,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 07:28:05',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 13:28:05',
             ),
             353 => 
             array (
@@ -9574,8 +9574,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 07:33:40',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 13:33:40',
             ),
             354 => 
             array (
@@ -9601,8 +9601,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 12:00:15',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 18:00:15',
             ),
             355 => 
             array (
@@ -9628,8 +9628,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 12:06:16',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 18:06:16',
             ),
             356 => 
             array (
@@ -9655,8 +9655,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 14:29:49',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 20:29:49',
             ),
             357 => 
             array (
@@ -9682,8 +9682,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 13:48:04',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 19:48:04',
             ),
             358 => 
             array (
@@ -9709,8 +9709,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 14:01:37',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 20:01:37',
             ),
             359 => 
             array (
@@ -9736,8 +9736,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 14:21:36',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 20:21:36',
             ),
             360 => 
             array (
@@ -9763,8 +9763,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 14:36:58',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 20:36:58',
             ),
             361 => 
             array (
@@ -9790,8 +9790,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 14:39:55',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 20:39:55',
             ),
             362 => 
             array (
@@ -9817,8 +9817,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 15:58:04',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 21:58:04',
             ),
             363 => 
             array (
@@ -9844,8 +9844,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-05 11:20:55',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-05 17:20:55',
             ),
             364 => 
             array (
@@ -9871,8 +9871,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 15:59:39',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 21:59:39',
             ),
             365 => 
             array (
@@ -9898,8 +9898,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 16:08:23',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 22:08:23',
             ),
             366 => 
             array (
@@ -9925,8 +9925,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-01 18:00:00',
-                'updated_at' => '2025-01-02 16:11:58',
+                'created_at' => '2025-01-02 00:00:00',
+                'updated_at' => '2025-01-02 22:11:58',
             ),
             367 => 
             array (
@@ -9947,13 +9947,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3024.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3024.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 08:38:20',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             368 => 
             array (
@@ -9974,13 +9974,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 1512.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 1512.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 08:48:50',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             369 => 
             array (
@@ -10001,13 +10001,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 1512.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 1512.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 09:05:08',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             370 => 
             array (
@@ -10028,13 +10028,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4200.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4200.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 10:19:18',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             371 => 
             array (
@@ -10055,13 +10055,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2100.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2100.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 11:01:48',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             372 => 
             array (
@@ -10082,13 +10082,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2100.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2100.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 11:36:21',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             373 => 
             array (
@@ -10109,13 +10109,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4200.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4200.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 11:56:22',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             374 => 
             array (
@@ -10136,13 +10136,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2100.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2100.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 12:44:11',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             375 => 
             array (
@@ -10163,13 +10163,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 1750.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 1750.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-03 18:00:00',
-                'updated_at' => '2025-01-04 12:47:31',
+                'created_at' => '2025-01-04 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             376 => 
             array (
@@ -10195,8 +10195,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:17:02',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:17:02',
             ),
             377 => 
             array (
@@ -10222,8 +10222,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:58',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:58',
             ),
             378 => 
             array (
@@ -10249,8 +10249,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:54',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:54',
             ),
             379 => 
             array (
@@ -10276,8 +10276,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:43',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:43',
             ),
             380 => 
             array (
@@ -10303,8 +10303,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:39',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:39',
             ),
             381 => 
             array (
@@ -10330,8 +10330,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:35',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:35',
             ),
             382 => 
             array (
@@ -10346,19 +10346,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 36,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 1199.8800000000001091393642127513885498046875,
+                'total_cost' => 1199.88,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 1199.8800000000001091393642127513885498046875,
+                'grand_total' => 1199.88,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:32',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:32',
             ),
             383 => 
             array (
@@ -10384,8 +10384,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:26',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:26',
             ),
             384 => 
             array (
@@ -10411,8 +10411,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:22',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:22',
             ),
             385 => 
             array (
@@ -10438,8 +10438,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-07 18:00:00',
-                'updated_at' => '2025-01-18 13:16:18',
+                'created_at' => '2025-01-08 00:00:00',
+                'updated_at' => '2025-01-18 19:16:18',
             ),
             386 => 
             array (
@@ -10465,8 +10465,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-11 18:00:00',
-                'updated_at' => '2025-01-12 10:54:39',
+                'created_at' => '2025-01-12 00:00:00',
+                'updated_at' => '2025-01-12 16:54:39',
             ),
             387 => 
             array (
@@ -10492,8 +10492,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-11 18:00:00',
-                'updated_at' => '2025-01-12 10:57:36',
+                'created_at' => '2025-01-12 00:00:00',
+                'updated_at' => '2025-01-12 16:57:36',
             ),
             388 => 
             array (
@@ -10519,8 +10519,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-11 18:00:00',
-                'updated_at' => '2025-01-12 10:59:18',
+                'created_at' => '2025-01-12 00:00:00',
+                'updated_at' => '2025-01-12 16:59:18',
             ),
             389 => 
             array (
@@ -10546,8 +10546,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-11 18:00:00',
-                'updated_at' => '2025-01-12 11:06:28',
+                'created_at' => '2025-01-12 00:00:00',
+                'updated_at' => '2025-01-12 17:06:28',
             ),
             390 => 
             array (
@@ -10573,8 +10573,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-11 18:00:00',
-                'updated_at' => '2025-01-12 11:21:01',
+                'created_at' => '2025-01-12 00:00:00',
+                'updated_at' => '2025-01-12 17:21:01',
             ),
             391 => 
             array (
@@ -10600,8 +10600,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-11 18:00:00',
-                'updated_at' => '2025-01-12 11:37:20',
+                'created_at' => '2025-01-12 00:00:00',
+                'updated_at' => '2025-01-12 17:37:20',
             ),
             392 => 
             array (
@@ -10627,8 +10627,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-11 18:00:00',
-                'updated_at' => '2025-01-12 13:34:25',
+                'created_at' => '2025-01-12 00:00:00',
+                'updated_at' => '2025-01-12 19:34:25',
             ),
             393 => 
             array (
@@ -10654,8 +10654,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:13:43',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:13:43',
             ),
             394 => 
             array (
@@ -10681,8 +10681,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:13:48',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:13:48',
             ),
             395 => 
             array (
@@ -10708,8 +10708,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:13:52',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:13:52',
             ),
             396 => 
             array (
@@ -10735,8 +10735,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:13:56',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:13:56',
             ),
             397 => 
             array (
@@ -10762,8 +10762,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:14:01',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:14:01',
             ),
             398 => 
             array (
@@ -10789,8 +10789,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:17:15',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:17:15',
             ),
             399 => 
             array (
@@ -10816,8 +10816,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:17:11',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:17:11',
             ),
             400 => 
             array (
@@ -10843,8 +10843,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-13 18:00:00',
-                'updated_at' => '2025-01-18 13:17:06',
+                'created_at' => '2025-01-14 00:00:00',
+                'updated_at' => '2025-01-18 19:17:06',
             ),
             401 => 
             array (
@@ -10870,8 +10870,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-18 18:00:00',
-                'updated_at' => '2025-01-19 14:20:10',
+                'created_at' => '2025-01-19 00:00:00',
+                'updated_at' => '2025-01-19 20:20:10',
             ),
             402 => 
             array (
@@ -10897,8 +10897,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-18 18:00:00',
-                'updated_at' => '2025-01-19 14:23:23',
+                'created_at' => '2025-01-19 00:00:00',
+                'updated_at' => '2025-01-19 20:23:23',
             ),
             403 => 
             array (
@@ -10924,8 +10924,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-18 18:00:00',
-                'updated_at' => '2025-01-19 14:26:41',
+                'created_at' => '2025-01-19 00:00:00',
+                'updated_at' => '2025-01-19 20:26:41',
             ),
             404 => 
             array (
@@ -10951,8 +10951,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-18 18:00:00',
-                'updated_at' => '2025-01-25 10:16:39',
+                'created_at' => '2025-01-19 00:00:00',
+                'updated_at' => '2025-01-25 16:16:39',
             ),
             405 => 
             array (
@@ -10973,13 +10973,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 06:48:51',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             406 => 
             array (
@@ -11000,13 +11000,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 06:52:37',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             407 => 
             array (
@@ -11027,13 +11027,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 06:54:55',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             408 => 
             array (
@@ -11054,13 +11054,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 06:56:59',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             409 => 
             array (
@@ -11081,13 +11081,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:11:11',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             410 => 
             array (
@@ -11108,13 +11108,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:10:53',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             411 => 
             array (
@@ -11135,13 +11135,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4128.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4128.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:29:06',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             412 => 
             array (
@@ -11162,13 +11162,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4560.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4560.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:16:23',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             413 => 
             array (
@@ -11189,13 +11189,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:23:00',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             414 => 
             array (
@@ -11216,13 +11216,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:25:13',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             415 => 
             array (
@@ -11243,13 +11243,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:29:10',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             416 => 
             array (
@@ -11270,13 +11270,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:45:31',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             417 => 
             array (
@@ -11297,13 +11297,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:46:42',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             418 => 
             array (
@@ -11324,13 +11324,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:51:28',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             419 => 
             array (
@@ -11351,13 +11351,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:53:06',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             420 => 
             array (
@@ -11378,13 +11378,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 07:57:20',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             421 => 
             array (
@@ -11405,13 +11405,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:00:16',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             422 => 
             array (
@@ -11432,13 +11432,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:01:18',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             423 => 
             array (
@@ -11459,13 +11459,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:03:02',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-07 07:53:51',
             ),
             424 => 
             array (
@@ -11486,13 +11486,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:04:16',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             425 => 
             array (
@@ -11513,13 +11513,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:05:07',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             426 => 
             array (
@@ -11540,13 +11540,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3564.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3564.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:05:50',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             427 => 
             array (
@@ -11567,13 +11567,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4560.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4560.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:06:47',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             428 => 
             array (
@@ -11594,13 +11594,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:07:40',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             429 => 
             array (
@@ -11621,13 +11621,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:08:30',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             430 => 
             array (
@@ -11648,13 +11648,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3438.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3438.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:10:37',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             431 => 
             array (
@@ -11675,13 +11675,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:16:52',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             432 => 
             array (
@@ -11702,13 +11702,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4560.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4560.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 08:21:20',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             433 => 
             array (
@@ -11729,13 +11729,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:07:48',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             434 => 
             array (
@@ -11756,13 +11756,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:09:53',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             435 => 
             array (
@@ -11783,13 +11783,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:11:36',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             436 => 
             array (
@@ -11810,13 +11810,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:12:46',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             437 => 
             array (
@@ -11837,13 +11837,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:13:44',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             438 => 
             array (
@@ -11864,13 +11864,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:14:33',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:17:59',
             ),
             439 => 
             array (
@@ -11891,13 +11891,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:16:19',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             440 => 
             array (
@@ -11918,13 +11918,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3564.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3564.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:17:20',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             441 => 
             array (
@@ -11945,13 +11945,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:20:26',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             442 => 
             array (
@@ -11972,13 +11972,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:21:26',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             443 => 
             array (
@@ -11999,13 +11999,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:22:17',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             444 => 
             array (
@@ -12026,13 +12026,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:24:14',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             445 => 
             array (
@@ -12053,13 +12053,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6372.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6372.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:25:03',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             446 => 
             array (
@@ -12080,13 +12080,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:26:09',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             447 => 
             array (
@@ -12107,13 +12107,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:27:46',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             448 => 
             array (
@@ -12134,13 +12134,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:28:27',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             449 => 
             array (
@@ -12161,13 +12161,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:29:31',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-09 07:18:00',
             ),
             450 => 
             array (
@@ -12188,13 +12188,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:30:15',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             451 => 
             array (
@@ -12215,13 +12215,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:32:02',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             452 => 
             array (
@@ -12242,13 +12242,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3690.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3690.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:47:30',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             453 => 
             array (
@@ -12269,13 +12269,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:48:42',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             454 => 
             array (
@@ -12296,13 +12296,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:51:10',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             455 => 
             array (
@@ -12323,13 +12323,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:54:37',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             456 => 
             array (
@@ -12350,13 +12350,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:55:19',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             457 => 
             array (
@@ -12377,13 +12377,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:56:02',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             458 => 
             array (
@@ -12404,13 +12404,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 09:57:25',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             459 => 
             array (
@@ -12431,13 +12431,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:00:58',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             460 => 
             array (
@@ -12458,13 +12458,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:01:59',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             461 => 
             array (
@@ -12485,13 +12485,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:03:12',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             462 => 
             array (
@@ -12512,13 +12512,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4128.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4128.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:06:22',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             463 => 
             array (
@@ -12539,13 +12539,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:07:52',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             464 => 
             array (
@@ -12566,13 +12566,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6894.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6894.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:08:41',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             465 => 
             array (
@@ -12593,13 +12593,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3696.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3696.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:09:37',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             466 => 
             array (
@@ -12620,13 +12620,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:11:42',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-10 07:08:41',
             ),
             467 => 
             array (
@@ -12647,13 +12647,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5598.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5598.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:29:46',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             468 => 
             array (
@@ -12674,13 +12674,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6150.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6150.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:15:54',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             469 => 
             array (
@@ -12701,13 +12701,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6150.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6150.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:16:41',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             470 => 
             array (
@@ -12728,13 +12728,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3240.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3240.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:19:43',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             471 => 
             array (
@@ -12755,13 +12755,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2574.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2574.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:20:48',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             472 => 
             array (
@@ -12782,13 +12782,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2574.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2574.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:21:26',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             473 => 
             array (
@@ -12809,13 +12809,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:24:25',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             474 => 
             array (
@@ -12836,13 +12836,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:27:02',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             475 => 
             array (
@@ -12863,13 +12863,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5598.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5598.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:28:03',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             476 => 
             array (
@@ -12890,13 +12890,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:29:24',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             477 => 
             array (
@@ -12917,13 +12917,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:31:22',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             478 => 
             array (
@@ -12944,13 +12944,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:32:30',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             479 => 
             array (
@@ -12971,13 +12971,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4536.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4536.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:33:27',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             480 => 
             array (
@@ -13003,8 +13003,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:37:25',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2025-01-22 16:37:25',
             ),
             481 => 
             array (
@@ -13025,13 +13025,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:48:00',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             482 => 
             array (
@@ -13052,13 +13052,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:50:06',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             483 => 
             array (
@@ -13079,13 +13079,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:51:55',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             484 => 
             array (
@@ -13106,13 +13106,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3240.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3240.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:52:51',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             485 => 
             array (
@@ -13133,13 +13133,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3132.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3132.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:54:27',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             486 => 
             array (
@@ -13160,13 +13160,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2574.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2574.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:55:57',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             487 => 
             array (
@@ -13187,13 +13187,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3132.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3132.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 10:56:44',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             488 => 
             array (
@@ -13214,13 +13214,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2574.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2574.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:01:19',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             489 => 
             array (
@@ -13241,13 +13241,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:03:06',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             490 => 
             array (
@@ -13268,13 +13268,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2574.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2574.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:04:34',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             491 => 
             array (
@@ -13295,13 +13295,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:05:25',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             492 => 
             array (
@@ -13327,8 +13327,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:05:46',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2025-01-22 17:05:46',
             ),
             493 => 
             array (
@@ -13349,13 +13349,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:15:01',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-11 07:21:42',
             ),
             494 => 
             array (
@@ -13376,13 +13376,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5424.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5424.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:17:39',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             495 => 
             array (
@@ -13403,13 +13403,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:18:57',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             496 => 
             array (
@@ -13430,13 +13430,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:19:44',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             497 => 
             array (
@@ -13457,13 +13457,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:30:17',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             498 => 
             array (
@@ -13484,13 +13484,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:32:24',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             499 => 
             array (
@@ -13511,13 +13511,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4128.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4128.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:48:45',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
         ));
         \DB::table('purchases')->insert(array (
@@ -13540,13 +13540,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:51:03',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             1 => 
             array (
@@ -13567,13 +13567,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:53:39',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             2 => 
             array (
@@ -13594,13 +13594,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2574.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2574.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:54:35',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             3 => 
             array (
@@ -13621,13 +13621,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:55:20',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             4 => 
             array (
@@ -13648,13 +13648,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 11:56:40',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             5 => 
             array (
@@ -13675,13 +13675,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4536.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4536.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:19:12',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             6 => 
             array (
@@ -13702,13 +13702,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2574.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2574.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:19:53',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             7 => 
             array (
@@ -13729,13 +13729,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3240.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3240.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:20:51',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             8 => 
             array (
@@ -13756,13 +13756,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:21:47',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             9 => 
             array (
@@ -13783,13 +13783,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3564.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3564.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:22:36',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             10 => 
             array (
@@ -13810,13 +13810,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4520.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4520.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:24:43',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             11 => 
             array (
@@ -13837,13 +13837,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:26:06',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             12 => 
             array (
@@ -13864,13 +13864,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 904.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 904.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:27:09',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             13 => 
             array (
@@ -13891,13 +13891,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:29:22',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             14 => 
             array (
@@ -13918,13 +13918,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:30:37',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             15 => 
             array (
@@ -13945,13 +13945,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5424.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5424.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:32:12',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             16 => 
             array (
@@ -13972,13 +13972,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:34:00',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             17 => 
             array (
@@ -13999,13 +13999,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4128.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4128.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:34:50',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             18 => 
             array (
@@ -14026,13 +14026,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:36:19',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             19 => 
             array (
@@ -14053,13 +14053,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:38:40',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             20 => 
             array (
@@ -14080,13 +14080,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3264.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3264.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:39:36',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             21 => 
             array (
@@ -14107,13 +14107,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3264.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3264.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:41:29',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             22 => 
             array (
@@ -14134,13 +14134,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:43:08',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             23 => 
             array (
@@ -14161,13 +14161,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:44:16',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             24 => 
             array (
@@ -14188,13 +14188,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:45:21',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             25 => 
             array (
@@ -14215,13 +14215,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5142.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5142.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:47:13',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             26 => 
             array (
@@ -14242,13 +14242,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:52:21',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             27 => 
             array (
@@ -14269,13 +14269,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:58:13',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             28 => 
             array (
@@ -14296,13 +14296,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:59:00',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             29 => 
             array (
@@ -14323,13 +14323,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5136.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5136.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 12:59:53',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             30 => 
             array (
@@ -14350,13 +14350,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 13:00:56',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-12 08:03:39',
             ),
             31 => 
             array (
@@ -14377,13 +14377,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 13:01:46',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             32 => 
             array (
@@ -14404,13 +14404,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 14:52:59',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             33 => 
             array (
@@ -14431,13 +14431,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 14:54:35',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             34 => 
             array (
@@ -14458,13 +14458,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 14:55:31',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             35 => 
             array (
@@ -14485,13 +14485,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 14:56:33',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             36 => 
             array (
@@ -14512,13 +14512,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:01:03',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             37 => 
             array (
@@ -14539,13 +14539,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:02:01',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             38 => 
             array (
@@ -14566,13 +14566,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:03:04',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             39 => 
             array (
@@ -14593,13 +14593,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:04:30',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             40 => 
             array (
@@ -14620,13 +14620,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:05:21',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             41 => 
             array (
@@ -14647,13 +14647,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:09:39',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             42 => 
             array (
@@ -14674,13 +14674,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:13:09',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             43 => 
             array (
@@ -14701,13 +14701,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:14:57',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             44 => 
             array (
@@ -14728,13 +14728,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:15:52',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             45 => 
             array (
@@ -14755,13 +14755,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:16:53',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             46 => 
             array (
@@ -14782,13 +14782,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:20:51',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             47 => 
             array (
@@ -14809,13 +14809,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:21:38',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             48 => 
             array (
@@ -14836,13 +14836,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:22:55',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:30',
             ),
             49 => 
             array (
@@ -14863,13 +14863,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:32:40',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             50 => 
             array (
@@ -14890,13 +14890,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:33:32',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             51 => 
             array (
@@ -14917,13 +14917,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:34:36',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             52 => 
             array (
@@ -14944,13 +14944,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:35:23',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             53 => 
             array (
@@ -14971,13 +14971,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:44:58',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             54 => 
             array (
@@ -14998,13 +14998,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 15:52:13',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             55 => 
             array (
@@ -15025,13 +15025,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:41:49',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             56 => 
             array (
@@ -15052,13 +15052,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:43:08',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             57 => 
             array (
@@ -15079,13 +15079,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:44:15',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             58 => 
             array (
@@ -15106,13 +15106,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:45:55',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             59 => 
             array (
@@ -15133,13 +15133,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:49:04',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             60 => 
             array (
@@ -15160,13 +15160,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6462.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6462.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:53:07',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-13 07:28:31',
             ),
             61 => 
             array (
@@ -15187,13 +15187,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6462.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6462.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:53:56',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             62 => 
             array (
@@ -15214,13 +15214,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4968.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4968.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:56:34',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             63 => 
             array (
@@ -15241,13 +15241,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:57:34',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             64 => 
             array (
@@ -15268,13 +15268,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-21 18:00:00',
-                'updated_at' => '2025-01-22 16:58:30',
+                'created_at' => '2025-01-22 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             65 => 
             array (
@@ -15300,8 +15300,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:15:00',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:15:00',
             ),
             66 => 
             array (
@@ -15327,8 +15327,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:17:07',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:17:07',
             ),
             67 => 
             array (
@@ -15354,8 +15354,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:19:39',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:19:39',
             ),
             68 => 
             array (
@@ -15381,8 +15381,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:26:04',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:26:04',
             ),
             69 => 
             array (
@@ -15408,8 +15408,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:38:31',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 18:38:31',
             ),
             70 => 
             array (
@@ -15435,8 +15435,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:36:52',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 18:36:52',
             ),
             71 => 
             array (
@@ -15462,8 +15462,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:34:31',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:34:31',
             ),
             72 => 
             array (
@@ -15489,8 +15489,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:33:25',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 18:33:25',
             ),
             73 => 
             array (
@@ -15516,8 +15516,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:38:17',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:38:17',
             ),
             74 => 
             array (
@@ -15543,8 +15543,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:39:47',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:39:47',
             ),
             75 => 
             array (
@@ -15570,8 +15570,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 08:48:12',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 14:48:12',
             ),
             76 => 
             array (
@@ -15597,8 +15597,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-25 05:53:43',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-25 11:53:43',
             ),
             77 => 
             array (
@@ -15624,8 +15624,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 08:48:49',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 14:48:49',
             ),
             78 => 
             array (
@@ -15651,8 +15651,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:45:13',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:45:13',
             ),
             79 => 
             array (
@@ -15678,8 +15678,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:46:28',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:46:28',
             ),
             80 => 
             array (
@@ -15705,8 +15705,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 08:48:16',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 14:48:16',
             ),
             81 => 
             array (
@@ -15732,8 +15732,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:48:30',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:48:30',
             ),
             82 => 
             array (
@@ -15759,8 +15759,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:49:45',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:49:45',
             ),
             83 => 
             array (
@@ -15786,8 +15786,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:50:52',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:50:52',
             ),
             84 => 
             array (
@@ -15813,8 +15813,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:52:09',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:52:09',
             ),
             85 => 
             array (
@@ -15840,8 +15840,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:53:17',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:53:17',
             ),
             86 => 
             array (
@@ -15867,8 +15867,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:54:20',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:54:20',
             ),
             87 => 
             array (
@@ -15894,8 +15894,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:55:38',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:55:38',
             ),
             88 => 
             array (
@@ -15921,8 +15921,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 08:48:54',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 14:48:54',
             ),
             89 => 
             array (
@@ -15948,8 +15948,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:57:41',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:57:41',
             ),
             90 => 
             array (
@@ -15975,8 +15975,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:58:38',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:58:38',
             ),
             91 => 
             array (
@@ -16002,8 +16002,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 06:59:59',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 12:59:59',
             ),
             92 => 
             array (
@@ -16029,8 +16029,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:01:07',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:01:07',
             ),
             93 => 
             array (
@@ -16056,8 +16056,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:02:12',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:02:12',
             ),
             94 => 
             array (
@@ -16083,8 +16083,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:03:19',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:03:19',
             ),
             95 => 
             array (
@@ -16110,8 +16110,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:04:20',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:04:20',
             ),
             96 => 
             array (
@@ -16137,8 +16137,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:05:19',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:05:19',
             ),
             97 => 
             array (
@@ -16164,8 +16164,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:06:19',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:06:19',
             ),
             98 => 
             array (
@@ -16191,8 +16191,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:07:14',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:07:14',
             ),
             99 => 
             array (
@@ -16218,8 +16218,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:09:01',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:09:01',
             ),
             100 => 
             array (
@@ -16245,8 +16245,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:10:13',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:10:13',
             ),
             101 => 
             array (
@@ -16272,8 +16272,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 07:15:57',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2025-01-23 13:15:57',
             ),
             102 => 
             array (
@@ -16294,13 +16294,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 08:51:05',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             103 => 
             array (
@@ -16321,13 +16321,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 9054.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 9054.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:20:06',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             104 => 
             array (
@@ -16348,13 +16348,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 9054.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 9054.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:18:51',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             105 => 
             array (
@@ -16375,13 +16375,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:21:02',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             106 => 
             array (
@@ -16402,13 +16402,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:21:44',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             107 => 
             array (
@@ -16429,13 +16429,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:23:21',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             108 => 
             array (
@@ -16456,13 +16456,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:26:06',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             109 => 
             array (
@@ -16483,13 +16483,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:48:21',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             110 => 
             array (
@@ -16510,13 +16510,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3216.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3216.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:48:40',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             111 => 
             array (
@@ -16537,13 +16537,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:00:31',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             112 => 
             array (
@@ -16564,13 +16564,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:43:48',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             113 => 
             array (
@@ -16591,13 +16591,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3216.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3216.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:50:40',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             114 => 
             array (
@@ -16618,13 +16618,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3780.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3780.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:51:01',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             115 => 
             array (
@@ -16645,13 +16645,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:48:56',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             116 => 
             array (
@@ -16672,13 +16672,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:47:34',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             117 => 
             array (
@@ -16699,13 +16699,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4968.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4968.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:56:15',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             118 => 
             array (
@@ -16726,13 +16726,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3780.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3780.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 12:57:44',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             119 => 
             array (
@@ -16753,13 +16753,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:35:09',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             120 => 
             array (
@@ -16780,13 +16780,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2484.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2484.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:06:49',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-14 07:25:11',
             ),
             121 => 
             array (
@@ -16807,13 +16807,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:46:12',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:38',
             ),
             122 => 
             array (
@@ -16834,13 +16834,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2790.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2790.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:10:30',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:38',
             ),
             123 => 
             array (
@@ -16861,13 +16861,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:11:53',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             124 => 
             array (
@@ -16888,13 +16888,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:45:07',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             125 => 
             array (
@@ -16915,13 +16915,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2052.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2052.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:54:11',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             126 => 
             array (
@@ -16942,13 +16942,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:55:48',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             127 => 
             array (
@@ -16969,13 +16969,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2052.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2052.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:56:56',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             128 => 
             array (
@@ -16996,13 +16996,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2484.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2484.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:58:11',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             129 => 
             array (
@@ -17023,13 +17023,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2484.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2484.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 13:59:15',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             130 => 
             array (
@@ -17050,13 +17050,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3780.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3780.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:00:15',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             131 => 
             array (
@@ -17077,13 +17077,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:01:23',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             132 => 
             array (
@@ -17104,13 +17104,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:03:38',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             133 => 
             array (
@@ -17131,13 +17131,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:06:07',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             134 => 
             array (
@@ -17158,13 +17158,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:07:14',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             135 => 
             array (
@@ -17185,13 +17185,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:08:22',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             136 => 
             array (
@@ -17212,13 +17212,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3780.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3780.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:09:46',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             137 => 
             array (
@@ -17239,13 +17239,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3780.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3780.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:10:51',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             138 => 
             array (
@@ -17266,13 +17266,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3780.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3780.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:12:11',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             139 => 
             array (
@@ -17293,13 +17293,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3132.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3132.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:14:03',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             140 => 
             array (
@@ -17320,13 +17320,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3648.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3648.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:15:51',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             141 => 
             array (
@@ -17347,13 +17347,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3132.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3132.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:17:15',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             142 => 
             array (
@@ -17374,13 +17374,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:18:52',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             143 => 
             array (
@@ -17401,13 +17401,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6714.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6714.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:20:27',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             144 => 
             array (
@@ -17428,13 +17428,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6714.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6714.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:21:45',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             145 => 
             array (
@@ -17455,13 +17455,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:23:10',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             146 => 
             array (
@@ -17482,13 +17482,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2790.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2790.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:24:37',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             147 => 
             array (
@@ -17509,13 +17509,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3864.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3864.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:53:37',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             148 => 
             array (
@@ -17536,13 +17536,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2484.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2484.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 14:54:41',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             149 => 
             array (
@@ -17563,13 +17563,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2052.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2052.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:01:02',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             150 => 
             array (
@@ -17590,13 +17590,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:02:32',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             151 => 
             array (
@@ -17617,13 +17617,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:04:14',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             152 => 
             array (
@@ -17644,13 +17644,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2826.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2826.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:05:16',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:18:39',
             ),
             153 => 
             array (
@@ -17671,13 +17671,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4536.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4536.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:06:44',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             154 => 
             array (
@@ -17698,13 +17698,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4968.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4968.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:09:01',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             155 => 
             array (
@@ -17725,13 +17725,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2826.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2826.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:10:10',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             156 => 
             array (
@@ -17752,13 +17752,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2826.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2826.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:11:39',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             157 => 
             array (
@@ -17779,13 +17779,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2826.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2826.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:13:06',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             158 => 
             array (
@@ -17806,13 +17806,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2826.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2826.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:14:17',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             159 => 
             array (
@@ -17833,13 +17833,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2826.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2826.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:16:58',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             160 => 
             array (
@@ -17860,13 +17860,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2052.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2052.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:20:47',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             161 => 
             array (
@@ -17887,13 +17887,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:23:13',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             162 => 
             array (
@@ -17914,13 +17914,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3780.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3780.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:24:31',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             163 => 
             array (
@@ -17941,13 +17941,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6714.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6714.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:27:34',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             164 => 
             array (
@@ -17968,13 +17968,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:28:45',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             165 => 
             array (
@@ -17995,13 +17995,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2052.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2052.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:30:12',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             166 => 
             array (
@@ -18022,13 +18022,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2484.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2484.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:31:38',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             167 => 
             array (
@@ -18049,13 +18049,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2484.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2484.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:32:34',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             168 => 
             array (
@@ -18076,13 +18076,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:33:46',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             169 => 
             array (
@@ -18103,13 +18103,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:49:48',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             170 => 
             array (
@@ -18130,13 +18130,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3432.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3432.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:56:48',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             171 => 
             array (
@@ -18157,13 +18157,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 15:58:54',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             172 => 
             array (
@@ -18184,13 +18184,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:00:40',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             173 => 
             array (
@@ -18211,13 +18211,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4560.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4560.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:02:09',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             174 => 
             array (
@@ -18238,13 +18238,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2400.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2400.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:03:54',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             175 => 
             array (
@@ -18265,13 +18265,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:04:51',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             176 => 
             array (
@@ -18292,13 +18292,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:06:23',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             177 => 
             array (
@@ -18319,13 +18319,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2268.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2268.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:07:39',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             178 => 
             array (
@@ -18346,13 +18346,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4968.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4968.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:09:18',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             179 => 
             array (
@@ -18373,13 +18373,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:10:25',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             180 => 
             array (
@@ -18400,13 +18400,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4536.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4536.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:11:49',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             181 => 
             array (
@@ -18427,13 +18427,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4536.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4536.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:13:00',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             182 => 
             array (
@@ -18454,13 +18454,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:42:35',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             183 => 
             array (
@@ -18481,13 +18481,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:16:41',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             184 => 
             array (
@@ -18508,13 +18508,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:17:59',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             185 => 
             array (
@@ -18535,13 +18535,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:19:27',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             186 => 
             array (
@@ -18562,13 +18562,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2052.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2052.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:21:13',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             187 => 
             array (
@@ -18589,13 +18589,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:22:47',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             188 => 
             array (
@@ -18616,13 +18616,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:25:26',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             189 => 
             array (
@@ -18643,13 +18643,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2400.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2400.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:26:48',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             190 => 
             array (
@@ -18670,13 +18670,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:40:02',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             191 => 
             array (
@@ -18697,13 +18697,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3222.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3222.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:50:57',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             192 => 
             array (
@@ -18724,13 +18724,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3222.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3222.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:51:58',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             193 => 
             array (
@@ -18751,13 +18751,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:53:21',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             194 => 
             array (
@@ -18778,13 +18778,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4740.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4740.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:54:42',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             195 => 
             array (
@@ -18805,13 +18805,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3432.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3432.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:56:09',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-16 07:57:23',
             ),
             196 => 
             array (
@@ -18832,13 +18832,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3432.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3432.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:56:59',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             197 => 
             array (
@@ -18859,13 +18859,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:57:55',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             198 => 
             array (
@@ -18886,13 +18886,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2484.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2484.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 16:59:14',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             199 => 
             array (
@@ -18913,13 +18913,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2916.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2916.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:00:29',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             200 => 
             array (
@@ -18940,13 +18940,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:01:35',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             201 => 
             array (
@@ -18967,13 +18967,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2400.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2400.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:02:40',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             202 => 
             array (
@@ -18994,13 +18994,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:03:39',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             203 => 
             array (
@@ -19021,13 +19021,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3450.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3450.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:04:41',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             204 => 
             array (
@@ -19048,13 +19048,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:07:07',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             205 => 
             array (
@@ -19075,13 +19075,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3432.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3432.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:08:45',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:20',
             ),
             206 => 
             array (
@@ -19102,13 +19102,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4302.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4302.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:13:00',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             207 => 
             array (
@@ -19129,13 +19129,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6372.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6372.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:14:02',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             208 => 
             array (
@@ -19156,13 +19156,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:15:03',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             209 => 
             array (
@@ -19183,13 +19183,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:17:02',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             210 => 
             array (
@@ -19210,13 +19210,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2400.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2400.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:18:15',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             211 => 
             array (
@@ -19237,13 +19237,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2268.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2268.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:19:40',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             212 => 
             array (
@@ -19264,13 +19264,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:20:35',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             213 => 
             array (
@@ -19291,13 +19291,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:32:27',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             214 => 
             array (
@@ -19318,13 +19318,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2568.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2568.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:33:46',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             215 => 
             array (
@@ -19345,13 +19345,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6720.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6720.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:36:03',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             216 => 
             array (
@@ -19372,13 +19372,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6720.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6720.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:38:51',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             217 => 
             array (
@@ -19399,13 +19399,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:42:52',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             218 => 
             array (
@@ -19426,13 +19426,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:44:05',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             219 => 
             array (
@@ -19453,13 +19453,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:46:11',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             220 => 
             array (
@@ -19480,13 +19480,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:47:07',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             221 => 
             array (
@@ -19507,13 +19507,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:47:59',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             222 => 
             array (
@@ -19534,13 +19534,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:49:02',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             223 => 
             array (
@@ -19561,13 +19561,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3870.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3870.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:49:54',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             224 => 
             array (
@@ -19588,13 +19588,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2832.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2832.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:50:44',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             225 => 
             array (
@@ -19615,13 +19615,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4560.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4560.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:51:56',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             226 => 
             array (
@@ -19642,13 +19642,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4728.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4728.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:52:38',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             227 => 
             array (
@@ -19669,13 +19669,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-22 18:00:00',
-                'updated_at' => '2025-01-23 17:54:08',
+                'created_at' => '2025-01-23 00:00:00',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             228 => 
             array (
@@ -19701,8 +19701,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-24 12:28:23',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 18:28:23',
             ),
             229 => 
             array (
@@ -19728,8 +19728,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-23 18:21:00',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 00:21:00',
             ),
             230 => 
             array (
@@ -19755,8 +19755,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-23 18:25:11',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 00:25:11',
             ),
             231 => 
             array (
@@ -19782,8 +19782,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-23 18:26:38',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 00:26:38',
             ),
             232 => 
             array (
@@ -19809,8 +19809,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-23 18:29:46',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 00:29:46',
             ),
             233 => 
             array (
@@ -19836,8 +19836,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-23 18:30:51',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 00:30:51',
             ),
             234 => 
             array (
@@ -19863,8 +19863,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-23 18:33:17',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 00:33:17',
             ),
             235 => 
             array (
@@ -19890,8 +19890,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-01-23 18:00:00',
-                'updated_at' => '2025-01-23 18:34:10',
+                'created_at' => '2025-01-24 00:00:00',
+                'updated_at' => '2025-01-24 00:34:10',
             ),
             236 => 
             array (
@@ -19917,8 +19917,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-08 08:33:00',
-                'updated_at' => '2025-02-08 08:35:37',
+                'created_at' => '2025-02-08 14:33:00',
+                'updated_at' => '2025-02-08 14:35:37',
             ),
             237 => 
             array (
@@ -19944,8 +19944,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-08 08:42:00',
-                'updated_at' => '2025-02-08 08:42:08',
+                'created_at' => '2025-02-08 14:42:00',
+                'updated_at' => '2025-02-08 14:42:08',
             ),
             238 => 
             array (
@@ -19971,8 +19971,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-08 08:44:00',
-                'updated_at' => '2025-02-08 08:45:25',
+                'created_at' => '2025-02-08 14:44:00',
+                'updated_at' => '2025-02-08 14:45:25',
             ),
             239 => 
             array (
@@ -19998,8 +19998,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-08 08:47:00',
-                'updated_at' => '2025-02-08 08:47:17',
+                'created_at' => '2025-02-08 14:47:00',
+                'updated_at' => '2025-02-08 14:47:17',
             ),
             240 => 
             array (
@@ -20025,8 +20025,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 07:32:00',
-                'updated_at' => '2025-02-17 07:32:16',
+                'created_at' => '2025-02-17 13:32:00',
+                'updated_at' => '2025-02-17 13:32:16',
             ),
             241 => 
             array (
@@ -20052,8 +20052,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 07:34:00',
-                'updated_at' => '2025-02-17 07:35:04',
+                'created_at' => '2025-02-17 13:34:00',
+                'updated_at' => '2025-02-17 13:35:04',
             ),
             242 => 
             array (
@@ -20079,8 +20079,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 07:37:31',
-                'updated_at' => '2025-02-17 07:37:31',
+                'created_at' => '2025-02-17 13:37:31',
+                'updated_at' => '2025-02-17 13:37:31',
             ),
             243 => 
             array (
@@ -20106,8 +20106,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 07:40:49',
-                'updated_at' => '2025-02-17 07:40:49',
+                'created_at' => '2025-02-17 13:40:49',
+                'updated_at' => '2025-02-17 13:40:49',
             ),
             244 => 
             array (
@@ -20133,8 +20133,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 07:47:04',
-                'updated_at' => '2025-02-17 07:47:04',
+                'created_at' => '2025-02-17 13:47:04',
+                'updated_at' => '2025-02-17 13:47:04',
             ),
             245 => 
             array (
@@ -20160,8 +20160,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 07:54:23',
-                'updated_at' => '2025-02-17 07:54:23',
+                'created_at' => '2025-02-17 13:54:23',
+                'updated_at' => '2025-02-17 13:54:23',
             ),
             246 => 
             array (
@@ -20187,8 +20187,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:00:47',
-                'updated_at' => '2025-02-17 08:00:47',
+                'created_at' => '2025-02-17 14:00:47',
+                'updated_at' => '2025-02-17 14:00:47',
             ),
             247 => 
             array (
@@ -20214,8 +20214,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:06:19',
-                'updated_at' => '2025-02-17 08:06:19',
+                'created_at' => '2025-02-17 14:06:19',
+                'updated_at' => '2025-02-17 14:06:19',
             ),
             248 => 
             array (
@@ -20241,8 +20241,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:08:16',
-                'updated_at' => '2025-02-17 08:08:16',
+                'created_at' => '2025-02-17 14:08:16',
+                'updated_at' => '2025-02-17 14:08:16',
             ),
             249 => 
             array (
@@ -20268,8 +20268,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:14:31',
-                'updated_at' => '2025-02-17 08:14:31',
+                'created_at' => '2025-02-17 14:14:31',
+                'updated_at' => '2025-02-17 14:14:31',
             ),
             250 => 
             array (
@@ -20295,8 +20295,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:17:16',
-                'updated_at' => '2025-02-17 08:17:16',
+                'created_at' => '2025-02-17 14:17:16',
+                'updated_at' => '2025-02-17 14:17:16',
             ),
             251 => 
             array (
@@ -20322,8 +20322,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:19:23',
-                'updated_at' => '2025-02-17 08:19:23',
+                'created_at' => '2025-02-17 14:19:23',
+                'updated_at' => '2025-02-17 14:19:23',
             ),
             252 => 
             array (
@@ -20349,8 +20349,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:21:16',
-                'updated_at' => '2025-02-17 08:21:16',
+                'created_at' => '2025-02-17 14:21:16',
+                'updated_at' => '2025-02-17 14:21:16',
             ),
             253 => 
             array (
@@ -20376,8 +20376,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:25:53',
-                'updated_at' => '2025-02-17 08:25:53',
+                'created_at' => '2025-02-17 14:25:53',
+                'updated_at' => '2025-02-17 14:25:53',
             ),
             254 => 
             array (
@@ -20403,8 +20403,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:28:12',
-                'updated_at' => '2025-02-17 09:33:03',
+                'created_at' => '2025-02-17 14:28:12',
+                'updated_at' => '2025-02-17 15:33:03',
             ),
             255 => 
             array (
@@ -20430,8 +20430,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 08:59:49',
-                'updated_at' => '2025-02-17 08:59:49',
+                'created_at' => '2025-02-17 14:59:49',
+                'updated_at' => '2025-02-17 14:59:49',
             ),
             256 => 
             array (
@@ -20457,8 +20457,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 09:05:56',
-                'updated_at' => '2025-02-17 09:05:56',
+                'created_at' => '2025-02-17 15:05:56',
+                'updated_at' => '2025-02-17 15:05:56',
             ),
             257 => 
             array (
@@ -20484,8 +20484,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 09:41:18',
-                'updated_at' => '2025-02-17 09:41:18',
+                'created_at' => '2025-02-17 15:41:18',
+                'updated_at' => '2025-02-17 15:41:18',
             ),
             258 => 
             array (
@@ -20511,8 +20511,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 09:43:17',
-                'updated_at' => '2025-02-17 09:43:17',
+                'created_at' => '2025-02-17 15:43:17',
+                'updated_at' => '2025-02-17 15:43:17',
             ),
             259 => 
             array (
@@ -20538,8 +20538,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:17:04',
-                'updated_at' => '2025-02-17 18:00:47',
+                'created_at' => '2025-02-17 16:17:04',
+                'updated_at' => '2025-02-18 00:00:47',
             ),
             260 => 
             array (
@@ -20565,8 +20565,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:18:50',
-                'updated_at' => '2025-02-17 10:18:50',
+                'created_at' => '2025-02-17 16:18:50',
+                'updated_at' => '2025-02-17 16:18:50',
             ),
             261 => 
             array (
@@ -20592,8 +20592,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:21:03',
-                'updated_at' => '2025-02-17 10:21:03',
+                'created_at' => '2025-02-17 16:21:03',
+                'updated_at' => '2025-02-17 16:21:03',
             ),
             262 => 
             array (
@@ -20619,8 +20619,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:26:35',
-                'updated_at' => '2025-02-17 10:26:35',
+                'created_at' => '2025-02-17 16:26:35',
+                'updated_at' => '2025-02-17 16:26:35',
             ),
             263 => 
             array (
@@ -20646,8 +20646,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:36:36',
-                'updated_at' => '2025-02-17 10:36:36',
+                'created_at' => '2025-02-17 16:36:36',
+                'updated_at' => '2025-02-17 16:36:36',
             ),
             264 => 
             array (
@@ -20673,8 +20673,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:38:22',
-                'updated_at' => '2025-02-17 10:38:22',
+                'created_at' => '2025-02-17 16:38:22',
+                'updated_at' => '2025-02-17 16:38:22',
             ),
             265 => 
             array (
@@ -20700,8 +20700,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:41:20',
-                'updated_at' => '2025-02-17 10:41:20',
+                'created_at' => '2025-02-17 16:41:20',
+                'updated_at' => '2025-02-17 16:41:20',
             ),
             266 => 
             array (
@@ -20727,8 +20727,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:47:24',
-                'updated_at' => '2025-02-17 10:47:24',
+                'created_at' => '2025-02-17 16:47:24',
+                'updated_at' => '2025-02-17 16:47:24',
             ),
             267 => 
             array (
@@ -20754,8 +20754,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:52:07',
-                'updated_at' => '2025-02-17 10:52:07',
+                'created_at' => '2025-02-17 16:52:07',
+                'updated_at' => '2025-02-17 16:52:07',
             ),
             268 => 
             array (
@@ -20781,8 +20781,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:55:28',
-                'updated_at' => '2025-02-17 10:55:28',
+                'created_at' => '2025-02-17 16:55:28',
+                'updated_at' => '2025-02-17 16:55:28',
             ),
             269 => 
             array (
@@ -20808,8 +20808,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:57:48',
-                'updated_at' => '2025-02-17 10:57:48',
+                'created_at' => '2025-02-17 16:57:48',
+                'updated_at' => '2025-02-17 16:57:48',
             ),
             270 => 
             array (
@@ -20835,8 +20835,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 10:59:01',
-                'updated_at' => '2025-02-17 10:59:01',
+                'created_at' => '2025-02-17 16:59:01',
+                'updated_at' => '2025-02-17 16:59:01',
             ),
             271 => 
             array (
@@ -20862,8 +20862,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:00:43',
-                'updated_at' => '2025-02-17 11:00:43',
+                'created_at' => '2025-02-17 17:00:43',
+                'updated_at' => '2025-02-17 17:00:43',
             ),
             272 => 
             array (
@@ -20889,8 +20889,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:02:05',
-                'updated_at' => '2025-02-17 11:02:05',
+                'created_at' => '2025-02-17 17:02:05',
+                'updated_at' => '2025-02-17 17:02:05',
             ),
             273 => 
             array (
@@ -20916,8 +20916,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:03:38',
-                'updated_at' => '2025-02-17 11:03:38',
+                'created_at' => '2025-02-17 17:03:38',
+                'updated_at' => '2025-02-17 17:03:38',
             ),
             274 => 
             array (
@@ -20943,8 +20943,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:05:18',
-                'updated_at' => '2025-02-17 11:05:18',
+                'created_at' => '2025-02-17 17:05:18',
+                'updated_at' => '2025-02-17 17:05:18',
             ),
             275 => 
             array (
@@ -20970,8 +20970,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:07:49',
-                'updated_at' => '2025-02-17 11:07:49',
+                'created_at' => '2025-02-17 17:07:49',
+                'updated_at' => '2025-02-17 17:07:49',
             ),
             276 => 
             array (
@@ -20997,8 +20997,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:08:58',
-                'updated_at' => '2025-02-17 11:08:58',
+                'created_at' => '2025-02-17 17:08:58',
+                'updated_at' => '2025-02-17 17:08:58',
             ),
             277 => 
             array (
@@ -21024,8 +21024,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:13:44',
-                'updated_at' => '2025-02-17 11:13:44',
+                'created_at' => '2025-02-17 17:13:44',
+                'updated_at' => '2025-02-17 17:13:44',
             ),
             278 => 
             array (
@@ -21051,8 +21051,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 11:29:35',
-                'updated_at' => '2025-02-17 11:29:35',
+                'created_at' => '2025-02-17 17:29:35',
+                'updated_at' => '2025-02-17 17:29:35',
             ),
             279 => 
             array (
@@ -21073,13 +21073,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4110.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4110.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 16:57:45',
-                'updated_at' => '2025-02-17 16:57:45',
+                'created_at' => '2025-02-17 22:57:45',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             280 => 
             array (
@@ -21100,13 +21100,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4290.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4290.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:05:14',
-                'updated_at' => '2025-02-17 17:05:14',
+                'created_at' => '2025-02-17 23:05:14',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             281 => 
             array (
@@ -21127,13 +21127,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6450.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6450.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:07:30',
-                'updated_at' => '2025-02-17 17:07:30',
+                'created_at' => '2025-02-17 23:07:30',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             282 => 
             array (
@@ -21154,13 +21154,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6690.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6690.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:10:04',
-                'updated_at' => '2025-02-17 17:10:04',
+                'created_at' => '2025-02-17 23:10:04',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             283 => 
             array (
@@ -21181,13 +21181,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4290.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4290.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:13:06',
-                'updated_at' => '2025-02-17 17:13:06',
+                'created_at' => '2025-02-17 23:13:06',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             284 => 
             array (
@@ -21208,13 +21208,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4110.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4110.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:14:56',
-                'updated_at' => '2025-02-17 17:14:56',
+                'created_at' => '2025-02-17 23:14:56',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             285 => 
             array (
@@ -21235,13 +21235,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3432.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3432.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:19:41',
-                'updated_at' => '2025-02-17 17:19:41',
+                'created_at' => '2025-02-17 23:19:41',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             286 => 
             array (
@@ -21262,13 +21262,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4290.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4290.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:21:15',
-                'updated_at' => '2025-02-17 17:21:15',
+                'created_at' => '2025-02-17 23:21:15',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             287 => 
             array (
@@ -21289,13 +21289,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4290.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4290.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:27:24',
-                'updated_at' => '2025-02-17 17:27:24',
+                'created_at' => '2025-02-17 23:27:24',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             288 => 
             array (
@@ -21316,13 +21316,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4110.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4110.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:29:09',
-                'updated_at' => '2025-02-17 17:29:09',
+                'created_at' => '2025-02-17 23:29:09',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             289 => 
             array (
@@ -21343,13 +21343,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3450.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3450.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:30:22',
-                'updated_at' => '2025-02-17 17:30:22',
+                'created_at' => '2025-02-17 23:30:22',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             290 => 
             array (
@@ -21370,13 +21370,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3420.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3420.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:35:40',
-                'updated_at' => '2025-02-17 17:35:40',
+                'created_at' => '2025-02-17 23:35:40',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             291 => 
             array (
@@ -21397,13 +21397,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4110.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4110.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:39:20',
-                'updated_at' => '2025-02-17 17:39:20',
+                'created_at' => '2025-02-17 23:39:20',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             292 => 
             array (
@@ -21424,13 +21424,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4980.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4980.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:40:39',
-                'updated_at' => '2025-02-17 17:40:39',
+                'created_at' => '2025-02-17 23:40:39',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             293 => 
             array (
@@ -21451,13 +21451,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:45:15',
-                'updated_at' => '2025-02-17 17:45:15',
+                'created_at' => '2025-02-17 23:45:15',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             294 => 
             array (
@@ -21478,13 +21478,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4980.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4980.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:51:04',
-                'updated_at' => '2025-02-17 17:51:04',
+                'created_at' => '2025-02-17 23:51:04',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             295 => 
             array (
@@ -21505,13 +21505,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4992.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4992.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:54:07',
-                'updated_at' => '2025-02-17 17:54:07',
+                'created_at' => '2025-02-17 23:54:07',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             296 => 
             array (
@@ -21532,13 +21532,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:57:04',
-                'updated_at' => '2025-02-17 17:57:04',
+                'created_at' => '2025-02-17 23:57:04',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             297 => 
             array (
@@ -21559,13 +21559,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 17:59:26',
-                'updated_at' => '2025-02-17 18:00:24',
+                'created_at' => '2025-02-17 23:59:26',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             298 => 
             array (
@@ -21586,13 +21586,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4950.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4950.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:05:19',
-                'updated_at' => '2025-02-17 18:05:19',
+                'created_at' => '2025-02-18 00:05:19',
+                'updated_at' => '2026-03-19 08:01:21',
             ),
             299 => 
             array (
@@ -21613,13 +21613,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5598.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5598.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:26:36',
-                'updated_at' => '2025-02-17 18:26:36',
+                'created_at' => '2025-02-18 00:26:36',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             300 => 
             array (
@@ -21640,13 +21640,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5598.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5598.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:27:59',
-                'updated_at' => '2025-02-17 18:27:59',
+                'created_at' => '2025-02-18 00:27:59',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             301 => 
             array (
@@ -21667,13 +21667,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:30:13',
-                'updated_at' => '2025-02-17 18:30:13',
+                'created_at' => '2025-02-18 00:30:13',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             302 => 
             array (
@@ -21694,13 +21694,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:32:17',
-                'updated_at' => '2025-02-17 18:32:17',
+                'created_at' => '2025-02-18 00:32:17',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             303 => 
             array (
@@ -21721,13 +21721,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:34:25',
-                'updated_at' => '2025-02-17 18:34:25',
+                'created_at' => '2025-02-18 00:34:25',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             304 => 
             array (
@@ -21748,13 +21748,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:35:45',
-                'updated_at' => '2025-02-17 18:35:45',
+                'created_at' => '2025-02-18 00:35:45',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             305 => 
             array (
@@ -21775,13 +21775,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5130.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5130.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:41:08',
-                'updated_at' => '2025-02-17 18:41:08',
+                'created_at' => '2025-02-18 00:41:08',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             306 => 
             array (
@@ -21802,13 +21802,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5850.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5850.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:56:20',
-                'updated_at' => '2025-02-17 18:56:20',
+                'created_at' => '2025-02-18 00:56:20',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             307 => 
             array (
@@ -21829,13 +21829,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 18:57:56',
-                'updated_at' => '2025-02-17 18:57:56',
+                'created_at' => '2025-02-18 00:57:56',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             308 => 
             array (
@@ -21856,13 +21856,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5850.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5850.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:00:35',
-                'updated_at' => '2025-02-17 19:00:35',
+                'created_at' => '2025-02-18 01:00:35',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             309 => 
             array (
@@ -21883,13 +21883,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5430.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5430.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:02:42',
-                'updated_at' => '2025-02-17 19:02:42',
+                'created_at' => '2025-02-18 01:02:42',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             310 => 
             array (
@@ -21910,13 +21910,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4290.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4290.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:04:53',
-                'updated_at' => '2025-02-17 19:04:53',
+                'created_at' => '2025-02-18 01:04:53',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             311 => 
             array (
@@ -21937,13 +21937,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:06:01',
-                'updated_at' => '2025-02-17 19:06:01',
+                'created_at' => '2025-02-18 01:06:01',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             312 => 
             array (
@@ -21964,13 +21964,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:08:12',
-                'updated_at' => '2025-02-17 19:08:12',
+                'created_at' => '2025-02-18 01:08:12',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             313 => 
             array (
@@ -21991,13 +21991,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5430.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5430.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:25:48',
-                'updated_at' => '2025-02-17 19:25:48',
+                'created_at' => '2025-02-18 01:25:48',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             314 => 
             array (
@@ -22018,13 +22018,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:27:00',
-                'updated_at' => '2025-02-17 19:27:00',
+                'created_at' => '2025-02-18 01:27:00',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             315 => 
             array (
@@ -22045,13 +22045,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5850.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5850.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:29:14',
-                'updated_at' => '2025-02-17 19:29:14',
+                'created_at' => '2025-02-18 01:29:14',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             316 => 
             array (
@@ -22072,13 +22072,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5418.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5418.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:31:25',
-                'updated_at' => '2025-02-17 19:31:25',
+                'created_at' => '2025-02-18 01:31:25',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             317 => 
             array (
@@ -22099,13 +22099,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6030.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6030.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:33:04',
-                'updated_at' => '2025-02-17 19:33:04',
+                'created_at' => '2025-02-18 01:33:04',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             318 => 
             array (
@@ -22126,13 +22126,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5430.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5430.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:34:24',
-                'updated_at' => '2025-02-17 19:34:24',
+                'created_at' => '2025-02-18 01:34:24',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             319 => 
             array (
@@ -22153,13 +22153,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5418.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5418.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:35:56',
-                'updated_at' => '2025-02-17 19:35:56',
+                'created_at' => '2025-02-18 01:35:56',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             320 => 
             array (
@@ -22180,13 +22180,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:37:29',
-                'updated_at' => '2025-02-17 19:37:29',
+                'created_at' => '2025-02-18 01:37:29',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             321 => 
             array (
@@ -22207,13 +22207,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5292.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5292.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:38:59',
-                'updated_at' => '2025-02-17 19:38:59',
+                'created_at' => '2025-02-18 01:38:59',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             322 => 
             array (
@@ -22234,13 +22234,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:43:17',
-                'updated_at' => '2025-02-17 19:43:17',
+                'created_at' => '2025-02-18 01:43:17',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             323 => 
             array (
@@ -22261,13 +22261,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5418.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5418.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:44:37',
-                'updated_at' => '2025-02-17 19:44:37',
+                'created_at' => '2025-02-18 01:44:37',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             324 => 
             array (
@@ -22288,13 +22288,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:45:44',
-                'updated_at' => '2025-02-17 19:45:44',
+                'created_at' => '2025-02-18 01:45:44',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             325 => 
             array (
@@ -22315,13 +22315,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:46:45',
-                'updated_at' => '2025-02-17 19:46:45',
+                'created_at' => '2025-02-18 01:46:45',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             326 => 
             array (
@@ -22342,13 +22342,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6900.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6900.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:48:54',
-                'updated_at' => '2025-02-17 19:48:54',
+                'created_at' => '2025-02-18 01:48:54',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             327 => 
             array (
@@ -22369,13 +22369,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:50:02',
-                'updated_at' => '2025-02-17 19:50:02',
+                'created_at' => '2025-02-18 01:50:02',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             328 => 
             array (
@@ -22396,13 +22396,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:51:16',
-                'updated_at' => '2025-02-17 19:51:16',
+                'created_at' => '2025-02-18 01:51:16',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             329 => 
             array (
@@ -22423,13 +22423,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5850.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5850.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:52:25',
-                'updated_at' => '2025-02-17 19:52:25',
+                'created_at' => '2025-02-18 01:52:25',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             330 => 
             array (
@@ -22450,13 +22450,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5292.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5292.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-17 19:53:25',
-                'updated_at' => '2025-02-17 19:53:25',
+                'created_at' => '2025-02-18 01:53:25',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             331 => 
             array (
@@ -22477,13 +22477,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5130.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5130.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-18 11:27:20',
-                'updated_at' => '2025-02-18 11:27:20',
+                'created_at' => '2025-02-18 17:27:20',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             332 => 
             array (
@@ -22504,13 +22504,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4992.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4992.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-19 07:41:43',
-                'updated_at' => '2025-02-19 07:41:43',
+                'created_at' => '2025-02-19 13:41:43',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             333 => 
             array (
@@ -22531,13 +22531,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-19 07:43:56',
-                'updated_at' => '2025-02-19 07:43:56',
+                'created_at' => '2025-02-19 13:43:56',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             334 => 
             array (
@@ -22552,19 +22552,19 @@ class PurchasesTableSeeder extends Seeder
                 'total_qty' => 6,
                 'total_discount' => 0.0,
                 'total_tax' => 0.0,
-                'total_cost' => 6458.399999999999636202119290828704833984375,
+                'total_cost' => 6458.4,
                 'order_tax_rate' => 0.0,
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 6458.399999999999636202119290828704833984375,
-                'paid_amount' => 0.0,
+                'grand_total' => 6458.4,
+                'paid_amount' => 6458.4,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-02-19 07:59:52',
-                'updated_at' => '2025-02-19 07:59:52',
+                'created_at' => '2025-02-19 13:59:52',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             335 => 
             array (
@@ -22590,8 +22590,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 21:45:19',
-                'updated_at' => '2025-03-02 21:45:19',
+                'created_at' => '2025-03-03 03:45:19',
+                'updated_at' => '2025-03-03 03:45:19',
             ),
             336 => 
             array (
@@ -22617,8 +22617,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 21:50:31',
-                'updated_at' => '2025-03-02 21:50:31',
+                'created_at' => '2025-03-03 03:50:31',
+                'updated_at' => '2025-03-03 03:50:31',
             ),
             337 => 
             array (
@@ -22644,8 +22644,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 21:53:43',
-                'updated_at' => '2025-03-02 21:53:43',
+                'created_at' => '2025-03-03 03:53:43',
+                'updated_at' => '2025-03-03 03:53:43',
             ),
             338 => 
             array (
@@ -22671,8 +22671,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 21:55:47',
-                'updated_at' => '2025-03-02 21:55:47',
+                'created_at' => '2025-03-03 03:55:47',
+                'updated_at' => '2025-03-03 03:55:47',
             ),
             339 => 
             array (
@@ -22698,8 +22698,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 21:58:56',
-                'updated_at' => '2025-03-02 21:58:56',
+                'created_at' => '2025-03-03 03:58:56',
+                'updated_at' => '2025-03-03 03:58:56',
             ),
             340 => 
             array (
@@ -22725,8 +22725,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:01:13',
-                'updated_at' => '2025-03-02 22:01:13',
+                'created_at' => '2025-03-03 04:01:13',
+                'updated_at' => '2025-03-03 04:01:13',
             ),
             341 => 
             array (
@@ -22752,8 +22752,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:02:40',
-                'updated_at' => '2025-03-02 22:02:40',
+                'created_at' => '2025-03-03 04:02:40',
+                'updated_at' => '2025-03-03 04:02:40',
             ),
             342 => 
             array (
@@ -22779,8 +22779,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:03:39',
-                'updated_at' => '2025-03-02 22:03:39',
+                'created_at' => '2025-03-03 04:03:39',
+                'updated_at' => '2025-03-03 04:03:39',
             ),
             343 => 
             array (
@@ -22806,8 +22806,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:31:07',
-                'updated_at' => '2025-03-02 22:31:07',
+                'created_at' => '2025-03-03 04:31:07',
+                'updated_at' => '2025-03-03 04:31:07',
             ),
             344 => 
             array (
@@ -22833,8 +22833,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:32:21',
-                'updated_at' => '2025-03-02 22:32:21',
+                'created_at' => '2025-03-03 04:32:21',
+                'updated_at' => '2025-03-03 04:32:21',
             ),
             345 => 
             array (
@@ -22860,8 +22860,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:34:15',
-                'updated_at' => '2025-03-02 22:34:15',
+                'created_at' => '2025-03-03 04:34:15',
+                'updated_at' => '2025-03-03 04:34:15',
             ),
             346 => 
             array (
@@ -22887,8 +22887,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:35:31',
-                'updated_at' => '2025-03-02 22:35:31',
+                'created_at' => '2025-03-03 04:35:31',
+                'updated_at' => '2025-03-03 04:35:31',
             ),
             347 => 
             array (
@@ -22914,8 +22914,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:37:23',
-                'updated_at' => '2025-03-02 22:37:23',
+                'created_at' => '2025-03-03 04:37:23',
+                'updated_at' => '2025-03-03 04:37:23',
             ),
             348 => 
             array (
@@ -22941,8 +22941,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:39:00',
-                'updated_at' => '2025-03-02 22:39:00',
+                'created_at' => '2025-03-03 04:39:00',
+                'updated_at' => '2025-03-03 04:39:00',
             ),
             349 => 
             array (
@@ -22968,8 +22968,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:40:26',
-                'updated_at' => '2025-03-02 22:40:26',
+                'created_at' => '2025-03-03 04:40:26',
+                'updated_at' => '2025-03-03 04:40:26',
             ),
             350 => 
             array (
@@ -22995,8 +22995,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:41:47',
-                'updated_at' => '2025-03-02 22:41:47',
+                'created_at' => '2025-03-03 04:41:47',
+                'updated_at' => '2025-03-03 04:41:47',
             ),
             351 => 
             array (
@@ -23022,8 +23022,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:44:50',
-                'updated_at' => '2025-03-02 22:44:50',
+                'created_at' => '2025-03-03 04:44:50',
+                'updated_at' => '2025-03-03 04:44:50',
             ),
             352 => 
             array (
@@ -23049,8 +23049,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 22:47:22',
-                'updated_at' => '2025-03-02 22:47:22',
+                'created_at' => '2025-03-03 04:47:22',
+                'updated_at' => '2025-03-03 04:47:22',
             ),
             353 => 
             array (
@@ -23076,8 +23076,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:08:54',
-                'updated_at' => '2025-03-02 23:08:54',
+                'created_at' => '2025-03-03 05:08:54',
+                'updated_at' => '2025-03-03 05:08:54',
             ),
             354 => 
             array (
@@ -23103,8 +23103,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:09:48',
-                'updated_at' => '2025-03-02 23:09:48',
+                'created_at' => '2025-03-03 05:09:48',
+                'updated_at' => '2025-03-03 05:09:48',
             ),
             355 => 
             array (
@@ -23130,8 +23130,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:10:46',
-                'updated_at' => '2025-03-02 23:10:46',
+                'created_at' => '2025-03-03 05:10:46',
+                'updated_at' => '2025-03-03 05:10:46',
             ),
             356 => 
             array (
@@ -23157,8 +23157,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:11:22',
-                'updated_at' => '2025-03-02 23:11:22',
+                'created_at' => '2025-03-03 05:11:22',
+                'updated_at' => '2025-03-03 05:11:22',
             ),
             357 => 
             array (
@@ -23184,8 +23184,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:12:04',
-                'updated_at' => '2025-03-02 23:12:04',
+                'created_at' => '2025-03-03 05:12:04',
+                'updated_at' => '2025-03-03 05:12:04',
             ),
             358 => 
             array (
@@ -23211,8 +23211,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:13:40',
-                'updated_at' => '2025-03-02 23:13:40',
+                'created_at' => '2025-03-03 05:13:40',
+                'updated_at' => '2025-03-03 05:13:40',
             ),
             359 => 
             array (
@@ -23238,8 +23238,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:15:09',
-                'updated_at' => '2025-03-02 23:15:09',
+                'created_at' => '2025-03-03 05:15:09',
+                'updated_at' => '2025-03-03 05:15:09',
             ),
             360 => 
             array (
@@ -23265,8 +23265,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:15:56',
-                'updated_at' => '2025-03-02 23:15:56',
+                'created_at' => '2025-03-03 05:15:56',
+                'updated_at' => '2025-03-03 05:15:56',
             ),
             361 => 
             array (
@@ -23292,8 +23292,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:17:10',
-                'updated_at' => '2025-03-02 23:17:10',
+                'created_at' => '2025-03-03 05:17:10',
+                'updated_at' => '2025-03-03 05:17:10',
             ),
             362 => 
             array (
@@ -23319,8 +23319,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-02 23:18:13',
-                'updated_at' => '2025-03-02 23:18:13',
+                'created_at' => '2025-03-03 05:18:13',
+                'updated_at' => '2025-03-03 05:18:13',
             ),
             363 => 
             array (
@@ -23346,8 +23346,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:12:52',
-                'updated_at' => '2025-03-03 11:12:52',
+                'created_at' => '2025-03-03 17:12:52',
+                'updated_at' => '2025-03-03 17:12:52',
             ),
             364 => 
             array (
@@ -23373,8 +23373,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:14:44',
-                'updated_at' => '2025-03-03 11:14:44',
+                'created_at' => '2025-03-03 17:14:44',
+                'updated_at' => '2025-03-03 17:14:44',
             ),
             365 => 
             array (
@@ -23400,8 +23400,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:16:38',
-                'updated_at' => '2025-03-03 11:16:38',
+                'created_at' => '2025-03-03 17:16:38',
+                'updated_at' => '2025-03-03 17:16:38',
             ),
             366 => 
             array (
@@ -23427,8 +23427,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:17:56',
-                'updated_at' => '2025-03-03 11:17:56',
+                'created_at' => '2025-03-03 17:17:56',
+                'updated_at' => '2025-03-03 17:17:56',
             ),
             367 => 
             array (
@@ -23454,8 +23454,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:19:05',
-                'updated_at' => '2025-03-03 11:19:05',
+                'created_at' => '2025-03-03 17:19:05',
+                'updated_at' => '2025-03-03 17:19:05',
             ),
             368 => 
             array (
@@ -23481,8 +23481,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:21:04',
-                'updated_at' => '2025-03-03 11:21:04',
+                'created_at' => '2025-03-03 17:21:04',
+                'updated_at' => '2025-03-03 17:21:04',
             ),
             369 => 
             array (
@@ -23508,8 +23508,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:22:08',
-                'updated_at' => '2025-03-03 11:22:08',
+                'created_at' => '2025-03-03 17:22:08',
+                'updated_at' => '2025-03-03 17:22:08',
             ),
             370 => 
             array (
@@ -23535,8 +23535,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:23:13',
-                'updated_at' => '2025-03-03 11:23:13',
+                'created_at' => '2025-03-03 17:23:13',
+                'updated_at' => '2025-03-03 17:23:13',
             ),
             371 => 
             array (
@@ -23562,8 +23562,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:24:20',
-                'updated_at' => '2025-03-03 11:24:20',
+                'created_at' => '2025-03-03 17:24:20',
+                'updated_at' => '2025-03-03 17:24:20',
             ),
             372 => 
             array (
@@ -23589,8 +23589,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:26:02',
-                'updated_at' => '2025-03-03 11:26:02',
+                'created_at' => '2025-03-03 17:26:02',
+                'updated_at' => '2025-03-03 17:26:02',
             ),
             373 => 
             array (
@@ -23616,8 +23616,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:26:47',
-                'updated_at' => '2025-03-03 11:26:47',
+                'created_at' => '2025-03-03 17:26:47',
+                'updated_at' => '2025-03-03 17:26:47',
             ),
             374 => 
             array (
@@ -23643,8 +23643,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:27:59',
-                'updated_at' => '2025-03-03 11:27:59',
+                'created_at' => '2025-03-03 17:27:59',
+                'updated_at' => '2025-03-03 17:27:59',
             ),
             375 => 
             array (
@@ -23670,8 +23670,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:28:52',
-                'updated_at' => '2025-03-03 11:28:52',
+                'created_at' => '2025-03-03 17:28:52',
+                'updated_at' => '2025-03-03 17:28:52',
             ),
             376 => 
             array (
@@ -23697,8 +23697,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:30:17',
-                'updated_at' => '2025-03-03 11:30:17',
+                'created_at' => '2025-03-03 17:30:17',
+                'updated_at' => '2025-03-03 17:30:17',
             ),
             377 => 
             array (
@@ -23724,8 +23724,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:31:10',
-                'updated_at' => '2025-03-03 11:31:10',
+                'created_at' => '2025-03-03 17:31:10',
+                'updated_at' => '2025-03-03 17:31:10',
             ),
             378 => 
             array (
@@ -23751,8 +23751,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:32:16',
-                'updated_at' => '2025-03-03 11:32:16',
+                'created_at' => '2025-03-03 17:32:16',
+                'updated_at' => '2025-03-03 17:32:16',
             ),
             379 => 
             array (
@@ -23778,8 +23778,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:33:17',
-                'updated_at' => '2025-03-03 11:33:17',
+                'created_at' => '2025-03-03 17:33:17',
+                'updated_at' => '2025-03-03 17:33:17',
             ),
             380 => 
             array (
@@ -23805,8 +23805,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:34:16',
-                'updated_at' => '2025-03-03 11:34:16',
+                'created_at' => '2025-03-03 17:34:16',
+                'updated_at' => '2025-03-03 17:34:16',
             ),
             381 => 
             array (
@@ -23832,8 +23832,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:35:03',
-                'updated_at' => '2025-03-03 11:35:03',
+                'created_at' => '2025-03-03 17:35:03',
+                'updated_at' => '2025-03-03 17:35:03',
             ),
             382 => 
             array (
@@ -23859,8 +23859,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:35:55',
-                'updated_at' => '2025-03-03 11:35:55',
+                'created_at' => '2025-03-03 17:35:55',
+                'updated_at' => '2025-03-03 17:35:55',
             ),
             383 => 
             array (
@@ -23886,8 +23886,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:36:39',
-                'updated_at' => '2025-03-03 11:36:39',
+                'created_at' => '2025-03-03 17:36:39',
+                'updated_at' => '2025-03-03 17:36:39',
             ),
             384 => 
             array (
@@ -23913,8 +23913,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:37:44',
-                'updated_at' => '2025-03-03 11:37:44',
+                'created_at' => '2025-03-03 17:37:44',
+                'updated_at' => '2025-03-03 17:37:44',
             ),
             385 => 
             array (
@@ -23940,8 +23940,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:38:37',
-                'updated_at' => '2025-03-03 11:38:37',
+                'created_at' => '2025-03-03 17:38:37',
+                'updated_at' => '2025-03-03 17:38:37',
             ),
             386 => 
             array (
@@ -23967,8 +23967,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:39:47',
-                'updated_at' => '2025-03-03 11:39:47',
+                'created_at' => '2025-03-03 17:39:47',
+                'updated_at' => '2025-03-03 17:39:47',
             ),
             387 => 
             array (
@@ -23994,8 +23994,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:40:36',
-                'updated_at' => '2025-03-03 11:40:36',
+                'created_at' => '2025-03-03 17:40:36',
+                'updated_at' => '2025-03-03 17:40:36',
             ),
             388 => 
             array (
@@ -24021,8 +24021,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:41:54',
-                'updated_at' => '2025-03-03 11:41:54',
+                'created_at' => '2025-03-03 17:41:54',
+                'updated_at' => '2025-03-03 17:41:54',
             ),
             389 => 
             array (
@@ -24048,8 +24048,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:42:44',
-                'updated_at' => '2025-03-03 11:42:44',
+                'created_at' => '2025-03-03 17:42:44',
+                'updated_at' => '2025-03-03 17:42:44',
             ),
             390 => 
             array (
@@ -24075,8 +24075,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:43:50',
-                'updated_at' => '2025-03-03 11:43:50',
+                'created_at' => '2025-03-03 17:43:50',
+                'updated_at' => '2025-03-03 17:43:50',
             ),
             391 => 
             array (
@@ -24102,8 +24102,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:44:51',
-                'updated_at' => '2025-03-03 11:44:51',
+                'created_at' => '2025-03-03 17:44:51',
+                'updated_at' => '2025-03-03 17:44:51',
             ),
             392 => 
             array (
@@ -24129,8 +24129,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:47:57',
-                'updated_at' => '2025-03-03 11:47:57',
+                'created_at' => '2025-03-03 17:47:57',
+                'updated_at' => '2025-03-03 17:47:57',
             ),
             393 => 
             array (
@@ -24156,8 +24156,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:49:22',
-                'updated_at' => '2025-03-03 11:49:22',
+                'created_at' => '2025-03-03 17:49:22',
+                'updated_at' => '2025-03-03 17:49:22',
             ),
             394 => 
             array (
@@ -24183,8 +24183,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:50:37',
-                'updated_at' => '2025-03-03 11:50:37',
+                'created_at' => '2025-03-03 17:50:37',
+                'updated_at' => '2025-03-03 17:50:37',
             ),
             395 => 
             array (
@@ -24210,8 +24210,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:51:27',
-                'updated_at' => '2025-03-03 11:51:27',
+                'created_at' => '2025-03-03 17:51:27',
+                'updated_at' => '2025-03-03 17:51:27',
             ),
             396 => 
             array (
@@ -24237,8 +24237,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:52:35',
-                'updated_at' => '2025-03-03 11:52:35',
+                'created_at' => '2025-03-03 17:52:35',
+                'updated_at' => '2025-03-03 17:52:35',
             ),
             397 => 
             array (
@@ -24264,8 +24264,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:53:32',
-                'updated_at' => '2025-03-03 11:53:32',
+                'created_at' => '2025-03-03 17:53:32',
+                'updated_at' => '2025-03-03 17:53:32',
             ),
             398 => 
             array (
@@ -24291,8 +24291,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:54:24',
-                'updated_at' => '2025-03-03 11:54:24',
+                'created_at' => '2025-03-03 17:54:24',
+                'updated_at' => '2025-03-03 17:54:24',
             ),
             399 => 
             array (
@@ -24318,8 +24318,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:55:24',
-                'updated_at' => '2025-03-03 11:55:24',
+                'created_at' => '2025-03-03 17:55:24',
+                'updated_at' => '2025-03-03 17:55:24',
             ),
             400 => 
             array (
@@ -24345,8 +24345,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:56:14',
-                'updated_at' => '2025-03-03 11:56:14',
+                'created_at' => '2025-03-03 17:56:14',
+                'updated_at' => '2025-03-03 17:56:14',
             ),
             401 => 
             array (
@@ -24372,8 +24372,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:57:09',
-                'updated_at' => '2025-03-03 11:57:09',
+                'created_at' => '2025-03-03 17:57:09',
+                'updated_at' => '2025-03-03 17:57:09',
             ),
             402 => 
             array (
@@ -24399,8 +24399,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 11:59:20',
-                'updated_at' => '2025-03-03 11:59:20',
+                'created_at' => '2025-03-03 17:59:20',
+                'updated_at' => '2025-03-03 17:59:20',
             ),
             403 => 
             array (
@@ -24426,8 +24426,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:00:55',
-                'updated_at' => '2025-03-03 12:00:55',
+                'created_at' => '2025-03-03 18:00:55',
+                'updated_at' => '2025-03-03 18:00:55',
             ),
             404 => 
             array (
@@ -24453,8 +24453,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:02:07',
-                'updated_at' => '2025-03-03 12:02:07',
+                'created_at' => '2025-03-03 18:02:07',
+                'updated_at' => '2025-03-03 18:02:07',
             ),
             405 => 
             array (
@@ -24480,8 +24480,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:03:10',
-                'updated_at' => '2025-03-03 12:03:10',
+                'created_at' => '2025-03-03 18:03:10',
+                'updated_at' => '2025-03-03 18:03:10',
             ),
             406 => 
             array (
@@ -24507,8 +24507,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:04:04',
-                'updated_at' => '2025-03-03 12:04:04',
+                'created_at' => '2025-03-03 18:04:04',
+                'updated_at' => '2025-03-03 18:04:04',
             ),
             407 => 
             array (
@@ -24534,8 +24534,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:04:56',
-                'updated_at' => '2025-03-03 12:04:56',
+                'created_at' => '2025-03-03 18:04:56',
+                'updated_at' => '2025-03-03 18:04:56',
             ),
             408 => 
             array (
@@ -24561,8 +24561,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:05:47',
-                'updated_at' => '2025-03-03 12:05:47',
+                'created_at' => '2025-03-03 18:05:47',
+                'updated_at' => '2025-03-03 18:05:47',
             ),
             409 => 
             array (
@@ -24588,8 +24588,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:07:18',
-                'updated_at' => '2025-03-03 12:07:18',
+                'created_at' => '2025-03-03 18:07:18',
+                'updated_at' => '2025-03-03 18:07:18',
             ),
             410 => 
             array (
@@ -24615,8 +24615,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:08:14',
-                'updated_at' => '2025-03-03 12:08:14',
+                'created_at' => '2025-03-03 18:08:14',
+                'updated_at' => '2025-03-03 18:08:14',
             ),
             411 => 
             array (
@@ -24642,8 +24642,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:09:02',
-                'updated_at' => '2025-03-03 12:09:02',
+                'created_at' => '2025-03-03 18:09:02',
+                'updated_at' => '2025-03-03 18:09:02',
             ),
             412 => 
             array (
@@ -24669,8 +24669,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:09:53',
-                'updated_at' => '2025-03-03 12:09:53',
+                'created_at' => '2025-03-03 18:09:53',
+                'updated_at' => '2025-03-03 18:09:53',
             ),
             413 => 
             array (
@@ -24696,8 +24696,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:11:31',
-                'updated_at' => '2025-03-03 12:11:31',
+                'created_at' => '2025-03-03 18:11:31',
+                'updated_at' => '2025-03-03 18:11:31',
             ),
             414 => 
             array (
@@ -24723,8 +24723,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:12:29',
-                'updated_at' => '2025-03-03 12:12:29',
+                'created_at' => '2025-03-03 18:12:29',
+                'updated_at' => '2025-03-03 18:12:29',
             ),
             415 => 
             array (
@@ -24750,8 +24750,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:15:45',
-                'updated_at' => '2025-03-03 12:15:45',
+                'created_at' => '2025-03-03 18:15:45',
+                'updated_at' => '2025-03-03 18:15:45',
             ),
             416 => 
             array (
@@ -24777,8 +24777,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:16:36',
-                'updated_at' => '2025-03-03 12:16:36',
+                'created_at' => '2025-03-03 18:16:36',
+                'updated_at' => '2025-03-03 18:16:36',
             ),
             417 => 
             array (
@@ -24804,8 +24804,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:17:39',
-                'updated_at' => '2025-03-03 12:17:39',
+                'created_at' => '2025-03-03 18:17:39',
+                'updated_at' => '2025-03-03 18:17:39',
             ),
             418 => 
             array (
@@ -24831,8 +24831,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:18:41',
-                'updated_at' => '2025-03-03 12:18:41',
+                'created_at' => '2025-03-03 18:18:41',
+                'updated_at' => '2025-03-03 18:18:41',
             ),
             419 => 
             array (
@@ -24858,8 +24858,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:19:49',
-                'updated_at' => '2025-03-03 12:19:49',
+                'created_at' => '2025-03-03 18:19:49',
+                'updated_at' => '2025-03-03 18:19:49',
             ),
             420 => 
             array (
@@ -24885,8 +24885,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:20:42',
-                'updated_at' => '2025-03-03 12:20:42',
+                'created_at' => '2025-03-03 18:20:42',
+                'updated_at' => '2025-03-03 18:20:42',
             ),
             421 => 
             array (
@@ -24912,8 +24912,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:21:44',
-                'updated_at' => '2025-03-03 12:21:44',
+                'created_at' => '2025-03-03 18:21:44',
+                'updated_at' => '2025-03-03 18:21:44',
             ),
             422 => 
             array (
@@ -24939,8 +24939,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:22:34',
-                'updated_at' => '2025-03-03 12:22:34',
+                'created_at' => '2025-03-03 18:22:34',
+                'updated_at' => '2025-03-03 18:22:34',
             ),
             423 => 
             array (
@@ -24966,8 +24966,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:23:33',
-                'updated_at' => '2025-03-03 12:23:33',
+                'created_at' => '2025-03-03 18:23:33',
+                'updated_at' => '2025-03-03 18:23:33',
             ),
             424 => 
             array (
@@ -24993,8 +24993,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:24:25',
-                'updated_at' => '2025-03-03 12:24:25',
+                'created_at' => '2025-03-03 18:24:25',
+                'updated_at' => '2025-03-03 18:24:25',
             ),
             425 => 
             array (
@@ -25020,8 +25020,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:25:28',
-                'updated_at' => '2025-03-03 12:25:28',
+                'created_at' => '2025-03-03 18:25:28',
+                'updated_at' => '2025-03-03 18:25:28',
             ),
             426 => 
             array (
@@ -25047,8 +25047,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:28:20',
-                'updated_at' => '2025-03-03 12:28:20',
+                'created_at' => '2025-03-03 18:28:20',
+                'updated_at' => '2025-03-03 18:28:20',
             ),
             427 => 
             array (
@@ -25074,8 +25074,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:29:44',
-                'updated_at' => '2025-03-03 12:29:44',
+                'created_at' => '2025-03-03 18:29:44',
+                'updated_at' => '2025-03-03 18:29:44',
             ),
             428 => 
             array (
@@ -25101,8 +25101,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 12:30:53',
-                'updated_at' => '2025-03-03 12:30:53',
+                'created_at' => '2025-03-03 18:30:53',
+                'updated_at' => '2025-03-03 18:30:53',
             ),
             429 => 
             array (
@@ -25128,8 +25128,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 13:08:45',
-                'updated_at' => '2025-03-03 13:08:45',
+                'created_at' => '2025-03-03 19:08:45',
+                'updated_at' => '2025-03-03 19:08:45',
             ),
             430 => 
             array (
@@ -25155,8 +25155,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 13:10:32',
-                'updated_at' => '2025-03-03 13:10:32',
+                'created_at' => '2025-03-03 19:10:32',
+                'updated_at' => '2025-03-03 19:10:32',
             ),
             431 => 
             array (
@@ -25182,8 +25182,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 13:15:11',
-                'updated_at' => '2025-03-03 13:15:11',
+                'created_at' => '2025-03-03 19:15:11',
+                'updated_at' => '2025-03-03 19:15:11',
             ),
             432 => 
             array (
@@ -25209,8 +25209,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 13:59:03',
-                'updated_at' => '2025-03-03 13:59:03',
+                'created_at' => '2025-03-03 19:59:03',
+                'updated_at' => '2025-03-03 19:59:03',
             ),
             433 => 
             array (
@@ -25236,8 +25236,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:18:42',
-                'updated_at' => '2025-03-03 20:18:42',
+                'created_at' => '2025-03-04 02:18:42',
+                'updated_at' => '2025-03-04 02:18:42',
             ),
             434 => 
             array (
@@ -25263,8 +25263,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:21:04',
-                'updated_at' => '2025-03-03 20:21:04',
+                'created_at' => '2025-03-04 02:21:04',
+                'updated_at' => '2025-03-04 02:21:04',
             ),
             435 => 
             array (
@@ -25290,8 +25290,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:23:58',
-                'updated_at' => '2025-03-03 20:23:58',
+                'created_at' => '2025-03-04 02:23:58',
+                'updated_at' => '2025-03-04 02:23:58',
             ),
             436 => 
             array (
@@ -25317,8 +25317,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:25:05',
-                'updated_at' => '2025-03-03 20:25:05',
+                'created_at' => '2025-03-04 02:25:05',
+                'updated_at' => '2025-03-04 02:25:05',
             ),
             437 => 
             array (
@@ -25344,8 +25344,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:26:02',
-                'updated_at' => '2025-03-03 20:26:02',
+                'created_at' => '2025-03-04 02:26:02',
+                'updated_at' => '2025-03-04 02:26:02',
             ),
             438 => 
             array (
@@ -25371,8 +25371,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:27:19',
-                'updated_at' => '2025-03-03 20:27:19',
+                'created_at' => '2025-03-04 02:27:19',
+                'updated_at' => '2025-03-04 02:27:19',
             ),
             439 => 
             array (
@@ -25398,8 +25398,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:28:26',
-                'updated_at' => '2025-03-03 20:28:26',
+                'created_at' => '2025-03-04 02:28:26',
+                'updated_at' => '2025-03-04 02:28:26',
             ),
             440 => 
             array (
@@ -25425,8 +25425,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:29:48',
-                'updated_at' => '2025-03-03 20:29:48',
+                'created_at' => '2025-03-04 02:29:48',
+                'updated_at' => '2025-03-04 02:29:48',
             ),
             441 => 
             array (
@@ -25452,8 +25452,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:30:51',
-                'updated_at' => '2025-03-03 20:30:51',
+                'created_at' => '2025-03-04 02:30:51',
+                'updated_at' => '2025-03-04 02:30:51',
             ),
             442 => 
             array (
@@ -25479,8 +25479,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:31:50',
-                'updated_at' => '2025-03-03 20:31:50',
+                'created_at' => '2025-03-04 02:31:50',
+                'updated_at' => '2025-03-04 02:31:50',
             ),
             443 => 
             array (
@@ -25506,8 +25506,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:34:15',
-                'updated_at' => '2025-03-03 20:34:15',
+                'created_at' => '2025-03-04 02:34:15',
+                'updated_at' => '2025-03-04 02:34:15',
             ),
             444 => 
             array (
@@ -25533,8 +25533,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:37:35',
-                'updated_at' => '2025-03-03 20:37:35',
+                'created_at' => '2025-03-04 02:37:35',
+                'updated_at' => '2025-03-04 02:37:35',
             ),
             445 => 
             array (
@@ -25560,8 +25560,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:38:35',
-                'updated_at' => '2025-03-03 20:38:35',
+                'created_at' => '2025-03-04 02:38:35',
+                'updated_at' => '2025-03-04 02:38:35',
             ),
             446 => 
             array (
@@ -25587,8 +25587,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:39:36',
-                'updated_at' => '2025-03-03 20:39:36',
+                'created_at' => '2025-03-04 02:39:36',
+                'updated_at' => '2025-03-04 02:39:36',
             ),
             447 => 
             array (
@@ -25614,8 +25614,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:40:24',
-                'updated_at' => '2025-03-03 20:40:24',
+                'created_at' => '2025-03-04 02:40:24',
+                'updated_at' => '2025-03-04 02:40:24',
             ),
             448 => 
             array (
@@ -25641,8 +25641,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:41:06',
-                'updated_at' => '2025-03-03 20:41:06',
+                'created_at' => '2025-03-04 02:41:06',
+                'updated_at' => '2025-03-04 02:41:06',
             ),
             449 => 
             array (
@@ -25668,8 +25668,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:41:57',
-                'updated_at' => '2025-03-03 20:41:57',
+                'created_at' => '2025-03-04 02:41:57',
+                'updated_at' => '2025-03-04 02:41:57',
             ),
             450 => 
             array (
@@ -25695,8 +25695,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:43:01',
-                'updated_at' => '2025-03-03 20:43:01',
+                'created_at' => '2025-03-04 02:43:01',
+                'updated_at' => '2025-03-04 02:43:01',
             ),
             451 => 
             array (
@@ -25722,8 +25722,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:44:00',
-                'updated_at' => '2025-03-03 20:44:00',
+                'created_at' => '2025-03-04 02:44:00',
+                'updated_at' => '2025-03-04 02:44:00',
             ),
             452 => 
             array (
@@ -25749,8 +25749,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:45:04',
-                'updated_at' => '2025-03-03 20:45:04',
+                'created_at' => '2025-03-04 02:45:04',
+                'updated_at' => '2025-03-04 02:45:04',
             ),
             453 => 
             array (
@@ -25776,8 +25776,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:45:50',
-                'updated_at' => '2025-03-03 20:45:50',
+                'created_at' => '2025-03-04 02:45:50',
+                'updated_at' => '2025-03-04 02:45:50',
             ),
             454 => 
             array (
@@ -25803,8 +25803,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:46:53',
-                'updated_at' => '2025-03-03 20:46:53',
+                'created_at' => '2025-03-04 02:46:53',
+                'updated_at' => '2025-03-04 02:46:53',
             ),
             455 => 
             array (
@@ -25830,8 +25830,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:47:35',
-                'updated_at' => '2025-03-03 20:47:35',
+                'created_at' => '2025-03-04 02:47:35',
+                'updated_at' => '2025-03-04 02:47:35',
             ),
             456 => 
             array (
@@ -25857,8 +25857,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 20:48:45',
-                'updated_at' => '2025-03-03 20:48:45',
+                'created_at' => '2025-03-04 02:48:45',
+                'updated_at' => '2025-03-04 02:48:45',
             ),
             457 => 
             array (
@@ -25879,13 +25879,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:22:14',
-                'updated_at' => '2025-03-03 22:22:14',
+                'created_at' => '2025-03-04 04:22:14',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             458 => 
             array (
@@ -25906,13 +25906,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 2976.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 2976.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:23:03',
-                'updated_at' => '2025-03-03 22:23:03',
+                'created_at' => '2025-03-04 04:23:03',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             459 => 
             array (
@@ -25933,13 +25933,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:25:34',
-                'updated_at' => '2025-03-03 22:25:34',
+                'created_at' => '2025-03-04 04:25:34',
+                'updated_at' => '2026-03-20 07:44:47',
             ),
             460 => 
             array (
@@ -25960,13 +25960,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3348.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3348.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:26:50',
-                'updated_at' => '2025-03-03 22:26:50',
+                'created_at' => '2025-03-04 04:26:50',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             461 => 
             array (
@@ -25987,13 +25987,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:28:34',
-                'updated_at' => '2025-03-03 22:28:34',
+                'created_at' => '2025-03-04 04:28:34',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             462 => 
             array (
@@ -26014,13 +26014,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3348.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3348.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:29:31',
-                'updated_at' => '2025-03-03 22:29:31',
+                'created_at' => '2025-03-04 04:29:31',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             463 => 
             array (
@@ -26041,13 +26041,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:30:13',
-                'updated_at' => '2025-03-03 22:30:13',
+                'created_at' => '2025-03-04 04:30:13',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             464 => 
             array (
@@ -26068,13 +26068,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 8616.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 8616.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:31:40',
-                'updated_at' => '2025-03-03 22:31:40',
+                'created_at' => '2025-03-04 04:31:40',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             465 => 
             array (
@@ -26095,13 +26095,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 9048.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 9048.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:32:25',
-                'updated_at' => '2025-03-03 22:32:25',
+                'created_at' => '2025-03-04 04:32:25',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             466 => 
             array (
@@ -26122,13 +26122,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 9048.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 9048.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:33:04',
-                'updated_at' => '2025-03-03 22:33:04',
+                'created_at' => '2025-03-04 04:33:04',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             467 => 
             array (
@@ -26149,13 +26149,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 9048.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 9048.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:33:42',
-                'updated_at' => '2025-03-03 22:33:42',
+                'created_at' => '2025-03-04 04:33:42',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             468 => 
             array (
@@ -26176,13 +26176,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:34:37',
-                'updated_at' => '2025-03-03 22:34:37',
+                'created_at' => '2025-03-04 04:34:37',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             469 => 
             array (
@@ -26203,13 +26203,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:35:32',
-                'updated_at' => '2025-03-03 22:35:32',
+                'created_at' => '2025-03-04 04:35:32',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             470 => 
             array (
@@ -26230,13 +26230,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 9048.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 9048.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:36:20',
-                'updated_at' => '2025-03-03 22:36:20',
+                'created_at' => '2025-03-04 04:36:20',
+                'updated_at' => '2026-03-31 04:05:42',
             ),
             471 => 
             array (
@@ -26257,13 +26257,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6024.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6024.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:37:15',
-                'updated_at' => '2025-03-03 22:37:15',
+                'created_at' => '2025-03-04 04:37:15',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             472 => 
             array (
@@ -26284,13 +26284,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6024.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6024.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:38:08',
-                'updated_at' => '2025-03-03 22:38:08',
+                'created_at' => '2025-03-04 04:38:08',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             473 => 
             array (
@@ -26311,13 +26311,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4122.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4122.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:38:58',
-                'updated_at' => '2025-03-03 22:38:58',
+                'created_at' => '2025-03-04 04:38:58',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             474 => 
             array (
@@ -26338,13 +26338,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3348.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3348.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:39:59',
-                'updated_at' => '2025-03-03 22:39:59',
+                'created_at' => '2025-03-04 04:39:59',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             475 => 
             array (
@@ -26365,13 +26365,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:41:07',
-                'updated_at' => '2025-03-03 22:41:07',
+                'created_at' => '2025-03-04 04:41:07',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             476 => 
             array (
@@ -26392,13 +26392,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3672.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3672.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:41:59',
-                'updated_at' => '2025-03-03 22:41:59',
+                'created_at' => '2025-03-04 04:41:59',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             477 => 
             array (
@@ -26419,13 +26419,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 9048.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 9048.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 22:53:46',
-                'updated_at' => '2025-03-03 22:53:46',
+                'created_at' => '2025-03-04 04:53:46',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             478 => 
             array (
@@ -26446,13 +26446,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-03 23:03:03',
-                'updated_at' => '2025-03-03 23:03:03',
+                'created_at' => '2025-03-04 05:03:03',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             479 => 
             array (
@@ -26473,13 +26473,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6264.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6264.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 17:18:39',
-                'updated_at' => '2025-03-11 17:18:39',
+                'created_at' => '2025-03-11 23:18:39',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             480 => 
             array (
@@ -26500,13 +26500,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 17:20:16',
-                'updated_at' => '2025-03-11 17:20:16',
+                'created_at' => '2025-03-11 23:20:16',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             481 => 
             array (
@@ -26527,13 +26527,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 17:21:34',
-                'updated_at' => '2025-03-11 17:21:34',
+                'created_at' => '2025-03-11 23:21:34',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             482 => 
             array (
@@ -26554,13 +26554,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4554.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4554.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 17:28:02',
-                'updated_at' => '2025-03-11 17:28:02',
+                'created_at' => '2025-03-11 23:28:02',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             483 => 
             array (
@@ -26581,13 +26581,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 17:31:20',
-                'updated_at' => '2025-03-11 17:31:20',
+                'created_at' => '2025-03-11 23:31:20',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             484 => 
             array (
@@ -26608,13 +26608,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5160.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5160.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:37:01',
-                'updated_at' => '2025-03-11 18:37:01',
+                'created_at' => '2025-03-12 00:37:01',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             485 => 
             array (
@@ -26635,13 +26635,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4296.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4296.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:38:49',
-                'updated_at' => '2025-03-11 18:38:49',
+                'created_at' => '2025-03-12 00:38:49',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             486 => 
             array (
@@ -26662,13 +26662,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:40:26',
-                'updated_at' => '2025-03-11 18:40:26',
+                'created_at' => '2025-03-12 00:40:26',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             487 => 
             array (
@@ -26689,13 +26689,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:42:31',
-                'updated_at' => '2025-03-11 18:42:31',
+                'created_at' => '2025-03-12 00:42:31',
+                'updated_at' => '2026-03-31 04:05:43',
             ),
             488 => 
             array (
@@ -26716,13 +26716,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 5592.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5592.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:43:50',
-                'updated_at' => '2025-03-11 18:43:50',
+                'created_at' => '2025-03-12 00:43:50',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             489 => 
             array (
@@ -26743,13 +26743,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3864.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3864.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:44:55',
-                'updated_at' => '2025-03-11 18:44:55',
+                'created_at' => '2025-03-12 00:44:55',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             490 => 
             array (
@@ -26770,13 +26770,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3864.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3864.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:46:15',
-                'updated_at' => '2025-03-11 18:46:15',
+                'created_at' => '2025-03-12 00:46:15',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             491 => 
             array (
@@ -26797,13 +26797,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 4104.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 4104.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:48:08',
-                'updated_at' => '2025-03-11 18:48:08',
+                'created_at' => '2025-03-12 00:48:08',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             492 => 
             array (
@@ -26824,13 +26824,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3864.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3864.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:49:33',
-                'updated_at' => '2025-03-11 18:49:33',
+                'created_at' => '2025-03-12 00:49:33',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             493 => 
             array (
@@ -26851,13 +26851,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3864.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3864.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 18:56:43',
-                'updated_at' => '2025-03-11 18:56:43',
+                'created_at' => '2025-03-12 00:56:43',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             494 => 
             array (
@@ -26878,13 +26878,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:41:52',
-                'updated_at' => '2025-03-11 23:41:52',
+                'created_at' => '2025-03-12 05:41:52',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             495 => 
             array (
@@ -26905,13 +26905,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6888.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6888.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:45:56',
-                'updated_at' => '2025-03-11 23:45:56',
+                'created_at' => '2025-03-12 05:45:56',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             496 => 
             array (
@@ -26932,13 +26932,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6264.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6264.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:48:50',
-                'updated_at' => '2025-03-11 23:48:50',
+                'created_at' => '2025-03-12 05:48:50',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             497 => 
             array (
@@ -26959,13 +26959,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6888.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6888.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:51:12',
-                'updated_at' => '2025-03-11 23:51:12',
+                'created_at' => '2025-03-12 05:51:12',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             498 => 
             array (
@@ -26986,13 +26986,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6888.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6888.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:52:14',
-                'updated_at' => '2025-03-11 23:52:14',
+                'created_at' => '2025-03-12 05:52:14',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             499 => 
             array (
@@ -27013,13 +27013,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:55:51',
-                'updated_at' => '2025-03-11 23:55:51',
+                'created_at' => '2025-03-12 05:55:51',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
         ));
         \DB::table('purchases')->insert(array (
@@ -27042,13 +27042,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6888.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6888.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:58:10',
-                'updated_at' => '2025-03-11 23:58:10',
+                'created_at' => '2025-03-12 05:58:10',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             1 => 
             array (
@@ -27069,13 +27069,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-11 23:59:05',
-                'updated_at' => '2025-03-11 23:59:05',
+                'created_at' => '2025-03-12 05:59:05',
+                'updated_at' => '2026-03-31 04:07:42',
             ),
             2 => 
             array (
@@ -27096,13 +27096,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-12 11:10:54',
-                'updated_at' => '2025-03-12 11:10:54',
+                'created_at' => '2025-03-12 17:10:54',
+                'updated_at' => '2026-04-15 02:24:34',
             ),
             3 => 
             array (
@@ -27123,13 +27123,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6456.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6456.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-12 11:12:01',
-                'updated_at' => '2025-03-12 11:12:01',
+                'created_at' => '2025-03-12 17:12:01',
+                'updated_at' => '2026-04-15 02:24:34',
             ),
             4 => 
             array (
@@ -27150,13 +27150,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6264.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 6264.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-12 11:14:11',
-                'updated_at' => '2025-03-12 11:14:11',
+                'created_at' => '2025-03-12 17:14:11',
+                'updated_at' => '2026-04-15 02:24:34',
             ),
             5 => 
             array (
@@ -27177,13 +27177,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 3000.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 3000.0,
                 'status' => 1,
-                'payment_status' => 1,
+                'payment_status' => 2,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-12 11:15:30',
-                'updated_at' => '2025-03-12 11:15:30',
+                'created_at' => '2025-03-12 17:15:30',
+                'updated_at' => '2026-04-15 02:24:34',
             ),
             6 => 
             array (
@@ -27204,13 +27204,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
                 'grand_total' => 6264.0,
-                'paid_amount' => 0.0,
+                'paid_amount' => 5867.8,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-12 11:17:01',
-                'updated_at' => '2025-03-12 11:17:01',
+                'created_at' => '2025-03-12 17:17:01',
+                'updated_at' => '2026-04-15 02:24:34',
             ),
             7 => 
             array (
@@ -27236,8 +27236,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 20:53:05',
-                'updated_at' => '2025-03-15 20:53:05',
+                'created_at' => '2025-03-16 02:53:05',
+                'updated_at' => '2025-03-16 02:53:05',
             ),
             8 => 
             array (
@@ -27263,8 +27263,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 20:54:18',
-                'updated_at' => '2025-03-15 20:54:18',
+                'created_at' => '2025-03-16 02:54:18',
+                'updated_at' => '2025-03-16 02:54:18',
             ),
             9 => 
             array (
@@ -27290,8 +27290,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 20:55:11',
-                'updated_at' => '2025-03-15 20:55:11',
+                'created_at' => '2025-03-16 02:55:11',
+                'updated_at' => '2025-03-16 02:55:11',
             ),
             10 => 
             array (
@@ -27317,8 +27317,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 20:56:42',
-                'updated_at' => '2025-03-15 20:56:42',
+                'created_at' => '2025-03-16 02:56:42',
+                'updated_at' => '2025-03-16 02:56:42',
             ),
             11 => 
             array (
@@ -27344,8 +27344,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 20:57:35',
-                'updated_at' => '2025-03-15 20:57:35',
+                'created_at' => '2025-03-16 02:57:35',
+                'updated_at' => '2025-03-16 02:57:35',
             ),
             12 => 
             array (
@@ -27371,8 +27371,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 20:59:01',
-                'updated_at' => '2025-03-15 20:59:01',
+                'created_at' => '2025-03-16 02:59:01',
+                'updated_at' => '2025-03-16 02:59:01',
             ),
             13 => 
             array (
@@ -27398,8 +27398,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:00:22',
-                'updated_at' => '2025-03-15 21:00:22',
+                'created_at' => '2025-03-16 03:00:22',
+                'updated_at' => '2025-03-16 03:00:22',
             ),
             14 => 
             array (
@@ -27425,8 +27425,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:01:28',
-                'updated_at' => '2025-03-15 21:01:28',
+                'created_at' => '2025-03-16 03:01:28',
+                'updated_at' => '2025-03-16 03:01:28',
             ),
             15 => 
             array (
@@ -27452,8 +27452,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:03:38',
-                'updated_at' => '2025-03-15 21:03:38',
+                'created_at' => '2025-03-16 03:03:38',
+                'updated_at' => '2025-03-16 03:03:38',
             ),
             16 => 
             array (
@@ -27479,8 +27479,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:04:54',
-                'updated_at' => '2025-03-15 21:04:54',
+                'created_at' => '2025-03-16 03:04:54',
+                'updated_at' => '2025-03-16 03:04:54',
             ),
             17 => 
             array (
@@ -27506,8 +27506,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:06:31',
-                'updated_at' => '2025-03-15 21:06:31',
+                'created_at' => '2025-03-16 03:06:31',
+                'updated_at' => '2025-03-16 03:06:31',
             ),
             18 => 
             array (
@@ -27533,8 +27533,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:07:30',
-                'updated_at' => '2025-03-15 21:07:30',
+                'created_at' => '2025-03-16 03:07:30',
+                'updated_at' => '2025-03-16 03:07:30',
             ),
             19 => 
             array (
@@ -27560,8 +27560,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:08:37',
-                'updated_at' => '2025-03-15 21:08:37',
+                'created_at' => '2025-03-16 03:08:37',
+                'updated_at' => '2025-03-16 03:08:37',
             ),
             20 => 
             array (
@@ -27587,8 +27587,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:09:49',
-                'updated_at' => '2025-03-15 21:09:49',
+                'created_at' => '2025-03-16 03:09:49',
+                'updated_at' => '2025-03-16 03:09:49',
             ),
             21 => 
             array (
@@ -27614,8 +27614,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:11:13',
-                'updated_at' => '2025-03-15 21:11:13',
+                'created_at' => '2025-03-16 03:11:13',
+                'updated_at' => '2025-03-16 03:11:13',
             ),
             22 => 
             array (
@@ -27641,8 +27641,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:12:18',
-                'updated_at' => '2025-03-15 21:12:18',
+                'created_at' => '2025-03-16 03:12:18',
+                'updated_at' => '2025-03-16 03:12:18',
             ),
             23 => 
             array (
@@ -27668,8 +27668,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:13:21',
-                'updated_at' => '2025-03-15 21:13:21',
+                'created_at' => '2025-03-16 03:13:21',
+                'updated_at' => '2025-03-16 03:13:21',
             ),
             24 => 
             array (
@@ -27695,8 +27695,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:14:23',
-                'updated_at' => '2025-03-15 21:14:23',
+                'created_at' => '2025-03-16 03:14:23',
+                'updated_at' => '2025-03-16 03:14:23',
             ),
             25 => 
             array (
@@ -27722,8 +27722,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:15:44',
-                'updated_at' => '2025-03-15 21:15:44',
+                'created_at' => '2025-03-16 03:15:44',
+                'updated_at' => '2025-03-16 03:15:44',
             ),
             26 => 
             array (
@@ -27749,8 +27749,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:17:11',
-                'updated_at' => '2025-03-15 21:17:11',
+                'created_at' => '2025-03-16 03:17:11',
+                'updated_at' => '2025-03-16 03:17:11',
             ),
             27 => 
             array (
@@ -27776,8 +27776,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:18:32',
-                'updated_at' => '2025-03-15 21:18:32',
+                'created_at' => '2025-03-16 03:18:32',
+                'updated_at' => '2025-03-16 03:18:32',
             ),
             28 => 
             array (
@@ -27803,8 +27803,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:19:32',
-                'updated_at' => '2025-03-15 21:19:32',
+                'created_at' => '2025-03-16 03:19:32',
+                'updated_at' => '2025-03-16 03:19:32',
             ),
             29 => 
             array (
@@ -27830,8 +27830,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:20:17',
-                'updated_at' => '2025-03-15 21:20:17',
+                'created_at' => '2025-03-16 03:20:17',
+                'updated_at' => '2025-03-16 03:20:17',
             ),
             30 => 
             array (
@@ -27857,8 +27857,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:21:19',
-                'updated_at' => '2025-03-15 21:21:19',
+                'created_at' => '2025-03-16 03:21:19',
+                'updated_at' => '2025-03-16 03:21:19',
             ),
             31 => 
             array (
@@ -27884,8 +27884,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:22:22',
-                'updated_at' => '2025-03-15 21:22:22',
+                'created_at' => '2025-03-16 03:22:22',
+                'updated_at' => '2025-03-16 03:22:22',
             ),
             32 => 
             array (
@@ -27911,8 +27911,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:23:18',
-                'updated_at' => '2025-03-15 21:23:18',
+                'created_at' => '2025-03-16 03:23:18',
+                'updated_at' => '2025-03-16 03:23:18',
             ),
             33 => 
             array (
@@ -27938,8 +27938,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:24:15',
-                'updated_at' => '2025-03-15 21:24:15',
+                'created_at' => '2025-03-16 03:24:15',
+                'updated_at' => '2025-03-16 03:24:15',
             ),
             34 => 
             array (
@@ -27965,8 +27965,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:25:15',
-                'updated_at' => '2025-03-15 21:25:15',
+                'created_at' => '2025-03-16 03:25:15',
+                'updated_at' => '2025-03-16 03:25:15',
             ),
             35 => 
             array (
@@ -27992,8 +27992,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:26:26',
-                'updated_at' => '2025-03-15 21:26:26',
+                'created_at' => '2025-03-16 03:26:26',
+                'updated_at' => '2025-03-16 03:26:26',
             ),
             36 => 
             array (
@@ -28019,8 +28019,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-15 21:27:30',
-                'updated_at' => '2025-03-15 21:27:30',
+                'created_at' => '2025-03-16 03:27:30',
+                'updated_at' => '2025-03-16 03:27:30',
             ),
             37 => 
             array (
@@ -28046,8 +28046,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 16:38:09',
-                'updated_at' => '2025-03-18 16:38:09',
+                'created_at' => '2025-03-18 22:38:09',
+                'updated_at' => '2025-03-18 22:38:09',
             ),
             38 => 
             array (
@@ -28073,8 +28073,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 16:39:30',
-                'updated_at' => '2025-03-18 16:39:30',
+                'created_at' => '2025-03-18 22:39:30',
+                'updated_at' => '2025-03-18 22:39:30',
             ),
             39 => 
             array (
@@ -28100,8 +28100,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:02:44',
-                'updated_at' => '2025-03-18 17:02:44',
+                'created_at' => '2025-03-18 23:02:44',
+                'updated_at' => '2025-03-18 23:02:44',
             ),
             40 => 
             array (
@@ -28127,8 +28127,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:04:23',
-                'updated_at' => '2025-03-18 17:04:23',
+                'created_at' => '2025-03-18 23:04:23',
+                'updated_at' => '2025-03-18 23:04:23',
             ),
             41 => 
             array (
@@ -28154,8 +28154,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:05:59',
-                'updated_at' => '2025-03-18 17:05:59',
+                'created_at' => '2025-03-18 23:05:59',
+                'updated_at' => '2025-03-18 23:05:59',
             ),
             42 => 
             array (
@@ -28181,8 +28181,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:07:27',
-                'updated_at' => '2025-03-18 17:07:27',
+                'created_at' => '2025-03-18 23:07:27',
+                'updated_at' => '2025-03-18 23:07:27',
             ),
             43 => 
             array (
@@ -28208,8 +28208,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:08:26',
-                'updated_at' => '2025-03-18 17:08:26',
+                'created_at' => '2025-03-18 23:08:26',
+                'updated_at' => '2025-03-18 23:08:26',
             ),
             44 => 
             array (
@@ -28235,8 +28235,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:10:40',
-                'updated_at' => '2025-03-18 20:04:35',
+                'created_at' => '2025-03-18 23:10:40',
+                'updated_at' => '2025-03-19 02:04:35',
             ),
             45 => 
             array (
@@ -28262,8 +28262,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:12:20',
-                'updated_at' => '2025-03-18 17:12:20',
+                'created_at' => '2025-03-18 23:12:20',
+                'updated_at' => '2025-03-18 23:12:20',
             ),
             46 => 
             array (
@@ -28289,8 +28289,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:15:09',
-                'updated_at' => '2025-03-18 17:15:09',
+                'created_at' => '2025-03-18 23:15:09',
+                'updated_at' => '2025-03-18 23:15:09',
             ),
             47 => 
             array (
@@ -28316,8 +28316,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:19:58',
-                'updated_at' => '2025-03-18 17:19:58',
+                'created_at' => '2025-03-18 23:19:58',
+                'updated_at' => '2025-03-18 23:19:58',
             ),
             48 => 
             array (
@@ -28343,8 +28343,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:20:53',
-                'updated_at' => '2025-03-18 17:20:53',
+                'created_at' => '2025-03-18 23:20:53',
+                'updated_at' => '2025-03-18 23:20:53',
             ),
             49 => 
             array (
@@ -28370,8 +28370,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:21:47',
-                'updated_at' => '2025-03-18 17:21:47',
+                'created_at' => '2025-03-18 23:21:47',
+                'updated_at' => '2025-03-18 23:21:47',
             ),
             50 => 
             array (
@@ -28397,8 +28397,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 17:36:34',
-                'updated_at' => '2025-03-18 20:42:14',
+                'created_at' => '2025-03-18 23:36:34',
+                'updated_at' => '2025-03-19 02:42:14',
             ),
             51 => 
             array (
@@ -28424,8 +28424,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 23:13:36',
-                'updated_at' => '2025-03-18 23:13:36',
+                'created_at' => '2025-03-19 05:13:36',
+                'updated_at' => '2025-03-19 05:13:36',
             ),
             52 => 
             array (
@@ -28451,8 +28451,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 23:14:24',
-                'updated_at' => '2025-03-18 23:14:24',
+                'created_at' => '2025-03-19 05:14:24',
+                'updated_at' => '2025-03-19 05:14:24',
             ),
             53 => 
             array (
@@ -28478,8 +28478,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 23:17:03',
-                'updated_at' => '2025-03-18 23:17:03',
+                'created_at' => '2025-03-19 05:17:03',
+                'updated_at' => '2025-03-19 05:17:03',
             ),
             54 => 
             array (
@@ -28505,8 +28505,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 23:18:27',
-                'updated_at' => '2025-03-18 23:18:27',
+                'created_at' => '2025-03-19 05:18:27',
+                'updated_at' => '2025-03-19 05:18:27',
             ),
             55 => 
             array (
@@ -28532,8 +28532,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 23:19:28',
-                'updated_at' => '2025-03-18 23:19:28',
+                'created_at' => '2025-03-19 05:19:28',
+                'updated_at' => '2025-03-19 05:19:28',
             ),
             56 => 
             array (
@@ -28559,8 +28559,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-18 23:20:23',
-                'updated_at' => '2025-03-18 23:20:23',
+                'created_at' => '2025-03-19 05:20:23',
+                'updated_at' => '2025-03-19 05:20:23',
             ),
             57 => 
             array (
@@ -28586,8 +28586,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 20:20:36',
-                'updated_at' => '2025-03-19 20:20:36',
+                'created_at' => '2025-03-20 02:20:36',
+                'updated_at' => '2025-03-20 02:20:36',
             ),
             58 => 
             array (
@@ -28613,8 +28613,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 20:29:11',
-                'updated_at' => '2025-03-19 20:29:11',
+                'created_at' => '2025-03-20 02:29:11',
+                'updated_at' => '2025-03-20 02:29:11',
             ),
             59 => 
             array (
@@ -28640,8 +28640,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 20:38:14',
-                'updated_at' => '2025-03-19 20:38:14',
+                'created_at' => '2025-03-20 02:38:14',
+                'updated_at' => '2025-03-20 02:38:14',
             ),
             60 => 
             array (
@@ -28667,8 +28667,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 20:42:18',
-                'updated_at' => '2025-03-19 20:42:18',
+                'created_at' => '2025-03-20 02:42:18',
+                'updated_at' => '2025-03-20 02:42:18',
             ),
             61 => 
             array (
@@ -28694,8 +28694,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 20:45:39',
-                'updated_at' => '2025-03-19 20:45:39',
+                'created_at' => '2025-03-20 02:45:39',
+                'updated_at' => '2025-03-20 02:45:39',
             ),
             62 => 
             array (
@@ -28721,8 +28721,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 20:47:58',
-                'updated_at' => '2025-03-19 20:47:58',
+                'created_at' => '2025-03-20 02:47:58',
+                'updated_at' => '2025-03-20 02:47:58',
             ),
             63 => 
             array (
@@ -28748,8 +28748,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 21:44:23',
-                'updated_at' => '2025-03-19 21:44:23',
+                'created_at' => '2025-03-20 03:44:23',
+                'updated_at' => '2025-03-20 03:44:23',
             ),
             64 => 
             array (
@@ -28775,8 +28775,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 21:51:06',
-                'updated_at' => '2025-03-19 21:51:06',
+                'created_at' => '2025-03-20 03:51:06',
+                'updated_at' => '2025-03-20 03:51:06',
             ),
             65 => 
             array (
@@ -28802,8 +28802,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 22:58:09',
-                'updated_at' => '2025-03-19 22:58:09',
+                'created_at' => '2025-03-20 04:58:09',
+                'updated_at' => '2025-03-20 04:58:09',
             ),
             66 => 
             array (
@@ -28829,8 +28829,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 23:02:24',
-                'updated_at' => '2025-03-19 23:28:47',
+                'created_at' => '2025-03-20 05:02:24',
+                'updated_at' => '2025-03-20 05:28:47',
             ),
             67 => 
             array (
@@ -28856,8 +28856,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 23:03:42',
-                'updated_at' => '2025-03-19 23:03:42',
+                'created_at' => '2025-03-20 05:03:42',
+                'updated_at' => '2025-03-20 05:03:42',
             ),
             68 => 
             array (
@@ -28883,8 +28883,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 23:05:18',
-                'updated_at' => '2025-03-19 23:05:18',
+                'created_at' => '2025-03-20 05:05:18',
+                'updated_at' => '2025-03-20 05:05:18',
             ),
             69 => 
             array (
@@ -28910,8 +28910,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-19 23:37:42',
-                'updated_at' => '2025-03-19 23:37:42',
+                'created_at' => '2025-03-20 05:37:42',
+                'updated_at' => '2025-03-20 05:37:42',
             ),
             70 => 
             array (
@@ -28937,8 +28937,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-21 19:30:54',
-                'updated_at' => '2025-03-21 19:30:54',
+                'created_at' => '2025-03-22 01:30:54',
+                'updated_at' => '2025-03-22 01:30:54',
             ),
             71 => 
             array (
@@ -28964,8 +28964,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-21 21:22:54',
-                'updated_at' => '2025-03-21 21:22:54',
+                'created_at' => '2025-03-22 03:22:54',
+                'updated_at' => '2025-03-22 03:22:54',
             ),
             72 => 
             array (
@@ -28991,8 +28991,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-21 21:24:32',
-                'updated_at' => '2025-03-21 21:24:32',
+                'created_at' => '2025-03-22 03:24:32',
+                'updated_at' => '2025-03-22 03:24:32',
             ),
             73 => 
             array (
@@ -29018,8 +29018,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-21 21:28:17',
-                'updated_at' => '2025-03-21 21:28:17',
+                'created_at' => '2025-03-22 03:28:17',
+                'updated_at' => '2025-03-22 03:28:17',
             ),
             74 => 
             array (
@@ -29045,8 +29045,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-21 21:29:34',
-                'updated_at' => '2025-03-21 21:29:34',
+                'created_at' => '2025-03-22 03:29:34',
+                'updated_at' => '2025-03-22 03:29:34',
             ),
             75 => 
             array (
@@ -29072,8 +29072,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-21 22:04:59',
-                'updated_at' => '2025-03-21 22:04:59',
+                'created_at' => '2025-03-22 04:04:59',
+                'updated_at' => '2025-03-22 04:04:59',
             ),
             76 => 
             array (
@@ -29099,8 +29099,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-21 22:07:05',
-                'updated_at' => '2025-03-21 22:07:05',
+                'created_at' => '2025-03-22 04:07:05',
+                'updated_at' => '2025-03-22 04:07:05',
             ),
             77 => 
             array (
@@ -29126,8 +29126,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-25 21:22:54',
-                'updated_at' => '2025-03-25 21:22:54',
+                'created_at' => '2025-03-26 03:22:54',
+                'updated_at' => '2025-03-26 03:22:54',
             ),
             78 => 
             array (
@@ -29153,8 +29153,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-25 21:25:07',
-                'updated_at' => '2025-03-25 21:25:08',
+                'created_at' => '2025-03-26 03:25:07',
+                'updated_at' => '2025-03-26 03:25:08',
             ),
             79 => 
             array (
@@ -29180,8 +29180,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-25 21:27:40',
-                'updated_at' => '2025-03-25 21:27:40',
+                'created_at' => '2025-03-26 03:27:40',
+                'updated_at' => '2025-03-26 03:27:40',
             ),
             80 => 
             array (
@@ -29207,8 +29207,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-25 21:29:15',
-                'updated_at' => '2025-03-25 21:29:15',
+                'created_at' => '2025-03-26 03:29:15',
+                'updated_at' => '2025-03-26 03:29:15',
             ),
             81 => 
             array (
@@ -29234,8 +29234,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-25 21:33:17',
-                'updated_at' => '2025-03-25 21:33:17',
+                'created_at' => '2025-03-26 03:33:17',
+                'updated_at' => '2025-03-26 03:33:17',
             ),
             82 => 
             array (
@@ -29261,8 +29261,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-25 21:49:16',
-                'updated_at' => '2025-03-25 21:53:46',
+                'created_at' => '2025-03-26 03:49:16',
+                'updated_at' => '2025-03-26 03:53:46',
             ),
             83 => 
             array (
@@ -29288,8 +29288,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-03-28 12:25:00',
-                'updated_at' => '2025-03-29 03:26:14',
+                'created_at' => '2025-03-28 18:25:00',
+                'updated_at' => '2025-03-29 09:26:14',
             ),
             84 => 
             array (
@@ -29315,8 +29315,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-13 13:08:44',
-                'updated_at' => '2025-05-13 13:09:01',
+                'created_at' => '2025-05-13 19:08:44',
+                'updated_at' => '2025-05-13 19:09:01',
             ),
             85 => 
             array (
@@ -29342,8 +29342,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-13 13:22:13',
-                'updated_at' => '2025-05-13 13:22:13',
+                'created_at' => '2025-05-13 19:22:13',
+                'updated_at' => '2025-05-13 19:22:13',
             ),
             86 => 
             array (
@@ -29369,8 +29369,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-13 13:29:39',
-                'updated_at' => '2025-05-13 13:29:39',
+                'created_at' => '2025-05-13 19:29:39',
+                'updated_at' => '2025-05-13 19:29:39',
             ),
             87 => 
             array (
@@ -29396,8 +29396,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-13 13:35:57',
-                'updated_at' => '2025-05-13 13:36:12',
+                'created_at' => '2025-05-13 19:35:57',
+                'updated_at' => '2025-05-13 19:36:12',
             ),
             88 => 
             array (
@@ -29423,8 +29423,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 13:55:28',
-                'updated_at' => '2025-05-21 13:55:28',
+                'created_at' => '2025-05-21 19:55:28',
+                'updated_at' => '2025-05-21 19:55:28',
             ),
             89 => 
             array (
@@ -29450,8 +29450,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 13:59:42',
-                'updated_at' => '2025-05-21 13:59:42',
+                'created_at' => '2025-05-21 19:59:42',
+                'updated_at' => '2025-05-21 19:59:42',
             ),
             90 => 
             array (
@@ -29477,8 +29477,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:00:40',
-                'updated_at' => '2025-05-22 06:33:10',
+                'created_at' => '2025-05-21 20:00:40',
+                'updated_at' => '2025-05-22 12:33:10',
             ),
             91 => 
             array (
@@ -29504,8 +29504,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:01:50',
-                'updated_at' => '2025-05-21 14:01:50',
+                'created_at' => '2025-05-21 20:01:50',
+                'updated_at' => '2025-05-21 20:01:50',
             ),
             92 => 
             array (
@@ -29531,8 +29531,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:02:49',
-                'updated_at' => '2025-05-21 14:02:49',
+                'created_at' => '2025-05-21 20:02:49',
+                'updated_at' => '2025-05-21 20:02:49',
             ),
             93 => 
             array (
@@ -29558,8 +29558,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:03:42',
-                'updated_at' => '2025-05-21 14:03:42',
+                'created_at' => '2025-05-21 20:03:42',
+                'updated_at' => '2025-05-21 20:03:42',
             ),
             94 => 
             array (
@@ -29585,8 +29585,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:04:32',
-                'updated_at' => '2025-05-21 14:04:32',
+                'created_at' => '2025-05-21 20:04:32',
+                'updated_at' => '2025-05-21 20:04:32',
             ),
             95 => 
             array (
@@ -29612,8 +29612,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:06:02',
-                'updated_at' => '2025-05-21 14:06:02',
+                'created_at' => '2025-05-21 20:06:02',
+                'updated_at' => '2025-05-21 20:06:02',
             ),
             96 => 
             array (
@@ -29639,8 +29639,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:07:37',
-                'updated_at' => '2025-05-21 14:07:37',
+                'created_at' => '2025-05-21 20:07:37',
+                'updated_at' => '2025-05-21 20:07:37',
             ),
             97 => 
             array (
@@ -29666,8 +29666,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:08:21',
-                'updated_at' => '2025-05-21 14:08:21',
+                'created_at' => '2025-05-21 20:08:21',
+                'updated_at' => '2025-05-21 20:08:21',
             ),
             98 => 
             array (
@@ -29693,8 +29693,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:09:13',
-                'updated_at' => '2025-05-21 14:09:13',
+                'created_at' => '2025-05-21 20:09:13',
+                'updated_at' => '2025-05-21 20:09:13',
             ),
             99 => 
             array (
@@ -29720,8 +29720,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:14:09',
-                'updated_at' => '2025-05-21 14:14:09',
+                'created_at' => '2025-05-21 20:14:09',
+                'updated_at' => '2025-05-21 20:14:09',
             ),
             100 => 
             array (
@@ -29747,8 +29747,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:16:31',
-                'updated_at' => '2025-05-22 06:34:19',
+                'created_at' => '2025-05-21 20:16:31',
+                'updated_at' => '2025-05-22 12:34:19',
             ),
             101 => 
             array (
@@ -29774,8 +29774,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:17:20',
-                'updated_at' => '2025-05-21 14:17:20',
+                'created_at' => '2025-05-21 20:17:20',
+                'updated_at' => '2025-05-21 20:17:20',
             ),
             102 => 
             array (
@@ -29801,8 +29801,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:18:11',
-                'updated_at' => '2025-05-21 14:18:11',
+                'created_at' => '2025-05-21 20:18:11',
+                'updated_at' => '2025-05-21 20:18:11',
             ),
             103 => 
             array (
@@ -29828,8 +29828,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:18:57',
-                'updated_at' => '2025-05-21 14:18:57',
+                'created_at' => '2025-05-21 20:18:57',
+                'updated_at' => '2025-05-21 20:18:57',
             ),
             104 => 
             array (
@@ -29855,8 +29855,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:19:56',
-                'updated_at' => '2025-05-21 14:19:56',
+                'created_at' => '2025-05-21 20:19:56',
+                'updated_at' => '2025-05-21 20:19:56',
             ),
             105 => 
             array (
@@ -29882,8 +29882,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:22:26',
-                'updated_at' => '2025-05-21 14:22:26',
+                'created_at' => '2025-05-21 20:22:26',
+                'updated_at' => '2025-05-21 20:22:26',
             ),
             106 => 
             array (
@@ -29909,8 +29909,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:23:19',
-                'updated_at' => '2025-05-21 14:23:19',
+                'created_at' => '2025-05-21 20:23:19',
+                'updated_at' => '2025-05-21 20:23:19',
             ),
             107 => 
             array (
@@ -29936,8 +29936,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:24:30',
-                'updated_at' => '2025-05-21 14:24:30',
+                'created_at' => '2025-05-21 20:24:30',
+                'updated_at' => '2025-05-21 20:24:30',
             ),
             108 => 
             array (
@@ -29963,8 +29963,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:26:51',
-                'updated_at' => '2025-05-21 14:26:51',
+                'created_at' => '2025-05-21 20:26:51',
+                'updated_at' => '2025-05-21 20:26:51',
             ),
             109 => 
             array (
@@ -29990,8 +29990,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:27:39',
-                'updated_at' => '2025-05-21 14:27:39',
+                'created_at' => '2025-05-21 20:27:39',
+                'updated_at' => '2025-05-21 20:27:39',
             ),
             110 => 
             array (
@@ -30017,8 +30017,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:28:20',
-                'updated_at' => '2025-05-21 14:28:20',
+                'created_at' => '2025-05-21 20:28:20',
+                'updated_at' => '2025-05-21 20:28:20',
             ),
             111 => 
             array (
@@ -30044,8 +30044,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:29:06',
-                'updated_at' => '2025-05-21 14:29:06',
+                'created_at' => '2025-05-21 20:29:06',
+                'updated_at' => '2025-05-21 20:29:06',
             ),
             112 => 
             array (
@@ -30071,8 +30071,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:30:04',
-                'updated_at' => '2025-05-21 14:30:04',
+                'created_at' => '2025-05-21 20:30:04',
+                'updated_at' => '2025-05-21 20:30:04',
             ),
             113 => 
             array (
@@ -30098,8 +30098,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:30:57',
-                'updated_at' => '2025-05-21 14:30:57',
+                'created_at' => '2025-05-21 20:30:57',
+                'updated_at' => '2025-05-21 20:30:57',
             ),
             114 => 
             array (
@@ -30125,8 +30125,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:36:25',
-                'updated_at' => '2025-05-21 14:36:25',
+                'created_at' => '2025-05-21 20:36:25',
+                'updated_at' => '2025-05-21 20:36:25',
             ),
             115 => 
             array (
@@ -30152,8 +30152,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:37:23',
-                'updated_at' => '2025-05-21 14:37:23',
+                'created_at' => '2025-05-21 20:37:23',
+                'updated_at' => '2025-05-21 20:37:23',
             ),
             116 => 
             array (
@@ -30179,8 +30179,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:38:41',
-                'updated_at' => '2025-05-21 14:38:41',
+                'created_at' => '2025-05-21 20:38:41',
+                'updated_at' => '2025-05-21 20:38:41',
             ),
             117 => 
             array (
@@ -30206,8 +30206,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 14:39:36',
-                'updated_at' => '2025-05-21 14:39:36',
+                'created_at' => '2025-05-21 20:39:36',
+                'updated_at' => '2025-05-21 20:39:36',
             ),
             118 => 
             array (
@@ -30233,8 +30233,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:26:58',
-                'updated_at' => '2025-05-21 15:26:58',
+                'created_at' => '2025-05-21 21:26:58',
+                'updated_at' => '2025-05-21 21:26:58',
             ),
             119 => 
             array (
@@ -30260,8 +30260,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:28:46',
-                'updated_at' => '2025-05-21 15:28:46',
+                'created_at' => '2025-05-21 21:28:46',
+                'updated_at' => '2025-05-21 21:28:46',
             ),
             120 => 
             array (
@@ -30287,8 +30287,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:29:34',
-                'updated_at' => '2025-05-21 15:29:34',
+                'created_at' => '2025-05-21 21:29:34',
+                'updated_at' => '2025-05-21 21:29:34',
             ),
             121 => 
             array (
@@ -30314,8 +30314,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:31:52',
-                'updated_at' => '2025-05-21 15:31:52',
+                'created_at' => '2025-05-21 21:31:52',
+                'updated_at' => '2025-05-21 21:31:52',
             ),
             122 => 
             array (
@@ -30341,8 +30341,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:32:41',
-                'updated_at' => '2025-05-21 15:32:41',
+                'created_at' => '2025-05-21 21:32:41',
+                'updated_at' => '2025-05-21 21:32:41',
             ),
             123 => 
             array (
@@ -30368,8 +30368,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:33:46',
-                'updated_at' => '2025-05-21 15:33:46',
+                'created_at' => '2025-05-21 21:33:46',
+                'updated_at' => '2025-05-21 21:33:46',
             ),
             124 => 
             array (
@@ -30395,8 +30395,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:34:36',
-                'updated_at' => '2025-05-21 15:34:36',
+                'created_at' => '2025-05-21 21:34:36',
+                'updated_at' => '2025-05-21 21:34:36',
             ),
             125 => 
             array (
@@ -30422,8 +30422,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 15:35:56',
-                'updated_at' => '2025-05-21 15:35:56',
+                'created_at' => '2025-05-21 21:35:56',
+                'updated_at' => '2025-05-21 21:35:56',
             ),
             126 => 
             array (
@@ -30449,8 +30449,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 06:07:00',
-                'updated_at' => '2025-05-24 09:01:39',
+                'created_at' => '2025-05-21 12:07:00',
+                'updated_at' => '2025-05-24 15:01:39',
             ),
             127 => 
             array (
@@ -30476,8 +30476,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-21 06:10:00',
-                'updated_at' => '2025-05-24 09:01:50',
+                'created_at' => '2025-05-21 12:10:00',
+                'updated_at' => '2025-05-24 15:01:50',
             ),
             128 => 
             array (
@@ -30503,8 +30503,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 13:47:00',
-                'updated_at' => '2025-05-24 14:36:27',
+                'created_at' => '2025-05-24 19:47:00',
+                'updated_at' => '2025-05-24 20:36:27',
             ),
             129 => 
             array (
@@ -30530,8 +30530,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 13:56:00',
-                'updated_at' => '2025-05-24 14:36:37',
+                'created_at' => '2025-05-24 19:56:00',
+                'updated_at' => '2025-05-24 20:36:37',
             ),
             130 => 
             array (
@@ -30557,8 +30557,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 14:01:00',
-                'updated_at' => '2025-05-24 14:37:05',
+                'created_at' => '2025-05-24 20:01:00',
+                'updated_at' => '2025-05-24 20:37:05',
             ),
             131 => 
             array (
@@ -30584,8 +30584,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 14:03:00',
-                'updated_at' => '2025-05-24 14:37:12',
+                'created_at' => '2025-05-24 20:03:00',
+                'updated_at' => '2025-05-24 20:37:12',
             ),
             132 => 
             array (
@@ -30611,8 +30611,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 14:11:00',
-                'updated_at' => '2025-05-24 14:37:21',
+                'created_at' => '2025-05-24 20:11:00',
+                'updated_at' => '2025-05-24 20:37:21',
             ),
             133 => 
             array (
@@ -30638,8 +30638,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 14:13:00',
-                'updated_at' => '2025-05-24 14:37:28',
+                'created_at' => '2025-05-24 20:13:00',
+                'updated_at' => '2025-05-24 20:37:28',
             ),
             134 => 
             array (
@@ -30665,8 +30665,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 14:26:00',
-                'updated_at' => '2025-05-24 14:37:35',
+                'created_at' => '2025-05-24 20:26:00',
+                'updated_at' => '2025-05-24 20:37:35',
             ),
             135 => 
             array (
@@ -30692,8 +30692,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 15:21:00',
-                'updated_at' => '2025-05-24 15:21:32',
+                'created_at' => '2025-05-24 21:21:00',
+                'updated_at' => '2025-05-24 21:21:32',
             ),
             136 => 
             array (
@@ -30719,8 +30719,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 15:28:00',
-                'updated_at' => '2025-05-24 15:28:39',
+                'created_at' => '2025-05-24 21:28:00',
+                'updated_at' => '2025-05-24 21:28:39',
             ),
             137 => 
             array (
@@ -30746,8 +30746,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-24 15:30:00',
-                'updated_at' => '2025-05-24 15:30:55',
+                'created_at' => '2025-05-24 21:30:00',
+                'updated_at' => '2025-05-24 21:30:55',
             ),
             138 => 
             array (
@@ -30773,8 +30773,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-25 05:53:00',
-                'updated_at' => '2025-05-25 05:53:44',
+                'created_at' => '2025-05-25 11:53:00',
+                'updated_at' => '2025-05-25 11:53:44',
             ),
             139 => 
             array (
@@ -30800,8 +30800,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-25 05:55:00',
-                'updated_at' => '2025-05-25 05:55:42',
+                'created_at' => '2025-05-25 11:55:00',
+                'updated_at' => '2025-05-25 11:55:42',
             ),
             140 => 
             array (
@@ -30827,8 +30827,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-25 20:06:01',
-                'updated_at' => '2025-05-25 20:06:02',
+                'created_at' => '2025-05-26 02:06:01',
+                'updated_at' => '2025-05-26 02:06:02',
             ),
             141 => 
             array (
@@ -30848,14 +30848,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 71683.199999999997089616954326629638671875,
+                'grand_total' => 71683.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 08:32:38',
-                'updated_at' => '2025-05-27 08:32:41',
+                'created_at' => '2025-05-27 14:32:38',
+                'updated_at' => '2025-05-27 14:32:41',
             ),
             142 => 
             array (
@@ -30881,8 +30881,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 10:10:27',
-                'updated_at' => '2025-05-27 10:10:32',
+                'created_at' => '2025-05-27 16:10:27',
+                'updated_at' => '2025-05-27 16:10:32',
             ),
             143 => 
             array (
@@ -30902,14 +30902,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 95752.800000000002910383045673370361328125,
+                'grand_total' => 95752.8,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 10:39:10',
-                'updated_at' => '2025-05-27 10:39:10',
+                'created_at' => '2025-05-27 16:39:10',
+                'updated_at' => '2025-05-27 16:39:10',
             ),
             144 => 
             array (
@@ -30929,14 +30929,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 124999.199999999997089616954326629638671875,
+                'grand_total' => 124999.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 14:10:36',
-                'updated_at' => '2025-05-27 14:10:36',
+                'created_at' => '2025-05-27 20:10:36',
+                'updated_at' => '2025-05-27 20:10:36',
             ),
             145 => 
             array (
@@ -30956,14 +30956,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 83721.60000000000582076609134674072265625,
+                'grand_total' => 83721.6,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 15:35:55',
-                'updated_at' => '2025-05-27 15:35:57',
+                'created_at' => '2025-05-27 21:35:55',
+                'updated_at' => '2025-05-27 21:35:57',
             ),
             146 => 
             array (
@@ -30983,14 +30983,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 102643.199999999997089616954326629638671875,
+                'grand_total' => 102643.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 15:59:06',
-                'updated_at' => '2025-05-27 15:59:14',
+                'created_at' => '2025-05-27 21:59:06',
+                'updated_at' => '2025-05-27 21:59:14',
             ),
             147 => 
             array (
@@ -31010,14 +31010,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 57841.199999999997089616954326629638671875,
+                'grand_total' => 57841.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 17:11:03',
-                'updated_at' => '2025-05-27 17:11:09',
+                'created_at' => '2025-05-27 23:11:03',
+                'updated_at' => '2025-05-27 23:11:09',
             ),
             148 => 
             array (
@@ -31037,14 +31037,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 25207.20000000000072759576141834259033203125,
+                'grand_total' => 25207.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-05-27 17:56:40',
-                'updated_at' => '2025-05-27 17:56:41',
+                'created_at' => '2025-05-27 23:56:40',
+                'updated_at' => '2025-05-27 23:56:41',
             ),
             149 => 
             array (
@@ -31070,8 +31070,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-06-03 12:33:00',
-                'updated_at' => '2025-06-03 12:33:54',
+                'created_at' => '2025-06-03 18:33:00',
+                'updated_at' => '2025-06-03 18:33:54',
             ),
             150 => 
             array (
@@ -31097,8 +31097,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-06-22 13:23:00',
-                'updated_at' => '2025-06-22 13:23:26',
+                'created_at' => '2025-06-22 19:23:00',
+                'updated_at' => '2025-06-22 19:23:26',
             ),
             151 => 
             array (
@@ -31124,8 +31124,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-06-22 13:28:00',
-                'updated_at' => '2025-06-22 13:28:45',
+                'created_at' => '2025-06-22 19:28:00',
+                'updated_at' => '2025-06-22 19:28:45',
             ),
             152 => 
             array (
@@ -31151,8 +31151,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-06-22 13:32:00',
-                'updated_at' => '2025-09-13 07:54:00',
+                'created_at' => '2025-06-22 19:32:00',
+                'updated_at' => '2025-09-13 13:54:00',
             ),
             153 => 
             array (
@@ -31178,8 +31178,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-08-06 14:42:00',
-                'updated_at' => '2025-08-06 14:45:47',
+                'created_at' => '2025-08-06 20:42:00',
+                'updated_at' => '2025-08-06 20:45:47',
             ),
             154 => 
             array (
@@ -31205,8 +31205,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-08-06 14:57:00',
-                'updated_at' => '2025-08-06 14:58:48',
+                'created_at' => '2025-08-06 20:57:00',
+                'updated_at' => '2025-08-06 20:58:48',
             ),
             155 => 
             array (
@@ -31232,8 +31232,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-08-06 15:05:00',
-                'updated_at' => '2025-08-06 15:05:52',
+                'created_at' => '2025-08-06 21:05:00',
+                'updated_at' => '2025-08-06 21:05:52',
             ),
             156 => 
             array (
@@ -31253,14 +31253,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 118738.800000000002910383045673370361328125,
+                'grand_total' => 118738.8,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-13 14:22:41',
-                'updated_at' => '2025-09-13 14:22:53',
+                'created_at' => '2025-09-13 20:22:41',
+                'updated_at' => '2025-09-13 20:22:53',
             ),
             157 => 
             array (
@@ -31280,14 +31280,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 124070.39999999999417923390865325927734375,
+                'grand_total' => 124070.4,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-13 14:42:00',
-                'updated_at' => '2025-09-13 14:42:00',
+                'created_at' => '2025-09-13 20:42:00',
+                'updated_at' => '2025-09-13 20:42:00',
             ),
             158 => 
             array (
@@ -31307,14 +31307,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 8056.8000000000001818989403545856475830078125,
+                'grand_total' => 8056.8,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-13 17:09:35',
-                'updated_at' => '2025-09-13 17:09:35',
+                'created_at' => '2025-09-13 23:09:35',
+                'updated_at' => '2025-09-13 23:09:35',
             ),
             159 => 
             array (
@@ -31334,14 +31334,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 40197.5999999999985448084771633148193359375,
+                'grand_total' => 40197.6,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 10:55:01',
-                'updated_at' => '2025-09-14 10:55:01',
+                'created_at' => '2025-09-14 16:55:01',
+                'updated_at' => '2025-09-14 16:55:01',
             ),
             160 => 
             array (
@@ -31367,8 +31367,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 11:04:57',
-                'updated_at' => '2025-09-14 11:04:58',
+                'created_at' => '2025-09-14 17:04:57',
+                'updated_at' => '2025-09-14 17:04:58',
             ),
             161 => 
             array (
@@ -31388,14 +31388,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 62078.4000000000014551915228366851806640625,
+                'grand_total' => 62078.4,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 11:08:34',
-                'updated_at' => '2025-09-14 11:08:34',
+                'created_at' => '2025-09-14 17:08:34',
+                'updated_at' => '2025-09-14 17:08:34',
             ),
             162 => 
             array (
@@ -31415,14 +31415,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 87199.199999999997089616954326629638671875,
+                'grand_total' => 87199.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 11:35:41',
-                'updated_at' => '2025-09-14 11:35:42',
+                'created_at' => '2025-09-14 17:35:41',
+                'updated_at' => '2025-09-14 17:35:42',
             ),
             163 => 
             array (
@@ -31442,14 +31442,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 70066.800000000002910383045673370361328125,
+                'grand_total' => 70066.8,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 12:19:56',
-                'updated_at' => '2025-09-14 12:20:00',
+                'created_at' => '2025-09-14 18:19:56',
+                'updated_at' => '2025-09-14 18:20:00',
             ),
             164 => 
             array (
@@ -31469,14 +31469,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 115516.800000000002910383045673370361328125,
+                'grand_total' => 115516.8,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 12:29:52',
-                'updated_at' => '2025-09-14 12:29:53',
+                'created_at' => '2025-09-14 18:29:52',
+                'updated_at' => '2025-09-14 18:29:53',
             ),
             165 => 
             array (
@@ -31502,8 +31502,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 12:32:30',
-                'updated_at' => '2025-09-14 12:32:30',
+                'created_at' => '2025-09-14 18:32:30',
+                'updated_at' => '2025-09-14 18:32:30',
             ),
             166 => 
             array (
@@ -31529,8 +31529,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-14 16:34:00',
-                'updated_at' => '2025-09-14 16:37:12',
+                'created_at' => '2025-09-14 22:34:00',
+                'updated_at' => '2025-09-14 22:37:12',
             ),
             167 => 
             array (
@@ -31556,8 +31556,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-15 11:40:00',
-                'updated_at' => '2025-09-15 11:41:34',
+                'created_at' => '2025-09-15 17:40:00',
+                'updated_at' => '2025-09-15 17:41:34',
             ),
             168 => 
             array (
@@ -31583,8 +31583,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-15 16:10:00',
-                'updated_at' => '2025-09-15 16:11:09',
+                'created_at' => '2025-09-15 22:10:00',
+                'updated_at' => '2025-09-15 22:11:09',
             ),
             169 => 
             array (
@@ -31610,8 +31610,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-15 16:16:00',
-                'updated_at' => '2025-09-15 16:18:03',
+                'created_at' => '2025-09-15 22:16:00',
+                'updated_at' => '2025-09-15 22:18:03',
             ),
             170 => 
             array (
@@ -31637,8 +31637,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-15 16:25:00',
-                'updated_at' => '2025-09-15 16:26:20',
+                'created_at' => '2025-09-15 22:25:00',
+                'updated_at' => '2025-09-15 22:26:20',
             ),
             171 => 
             array (
@@ -31664,8 +31664,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 10:49:00',
-                'updated_at' => '2025-09-16 10:50:08',
+                'created_at' => '2025-09-16 16:49:00',
+                'updated_at' => '2025-09-16 16:50:08',
             ),
             172 => 
             array (
@@ -31691,8 +31691,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 10:55:00',
-                'updated_at' => '2025-09-16 10:56:28',
+                'created_at' => '2025-09-16 16:55:00',
+                'updated_at' => '2025-09-16 16:56:28',
             ),
             173 => 
             array (
@@ -31718,8 +31718,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:03:00',
-                'updated_at' => '2025-09-16 11:03:57',
+                'created_at' => '2025-09-16 17:03:00',
+                'updated_at' => '2025-09-16 17:03:57',
             ),
             174 => 
             array (
@@ -31745,8 +31745,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:10:00',
-                'updated_at' => '2025-09-16 11:10:43',
+                'created_at' => '2025-09-16 17:10:00',
+                'updated_at' => '2025-09-16 17:10:43',
             ),
             175 => 
             array (
@@ -31772,8 +31772,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:21:00',
-                'updated_at' => '2025-09-16 11:22:07',
+                'created_at' => '2025-09-16 17:21:00',
+                'updated_at' => '2025-09-16 17:22:07',
             ),
             176 => 
             array (
@@ -31799,8 +31799,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:30:00',
-                'updated_at' => '2025-09-16 11:30:43',
+                'created_at' => '2025-09-16 17:30:00',
+                'updated_at' => '2025-09-16 17:30:43',
             ),
             177 => 
             array (
@@ -31826,8 +31826,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:34:00',
-                'updated_at' => '2025-09-16 11:34:31',
+                'created_at' => '2025-09-16 17:34:00',
+                'updated_at' => '2025-09-16 17:34:31',
             ),
             178 => 
             array (
@@ -31853,8 +31853,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:43:00',
-                'updated_at' => '2025-09-16 11:43:46',
+                'created_at' => '2025-09-16 17:43:00',
+                'updated_at' => '2025-09-16 17:43:46',
             ),
             179 => 
             array (
@@ -31880,8 +31880,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:46:00',
-                'updated_at' => '2025-09-16 11:48:16',
+                'created_at' => '2025-09-16 17:46:00',
+                'updated_at' => '2025-09-16 17:48:16',
             ),
             180 => 
             array (
@@ -31907,8 +31907,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:53:00',
-                'updated_at' => '2025-09-16 11:53:57',
+                'created_at' => '2025-09-16 17:53:00',
+                'updated_at' => '2025-09-16 17:53:57',
             ),
             181 => 
             array (
@@ -31934,8 +31934,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 11:59:00',
-                'updated_at' => '2025-09-16 12:00:11',
+                'created_at' => '2025-09-16 17:59:00',
+                'updated_at' => '2025-09-16 18:00:11',
             ),
             182 => 
             array (
@@ -31961,8 +31961,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:05:00',
-                'updated_at' => '2025-09-16 12:05:34',
+                'created_at' => '2025-09-16 18:05:00',
+                'updated_at' => '2025-09-16 18:05:34',
             ),
             183 => 
             array (
@@ -31988,8 +31988,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:20:00',
-                'updated_at' => '2025-09-16 12:20:23',
+                'created_at' => '2025-09-16 18:20:00',
+                'updated_at' => '2025-09-16 18:20:23',
             ),
             184 => 
             array (
@@ -32015,8 +32015,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:27:00',
-                'updated_at' => '2025-09-16 12:28:59',
+                'created_at' => '2025-09-16 18:27:00',
+                'updated_at' => '2025-09-16 18:28:59',
             ),
             185 => 
             array (
@@ -32042,8 +32042,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:32:00',
-                'updated_at' => '2025-09-16 12:32:54',
+                'created_at' => '2025-09-16 18:32:00',
+                'updated_at' => '2025-09-16 18:32:54',
             ),
             186 => 
             array (
@@ -32069,8 +32069,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-16 12:37:00',
-                'updated_at' => '2025-09-16 12:38:05',
+                'created_at' => '2025-09-16 18:37:00',
+                'updated_at' => '2025-09-16 18:38:05',
             ),
             187 => 
             array (
@@ -32096,8 +32096,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:12:00',
-                'updated_at' => '2025-09-21 16:12:42',
+                'created_at' => '2025-09-21 22:12:00',
+                'updated_at' => '2025-09-21 22:12:42',
             ),
             188 => 
             array (
@@ -32123,8 +32123,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:13:00',
-                'updated_at' => '2025-09-21 16:14:06',
+                'created_at' => '2025-09-21 22:13:00',
+                'updated_at' => '2025-09-21 22:14:06',
             ),
             189 => 
             array (
@@ -32150,8 +32150,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:20:00',
-                'updated_at' => '2025-09-21 16:20:34',
+                'created_at' => '2025-09-21 22:20:00',
+                'updated_at' => '2025-09-21 22:20:34',
             ),
             190 => 
             array (
@@ -32177,8 +32177,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:34:00',
-                'updated_at' => '2025-09-21 16:34:14',
+                'created_at' => '2025-09-21 22:34:00',
+                'updated_at' => '2025-09-21 22:34:14',
             ),
             191 => 
             array (
@@ -32204,8 +32204,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:35:00',
-                'updated_at' => '2025-09-21 16:35:57',
+                'created_at' => '2025-09-21 22:35:00',
+                'updated_at' => '2025-09-21 22:35:57',
             ),
             192 => 
             array (
@@ -32231,8 +32231,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:41:00',
-                'updated_at' => '2025-09-21 16:41:20',
+                'created_at' => '2025-09-21 22:41:00',
+                'updated_at' => '2025-09-21 22:41:20',
             ),
             193 => 
             array (
@@ -32258,8 +32258,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:42:00',
-                'updated_at' => '2025-09-21 16:42:52',
+                'created_at' => '2025-09-21 22:42:00',
+                'updated_at' => '2025-09-21 22:42:52',
             ),
             194 => 
             array (
@@ -32285,8 +32285,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-09-21 16:46:00',
-                'updated_at' => '2025-09-21 16:46:18',
+                'created_at' => '2025-09-21 22:46:00',
+                'updated_at' => '2025-09-21 22:46:18',
             ),
             195 => 
             array (
@@ -32312,8 +32312,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-10-03 06:40:00',
-                'updated_at' => '2025-10-03 06:40:52',
+                'created_at' => '2025-10-03 12:40:00',
+                'updated_at' => '2025-10-03 12:40:52',
             ),
             196 => 
             array (
@@ -32339,8 +32339,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-10-03 06:43:00',
-                'updated_at' => '2025-10-03 06:44:34',
+                'created_at' => '2025-10-03 12:43:00',
+                'updated_at' => '2025-10-03 12:44:34',
             ),
             197 => 
             array (
@@ -32366,8 +32366,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-10-03 06:45:00',
-                'updated_at' => '2025-10-03 06:46:53',
+                'created_at' => '2025-10-03 12:45:00',
+                'updated_at' => '2025-10-03 12:46:53',
             ),
             198 => 
             array (
@@ -32393,8 +32393,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-10-03 08:20:00',
-                'updated_at' => '2025-10-03 08:26:34',
+                'created_at' => '2025-10-03 14:20:00',
+                'updated_at' => '2025-10-03 14:26:34',
             ),
             199 => 
             array (
@@ -32420,8 +32420,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-10-03 08:28:00',
-                'updated_at' => '2025-10-03 08:28:39',
+                'created_at' => '2025-10-03 14:28:00',
+                'updated_at' => '2025-10-03 14:28:39',
             ),
             200 => 
             array (
@@ -32441,14 +32441,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 3720.0,
-                'grand_total' => 53464.800000000002910383045673370361328125,
+                'grand_total' => 53464.8,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-06 14:07:06',
-                'updated_at' => '2025-11-06 14:07:08',
+                'created_at' => '2025-11-06 20:07:06',
+                'updated_at' => '2025-11-06 20:07:08',
             ),
             201 => 
             array (
@@ -32474,8 +32474,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 07:31:00',
-                'updated_at' => '2025-11-08 07:32:21',
+                'created_at' => '2025-11-08 13:31:00',
+                'updated_at' => '2025-11-08 13:32:21',
             ),
             202 => 
             array (
@@ -32501,8 +32501,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 07:37:00',
-                'updated_at' => '2025-11-08 07:37:58',
+                'created_at' => '2025-11-08 13:37:00',
+                'updated_at' => '2025-11-08 13:37:58',
             ),
             203 => 
             array (
@@ -32528,8 +32528,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 08:30:00',
-                'updated_at' => '2025-11-08 08:30:35',
+                'created_at' => '2025-11-08 14:30:00',
+                'updated_at' => '2025-11-08 14:30:35',
             ),
             204 => 
             array (
@@ -32555,8 +32555,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 09:24:00',
-                'updated_at' => '2025-11-08 09:24:20',
+                'created_at' => '2025-11-08 15:24:00',
+                'updated_at' => '2025-11-08 15:24:20',
             ),
             205 => 
             array (
@@ -32582,8 +32582,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 09:38:00',
-                'updated_at' => '2025-11-08 09:38:28',
+                'created_at' => '2025-11-08 15:38:00',
+                'updated_at' => '2025-11-08 15:38:28',
             ),
             206 => 
             array (
@@ -32609,8 +32609,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 09:48:00',
-                'updated_at' => '2025-11-08 09:49:08',
+                'created_at' => '2025-11-08 15:48:00',
+                'updated_at' => '2025-11-08 15:49:08',
             ),
             207 => 
             array (
@@ -32636,8 +32636,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 09:54:00',
-                'updated_at' => '2025-11-08 09:54:14',
+                'created_at' => '2025-11-08 15:54:00',
+                'updated_at' => '2025-11-08 15:54:14',
             ),
             208 => 
             array (
@@ -32663,8 +32663,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 09:59:00',
-                'updated_at' => '2025-11-08 09:59:56',
+                'created_at' => '2025-11-08 15:59:00',
+                'updated_at' => '2025-11-08 15:59:56',
             ),
             209 => 
             array (
@@ -32690,8 +32690,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 10:03:00',
-                'updated_at' => '2025-11-08 10:03:17',
+                'created_at' => '2025-11-08 16:03:00',
+                'updated_at' => '2025-11-08 16:03:17',
             ),
             210 => 
             array (
@@ -32717,8 +32717,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 10:11:00',
-                'updated_at' => '2025-11-08 10:11:58',
+                'created_at' => '2025-11-08 16:11:00',
+                'updated_at' => '2025-11-08 16:11:58',
             ),
             211 => 
             array (
@@ -32744,8 +32744,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 10:19:00',
-                'updated_at' => '2025-11-08 10:19:08',
+                'created_at' => '2025-11-08 16:19:00',
+                'updated_at' => '2025-11-08 16:19:08',
             ),
             212 => 
             array (
@@ -32771,8 +32771,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 10:22:00',
-                'updated_at' => '2025-11-08 10:22:45',
+                'created_at' => '2025-11-08 16:22:00',
+                'updated_at' => '2025-11-08 16:22:45',
             ),
             213 => 
             array (
@@ -32798,8 +32798,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 10:27:00',
-                'updated_at' => '2025-11-08 10:27:21',
+                'created_at' => '2025-11-08 16:27:00',
+                'updated_at' => '2025-11-08 16:27:21',
             ),
             214 => 
             array (
@@ -32825,8 +32825,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 10:29:00',
-                'updated_at' => '2025-11-08 10:30:05',
+                'created_at' => '2025-11-08 16:29:00',
+                'updated_at' => '2025-11-08 16:30:05',
             ),
             215 => 
             array (
@@ -32852,8 +32852,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 11:04:00',
-                'updated_at' => '2025-11-08 11:05:44',
+                'created_at' => '2025-11-08 17:04:00',
+                'updated_at' => '2025-11-08 17:05:44',
             ),
             216 => 
             array (
@@ -32879,8 +32879,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 14:40:00',
-                'updated_at' => '2025-11-08 14:41:07',
+                'created_at' => '2025-11-08 20:40:00',
+                'updated_at' => '2025-11-08 20:41:07',
             ),
             217 => 
             array (
@@ -32906,8 +32906,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 14:49:00',
-                'updated_at' => '2025-11-08 14:49:39',
+                'created_at' => '2025-11-08 20:49:00',
+                'updated_at' => '2025-11-08 20:49:39',
             ),
             218 => 
             array (
@@ -32933,8 +32933,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 14:56:00',
-                'updated_at' => '2025-11-08 14:56:44',
+                'created_at' => '2025-11-08 20:56:00',
+                'updated_at' => '2025-11-08 20:56:44',
             ),
             219 => 
             array (
@@ -32960,8 +32960,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 15:04:00',
-                'updated_at' => '2025-11-08 15:04:43',
+                'created_at' => '2025-11-08 21:04:00',
+                'updated_at' => '2025-11-08 21:04:43',
             ),
             220 => 
             array (
@@ -32987,8 +32987,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-08 15:07:00',
-                'updated_at' => '2025-11-08 15:07:58',
+                'created_at' => '2025-11-08 21:07:00',
+                'updated_at' => '2025-11-08 21:07:58',
             ),
             221 => 
             array (
@@ -33014,8 +33014,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 10:23:00',
-                'updated_at' => '2025-11-09 10:25:00',
+                'created_at' => '2025-11-09 16:23:00',
+                'updated_at' => '2025-11-09 16:25:00',
             ),
             222 => 
             array (
@@ -33041,8 +33041,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 10:32:00',
-                'updated_at' => '2025-11-09 10:32:40',
+                'created_at' => '2025-11-09 16:32:00',
+                'updated_at' => '2025-11-09 16:32:40',
             ),
             223 => 
             array (
@@ -33068,8 +33068,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 10:41:00',
-                'updated_at' => '2025-11-09 10:42:44',
+                'created_at' => '2025-11-09 16:41:00',
+                'updated_at' => '2025-11-09 16:42:44',
             ),
             224 => 
             array (
@@ -33095,8 +33095,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 10:47:00',
-                'updated_at' => '2025-11-09 10:47:29',
+                'created_at' => '2025-11-09 16:47:00',
+                'updated_at' => '2025-11-09 16:47:29',
             ),
             225 => 
             array (
@@ -33122,8 +33122,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 10:52:00',
-                'updated_at' => '2025-11-09 10:54:05',
+                'created_at' => '2025-11-09 16:52:00',
+                'updated_at' => '2025-11-09 16:54:05',
             ),
             226 => 
             array (
@@ -33149,8 +33149,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 11:05:00',
-                'updated_at' => '2025-11-09 11:05:19',
+                'created_at' => '2025-11-09 17:05:00',
+                'updated_at' => '2025-11-09 17:05:19',
             ),
             227 => 
             array (
@@ -33176,8 +33176,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 11:21:00',
-                'updated_at' => '2025-11-09 11:22:21',
+                'created_at' => '2025-11-09 17:21:00',
+                'updated_at' => '2025-11-09 17:22:21',
             ),
             228 => 
             array (
@@ -33203,8 +33203,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 11:26:00',
-                'updated_at' => '2025-11-09 11:27:20',
+                'created_at' => '2025-11-09 17:26:00',
+                'updated_at' => '2025-11-09 17:27:20',
             ),
             229 => 
             array (
@@ -33230,8 +33230,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 11:33:00',
-                'updated_at' => '2025-11-09 11:33:37',
+                'created_at' => '2025-11-09 17:33:00',
+                'updated_at' => '2025-11-09 17:33:37',
             ),
             230 => 
             array (
@@ -33257,8 +33257,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:08:00',
-                'updated_at' => '2025-11-09 15:08:55',
+                'created_at' => '2025-11-09 21:08:00',
+                'updated_at' => '2025-11-09 21:08:55',
             ),
             231 => 
             array (
@@ -33284,8 +33284,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:11:00',
-                'updated_at' => '2025-11-09 15:12:04',
+                'created_at' => '2025-11-09 21:11:00',
+                'updated_at' => '2025-11-09 21:12:04',
             ),
             232 => 
             array (
@@ -33311,8 +33311,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:14:00',
-                'updated_at' => '2025-11-09 15:15:06',
+                'created_at' => '2025-11-09 21:14:00',
+                'updated_at' => '2025-11-09 21:15:06',
             ),
             233 => 
             array (
@@ -33338,8 +33338,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:17:00',
-                'updated_at' => '2025-11-09 15:17:17',
+                'created_at' => '2025-11-09 21:17:00',
+                'updated_at' => '2025-11-09 21:17:17',
             ),
             234 => 
             array (
@@ -33365,8 +33365,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:21:00',
-                'updated_at' => '2025-11-09 15:21:22',
+                'created_at' => '2025-11-09 21:21:00',
+                'updated_at' => '2025-11-09 21:21:22',
             ),
             235 => 
             array (
@@ -33392,8 +33392,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:23:00',
-                'updated_at' => '2025-11-09 15:23:19',
+                'created_at' => '2025-11-09 21:23:00',
+                'updated_at' => '2025-11-09 21:23:19',
             ),
             236 => 
             array (
@@ -33419,8 +33419,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:25:00',
-                'updated_at' => '2025-11-09 15:25:26',
+                'created_at' => '2025-11-09 21:25:00',
+                'updated_at' => '2025-11-09 21:25:26',
             ),
             237 => 
             array (
@@ -33446,8 +33446,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:28:00',
-                'updated_at' => '2025-11-09 15:28:44',
+                'created_at' => '2025-11-09 21:28:00',
+                'updated_at' => '2025-11-09 21:28:44',
             ),
             238 => 
             array (
@@ -33473,8 +33473,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-09 15:33:00',
-                'updated_at' => '2025-11-09 15:33:58',
+                'created_at' => '2025-11-09 21:33:00',
+                'updated_at' => '2025-11-09 21:33:58',
             ),
             239 => 
             array (
@@ -33500,8 +33500,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 13:12:00',
-                'updated_at' => '2025-11-10 13:12:16',
+                'created_at' => '2025-11-10 19:12:00',
+                'updated_at' => '2025-11-10 19:12:16',
             ),
             240 => 
             array (
@@ -33527,8 +33527,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 13:14:00',
-                'updated_at' => '2025-11-10 13:14:28',
+                'created_at' => '2025-11-10 19:14:00',
+                'updated_at' => '2025-11-10 19:14:28',
             ),
             241 => 
             array (
@@ -33554,8 +33554,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 13:17:00',
-                'updated_at' => '2025-11-10 13:17:19',
+                'created_at' => '2025-11-10 19:17:00',
+                'updated_at' => '2025-11-10 19:17:19',
             ),
             242 => 
             array (
@@ -33581,8 +33581,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 13:19:00',
-                'updated_at' => '2025-11-10 13:19:25',
+                'created_at' => '2025-11-10 19:19:00',
+                'updated_at' => '2025-11-10 19:19:25',
             ),
             243 => 
             array (
@@ -33608,8 +33608,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 13:21:00',
-                'updated_at' => '2025-11-10 13:21:35',
+                'created_at' => '2025-11-10 19:21:00',
+                'updated_at' => '2025-11-10 19:21:35',
             ),
             244 => 
             array (
@@ -33635,8 +33635,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 15:12:00',
-                'updated_at' => '2025-11-10 15:12:35',
+                'created_at' => '2025-11-10 21:12:00',
+                'updated_at' => '2025-11-10 21:12:35',
             ),
             245 => 
             array (
@@ -33662,8 +33662,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 15:18:00',
-                'updated_at' => '2025-11-10 15:19:02',
+                'created_at' => '2025-11-10 21:18:00',
+                'updated_at' => '2025-11-10 21:19:02',
             ),
             246 => 
             array (
@@ -33689,8 +33689,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 15:32:00',
-                'updated_at' => '2025-11-10 15:33:00',
+                'created_at' => '2025-11-10 21:32:00',
+                'updated_at' => '2025-11-10 21:33:00',
             ),
             247 => 
             array (
@@ -33716,8 +33716,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 15:39:00',
-                'updated_at' => '2025-11-10 15:39:35',
+                'created_at' => '2025-11-10 21:39:00',
+                'updated_at' => '2025-11-10 21:39:35',
             ),
             248 => 
             array (
@@ -33743,8 +33743,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-11-10 15:43:00',
-                'updated_at' => '2025-11-10 15:43:48',
+                'created_at' => '2025-11-10 21:43:00',
+                'updated_at' => '2025-11-10 21:43:48',
             ),
             249 => 
             array (
@@ -33770,8 +33770,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:08:00',
-                'updated_at' => '2025-12-11 16:08:29',
+                'created_at' => '2025-12-11 22:08:00',
+                'updated_at' => '2025-12-11 22:08:29',
             ),
             250 => 
             array (
@@ -33797,8 +33797,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:13:00',
-                'updated_at' => '2025-12-11 16:13:41',
+                'created_at' => '2025-12-11 22:13:00',
+                'updated_at' => '2025-12-11 22:13:41',
             ),
             251 => 
             array (
@@ -33824,8 +33824,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:18:00',
-                'updated_at' => '2025-12-11 16:19:35',
+                'created_at' => '2025-12-11 22:18:00',
+                'updated_at' => '2025-12-11 22:19:35',
             ),
             252 => 
             array (
@@ -33851,8 +33851,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:32:00',
-                'updated_at' => '2025-12-11 16:32:58',
+                'created_at' => '2025-12-11 22:32:00',
+                'updated_at' => '2025-12-11 22:32:58',
             ),
             253 => 
             array (
@@ -33878,8 +33878,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:41:00',
-                'updated_at' => '2025-12-11 16:41:14',
+                'created_at' => '2025-12-11 22:41:00',
+                'updated_at' => '2025-12-11 22:41:14',
             ),
             254 => 
             array (
@@ -33905,8 +33905,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:48:00',
-                'updated_at' => '2025-12-11 16:48:37',
+                'created_at' => '2025-12-11 22:48:00',
+                'updated_at' => '2025-12-11 22:48:37',
             ),
             255 => 
             array (
@@ -33932,8 +33932,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:53:00',
-                'updated_at' => '2025-12-11 16:53:28',
+                'created_at' => '2025-12-11 22:53:00',
+                'updated_at' => '2025-12-11 22:53:28',
             ),
             256 => 
             array (
@@ -33959,8 +33959,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 16:55:00',
-                'updated_at' => '2025-12-11 16:55:59',
+                'created_at' => '2025-12-11 22:55:00',
+                'updated_at' => '2025-12-11 22:55:59',
             ),
             257 => 
             array (
@@ -33986,8 +33986,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 17:00:00',
-                'updated_at' => '2025-12-11 17:00:47',
+                'created_at' => '2025-12-11 23:00:00',
+                'updated_at' => '2025-12-11 23:00:47',
             ),
             258 => 
             array (
@@ -34013,8 +34013,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 17:24:00',
-                'updated_at' => '2025-12-11 17:24:33',
+                'created_at' => '2025-12-11 23:24:00',
+                'updated_at' => '2025-12-11 23:24:33',
             ),
             259 => 
             array (
@@ -34040,8 +34040,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 17:28:00',
-                'updated_at' => '2025-12-11 17:29:06',
+                'created_at' => '2025-12-11 23:28:00',
+                'updated_at' => '2025-12-11 23:29:06',
             ),
             260 => 
             array (
@@ -34067,8 +34067,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 17:31:00',
-                'updated_at' => '2025-12-11 17:31:25',
+                'created_at' => '2025-12-11 23:31:00',
+                'updated_at' => '2025-12-11 23:31:25',
             ),
             261 => 
             array (
@@ -34094,8 +34094,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 19:43:00',
-                'updated_at' => '2025-12-11 19:43:41',
+                'created_at' => '2025-12-12 01:43:00',
+                'updated_at' => '2025-12-12 01:43:41',
             ),
             262 => 
             array (
@@ -34121,8 +34121,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 19:51:00',
-                'updated_at' => '2025-12-11 19:51:38',
+                'created_at' => '2025-12-12 01:51:00',
+                'updated_at' => '2025-12-12 01:51:38',
             ),
             263 => 
             array (
@@ -34148,8 +34148,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 19:57:00',
-                'updated_at' => '2025-12-11 19:58:02',
+                'created_at' => '2025-12-12 01:57:00',
+                'updated_at' => '2025-12-12 01:58:02',
             ),
             264 => 
             array (
@@ -34175,8 +34175,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 20:00:00',
-                'updated_at' => '2025-12-11 20:00:40',
+                'created_at' => '2025-12-12 02:00:00',
+                'updated_at' => '2025-12-12 02:00:40',
             ),
             265 => 
             array (
@@ -34202,8 +34202,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 21:28:00',
-                'updated_at' => '2025-12-11 21:30:37',
+                'created_at' => '2025-12-12 03:28:00',
+                'updated_at' => '2025-12-12 03:30:37',
             ),
             266 => 
             array (
@@ -34229,8 +34229,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:02:00',
-                'updated_at' => '2025-12-11 22:03:02',
+                'created_at' => '2025-12-12 04:02:00',
+                'updated_at' => '2025-12-12 04:03:02',
             ),
             267 => 
             array (
@@ -34256,8 +34256,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:08:19',
-                'updated_at' => '2025-12-11 22:08:19',
+                'created_at' => '2025-12-12 04:08:19',
+                'updated_at' => '2025-12-12 04:08:19',
             ),
             268 => 
             array (
@@ -34283,8 +34283,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:11:00',
-                'updated_at' => '2025-12-11 22:11:21',
+                'created_at' => '2025-12-12 04:11:00',
+                'updated_at' => '2025-12-12 04:11:21',
             ),
             269 => 
             array (
@@ -34310,8 +34310,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:14:00',
-                'updated_at' => '2025-12-11 22:14:36',
+                'created_at' => '2025-12-12 04:14:00',
+                'updated_at' => '2025-12-12 04:14:36',
             ),
             270 => 
             array (
@@ -34337,8 +34337,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:17:00',
-                'updated_at' => '2025-12-11 22:17:46',
+                'created_at' => '2025-12-12 04:17:00',
+                'updated_at' => '2025-12-12 04:17:46',
             ),
             271 => 
             array (
@@ -34364,8 +34364,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:22:00',
-                'updated_at' => '2025-12-11 22:22:33',
+                'created_at' => '2025-12-12 04:22:00',
+                'updated_at' => '2025-12-12 04:22:33',
             ),
             272 => 
             array (
@@ -34391,8 +34391,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:25:00',
-                'updated_at' => '2025-12-11 22:25:59',
+                'created_at' => '2025-12-12 04:25:00',
+                'updated_at' => '2025-12-12 04:25:59',
             ),
             273 => 
             array (
@@ -34418,8 +34418,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:43:00',
-                'updated_at' => '2025-12-11 22:44:11',
+                'created_at' => '2025-12-12 04:43:00',
+                'updated_at' => '2025-12-12 04:44:11',
             ),
             274 => 
             array (
@@ -34445,8 +34445,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 22:49:00',
-                'updated_at' => '2025-12-11 22:50:05',
+                'created_at' => '2025-12-12 04:49:00',
+                'updated_at' => '2025-12-12 04:50:05',
             ),
             275 => 
             array (
@@ -34472,8 +34472,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 23:00:00',
-                'updated_at' => '2025-12-11 23:00:34',
+                'created_at' => '2025-12-12 05:00:00',
+                'updated_at' => '2025-12-12 05:00:34',
             ),
             276 => 
             array (
@@ -34499,8 +34499,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 23:04:00',
-                'updated_at' => '2025-12-11 23:05:16',
+                'created_at' => '2025-12-12 05:04:00',
+                'updated_at' => '2025-12-12 05:05:16',
             ),
             277 => 
             array (
@@ -34526,8 +34526,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 23:12:00',
-                'updated_at' => '2025-12-11 23:12:36',
+                'created_at' => '2025-12-12 05:12:00',
+                'updated_at' => '2025-12-12 05:12:36',
             ),
             278 => 
             array (
@@ -34553,8 +34553,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 23:17:00',
-                'updated_at' => '2025-12-11 23:18:04',
+                'created_at' => '2025-12-12 05:17:00',
+                'updated_at' => '2025-12-12 05:18:04',
             ),
             279 => 
             array (
@@ -34580,8 +34580,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 23:23:00',
-                'updated_at' => '2025-12-11 23:23:58',
+                'created_at' => '2025-12-12 05:23:00',
+                'updated_at' => '2025-12-12 05:23:58',
             ),
             280 => 
             array (
@@ -34607,8 +34607,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-11 23:27:00',
-                'updated_at' => '2025-12-11 23:27:35',
+                'created_at' => '2025-12-12 05:27:00',
+                'updated_at' => '2025-12-12 05:27:35',
             ),
             281 => 
             array (
@@ -34634,8 +34634,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 15:38:00',
-                'updated_at' => '2025-12-12 15:39:18',
+                'created_at' => '2025-12-12 21:38:00',
+                'updated_at' => '2025-12-12 21:39:18',
             ),
             282 => 
             array (
@@ -34661,8 +34661,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 15:41:00',
-                'updated_at' => '2025-12-12 15:41:27',
+                'created_at' => '2025-12-12 21:41:00',
+                'updated_at' => '2025-12-12 21:41:27',
             ),
             283 => 
             array (
@@ -34688,8 +34688,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 15:57:00',
-                'updated_at' => '2025-12-12 16:04:41',
+                'created_at' => '2025-12-12 21:57:00',
+                'updated_at' => '2025-12-12 22:04:41',
             ),
             284 => 
             array (
@@ -34715,8 +34715,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 16:08:00',
-                'updated_at' => '2025-12-12 16:09:58',
+                'created_at' => '2025-12-12 22:08:00',
+                'updated_at' => '2025-12-12 22:09:58',
             ),
             285 => 
             array (
@@ -34742,8 +34742,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 16:25:00',
-                'updated_at' => '2025-12-12 16:26:04',
+                'created_at' => '2025-12-12 22:25:00',
+                'updated_at' => '2025-12-12 22:26:04',
             ),
             286 => 
             array (
@@ -34769,8 +34769,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 18:41:00',
-                'updated_at' => '2025-12-12 18:42:25',
+                'created_at' => '2025-12-13 00:41:00',
+                'updated_at' => '2025-12-13 00:42:25',
             ),
             287 => 
             array (
@@ -34796,8 +34796,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 18:45:00',
-                'updated_at' => '2025-12-12 18:46:20',
+                'created_at' => '2025-12-13 00:45:00',
+                'updated_at' => '2025-12-13 00:46:20',
             ),
             288 => 
             array (
@@ -34823,8 +34823,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 18:49:00',
-                'updated_at' => '2025-12-12 18:49:16',
+                'created_at' => '2025-12-13 00:49:00',
+                'updated_at' => '2025-12-13 00:49:16',
             ),
             289 => 
             array (
@@ -34850,8 +34850,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 18:51:00',
-                'updated_at' => '2025-12-12 18:52:16',
+                'created_at' => '2025-12-13 00:51:00',
+                'updated_at' => '2025-12-13 00:52:16',
             ),
             290 => 
             array (
@@ -34877,8 +34877,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 18:54:00',
-                'updated_at' => '2025-12-12 18:54:49',
+                'created_at' => '2025-12-13 00:54:00',
+                'updated_at' => '2025-12-13 00:54:49',
             ),
             291 => 
             array (
@@ -34904,8 +34904,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 18:57:00',
-                'updated_at' => '2025-12-12 18:57:19',
+                'created_at' => '2025-12-13 00:57:00',
+                'updated_at' => '2025-12-13 00:57:19',
             ),
             292 => 
             array (
@@ -34931,8 +34931,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 18:59:00',
-                'updated_at' => '2025-12-12 19:00:15',
+                'created_at' => '2025-12-13 00:59:00',
+                'updated_at' => '2025-12-13 01:00:15',
             ),
             293 => 
             array (
@@ -34958,8 +34958,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 19:48:00',
-                'updated_at' => '2025-12-12 19:48:23',
+                'created_at' => '2025-12-13 01:48:00',
+                'updated_at' => '2025-12-13 01:48:23',
             ),
             294 => 
             array (
@@ -34985,8 +34985,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 19:54:00',
-                'updated_at' => '2025-12-12 19:54:34',
+                'created_at' => '2025-12-13 01:54:00',
+                'updated_at' => '2025-12-13 01:54:34',
             ),
             295 => 
             array (
@@ -35012,8 +35012,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-12 20:33:00',
-                'updated_at' => '2025-12-12 20:35:45',
+                'created_at' => '2025-12-13 02:33:00',
+                'updated_at' => '2025-12-13 02:35:45',
             ),
             296 => 
             array (
@@ -35039,8 +35039,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-13 18:02:00',
-                'updated_at' => '2025-12-13 18:03:08',
+                'created_at' => '2025-12-14 00:02:00',
+                'updated_at' => '2025-12-14 00:03:08',
             ),
             297 => 
             array (
@@ -35066,8 +35066,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-13 19:23:00',
-                'updated_at' => '2025-12-13 19:24:13',
+                'created_at' => '2025-12-14 01:23:00',
+                'updated_at' => '2025-12-14 01:24:13',
             ),
             298 => 
             array (
@@ -35093,8 +35093,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2025-12-21 17:10:00',
-                'updated_at' => '2025-12-21 17:10:51',
+                'created_at' => '2025-12-21 23:10:00',
+                'updated_at' => '2025-12-21 23:10:51',
             ),
             299 => 
             array (
@@ -35120,8 +35120,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-04 16:58:00',
-                'updated_at' => '2026-01-04 16:58:42',
+                'created_at' => '2026-01-04 22:58:00',
+                'updated_at' => '2026-01-04 22:58:42',
             ),
             300 => 
             array (
@@ -35147,8 +35147,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-07 20:33:00',
-                'updated_at' => '2026-01-07 20:33:47',
+                'created_at' => '2026-01-08 02:33:00',
+                'updated_at' => '2026-01-08 02:33:47',
             ),
             301 => 
             array (
@@ -35174,8 +35174,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-07 20:34:00',
-                'updated_at' => '2026-01-07 20:35:32',
+                'created_at' => '2026-01-08 02:34:00',
+                'updated_at' => '2026-01-08 02:35:32',
             ),
             302 => 
             array (
@@ -35201,8 +35201,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-14 19:28:00',
-                'updated_at' => '2026-01-14 19:28:37',
+                'created_at' => '2026-01-15 01:28:00',
+                'updated_at' => '2026-01-15 01:28:37',
             ),
             303 => 
             array (
@@ -35228,8 +35228,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-14 19:30:00',
-                'updated_at' => '2026-01-14 19:30:36',
+                'created_at' => '2026-01-15 01:30:00',
+                'updated_at' => '2026-01-15 01:30:36',
             ),
             304 => 
             array (
@@ -35249,14 +35249,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 170251.2000000000116415321826934814453125,
+                'grand_total' => 170251.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-28 13:23:27',
-                'updated_at' => '2026-01-28 13:23:27',
+                'created_at' => '2026-01-28 19:23:27',
+                'updated_at' => '2026-01-28 19:23:27',
             ),
             305 => 
             array (
@@ -35282,8 +35282,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-28 13:26:40',
-                'updated_at' => '2026-01-28 13:26:55',
+                'created_at' => '2026-01-28 19:26:40',
+                'updated_at' => '2026-01-28 19:26:55',
             ),
             306 => 
             array (
@@ -35309,8 +35309,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 13:55:43',
-                'updated_at' => '2026-01-29 13:55:43',
+                'created_at' => '2026-01-29 19:55:43',
+                'updated_at' => '2026-01-29 19:55:43',
             ),
             307 => 
             array (
@@ -35330,14 +35330,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 124869.60000000000582076609134674072265625,
+                'grand_total' => 124869.6,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 13:59:00',
-                'updated_at' => '2026-01-29 13:59:00',
+                'created_at' => '2026-01-29 19:59:00',
+                'updated_at' => '2026-01-29 19:59:00',
             ),
             308 => 
             array (
@@ -35357,14 +35357,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 83008.800000000002910383045673370361328125,
+                'grand_total' => 83008.8,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 14:04:14',
-                'updated_at' => '2026-01-29 14:04:14',
+                'created_at' => '2026-01-29 20:04:14',
+                'updated_at' => '2026-01-29 20:04:14',
             ),
             309 => 
             array (
@@ -35390,8 +35390,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 14:06:46',
-                'updated_at' => '2026-01-29 14:06:46',
+                'created_at' => '2026-01-29 20:06:46',
+                'updated_at' => '2026-01-29 20:06:46',
             ),
             310 => 
             array (
@@ -35411,14 +35411,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 0.0,
-                'grand_total' => 176875.2000000000116415321826934814453125,
+                'grand_total' => 176875.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 14:09:53',
-                'updated_at' => '2026-01-29 14:10:07',
+                'created_at' => '2026-01-29 20:09:53',
+                'updated_at' => '2026-01-29 20:10:07',
             ),
             311 => 
             array (
@@ -35444,8 +35444,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 14:13:03',
-                'updated_at' => '2026-01-29 14:13:04',
+                'created_at' => '2026-01-29 20:13:03',
+                'updated_at' => '2026-01-29 20:13:04',
             ),
             312 => 
             array (
@@ -35465,14 +35465,14 @@ class PurchasesTableSeeder extends Seeder
                 'order_tax' => 0.0,
                 'order_discount' => 0.0,
                 'shipping_cost' => 17380.0,
-                'grand_total' => 188279.2000000000116415321826934814453125,
+                'grand_total' => 188279.2,
                 'paid_amount' => 0.0,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 14:14:56',
-                'updated_at' => '2026-01-29 14:14:56',
+                'created_at' => '2026-01-29 20:14:56',
+                'updated_at' => '2026-01-29 20:14:56',
             ),
             313 => 
             array (
@@ -35498,8 +35498,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-01-29 14:16:47',
-                'updated_at' => '2026-01-29 14:16:48',
+                'created_at' => '2026-01-29 20:16:47',
+                'updated_at' => '2026-01-29 20:16:48',
             ),
             314 => 
             array (
@@ -35525,8 +35525,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-02-09 19:44:00',
-                'updated_at' => '2026-02-09 19:47:27',
+                'created_at' => '2026-02-10 01:44:00',
+                'updated_at' => '2026-02-10 01:47:27',
             ),
             315 => 
             array (
@@ -35552,8 +35552,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-02-09 19:55:00',
-                'updated_at' => '2026-02-09 19:56:57',
+                'created_at' => '2026-02-10 01:55:00',
+                'updated_at' => '2026-02-10 01:56:57',
             ),
             316 => 
             array (
@@ -35579,8 +35579,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-02-19 14:01:00',
-                'updated_at' => '2026-02-19 14:01:55',
+                'created_at' => '2026-02-19 20:01:00',
+                'updated_at' => '2026-02-19 20:01:55',
             ),
             317 => 
             array (
@@ -35606,8 +35606,8 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-02-19 14:01:00',
-                'updated_at' => '2026-02-19 14:02:18',
+                'created_at' => '2026-02-19 20:01:00',
+                'updated_at' => '2026-02-19 20:02:18',
             ),
             318 => 
             array (
@@ -35633,8 +35633,2357 @@ class PurchasesTableSeeder extends Seeder
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
-                'created_at' => '2026-02-22 19:14:00',
-                'updated_at' => '2026-02-22 19:15:23',
+                'created_at' => '2026-02-23 01:14:00',
+                'updated_at' => '2026-02-23 01:15:23',
+            ),
+            319 => 
+            array (
+                'id' => 1394,
+                'reference_no' => 'avijatry-1338',
+                'user_id' => 1,
+                'warehouse_id' => 1,
+                'supplier_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 17,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 157590.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 113464.8,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-23 22:29:10',
+                'updated_at' => '2026-02-23 22:29:10',
+            ),
+            320 => 
+            array (
+                'id' => 1395,
+                'reference_no' => 'pr-20260223-100810',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9300.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9300.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-24 04:07:00',
+                'updated_at' => '2026-02-24 04:08:10',
+            ),
+            321 => 
+            array (
+                'id' => 1396,
+                'reference_no' => 'pr-20260223-101227',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-24 04:12:00',
+                'updated_at' => '2026-02-24 04:12:27',
+            ),
+            322 => 
+            array (
+                'id' => 1397,
+                'reference_no' => 'pr-20260223-101626',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9900.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9900.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-24 04:16:00',
+                'updated_at' => '2026-02-24 04:16:26',
+            ),
+            323 => 
+            array (
+                'id' => 1398,
+                'reference_no' => 'pr-20260223-102016',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 9,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 19140.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 19140.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-24 04:19:00',
+                'updated_at' => '2026-02-24 04:20:16',
+            ),
+            324 => 
+            array (
+                'id' => 1399,
+                'reference_no' => 'pr-20260223-102614',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-24 04:26:00',
+                'updated_at' => '2026-02-24 04:26:14',
+            ),
+            325 => 
+            array (
+                'id' => 1400,
+                'reference_no' => 'pr-20260223-102904',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3900.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3900.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-24 04:28:00',
+                'updated_at' => '2026-02-24 04:29:04',
+            ),
+            326 => 
+            array (
+                'id' => 1401,
+                'reference_no' => 'pr-20260223-103031',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3900.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3900.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-24 04:30:00',
+                'updated_at' => '2026-02-24 04:30:31',
+            ),
+            327 => 
+            array (
+                'id' => 1402,
+                'reference_no' => 'pr-20260225-074126',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 01:41:00',
+                'updated_at' => '2026-02-26 01:41:26',
+            ),
+            328 => 
+            array (
+                'id' => 1403,
+                'reference_no' => 'pr-20260225-074722',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 01:47:00',
+                'updated_at' => '2026-02-26 01:47:22',
+            ),
+            329 => 
+            array (
+                'id' => 1404,
+                'reference_no' => 'pr-20260225-075011',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 01:49:00',
+                'updated_at' => '2026-02-26 01:50:11',
+            ),
+            330 => 
+            array (
+                'id' => 1405,
+                'reference_no' => 'pr-20260225-080458',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 02:04:00',
+                'updated_at' => '2026-02-26 02:32:17',
+            ),
+            331 => 
+            array (
+                'id' => 1406,
+                'reference_no' => 'pr-20260225-080830',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 02:08:00',
+                'updated_at' => '2026-02-26 02:08:30',
+            ),
+            332 => 
+            array (
+                'id' => 1407,
+                'reference_no' => 'pr-20260225-084716',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 02:46:00',
+                'updated_at' => '2026-02-26 02:47:16',
+            ),
+            333 => 
+            array (
+                'id' => 1408,
+                'reference_no' => 'pr-20260225-085121',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 02:51:00',
+                'updated_at' => '2026-02-26 02:51:21',
+            ),
+            334 => 
+            array (
+                'id' => 1409,
+                'reference_no' => 'pr-20260225-085448',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 02:54:00',
+                'updated_at' => '2026-02-26 02:54:48',
+            ),
+            335 => 
+            array (
+                'id' => 1410,
+                'reference_no' => 'pr-20260225-091315',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:13:00',
+                'updated_at' => '2026-02-26 03:13:15',
+            ),
+            336 => 
+            array (
+                'id' => 1411,
+                'reference_no' => 'pr-20260225-091549',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:15:00',
+                'updated_at' => '2026-02-26 03:15:49',
+            ),
+            337 => 
+            array (
+                'id' => 1412,
+                'reference_no' => 'pr-20260225-092447',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 11400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 11400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:24:00',
+                'updated_at' => '2026-02-26 03:24:47',
+            ),
+            338 => 
+            array (
+                'id' => 1413,
+                'reference_no' => 'pr-20260225-093008',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:29:00',
+                'updated_at' => '2026-02-26 03:30:08',
+            ),
+            339 => 
+            array (
+                'id' => 1414,
+                'reference_no' => 'pr-20260225-094443',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:44:00',
+                'updated_at' => '2026-02-26 03:44:43',
+            ),
+            340 => 
+            array (
+                'id' => 1415,
+                'reference_no' => 'pr-20260225-094836',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 11400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 11400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:48:00',
+                'updated_at' => '2026-02-26 03:48:36',
+            ),
+            341 => 
+            array (
+                'id' => 1416,
+                'reference_no' => 'pr-20260225-095113',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4650.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 4650.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:50:00',
+                'updated_at' => '2026-02-26 03:51:13',
+            ),
+            342 => 
+            array (
+                'id' => 1417,
+                'reference_no' => 'pr-20260225-095445',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4950.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 4950.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 03:54:00',
+                'updated_at' => '2026-02-26 03:54:45',
+            ),
+            343 => 
+            array (
+                'id' => 1418,
+                'reference_no' => 'pr-20260225-101226',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 04:11:00',
+                'updated_at' => '2026-02-26 04:12:26',
+            ),
+            344 => 
+            array (
+                'id' => 1419,
+                'reference_no' => 'pr-20260225-102733',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 04:27:00',
+                'updated_at' => '2026-02-26 04:27:33',
+            ),
+            345 => 
+            array (
+                'id' => 1420,
+                'reference_no' => 'pr-20260225-103116',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10560.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10560.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 04:30:00',
+                'updated_at' => '2026-02-26 04:31:16',
+            ),
+            346 => 
+            array (
+                'id' => 1421,
+                'reference_no' => 'pr-20260225-103456',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 11400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 11400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 04:34:00',
+                'updated_at' => '2026-02-26 04:34:56',
+            ),
+            347 => 
+            array (
+                'id' => 1422,
+                'reference_no' => 'pr-20260225-104831',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 04:47:00',
+                'updated_at' => '2026-02-26 04:48:31',
+            ),
+            348 => 
+            array (
+                'id' => 1423,
+                'reference_no' => 'pr-20260225-105243',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 04:51:00',
+                'updated_at' => '2026-02-26 04:52:43',
+            ),
+            349 => 
+            array (
+                'id' => 1424,
+                'reference_no' => 'pr-20260225-110155',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 9,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 05:01:00',
+                'updated_at' => '2026-02-26 05:01:55',
+            ),
+            350 => 
+            array (
+                'id' => 1425,
+                'reference_no' => 'pr-20260225-110606',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 05:05:00',
+                'updated_at' => '2026-02-26 05:06:06',
+            ),
+            351 => 
+            array (
+                'id' => 1426,
+                'reference_no' => 'pr-20260225-111543',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 05:15:00',
+                'updated_at' => '2026-02-26 05:15:43',
+            ),
+            352 => 
+            array (
+                'id' => 1427,
+                'reference_no' => 'pr-20260225-111827',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 05:18:00',
+                'updated_at' => '2026-02-26 05:18:27',
+            ),
+            353 => 
+            array (
+                'id' => 1428,
+                'reference_no' => 'pr-20260225-112107',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 5400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 5400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 05:20:00',
+                'updated_at' => '2026-02-26 05:21:07',
+            ),
+            354 => 
+            array (
+                'id' => 1429,
+                'reference_no' => 'pr-20260225-112602',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 05:24:00',
+                'updated_at' => '2026-02-26 05:26:02',
+            ),
+            355 => 
+            array (
+                'id' => 1430,
+                'reference_no' => 'pr-20260226-031422',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 11,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7150.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7150.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 21:14:00',
+                'updated_at' => '2026-02-26 21:14:22',
+            ),
+            356 => 
+            array (
+                'id' => 1431,
+                'reference_no' => 'pr-20260226-032016',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 21:19:00',
+                'updated_at' => '2026-02-26 21:20:16',
+            ),
+            357 => 
+            array (
+                'id' => 1432,
+                'reference_no' => 'pr-20260226-032804',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 9,
+                'total_qty' => 11,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7700.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7700.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 21:27:00',
+                'updated_at' => '2026-02-26 21:28:04',
+            ),
+            358 => 
+            array (
+                'id' => 1433,
+                'reference_no' => 'pr-20260226-033329',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 21:33:00',
+                'updated_at' => '2026-02-26 21:33:29',
+            ),
+            359 => 
+            array (
+                'id' => 1434,
+                'reference_no' => 'pr-20260226-034009',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 21:39:00',
+                'updated_at' => '2026-02-26 21:40:09',
+            ),
+            360 => 
+            array (
+                'id' => 1435,
+                'reference_no' => 'pr-20260226-041311',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 22:12:00',
+                'updated_at' => '2026-02-26 22:13:11',
+            ),
+            361 => 
+            array (
+                'id' => 1436,
+                'reference_no' => 'pr-20260226-041720',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8760.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8760.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 22:17:00',
+                'updated_at' => '2026-02-26 22:17:20',
+            ),
+            362 => 
+            array (
+                'id' => 1437,
+                'reference_no' => 'pr-20260226-042021',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8160.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8160.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 22:20:00',
+                'updated_at' => '2026-02-26 22:20:21',
+            ),
+            363 => 
+            array (
+                'id' => 1438,
+                'reference_no' => 'pr-20260226-044150',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-26 22:41:00',
+                'updated_at' => '2026-02-26 22:41:50',
+            ),
+            364 => 
+            array (
+                'id' => 1439,
+                'reference_no' => 'pr-20260226-072011',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9300.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9300.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 01:19:00',
+                'updated_at' => '2026-02-27 01:20:11',
+            ),
+            365 => 
+            array (
+                'id' => 1440,
+                'reference_no' => 'pr-20260226-072634',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 01:26:00',
+                'updated_at' => '2026-02-27 01:26:34',
+            ),
+            366 => 
+            array (
+                'id' => 1441,
+                'reference_no' => 'pr-20260226-073133',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 01:31:00',
+                'updated_at' => '2026-02-27 01:31:33',
+            ),
+            367 => 
+            array (
+                'id' => 1442,
+                'reference_no' => 'pr-20260226-073424',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 11400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 11400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 01:34:00',
+                'updated_at' => '2026-02-27 01:34:24',
+            ),
+            368 => 
+            array (
+                'id' => 1443,
+                'reference_no' => 'pr-20260226-073905',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 01:38:00',
+                'updated_at' => '2026-02-27 01:39:05',
+            ),
+            369 => 
+            array (
+                'id' => 1444,
+                'reference_no' => 'pr-20260226-074047',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 5100.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 5100.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 01:40:00',
+                'updated_at' => '2026-02-27 01:40:47',
+            ),
+            370 => 
+            array (
+                'id' => 1445,
+                'reference_no' => 'pr-20260226-091701',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 03:16:00',
+                'updated_at' => '2026-02-27 03:17:01',
+            ),
+            371 => 
+            array (
+                'id' => 1446,
+                'reference_no' => 'pr-20260226-112927',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 6000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 6000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 05:28:00',
+                'updated_at' => '2026-02-27 05:29:27',
+            ),
+            372 => 
+            array (
+                'id' => 1447,
+                'reference_no' => 'pr-20260226-113313',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 05:32:00',
+                'updated_at' => '2026-02-27 05:33:13',
+            ),
+            373 => 
+            array (
+                'id' => 1448,
+                'reference_no' => 'pr-20260226-114209',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8700.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8700.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 05:41:00',
+                'updated_at' => '2026-02-27 05:42:09',
+            ),
+            374 => 
+            array (
+                'id' => 1449,
+                'reference_no' => 'pr-20260226-115733',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4500.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 4500.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 05:57:00',
+                'updated_at' => '2026-02-27 05:57:33',
+            ),
+            375 => 
+            array (
+                'id' => 1450,
+                'reference_no' => 'pr-20260227-123453',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 06:34:00',
+                'updated_at' => '2026-02-27 06:34:53',
+            ),
+            376 => 
+            array (
+                'id' => 1451,
+                'reference_no' => 'pr-20260227-123842',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 13200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 13200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 06:38:00',
+                'updated_at' => '2026-02-27 06:38:42',
+            ),
+            377 => 
+            array (
+                'id' => 1452,
+                'reference_no' => 'pr-20260227-124140',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 6300.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 6300.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 06:41:00',
+                'updated_at' => '2026-02-27 06:41:40',
+            ),
+            378 => 
+            array (
+                'id' => 1453,
+                'reference_no' => 'pr-20260227-124613',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 12900.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 12900.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 06:44:00',
+                'updated_at' => '2026-02-27 06:46:13',
+            ),
+            379 => 
+            array (
+                'id' => 1454,
+                'reference_no' => 'pr-20260227-032515',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 11400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 11400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 21:24:00',
+                'updated_at' => '2026-02-27 21:25:15',
+            ),
+            380 => 
+            array (
+                'id' => 1455,
+                'reference_no' => 'pr-20260227-033104',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 11400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 11400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 21:29:00',
+                'updated_at' => '2026-02-27 21:31:04',
+            ),
+            381 => 
+            array (
+                'id' => 1456,
+                'reference_no' => 'pr-20260227-033951',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 5700.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 5700.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-27 21:39:00',
+                'updated_at' => '2026-02-27 21:39:51',
+            ),
+            382 => 
+            array (
+                'id' => 1457,
+                'reference_no' => 'pr-20260227-105840',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 10500.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 10500.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 04:58:00',
+                'updated_at' => '2026-02-28 04:58:40',
+            ),
+            383 => 
+            array (
+                'id' => 1458,
+                'reference_no' => 'pr-20260227-110223',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 11,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9000.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9000.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 05:01:00',
+                'updated_at' => '2026-02-28 05:02:23',
+            ),
+            384 => 
+            array (
+                'id' => 1459,
+                'reference_no' => 'pr-20260227-110639',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3750.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3750.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 05:06:00',
+                'updated_at' => '2026-02-28 05:06:39',
+            ),
+            385 => 
+            array (
+                'id' => 1460,
+                'reference_no' => 'pr-20260227-110851',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 5250.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 5250.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 05:08:00',
+                'updated_at' => '2026-02-28 05:08:51',
+            ),
+            386 => 
+            array (
+                'id' => 1461,
+                'reference_no' => 'pr-20260227-112737',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4350.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 4350.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 05:27:00',
+                'updated_at' => '2026-02-28 05:27:37',
+            ),
+            387 => 
+            array (
+                'id' => 1462,
+                'reference_no' => 'pr-20260227-113454',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4350.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 4350.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 05:34:00',
+                'updated_at' => '2026-02-28 05:34:54',
+            ),
+            388 => 
+            array (
+                'id' => 1463,
+                'reference_no' => 'pr-20260227-113915',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 5250.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 5250.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 05:38:00',
+                'updated_at' => '2026-02-28 05:39:15',
+            ),
+            389 => 
+            array (
+                'id' => 1464,
+                'reference_no' => 'pr-20260227-114656',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8256.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8256.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 05:46:00',
+                'updated_at' => '2026-02-28 05:46:56',
+            ),
+            390 => 
+            array (
+                'id' => 1465,
+                'reference_no' => 'pr-20260228-011507',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 07:14:00',
+                'updated_at' => '2026-02-28 07:15:07',
+            ),
+            391 => 
+            array (
+                'id' => 1466,
+                'reference_no' => 'pr-20260228-011848',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 07:18:00',
+                'updated_at' => '2026-02-28 07:18:48',
+            ),
+            392 => 
+            array (
+                'id' => 1467,
+                'reference_no' => 'pr-20260228-012121',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 4800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 07:21:00',
+                'updated_at' => '2026-02-28 07:21:21',
+            ),
+            393 => 
+            array (
+                'id' => 1468,
+                'reference_no' => 'pr-20260228-012358',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 4800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 4800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 07:23:00',
+                'updated_at' => '2026-02-28 07:23:58',
+            ),
+            394 => 
+            array (
+                'id' => 1469,
+                'reference_no' => 'pr-20260228-012548',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 6,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3900.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3900.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-02-28 07:25:00',
+                'updated_at' => '2026-02-28 07:25:48',
+            ),
+            395 => 
+            array (
+                'id' => 1470,
+                'reference_no' => 'pr-20260228-112949',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 8400.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 8400.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:29:00',
+                'updated_at' => '2026-03-01 05:29:49',
+            ),
+            396 => 
+            array (
+                'id' => 1471,
+                'reference_no' => 'pr-20260228-113244',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:32:00',
+                'updated_at' => '2026-03-01 05:32:44',
+            ),
+            397 => 
+            array (
+                'id' => 1472,
+                'reference_no' => 'pr-20260228-113622',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:36:00',
+                'updated_at' => '2026-03-01 05:36:22',
+            ),
+            398 => 
+            array (
+                'id' => 1473,
+                'reference_no' => 'pr-20260228-114231',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:41:00',
+                'updated_at' => '2026-03-01 05:42:31',
+            ),
+            399 => 
+            array (
+                'id' => 1474,
+                'reference_no' => 'pr-20260228-114845',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7200.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7200.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:48:00',
+                'updated_at' => '2026-03-01 05:48:45',
+            ),
+            400 => 
+            array (
+                'id' => 1475,
+                'reference_no' => 'pr-20260228-115249',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3600.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3600.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:52:00',
+                'updated_at' => '2026-03-01 05:52:49',
+            ),
+            401 => 
+            array (
+                'id' => 1476,
+                'reference_no' => 'pr-20260228-115620',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 3900.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 3900.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:56:00',
+                'updated_at' => '2026-03-01 05:56:20',
+            ),
+            402 => 
+            array (
+                'id' => 1477,
+                'reference_no' => 'pr-20260228-115835',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 12,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 7800.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 7800.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-01 05:58:00',
+                'updated_at' => '2026-03-01 05:58:35',
+            ),
+            403 => 
+            array (
+                'id' => 1478,
+                'reference_no' => 'pr-20260304-025734',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 10,
+                'total_qty' => 12,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 11040.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 11040.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-04 20:57:00',
+                'updated_at' => '2026-03-04 20:57:34',
+            ),
+            404 => 
+            array (
+                'id' => 1479,
+                'reference_no' => 'pr-20260304-031143',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 2,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 9,
+                'total_qty' => 11,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 9900.0,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 9900.0,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-04 21:04:00',
+                'updated_at' => '2026-03-04 21:11:43',
+            ),
+            405 => 
+            array (
+                'id' => 1480,
+                'reference_no' => 'pr-20260310-011228',
+                'user_id' => 12,
+                'warehouse_id' => 1,
+                'supplier_id' => 1,
+                'currency_id' => NULL,
+                'exchange_rate' => NULL,
+                'item' => 5,
+                'total_qty' => 6,
+                'total_discount' => 0.0,
+                'total_tax' => 0.0,
+                'total_cost' => 6458.4,
+                'order_tax_rate' => 0.0,
+                'order_tax' => 0.0,
+                'order_discount' => 0.0,
+                'shipping_cost' => 0.0,
+                'grand_total' => 6458.4,
+                'paid_amount' => 0.0,
+                'status' => 1,
+                'payment_status' => 1,
+                'document' => NULL,
+                'note' => NULL,
+                'created_at' => '2026-03-10 19:11:00',
+                'updated_at' => '2026-03-10 19:12:28',
             ),
         ));
         

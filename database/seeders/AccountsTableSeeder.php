@@ -25,12 +25,12 @@ class AccountsTableSeeder extends Seeder
                 'account_no' => 'Avijatry Khulna',
                 'name' => 'Hand Cash',
                 'initial_balance' => 0.0,
-                'total_balance' => -1243500.0,
+                'total_balance' => -3221430.0,
                 'note' => 'Khulna Branch',
                 'is_default' => NULL,
                 'is_active' => 1,
-                'created_at' => '2024-10-07 12:35:08',
-                'updated_at' => '2026-02-22 22:23:13',
+                'created_at' => '2024-10-07 18:35:08',
+                'updated_at' => '2026-04-15 02:24:34',
             ),
             1 => 
             array (
@@ -42,21 +42,21 @@ class AccountsTableSeeder extends Seeder
                 'note' => 'Paltan Branch',
                 'is_default' => NULL,
                 'is_active' => 0,
-                'created_at' => '2024-12-21 01:01:11',
-                'updated_at' => '2024-12-29 01:13:11',
+                'created_at' => '2024-12-21 07:01:11',
+                'updated_at' => '2024-12-29 07:13:11',
             ),
             2 => 
             array (
                 'id' => 3,
                 'account_no' => '9890188686',
                 'name' => 'POS Pubali',
-                'initial_balance' => 386300.599999999976716935634613037109375,
-                'total_balance' => 386300.599999999976716935634613037109375,
+                'initial_balance' => 386300.6,
+                'total_balance' => 386300.6,
                 'note' => NULL,
                 'is_default' => 1,
                 'is_active' => 1,
-                'created_at' => '2026-01-07 13:44:10',
-                'updated_at' => '2026-01-07 13:44:43',
+                'created_at' => '2026-01-07 19:44:10',
+                'updated_at' => '2026-01-07 19:44:43',
             ),
         ));
         

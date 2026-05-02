@@ -58,18 +58,21 @@
                                                         <th>Remarks</th>
                                                         <th>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check
-                                                                    input all" type="radio" name="resolved[all]"
+                                                                <input
+                                                                    class="form-check
+                                                                    input all"
+                                                                    type="radio" name="resolved[all]"
                                                                     id="update_stock-all" value="update_stock">
-                                                                    <label class="form-check label"
-                                                                    for="update_stock-all" style="margin-right: 10px;">Update All</label>
+                                                                <label class="form-check label" for="update_stock-all"
+                                                                    style="margin-right: 10px;">Update All</label>
                                                             </div>
-                                                            <div class="form-check
+                                                            <div
+                                                                class="form-check
                                                                 form-check-inline">
-                                                                <input class="form-check input all" type="radio" name="resolved[all]"
-                                                                    id="cancel-all" value="cancel">
-                                                                    <label class="form-check label"
-                                                                    for="cancel-all" style="margin-right: 10px;">Cancel All</label>
+                                                                <input class="form-check input all" type="radio"
+                                                                    name="resolved[all]" id="cancel-all" value="cancel">
+                                                                <label class="form-check label" for="cancel-all"
+                                                                    style="margin-right: 10px;">Cancel All</label>
                                                             </div>
                                                         </th>
                                                     </tr>
@@ -141,18 +144,26 @@
         </div>
     </section>
 @endsection
-@push('scripts')
+
+    @push('scripts')
     <script type="text/javascript">
+        // Sidebar active menu
         $("ul#product").siblings('a').attr('aria-expanded', 'true');
         $("ul#product").addClass("show");
         $("ul#product #stock-count-menu").addClass("active");
 
-        $('.stock-count-table').DataTable({
+        // DataTable Initialization
+        var table = $('.stock-count-table').DataTable({
             "order": [],
+            "pageLength": 10,
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
             'language': {
-                'lengthMenu': '_MENU_ {{ trans('file.records per page') }}',
-                "info": '<small>{{ trans('file.Showing') }} _START_ - _END_ (_TOTAL_)</small>',
-                "search": '{{ trans('file.Search') }}',
+                'lengthMenu': '_MENU_ {{ trans("file.records per page") }}',
+                "info": '<small>{{ trans("file.Showing") }} _START_ - _END_ (_TOTAL_)</small>',
+                "search": '{{ trans("file.Search") }}',
                 'paginate': {
                     'previous': '<i class="dripicons-chevron-left"></i>',
                     'next': '<i class="dripicons-chevron-right"></i>'
@@ -161,13 +172,79 @@
             dom: '<"row"lfB>rtip',
         });
 
-        // Check all radio button
+
         $('.all').on('change', function() {
-            var id = $(this).attr('id');
             var value = $(this).val();
-            var checked = $(this).prop('checked');
-            var radio = $('input[type="radio"][value="' + value + '"]');
-            radio.prop('checked', checked);
+            $(table.cells().nodes()).find('input[type="radio"][value="' + value + '"]').prop('checked', true);
         });
+
+        $('#submit-btn').on('click', function(e) {
+            e.preventDefault();
+
+            let btn = $(this);
+            let allData = [];
+
+            $(table.cells().nodes()).find('input[type="radio"]:checked').each(function() {
+                let name = $(this).attr('name');
+                if (name && name.includes('resolved[')) {
+                    let val = $(this).val();
+                    let itemCode = name.match(/\[(.*?)\]/)[1];
+                    if (itemCode !== 'all') {
+                        allData.push({ code: itemCode, action: val });
+                    }
+                }
+            });
+
+            if (allData.length === 0) {
+                alert("Please select at least one item.");
+                return;
+            }
+
+            // 2 Split data into chunks of 100
+            let chunkSize = 100;
+            let chunks = [];
+            for (let i = 0; i < allData.length; i += chunkSize) {
+                chunks.push(allData.slice(i, i + chunkSize));
+            }
+
+            btn.prop('disabled', true).text('Processing (0%)...');
+
+            // 3 fast chunk send start
+            sendChunk(0, chunks, btn);
+        });
+
+        // Recursive function to send each chunk sequentially
+        function sendChunk(index, chunks, btn) {
+            if (index >= chunks.length) {
+                // alert('All data processed successfully!');
+                window.location.href = "{{ route('stock-count.create') }}";
+                return;
+            }
+
+            $.ajax({
+                url: $('#stock-count-form').attr('action'),
+                type: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    _method: "PUT",
+                    status: "resolved",
+                    resolved_batch: chunks[index],
+                    is_final_chunk: (index === chunks.length - 1) ? 1 : 0
+                },
+                success: function() {
+                    let progress = Math.round(((index + 1) / chunks.length) * 100);
+                    btn.text('Processing (' + progress + '%)...');
+
+                    // next chunk call
+                    sendChunk(index + 1, chunks, btn);
+                },
+                error: function(xhr) {
+                    btn.prop('disabled', false).text('Resume Resolve');
+                    alert('Error in batch ' + (index + 1) + '. Check console for details.');
+                    console.error(xhr.responseText);
+                }
+            });
+        }
     </script>
 @endpush
+

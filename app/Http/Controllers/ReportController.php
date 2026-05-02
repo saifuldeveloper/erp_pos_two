@@ -4738,6 +4738,7 @@ class ReportController extends Controller
                     return $query->where('stock_counts.created_at', '<=', $request->end_date . ' 23:59:59');
                 }
             })
+            ->orderBy('stock_count_id', 'desc')
             ->get();
 
         $brandWiseStockCounts = [];
