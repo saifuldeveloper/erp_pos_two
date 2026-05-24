@@ -1,8 +1,13 @@
 @extends('backend.layout.main')
+
 @section('content')
     @if (session()->has('not_permitted'))
-        <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert"
-                aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
+        <div class="alert alert-danger alert-dismissible text-center">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session()->get('not_permitted') }}
+        </div>
     @endif
     <section class="forms">
         <div class="container-fluid">
@@ -12,8 +17,7 @@
                         <div class="card-header d-flex align-items-center">
                             <h4>{{ trans('file.Count Stock') }}</h4>
                             <a href="{{ route('report.stockCount') }}" class="btn btn-primary ml-auto">
-                                <i class="fas fa-list"></i>
-                                Stock Count
+                                <i class="fas fa-list"></i> Stock Count
                             </a>
                         </div>
                         <div class="card-body">
@@ -23,20 +27,25 @@
                                 'files' => true,
                                 'id' => 'stock-count-form',
                             ]) !!}
+
                             <input type="hidden" name="status" value="add">
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label>{{ trans('file.Select Product') }}</label>
                                             <div class="search-box input-group">
-                                                <button class="btn btn-secondary"><i class="fa fa-barcode"></i></button>
+                                                <button class="btn btn-secondary" type="button">
+                                                    <i class="fa fa-barcode"></i>
+                                                </button>
                                                 <input type="text" name="product_code_name" id="lims_productcodeSearch"
                                                     placeholder="Please type product code and select..."
                                                     class="form-control" />
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row mt-4">
                                         <div class="col-md-12">
                                             <h5>Product Table</h5>
@@ -52,11 +61,13 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        {{-- Dynamically populated via JS --}}
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" id="submit-btn">Add</button>
                                     </div>
@@ -67,6 +78,7 @@
                     </div>
                 </div>
             </div>
+
             @if (count($lims_stock_count->items) > 0)
                 <div class="row">
                     <div class="col-md-12">
@@ -92,6 +104,7 @@
                                 ['title' => 'Under Stock', 'data' => $underStock],
                             ];
                         @endphp
+
                         @foreach ($stockCounts as $stockCount)
                             @if ($stockCount['data']->count() > 0)
                                 <div class="card">
@@ -131,7 +144,8 @@
                                                                 @endforeach
                                                                 = {{ $total }}
                                                             </td>
-                                                            <td>{{ $stockCount['title'] }}
+                                                            <td>
+                                                                {{ $stockCount['title'] }}
                                                                 @if ($stockCount['title'] != 'Stock Matched')
                                                                     ({{ abs($total - $item->current_quantity) }})
                                                                 @endif
@@ -163,33 +177,30 @@
         </div>
     </section>
 @endsection
+
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
         $("ul#product").siblings('a').attr('aria-expanded', 'true');
         $("ul#product").addClass("show");
         $("ul#product #stock-count-menu").addClass("active");
 
-        // array data depend on warehouse
+        // Array data depending on warehouse
         var product_code = [];
         var product_name = [];
         var product_qty = [];
 
-        // array data with selection
+        // Array data with selection
         var rowindex;
         $('.selectpicker').selectpicker('refresh');
-
         $('[data-toggle="tooltip"]').tooltip();
 
         <?php $productArray = []; ?>
         var lims_product_code = [
             @foreach ($lims_product_list as $product)
-                <?php
-                $productArray[] = htmlspecialchars($product->code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($product->name));
-                ?>
+                <?php $productArray[] = htmlspecialchars($product->code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($product->name)); ?>
             @endforeach
-            <?php
-            echo '"' . implode('","', $productArray) . '"';
-            ?>
+            <?php echo '"' . implode('","', $productArray) . '"'; ?>
         ];
 
         var lims_productcodeSearch = $('#lims_productcodeSearch');
@@ -206,7 +217,7 @@
                     var data = ui.content[0].value;
                     $(this).autocomplete("close");
                     productSearch(data);
-                };
+                }
             },
             select: function(event, ui) {
                 var data = ui.item.value;
@@ -214,13 +225,15 @@
             }
         });
 
-        //Delete product
+        // Delete product
+        // Delete product
         $("table.order-list tbody").on("click", ".ibtnDel", function(event) {
             rowindex = $(this).closest('tr').index();
             $(this).closest("tr").remove();
-            calculateTotal();
+            if (typeof calculateTotal === "function") calculateTotal();
         });
 
+        // --- EI KHANE PORIBORTON HOBE ---
         function productSearch(data) {
             $.ajax({
                 type: 'GET',
@@ -229,42 +242,57 @@
                     data: data
                 },
                 success: function(datas) {
-                    var flag = 1;
-                    var product_code = [];
-                    $(".product-code").each(function(i) {
-                        product_code.push($(this).val());
-                    });
                     $("input[name='product_code_name']").val('');
-                    if (flag) {
-                        datas.forEach(function(data) {
-                            var newRow = $("<tr>");
-                            var cols = '';
-                            cols += '<td>' + data[0] +
-                                '</td>';
-                            cols += '<td>' + data[1] + '</td>';
-                            cols += '<td>' + data[2] + '</td>';
-                            cols +=
-                                '<td><input type="number" class="form-control qty" name="qty[]" value="' + data[2] + '" step="any" required/></td>';
-                            cols +=
-                                '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button></td>';
-                            cols +=
-                                '<input type="hidden" class="product-code" name="product_code[]" value="' +
-                                data[1] + '"/>';
-                            cols +=
-                                '<input type="hidden" class="current-qty" name="current_qty[]" value="' +
-                                data[2] + '"/>';
-                            cols +=
-                                '<input type="hidden" class="product-id" name="product_id[]" value="' +
-                                data[3] + '"/>';
-                            newRow.append(cols);
-                            $("table.order-list tbody").prepend(newRow);
-                            rowindex = newRow.index();
+
+                    if (datas.length === 0) return;
+
+                    // Check korbe kono variant list-e ager theke ache kina
+                    let hasExistingProduct = datas.some(item => item.exists);
+
+                    if (hasExistingProduct) {
+                        // Shudhu ekbar warning ashbe shob variant-er jonno
+                        Swal.fire({
+                            title: '⚠️ Warning',
+                            text: "This product (or some of its variants) already exists in stock count. Do you want to add them anyway?",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes',
+                            cancelButtonText: 'No'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // 'Yes' bolle shobgulo variant ekebare add hobe
+                                datas.forEach(function(item) {
+                                    addRow(item);
+                                });
+                            }
+                        });
+                    } else {
+                        // Kono duplicate na thakle direct shob add hobe
+                        datas.forEach(function(item) {
+                            addRow(item);
                         });
                     }
                 }
             });
         }
+        // --- PURONO processProducts FUNCTION TA EKHAN THEKE DELTE KORE DISI ---
 
+        function addRow(data) {
+            var newRow = `<tr>
+                <td>${data.name}</td>
+                <td>${data.code}</td>
+                <td>${data.qty}</td>
+                <td><input type="number" class="form-control qty" name="qty[]" value="${data.qty}" step="any" required/></td>
+                <td><button type="button" class="ibtnDel btn btn-danger">Delete</button></td>
+                <input type="hidden" class="product-code" name="product_code[]" value="${data.code}"/>
+                <input type="hidden" name="product_id[]" value="${data.id}"/>
+                <input type="hidden" name="current_qty[]" value="${data.qty}"/>
+            </tr>`;
+
+            $("table.order-list tbody").prepend(newRow);
+        }
+
+        // Enter key navigation configuration
         $(window).keydown(function(e) {
             if (e.which == 13) {
                 var $targ = $(e.target);
@@ -283,16 +311,18 @@
             }
         });
 
+        // Form submit validation
         $('#stock-count-form').on('submit', function(e) {
             var rownumber = $('table.order-list tbody tr:last').index();
             if (rownumber < 0) {
-                alert("Please insert product to order table!")
+                alert("Please insert product to order table!");
                 e.preventDefault();
             } else {
                 $("#submit-btn").prop('disabled', true);
             }
         });
 
+        // Initialize DataTable
         $('.stock-count-table').DataTable({
             "order": [],
             'language': {

@@ -2,34 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Warehouse;
-use App\Models\Supplier;
-use App\Models\Product;
-use App\Models\Unit;
-use App\Models\Tax;
 use App\Models\Account;
 use App\Models\Brand;
-use App\Models\Purchase;
-use App\Models\ProductPurchase;
-use App\Models\Product_Warehouse;
+use App\Models\Currency;
+use App\Models\CustomField;
+use App\Models\GeneralSetting;
 use App\Models\Payment;
 use App\Models\PaymentWithCheque;
 use App\Models\PaymentWithCreditCard;
 use App\Models\PosSetting;
-use App\Models\Currency;
-use App\Models\CustomField;
-use DB;
-use App\Models\GeneralSetting;
-use Stripe\Stripe;
-use Auth;
-use App\Models\User;
-use App\Models\ProductVariant;
+use App\Models\Product_Warehouse;
+use App\Models\Product;
 use App\Models\ProductBatch;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\Validator;
+use App\Models\ProductPurchase;
+use App\Models\ProductVariant;
+use App\Models\Purchase;
+use App\Models\Supplier;
+use App\Models\Tax;
+use App\Models\Unit;
+use App\Models\User;
+use App\Models\Warehouse;
 use App\Traits\TenantInfo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class PurchaseController extends Controller
 {
@@ -222,6 +223,7 @@ class PurchaseController extends Controller
                     $nestedData['payment_status'] = '<div class="badge badge-success">' . trans('file.Paid') . '</div>';
                 // $nestedData['total_qty'] = $purchase->total_qty;
                 $nestedData['total_qty'] = ProductPurchase::where('purchase_id' ,$purchase->id)->sum('qty');
+                $nestedData['selling_price'] = ProductPurchase::where('purchase_id', $purchase->id)->sum(DB::raw('qty * selling_price'));
                 $nestedData['grand_total'] = number_format($purchase->grand_total, config('decimal'));
                 $returned_amount = DB::table('return_purchases')->where('purchase_id', $purchase->id)->sum('grand_total');
                 $nestedData['returned_amount'] = number_format($returned_amount, config('decimal'));

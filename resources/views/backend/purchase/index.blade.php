@@ -89,6 +89,7 @@
                     <th>{{trans('file.Supplier')}}</th>
                     <th>{{trans('file.Purchase Status')}}</th>
                     <th>{{trans('file.Quantity')}}</th>
+                    <th>{{trans('file.Selling Price')}}</th>
                     <th>{{trans('file.grand total')}}</th>
                     <th>{{trans('file.Returned Amount')}}</th>
                     <th>{{trans('file.Paid')}}</th>
@@ -363,6 +364,7 @@
         {"data": "supplier"},
         {"data": "purchase_status"},
         {"data": "total_qty"},
+        {"data": "selling_price"},
         {"data": "grand_total"},
         {"data": "returned_amount"},
         {"data": "paid_amount"},

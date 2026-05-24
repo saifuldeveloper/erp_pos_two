@@ -105,6 +105,7 @@
                     <th>{{trans('file.Payment Status')}}</th>
                     {{-- <th>{{trans('file.Delivery Status')}}</th> --}}
                     <th>{{ trans('file.Quantity') }}</th>
+                    <th>{{ trans('file.Purchase Price') }}</th>
                     <th>{{trans('file.grand total')}}</th>
                     <th>{{trans('file.Returned Amount')}}</th>
                     <th>{{trans('file.Paid')}}</th>
@@ -483,27 +484,7 @@
     $("ul#sale").addClass("show");
     $("ul#sale #sale-list-menu").addClass("active");
 
-    // @if(config('database.connections.saleprosaas_landlord'))
-    //     if(localStorage.getItem("message")) {
-    //         alert(localStorage.getItem("message"));
-    //         localStorage.removeItem("message");
-    //     }
-
-    //     numberOfInvoice = <?php echo json_encode($numberOfInvoice)?>;
-    //     $.ajax({
-    //         type: 'GET',
-    //         async: false,
-    //         url: '{{route("package.fetchData", $general_setting->package_id)}}',
-    //         success: function(data) {
-    //             if(data['number_of_invoice'] > 0 && data['number_of_product'] <= numberOfInvoice) {
-    //                 $("a.add-sale-btn").addClass('d-none');
-    //             }
-    //         }
-    //     });
-    // @endif
-
-
-    var columns = [{"data": "key"}, {"data": "date"}, {"data": "reference_no"}, {"data": "biller"}, {"data": "customer"}, {"data": "sale_status"}, {"data": "payment_status"},  {"data":"total_quantity"},{"data": "grand_total"}, {"data": "returned_amount"}, {"data": "paid_amount"}, {"data": "due"}];
+    var columns = [{"data": "key"}, {"data": "date"}, {"data": "reference_no"}, {"data": "biller"}, {"data": "customer"}, {"data": "sale_status"}, {"data": "payment_status"},  {"data":"total_quantity"}, {"data": "purchase_total"}, {"data": "grand_total"}, {"data": "returned_amount"}, {"data": "paid_amount"}, {"data": "due"}];
     var field_name = <?php echo json_encode($field_name) ?>;
     for(i = 0; i < field_name.length; i++) {
         columns.push({"data": field_name[i]});
@@ -561,27 +542,6 @@
       }
     });
 
-//     $(".daterangepicker-field").daterangepicker({
-//     showDropdowns: true,
-//     autoUpdateInput: false, 
-//     minDate: moment("2000-01-01"),
-//     maxDate: moment("2030-12-31"),
-//     locale: {
-//         format: 'YYYY-MM-DD',
-//         monthNames: [
-//             "January", "February", "March", "April", "May", "June", 
-//             "July", "August", "September", "October", "November", "December"
-//         ]
-//     },
-//     callback: function(startDate, endDate, period){
-//         var starting_date = startDate.format('YYYY-MM-DD');
-//         var ending_date = endDate.format('YYYY-MM-DD');
-//         var title = starting_date + ' To ' + ending_date;
-//         $(".daterangepicker-field").val(title);
-//         $('input[name="starting_date"]').val(starting_date);
-//         $('input[name="ending_date"]').val(ending_date);
-//     }
-// });
 
     $(".gift-card").hide();
     $(".card-element").hide();
@@ -1073,6 +1033,7 @@
         if (dt_selector.rows( '.selected' ).any() && is_calling_first) {
             var rows = dt_selector.rows( '.selected' ).indexes();
 
+            $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 8 ).footer() ).html(dt_selector.cells( rows, 8, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 9 ).footer() ).html(dt_selector.cells( rows, 9, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 10 ).footer() ).html(dt_selector.cells( rows, 10, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
@@ -1080,6 +1041,7 @@
             $( dt_selector.column( 12 ).footer() ).html(dt_selector.cells( rows, 11, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
         }
         else {
+            $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 8 ).footer() ).html(dt_selector.cells( rows, 8, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 9 ).footer() ).html(dt_selector.cells( rows, 9, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 10 ).footer() ).html(dt_selector.cells( rows, 10, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));

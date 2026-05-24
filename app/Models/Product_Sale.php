@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Purchase;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product_Sale extends Model
 {
@@ -32,4 +34,6 @@ class Product_Sale extends Model
     {
         return $this->belongsTo('App\Models\Sale');
     }
+
+
 }
