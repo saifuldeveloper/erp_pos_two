@@ -14,7 +14,7 @@
                         </select>
                     </h4>
                     {{ Form::close() }}
-                    <div class="table-responsive mt-4">
+                    {{-- <div class="table-responsive mt-4">
                         <table class="table table-bordered"
                             style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;">
                             <thead>
@@ -44,7 +44,6 @@
                                 <tr>
                                     @foreach ($grand_total as $key => $total)
                                         <td>
-                                            {{-- @dd($total_sale) --}}
                                             @if ($total)
                                                 <a href="{{ route('sales.index', ['starting_date' => $year . '-' . ($key + 1) . '-01', 'ending_date' => $year . '-' . ($key + 1) . '-' . cal_days_in_month(CAL_GREGORIAN, $key + 1, $year)]) }}"
                                                     target="_blank">
@@ -67,6 +66,87 @@
                                             @endif
                                         </td>
                                     @endforeach
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> --}}
+
+                    <div class="table-responsive mt-4">
+                        <table class="table table-bordered"
+                            style="border-top: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <a href="{{ url('report/monthly_sale/' . ($year - 1)) }}">
+                                            <i class="fa fa-arrow-left"></i> {{ trans('file.Previous') }}
+                                        </a>
+                                    </th>
+                                    <th colspan="10" class="text-center">{{ $year }}</th>
+                                    <th>
+                                        <a href="{{ url('report/monthly_sale/' . ($year + 1)) }}">
+                                            {{ trans('file.Next') }} <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>January</strong></td>
+                                    <td><strong>February</strong></td>
+                                    <td><strong>March</strong></td>
+                                    <td><strong>April</strong></td>
+                                    <td><strong>May</strong></td>
+                                    <td><strong>June</strong></td>
+                                    <td><strong>July</strong></td>
+                                    <td><strong>August</strong></td>
+                                    <td><strong>September</strong></td>
+                                    <td><strong>October</strong></td>
+                                    <td><strong>November</strong></td>
+                                    <td><strong>December</strong></td>
+                                </tr>
+                                <tr>
+                                    @for ($m = 1; $m <= 12; $m++)
+                                        <td>
+                                            @if (isset($grand_total[$m]) && $grand_total[$m] > 0)
+                                                @php
+                                                    $month_padded = sprintf('%02d', $m);
+                                                    $total_days = cal_days_in_month(CAL_GREGORIAN, $m, $year);
+                                                    $start_date = $year . '-' . $month_padded . '-01';
+                                                    $end_date = $year . '-' . $month_padded . '-' . $total_days;
+                                                @endphp
+
+                                                <a href="{{ route('sales.index', ['starting_date' => $start_date, 'ending_date' => $end_date]) }}"
+                                                    target="_blank" class="report-link">
+
+                                                    {{-- Brand-wise Sales --}}
+                                                    @if (isset($brand_total[$m]))
+                                                        @foreach ($brand_total[$m] as $brand => $b_total)
+                                                            <strong>{{ $brand }} :
+                                                            </strong><span>{{ $b_total }}</span><br>
+                                                        @endforeach
+                                                    @endif
+
+                                                    {{-- Total Sales --}}
+                                                    @if (isset($total_sale[$m]) && $total_sale[$m] > 0)
+                                                        <strong>Total : </strong> <span>{{ $total_sale[$m] }}</span><br>
+                                                    @endif
+
+                                                    {{-- Discount --}}
+                                                    @if (isset($total_discount[$m]) && $total_discount[$m] > 0)
+                                                        <strong>Discount : </strong>
+                                                        <span>{{ $total_discount[$m] }}</span><br>
+                                                    @endif
+
+                                                    {{-- Grand Total --}}
+                                                    <strong>{{ trans('file.grand total') }} : </strong>
+                                                    <span>{{ $grand_total[$m] }}</span><br>
+                                                </a>
+                                            @else
+                                                {{-- No sales in this month --}}
+                                                <span class="text-muted">-</span>
+                                            @endif
+                                        </td>
+                                    @endfor
                                 </tr>
                             </tbody>
                         </table>

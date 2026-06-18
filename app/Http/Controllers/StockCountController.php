@@ -116,8 +116,8 @@ class StockCountController extends Controller
                     ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
                     ['products.is_active', true]
                 ])
-                ->select('products.*', 'product_variants.item_code', 'product_warehouse.qty')
-                ->groupBy('product_warehouse.id')
+                ->select('products.*', 'product_variants.item_code', 'product_variants.qty')
+                ->groupBy('product_variants.id')
                 ->get();
         } else {
             $lims_product_data = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
@@ -190,21 +190,20 @@ class StockCountController extends Controller
                 $batch = $request->resolved_batch;
 
                 if ($batch && count($batch) > 0) {
-                    // ── Step 1: সব variants আগে update করো ──
+                    // ── Step 1: all variants আগে update করো ──
                     $affected_product_ids = [];
-
                     foreach ($batch as $data) {
+                        $item_code = $data['code'];
+                        if ($data['action'] === 'cancel') {
+                            DB::table('stock_count_items')->where('stock_count_id', $stock_count->id)->where('item_code', $item_code)->delete();
+                            continue;
+                        }
                         if ($data['action'] !== 'update_stock')
                             continue;
 
-                        $item_code = $data['code'];
+                        $present_qty = DB::table('stock_count_items')->where('stock_count_id', $stock_count->id)->where('item_code', $item_code)->sum('updated_quantity');
 
-                        $present_qty = DB::table('stock_count_items')
-                            ->where('stock_count_id', $stock_count->id)
-                            ->where('item_code', $item_code)
-                            ->sum('updated_quantity');
-
-                        // ✅ qty কখনো negative হবে না
+                        //  qty কখনো negative হবে না
                         $present_qty = max(0, $present_qty);
 
                         $productVariant = ProductVariant::where('item_code', $item_code)->first();
@@ -230,8 +229,7 @@ class StockCountController extends Controller
                         $mainProduct = Product::find($product_id);
                         if ($mainProduct) {
                             $totalQty = ProductVariant::where('product_id', $product_id)->sum('qty');
-
-                            // ✅ product qty ও কখনো negative হবে না
+                            // product qty ও কখনো negative হবে না
                             $mainProduct->qty = max(0, $totalQty);
                             $mainProduct->save();
                         }
@@ -252,9 +250,7 @@ class StockCountController extends Controller
                     $product_ids = array_unique($product_ids);
 
                     // ── Step 4: warehouse এর সব পুরানো rows DELETE ──
-                    Product_Warehouse::whereIn('product_id', $product_ids)
-                        ->where('warehouse_id', $stock_count->warehouse_id)
-                        ->delete();
+                    Product_Warehouse::whereIn('product_id', $product_ids)->where('warehouse_id', $stock_count->warehouse_id)->delete();
 
                     // ── Step 5: product_variants থেকে পড়ে warehouse এ fresh insert ──
                     foreach ($product_ids as $product_id) {
@@ -266,7 +262,7 @@ class StockCountController extends Controller
                                     'product_id' => $variant->product_id,
                                     'variant_id' => $variant->variant_id,
                                     'warehouse_id' => $stock_count->warehouse_id,
-                                    'qty' => max(0, $variant->qty), // ✅ negative হবে না
+                                    'qty' => max(0, $variant->qty),
                                 ]);
                             }
                         } else {

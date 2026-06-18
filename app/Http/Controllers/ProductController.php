@@ -41,20 +41,6 @@ class ProductController extends Controller
 
     public function index()
     {
-        // $path = public_path('images/product/');
-
-        // $files = File::allFiles($path);
-
-        // foreach ($files as $key => $image) {
-        //     $imageName = $image->getFilename();
-
-        //     $img_lg = Image::make('public/images/product/'. $imageName)->fit(500, 500)->save('public/images/product/large/'. $imageName, 100);
-        //     $img_md = Image::make('public/images/product/'. $imageName)->fit(250, 250)->save('public/images/product/medium/'. $imageName, 100);
-        //     $img_sm = Image::make('public/images/product/'. $imageName)->fit(100, 100)->save('public/images/product/small/'. $imageName, 100);
-
-        // }
-
-
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('products-index')) {
             $permissions = Role::findByName($role->name)->permissions;
@@ -397,6 +383,10 @@ class ProductController extends Controller
         if ($request->cost)
             $query->where('cost', '=', $request->cost);
 
+        if ($request->input('in_stock') == 1) {
+            $query->where('qty', '>', 0);
+        }
+
         // 🔍 Search
         if ($search = $request->input('search.value')) {
             $query->where(function ($q) use ($search, $field_names) {
@@ -411,6 +401,8 @@ class ProductController extends Controller
         }
 
         $totalFiltered = $query->count();
+
+        $totalSumQuery = clone $query;
 
         $products = $query->offset($start)
             ->limit($limit)
@@ -525,11 +517,27 @@ class ProductController extends Controller
             $data[] = $nestedData;
         }
 
+        $filteredTotals = $totalSumQuery->selectRaw('
+                COALESCE(SUM(qty), 0) as total_qty,
+                COALESCE(SUM(qty * cost), 0) as total_cost,
+                COALESCE(SUM(qty * price), 0) as total_price
+            ')
+            ->first();
+
+        $t_qty = $filteredTotals ? $filteredTotals->total_qty : 0;
+        $t_cost = $filteredTotals ? $filteredTotals->total_cost : 0;
+        $t_price = $filteredTotals ? $filteredTotals->total_price : 0;
+
+
         return response()->json([
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
-            "data" => $data
+            "data" => $data,
+            "total_qty" => $t_qty,
+            "total_cost" => round($t_cost, 2),
+            "total_price" => $t_price
+
         ]);
     }
 

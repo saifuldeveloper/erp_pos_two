@@ -22,8 +22,8 @@ class CategoriesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'লেডিস',
-                'image' => '20241008042953.jpg',
+                'name' => 'Ladies',
+                'image' => NULL,
                 'parent_id' => NULL,
                 'is_active' => 1,
                 'created_at' => NULL,
@@ -32,8 +32,8 @@ class CategoriesTableSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'name' => 'সু',
-                'image' => '20241008043138.png',
+                'name' => 'Gents',
+                'image' => NULL,
                 'parent_id' => NULL,
                 'is_active' => 1,
                 'created_at' => NULL,
@@ -42,8 +42,8 @@ class CategoriesTableSeeder extends Seeder
             2 => 
             array (
                 'id' => 3,
-                'name' => 'জেন্টস',
-                'image' => '20241008042657.jpg',
+                'name' => 'Baby',
+                'image' => NULL,
                 'parent_id' => NULL,
                 'is_active' => 1,
                 'created_at' => NULL,
@@ -52,9 +52,9 @@ class CategoriesTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 4,
-                'name' => 'বেবি',
-                'image' => '20241008042833.png',
-                'parent_id' => NULL,
+                'name' => 'Sandal',
+                'image' => NULL,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -62,109 +62,109 @@ class CategoriesTableSeeder extends Seeder
             4 => 
             array (
                 'id' => 5,
-                'name' => 'পাম',
+                'name' => 'Over',
                 'image' => NULL,
                 'parent_id' => 2,
-                'is_active' => 0,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:52:55',
+                'updated_at' => NULL,
             ),
             5 => 
             array (
                 'id' => 6,
-                'name' => 'টেপ',
+                'name' => 'Shoe',
                 'image' => NULL,
-                'parent_id' => 2,
-                'is_active' => 0,
+                'parent_id' => NULL,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:04',
+                'updated_at' => NULL,
             ),
             6 => 
             array (
                 'id' => 7,
-                'name' => 'আংটা',
+                'name' => 'Pum',
                 'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 0,
+                'parent_id' => 6,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:18',
+                'updated_at' => NULL,
             ),
             7 => 
             array (
                 'id' => 8,
-                'name' => 'লোফার',
+                'name' => 'Sit',
                 'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 0,
+                'parent_id' => 6,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:22',
+                'updated_at' => NULL,
             ),
             8 => 
             array (
                 'id' => 9,
-                'name' => 'সীট',
+                'name' => 'Wallet',
                 'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 0,
+                'parent_id' => 2,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:28',
+                'updated_at' => NULL,
             ),
             9 => 
             array (
                 'id' => 10,
-                'name' => 'কলাপুরি',
+                'name' => 'Belt',
                 'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 0,
+                'parent_id' => 2,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:33',
+                'updated_at' => NULL,
             ),
             10 => 
             array (
                 'id' => 11,
-                'name' => 'গোলাই',
+                'name' => 'Angta',
                 'image' => NULL,
-                'parent_id' => 1,
-                'is_active' => 0,
+                'parent_id' => 2,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:52:51',
+                'updated_at' => NULL,
             ),
             11 => 
             array (
                 'id' => 12,
-                'name' => 'কারচুপী',
+                'name' => 'Nagra',
                 'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 0,
+                'parent_id' => 2,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:41',
+                'updated_at' => NULL,
             ),
             12 => 
             array (
                 'id' => 13,
-                'name' => 'সীট পাম্পী',
+                'name' => 'Sit',
                 'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 0,
+                'parent_id' => 2,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:52:42',
+                'updated_at' => NULL,
             ),
             13 => 
             array (
                 'id' => 14,
-                'name' => '০-২',
+                'name' => '6-9',
                 'image' => NULL,
-                'parent_id' => 4,
-                'is_active' => 0,
+                'parent_id' => 2,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-12 07:53:12',
+                'updated_at' => NULL,
             ),
             14 => 
             array (
                 'id' => 15,
-                'name' => 'কেডস',
+                'name' => 'Loafer',
                 'image' => NULL,
-                'parent_id' => 3,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -172,9 +172,9 @@ class CategoriesTableSeeder extends Seeder
             15 => 
             array (
                 'id' => 16,
-                'name' => 'Ladies',
+                'name' => 'Sacchi',
                 'image' => NULL,
-                'parent_id' => NULL,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -184,7 +184,7 @@ class CategoriesTableSeeder extends Seeder
                 'id' => 17,
                 'name' => 'Keds',
                 'image' => NULL,
-                'parent_id' => 16,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -192,9 +192,9 @@ class CategoriesTableSeeder extends Seeder
             17 => 
             array (
                 'id' => 18,
-                'name' => 'নাগড়া',
+                'name' => '0-2',
                 'image' => NULL,
-                'parent_id' => 16,
+                'parent_id' => 3,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -202,9 +202,9 @@ class CategoriesTableSeeder extends Seeder
             18 => 
             array (
                 'id' => 19,
-                'name' => 'পাম্পি',
+                'name' => 'Sandal',
                 'image' => NULL,
-                'parent_id' => 16,
+                'parent_id' => 3,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -212,9 +212,9 @@ class CategoriesTableSeeder extends Seeder
             19 => 
             array (
                 'id' => 20,
-                'name' => 'Pumpi',
+                'name' => 'keds',
                 'image' => NULL,
-                'parent_id' => 16,
+                'parent_id' => 3,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -222,9 +222,9 @@ class CategoriesTableSeeder extends Seeder
             20 => 
             array (
                 'id' => 21,
-                'name' => 'Baby',
+                'name' => 'Golai',
                 'image' => NULL,
-                'parent_id' => NULL,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -232,9 +232,9 @@ class CategoriesTableSeeder extends Seeder
             21 => 
             array (
                 'id' => 22,
-                'name' => 'Keds.',
+                'name' => 'Keds',
                 'image' => NULL,
-                'parent_id' => 21,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -242,9 +242,9 @@ class CategoriesTableSeeder extends Seeder
             22 => 
             array (
                 'id' => 23,
-                'name' => '6-9',
+                'name' => 'nagra',
                 'image' => NULL,
-                'parent_id' => NULL,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -252,9 +252,9 @@ class CategoriesTableSeeder extends Seeder
             23 => 
             array (
                 'id' => 24,
-                'name' => 'Keds..',
+                'name' => 'Pumpi',
                 'image' => NULL,
-                'parent_id' => 23,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -262,29 +262,29 @@ class CategoriesTableSeeder extends Seeder
             24 => 
             array (
                 'id' => 25,
-                'name' => 'জে',
+                'name' => 'Pew',
                 'image' => NULL,
-                'parent_id' => NULL,
+                'parent_id' => 1,
                 'is_active' => 1,
-                'created_at' => '2024-12-15 16:16:05',
-                'updated_at' => '2024-12-15 16:16:05',
+                'created_at' => NULL,
+                'updated_at' => NULL,
             ),
             25 => 
             array (
                 'id' => 26,
-                'name' => 'Test',
+                'name' => 'Belt',
                 'image' => NULL,
-                'parent_id' => 2,
-                'is_active' => 0,
+                'parent_id' => 1,
+                'is_active' => 1,
                 'created_at' => NULL,
-                'updated_at' => '2024-12-27 11:59:17',
+                'updated_at' => NULL,
             ),
             26 => 
             array (
                 'id' => 27,
-                'name' => 'Pew',
+                'name' => 'Flat',
                 'image' => NULL,
-                'parent_id' => 16,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -292,7 +292,7 @@ class CategoriesTableSeeder extends Seeder
             27 => 
             array (
                 'id' => 28,
-                'name' => 'গোলাই',
+                'name' => 'Sit Pumpi',
                 'image' => NULL,
                 'parent_id' => 1,
                 'is_active' => 1,
@@ -302,9 +302,9 @@ class CategoriesTableSeeder extends Seeder
             28 => 
             array (
                 'id' => 29,
-                'name' => 'Belt',
+                'name' => 'Sit',
                 'image' => NULL,
-                'parent_id' => 16,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -312,9 +312,9 @@ class CategoriesTableSeeder extends Seeder
             29 => 
             array (
                 'id' => 30,
-                'name' => 'Flat',
+                'name' => 'Casual',
                 'image' => NULL,
-                'parent_id' => 16,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -322,9 +322,9 @@ class CategoriesTableSeeder extends Seeder
             30 => 
             array (
                 'id' => 31,
-                'name' => 'Sandal',
+                'name' => 'Shoes',
                 'image' => NULL,
-                'parent_id' => 35,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -332,9 +332,9 @@ class CategoriesTableSeeder extends Seeder
             31 => 
             array (
                 'id' => 32,
-                'name' => 'বেল্ট',
+                'name' => 'Hill',
                 'image' => NULL,
-                'parent_id' => 25,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -342,9 +342,9 @@ class CategoriesTableSeeder extends Seeder
             32 => 
             array (
                 'id' => 33,
-                'name' => 'দুই ফিতা',
+                'name' => 'Karchupi',
                 'image' => NULL,
-                'parent_id' => 25,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -352,9 +352,9 @@ class CategoriesTableSeeder extends Seeder
             33 => 
             array (
                 'id' => 34,
-                'name' => 'আংটা',
+                'name' => 'Over',
                 'image' => NULL,
-                'parent_id' => 23,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -362,9 +362,9 @@ class CategoriesTableSeeder extends Seeder
             34 => 
             array (
                 'id' => 35,
-                'name' => 'Gents',
+                'name' => 'Boston',
                 'image' => NULL,
-                'parent_id' => NULL,
+                'parent_id' => 1,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -372,9 +372,9 @@ class CategoriesTableSeeder extends Seeder
             35 => 
             array (
                 'id' => 36,
-                'name' => 'Loafer',
+                'name' => 'Kolapuri',
                 'image' => NULL,
-                'parent_id' => 35,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -382,9 +382,9 @@ class CategoriesTableSeeder extends Seeder
             36 => 
             array (
                 'id' => 37,
-                'name' => 'Angta',
+                'name' => 'Socks',
                 'image' => NULL,
-                'parent_id' => 35,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -392,19 +392,19 @@ class CategoriesTableSeeder extends Seeder
             37 => 
             array (
                 'id' => 38,
-                'name' => 'Nagra',
+                'name' => 'Accessories',
                 'image' => NULL,
-                'parent_id' => 35,
-                'is_active' => 1,
+                'parent_id' => 2,
+                'is_active' => 0,
                 'created_at' => NULL,
-                'updated_at' => NULL,
+                'updated_at' => '2025-04-25 16:38:46',
             ),
             38 => 
             array (
                 'id' => 39,
-                'name' => 'belts',
+                'name' => 'W-Belt',
                 'image' => NULL,
-                'parent_id' => 35,
+                'parent_id' => 2,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -412,9 +412,9 @@ class CategoriesTableSeeder extends Seeder
             39 => 
             array (
                 'id' => 40,
-                'name' => 'Sacchi',
+                'name' => 'Shiner',
                 'image' => NULL,
-                'parent_id' => 35,
+                'parent_id' => 6,
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -422,442 +422,272 @@ class CategoriesTableSeeder extends Seeder
             40 => 
             array (
                 'id' => 41,
-                'name' => 'Loafer.',
-                'image' => NULL,
-                'parent_id' => 23,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            41 => 
-            array (
-                'id' => 42,
-                'name' => 'দুই-ফিতা',
-                'image' => NULL,
-                'parent_id' => 23,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            42 => 
-            array (
-                'id' => 43,
-                'name' => '-Belt',
-                'image' => NULL,
-                'parent_id' => 23,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            43 => 
-            array (
-                'id' => 44,
-                'name' => 'পাম',
-                'image' => NULL,
-                'parent_id' => 2,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            44 => 
-            array (
-                'id' => 45,
-                'name' => 'পাম্পি.',
-                'image' => NULL,
-                'parent_id' => 21,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            45 => 
-            array (
-                'id' => 46,
-                'name' => 'Half Shoe',
-                'image' => NULL,
-                'parent_id' => 21,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            46 => 
-            array (
-                'id' => 47,
-                'name' => 'Sneakers',
-                'image' => NULL,
-                'parent_id' => 1,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            47 => 
-            array (
-                'id' => 48,
-                'name' => 'Sneakers.',
-                'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            48 => 
-            array (
-                'id' => 49,
-                'name' => 'School',
-                'image' => NULL,
-                'parent_id' => NULL,
-                'is_active' => 0,
-                'created_at' => NULL,
-                'updated_at' => '2025-01-01 15:21:22',
-            ),
-            49 => 
-            array (
-                'id' => 50,
-                'name' => 'eds',
-                'image' => NULL,
-                'parent_id' => 49,
-                'is_active' => 0,
-                'created_at' => NULL,
-                'updated_at' => '2025-01-01 15:19:05',
-            ),
-            50 => 
-            array (
-                'id' => 51,
-                'name' => 'School',
-                'image' => NULL,
-                'parent_id' => NULL,
-                'is_active' => 0,
-                'created_at' => NULL,
-                'updated_at' => '2025-01-01 15:27:50',
-            ),
-            51 => 
-            array (
-                'id' => 52,
-                'name' => 'Jump',
-                'image' => NULL,
-                'parent_id' => NULL,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            52 => 
-            array (
-                'id' => 53,
-                'name' => 'আংটা.',
-                'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            53 => 
-            array (
-                'id' => 54,
-                'name' => 'পাঞ্জা',
-                'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            54 => 
-            array (
-                'id' => 55,
-                'name' => 'WAIST BELT',
-                'image' => NULL,
-                'parent_id' => 3,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            55 => 
-            array (
-                'id' => 56,
-                'name' => 'W-Belt',
-                'image' => NULL,
-                'parent_id' => 35,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            56 => 
-            array (
-                'id' => 57,
-                'name' => 'মোজা',
-                'image' => NULL,
-                'parent_id' => 35,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            57 => 
-            array (
-                'id' => 58,
-                'name' => 'Wallet',
-                'image' => NULL,
-                'parent_id' => 35,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            58 => 
-            array (
-                'id' => 59,
-                'name' => 'Nagra',
-                'image' => NULL,
-                'parent_id' => 16,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            59 => 
-            array (
-                'id' => 60,
-                'name' => 'Sit Pumpi',
-                'image' => NULL,
-                'parent_id' => 16,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            60 => 
-            array (
-                'id' => 61,
-                'name' => 'Boston',
-                'image' => NULL,
-                'parent_id' => 16,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            61 => 
-            array (
-                'id' => 62,
-                'name' => 'Sandal',
-                'image' => NULL,
-                'parent_id' => 16,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            62 => 
-            array (
-                'id' => 63,
-                'name' => 'Shoe',
-                'image' => NULL,
-                'parent_id' => 35,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            63 => 
-            array (
-                'id' => 64,
-                'name' => 'Sit',
-                'image' => NULL,
-                'parent_id' => 35,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            64 => 
-            array (
-                'id' => 65,
-                'name' => 'Sit',
-                'image' => NULL,
-                'parent_id' => 16,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            65 => 
-            array (
-                'id' => 66,
-                'name' => 'Heels',
-                'image' => NULL,
-                'parent_id' => 16,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            66 => 
-            array (
-                'id' => 67,
-                'name' => 'Sandal',
-                'image' => NULL,
-                'parent_id' => 21,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            67 => 
-            array (
-                'id' => 68,
-                'name' => 'Boy',
-                'image' => NULL,
-                'parent_id' => NULL,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            68 => 
-            array (
-                'id' => 69,
-                'name' => 'Sandal',
-                'image' => NULL,
-                'parent_id' => 68,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            69 => 
-            array (
-                'id' => 70,
-                'name' => 'স্কিন মোজা',
-                'image' => NULL,
-                'parent_id' => 1,
-                'is_active' => 1,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            70 => 
-            array (
-                'id' => 71,
                 'name' => 'লে',
                 'image' => NULL,
                 'parent_id' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-28 14:42:04',
+                'updated_at' => '2025-05-28 14:42:04',
             ),
-            71 => 
+            41 => 
             array (
-                'id' => 72,
+                'id' => 42,
                 'name' => 'পিউ চটি',
                 'image' => NULL,
-                'parent_id' => 71,
+                'parent_id' => 41,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-28 14:42:04',
+                'updated_at' => '2025-05-28 14:42:04',
             ),
-            72 => 
+            42 => 
             array (
-                'id' => 73,
+                'id' => 43,
+                'name' => 'জে',
+                'image' => NULL,
+                'parent_id' => NULL,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 15:03:32',
+                'updated_at' => '2025-05-28 15:03:32',
+            ),
+            43 => 
+            array (
+                'id' => 44,
+                'name' => 'বেল্ট',
+                'image' => NULL,
+                'parent_id' => 43,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 15:03:32',
+                'updated_at' => '2025-05-28 15:03:32',
+            ),
+            44 => 
+            array (
+                'id' => 45,
+                'name' => 'দুই ফিতা',
+                'image' => NULL,
+                'parent_id' => 43,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 15:03:32',
+                'updated_at' => '2025-05-28 15:03:32',
+            ),
+            45 => 
+            array (
+                'id' => 46,
                 'name' => 'চটি',
                 'image' => NULL,
-                'parent_id' => 25,
+                'parent_id' => 43,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-28 15:03:32',
+                'updated_at' => '2025-05-28 15:03:32',
             ),
-            73 => 
+            46 => 
             array (
-                'id' => 74,
-                'name' => 'সাচ্চি',
+                'id' => 47,
+                'name' => 'আংটা',
                 'image' => NULL,
-                'parent_id' => 25,
+                'parent_id' => 43,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:25',
-                'updated_at' => '2025-05-27 16:10:25',
+                'created_at' => '2025-05-28 15:03:33',
+                'updated_at' => '2025-05-28 15:03:33',
             ),
-            74 => 
+            47 => 
             array (
-                'id' => 75,
-                'name' => 'পিউ বেল্ট',
-                'image' => NULL,
-                'parent_id' => 71,
-                'is_active' => 1,
-                'created_at' => '2025-05-27 16:10:26',
-                'updated_at' => '2025-05-27 16:10:26',
-            ),
-            75 => 
-            array (
-                'id' => 76,
+                'id' => 48,
                 'name' => '১৬-১৮',
                 'image' => NULL,
-                'parent_id' => 25,
+                'parent_id' => 43,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 16:39:09',
-                'updated_at' => '2025-05-27 16:39:09',
+                'created_at' => '2025-05-28 16:14:20',
+                'updated_at' => '2025-05-28 16:14:20',
             ),
-            76 => 
+            48 => 
             array (
-                'id' => 77,
-                'name' => 'সাইকেল সু',
-                'image' => NULL,
-                'parent_id' => 25,
-                'is_active' => 1,
-                'created_at' => '2025-05-27 20:10:34',
-                'updated_at' => '2025-05-27 20:10:34',
-            ),
-            77 => 
-            array (
-                'id' => 78,
-                'name' => '১২-১৫',
-                'image' => NULL,
-                'parent_id' => 71,
-                'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:54',
-                'updated_at' => '2025-05-27 21:35:54',
-            ),
-            78 => 
-            array (
-                'id' => 79,
+                'id' => 49,
                 'name' => 'ফ্লাট',
                 'image' => NULL,
-                'parent_id' => 71,
+                'parent_id' => 41,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:54',
-                'updated_at' => '2025-05-27 21:35:54',
+                'created_at' => '2025-05-28 20:43:12',
+                'updated_at' => '2025-05-28 20:43:12',
             ),
-            79 => 
+            49 => 
             array (
-                'id' => 80,
-                'name' => 'নাগড়া হীল',
-                'image' => NULL,
-                'parent_id' => 71,
-                'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:55',
-                'updated_at' => '2025-05-27 21:35:55',
-            ),
-            80 => 
-            array (
-                'id' => 81,
-                'name' => 'হীল',
-                'image' => NULL,
-                'parent_id' => 71,
-                'is_active' => 1,
-                'created_at' => '2025-05-27 21:35:55',
-                'updated_at' => '2025-05-27 21:35:55',
-            ),
-            81 => 
-            array (
-                'id' => 82,
+                'id' => 50,
                 'name' => 'গোলাই চটি',
                 'image' => NULL,
-                'parent_id' => 71,
+                'parent_id' => 41,
                 'is_active' => 1,
-                'created_at' => '2025-05-27 23:11:02',
-                'updated_at' => '2025-05-27 23:11:02',
+                'created_at' => '2025-05-28 20:55:47',
+                'updated_at' => '2025-05-28 20:55:47',
             ),
-            82 => 
+            50 => 
             array (
-                'id' => 83,
-                'name' => 'ক্যাজুয়াল',
+                'id' => 51,
+                'name' => 'নাগড়া',
                 'image' => NULL,
-                'parent_id' => 25,
+                'parent_id' => 41,
                 'is_active' => 1,
-                'created_at' => '2025-09-14 18:29:51',
-                'updated_at' => '2025-09-14 18:29:51',
+                'created_at' => '2025-05-28 20:55:47',
+                'updated_at' => '2025-05-28 20:55:47',
             ),
-            83 => 
+            51 => 
             array (
-                'id' => 84,
+                'id' => 52,
+                'name' => 'হীল',
+                'image' => NULL,
+                'parent_id' => 41,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 20:55:47',
+                'updated_at' => '2025-05-28 20:55:47',
+            ),
+            52 => 
+            array (
+                'id' => 53,
+                'name' => 'নাগড়া হীল',
+                'image' => NULL,
+                'parent_id' => 41,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 20:55:47',
+                'updated_at' => '2025-05-28 20:55:47',
+            ),
+            53 => 
+            array (
+                'id' => 54,
+                'name' => 'পাম্পি',
+                'image' => NULL,
+                'parent_id' => 41,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 20:55:47',
+                'updated_at' => '2025-05-28 20:55:47',
+            ),
+            54 => 
+            array (
+                'id' => 55,
+                'name' => 'লোফার',
+                'image' => NULL,
+                'parent_id' => 43,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 21:24:38',
+                'updated_at' => '2025-05-28 21:24:38',
+            ),
+            55 => 
+            array (
+                'id' => 56,
+                'name' => 'কলাপুরি',
+                'image' => NULL,
+                'parent_id' => 43,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 21:24:39',
+                'updated_at' => '2025-05-28 21:24:39',
+            ),
+            56 => 
+            array (
+                'id' => 57,
+                'name' => 'সাচ্চি',
+                'image' => NULL,
+                'parent_id' => 43,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 21:24:39',
+                'updated_at' => '2025-05-28 21:24:39',
+            ),
+            57 => 
+            array (
+                'id' => 58,
+                'name' => 'সীট',
+                'image' => NULL,
+                'parent_id' => 43,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 21:24:39',
+                'updated_at' => '2025-05-28 21:24:39',
+            ),
+            58 => 
+            array (
+                'id' => 59,
+                'name' => 'সু',
+                'image' => NULL,
+                'parent_id' => NULL,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 21:24:39',
+                'updated_at' => '2025-05-28 21:24:39',
+            ),
+            59 => 
+            array (
+                'id' => 60,
+                'name' => 'পাম',
+                'image' => NULL,
+                'parent_id' => 59,
+                'is_active' => 1,
+                'created_at' => '2025-05-28 21:24:39',
+                'updated_at' => '2025-05-28 21:24:39',
+            ),
+            60 => 
+            array (
+                'id' => 61,
+                'name' => '১২-১৫',
+                'image' => NULL,
+                'parent_id' => 41,
+                'is_active' => 1,
+                'created_at' => '2025-08-10 12:03:16',
+                'updated_at' => '2025-08-10 12:03:16',
+            ),
+            61 => 
+            array (
+                'id' => 62,
+                'name' => 'পিউ বেল্ট',
+                'image' => NULL,
+                'parent_id' => 41,
+                'is_active' => 1,
+                'created_at' => '2025-08-10 15:07:03',
+                'updated_at' => '2025-08-10 15:07:03',
+            ),
+            62 => 
+            array (
+                'id' => 63,
+                'name' => 'সীট পাম্পী',
+                'image' => NULL,
+                'parent_id' => 41,
+                'is_active' => 1,
+                'created_at' => '2025-11-01 15:21:24',
+                'updated_at' => '2025-11-01 15:21:24',
+            ),
+            63 => 
+            array (
+                'id' => 64,
                 'name' => 'বুস্টন',
                 'image' => NULL,
-                'parent_id' => 71,
+                'parent_id' => 41,
                 'is_active' => 1,
-                'created_at' => '2026-01-28 18:47:15',
-                'updated_at' => '2026-01-28 18:47:15',
+                'created_at' => '2025-11-01 15:21:24',
+                'updated_at' => '2025-11-01 15:21:24',
+            ),
+            64 => 
+            array (
+                'id' => 65,
+                'name' => 'বেবি',
+                'image' => NULL,
+                'parent_id' => NULL,
+                'is_active' => 1,
+                'created_at' => '2025-11-01 18:10:23',
+                'updated_at' => '2025-11-01 18:10:23',
+            ),
+            65 => 
+            array (
+                'id' => 66,
+                'name' => 'ক্যাজুয়াল',
+                'image' => NULL,
+                'parent_id' => 43,
+                'is_active' => 1,
+                'created_at' => '2025-11-02 17:10:25',
+                'updated_at' => '2025-11-02 17:10:25',
+            ),
+            66 => 
+            array (
+                'id' => 67,
+                'name' => 'কারচুপী',
+                'image' => NULL,
+                'parent_id' => 41,
+                'is_active' => 1,
+                'created_at' => '2026-02-11 17:42:30',
+                'updated_at' => '2026-02-11 17:42:30',
             ),
         ));
         

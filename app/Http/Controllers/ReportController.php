@@ -308,7 +308,7 @@ class ReportController extends Controller
         $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $warehouse_id = $data['warehouse_id'];
-        return view('backend.report.daily_sale', compact('total_sale','grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id','total_return'));
+        return view('backend.report.daily_sale', compact('total_sale', 'grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id', 'total_return'));
     }
 
     public function dailyPurchase($year, $month)
@@ -393,40 +393,101 @@ class ReportController extends Controller
         return view('backend.report.daily_purchase', compact('grand_total', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
     }
 
+    // public function monthlySale($year)
+    // {
+    //     $role = Role::find(Auth::user()->role_id);
+    //     if ($role->hasPermissionTo('monthly-sale')) {
+    //         $start = strtotime($year . '-01-01');
+    //         $end = strtotime($year . '-12-31');
+    //         while ($start <= $end) {
+    //             $start_date = $year . '-' . date('m', $start) . '-' . '01';
+    //             $end_date = $year . '-' . date('m', $start) . '-' . '31';
+
+    //             $sale_data = Sale::with('productSales.product.brand')
+    //                 ->whereDate('created_at', '>=', $start_date)
+    //                 ->whereDate('created_at', '<=', $end_date)
+    //                 ->get();
+    //             $total_sale[] = $sale_data->sum('total_price');
+    //             $grand_total[] = $sale_data->sum('grand_total');
+    //             $total_discount[] = $sale_data->sum('order_discount');
+
+    //             $brand_total[] = [];
+    //             foreach ($sale_data as $sale) {
+    //                 foreach ($sale->productSales as $productSale) {
+    //                     $brand_name = $productSale->product->brand->title ?? 'Unknown';
+    //                     if (!isset($brand_total[date('m', strtotime($sale->created_at))][$brand_name]))
+    //                         $brand_total[date('m', strtotime($sale->created_at))][$brand_name] = 0;
+    //                     $brand_total[date('m', strtotime($sale->created_at))][$brand_name] += $productSale->total;
+    //                 }
+    //             }
+    //             $start = strtotime("+1 month", $start);
+    //         }
+    //         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+    //         $warehouse_id = 0;
+    //         return view('backend.report.monthly_sale', compact('year', 'total_sale', 'grand_total', 'total_discount', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
+    //     } else
+    //         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+    // }
+
+
     public function monthlySale($year)
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('monthly-sale')) {
             $start = strtotime($year . '-01-01');
             $end = strtotime($year . '-12-31');
+
+            $total_sale = [];
+            $grand_total = [];
+            $total_discount = [];
+            $brand_total = [];
+
             while ($start <= $end) {
-                $start_date = $year . '-' . date('m', $start) . '-' . '01';
-                $end_date = $year . '-' . date('m', $start) . '-' . '31';
+                $month_num = date('m', $start); // যেমন: '01', '02'
+                $month_index = (int) $month_num;  // যেমন: 1, 2
+
+                // মাসের প্রথম এবং শেষ দিন ডাইনামিকালি বের করা (৩১ তারিখের ফিক্সড ইরর দূর করতে)
+                $start_date = $year . '-' . $month_num . '-01';
+                $end_date = $year . '-' . $month_num . '-' . date('t', $start);
 
                 $sale_data = Sale::with('productSales.product.brand')
                     ->whereDate('created_at', '>=', $start_date)
                     ->whereDate('created_at', '<=', $end_date)
                     ->get();
-                $total_sale[] = $sale_data->sum('total_price');
-                $grand_total[] = $sale_data->sum('grand_total');
-                $total_discount[] = $sale_data->sum('order_discount');
 
-                $brand_total[] = [];
+                // ইনডেক্সগুলো ১ থেকে ১২ পর্যন্ত ফিক্সড করা হলো
+                $total_sale[$month_index] = $sale_data->sum('total_price');
+                $grand_total[$month_index] = $sale_data->sum('grand_total');
+                $total_discount[$month_index] = $sale_data->sum('order_discount');
+
+                $brand_total[$month_index] = [];
                 foreach ($sale_data as $sale) {
                     foreach ($sale->productSales as $productSale) {
                         $brand_name = $productSale->product->brand->title ?? 'Unknown';
-                        if (!isset($brand_total[date('m', strtotime($sale->created_at))][$brand_name]))
-                            $brand_total[date('m', strtotime($sale->created_at))][$brand_name] = 0;
-                        $brand_total[date('m', strtotime($sale->created_at))][$brand_name] += $productSale->total;
+
+                        if (!isset($brand_total[$month_index][$brand_name])) {
+                            $brand_total[$month_index][$brand_name] = 0;
+                        }
+                        $brand_total[$month_index][$brand_name] += $productSale->total;
                     }
                 }
+
+                // ব্র্যান্ডগুলো আপনার Daily Sale রিপোর্টের মতো ক্রমানুসারে সাজানোর জন্য
+                uksort($brand_total[$month_index], function ($a, $b) {
+                    $priority = ['Avijatry' => 1, 'China' => 2];
+                    return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
+                });
+
                 $start = strtotime("+1 month", $start);
             }
+
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             $warehouse_id = 0;
+
             return view('backend.report.monthly_sale', compact('year', 'total_sale', 'grand_total', 'total_discount', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
-        } else
+        } else {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
     }
 
     public function monthlySaleByWarehouse(Request $request, $year)

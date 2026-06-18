@@ -1745,6 +1745,7 @@ class SaleController extends Controller
             $sale_currency = DB::table('currencies')->select('code')->where('id', $lims_sale_data->currency_id)->first();
             $currency_code = $sale_currency->code;
         }
+         $qrText = $lims_sale_data->reference_no;
         $paying_methods = Payment::where('sale_id', $id)->pluck('paying_method')->toArray();
         $paid_by_info = '';
         foreach ($paying_methods as $key => $paying_method) {
@@ -1766,9 +1767,9 @@ class SaleController extends Controller
             ['is_invoice', true]
         ])->pluck('name');
         if ($lims_pos_setting_data->invoice_option == 'A4') {
-            return view('backend.sale.a4_invoice', compact('lims_sale_data', 'currency_code', 'lims_product_sale_data', 'lims_biller_data', 'lims_warehouse_data', 'lims_customer_data', 'lims_payment_data', 'numberInWords', 'paid_by_info', 'sale_custom_fields', 'customer_custom_fields', 'product_custom_fields', 'qrText'));
+            return view('backend.sale.a4_invoice', compact('lims_sale_data', 'currency_code', 'lims_product_sale_data', 'lims_biller_data', 'lims_warehouse_data', 'lims_customer_data', 'lims_payment_data', 'numberInWords', 'paid_by_info', 'sale_custom_fields', 'customer_custom_fields', 'product_custom_fields' ,'qrText'));
         } else {
-            return view('backend.sale.invoice', compact('lims_sale_data', 'currency_code', 'lims_product_sale_data', 'lims_biller_data', 'lims_warehouse_data', 'lims_customer_data', 'lims_payment_data', 'numberInWords', 'sale_custom_fields', 'customer_custom_fields', 'product_custom_fields', 'qrText'));
+            return view('backend.sale.invoice', compact('lims_sale_data', 'currency_code', 'lims_product_sale_data', 'lims_biller_data', 'lims_warehouse_data', 'lims_customer_data', 'lims_payment_data', 'numberInWords', 'sale_custom_fields', 'customer_custom_fields', 'product_custom_fields' ,'qrText'));
         }
     }
 

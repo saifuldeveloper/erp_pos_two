@@ -22,7 +22,7 @@ class PosSettingTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'customer_id' => 1,
+                'customer_id' => 4,
                 'warehouse_id' => 1,
                 'biller_id' => 2,
                 'product_number' => 4,
@@ -36,7 +36,7 @@ class PosSettingTableSeeder extends Seeder
                 'payment_options' => 'cash',
                 'invoice_option' => 'thermal',
                 'created_at' => '2024-10-08 19:59:44',
-                'updated_at' => '2024-12-28 06:17:18',
+                'updated_at' => '2025-04-26 16:16:56',
             ),
         ));
         

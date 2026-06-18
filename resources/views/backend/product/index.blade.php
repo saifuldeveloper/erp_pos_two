@@ -37,10 +37,9 @@
                         <a href="#" data-toggle="modal" data-target="#importProduct"
                             class="btn btn-primary add-product-btn ml-2"><i class="dripicons-copy"></i>
                             {{ __('file.import_product') }}</a>
-                        <button class="btn btn-primary ml-2" type="button" data-toggle="collapse" data-target="#filterSection"
-                            aria-expanded="false" aria-controls="filterSection">
-           
-                           {{ trans('file.Filter') }}
+                        <button class="btn btn-primary ml-2" type="button" data-toggle="collapse"
+                            data-target="#filterSection" aria-expanded="false" aria-controls="filterSection">
+                            {{ trans('file.Filter') }}
                         </button>
                     @endif
                 </div>
@@ -49,17 +48,26 @@
             <div class="collapse mt-3" id="filterSection">
                 <div class="card card-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
-                                
                                 <label>{{ trans('file.name') }}</label>
                                 <input type="text" id="filterName" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>{{ trans('file.code') }}</label>
                                 <input type="text" id="filterCode" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" style="margin-top: 30px;">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="filterInStock" value="1">
+                                    <label class="custom-control-label" for="filterInStock">
+                                        <strong>{{ __('Only In Stock') }}</strong>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -122,8 +130,12 @@
                     <div class="wrapper count-title">
                         <div>
                             <div class="count-number"></div>
-                            <div class="name"><strong style="color: #ff8040">{{ trans('Total Quantity') }}
-                                    :{{ $count_data['total_qty'] }}</strong></div>
+                            <div class="name">
+                                <strong style="color: #ff8040">
+                                    {{ trans('Total Quantity') }}: <span
+                                        id="js-total-qty">{{ $count_data['total_qty'] }}</span>
+                                </strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,8 +143,12 @@
                     <div class="wrapper count-title">
                         <div>
                             <div class="count-number"></div>
-                            <div class="name"><strong style="color: #ff8040">{{ trans('file.Total Price') }}:
-                                    {{ $count_data['total_price'] }}</strong></div>
+                            <div class="name">
+                                <strong style="color: #ff8040">
+                                    {{ trans('file.Total Price') }}: <span
+                                        id="js-total-price">{{ $count_data['total_price'] }}</span>
+                                </strong>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,8 +156,11 @@
                     <div class="wrapper count-title">
                         <div>
                             <div class="count-number"></div>
-                            <div class="name"><strong
-                                    style="color: #ff8040">{{ trans('file.Total Cost') }}:{{ round($count_data['total_cost'], 2) }}</strong>
+                            <div class="name">
+                                <strong style="color: #ff8040">
+                                    {{ trans('file.Total Cost') }}: <span
+                                        id="js-total-cost">{{ round($count_data['total_cost'], 2) }}</span>
+                                </strong>
                             </div>
                         </div>
                     </div>
@@ -423,7 +442,7 @@
             //     slidertext = '<img src="images/product/zummXD2dvAtI.png" height="300" width="100%">';
             // }
 
-              if (product[18]) {
+            if (product[18]) {
                 var product_image = product[18].split(",");
                 if (product_image.length > 1) {
                     slidertext =
@@ -648,10 +667,22 @@
                         d.qty = $('#filterQty').val();
                         d.price = $('#filterPrice').val();
                         d.cost = $('#filterCost').val();
+                        // 🌟 নতুন লাইন: চেকবক্স টিক দেওয়া থাকলে ১ যাবে, না থাকলে ০ যাবে
+                        d.in_stock = $('#filterInStock').is(':checked') ? 1 : 0;
                         d.all_permission = all_permission;
                     },
                     dataType: "json",
                     type: "post"
+                },
+                // (Live Search/Filter Data Show)
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var json = api.ajax.json();
+                    if (json) {
+                        $('#js-total-qty').text(json.total_qty);
+                        $('#js-total-price').text(json.total_price);
+                        $('#js-total-cost').text(json.total_cost);
+                    }
                 },
                 "createdRow": function(row, data, dataIndex) {
                     var colorImages = [];
@@ -837,7 +868,7 @@
                 ],
             });
 
-            $('#filterName, #filterCode, #filterBrand, #filterCategory, #filterUnit, #filterQty, #filterPrice, #filterCost')
+            $('#filterInStock, #filterName, #filterCode, #filterBrand, #filterCategory, #filterUnit, #filterQty, #filterPrice, #filterCost')
                 .on('change keyup', function() {
                     table.draw();
                 });

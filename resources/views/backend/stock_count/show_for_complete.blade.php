@@ -104,7 +104,6 @@
                                 ['title' => 'Under Stock', 'data' => $underStock],
                             ];
                         @endphp
-
                         @foreach ($stockCounts as $stockCount)
                             @if ($stockCount['data']->count() > 0)
                                 <div class="card">
