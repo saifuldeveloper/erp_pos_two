@@ -1133,7 +1133,7 @@ class ReportController extends Controller
                 $query->where('name', 'LIKE', "%{$search}%")
                     ->orWhere('code', 'LIKE', "%{$search}%");
             })->where('is_active', true)->count();
-            $lims_product_all = Product::with('category')
+            $lims_product_all = Product::with('category.parent')
                 ->select('id', 'name', 'code', 'category_id', 'qty', 'is_variant', 'price', 'cost')
                 ->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('code', 'LIKE', "%{$search}%")
@@ -1143,7 +1143,7 @@ class ReportController extends Controller
                 ->get();
         } else {
             $totalData = Product::where('is_active', true)->count();
-            $lims_product_all = Product::with('category')
+            $lims_product_all = Product::with('category.parent')
                 ->select('id', 'name', 'code', 'category_id', 'qty', 'is_variant', 'price', 'cost')
                 ->where('is_active', true)
                 ->offset($start)
@@ -1163,7 +1163,15 @@ class ReportController extends Controller
                         $variant_data = Variant::select('name')->find($variant_id);
                         $nestedData['key'] = count($data);
                         $nestedData['name'] = $product->name . ' [' . $variant_data->name . ']' . '<br>' . $item_code;
-                        $nestedData['category'] = $product->category->name;
+                        if ($product->category) {
+                            if ($product->category->parent) {
+                                $nestedData['category'] = $product->category->parent->name . '-' . $product->category->name;
+                            } else {
+                                $nestedData['category'] = $product->category->name;
+                            }
+                        } else {
+                            $nestedData['category'] = 'N/A';
+                        }
                         //purchase data
                         $nestedData['purchased_amount'] = ProductPurchase::where([
                             ['product_id', $product->id],
@@ -1301,7 +1309,15 @@ class ReportController extends Controller
                 } else {
                     $nestedData['key'] = count($data);
                     $nestedData['name'] = $product->name . '<br>' . $product->code;
-                    $nestedData['category'] = $product->category->name;
+                    if ($product->category) {
+                        if ($product->category->parent) {
+                            $nestedData['category'] = $product->category->parent->name . '-' . $product->category->name;
+                        } else {
+                            $nestedData['category'] = $product->category->name;
+                        }
+                    } else {
+                        $nestedData['category'] = 'N/A';
+                    }
                     //purchase data
                     $nestedData['purchased_amount'] = ProductPurchase::where('product_id', $product->id)->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=', $end_date)->sum('total');
 
@@ -1415,7 +1431,15 @@ class ReportController extends Controller
                         $variant_data = Variant::select('name')->find($variant_id);
                         $nestedData['key'] = count($data);
                         $nestedData['name'] = $product->name . ' [' . $variant_data->name . ']' . '<br>' . $item_code;
-                        $nestedData['category'] = $product->category->name;
+                        if ($product->category) {
+                            if ($product->category->parent) {
+                                $nestedData['category'] = $product->category->parent->name . '-' . $product->category->name;
+                            } else {
+                                $nestedData['category'] = $product->category->name;
+                            }
+                        } else {
+                            $nestedData['category'] = 'N/A';
+                        }
                         //purchase data
                         $nestedData['purchased_amount'] = DB::table('purchases')
                             ->join('product_purchases', 'purchases.id', '=', 'product_purchases.purchase_id')->where([
@@ -1600,7 +1624,15 @@ class ReportController extends Controller
                 } else {
                     $nestedData['key'] = count($data);
                     $nestedData['name'] = $product->name . '<br>' . $product->code;
-                    $nestedData['category'] = $product->category->name;
+                    if ($product->category) {
+                        if ($product->category->parent) {
+                            $nestedData['category'] = $product->category->parent->name . '-' . $product->category->name;
+                        } else {
+                            $nestedData['category'] = $product->category->name;
+                        }
+                    } else {
+                        $nestedData['category'] = 'N/A';
+                    }
                     //purchase data
                     $nestedData['purchased_amount'] = DB::table('purchases')
                         ->join('product_purchases', 'purchases.id', '=', 'product_purchases.purchase_id')->where([

@@ -15,7 +15,9 @@ use App\Models\{
     Unit,
     ProductVariant,
     Product_Warehouse,
-    Variant
+    Variant,
+    Transfer,
+    ProductTransfer
 };
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -282,6 +284,15 @@ class SaleService
                         ])->first();
                     }
 
+                    if (!$child_warehouse) {
+                        $child_warehouse = new Product_Warehouse();
+                        $child_warehouse->product_id = $child_id;
+                        $child_warehouse->warehouse_id = $data['warehouse_id'];
+                        $child_warehouse->variant_id = (isset($variant_list[$key]) && $variant_list[$key]) ? $variant_list[$key] : null;
+                        $child_warehouse->qty = 0;
+                        $child_warehouse->price = $child->price;
+                    }
+
                     $child->qty -= $data['qty'][$i] * $qty_list[$key];
                     $child_warehouse->qty -= $data['qty'][$i] * $qty_list[$key];
 
@@ -313,6 +324,122 @@ class SaleService
                     $warehouse_product = Product_Warehouse::FindProductWithVariant($id, $variant->variant_id, $data['warehouse_id'])->first();
                 } else {
                     $warehouse_product = Product_Warehouse::FindProductWithoutVariant($id, $data['warehouse_id'])->first();
+                }
+
+                // Check if we need to auto-transfer stock from another warehouse
+                $currentQty = $warehouse_product ? $warehouse_product->qty : 0;
+                if ($currentQty < $stockQty) {
+                    $missingQty = $stockQty - $currentQty;
+                    if ($product->is_variant) {
+                        $source_warehouse_product = Product_Warehouse::where('product_id', $id)
+                            ->where('variant_id', $variant->variant_id)
+                            ->where('warehouse_id', '!=', $data['warehouse_id'])
+                            ->where('qty', '>', 0)
+                            ->orderBy('qty', 'desc')
+                            ->first();
+                    } else {
+                        $source_warehouse_product = Product_Warehouse::where('product_id', $id)
+                            ->whereNull('variant_id')
+                            ->whereNull('product_batch_id')
+                            ->where('warehouse_id', '!=', $data['warehouse_id'])
+                            ->where('qty', '>', 0)
+                            ->orderBy('qty', 'desc')
+                            ->first();
+                    }
+
+                    if ($source_warehouse_product) {
+                        $transferQty = min($missingQty, $source_warehouse_product->qty);
+                        
+                        // Create Transfer
+                        $transfer = Transfer::create([
+                            'reference_no' => 'tr-' . date("Ymd") . '-' . date("his") . '-' . uniqid(),
+                            'user_id' => Auth::id() ? Auth::id() : 1,
+                            'status' => 1, // Completed
+                            'from_warehouse_id' => $source_warehouse_product->warehouse_id,
+                            'to_warehouse_id' => $data['warehouse_id'],
+                            'item' => 1,
+                            'total_qty' => $transferQty,
+                            'total_tax' => 0,
+                            'total_cost' => $transferQty * ($product->cost ?? 0),
+                            'shipping_cost' => 0,
+                            'grand_total' => $transferQty * ($product->cost ?? 0),
+                            'note' => 'Auto-transfer created during POS sale #' . $sale_id
+                        ]);
+
+                        // Create ProductTransfer
+                        $productTransferData = [
+                            'transfer_id' => $transfer->id,
+                            'product_id' => $id,
+                            'variant_id' => $product->is_variant ? $variant->variant_id : null,
+                            'qty' => $transferQty,
+                            'purchase_unit_id' => $product->purchase_unit_id ?? $product->unit_id,
+                            'net_unit_cost' => $product->cost ?? 0,
+                            'tax_rate' => 0,
+                            'tax' => 0,
+                            'total' => $transferQty * ($product->cost ?? 0),
+                        ];
+
+                        // Deduct stock from source warehouse
+                        $source_warehouse_product->qty -= $transferQty;
+
+                        // Handle IMEI transfer
+                        if (!empty($data['imei_number'][$i])) {
+                            $sale_imeis = explode(',', $data['imei_number'][$i]);
+                            $source_imeis = $source_warehouse_product->imei_number ? explode(',', $source_warehouse_product->imei_number) : [];
+                            
+                            $transferred_imeis = [];
+                            foreach ($sale_imeis as $imei) {
+                                if (($key = array_search($imei, $source_imeis)) !== false) {
+                                    unset($source_imeis[$key]);
+                                    $transferred_imeis[] = $imei;
+                                }
+                            }
+                            
+                            if (count($transferred_imeis) > 0) {
+                                $source_warehouse_product->imei_number = implode(',', $source_imeis);
+                                $productTransferData['imei_number'] = implode(',', $transferred_imeis);
+                                
+                                if (!$warehouse_product) {
+                                    $warehouse_product = new Product_Warehouse();
+                                    $warehouse_product->product_id = $id;
+                                    $warehouse_product->warehouse_id = $data['warehouse_id'];
+                                    $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
+                                    $warehouse_product->qty = 0;
+                                    $warehouse_product->price = $product->price;
+                                    $warehouse_product->imei_number = implode(',', $transferred_imeis);
+                                } else {
+                                    $target_imeis = $warehouse_product->imei_number ? explode(',', $warehouse_product->imei_number) : [];
+                                    $target_imeis = array_merge($target_imeis, $transferred_imeis);
+                                    $warehouse_product->imei_number = implode(',', $target_imeis);
+                                }
+                            }
+                        }
+
+                        $source_warehouse_product->save();
+                        ProductTransfer::create($productTransferData);
+
+                        // Add stock to target warehouse
+                        if (!$warehouse_product) {
+                            $warehouse_product = new Product_Warehouse();
+                            $warehouse_product->product_id = $id;
+                            $warehouse_product->warehouse_id = $data['warehouse_id'];
+                            $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
+                            $warehouse_product->qty = $transferQty;
+                            $warehouse_product->price = $product->price;
+                        } else {
+                            $warehouse_product->qty += $transferQty;
+                        }
+                        $warehouse_product->save();
+                    }
+                }
+
+                if (!$warehouse_product) {
+                    $warehouse_product = new Product_Warehouse();
+                    $warehouse_product->product_id = $id;
+                    $warehouse_product->warehouse_id = $data['warehouse_id'];
+                    $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
+                    $warehouse_product->qty = 0;
+                    $warehouse_product->price = $product->price;
                 }
 
                 $warehouse_product->qty -= $stockQty;

@@ -28,17 +28,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{trans('file.Company Name')}} *</label>
-                                    <input type="text" name="company_name" required class="form-control">
-                                    @if($errors->has('company_name'))
-                                   <span>
-                                       <strong>{{ $errors->first('company_name') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                            <input type="hidden" name="company_name" value="N/A">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('file.VAT Number')}}</label>
@@ -68,12 +58,7 @@
                                     <input type="text" name="address" required class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>{{trans('file.City')}} *</label>
-                                    <input type="text" name="city" required class="form-control">
-                                </div>
-                            </div>
+                            <input type="hidden" name="city" value="N/A">
                             {{-- <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('file.State')}}</label>
@@ -113,5 +98,9 @@
     $("ul#people").siblings('a').attr('aria-expanded','true');
     $("ul#people").addClass("show");
     $("ul#people #biller-create-menu").addClass("active");
+
+    $('input[name="name"]').on('input', function() {
+        $('input[name="company_name"]').val($(this).val());
+    });
 </script>
 @endpush

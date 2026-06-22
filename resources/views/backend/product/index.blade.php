@@ -87,7 +87,7 @@
                                 <select id="filterCategory" class="selectpicker form-control">
                                     <option value="">{{ __('All') }}</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->name }}">{{ $category->parent ? $category->parent->name . '-' . $category->name : $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

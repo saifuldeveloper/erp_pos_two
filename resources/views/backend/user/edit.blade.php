@@ -78,7 +78,7 @@
                                         <input type="hidden" name="biller_id_hidden" value="{{$lims_user_data->biller_id}}">
                                         <select name="biller_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Biller...">
                                           @foreach($lims_biller_list as $biller)
-                                              <option value="{{$biller->id}}">{{$biller->name}}</option>
+                                              <option value="{{$biller->id}}" data-name="{{$biller->name}}" data-email="{{$biller->email}}" data-phone="{{$biller->phone_number}}">{{$biller->name}}</option>
                                           @endforeach
                                         </select>
                                     </div>
@@ -112,28 +112,51 @@
 
 
 
-    $('select[name=role_id]').val($("input[name='role_id_hidden']").val());
-    if($('select[name=role_id]').val() > 2){
-        $('#warehouseId').show();
-        $('select[name=warehouse_id]').val($("input[name='warehouse_id_hidden']").val());
+    var role_id = $("input[name='role_id_hidden']").val();
+    $('select[name=role_id]').val(role_id);
+    if(role_id == 4) { // Biller
         $('#biller-id').show();
         $('select[name=biller_id]').val($("input[name='biller_id_hidden']").val());
+        $('select[name="biller_id"]').prop('required',true);
+        $('#warehouseId').hide();
+        $('select[name="warehouse_id"]').prop('required',false);
+    }
+    else if(role_id > 2 && role_id != 3){
+        $('#warehouseId').show();
+        $('select[name=warehouse_id]').val($("input[name='warehouse_id_hidden']").val());
+        $('select[name="warehouse_id"]').prop('required',true);
+        $('#biller-id').show();
+        $('select[name=biller_id]').val($("input[name='biller_id_hidden']").val());
+        $('select[name="biller_id"]').prop('required',true);
+    }
+    else {
+        $('#biller-id').hide();
+        $('select[name="biller_id"]').prop('required',false);
+        $('#warehouseId').hide();
+        $('select[name="warehouse_id"]').prop('required',false);
     }
     $('.selectpicker').selectpicker('refresh');
 
     $('select[name="role_id"]').on('change', function() {
-        if($(this).val() > 2){
+        if($(this).val() == 4) { // Biller
+            $('select[name="warehouse_id"]').prop('required',false);
+            $('select[name="biller_id"]').prop('required',true);
+            $('#biller-id').show(300);
+            $('#warehouseId').hide(300);
+        }
+        else if($(this).val() > 2 && $(this).val() != 3){
             $('select[name="warehouse_id"]').prop('required',true);
             $('select[name="biller_id"]').prop('required',true);
-            $('#biller-id').show();
-            $('#warehouseId').show();
+            $('#biller-id').show(300);
+            $('#warehouseId').show(300);
         }
         else{
             $('select[name="warehouse_id"]').prop('required',false);
             $('select[name="biller_id"]').prop('required',false);
-            $('#biller-id').hide();
-            $('#warehouseId').hide();
+            $('#biller-id').hide(300);
+            $('#warehouseId').hide(300);
         }
+        $('.selectpicker').selectpicker('refresh');
     });
 
     $('#genbutton').on("click", function(){
@@ -142,5 +165,21 @@
       });
     });
 
+    $('select[name="biller_id"]').on('change', function() {
+        var selectedOption = $(this).find('option:selected');
+        var name = selectedOption.data('name');
+        var email = selectedOption.data('email');
+        var phone = selectedOption.data('phone');
+        
+        if (name) {
+            $('input[name="name"]').val(name);
+        }
+        if (email) {
+            $('input[name="email"]').val(email);
+        }
+        if (phone) {
+            $('input[name="phone"]').val(phone);
+        }
+    });
 </script>
 @endpush

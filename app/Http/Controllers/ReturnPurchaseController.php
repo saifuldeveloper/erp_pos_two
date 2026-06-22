@@ -149,7 +149,21 @@ class ReturnPurchaseController extends Controller
         }
         $data = array();
         if (!empty($returnss)) {
+            $return_ids = $returnss->pluck('id')->toArray();
+
+            $saleTotals = DB::table('purchase_product_return as ppr')
+                ->join('products as p', 'ppr.product_id', '=', 'p.id')
+                ->leftJoin('product_variants as pv', function ($join) {
+                    $join->on('ppr.product_id', '=', 'pv.product_id')
+                        ->on('ppr.variant_id', '=', 'pv.variant_id');
+                })
+                ->whereIn('ppr.return_id', $return_ids)
+                ->selectRaw('ppr.return_id, SUM(ppr.qty * (COALESCE(p.price, 0) + COALESCE(pv.additional_price, 0))) as total')
+                ->groupBy('ppr.return_id')
+                ->pluck('total', 'return_id');
+
             foreach ($returnss as $key => $returns) {
+                $sale_total = $saleTotals[$returns->id] ?? 0;
                 $nestedData['id'] = $returns->id;
                 $nestedData['key'] = $key;
                 // $nestedData['date'] = date(config('date_format'), strtotime($returns->created_at->toDateString()));
@@ -168,6 +182,7 @@ class ReturnPurchaseController extends Controller
                     $supplier = new Supplier;
                     $nestedData['supplier'] = 'N/A';
                 }
+                $nestedData['sale_total'] = number_format($sale_total, config('decimal'));
                 $nestedData['grand_total'] = number_format($returns->grand_total, config('decimal'));
                 $nestedData['options'] = '<div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans("file.action") . '

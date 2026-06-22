@@ -1382,7 +1382,7 @@
                                 @else
                                     <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
                                 @endif
-                                <p class="text-center">{{$category->name}}</p>
+                                <p class="text-center">{{$category->parent->name.'-'.$category->name }}</p>
                             </div>
                             @endforeach
                         </div>
@@ -1543,11 +1543,11 @@
                     </div>
                     <div class="modal-body">
                       <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label>{{trans('file.Customer Group')}} *</strong> </label>
                             <select required class="form-control selectpicker" name="customer_group_id">
                                 @foreach($lims_customer_group_all as $customer_group)
-                                    <option value="{{$customer_group->id}}">{{$customer_group->name}}</option>
+                                    <option value="{{$customer_group->id}}" {{ strtolower($customer_group->name) == 'general customer' ? 'selected' : '' }}>{{$customer_group->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -1665,7 +1665,7 @@ $('#currency').change(function(){
 })
 
 
-if(role_id > 2) {
+if(role_id > 2 && role_id != 3) {
     $('#biller_id').addClass('d-none');
     $('#warehouse_id').addClass('d-none');
 }

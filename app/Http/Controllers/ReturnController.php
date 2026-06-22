@@ -178,8 +178,30 @@ class ReturnController extends Controller
         $data = array();
         if(!empty($returnss))
         {
+            $return_ids = $returnss->pluck('id')->toArray();
+
+            $purchaseTotals = DB::table('product_returns as pr')
+                ->leftJoin(
+                    DB::raw('(SELECT product_id, variant_id, AVG(net_unit_cost) as net_unit_cost FROM product_purchases GROUP BY product_id, variant_id) as pp'),
+                    function ($join) {
+                        $join->on('pr.product_id', '=', 'pp.product_id')
+                            ->on(function ($q) {
+                                $q->on('pr.variant_id', '=', 'pp.variant_id')
+                                    ->orWhere(function ($q) {
+                                        $q->whereNull('pr.variant_id')
+                                            ->whereNull('pp.variant_id');
+                                    });
+                            });
+                    }
+                )
+                ->whereIn('pr.return_id', $return_ids)
+                ->selectRaw('pr.return_id, SUM(pr.qty * COALESCE(pp.net_unit_cost, 0)) as total')
+                ->groupBy('pr.return_id')
+                ->pluck('total', 'return_id');
+
             foreach ($returnss as $key=>$returns)
             {
+                $purchase_total = $purchaseTotals[$returns->id] ?? 0;
                 $nestedData['id'] = $returns->id;
                 $nestedData['key'] = $key;
                 // $nestedData['date'] = date(config('date_format'), strtotime($returns->created_at->toDateString()));
@@ -197,6 +219,7 @@ class ReturnController extends Controller
                 $nestedData['warehouse'] = $returns->warehouse->name;
                 $nestedData['biller'] = $returns->biller->name;
                 $nestedData['customer'] = $returns->customer->name;
+                $nestedData['purchase_total'] = number_format($purchase_total, config('decimal'));
                 $nestedData['grand_total'] = number_format($returns->grand_total, config('decimal'));
                 $nestedData['options'] = '<div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.trans("file.action").'

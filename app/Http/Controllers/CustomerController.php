@@ -38,15 +38,180 @@ class CustomerController extends Controller
                 $all_permission[] = $permission->name;
             if(empty($all_permission))
                 $all_permission[] = 'dummy text';
-            $lims_customer_all = Customer::with('customerGroup')->where('is_active', true)->get();
             $custom_fields = CustomField::where([
                                 ['belongs_to', 'customer'],
                                 ['is_table', true]
                             ])->pluck('name');
-            return view('backend.customer.index', compact('lims_customer_all', 'all_permission', 'custom_fields'));
+            return view('backend.customer.index', compact('all_permission', 'custom_fields'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+    }
+
+    public function customerData(Request $request)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('customers-index'))
+            return response()->json(['error' => 'Unauthorized'], 403);
+
+        $columns = array(
+            1 => 'customer_group_id',
+            2 => 'name',
+            4 => 'points',
+        );
+
+        $q = Customer::where('is_active', true);
+        $totalData = $q->count();
+        $totalFiltered = $totalData;
+
+        if($request->input('length') != -1)
+            $limit = $request->input('length');
+        else
+            $limit = $totalData;
+
+        $start = $request->input('start');
+        $orderColumn = $request->input('order.0.column');
+        $order = isset($columns[$orderColumn]) ? $columns[$orderColumn] : 'name';
+        $dir = $request->input('order.0.dir') ?? 'asc';
+
+        if(empty($request->input('search.value'))) {
+            $customers = Customer::with('customerGroup', 'discountPlans')
+                ->where('is_active', true)
+                ->offset($start)
+                ->limit($limit)
+                ->orderBy($order, $dir)
+                ->get();
+        } else {
+            $search = $request->input('search.value');
+            $q = Customer::with('customerGroup', 'discountPlans')
+                ->where('is_active', true)
+                ->where(function($query) use ($search) {
+                    $query->where('name', 'LIKE', "%{$search}%")
+                        ->orWhere('company_name', 'LIKE', "%{$search}%")
+                        ->orWhere('email', 'LIKE', "%{$search}%")
+                        ->orWhere('phone_number', 'LIKE', "%{$search}%");
+                });
+
+            $totalFiltered = $q->count();
+
+            $customers = $q->offset($start)
+                ->limit($limit)
+                ->orderBy($order, $dir)
+                ->get();
+        }
+
+        $customer_ids = $customers->pluck('id')->toArray();
+
+        // Get sales and returns aggregates for these specific customer IDs
+        $sales_aggregates = DB::table('sales')
+            ->select('customer_id', DB::raw('SUM(grand_total) as total_grand_total'), DB::raw('SUM(paid_amount) as total_paid_amount'))
+            ->whereIn('customer_id', $customer_ids)
+            ->where('payment_status', '!=', 4)
+            ->groupBy('customer_id')
+            ->get()
+            ->keyBy('customer_id');
+
+        $returns_aggregates = DB::table('returns')
+            ->join('sales', 'sales.id', '=', 'returns.sale_id')
+            ->select('sales.customer_id', DB::raw('SUM(returns.grand_total) as total_returned_amount'))
+            ->whereIn('sales.customer_id', $customer_ids)
+            ->where('sales.payment_status', '!=', 4)
+            ->groupBy('sales.customer_id')
+            ->get()
+            ->keyBy('customer_id');
+
+        $custom_fields = CustomField::where([
+                            ['belongs_to', 'customer'],
+                            ['is_table', true]
+                        ])->pluck('name');
+
+        $data = array();
+        if(!empty($customers)) {
+            foreach ($customers as $key => $customer) {
+                $sales_info = $sales_aggregates->get($customer->id);
+                $return_info = $returns_aggregates->get($customer->id);
+
+                $total_grand_total = $sales_info ? $sales_info->total_grand_total : 0;
+                $total_paid_amount = $sales_info ? $sales_info->total_paid_amount : 0;
+                $total_returned_amount = $return_info ? $return_info->total_returned_amount : 0;
+                $due = $total_grand_total - $total_returned_amount - $total_paid_amount;
+
+                $nestedData['id'] = $customer->id;
+                $nestedData['key'] = $key;
+                $nestedData['customer_group'] = $customer->customerGroup->name ?? 'N/A';
+                
+                // Customer Details HTML
+                $details = '<strong>' . $customer->name . '</strong>';
+                if($customer->company_name) $details .= '<br>' . $customer->company_name;
+                if($customer->email) $details .= '<br>' . $customer->email;
+                $details .= '<br>' . $customer->phone_number;
+                $details .= '<br>' . $customer->address . ', ' . $customer->city;
+                if($customer->country) $details .= ', ' . $customer->country;
+                $nestedData['customer_details'] = $details;
+                
+                // Discount Plan
+                $discount_plans = [];
+                foreach ($customer->discountPlans as $discount_plan) {
+                    $discount_plans[] = $discount_plan->name;
+                }
+                $nestedData['discount_plan'] = count($discount_plans) > 0 ? implode(', ', $discount_plans) : 'N/A';
+                
+                $nestedData['points'] = $customer->points;
+                $nestedData['deposit'] = number_format($customer->deposit - $customer->expense, 2);
+                $nestedData['total_due'] = number_format($due, 2);
+                
+                // Custom fields mapping
+                foreach ($custom_fields as $fieldName) {
+                    $field_name = str_replace(" ", "_", strtolower($fieldName));
+                    $nestedData[$field_name] = $customer->$field_name;
+                }
+                
+                // Action Options Dropdown
+                $options = '<div class="btn-group">
+                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans('file.action') . '
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">';
+                            
+                if (in_array("customers-edit", $request->input('all_permission', []))) {
+                    $options .= '<li><a href="' . route('customer.edit', $customer->id) . '" class="btn btn-link"><i class="dripicons-document-edit"></i> ' . trans('file.edit') . '</a></li>';
+                }
+                if (in_array("due-report", $request->input('all_permission', []))) {
+                    $options .= '<li>
+                                    <form action="' . route('report.customerDueByDate') . '" method="post" class="d-inline">
+                                        ' . csrf_field() . '
+                                        <input type="hidden" name="start_date" value="' . date('Y-m-d', strtotime('-30 year')) . '" />
+                                        <input type="hidden" name="end_date" value="' . date('Y-m-d') . '" />
+                                        <input type="hidden" name="customer_id" value="' . $customer->id . '" />
+                                        <button type="submit" class="btn btn-link"><i class="dripicons-pulse"></i> ' . trans('file.Due Report') . '</button>
+                                    </form>
+                                </li>';
+                }
+                $options .= '<li><button type="button" data-id="' . $customer->id . '" class="clear-due btn btn-link" data-toggle="modal" data-target="#clearDueModal"><i class="dripicons-brush"></i> ' . trans('file.Clear Due') . '</button></li>';
+                
+                if (in_array("customers-delete", $request->input('all_permission', []))) {
+                    $options .= \Form::open(["route" => ["customer.destroy", $customer->id], "method" => "DELETE", "class" => "d-inline"]) . '
+                                <li>
+                                  <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> ' . trans("file.delete") . '</button>
+                                </li>' . \Form::close();
+                }
+                
+                $options .= '</ul></div>';
+                $nestedData['options'] = $options;
+                
+                $data[] = $nestedData;
+            }
+        }
+
+        $json_data = array(
+            "draw"            => intval($request->input('draw')),
+            "recordsTotal"    => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data"            => $data
+        );
+        
+        return response()->json($json_data);
     }
 
     public function clearDue(Request $request)

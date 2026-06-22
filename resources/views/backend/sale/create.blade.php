@@ -516,11 +516,11 @@
             </div>
             <div class="modal-body">
               <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label>{{trans('file.Customer Group')}} *</strong> </label>
                     <select required class="form-control selectpicker" name="customer_group_id">
                         @foreach($lims_customer_group_all as $customer_group)
-                            <option value="{{$customer_group->id}}">{{$customer_group->name}}</option>
+                            <option value="{{$customer_group->id}}" {{ strtolower($customer_group->name) == 'general customer' ? 'selected' : '' }}>{{$customer_group->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -903,7 +903,7 @@ function isCashRegisterAvailable(warehouse_id) {
             if(data == 'false') {
                 $('#cash-register-modal select[name=warehouse_id]').val(warehouse_id);
                 $('.selectpicker').selectpicker('refresh');
-                if(role_id <= 2){
+                if(role_id <= 3){
                     $("#cash-register-modal .warehouse-section").removeClass('d-none');
                 }
                 else {

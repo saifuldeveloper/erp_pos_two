@@ -26,10 +26,19 @@
                                     <th>{{ trans('file.Date') }}</th>
                                     <th>{{ trans('file.Receiver Type') }}</th>
                                     <th>{{ trans('file.Receiver') }}</th>
+                                    <th>{{ trans('file.Purchase Price') }}</th>
                                     <th>{{ trans('file.Total') }}</th>
                                     <th class="not-exported">{{ trans('file.action') }}</th>
                                 </tr>
                             </thead>
+                            <tfoot class="tfoot active">
+                                <th>{{trans('file.Total')}}</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -109,6 +118,10 @@
                         data: 'receiver_name'
                     },
                     {
+                        data: 'purchase_price',
+                        render: $.fn.dataTable.render.number(',', '.', 2, '৳')
+                    },
+                    {
                         data: 'total_price',
                         render: $.fn.dataTable.render.number(',', '.', 2, '৳')
                     },
@@ -147,6 +160,12 @@
                         }
                     }
                 ],
+                'columnDefs': [
+                    {
+                        "orderable": false,
+                        'targets': [3, 5]
+                    }
+                ],
                 'language': {
 
                     'lengthMenu': '_MENU_ {{ trans('file.records per page') }}',
@@ -170,7 +189,12 @@
                             columns: ':visible:Not(.not-exported)',
                             rows: ':visible'
                         },
-
+                        action: function(e, dt, button, config) {
+                            datatable_sum(dt, true);
+                            $.fn.dataTable.ext.buttons.pdfHtml5.action.call(this, e, dt, button, config);
+                            datatable_sum(dt, false);
+                        },
+                        footer: true
                     },
                     {
                         extend: 'excel',
@@ -179,7 +203,12 @@
                             columns: ':visible:Not(.not-exported)',
                             rows: ':visible'
                         },
-
+                        action: function(e, dt, button, config) {
+                            datatable_sum(dt, true);
+                            $.fn.dataTable.ext.buttons.excelHtml5.action.call(this, e, dt, button, config);
+                            datatable_sum(dt, false);
+                        },
+                        footer: true
                     },
                     {
                         extend: 'csv',
@@ -188,7 +217,12 @@
                             columns: ':visible:Not(.not-exported)',
                             rows: ':visible'
                         },
-
+                        action: function(e, dt, button, config) {
+                            datatable_sum(dt, true);
+                            $.fn.dataTable.ext.buttons.csvHtml5.action.call(this, e, dt, button, config);
+                            datatable_sum(dt, false);
+                        },
+                        footer: true
                     },
                     {
                         extend: 'print',
@@ -197,9 +231,33 @@
                             columns: ':visible:Not(.not-exported)',
                             rows: ':visible'
                         },
+                        action: function(e, dt, button, config) {
+                            datatable_sum(dt, true);
+                            $.fn.dataTable.ext.buttons.print.action.call(this, e, dt, button, config);
+                            datatable_sum(dt, false);
+                        },
+                        footer: true
                     },
                 ],
+                drawCallback: function () {
+                    var api = this.api();
+                    datatable_sum(api, false);
+                }
             });
         });
+
+        function datatable_sum(dt_selector, is_calling_first) {
+            var rows;
+            if (dt_selector.rows( '.selected' ).any() && is_calling_first) {
+                rows = dt_selector.rows( '.selected' ).indexes();
+
+                $( dt_selector.column( 3 ).footer() ).html('৳' + dt_selector.cells( rows, 3, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+                $( dt_selector.column( 4 ).footer() ).html('৳' + dt_selector.cells( rows, 4, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            }
+            else {
+                $( dt_selector.column( 3 ).footer() ).html('৳' + dt_selector.cells( rows, 3, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+                $( dt_selector.column( 4 ).footer() ).html('৳' + dt_selector.cells( rows, 4, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            }
+        }
     </script>
 @endpush

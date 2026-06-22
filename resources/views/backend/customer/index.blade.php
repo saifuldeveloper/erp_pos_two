@@ -37,96 +37,6 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($lims_customer_all as $key => $customer)
-                <?php
-                    $returned_amount = DB::table('sales')
-                                    ->join('returns', 'sales.id', '=', 'returns.sale_id')
-                                    ->where([
-                                        ['sales.customer_id', $customer->id],
-                                        ['sales.payment_status', '!=', 4]
-                                    ])
-                                    ->sum('returns.grand_total');
-                    $saleData = DB::table('sales')->where([
-                                    ['customer_id', $customer->id],
-                                    ['payment_status', '!=', 4]
-                                ])
-                                ->selectRaw('SUM(grand_total) as grand_total,SUM(paid_amount) as paid_amount')
-                                ->first();
-                ?>
-                <tr data-id="{{$customer->id}}">
-                    <td>{{$key}}</td>
-                    <td>{{$customer->customerGroup->name}}</td>
-                    <td>
-                        {{$customer->name}}
-                        @if($customer->company_name)
-                        <br>{{$customer->company_name}}
-                        @endif
-                        @if($customer->email)
-                        <br>{{$customer->email}}
-                        @endif
-                        <br>{{$customer->phone_number}}
-                        <br>{{$customer->address}}, {{$customer->city}}@if($customer->country) {{','.$customer->country}}@endif
-                    </td>
-                    <td>
-                        @foreach($customer->discountPlans as $index => $discount_plan)
-                            @if($index)
-                                {{', '.$discount_plan->name}}
-                            @else
-                                {{$discount_plan->name}}
-                            @endif
-                        @endforeach
-                    </td>
-                    <td>{{$customer->points}}</td>
-                    <td>{{number_format($customer->deposit - $customer->expense, 2)}}</td>
-                    <td>{{number_format($saleData->grand_total - $returned_amount - $saleData->paid_amount, 2)}}</td>
-                    @foreach($custom_fields as $fieldName)
-                    @php $field_name = str_replace(" ", "_", strtolower($fieldName)); @endphp
-                    <td>{{$customer->$field_name}}</td>
-                    @endforeach
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                @if(in_array("customers-edit", $all_permission))
-                                <li>
-                                    <a href="{{ route('customer.edit', $customer->id) }}" class="btn btn-link"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}</a>
-                                </li>
-                                @endif
-                                @if(in_array("due-report", $all_permission))
-                                <li>
-                                    {!! Form::open(['route' => 'report.customerDueByDate', 'method' => 'post', 'id' => 'due-report-form']) !!}
-                                    <input type="hidden" name="start_date" value="{{date('Y-m-d', strtotime('-30 year'))}}" />
-                                    <input type="hidden" name="end_date" value="{{date('Y-m-d')}}" />
-                                    <input type="hidden" name="customer_id" value="{{$customer->id}}" />
-                                    <button type="submit" class="btn btn-link"><i class="dripicons-pulse"></i> {{trans('file.Due Report')}}</button>
-                                    {!! Form::close() !!}
-                                </li>
-                                @endif
-                                <li>
-                                    <button type="button" data-id="{{$customer->id}}" class="clear-due btn btn-link" data-toggle="modal" data-target="#clearDueModal" ><i class="dripicons-brush"></i> {{trans('file.Clear Due')}}</button>
-                                </li>
-                                <!--<li>-->
-                                <!--    <button type="button" data-id="{{$customer->id}}" class="deposit btn btn-link" data-toggle="modal" data-target="#depositModal" ><i class="dripicons-plus"></i> {{trans('file.Add Deposit')}}</button>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                <!--    <button type="button" data-id="{{$customer->id}}" class="getDeposit btn btn-link"><i class="fa fa-money"></i> {{trans('file.View Deposit')}}</button>-->
-                                <!--</li>-->
-                                <li class="divider"></li>
-                                @if(in_array("customers-delete", $all_permission))
-                                {{ Form::open(['route' => ['customer.destroy', $customer->id], 'method' => 'DELETE'] ) }}
-                                <li>
-                                    <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
-                                </li>
-                                {{ Form::close() }}
-                                @endif
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
             </tbody>
         </table>
     </div>
@@ -293,17 +203,17 @@
         }
     });
 
-  $(".deposit").on("click", function() {
+  $(document).on("click", ".deposit", function() {
         var id = $(this).data('id').toString();
         $("#depositModal input[name='customer_id']").val(id);
   });
 
-  $(".clear-due").on("click", function() {
+  $(document).on("click", ".clear-due", function() {
         var id = $(this).data('id').toString();
         $("#clearDueModal input[name='customer_id']").val(id);
   });
 
-  $(".getDeposit").on("click", function() {
+  $(document).on("click", ".getDeposit", function() {
         var id = $(this).data('id').toString();
         $.get('customer/getDeposit/' + id, function(data) {
             $(".deposit-list tbody").remove();
@@ -343,6 +253,33 @@
     });
 
     var table = $('#customer-table').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax":{
+            url:"customer/customer-data",
+            data:{
+                all_permission: all_permission
+            },
+            dataType: "json",
+            type:"post"
+        },
+        "createdRow": function(row, data, dataIndex) {
+            $(row).attr('data-id', data['id']);
+        },
+        "columns": [
+            { "data": "key" },
+            { "data": "customer_group" },
+            { "data": "customer_details" },
+            { "data": "discount_plan" },
+            { "data": "points" },
+            { "data": "deposit" },
+            { "data": "total_due" },
+            @foreach($custom_fields as $fieldName)
+            @php $field_name = str_replace(" ", "_", strtolower($fieldName)); @endphp
+            { "data": "{{$field_name}}" },
+            @endforeach
+            { "data": "options" }
+        ],
         "order": [],
         'language': {
             'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
@@ -356,7 +293,16 @@
         'columnDefs': [
             {
                 "orderable": false,
-                'targets': [0, 7]
+                'targets': [
+                    @php
+                        $non_orderable = [0, 3, 5, 6];
+                        $custom_fields_count = count($custom_fields);
+                        for ($i = 0; $i <= $custom_fields_count; $i++) {
+                            $non_orderable[] = 7 + $i;
+                        }
+                        echo implode(',', $non_orderable);
+                    @endphp
+                ]
             },
             {
                 'render': function(data, type, row, meta){

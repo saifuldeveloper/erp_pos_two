@@ -20,6 +20,7 @@ return [
 	'cost' => 'খরচ',
 	'unit' => 'ইউনিট',
     'Purchase Price' => 'ক্রয় মূল্য',
+    'Sale Price' => 'বিক্রয় মূল্য',
 
 	"revenue" => "রাজস্ব",
 	'Start Date & Time' => 'শুরুর তারিখ এবং সময়',

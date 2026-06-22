@@ -73,7 +73,7 @@ class ProductController extends Controller
             );
 
             $brands = Brand::where('is_active', true)->get();
-            $categories = Category::where('is_active', true)->get();
+            $categories = Category::with('parent')->where('is_active', true)->get();
             $units = Unit::where('is_active', true)->get();
             return view('backend.product.index', compact('all_permission', 'role_id', 'numberOfProduct', 'custom_fields', 'field_name', 'count_data', 'brands', 'categories', 'units'));
         } else
@@ -355,7 +355,7 @@ class ProductController extends Controller
 
         $field_names = $custom_fields->map(fn($f) => str_replace(" ", "_", strtolower($f)))->toArray();
 
-        $query = Product::with(['category', 'brand', 'unit', 'productImages.color'])
+        $query = Product::with(['category.parent', 'brand', 'unit', 'productImages.color'])
             ->where('is_active', true);
 
         // Filters
@@ -434,7 +434,15 @@ class ProductController extends Controller
             $nestedData['name'] = $product->name;
             $nestedData['code'] = $product->code;
             $nestedData['brand'] = $product->brand->title ?? 'N/A';
-            $nestedData['category'] = $product->category->name ?? 'N/A';
+            if ($product->category) {
+                if ($product->category->parent) {
+                    $nestedData['category'] = $product->category->parent->name . '-' . $product->category->name;
+                } else {
+                    $nestedData['category'] = $product->category->name;
+                }
+            } else {
+                $nestedData['category'] = 'N/A';
+            }
             $nestedData['qty'] = $product->qty;
             $nestedData['unit'] = $product->unit->unit_name ?? 'N/A';
             $nestedData['price'] = $product->price;
@@ -1210,7 +1218,7 @@ class ProductController extends Controller
 
     public function variantData($id)
     {
-        if (Auth::user()->role_id > 2) {
+        if (Auth::user()->role_id > 2 && Auth::user()->role_id != 3) {
             return ProductVariant::join('variants', 'product_variants.variant_id', '=', 'variants.id')
                 ->join('product_warehouse', function ($join) {
                     $join->on('product_variants.product_id', '=', 'product_warehouse.product_id');

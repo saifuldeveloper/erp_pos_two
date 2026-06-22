@@ -260,6 +260,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
 
     Route::controller(CustomerController::class)->group(function () {
         Route::post('importcustomer', 'importCustomer')->name('customer.import');
+        Route::post('customer/customer-data', 'customerData');
         Route::get('customer/getDeposit/{id}', 'getDeposit');
         Route::post('customer/add_deposit', 'addDeposit')->name('customer.addDeposit');
         Route::post('customer/update_deposit', 'updateDeposit')->name('customer.updateDeposit');

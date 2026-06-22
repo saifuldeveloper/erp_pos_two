@@ -65,6 +65,7 @@
                     <th>{{trans('file.Purchase Reference')}}</th>
                     <th>{{trans('file.Warehouse')}}</th>
                     <th>{{trans('file.Supplier')}}</th>
+                    <th>{{trans('file.Sale Price')}}</th>
                     <th>{{trans('file.grand total')}}</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
@@ -73,6 +74,7 @@
             <tfoot class="tfoot active">
                 <th></th>
                 <th>{{trans('file.Total')}}</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -214,6 +216,7 @@
             {"data": "purchase_reference"},
             {"data": "warehouse"},
             {"data": "supplier"},
+            {"data": "sale_total"},
             {"data": "grand_total"},
             {"data": "options"},
         ],
@@ -231,7 +234,7 @@
         'columnDefs': [
             {
                 "orderable": false,
-                'targets': [0, 3, 4, 5, 6, 7]
+                'targets': [0, 3, 4, 5, 6, 7, 8]
             },
             {
                 'render': function(data, type, row, meta){
@@ -355,13 +358,16 @@
     } );
 
     function datatable_sum(dt_selector, is_calling_first) {
+        var rows;
         if (dt_selector.rows( '.selected' ).any() && is_calling_first) {
-            var rows = dt_selector.rows( '.selected' ).indexes();
+            rows = dt_selector.rows( '.selected' ).indexes();
 
             $( dt_selector.column( 6 ).footer() ).html(dt_selector.cells( rows, 6, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
         }
         else {
             $( dt_selector.column( 6 ).footer() ).html(dt_selector.cells( rows, 6, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
         }
     }
 

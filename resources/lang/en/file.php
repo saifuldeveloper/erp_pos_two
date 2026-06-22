@@ -8,6 +8,7 @@ return [
 	'website' =>'Website',
 	'Pos' =>'Pos',
     'Purchase Price' => 'Purchase Price',
+    'Sale Price' => 'Sale Price',
 	'Send Courier' =>'Send Courier',
 	'Courier Track ID' =>'Courier Track ID',
 	'Avijatry Product' => 'Avijatry Product',
