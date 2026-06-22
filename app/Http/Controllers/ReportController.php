@@ -4859,12 +4859,13 @@ class ReportController extends Controller
     public function stockCountRemaining(Request $request)
     {
         $product_ids = StockCountItem::join('stock_counts', 'stock_counts.id', '=', 'stock_count_items.stock_count_id')
+            ->leftJoin('product_variants', 'product_variants.item_code', '=', 'stock_count_items.item_code')
+            ->leftJoin('products', 'products.code', '=', 'stock_count_items.item_code')
             ->when($request->countID, function ($query) use ($request) {
                 return $query->where('stock_count_id', $request->countID);
             })
             ->when(!$request->countID && ($request->start_date || $request->end_date), function ($query) use ($request) {
                 if ($request->start_date && $request->end_date) {
-                    // full day range (00:00:00 - 23:59:59)
                     return $query->whereBetween('stock_counts.created_at', [
                         $request->start_date . ' 00:00:00',
                         $request->end_date . ' 23:59:59',
@@ -4877,7 +4878,9 @@ class ReportController extends Controller
                     return $query->where('stock_counts.created_at', '<=', $request->end_date . ' 23:59:59');
                 }
             })
-            ->pluck('stock_count_items.product_id')
+            ->selectRaw('COALESCE(product_variants.product_id, products.id) as correct_product_id')
+            ->pluck('correct_product_id')
+            ->filter()
             ->toArray();
         $total = Product::where('is_active', 1)
             ->whereNotIn('id', $product_ids)

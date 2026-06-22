@@ -126,6 +126,7 @@ class StockCountController extends Controller
                     ['products.code', $product_code[0]],
                     ['products.is_active', true]
                 ])
+                ->select('products.*', 'product_warehouse.qty')
                 ->groupBy('products.id')
                 ->get();
         }
