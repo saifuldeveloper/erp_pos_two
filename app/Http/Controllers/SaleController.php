@@ -165,11 +165,21 @@ class SaleController extends Controller
             );
 
         $totalData = $baseQuery()->count();
-        $totalFiltered = $totalData;
+
+        // ── Filtered base query for proper pagination counting ──
+        $filteredBaseQuery = fn() => $baseQuery()
+            ->when($warehouse_id, fn($q) => $q->where('warehouse_id', $warehouse_id))
+            ->when($brand_id, fn($q) => $q->whereHas(
+                'productSales.product',
+                fn($q) => $q->where('brand_id', $brand_id)
+            ));
+
+        $totalFiltered = $filteredBaseQuery()->count();
 
         $limit = $request->input('length') != -1 ? $request->input('length') : $totalData;
         $start = $request->input('start');
-        $order = 'sales.' . $columns[$request->input('order.0.column')];
+        $orderCol = $request->input('order.0.column');
+        $order = isset($columns[$orderCol]) ? 'sales.' . $columns[$orderCol] : 'sales.created_at';
         $dir = $request->input('order.0.dir');
 
         // ── Custom fields ──
@@ -186,13 +196,8 @@ class SaleController extends Controller
         $search = $request->input('search.value');
 
         if (empty($search)) {
-            $q = $baseQuery()
-                ->with(['biller', 'customer', 'warehouse', 'user']) // eager load
-                ->when($warehouse_id, fn($q) => $q->where('warehouse_id', $warehouse_id))
-                ->when($brand_id, fn($q) => $q->whereHas(
-                    'productSales.product',
-                    fn($q) => $q->where('brand_id', $brand_id)
-                ))
+            $q = $filteredBaseQuery()
+                ->with(['biller', 'customer', 'warehouse', 'user', 'productSales.product']) // eager load
                 ->offset($start)
                 ->limit($limit)
                 ->orderBy($order, $dir);
@@ -206,8 +211,15 @@ class SaleController extends Controller
                 ->join('customers', 'sales.customer_id', '=', 'customers.id')
                 ->join('billers', 'sales.biller_id', '=', 'billers.id')
                 ->select('sales.*')
-                ->with(['biller', 'customer', 'warehouse', 'user']) // eager load
+                ->with(['biller', 'customer', 'warehouse', 'user', 'productSales.product']) // eager load
                 ->when($sale_type, fn($q) => $q->where('sales.sale_type', $sale_type))
+                ->when($warehouse_id, fn($q) => $q->where('sales.warehouse_id', $warehouse_id))
+                ->when($brand_id, fn($q) => $q->whereHas(
+                    'productSales.product',
+                    fn($q) => $q->where('brand_id', $brand_id)
+                ))
+                ->when($sale_status, fn($q) => $q->where('sales.sale_status', $sale_status))
+                ->when($payment_status, fn($q) => $q->where('sales.payment_status', $payment_status))
                 ->where(function ($q) use ($search, $field_names) {
                     $q->whereDate(
                         'sales.created_at',
@@ -229,7 +241,37 @@ class SaleController extends Controller
                 ->orderBy($order, $dir);
 
             $sales = $q->get();
-            $totalFiltered = $q->count();
+
+            // Re-count without offset and limit to set totalFiltered
+            $countQuery = Sale::query()
+                ->join('customers', 'sales.customer_id', '=', 'customers.id')
+                ->join('billers', 'sales.biller_id', '=', 'billers.id')
+                ->when($sale_type, fn($q) => $q->where('sales.sale_type', $sale_type))
+                ->when($warehouse_id, fn($q) => $q->where('sales.warehouse_id', $warehouse_id))
+                ->when($brand_id, fn($q) => $q->whereHas(
+                    'productSales.product',
+                    fn($q) => $q->where('brand_id', $brand_id)
+                ))
+                ->when($sale_status, fn($q) => $q->where('sales.sale_status', $sale_status))
+                ->when($payment_status, fn($q) => $q->where('sales.payment_status', $payment_status))
+                ->where(function ($q) use ($search, $field_names) {
+                    $q->whereDate(
+                        'sales.created_at',
+                        '=',
+                        date('Y-m-d', strtotime(str_replace('/', '-', $search)))
+                    )
+                        ->orWhere('sales.reference_no', 'LIKE', "%{$search}%")
+                        ->orWhere('customers.name', 'LIKE', "%{$search}%")
+                        ->orWhere('customers.phone_number', 'LIKE', "%{$search}%")
+                        ->orWhere('billers.name', 'LIKE', "%{$search}%");
+
+                    foreach ($field_names as $field_name) {
+                        $q->orWhere('sales.' . $field_name, 'LIKE', "%{$search}%");
+                    }
+                })
+                ->when($isOwn, fn($q) => $q->where('sales.user_id', Auth::id()));
+            
+            $totalFiltered = $countQuery->count();
         }
 
         // ════════════════════════════════════════════
@@ -245,7 +287,7 @@ class SaleController extends Controller
             ->pluck('total', 'sale_id');
 
         // ── Purchase totals: sale_id => sum ──
-        $purchaseTotals = DB::table('product_sales as ps')
+        $purchaseTotalsQuery = DB::table('product_sales as ps')
             ->leftJoin('product_purchases as pp', function ($join) {
                 $join->on('ps.product_id', '=', 'pp.product_id')
                     ->on(function ($q) {
@@ -256,10 +298,17 @@ class SaleController extends Controller
                             });
                     });
             })
-            ->whereIn('ps.sale_id', $sale_ids)
+            ->whereIn('ps.sale_id', $sale_ids);
+
+        if ($brand_id) {
+            $purchaseTotalsQuery->join('products as p', 'ps.product_id', '=', 'p.id')
+                ->where('p.brand_id', $brand_id);
+        }
+
+        $purchaseTotals = $purchaseTotalsQuery
             ->selectRaw('ps.sale_id, SUM(ps.qty * COALESCE(pp.net_unit_cost, 0)) as total')
             ->groupBy('ps.sale_id')
-            ->pluck('total', 'sale_id');
+            ->pluck('total', 'ps.sale_id');
 
         // ── Coupons: id => code ──
         $coupon_ids = $sales->pluck('coupon_id')->filter()->unique()->toArray();
@@ -282,6 +331,24 @@ class SaleController extends Controller
             $purchase_total = $purchaseTotals[$sale->id] ?? 0;
             $coupon_code = $coupons[$sale->coupon_id] ?? null;
             $currency_code = $currencies[$sale->currency_id] ?? 'N/A';
+
+            // ── Calculate brand ratio and brand quantity if brand_id filter is applied ──
+            $ratio = 1.0;
+            $brand_qty = 0;
+            if ($brand_id) {
+                $invoice_product_total = 0;
+                $brand_product_total = 0;
+                foreach ($sale->productSales as $productSale) {
+                    $invoice_product_total += $productSale->total;
+                    if ($productSale->product && $productSale->product->brand_id == $brand_id) {
+                        $brand_product_total += $productSale->total;
+                        $brand_qty += $productSale->qty;
+                    }
+                }
+                $ratio = $invoice_product_total > 0 ? ($brand_product_total / $invoice_product_total) : 0;
+            } else {
+                $brand_qty = $sale->total_qty;
+            }
 
             $nestedData['id'] = $sale->id;
             $nestedData['key'] = $key;
@@ -323,17 +390,19 @@ class SaleController extends Controller
             $nestedData['payment_status'] =
                 '<div class="badge ' . $pbadge . '">' . $plabel . '</div>';
 
-            $nestedData['total_quantity'] = $sale->total_qty;
+            $nestedData['total_quantity'] = $brand_qty;
 
-            //  Batch fetch থেকে নেওয়া — কোনো query নেই
+            // Apportion financial values using $ratio
+            $apportioned_grand_total = $sale->grand_total * $ratio;
+            $apportioned_returned_amount = $returned_amount * $ratio;
+            $apportioned_paid_amount = $sale->paid_amount * $ratio;
+            $apportioned_due = $apportioned_grand_total - $apportioned_returned_amount - $apportioned_paid_amount;
+
             $nestedData['purchase_total'] = number_format($purchase_total, config('decimal'));
-            $nestedData['grand_total'] = number_format($sale->grand_total, config('decimal'));
-            $nestedData['returned_amount'] = number_format($returned_amount, config('decimal'));
-            $nestedData['paid_amount'] = number_format($sale->paid_amount, config('decimal'));
-            $nestedData['due'] = number_format(
-                $sale->grand_total - $returned_amount - $sale->paid_amount,
-                config('decimal')
-            );
+            $nestedData['grand_total'] = number_format($apportioned_grand_total, config('decimal'));
+            $nestedData['returned_amount'] = number_format($apportioned_returned_amount, config('decimal'));
+            $nestedData['paid_amount'] = number_format($apportioned_paid_amount, config('decimal'));
+            $nestedData['due'] = number_format($apportioned_due, config('decimal'));
 
             foreach ($field_names as $field_name) {
                 $nestedData[$field_name] = $sale->$field_name;
@@ -1753,6 +1822,23 @@ class SaleController extends Controller
             else
                 $paid_by_info = $paying_method;
         }
+
+        // Generate ZATCA QR code securely with fallbacks
+        $qrText = $lims_sale_data->reference_no;
+        if (class_exists('Salla\ZATCA\GenerateQrCode')) {
+            try {
+                $qrText = GenerateQrCode::fromArray([
+                    new Seller($lims_biller_data->name),
+                    new TaxNumber($lims_biller_data->vat_number ?? '0'),
+                    new InvoiceDate(date('c', strtotime($lims_sale_data->created_at))),
+                    new InvoiceTotalAmount($lims_sale_data->grand_total),
+                    new InvoiceTaxAmount($lims_sale_data->total_tax ?? 0)
+                ])->toBase64();
+            } catch (\Exception $e) {
+                $qrText = $lims_sale_data->reference_no;
+            }
+        }
+
         $sale_custom_fields = CustomField::where([
             ['belongs_to', 'sale'],
             ['is_invoice', true]

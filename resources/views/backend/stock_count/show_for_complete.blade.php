@@ -126,10 +126,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @php
+                                                        $total_current_qty = 0;
+                                                        $total_find_qty = 0;
+                                                        $total_diff = 0;
+                                                    @endphp
                                                     @foreach ($stockCount['data'] as $items)
                                                         @php
                                                             $item = $items[0];
                                                             $total = $items->sum('updated_quantity');
+                                                            $total_current_qty += $item->current_quantity;
+                                                            $total_find_qty += $total;
+                                                            $total_diff += abs($total - $item->current_quantity);
                                                         @endphp
                                                         <tr>
                                                             <td>{{ @$item->product->name }}</td>
@@ -153,6 +161,21 @@
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Total:</th>
+                                                        <th></th>
+                                                        <th>{{ $total_current_qty }}</th>
+                                                        <th>{{ $total_find_qty }}</th>
+                                                        <th>
+                                                            @if ($stockCount['title'] != 'Stock Matched')
+                                                                {{ $total_diff }}
+                                                            @else
+                                                                0
+                                                            @endif
+                                                        </th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
@@ -325,6 +348,11 @@
         // Initialize DataTable
         $('.stock-count-table').DataTable({
             "order": [],
+            "pageLength": 10,
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
             'language': {
                 'lengthMenu': '_MENU_ {{ trans('file.records per page') }}',
                 "info": '<small>{{ trans('file.Showing') }} _START_ - _END_ (_TOTAL_)</small>',
