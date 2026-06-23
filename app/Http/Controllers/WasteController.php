@@ -65,7 +65,12 @@ class WasteController extends Controller
 
     public function wastedata(Request $request)
     {
-        $columns = ['date', 'receiver_type', 'receiver_name', 'total_price'];
+        $columns = [
+            0 => 'wastes.created_at',
+            1 => 'receiver_type',
+            2 => 'receiver_name',
+            4 => 'total_price'
+        ];
         $baseQuery = Waste::select(
             'wastes.id',
             'wastes.created_at as date',
@@ -87,7 +92,8 @@ class WasteController extends Controller
             });
         }
         if ($request->input('order')) {
-            $orderColumn = $columns[$request->input('order')[0]['column']] ?? 'date';
+            $orderColIdx = $request->input('order')[0]['column'];
+            $orderColumn = $columns[$orderColIdx] ?? 'wastes.created_at';
             $orderDir = $request->input('order')[0]['dir'] ?? 'asc';
             $query->orderBy($orderColumn, $orderDir);
         }
@@ -99,6 +105,19 @@ class WasteController extends Controller
         } else {
             $wastes = $query->get();
         }
+
+        $waste_ids = $wastes->pluck('id')->toArray();
+        $purchaseTotals = DB::table('waste_items as wi')
+            ->join('products as p', 'wi.product_id', '=', 'p.id')
+            ->whereIn('wi.waste_id', $waste_ids)
+            ->selectRaw('wi.waste_id, SUM(wi.qty * COALESCE(p.cost, 0)) as total')
+            ->groupBy('wi.waste_id')
+            ->pluck('total', 'wi.waste_id');
+
+        foreach ($wastes as $waste) {
+            $waste->purchase_price = number_format($purchaseTotals[$waste->id] ?? 0, config('decimal', 2));
+        }
+
         return response()->json([
             'draw' => $request->input('draw'),
             'recordsTotal' => $totalRecords,

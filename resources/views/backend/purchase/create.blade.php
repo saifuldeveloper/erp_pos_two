@@ -816,7 +816,8 @@
 
                 $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.buying_price').val(net_unit_cost
                     .toFixed({{ $general_setting->decimal }}));
-                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.net_unit_cost');
+                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.net_unit_cost').text(net_unit_cost
+                    .toFixed({{ $general_setting->decimal }}));
                 $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.tax').text(tax.toFixed(
                     {{ $general_setting->decimal }}));
                 $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.tax-value').val(tax.toFixed(
@@ -830,9 +831,9 @@
                 var net_unit_cost = (100 / (100 + tax_rate[rowindex])) * sub_total_unit;
                 var tax = (sub_total_unit - net_unit_cost) * quantity;
                 var sub_total = sub_total_unit * quantity;
-                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.buying_price').text(net_unit_cost
+                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.buying_price').val(net_unit_cost
                     .toFixed({{ $general_setting->decimal }}));
-                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.net_unit_cost').val(net_unit_cost
+                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.net_unit_cost').text(net_unit_cost
                     .toFixed({{ $general_setting->decimal }}));
                 $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.tax').text(tax.toFixed(
                     {{ $general_setting->decimal }}));

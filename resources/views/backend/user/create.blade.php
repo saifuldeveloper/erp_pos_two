@@ -122,7 +122,7 @@
                                         <label><strong>{{trans('file.Biller')}} *</strong></label>
                                         <select name="biller_id" required class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Biller...">
                                           @foreach($lims_biller_list as $biller)
-                                              <option value="{{$biller->id}}">{{$biller->name}}</option>
+                                              <option value="{{$biller->id}}" data-name="{{$biller->name}}" data-email="{{$biller->email}}" data-phone="{{$biller->phone_number}}">{{$biller->name}}</option>
                                           @endforeach
                                         </select>
                                     </div>
@@ -192,7 +192,15 @@
             $('select[name="warehouse_id"]').prop('required',false);
             $('select[name="biller_id"]').prop('required',false);
         }
-        else if($(this).val() > 2 && $(this).val() != 5) {
+        else if($(this).val() == 4) { // Biller
+            $('select[name="warehouse_id"]').prop('required',false);
+            $('select[name="biller_id"]').prop('required',true);
+            $('#biller-id').show(300);
+            $('#warehouseId').hide(300);
+            $('.customer-section').hide(300);
+            $('.customer-input').prop('required',false);
+        }
+        else if($(this).val() > 2 && $(this).val() != 3 && $(this).val() != 5) {
             $('select[name="warehouse_id"]').prop('required',true);
             $('select[name="biller_id"]').prop('required',true);
             $('#biller-id').show(300);
@@ -207,6 +215,24 @@
             $('#warehouseId').hide(300);
             $('.customer-section').hide(300);
             $('.customer-input').prop('required',false);
+        }
+        $('.selectpicker').selectpicker('refresh');
+    });
+
+    $('select[name="biller_id"]').on('change', function() {
+        var selectedOption = $(this).find('option:selected');
+        var name = selectedOption.data('name');
+        var email = selectedOption.data('email');
+        var phone = selectedOption.data('phone');
+        
+        if (name) {
+            $('input[name="name"]').val(name);
+        }
+        if (email) {
+            $('input[name="email"]').val(email);
+        }
+        if (phone) {
+            $('input[name="phone_number"]').val(phone);
         }
     });
 </script>

@@ -22,41 +22,15 @@ class AccountsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'account_no' => 'Avijatry Khulna',
+                'account_no' => 'Avijatry Comilla',
                 'name' => 'Hand Cash',
                 'initial_balance' => 0.0,
-                'total_balance' => -3221430.0,
+                'total_balance' => -6490000.0,
                 'note' => 'Khulna Branch',
-                'is_default' => NULL,
-                'is_active' => 1,
-                'created_at' => '2024-10-07 18:35:08',
-                'updated_at' => '2026-04-15 02:24:34',
-            ),
-            1 => 
-            array (
-                'id' => 2,
-                'account_no' => '12345678900058',
-                'name' => 'Brac Bank',
-                'initial_balance' => 0.0,
-                'total_balance' => 0.0,
-                'note' => 'Paltan Branch',
-                'is_default' => NULL,
-                'is_active' => 0,
-                'created_at' => '2024-12-21 07:01:11',
-                'updated_at' => '2024-12-29 07:13:11',
-            ),
-            2 => 
-            array (
-                'id' => 3,
-                'account_no' => '9890188686',
-                'name' => 'POS Pubali',
-                'initial_balance' => 386300.6,
-                'total_balance' => 386300.6,
-                'note' => NULL,
                 'is_default' => 1,
                 'is_active' => 1,
-                'created_at' => '2026-01-07 19:44:10',
-                'updated_at' => '2026-01-07 19:44:43',
+                'created_at' => '2024-10-07 18:35:08',
+                'updated_at' => '2026-06-11 18:36:32',
             ),
         ));
         

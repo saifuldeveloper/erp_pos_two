@@ -47,11 +47,7 @@
                             else
                                 $keybord_active = 0;
 
-                            $customer_active = DB::table('permissions')
-                              ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
-                              ->where([
-                                ['permissions.name', 'customers-add'],
-                                ['role_id', \Auth::user()->role_id] ])->first();
+                            $customer_active = true;
                         @endphp
                         <div class="row">
                             <div class="col-md-12">
@@ -943,11 +939,11 @@
                     </div>
                     <div class="modal-body">
                       <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-                        <div class="form-group">
+                        <div class="form-group d-none">
                             <label>{{trans('file.Customer Group')}} *</strong> </label>
                             <select required class="form-control selectpicker" name="customer_group_id">
                                 @foreach($lims_customer_group_all as $customer_group)
-                                    <option value="{{$customer_group->id}}">{{$customer_group->name}}</option>
+                                    <option value="{{$customer_group->id}}" {{ strtolower($customer_group->name) == 'general customer' ? 'selected' : '' }}>{{$customer_group->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -1389,6 +1385,7 @@ var product_type = [];
 var product_id = [];
 var product_list = [];
 var qty_list = [];
+var global_product_qty = {};
 
 // array data with selection
 var product_price = [];
@@ -1649,8 +1646,43 @@ $('.customer-submit-btn').on("click", function() {
             $('select[name="customer_id"]').val(key);
             $('.selectpicker').selectpicker('refresh');
             $("#addCustomer").modal('hide');
+            // Clear inputs and error states on success
+            $("#customer-form")[0].reset();
+            $("#customer-form .is-invalid").removeClass("is-invalid").css("border-color", "");
+            $("#customer-form .error-message").remove();
+        },
+        error:function(response) {
+            var errors = response.responseJSON;
+            // Clear any previous error states
+            $("#customer-form .is-invalid").removeClass("is-invalid").css("border-color", "");
+            $("#customer-form .error-message").remove();
+            
+            if (errors && errors.errors) {
+                $.each(errors.errors, function(key, value) {
+                    var inputField = $('#customer-form [name="' + key + '"]');
+                    if (inputField.length) {
+                        inputField.addClass('is-invalid').css('border-color', '#dc3545');
+                        inputField.after('<span class="text-danger error-message" style="font-size: 80%; display: block; margin-top: 5px;">' + value[0] + '</span>');
+                    }
+                });
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
         }
     });
+});
+
+// Clear error states on input/change
+$(document).on('input change', '#customer-form input, #customer-form select', function() {
+    $(this).removeClass('is-invalid').css('border-color', '');
+    $(this).next('.error-message').remove();
+});
+
+// Reset form and errors when modal is closed
+$('#addCustomer').on('hidden.bs.modal', function () {
+    $("#customer-form")[0].reset();
+    $("#customer-form .is-invalid").removeClass("is-invalid").css("border-color", "");
+    $("#customer-form .error-message").remove();
 });
 
   $("li#notification-icon").on("click", function (argument) {
@@ -1728,11 +1760,20 @@ $('.customer-submit-btn').on("click", function() {
       $('#today-profit-modal').modal('show');
   }
 
-if(role_id > 2 && role_id > 5 ){
-    $('#biller_id').addClass('d-none');
-    $('#warehouse_id').addClass('d-none');
-    $('select[name=warehouse_id]').val(warehouse_id);
+if(role_id > 2 && role_id != 3){
     $('select[name=biller_id]').val(biller_id);
+    $('#biller_id').prop('disabled', true);
+    if ($('.biller-hidden-input').length === 0) {
+        $('.payment-form').append('<input type="hidden" class="biller-hidden-input" name="biller_id" value="' + biller_id + '">');
+    }
+
+    if(getSavedValue("warehouse_id")){
+      warehouse_id = getSavedValue("warehouse_id");
+    }
+    else if(!warehouse_id) {
+      warehouse_id = $("input[name='warehouse_id_hidden']").val();
+    }
+    $('select[name=warehouse_id]').val(warehouse_id);
     isCashRegisterAvailable(warehouse_id);
 }
 else {
@@ -1789,8 +1830,6 @@ $.get('sales/getproduct/' + id, function(data) {
     });
 });
 
-isCashRegisterAvailable(id);
-
 function isCashRegisterAvailable(warehouse_id) {
     $.ajax({
         url: 'cash-register/check-availability/'+warehouse_id,
@@ -1800,7 +1839,7 @@ function isCashRegisterAvailable(warehouse_id) {
               $("#register-details-btn").addClass('d-none');
               $('#cash-register-modal select[name=warehouse_id]').val(warehouse_id);
 
-              if(role_id <= 2)
+              if(role_id <= 3)
                 $("#cash-register-modal .warehouse-section").removeClass('d-none');
               else
                 $("#cash-register-modal .warehouse-section").addClass('d-none');
@@ -2096,13 +2135,7 @@ $(document).on('click', '.product-img', function() {
         alert('Please select Warehouse!');
     else{
         var data = $(this).data('product');
-        product_info = data.split(" ");
-        pos = product_code.indexOf(product_info[0]);
-        if(pos < 0)
-            alert('Product is not avaialable in the selected warehouse');
-        else{
-            productSearch(data);
-        }
+        productSearch(data);
     }
 });
 //Delete product
@@ -2455,6 +2488,33 @@ function productSearch(data) {
             data: data
         },
         success: function(data) {
+            // Check if the product code is in the global product_code array
+            var global_pos = window.product_code.indexOf(data[1]);
+            var globalStock = parseFloat(data[18]);
+            global_product_qty[data[1]] = globalStock;
+            if (global_pos < 0) {
+                if (without_stock == 'no' && (isNaN(globalStock) || globalStock <= 0)) {
+                    alert('Product is out of stock!');
+                    return;
+                }
+                window.product_code.push(data[1]);
+                window.product_name.push(data[0]);
+                window.product_qty.push(0);
+                window.product_type.push('standard');
+                window.product_id.push(data[9]);
+                window.product_list.push(null);
+                window.qty_list.push(null);
+                window.product_warehouse_price.push(data[16]);
+                window.batch_no.push(null);
+                window.product_batch_id.push(null);
+                global_pos = window.product_code.length - 1;
+            } else {
+                if (without_stock == 'no' && (isNaN(globalStock) || globalStock <= 0)) {
+                    alert('Product is out of stock!');
+                    return;
+                }
+            }
+
             var flag = 1;
             if (pre_qty > 0) {
                 /*if(pre_qty)
@@ -2462,7 +2522,7 @@ function productSearch(data) {
                 else*/
                     var qty = data[15];
                 $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(qty);
-                pos = product_code.indexOf(data[1]);
+                pos = window.product_code.indexOf(data[1]);
                 if(!data[11] && product_warehouse_price[pos]) {
                     product_price[rowindex] = parseFloat(product_warehouse_price[pos] * currency['exchange_rate']) + parseFloat(product_warehouse_price[pos] * currency['exchange_rate'] * customer_group_rate);
                 }
@@ -2703,7 +2763,19 @@ function checkDiscount(qty, flag) {
 function checkQuantity(sale_qty, flag) {
     var row_product_code = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product-code').val();
     pos = product_code.indexOf(row_product_code);
-    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.in-stock').text(product_qty[pos]);
+    if (pos < 0) {
+        product_code.push(row_product_code);
+        product_qty.push(0);
+        product_type.push('standard');
+        var row_product_id = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product-id').val();
+        product_id.push(row_product_id);
+        pos = product_code.length - 1;
+    }
+    var showQty = product_qty[pos];
+    if (showQty === 999999) {
+        showQty = 0;
+    }
+    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.in-stock').text(showQty);
     localStorageQty[rowindex] = sale_qty;
     localStorage.setItem("localStorageQty", localStorageQty);
     if(without_stock == 'no') {
@@ -2714,7 +2786,8 @@ function checkQuantity(sale_qty, flag) {
                 total_qty = sale_qty * operation_value[0];
             else if(operator[0] == '/')
                 total_qty = sale_qty / operation_value[0];
-            if (total_qty > parseFloat(product_qty[pos])) {
+            var stockToCheck = global_product_qty[row_product_code] !== undefined ? global_product_qty[row_product_code] : product_qty[pos];
+            if (total_qty > parseFloat(stockToCheck)) {
                 alert('Quantity exceeds stock quantity!');
                 if (flag) {
                     sale_qty = sale_qty.substring(0, sale_qty.length - 1);
@@ -2736,8 +2809,12 @@ function checkQuantity(sale_qty, flag) {
             child_qty = qty_list[pos].split(',');
             $(child_id).each(function(index) {
                 var position = product_id.indexOf(parseInt(child_id[index]));
-                //console.log(position);
-                if( position == -1 || parseFloat(sale_qty * child_qty[index]) > product_qty[position] ) {
+                var childStock = product_qty[position];
+                var childCode = product_code[position];
+                if (childCode && global_product_qty[childCode] !== undefined) {
+                    childStock = global_product_qty[childCode];
+                }
+                if( position == -1 || parseFloat(sale_qty * child_qty[index]) > childStock ) {
                     alert('Quantity exceeds stock quantity!');
                     if (flag) {
                         sale_qty = sale_qty.substring(0, sale_qty.length - 1);
