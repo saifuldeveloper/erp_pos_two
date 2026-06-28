@@ -81,6 +81,7 @@
                     <th>{{trans('file.reference')}} No</th>
                     <th>{{trans('file.Warehouse')}}({{trans('file.From')}})</th>
                     <th>{{trans('file.Warehouse')}}({{trans('file.To')}})</th>
+                    <th>{{trans('file.Total')}} {{trans('file.qty')}}</th>
                     <th>{{trans('file.product')}} {{trans('file.Cost')}}</th>
                     <th>{{trans('file.product')}} {{trans('file.Tax')}}</th>
                     <th>{{trans('file.grand total')}}</th>
@@ -91,6 +92,7 @@
             <tfoot class="tfoot active">
                 <th></th>
                 <th>{{trans('file.Total')}}</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -233,6 +235,7 @@
             {"data": "reference_no"},
             {"data": "from_warehouse"},
             {"data": "to_warehouse"},
+            {"data": "total_qty"},
             {"data": "total_cost"},
             {"data": "total_tax"},
             {"data": "grand_total"},
@@ -240,7 +243,7 @@
             {"data": "options"}
         ],
         'language': {
-
+ 
             'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
              "info":      '<small>{{trans("file.Showing")}} _START_ - _END_ (_TOTAL_)</small>',
             "search":  '{{trans("file.Search")}}',
@@ -253,7 +256,7 @@
         'columnDefs': [
             {
                 "orderable": false,
-                'targets': [0, 2, 3, 4, 5, 6, 7, 8, 9]
+                'targets': [0, 2, 3, 4, 5, 6, 7, 8, 9, 10]
             },
             {
                 'render': function(data, type, row, meta){
@@ -381,21 +384,23 @@
         if (dt_selector.rows( '.selected' ).any() && is_calling_first) {
             var rows = dt_selector.rows( '.selected' ).indexes();
 
-            $( dt_selector.column( 5 ).footer() ).html(dt_selector.cells( rows, 5, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 5 ).footer() ).html(dt_selector.cells( rows, 5, { page: 'current' } ).data().sum());
             $( dt_selector.column( 6 ).footer() ).html(dt_selector.cells( rows, 6, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 8 ).footer() ).html(dt_selector.cells( rows, 8, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
         }
         else {
-            $( dt_selector.column( 5 ).footer() ).html(dt_selector.cells( rows, 5, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
-            $( dt_selector.column( 6 ).footer() ).html(dt_selector.cells( rows, 6, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
-            $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 5 ).footer() ).html(dt_selector.column( 5, { page: 'current' } ).data().sum());
+            $( dt_selector.column( 6 ).footer() ).html(dt_selector.column( 6, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 7 ).footer() ).html(dt_selector.column( 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 8 ).footer() ).html(dt_selector.column( 8, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
         }
     }
 
     function transferDetails(transfer) {
         var htmltext = '<strong>{{trans("file.Date")}}: </strong>'+transfer[0]+'<br><strong>{{trans("file.reference")}}: </strong>'+transfer[1]+'<br><strong> {{trans("file.Transfer")}} {{trans("file.Status")}}: </strong>'+transfer[2]+'<br><br><div class="row"><div class="col-md-6"><strong>{{trans("file.From")}}:</strong><br>'+transfer[4]+'<br>'+transfer[5]+'<br>'+transfer[6]+'</div><div class="col-md-6"><div class="float-right"><strong>{{trans("file.To")}}:</strong><br>'+transfer[7]+'<br>'+transfer[8]+'<br>'+transfer[9]+'</div></div></div>';
 
-        $.get('transfers/product_transfer/' + transfer[3], function(data) {
+        $.get('transfers/product_transfer/' + transfer[3] + '?_=' + new Date().getTime(), function(data) {
             $(".product-transfer-list tbody").remove();
             var name_code = data[0];
             var qty = data[1];

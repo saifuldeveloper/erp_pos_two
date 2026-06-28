@@ -270,7 +270,7 @@ class SaleController extends Controller
                     }
                 })
                 ->when($isOwn, fn($q) => $q->where('sales.user_id', Auth::id()));
-            
+
             $totalFiltered = $countQuery->count();
         }
 
@@ -287,27 +287,7 @@ class SaleController extends Controller
             ->pluck('total', 'sale_id');
 
         // ── Purchase totals: sale_id => sum ──
-<<<<<<< HEAD
-        $purchaseTotalsQuery = DB::table('product_sales as ps')
-            ->leftJoin('product_purchases as pp', function ($join) {
-                $join->on('ps.product_id', '=', 'pp.product_id')
-                    ->on(function ($q) {
-                        $q->on('ps.variant_id', '=', 'pp.variant_id')
-                            ->orWhere(function ($q) {
-                                $q->whereNull('ps.variant_id')
-                                    ->whereNull('pp.variant_id');
-                            });
-                    });
-            })
-            ->whereIn('ps.sale_id', $sale_ids);
 
-        if ($brand_id) {
-            $purchaseTotalsQuery->join('products as p', 'ps.product_id', '=', 'p.id')
-                ->where('p.brand_id', $brand_id);
-        }
-
-        $purchaseTotals = $purchaseTotalsQuery
-=======
         $purchaseTotals = DB::table('product_sales as ps')
             ->leftJoin(
                 DB::raw('(SELECT product_id, variant_id, AVG(net_unit_cost) as net_unit_cost FROM product_purchases GROUP BY product_id, variant_id) as pp'),
@@ -323,7 +303,6 @@ class SaleController extends Controller
                 }
             )
             ->whereIn('ps.sale_id', $sale_ids)
->>>>>>> a35cf59374e39fc3bd0afa92bdb7dad8196399b4
             ->selectRaw('ps.sale_id, SUM(ps.qty * COALESCE(pp.net_unit_cost, 0)) as total')
             ->groupBy('ps.sale_id')
             ->pluck('total', 'ps.sale_id');

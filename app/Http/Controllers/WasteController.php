@@ -15,12 +15,16 @@ use Illuminate\Support\Facades\Auth;
 
 class WasteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('sales-index')) {
-            $wastes = Waste::all();
-            return view('backend.waste.index', compact('wastes'));
+            $starting_date = $request->starting_date ?? date('Y-m-d', strtotime('-30 days'));
+            $ending_date = $request->ending_date ?? date('Y-m-d');
+            $wastes = Waste::whereDate('created_at', '>=', $starting_date)
+                ->whereDate('created_at', '<=', $ending_date)
+                ->get();
+            return view('backend.waste.index', compact('wastes', 'starting_date', 'ending_date'));
         }
     }
 
@@ -67,21 +71,32 @@ class WasteController extends Controller
     {
         $columns = [
             0 => 'wastes.created_at',
-            1 => 'receiver_type',
-            2 => 'receiver_name',
-            4 => 'total_price'
+            1 => 'wastes.receiver_type',
+            2 => 'wastes.receiver_name',
+            3 => DB::raw('(SELECT SUM(qty) FROM waste_items WHERE waste_items.waste_id = wastes.id)'),
+            5 => 'wastes.total_price'
         ];
+        $starting_date = $request->starting_date;
+        $ending_date = $request->ending_date;
+
         $baseQuery = Waste::select(
             'wastes.id',
             'wastes.created_at as date',
             'wastes.receiver_type',
             'wastes.receiver_name',
             'wastes.total_price',
-            'wastes.status'
+            'wastes.status',
+            DB::raw('(SELECT SUM(qty) FROM waste_items WHERE waste_items.waste_id = wastes.id) as total_qty')
         )
             ->leftJoin('waste_items', 'wastes.id', '=', 'waste_items.waste_id')
             ->leftJoin('products', 'waste_items.product_id', '=', 'products.id')
             ->distinct('wastes.id');
+
+        if ($starting_date && $ending_date) {
+            $baseQuery->whereDate('wastes.created_at', '>=', $starting_date)
+                      ->whereDate('wastes.created_at', '<=', $ending_date);
+        }
+
         $query = clone $baseQuery;
         if ($search = $request->input('search')['value']) {
             $query->where(function ($q) use ($search) {

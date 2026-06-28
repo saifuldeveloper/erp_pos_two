@@ -219,6 +219,7 @@ class ReturnController extends Controller
                 $nestedData['warehouse'] = $returns->warehouse->name;
                 $nestedData['biller'] = $returns->biller->name;
                 $nestedData['customer'] = $returns->customer->name;
+                $nestedData['qty'] = number_format($returns->total_qty, config('decimal'));
                 $nestedData['purchase_total'] = number_format($purchase_total, config('decimal'));
                 $nestedData['grand_total'] = number_format($returns->grand_total, config('decimal'));
                 $nestedData['options'] = '<div class="btn-group">

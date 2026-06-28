@@ -14,6 +14,23 @@
                         <div class="card-header">
                             <h3 class="text-center">{{ trans('file.Waste List') }}</h3>
                         </div>
+                        {!! Form::open(['route' => 'waste.index', 'method' => 'get']) !!}
+                        <div class="row ml-1 mt-2 mb-3">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label><strong>{{trans('file.Date')}}</strong></label>
+                                    <input type="text" class="daterangepicker-field form-control" value="{{$starting_date}} To {{$ending_date}}" required />
+                                    <input type="hidden" name="starting_date" value="{{$starting_date}}" />
+                                    <input type="hidden" name="ending_date" value="{{$ending_date}}" />
+                                </div>
+                            </div>
+                            <div class="col-md-2 mt-4">
+                                <div class="form-group">
+                                    <button class="btn btn-primary w-100" id="filter-btn" type="submit">{{trans('file.submit')}}</button>
+                                </div>
+                            </div>
+                        </div>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
@@ -26,6 +43,7 @@
                                     <th>{{ trans('file.Date') }}</th>
                                     <th>{{ trans('file.Receiver Type') }}</th>
                                     <th>{{ trans('file.Receiver') }}</th>
+                                    <th>Count</th>
                                     <th>{{ trans('file.Purchase Price') }}</th>
                                     <th>{{ trans('file.Total') }}</th>
                                     <th class="not-exported">{{ trans('file.action') }}</th>
@@ -33,6 +51,7 @@
                             </thead>
                             <tfoot class="tfoot active">
                                 <th>{{trans('file.Total')}}</th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -97,12 +116,19 @@
         $("ul#waste").addClass("show");
         $("ul#waste #waste-list-menu").addClass("active");
 
+        var starting_date = <?php echo json_encode($starting_date); ?>;
+        var ending_date = <?php echo json_encode($ending_date); ?>;
+
         $(document).ready(function() {
             $('#wasteTable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: '{{ route('waste.wastedata') }}',
+                    data: {
+                        starting_date: starting_date,
+                        ending_date: ending_date
+                    },
                     type: 'GET'
                 },
                 columns: [{
@@ -116,6 +142,10 @@
                     },
                     {
                         data: 'receiver_name'
+                    },
+                    {
+                        data: 'total_qty',
+                        render: $.fn.dataTable.render.number(',', '.', 0)
                     },
                     {
                         data: 'purchase_price',
@@ -163,7 +193,7 @@
                 'columnDefs': [
                     {
                         "orderable": false,
-                        'targets': [3, 5]
+                        'targets': [4, 6]
                     }
                 ],
                 'language': {
@@ -251,13 +281,26 @@
             if (dt_selector.rows( '.selected' ).any() && is_calling_first) {
                 rows = dt_selector.rows( '.selected' ).indexes();
 
-                $( dt_selector.column( 3 ).footer() ).html('৳' + dt_selector.cells( rows, 3, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+                $( dt_selector.column( 3 ).footer() ).html(dt_selector.cells( rows, 3, { page: 'current' } ).data().sum().toFixed(0));
                 $( dt_selector.column( 4 ).footer() ).html('৳' + dt_selector.cells( rows, 4, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+                $( dt_selector.column( 5 ).footer() ).html('৳' + dt_selector.cells( rows, 5, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             }
             else {
-                $( dt_selector.column( 3 ).footer() ).html('৳' + dt_selector.cells( rows, 3, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+                $( dt_selector.column( 3 ).footer() ).html(dt_selector.cells( rows, 3, { page: 'current' } ).data().sum().toFixed(0));
                 $( dt_selector.column( 4 ).footer() ).html('৳' + dt_selector.cells( rows, 4, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+                $( dt_selector.column( 5 ).footer() ).html('৳' + dt_selector.cells( rows, 5, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             }
         }
+
+        $(".daterangepicker-field").daterangepicker({
+          callback: function(startDate, endDate, period){
+            var starting_date = startDate.format('YYYY-MM-DD');
+            var ending_date = endDate.format('YYYY-MM-DD');
+            var title = starting_date + ' To ' + ending_date;
+            $(this).val(title);
+            $('input[name="starting_date"]').val(starting_date);
+            $('input[name="ending_date"]').val(ending_date);
+          }
+        });
     </script>
 @endpush

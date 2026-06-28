@@ -182,6 +182,7 @@ class ReturnPurchaseController extends Controller
                     $supplier = new Supplier;
                     $nestedData['supplier'] = 'N/A';
                 }
+                $nestedData['qty'] = number_format($returns->total_qty, config('decimal'));
                 $nestedData['sale_total'] = number_format($sale_total, config('decimal'));
                 $nestedData['grand_total'] = number_format($returns->grand_total, config('decimal'));
                 $nestedData['options'] = '<div class="btn-group">

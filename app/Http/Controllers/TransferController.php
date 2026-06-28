@@ -138,6 +138,7 @@ class TransferController extends Controller
                 $nestedData['from_warehouse'] = $transfer->fromWarehouse->name;
                 $nestedData['to_warehouse'] = $transfer->toWarehouse->name;
                 $nestedData['total_cost'] = number_format($transfer->total_cost, config('decimal'));
+                $nestedData['total_qty'] = $transfer->total_qty;
                 $nestedData['total_tax'] = number_format($transfer->total_tax, config('decimal'));
                 $nestedData['grand_total'] = number_format($transfer->grand_total, config('decimal'));
 
@@ -239,7 +240,11 @@ class TransferController extends Controller
             ['products.is_active', true],
             ['product_warehouse.warehouse_id', $id],
             ['product_warehouse.qty', '>', 0]
-        ])->whereNotNull('product_warehouse.variant_id')->select('product_warehouse.*')->get();
+        ])
+        ->whereNotNull('product_warehouse.variant_id')
+        ->select('product_warehouse.product_id', \DB::raw('SUM(product_warehouse.qty) as qty'))
+        ->groupBy('product_warehouse.product_id')
+        ->get();
 
         $product_code = [];
         $product_name = [];
@@ -266,8 +271,7 @@ class TransferController extends Controller
         {
             $product_qty[] = $product_warehouse->qty;
             $lims_product_data = Product::select('name', 'code')->find($product_warehouse->product_id);
-            $lims_product_variant_data = ProductVariant::select('item_code')->FindExactProduct($product_warehouse->product_id, $product_warehouse->variant_id)->first();
-            $product_code[] =  $lims_product_variant_data->item_code;
+            $product_code[] =  $lims_product_data->code;
             $product_name[] = $lims_product_data->name;
         }
         $product_data = [$product_code, $product_name, $product_qty];
@@ -278,23 +282,75 @@ class TransferController extends Controller
     {
         $product_code = explode("(", $request['data']);
         $product_code[0] = rtrim($product_code[0], " ");
-        $product_variant_id = null;
+        
         $lims_product_data = Product::where([
             ['code', $product_code[0]],
             ['is_active', true]
         ])->first();
+        
         if(!$lims_product_data) {
-            $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-                ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.item_code', 'product_variants.additional_cost')
-                ->where('product_variants.item_code', $product_code[0])
-                ->first();
-            $product_variant_id = $lims_product_data->product_variant_id;
-            $lims_product_data->code = $lims_product_data->item_code;
-            $lims_product_data->cost += $lims_product_data->additional_cost;
+            $lims_product_variant_data = ProductVariant::where('item_code', $product_code[0])->first();
+            if ($lims_product_variant_data) {
+                $lims_product_data = Product::where([
+                    ['id', $lims_product_variant_data->product_id],
+                    ['is_active', true]
+                ])->first();
+            }
         }
-        $product[] = $lims_product_data->name;
-        $product[] = $lims_product_data->code;
-        $product[] = $lims_product_data->cost;
+
+        if (!$lims_product_data) {
+            return [];
+        }
+
+        $from_warehouse_id = $request->from_warehouse_id;
+        $results = [];
+
+        if ($lims_product_data->is_variant) {
+            $variants = ProductVariant::join('variants', 'product_variants.variant_id', '=', 'variants.id')
+                ->join('product_warehouse', function($join) use ($from_warehouse_id) {
+                    $join->on('product_variants.product_id', '=', 'product_warehouse.product_id')
+                         ->on('product_variants.variant_id', '=', 'product_warehouse.variant_id')
+                         ->where('product_warehouse.warehouse_id', $from_warehouse_id)
+                         ->where('product_warehouse.qty', '>', 0);
+                })
+                ->where('product_variants.product_id', $lims_product_data->id)
+                ->select('product_variants.*', 'variants.name as variant_name', 'product_warehouse.qty as warehouse_qty')
+                ->get();
+
+            foreach ($variants as $variant) {
+                $results[] = $this->getProductSearchDetails($lims_product_data, $variant, $variant->warehouse_qty);
+            }
+        } else {
+            $product_warehouse = Product_Warehouse::where([
+                ['product_id', $lims_product_data->id],
+                ['warehouse_id', $from_warehouse_id]
+            ])->first();
+            
+            $qty = $product_warehouse ? $product_warehouse->qty : 0;
+            $results[] = $this->getProductSearchDetails($lims_product_data, null, $qty);
+        }
+
+        return $results;
+    }
+
+    private function getProductSearchDetails($lims_product_data, $variant = null, $warehouse_qty = 0)
+    {
+        $product = [];
+        $product_variant_id = null;
+        $cost = $lims_product_data->cost;
+        $code = $lims_product_data->code;
+        
+        if ($variant) {
+            $product[] = $lims_product_data->name . ' [' . $variant->variant_name . ']';
+            $code = $variant->item_code;
+            $cost += $variant->additional_cost;
+            $product_variant_id = $variant->id;
+        } else {
+            $product[] = $lims_product_data->name;
+        }
+
+        $product[] = $code;
+        $product[] = $cost;
 
         if ($lims_product_data->tax_id) {
             $lims_tax_data = Tax::find($lims_product_data->tax_id);
@@ -331,6 +387,8 @@ class TransferController extends Controller
         $product[] = $product_variant_id;
         $product[] = $lims_product_data->is_batch;
         $product[] = $lims_product_data->is_imei;
+        $product[] = $warehouse_qty;
+
         return $product;
     }
 
@@ -381,7 +439,7 @@ class TransferController extends Controller
             $product_transfer['product_batch_id'] = null;
 
             //get product data
-            $lims_product_data = Product::select('is_variant')->find($id);
+            $lims_product_data = Product::select('is_variant', 'purchase_unit_id', 'unit_id')->find($id);
             if($lims_product_data->is_variant) {
                 $lims_product_variant_data = ProductVariant::select('variant_id')->FindExactProductWithCode($id, $product_code[$i])->first();
                 $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($id, $lims_product_variant_data->variant_id, $data['from_warehouse_id'])->first();
@@ -466,7 +524,11 @@ class TransferController extends Controller
             $product_transfer['product_id'] = $id;
             $product_transfer['imei_number'] = $imei_number[$i];
             $product_transfer['qty'] = $qty[$i];
-            $product_transfer['purchase_unit_id'] = $lims_purchase_unit_data->id;
+            if ($lims_purchase_unit_data) {
+                $product_transfer['purchase_unit_id'] = $lims_purchase_unit_data->id;
+            } else {
+                $product_transfer['purchase_unit_id'] = $lims_product_data->purchase_unit_id ?? $lims_product_data->unit_id;
+            }
             $product_transfer['net_unit_cost'] = $net_unit_cost[$i];
             $product_transfer['tax_rate'] = $tax_rate[$i];
             $product_transfer['tax'] = $tax[$i];
@@ -483,6 +545,11 @@ class TransferController extends Controller
         foreach ($lims_product_transfer_data as $key => $product_transfer_data) {
             $product = Product::find($product_transfer_data->product_id);
             $unit = Unit::find($product_transfer_data->purchase_unit_id);
+            if(!$unit || !$unit->unit_code) {
+                $unit = Unit::find($product->unit_id);
+            }
+            $unit_code = ($unit && $unit->unit_code) ? $unit->unit_code : 'pair';
+
             if($product_transfer_data->variant_id) {
                 $lims_product_variant_data = ProductVariant::select('item_code')->FindExactProduct($product_transfer_data->product_id, $product_transfer_data->variant_id)->first();
                 $product->code = $lims_product_variant_data->item_code;
@@ -491,7 +558,7 @@ class TransferController extends Controller
             if($product_transfer_data->imei_number)
                 $product_transfer[0][$key] .= '<br>IMEI or Serial Number: ' . $product_transfer_data->imei_number;
             $product_transfer[1][$key] = $product_transfer_data->qty;
-            $product_transfer[2][$key] = $unit->unit_code;
+            $product_transfer[2][$key] = $unit_code;
             $product_transfer[3][$key] = $product_transfer_data->tax;
             $product_transfer[4][$key] = $product_transfer_data->tax_rate;
             $product_transfer[5][$key] = $product_transfer_data->total;
@@ -502,7 +569,7 @@ class TransferController extends Controller
             else
                 $product_transfer[6][$key] = 'N/A';
         }
-        return $product_transfer;
+        return response()->json($product_transfer)->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
     }
 
     public function transferByCsv()
@@ -793,7 +860,7 @@ class TransferController extends Controller
         }
 
         foreach ($product_id as $key => $pro_id) {
-            $lims_product_data = Product::select('is_variant')->find($pro_id);
+            $lims_product_data = Product::select('is_variant', 'purchase_unit_id', 'unit_id')->find($pro_id);
             $lims_transfer_unit_data = Unit::where('unit_name', $purchase_unit[$key])->first();
             $variant_id = null;
             $product_transfer['product_batch_id'] = null;
@@ -899,7 +966,11 @@ class TransferController extends Controller
             $product_transfer['imei_number'] = $imei_number[$key];
             $product_transfer['transfer_id'] = $id;
             $product_transfer['qty'] = $qty[$key];
-            $product_transfer['purchase_unit_id'] = $lims_transfer_unit_data->id;
+            if ($lims_transfer_unit_data) {
+                $product_transfer['purchase_unit_id'] = $lims_transfer_unit_data->id;
+            } else {
+                $product_transfer['purchase_unit_id'] = $lims_product_data->purchase_unit_id ?? $lims_product_data->unit_id;
+            }
             $product_transfer['net_unit_cost'] = $net_unit_cost[$key];
             $product_transfer['tax_rate'] = $tax_rate[$key];
             $product_transfer['tax'] = $tax[$key];

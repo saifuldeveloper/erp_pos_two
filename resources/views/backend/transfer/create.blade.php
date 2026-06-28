@@ -380,62 +380,82 @@ $('button[name="update_btn"]').on("click", function() {
 });
 
 function productSearch(data){
+    var from_warehouse_id = $('select[name="from_warehouse_id"]').val();
     $.ajax({
         type: 'GET',
         url: 'lims_product_search',
         data: {
-            data: data
+            data: data,
+            from_warehouse_id: from_warehouse_id
         },
-        success: function(data) {
-            var flag = 1;
-            $(".product-code").each(function(i) {
-                if ($(this).val() == data[1]) {
-                    rowindex = i;
-                    var qty = parseFloat($('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val()) + 1;
-                    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(qty);
-                    checkQuantity(String(qty), true);
-                    flag = 0;
-                }
-            });
+        success: function(response) {
             $("input[name='product_code_name']").val('');
-            if(flag){
-                var newRow = $("<tr>");
-                var cols = '';
-                temp_unit_name = (data[6]).split(',');
-                cols += '<td>' + data[0] + '<button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button></td>';
-                cols += '<td>' + data[1] + '</td>';
-                cols += '<td><input type="number" class="form-control qty" name="qty[]" value="1" step="any" required/></td>';
-                cols += '<td class="net_unit_cost"></td>';
-                cols += '<td class="tax"></td>';
-                cols += '<td class="sub-total"></td>';
-                cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{trans("file.delete")}}</button></td>';
-                cols += '<input type="hidden" class="product-code" name="product_code[]" value="' + data[1] + '"/>';
-                cols += '<input type="hidden" class="product-id" name="product_id[]" value="' + data[9] + '"/>';
-                cols += '<input type="hidden" class="purchase-unit" name="purchase_unit[]" value="' + temp_unit_name[0] + '"/>';
-                cols += '<input type="hidden" class="net_unit_cost" name="net_unit_cost[]" />';
-                cols += '<input type="hidden" class="tax-rate" name="tax_rate[]" value="' + data[3] + '"/>';
-                cols += '<input type="hidden" class="tax-value" name="tax[]" />';
-                cols += '<input type="hidden" class="subtotal-value" name="subtotal[]" />';
-                cols += '<input type="hidden" class="imei-number" name="imei_number[]" />';
-
-                newRow.append(cols);
-                $("table.order-list tbody").prepend(newRow);
-                rowindex = newRow.index();
-                product_cost.splice(rowindex, 0, parseFloat(data[2]));
-                tax_rate.splice(rowindex, 0, parseFloat(data[3]));
-                tax_name.splice(rowindex, 0, data[4]);
-                tax_method.splice(rowindex, 0, data[5]);
-                unit_name.splice(rowindex, 0, data[6]);
-                unit_operator.splice(rowindex, 0, data[7]);
-                unit_operation_value.splice(rowindex, 0, data[8]);
-                is_imei.splice(rowindex, 0, data[12]);
-                checkQuantity(1, true);
-                if(data[12]) {
-                    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.edit-product').click();
-                }
+            if (Array.isArray(response)) {
+                response.forEach(function(item) {
+                    addProduct(item);
+                });
             }
         }
     });
+}
+
+function addProduct(data) {
+    var flag = 1;
+    $(".product-code").each(function(i) {
+        if ($(this).val() == data[1]) {
+            rowindex = i;
+            var qty = parseFloat($('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val()) + 1;
+            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(qty);
+            checkQuantity(String(qty), true);
+            flag = 0;
+        }
+    });
+
+    if (flag) {
+        var codeIndex = product_code.indexOf(data[1]);
+        if (codeIndex === -1) {
+            product_code.push(data[1]);
+            product_qty.push(data[13]);
+        } else {
+            product_qty[codeIndex] = data[13];
+        }
+
+        var newRow = $("<tr>");
+        var cols = '';
+        temp_unit_name = (data[6]).split(',');
+        cols += '<td>' + data[0] + '<button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button></td>';
+        cols += '<td>' + data[1] + '</td>';
+        cols += '<td><input type="number" class="form-control qty" name="qty[]" value="1" step="any" required/></td>';
+        cols += '<td class="net_unit_cost"></td>';
+        cols += '<td class="tax"></td>';
+        cols += '<td class="sub-total"></td>';
+        cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{trans("file.delete")}}</button></td>';
+        cols += '<input type="hidden" class="product-code" name="product_code[]" value="' + data[1] + '"/>';
+        cols += '<input type="hidden" class="product-id" name="product_id[]" value="' + data[9] + '"/>';
+        cols += '<input type="hidden" name="product_variant_id[]" value="' + (data[10] ? data[10] : '') + '"/>';
+        cols += '<input type="hidden" class="purchase-unit" name="purchase_unit[]" value="' + temp_unit_name[0] + '"/>';
+        cols += '<input type="hidden" class="net_unit_cost" name="net_unit_cost[]" />';
+        cols += '<input type="hidden" class="tax-rate" name="tax_rate[]" value="' + data[3] + '"/>';
+        cols += '<input type="hidden" class="tax-value" name="tax[]" />';
+        cols += '<input type="hidden" class="subtotal-value" name="subtotal[]" />';
+        cols += '<input type="hidden" class="imei-number" name="imei_number[]" />';
+
+        newRow.append(cols);
+        $("table.order-list tbody").prepend(newRow);
+        rowindex = newRow.index();
+        product_cost.splice(rowindex, 0, parseFloat(data[2]));
+        tax_rate.splice(rowindex, 0, parseFloat(data[3]));
+        tax_name.splice(rowindex, 0, data[4]);
+        tax_method.splice(rowindex, 0, data[5]);
+        unit_name.splice(rowindex, 0, data[6]);
+        unit_operator.splice(rowindex, 0, data[7]);
+        unit_operation_value.splice(rowindex, 0, data[8]);
+        is_imei.splice(rowindex, 0, data[12]);
+        checkQuantity(1, true);
+        if (data[12]) {
+            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.edit-product').click();
+        }
+    }
 }
 
 function edit() {
@@ -622,13 +642,24 @@ $(window).keydown(function(e){
 });
 
 $('#transfer-form').on('submit',function(e){
+    if($('select[name="from_warehouse_id"]').val() == $('select[name="to_warehouse_id"]').val()){
+        alert('Both Warehouse can not be same!');
+        e.preventDefault();
+        return;
+    }
+
+    // Remove rows with quantity <= 0 or empty
+    $('table.order-list tbody tr').each(function() {
+        var qty = parseFloat($(this).find('.qty').val());
+        if (isNaN(qty) || qty <= 0) {
+            $(this).remove();
+        }
+    });
+    calculateTotal();
+
     var rownumber = $('table.order-list tbody tr:last').index();
     if (rownumber < 0) {
         alert("Please insert product to order table!")
-        e.preventDefault();
-    }
-    else if($('select[name="from_warehouse_id"]').val() == $('select[name="to_warehouse_id"]').val()){
-        alert('Both Warehouse can not be same!');
         e.preventDefault();
     }
     else {

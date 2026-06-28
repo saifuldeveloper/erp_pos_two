@@ -1095,12 +1095,12 @@ class ReportController extends Controller
 
     public function productReport(Request $request)
     {
-        $data = $request->all();
-        $start_date = $data['start_date'];
-        $end_date = $data['end_date'];
-        $warehouse_id = $data['warehouse_id'];
+        $start_date = $request->input('start_date') ?? date('Y-m') . '-' . '01';
+        $end_date = $request->input('end_date') ?? date('Y-m-d');
+        $warehouse_id = $request->input('warehouse_id') ?? 0;
+        $in_stock = $request->input('in_stock') ?? 0;
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-        return view('backend.report.product_report', compact('start_date', 'end_date', 'warehouse_id', 'lims_warehouse_list'));
+        return view('backend.report.product_report', compact('start_date', 'end_date', 'warehouse_id', 'lims_warehouse_list', 'in_stock'));
     }
 
     public function productReportData(Request $request)
@@ -1119,6 +1119,32 @@ class ReportController extends Controller
             1 => 'name'
         );
 
+        $in_stock = $request->input('in_stock') ?? 0;
+        $query = Product::where('is_active', true);
+
+        if ($in_stock == 1) {
+            if ($warehouse_id > 0) {
+                $query->whereIn('id', function($q) use ($warehouse_id) {
+                    $q->select('product_id')
+                      ->from('product_warehouse')
+                      ->where('warehouse_id', $warehouse_id)
+                      ->where('qty', '>', 0);
+                });
+            } else {
+                $query->where('qty', '>', 0);
+            }
+        }
+
+        if ($request->input('search.value')) {
+            $search = $request->input('search.value');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('code', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $totalData = $query->count();
+
         if ($request->input('length') != -1)
             $limit = $request->input('length');
         else
@@ -1127,30 +1153,13 @@ class ReportController extends Controller
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column') ?? 1] ?? 'name';
         $dir = $request->input('order.0.dir');
-        if ($request->input('search.value')) {
-            $search = $request->input('search.value');
-            $totalData = Product::where(function ($query) use ($search) {
-                $query->where('name', 'LIKE', "%{$search}%")
-                    ->orWhere('code', 'LIKE', "%{$search}%");
-            })->where('is_active', true)->count();
-            $lims_product_all = Product::with('category.parent')
-                ->select('id', 'name', 'code', 'category_id', 'qty', 'is_variant', 'price', 'cost')
-                ->where('name', 'LIKE', "%{$search}%")
-                ->orWhere('code', 'LIKE', "%{$search}%")
-                ->where('is_active', true)->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir)
-                ->get();
-        } else {
-            $totalData = Product::where('is_active', true)->count();
-            $lims_product_all = Product::with('category.parent')
-                ->select('id', 'name', 'code', 'category_id', 'qty', 'is_variant', 'price', 'cost')
-                ->where('is_active', true)
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir)
-                ->get();
-        }
+
+        $lims_product_all = $query->with('category.parent')
+            ->select('id', 'name', 'code', 'category_id', 'qty', 'is_variant', 'price', 'cost')
+            ->offset($start)
+            ->limit($limit)
+            ->orderBy($order, $dir)
+            ->get();
 
         $totalFiltered = $totalData;
         $data = [];
@@ -1303,6 +1312,9 @@ class ReportController extends Controller
                         $nestedData['profit'] = number_format((float) $nestedData['profit'], config('decimal'), '.', '');
 
                         /*if($nestedData['purchased_qty'] > 0 || $nestedData['transfered_qty'] > 0 || $nestedData['sold_qty'] > 0 || $nestedData['returned_qty'] > 0 || $nestedData['purchase_returned_qty']) {*/
+                        if ($in_stock == 1 && $nestedData['in_stock'] <= 0) {
+                            continue;
+                        }
                         $data[] = $nestedData;
                         //}
                     }
@@ -1420,6 +1432,9 @@ class ReportController extends Controller
 
                     $nestedData['profit'] = number_format((float) $nestedData['profit'], config('decimal'), '.', '');
                     /*if($nestedData['purchased_qty'] > 0 || $nestedData['transfered_qty'] > 0 || $nestedData['sold_qty'] > 0 || $nestedData['returned_qty'] > 0 || $nestedData['purchase_returned_qty']) {*/
+                    if ($in_stock == 1 && $nestedData['in_stock'] <= 0) {
+                        continue;
+                    }
                     $data[] = $nestedData;
                     //}
                 }
@@ -1619,6 +1634,9 @@ class ReportController extends Controller
 
                         $nestedData['profit'] = number_format((float) $nestedData['profit'], config('decimal'), '.', '');
 
+                        if ($in_stock == 1 && $nestedData['in_stock'] <= 0) {
+                            continue;
+                        }
                         $data[] = $nestedData;
                     }
                 } else {
@@ -1804,6 +1822,9 @@ class ReportController extends Controller
 
                     $nestedData['profit'] = number_format((float) $nestedData['profit'], config('decimal'), '.', '');
 
+                    if ($in_stock == 1 && $nestedData['in_stock'] <= 0) {
+                        continue;
+                    }
                     $data[] = $nestedData;
                 }
             }

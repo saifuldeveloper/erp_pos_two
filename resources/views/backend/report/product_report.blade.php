@@ -11,7 +11,7 @@
             </div>
             {!! Form::open(['route' => 'report.product', 'method' => 'get']) !!}
             <div class="row mb-3 product-report-filter">
-                <div class="col-md-4 offset-md-2 mt-3">
+                <div class="col-md-3 offset-md-1 mt-3">
                     <div class="form-group row">
                         <label class="d-tc mt-2"><strong>{{trans('file.Choose Your Date')}}</strong> &nbsp;</label>
                         <div class="d-tc">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mt-3">
+                <div class="col-md-3 mt-3">
                     <div class="form-group row">
                         <label class="d-tc mt-2"><strong>{{trans('file.Choose Warehouse')}}</strong> &nbsp;</label>
                         <div class="d-tc">
@@ -33,6 +33,18 @@
                                 <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-4">
+                    <div class="form-group row">
+                        <div class="d-tc mt-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="in_stock" id="in_stock" value="1" {{ $in_stock == 1 ? 'checked' : '' }} style="width:20px; height:20px; vertical-align:middle; margin-right:8px;">
+                                <label class="form-check-label" for="in_stock" style="vertical-align:middle;">
+                                    <strong>{{trans('file.In Stock')}}</strong>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -118,6 +130,7 @@
     var start_date = $(".product-report-filter input[name=start_date]").val();
     var end_date = $(".product-report-filter input[name=end_date]").val();
     var warehouse_id = $(".product-report-filter select[name=warehouse_id]").val();
+    var in_stock = $(".product-report-filter input[name=in_stock]").is(':checked') ? 1 : 0;
     $('#product-report-table').DataTable( {
         "processing": true,
         "serverSide": true,
@@ -126,7 +139,8 @@
             data:{
                 start_date: start_date,
                 end_date: end_date,
-                warehouse_id: warehouse_id
+                warehouse_id: warehouse_id,
+                in_stock: in_stock
             },
             dataType: "json",
             type:"post",

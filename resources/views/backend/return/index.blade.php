@@ -66,6 +66,7 @@
                     <th>{{trans('file.Warehouse')}}</th>
                     <th>{{trans('file.Biller')}}</th>
                     <th>{{trans('file.customer')}}</th>
+                    <th>{{trans('file.Qty')}}</th>
                     <th>{{trans('file.Purchase Price')}}</th>
                     <th>{{trans('file.grand total')}}</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
@@ -75,6 +76,7 @@
             <tfoot class="tfoot active">
                 <th></th>
                 <th>{{trans('file.Total')}}</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -223,6 +225,7 @@
             {"data": "warehouse"},
             {"data": "biller"},
             {"data": "customer"},
+            {"data": "qty"},
             {"data": "purchase_total"},
             {"data": "grand_total"},
             {"data": "options"},
@@ -241,7 +244,7 @@
         'columnDefs': [
             {
                 "orderable": false,
-                'targets': [0, 3, 4, 5, 6, 7, 8, 9]
+                'targets': [0, 3, 4, 5, 6, 7, 8, 9, 10]
             },
             {
                 'render': function(data, type, row, meta){
@@ -366,16 +369,17 @@
 
 
     function datatable_sum(dt_selector, is_calling_first) {
-        var rows;
         if (dt_selector.rows( '.selected' ).any() && is_calling_first) {
-            rows = dt_selector.rows( '.selected' ).indexes();
+            var rows = dt_selector.rows( '.selected' ).indexes();
 
             $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
             $( dt_selector.column( 8 ).footer() ).html(dt_selector.cells( rows, 8, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 9 ).footer() ).html(dt_selector.cells( rows, 9, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
         }
         else {
-            $( dt_selector.column( 7 ).footer() ).html(dt_selector.cells( rows, 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
-            $( dt_selector.column( 8 ).footer() ).html(dt_selector.cells( rows, 8, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 7 ).footer() ).html(dt_selector.column( 7, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 8 ).footer() ).html(dt_selector.column( 8, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
+            $( dt_selector.column( 9 ).footer() ).html(dt_selector.column( 9, { page: 'current' } ).data().sum().toFixed({{$general_setting->decimal}}));
         }
     }
 
