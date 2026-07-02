@@ -87,7 +87,12 @@
                                     <tbody>
                                         @foreach ($waste->items as $item)
                                             <tr>
-                                                <td>{{ $item->product->name }}</td>
+                                                <td>
+                                                    {{ $item->product->name }}
+                                                    @if($item->varient_code)
+                                                        <br><small>[{{ $item->varient_code }}]</small>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $item->qty }}</td>
                                                 <td>{{ $item->unit_price }}</td>
                                                 <td>{{ $item->subtotal }}</td>

@@ -58,6 +58,7 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
+           'timezone' => '+00:00',
             'modes'  => [
                 'STRICT_TRANS_TABLES',
                 'NO_ZERO_IN_DATE',

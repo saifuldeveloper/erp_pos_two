@@ -12,6 +12,7 @@ class WasteItem extends Model
     protected $fillable = [
         'waste_id',
         'product_id',
+        'varient_code',
         'qty',
         'unit_price',
         'subtotal'

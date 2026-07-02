@@ -184,109 +184,81 @@
         });
 
         function productSearch(data) {
-            var product_info = data.split(" ");
-            var code = product_info[0];
-            var pre_qty = 0;
-            $(".product-code").each(function(i) {
-                if ($(this).val() == code) {
-                    rowindex = i;
-                    pre_qty = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val();
-                }
-            });
-            data += '?' + $('#customer_id').val() + '?' + (parseFloat(pre_qty) + 1);
+            $("input[name='product_code_name']").val('');
             $.ajax({
                 type: 'GET',
-                url: '{{ route('product_sale.search') }}',
+                url: '{{ route('waste.product_search') }}',
                 data: {
                     data: data
                 },
-                success: function(data) {
-                    var flag = 1;
-                    if (pre_qty > 0) {
-                        var qty = data[15];
-                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(qty);
-                        var unit_price = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) +
-                                ') .unit_price')
-                            .text();
-                        var sub_total = qty * unit_price;
-                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .sub-total').text(
-                            sub_total.toFixed(2));
-                        $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .subtotal-value').val(
-                            sub_total.toFixed(2));
-                        var total_qty = 0;
-                        var total = 0;
-                        $(".qty").each(function() {
-                            total_qty += parseFloat($(this).val());
+                success: function(response) {
+                    if (Array.isArray(response)) {
+                        response.forEach(function(item) {
+                            addProductRow(item);
                         });
-                        $("#total-qty").text(total_qty);
-                        $(".subtotal-value").each(function() {
-                            total += parseFloat($(this).val());
-                        });
-                        $("#total").text(total.toFixed(2));
-                        $('input[name="total"]').val(total.toFixed(2));
-                        pos = product_code.indexOf(data[1]);
-                        flag = 0;
-                    }
-                    $("input[name='product_code_name']").val('');
-                    if (flag) {
-                        var newRow = $("<tr>");
-                        var cols = '';
-                        pos = product_code.indexOf(data[1]);
-                        temp_unit_name = (data[6]).split(',');
-                        cols += '<td>' + data[0] + '</td>';
-                        cols += '<td>' + data[1] + '</td>';
-                        cols +=
-                            '<td><input type="number" class="form-control qty" name="product[' + index +
-                            '][qty]" min="1" value="' +
-                            data[
-                                15] + '" required/></td>';
-
-                        cols += '<td class="unit_price">' + data[2] + '</td>';
-                        cols += '<td class="sub-total">' + data[2] + '</td>';
-                        cols +=
-                            '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button></td>';
-                        cols +=
-                            '<input type="hidden" class="product-code" name="product[' + index +
-                            '][code]" value="' +
-                            data[1] + '"/>';
-                        cols +=
-                            '<input type="hidden" class="product-id" name="product[' + index +
-                            '][product_id]" value="' +
-                            data[
-                                9] + '"/>';
-                        cols +=
-                            '<input type="hidden" class="unit_price" name="product[' + index +
-                            '][unit_price]" value="' +
-                            data[2] + '"/>';
-                        cols +=
-                            '<input type="hidden" class="subtotal-value" name="product[' + index +
-                            '][subtotal]" value="' +
-                            data[2] + '"/>';
-
-                        newRow.append(cols);
-                        $("table.order-list tbody").prepend(newRow);
-                        rowindex = newRow.index();
-                        if (data[13]) {
-                            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find(
-                                '.edit-product').click();
-                        }
-
-                        var total_qty = 0;
-                        var total = 0;
-                        $(".qty").each(function() {
-                            total_qty += parseFloat($(this).val());
-                        });
-                        $("#total-qty").text(total_qty);
-                        $(".subtotal-value").each(function() {
-                            total += parseFloat($(this).val());
-                        });
-                        $("#total").text(total.toFixed(2));
-                        $('input[name="total"]').val(total.toFixed(2));
-                        index++;
-
                     }
                 }
             });
+        }
+
+        function addProductRow(data) {
+            var flag = 1;
+            var code = data[1];
+            $(".product-code").each(function(i) {
+                if ($(this).val() == code) {
+                    rowindex = i;
+                    var qty = parseFloat($('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val()) + 1;
+                    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(qty);
+                    
+                    var unit_price = $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .unit_price').text();
+                    var sub_total = qty * unit_price;
+                    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .sub-total').text(sub_total.toFixed(2));
+                    $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .subtotal-value').val(sub_total.toFixed(2));
+                    
+                    calculateTotal();
+                    flag = 0;
+                }
+            });
+
+            if (flag) {
+                var newRow = $("<tr>");
+                var cols = '';
+                temp_unit_name = (data[6]).split(',');
+                cols += '<td>' + data[0] + '</td>';
+                cols += '<td>' + data[1] + '</td>';
+                cols += '<td><input type="number" class="form-control qty" name="product[' + index + '][qty]" min="0" value="1" /></td>';
+
+                cols += '<td class="unit_price">' + data[2] + '</td>';
+                cols += '<td class="sub-total">' + data[2] + '</td>';
+                cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button></td>';
+                cols += '<input type="hidden" class="product-code" name="product[' + index + '][code]" value="' + data[1] + '"/>';
+                if (data[14]) {
+                    cols += '<input type="hidden" class="varient-code" name="product[' + index + '][varient_code]" value="' + data[1] + '"/>';
+                }
+                cols += '<input type="hidden" class="product-id" name="product[' + index + '][product_id]" value="' + data[9] + '"/>';
+                cols += '<input type="hidden" class="unit_price" name="product[' + index + '][unit_price]" value="' + data[2] + '"/>';
+                cols += '<input type="hidden" class="subtotal-value" name="product[' + index + '][subtotal]" value="' + data[2] + '"/>';
+
+                newRow.append(cols);
+                $("table.order-list tbody").prepend(newRow);
+                
+                calculateTotal();
+                index++;
+            }
+        }
+
+        function calculateTotal() {
+            var total_qty = 0;
+            var total = 0;
+            $(".qty").each(function() {
+                total_qty += parseFloat($(this).val() || 0);
+            });
+            $("#total-qty").text(total_qty);
+            $(".subtotal-value").each(function() {
+                total += parseFloat($(this).val() || 0);
+            });
+            $("#total").text(total.toFixed(2));
+            $('input[name="total"]').val(total.toFixed(2));
         }
 
         //quantity change
@@ -296,34 +268,14 @@
             var sub_total = qty * unit_price;
             $(this).closest('tr').find('.sub-total').text(sub_total.toFixed(2));
             $(this).closest('tr').find('.subtotal-value').val(sub_total.toFixed(2));
-            var total_qty = 0;
-            var total = 0;
-            $(".qty").each(function() {
-                total_qty += parseFloat($(this).val());
-            });
-            $("#total-qty").text(total_qty);
-            $(".subtotal-value").each(function() {
-                total += parseFloat($(this).val());
-            });
-            $("#total").text(total.toFixed(2));
-            $('input[name="total"]').val(total.toFixed(2));
+            calculateTotal();
         });
 
         //delete row
         $(document).on('click', '.ibtnDel', function() {
             var row = $(this).closest('tr');
             row.remove();
-            var total_qty = 0;
-            var total = 0;
-            $(".qty").each(function() {
-                total_qty += parseFloat($(this).val());
-            });
-            $("#total-qty").text(total_qty);
-            $(".subtotal-value").each(function() {
-                total += parseFloat($(this).val());
-            });
-            $("#total").text(total.toFixed(2));
-            $('input[name="total"]').val(total.toFixed(2));
+            calculateTotal();
         });
     </script>
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>

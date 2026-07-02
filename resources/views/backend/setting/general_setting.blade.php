@@ -35,6 +35,7 @@
                                     </span>
                                     @endif
                                 </div>
+                                <!--
                                 <div class="col-md-4 mt-4">
                                     <div class="form-group">
                                         @if($lims_general_setting_data->is_rtl)
@@ -47,6 +48,10 @@
 
                                     </div>
                                 </div>
+                                -->
+                                @if($lims_general_setting_data->is_rtl)
+                                <input type="hidden" name="is_rtl" value="1">
+                                @endif
                                 @if(config('database.connections.saleprosaas_landlord'))
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
@@ -73,6 +78,7 @@
                                         <input type="text" name="vat_registration_number" class="form-control" value="@if($lims_general_setting_data){{$lims_general_setting_data->vat_registration_number}}@endif" />
                                     </div>
                                 </div>
+                                <!--
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Time Zone')}}</label>
@@ -86,6 +92,9 @@
                                         </select>
                                     </div>
                                 </div>
+                                -->
+                                <input type="hidden" name="timezone" value="{{env('APP_TIMEZONE') ?? 'Asia/Dhaka'}}">
+                                <!--
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Currency')}} *</label>
@@ -100,6 +109,9 @@
                                         </select>
                                     </div>
                                 </div>
+                                -->
+                                <input type="hidden" name="currency" value="{{$lims_general_setting_data->currency}}">
+                                <!--
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Currency Position')}} *</label><br>
@@ -120,12 +132,17 @@
                                         @endif
                                     </div>
                                 </div>
+                                -->
+                                <input type="hidden" name="currency_position" value="{{$lims_general_setting_data->currency_position}}">
+                                <!--
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Digits after deciaml point')}}*</label>
                                         <input class="form-control" type="number" name="decimal" value="@if($lims_general_setting_data){{$lims_general_setting_data->decimal}}@endif" max="6" min="0">
                                     </div>
                                 </div>
+                                -->
+                                <input type="hidden" name="decimal" value="@if($lims_general_setting_data){{$lims_general_setting_data->decimal}}@else{{2}}@endif">
                                 <div class="col-md-4 d-none">
                                     <div class="form-group">
                                         <label>{{trans('file.Theme')}} *</label>
@@ -157,6 +174,7 @@
                                         @endif
                                     </div>
                                 </div>
+                                <!--
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Staff Access')}} *</label>
@@ -169,6 +187,8 @@
                                         </select>
                                     </div>
                                 </div>
+                                -->
+                                <input type="hidden" name="staff_access" value="{{$lims_general_setting_data->staff_access}}">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Invoice Format')}} *</label>
@@ -212,12 +232,15 @@
                                         </select>
                                     </div>
                                 </div>
+                                <!--
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>{{trans('file.Developed By')}}</label>
                                         <input type="text" name="developed_by" class="form-control" value="{{$lims_general_setting_data->developed_by}}">
                                     </div>
                                 </div>
+                                -->
+                                <input type="hidden" name="developed_by" value="{{$lims_general_setting_data->developed_by}}">
                                 @if(config('database.connections.saleprosaas_landlord'))
                                     <br>
                                     <div class="col-md-2">

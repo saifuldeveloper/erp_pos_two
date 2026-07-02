@@ -316,6 +316,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
         Route::get('wastes/create', 'create')->name('waste.create');
         Route::get('wastes/data', 'wastedata')->name('waste.wastedata');
         Route::get('wastes/receiver-list/{type}', 'getReceiverList')->name('waste.getReceiverList');
+        Route::get('wastes/lims_product_search', 'limsProductSearch')->name('waste.product_search');
         Route::post('wastes/store', 'store')->name('waste.store');
         Route::get('wastes/{id}/edit', 'edit')->name('waste.edit');
         Route::put('wastes/{id}', 'update')->name('waste.update');

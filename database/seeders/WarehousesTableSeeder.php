@@ -22,13 +22,13 @@ class WarehousesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Comilla Warehouse',
+                'name' => 'Comilla Showroom',
                 'phone' => '01629166721',
                 'email' => NULL,
                 'address' => 'Kandirpar, Comilla',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 11:20:40',
-                'updated_at' => '2025-04-19 11:20:40',
+                'updated_at' => '2026-06-18 23:47:41',
                 'is_default' => 1,
             ),
             1 => 

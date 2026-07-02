@@ -52,24 +52,14 @@ class RolesTableSeeder extends Seeder
             3 => 
             array (
                 'id' => 5,
-                'name' => 'Customer',
-                'description' => 'Customer can access their own data',
+                'name' => 'Billers',
+                'description' => 'Billerss can access their own data',
                 'is_active' => 1,
                 'created_at' => '2020-11-05 11:43:16',
                 'updated_at' => '2020-11-15 05:24:15',
                 'guard_name' => 'web',
             ),
             4 => 
-            array (
-                'id' => 4,
-                'name' => 'Biller',
-                'description' => 'Biller can access limited data',
-                'is_active' => 1,
-                'created_at' => '2020-11-05 11:43:16',
-                'updated_at' => '2020-11-15 05:24:15',
-                'guard_name' => 'web',
-            ),
-            5 => 
             array (
                 'id' => 6,
             'name' => 'Admin (Demo)',
@@ -78,7 +68,27 @@ class RolesTableSeeder extends Seeder
                 'created_at' => '2023-08-12 13:55:13',
                 'updated_at' => '2024-12-22 07:41:38',
                 'guard_name' => 'web',
-            )
+            ),
+            5 => 
+            array (
+                'id' => 7,
+                'name' => 'Salesman',
+                'description' => NULL,
+                'is_active' => 0,
+                'created_at' => '2024-12-11 08:11:03',
+                'updated_at' => '2024-12-21 06:58:10',
+                'guard_name' => 'web',
+            ),
+            6 => 
+            array (
+                'id' => 8,
+                'name' => 'Management',
+                'description' => NULL,
+                'is_active' => 1,
+                'created_at' => '2024-12-22 07:23:34',
+                'updated_at' => '2024-12-22 07:23:34',
+                'guard_name' => 'web',
+            ),
         ));
         
         

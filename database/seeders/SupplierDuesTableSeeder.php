@@ -1251,6 +1251,116 @@ class SupplierDuesTableSeeder extends Seeder
                 'created_at' => '2026-06-11 18:36:32',
                 'updated_at' => '2026-06-11 18:36:32',
             ),
+            112 => 
+            array (
+                'id' => 113,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '30000.00',
+                'payment_ids' => '[12461]',
+                'note' => 'Brac Bank',
+                'created_at' => '2026-06-14 13:37:17',
+                'updated_at' => '2026-06-14 13:37:17',
+            ),
+            113 => 
+            array (
+                'id' => 114,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '10000.00',
+                'payment_ids' => '[12462]',
+                'note' => 'Baksh Payment',
+                'created_at' => '2026-06-14 13:37:41',
+                'updated_at' => '2026-06-14 13:37:41',
+            ),
+            114 => 
+            array (
+                'id' => 115,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '36000.00',
+                'payment_ids' => '[12528]',
+                'note' => 'Brac Bank',
+                'created_at' => '2026-06-16 17:09:04',
+                'updated_at' => '2026-06-16 17:09:04',
+            ),
+            115 => 
+            array (
+                'id' => 116,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '10000.00',
+                'payment_ids' => '[12558]',
+                'note' => 'Baksh Payment',
+                'created_at' => '2026-06-17 20:23:30',
+                'updated_at' => '2026-06-17 20:23:30',
+            ),
+            116 => 
+            array (
+                'id' => 117,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '40000.00',
+                'payment_ids' => '[12574]',
+                'note' => 'BRAC BANK',
+                'created_at' => '2026-06-18 15:08:52',
+                'updated_at' => '2026-06-18 15:08:52',
+            ),
+            117 => 
+            array (
+                'id' => 118,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '10000.00',
+                'payment_ids' => '[12617]',
+                'note' => 'Baksh Payment',
+                'created_at' => '2026-06-20 21:06:56',
+                'updated_at' => '2026-06-20 21:06:56',
+            ),
+            118 => 
+            array (
+                'id' => 119,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '42500.00',
+                'payment_ids' => '[12618]',
+                'note' => 'Brac Bank',
+                'created_at' => '2026-06-21 11:06:23',
+                'updated_at' => '2026-06-21 11:06:23',
+            ),
+            119 => 
+            array (
+                'id' => 120,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '10000.00',
+                'payment_ids' => '[12644]',
+                'note' => 'Baksh Payment',
+                'created_at' => '2026-06-22 10:38:40',
+                'updated_at' => '2026-06-22 10:38:40',
+            ),
+            120 => 
+            array (
+                'id' => 121,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '40000.00',
+                'payment_ids' => '[12709]',
+                'note' => 'Brac Bank',
+                'created_at' => '2026-06-25 16:19:22',
+                'updated_at' => '2026-06-25 16:19:23',
+            ),
+            121 => 
+            array (
+                'id' => 122,
+                'supplier_id' => 1,
+                'account_id' => 1,
+                'amount' => '3250.00',
+                'payment_ids' => '[12737]',
+                'note' => 'Pos Pubali',
+                'created_at' => '2026-06-27 21:40:49',
+                'updated_at' => '2026-06-27 21:40:49',
+            ),
         ));
         
         

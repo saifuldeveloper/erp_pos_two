@@ -73,6 +73,24 @@ class BillersTableSeeder extends Seeder
                 'created_at' => '2025-11-19 05:47:36',
                 'updated_at' => '2025-11-19 05:47:36',
             ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'Showroom own',
+                'image' => NULL,
+                'company_name' => 'Avijatri',
+                'vat_number' => NULL,
+                'email' => 'showroom@gmail.com',
+                'phone_number' => '0111',
+                'address' => 'comilla',
+                'city' => 'comilla',
+                'state' => NULL,
+                'postal_code' => NULL,
+                'country' => NULL,
+                'is_active' => 1,
+                'created_at' => '2026-06-22 14:16:50',
+                'updated_at' => '2026-06-22 14:16:50',
+            ),
         ));
         
         

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('waste_id');
             $table->unsignedBigInteger('product_id');
+            $table->string('varient_code')->nullable();
             $table->integer('qty');
             $table->double('unit_price');
             $table->double('subtotal');

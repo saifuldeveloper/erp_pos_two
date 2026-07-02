@@ -8,6 +8,9 @@ use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Supplier;
+use App\Models\ProductVariant;
+use App\Models\Tax;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -212,6 +215,19 @@ class WasteController extends Controller
 
     public function store(Request $request)
     {
+        $filtered_products = [];
+        if ($request->product) {
+            foreach ($request->product as $prod) {
+                if (isset($prod['qty']) && (float)$prod['qty'] > 0) {
+                    $filtered_products[] = $prod;
+                }
+            }
+        }
+
+        if (empty($filtered_products)) {
+            return redirect()->back()->with('not_permitted', 'Please enter quantity for at least one item.');
+        }
+
         $waste = new Waste();
         $waste->receiver_type = $request->receiver_type;
         $waste->receiver_id = explode('-', $request->receiver_id)[0];
@@ -220,13 +236,24 @@ class WasteController extends Controller
         $waste->total_price = $request->total;
         $waste->save();
 
-        $waste->items()->createMany($request->product);
+        $waste->items()->createMany($filtered_products);
 
         if ($waste) {
-            foreach ($request->product as $data) {
+            foreach ($filtered_products as $data) {
                 $product = Product::find($data['product_id']);
                 $product->qty -= $data['qty'];
                 $product->save();
+
+                if (isset($data['varient_code']) && $data['varient_code']) {
+                    $product_variant = ProductVariant::where([
+                        ['product_id', $data['product_id']],
+                        ['item_code', $data['varient_code']]
+                    ])->first();
+                    if ($product_variant) {
+                        $product_variant->qty -= $data['qty'];
+                        $product_variant->save();
+                    }
+                }
             }
         }
 
@@ -300,6 +327,19 @@ class WasteController extends Controller
 
     public function update(Request $request, $id)
     {
+        $filtered_products = [];
+        if ($request->product) {
+            foreach ($request->product as $prod) {
+                if (isset($prod['qty']) && (float)$prod['qty'] > 0) {
+                    $filtered_products[] = $prod;
+                }
+            }
+        }
+
+        if (empty($filtered_products)) {
+            return redirect()->back()->with('not_permitted', 'Please enter quantity for at least one item.');
+        }
+
         $waste = Waste::find($id);
         $waste->receiver_type = $request->receiver_type;
         $waste->receiver_id = explode('-', $request->receiver_id)[0];
@@ -313,17 +353,39 @@ class WasteController extends Controller
                 $product = Product::find($data->product_id);
                 $product->qty += $data->qty;
                 $product->save();
+
+                if ($data->varient_code) {
+                    $product_variant = ProductVariant::where([
+                        ['product_id', $data->product_id],
+                        ['item_code', $data->varient_code]
+                    ])->first();
+                    if ($product_variant) {
+                        $product_variant->qty += $data->qty;
+                        $product_variant->save();
+                    }
+                }
             }
         }
 
         $waste->items()->delete();
-        $waste->items()->createMany($request->product);
+        $waste->items()->createMany($filtered_products);
 
         if ($waste) {
-            foreach ($request->product as $data) {
+            foreach ($filtered_products as $data) {
                 $product = Product::find($data['product_id']);
                 $product->qty -= $data['qty'];
                 $product->save();
+
+                if (isset($data['varient_code']) && $data['varient_code']) {
+                    $product_variant = ProductVariant::where([
+                        ['product_id', $data['product_id']],
+                        ['item_code', $data['varient_code']]
+                    ])->first();
+                    if ($product_variant) {
+                        $product_variant->qty -= $data['qty'];
+                        $product_variant->save();
+                    }
+                }
             }
         }
 
@@ -338,6 +400,17 @@ class WasteController extends Controller
                 $product = Product::find($data->product_id);
                 $product->qty += $data->qty;
                 $product->save();
+
+                if ($data->varient_code) {
+                    $product_variant = ProductVariant::where([
+                        ['product_id', $data->product_id],
+                        ['item_code', $data->varient_code]
+                    ])->first();
+                    if ($product_variant) {
+                        $product_variant->qty += $data->qty;
+                        $product_variant->save();
+                    }
+                }
             }
         }
 
@@ -345,5 +418,110 @@ class WasteController extends Controller
         $waste->delete();
 
         return redirect()->route('waste.index');
+    }
+
+    public function limsProductSearch(Request $request)
+    {
+        $product_code = explode("(", $request['data']);
+        $product_code[0] = rtrim($product_code[0], " ");
+
+        $lims_product_data = Product::where([
+            ['code', $product_code[0]],
+            ['is_active', true]
+        ])->first();
+
+        if(!$lims_product_data) {
+            $lims_product_variant_data = ProductVariant::where('item_code', $product_code[0])->first();
+            if ($lims_product_variant_data) {
+                $lims_product_data = Product::where([
+                    ['id', $lims_product_variant_data->product_id],
+                    ['is_active', true]
+                ])->first();
+            }
+        }
+
+        if (!$lims_product_data) {
+            return [];
+        }
+
+        $results = [];
+
+        if ($lims_product_data->is_variant) {
+            $variants = ProductVariant::join('variants', 'product_variants.variant_id', '=', 'variants.id')
+                ->where('product_variants.product_id', $lims_product_data->id)
+                ->select('product_variants.*', 'variants.name as variant_name')
+                ->get();
+
+            foreach ($variants as $variant) {
+                $results[] = $this->getProductSearchDetails($lims_product_data, $variant, $variant->qty);
+            }
+        } else {
+            $results[] = $this->getProductSearchDetails($lims_product_data, null, $lims_product_data->qty);
+        }
+
+        return $results;
+    }
+
+    private function getProductSearchDetails($lims_product_data, $variant = null, $qty = 0)
+    {
+        $product = [];
+        $product_variant_id = null;
+        $price = $lims_product_data->price;
+        $code = $lims_product_data->code;
+
+        if ($variant) {
+            $product[] = $lims_product_data->name . ' [' . $variant->variant_name . ']';
+            $code = $variant->item_code;
+            $price += $variant->additional_price;
+            $product_variant_id = $variant->id;
+        } else {
+            $product[] = $lims_product_data->name;
+        }
+
+        $product[] = $code;
+        $product[] = $price;
+        if ($lims_product_data->tax_id) {
+            $lims_tax_data = Tax::find($lims_product_data->tax_id);
+            $product[] = $lims_tax_data->rate;
+            $product[] = $lims_tax_data->name;
+        } else {
+            $product[] = 0;
+            $product[] = 'No Tax';
+        }
+        $product[] = $lims_product_data->tax_method;
+        if ($lims_product_data->type == 'standard') {
+            $units = Unit::where("base_unit", $lims_product_data->unit_id)
+                ->orWhere('id', $lims_product_data->unit_id)
+                ->get();
+            $unit_name = array();
+            $unit_operator = array();
+            $unit_operation_value = array();
+            foreach ($units as $unit) {
+                if ($lims_product_data->sale_unit_id == $unit->id) {
+                    array_unshift($unit_name, $unit->unit_name);
+                    array_unshift($unit_operator, $unit->operator);
+                    array_unshift($unit_operation_value, $unit->operation_value);
+                } else {
+                    $unit_name[] = $unit->unit_name;
+                    $unit_operator[] = $unit->operator;
+                    $unit_operation_value[] = $unit->operation_value;
+                }
+            }
+            $product[] = implode(",", $unit_name) . ',';
+            $product[] = implode(",", $unit_operator) . ',';
+            $product[] = implode(",", $unit_operation_value) . ',';
+        } else {
+            $product[] = 'n/a' . ',';
+            $product[] = 'n/a' . ',';
+            $product[] = 'n/a' . ',';
+        }
+        $product[] = $lims_product_data->id;
+        $product[] = $product_variant_id;
+        $product[] = $lims_product_data->promotion;
+        $product[] = $lims_product_data->is_batch;
+        $product[] = $lims_product_data->is_imei;
+        $product[] = $lims_product_data->is_variant;
+        $product[] = $qty; // data[15]
+        return $product;
     }
 }
