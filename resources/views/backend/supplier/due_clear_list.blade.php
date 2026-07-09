@@ -9,110 +9,153 @@
                     aria-hidden="true">&times;</span></button>{!! session()->get('message') !!}</div>
     @endif
 
-    <section>
+    <section class="forms">
         <div class="container-fluid">
-            <h2 class="text-center"> Due Clear List of {{ $lims_supplier->name }}</h2>
-        </div>
-        <div class="table-responsive">
-            <table id="supplier-table" class="table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Account</th>
-                        <th>Amount</th>
-                        <th>Note</th>
-                        <th class="not-exported">{{ trans('file.action') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($lims_supplier_due_list as $key => $supplier_due)
-                        <tr data-id="{{ $supplier_due->id }}">
-                            <td>{{ Carbon\Carbon::parse($supplier_due->created_at)->format('Y-m-d') }}</td>
-                            <td>{{ $supplier_due->account->name }}</td>
-                            <td>{{ $supplier_due->amount }}</td>
-                            <td>{{ $supplier_due->note }}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle"
-                                        data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">{{ trans('file.action') }}
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default"
-                                        user="menu">
-                                        <li>
-                                            <button type="button" class="clear-due btn btn-link" data-toggle="modal"
-                                                data-target="#clearDueModal-{{ $supplier_due->id }}">
-                                                <i class="dripicons-brush"></i>
-                                                Edit
-                                            </button>
-                                        </li>
-                                        <li class="divider"></li>
-                                        {{ Form::open(['route' => ['supplier.clearDue.delete', $supplier_due->id], 'method' => 'DELETE']) }}
-                                        <li>
-                                            <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i
-                                                    class="dripicons-trash"></i>
-                                                {{ trans('file.delete') }}</button>
-                                        </li>
-                                        {{ Form::close() }}
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <div id="clearDueModal-{{ $supplier_due->id }}" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    {!! Form::open(['route' => ['supplier.clearDue.update', $supplier_due->id], 'method' => 'post']) !!}
-                                    <div class="modal-header">
-                                        <h5 id="exampleModalLabel" class="modal-title">{{ trans('file.Clear Due') }}</h5>
-                                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
-                                                aria-hidden="true"><i class="dripicons-cross"></i></span></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="italic">
-                                            <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
-                                        </p>
-                                        <div class="form-group">
-                                            <label for="created_at">Date *</label>
-                                            <input type="date" name="created_at" class="form-control" required
-                                                value="{{ Carbon\Carbon::parse($supplier_due->created_at)->format('Y-m-d') }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="account_id">Account *</label>
-                                            @foreach ($lims_accounts as $account)
-                                                <div class="form-check form-check">
-                                                    <input class="form-check-input" type="radio" name="account_id"
-                                                        id="account_id" value="{{ $account->id }}"
-                                                        {{ $account->id == $supplier_due->account_id ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="account_id">{{ $account->name }}
-                                                        ({{ $account->total_balance }}Tk)
-                                                    </label>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                        <div class="form-group">
-                                            <label>{{ trans('file.Amount') }} *</label>
-                                            <input type="number" name="amount" step="any" class="form-control"
-                                                required value="{{ $supplier_due->amount }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>{{ trans('file.Note') }}</label>
-                                            <textarea name="note" rows="4" class="form-control">{{ $supplier_due->note }}</textarea>
-                                        </div>
-                                        <input type="submit" value="{{ trans('file.submit') }}" class="btn btn-primary"
-                                            id="submit-button">
-                                    </div>
-                                    {!! Form::close() !!}
-                                </div>
+            <div class="card">
+                <div class="card-header mt-2">
+                    <h3 class="text-center">{{ trans('file.Due Clear List') }} - {{ $lims_supplier->name }}</h3>
+                </div>
+                <div class="card-body">
+                    {!! Form::open(['route' => ['supplier.dueClear.list', $lims_supplier->id], 'method' => 'get', 'id' => 'filter-form']) !!}
+                    <div class="row align-items-end justify-content-center">
+                        <div class="col-md-4">
+                            <div class="form-group mb-0">
+                                <label><strong>{{ trans('file.Start Date') }} *</strong></label>
+                                <input type="text" name="start_date" class="form-control date" value="{{ $start_date ?? date('d-m-Y') }}" required readonly />
                             </div>
                         </div>
-                    @endforeach
-                </tbody>
-            </table>
+                        <div class="col-md-4">
+                            <div class="form-group mb-0">
+                                <label><strong>{{ trans('file.End Date') }} *</strong></label>
+                                <input type="text" name="end_date" class="form-control date" value="{{ $end_date ?? date('d-m-Y') }}" required readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary btn-block" type="submit"><i class="dripicons-filter"></i> {{ trans('file.submit') }}</button>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+            </div>
         </div>
 
+        <div class="container-fluid" style="margin-top: 30px;">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="supplier-table" class="table">
+                            <thead>
+                                <tr>
+                                    <th>{{ trans('file.date') }}</th>
+                                    <th>{{ trans('file.Created At') }}</th>
+                                    <th>{{ trans('file.Account') }}</th>
+                                    <th>{{ trans('file.Amount') }}</th>
+                                    <th>{{ trans('file.Note') }}</th>
+                                    <th class="not-exported">{{ trans('file.action') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($lims_supplier_due_list as $key => $supplier_due)
+                                    <tr data-id="{{ $supplier_due->id }}">
+                                        <td>{{ Carbon\Carbon::parse($supplier_due->created_at)->format('Y-m-d') }}</td>
+                                        <td>{{ Carbon\Carbon::parse($supplier_due->created_at)->format('Y-m-d H:i:s') }}</td>
+                                        <td>{{ $supplier_due->account->name }}</td>
+                                        <td>{{ $supplier_due->amount }}</td>
+                                        <td>{{ $supplier_due->note }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default btn-sm dropdown-toggle"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">{{ trans('file.action') }}
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default"
+                                                    user="menu">
+                                                    <li>
+                                                        <button type="button" class="clear-due btn btn-link" data-toggle="modal"
+                                                            data-target="#clearDueModal-{{ $supplier_due->id }}">
+                                                            <i class="dripicons-brush"></i>
+                                                            {{ trans('file.edit') }}
+                                                        </button>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    {{ Form::open(['route' => ['supplier.clearDue.delete', $supplier_due->id], 'method' => 'DELETE']) }}
+                                                    <li>
+                                                        <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i
+                                                                class="dripicons-trash"></i>
+                                                            {{ trans('file.delete') }}</button>
+                                                    </li>
+                                                    {{ Form::close() }}
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <div id="clearDueModal-{{ $supplier_due->id }}" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                {!! Form::open(['route' => ['supplier.clearDue.update', $supplier_due->id], 'method' => 'post']) !!}
+                                                <div class="modal-header">
+                                                    <h5 id="exampleModalLabel" class="modal-title">{{ trans('file.Clear Due') }}</h5>
+                                                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
+                                                            aria-hidden="true"><i class="dripicons-cross"></i></span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="italic">
+                                                        <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
+                                                    </p>
+                                                    <div class="form-group">
+                                                        <label for="created_at">{{ trans('file.date') }} *</label>
+                                                        <input type="date" name="created_at" class="form-control" required
+                                                            value="{{ Carbon\Carbon::parse($supplier_due->created_at)->format('Y-m-d') }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="account_id">{{ trans('file.Account') }} *</label>
+                                                        @foreach ($lims_accounts as $account)
+                                                            <div class="form-check form-check">
+                                                                <input class="form-check-input" type="radio" name="account_id"
+                                                                    id="account_id" value="{{ $account->id }}"
+                                                                    {{ $account->id == $supplier_due->account_id ? 'checked' : '' }}>
+                                                                <label class="form-check-label" for="account_id">{{ $account->name }}
+                                                                    ({{ $account->total_balance }}Tk)
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>{{ trans('file.Amount') }} *</label>
+                                                        <input type="number" name="amount" step="any" class="form-control"
+                                                            required value="{{ $supplier_due->amount }}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>{{ trans('file.Note') }}</label>
+                                                        <textarea name="note" rows="4" class="form-control">{{ $supplier_due->note }}</textarea>
+                                                    </div>
+                                                    <input type="submit" value="{{ trans('file.submit') }}" class="btn btn-primary"
+                                                        id="submit-button">
+                                                </div>
+                                                {!! Form::close() !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Total:</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
 
@@ -150,7 +193,7 @@
             },
             'columnDefs': [{
                     "orderable": false,
-                    'targets': [0, 1, 2, 3]
+                    'targets': [0, 1, 2, 3, 4]
                 },
                 {
                     'checkboxes': {
@@ -176,6 +219,12 @@
                         rows: ':visible',
                         stripHtml: false
                     },
+                    action: function(e, dt, button, config) {
+                        datatable_sum(dt, true);
+                        $.fn.dataTable.ext.buttons.pdfHtml5.action.call(this, e, dt, button, config);
+                        datatable_sum(dt, false);
+                    },
+                    footer: true,
                     customize: function(doc) {
                         for (var i = 1; i < doc.content[1].table.body.length; i++) {
                             if (doc.content[1].table.body[i][0].text.indexOf('<img src=') !== -
@@ -214,6 +263,12 @@
                             }
                         }
                     },
+                    action: function(e, dt, button, config) {
+                        datatable_sum(dt, true);
+                        $.fn.dataTable.ext.buttons.excelHtml5.action.call(this, e, dt, button, config);
+                        datatable_sum(dt, false);
+                    },
+                    footer: true
                 },
                 {
                     extend: 'csv',
@@ -231,6 +286,12 @@
                             }
                         }
                     },
+                    action: function(e, dt, button, config) {
+                        datatable_sum(dt, true);
+                        $.fn.dataTable.ext.buttons.csvHtml5.action.call(this, e, dt, button, config);
+                        datatable_sum(dt, false);
+                    },
+                    footer: true
                 },
                 {
                     extend: 'print',
@@ -240,6 +301,12 @@
                         rows: ':visible',
                         stripHtml: false
                     },
+                    action: function(e, dt, button, config) {
+                        datatable_sum(dt, true);
+                        $.fn.dataTable.ext.buttons.print.action.call(this, e, dt, button, config);
+                        datatable_sum(dt, false);
+                    },
+                    footer: true
                 },
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
@@ -280,6 +347,20 @@
                     columns: ':gt(0)'
                 },
             ],
+            drawCallback: function () {
+                var api = this.api();
+                datatable_sum(api, false);
+            }
         });
+
+        function datatable_sum(dt_selector, is_calling_first) {
+            if (dt_selector.rows('.selected').any() && is_calling_first) {
+                var rows = dt_selector.rows('.selected').indexes();
+                $(dt_selector.column(3).footer()).html(dt_selector.cells(rows, 3, { page: 'current' }).data().sum().toFixed({{$general_setting->decimal}}));
+            }
+            else {
+                $(dt_selector.column(3).footer()).html(dt_selector.column(3, {page:'current'}).data().sum().toFixed({{$general_setting->decimal}}));
+            }
+        }
     </script>
 @endpush

@@ -1,5 +1,6 @@
 <?php
 return [
+	'Count' => 'Count',
 	'Clinet ID' =>'Clinet ID',
 	'Store ID' =>'Store ID',
 	'commission' =>'Commission',
@@ -715,6 +716,9 @@ return [
 	"Deposited Balance" => "Deposited Balance",
 	"Total Due" => "Total Due",
 	"Clear Due" => "Clear Due",
+	"Due Clear List" => "Due Clear List",
+	"Start Date" => "Start Date",
+	"End Date" => "End Date",
 	"Both Customer and Supplier" => "Both Customer and Supplier",
 	"Check this if this product will be used in weight scale machine." => "Check this if this product will be used in weight scale machine.",
 	"Add More Variant" => "Add More Variant",
@@ -1466,4 +1470,6 @@ return [
 	"Receiver" => "Receiver",
 	"Select One" => "Select One",
 	"Not Found" => "Not Found",
+	"Waste Details" => "Waste Details",
+	"Close" => "Close",
 ];

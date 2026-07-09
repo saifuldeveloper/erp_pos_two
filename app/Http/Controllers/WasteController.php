@@ -22,12 +22,14 @@ class WasteController extends Controller
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('sales-index')) {
-            $starting_date = $request->starting_date ?? date('Y-m-d', strtotime('-30 days'));
-            $ending_date = $request->ending_date ?? date('Y-m-d');
-            $wastes = Waste::whereDate('created_at', '>=', $starting_date)
-                ->whereDate('created_at', '<=', $ending_date)
+            $start_date = $request->start_date ?? date('d-m-Y', strtotime('-30 days'));
+            $end_date = $request->end_date ?? date('d-m-Y');
+            $formatted_start_date = \Carbon\Carbon::createFromFormat('d-m-Y', $start_date)->format('Y-m-d');
+            $formatted_end_date = \Carbon\Carbon::createFromFormat('d-m-Y', $end_date)->format('Y-m-d');
+            $wastes = Waste::whereDate('created_at', '>=', $formatted_start_date)
+                ->whereDate('created_at', '<=', $formatted_end_date)
                 ->get();
-            return view('backend.waste.index', compact('wastes', 'starting_date', 'ending_date'));
+            return view('backend.waste.index', compact('wastes', 'start_date', 'end_date'));
         }
     }
 
@@ -79,8 +81,11 @@ class WasteController extends Controller
             3 => DB::raw('(SELECT SUM(qty) FROM waste_items WHERE waste_items.waste_id = wastes.id)'),
             5 => 'wastes.total_price'
         ];
-        $starting_date = $request->starting_date;
-        $ending_date = $request->ending_date;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+        $starting_date = $start_date ? \Carbon\Carbon::createFromFormat('d-m-Y', $start_date)->format('Y-m-d') : null;
+        $ending_date = $end_date ? \Carbon\Carbon::createFromFormat('d-m-Y', $end_date)->format('Y-m-d') : null;
 
         $baseQuery = Waste::select(
             'wastes.id',
@@ -133,7 +138,7 @@ class WasteController extends Controller
             ->pluck('total', 'wi.waste_id');
 
         foreach ($wastes as $waste) {
-            $waste->purchase_price = number_format($purchaseTotals[$waste->id] ?? 0, config('decimal', 2));
+            $waste->purchase_price = $purchaseTotals[$waste->id] ?? 0;
         }
 
         return response()->json([

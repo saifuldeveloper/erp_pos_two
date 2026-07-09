@@ -288,7 +288,7 @@ class SaleController extends Controller
 
         // ── Purchase totals: sale_id => sum ──
 
-        $purchaseTotals = DB::table('product_sales as ps')
+        $purchaseTotalsQuery = DB::table('product_sales as ps')
             ->leftJoin(
                 DB::raw('(SELECT product_id, variant_id, AVG(net_unit_cost) as net_unit_cost FROM product_purchases GROUP BY product_id, variant_id) as pp'),
                 function ($join) {
@@ -301,8 +301,14 @@ class SaleController extends Controller
                                 });
                         });
                 }
-            )
-            ->whereIn('ps.sale_id', $sale_ids)
+            );
+
+        if ($brand_id) {
+            $purchaseTotalsQuery->join('products as p', 'ps.product_id', '=', 'p.id')
+                ->where('p.brand_id', $brand_id);
+        }
+
+        $purchaseTotals = $purchaseTotalsQuery->whereIn('ps.sale_id', $sale_ids)
             ->selectRaw('ps.sale_id, SUM(ps.qty * COALESCE(pp.net_unit_cost, 0)) as total')
             ->groupBy('ps.sale_id')
             ->pluck('total', 'ps.sale_id');

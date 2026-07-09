@@ -2,6 +2,7 @@
 
 return [
 
+	'Count' => 'পরিমাণ',
 	"dashboard" => "ড্যাশবোর্ড",
 	'Clinet ID' =>'ক্লায়েন্ট আইডি',
 	'Store ID' =>'স্টোর আইডি',
@@ -1294,9 +1295,27 @@ return [
 
 	"Product Expiry Report" => "পণ্যের মেয়াদ শেষ হওয়ার রিপোর্ট",
 
-	"Supplier Due Report" => "সরবরাহকারী ডিউ রিপোর্ট",
+	"Supplier Due Report" => "সরবরাহকারীর বকেয়া রিপোর্ট",
 
-	"Customer Due Report" => "কাস্টমার  ডিউ  রিপের্ট ",
+	"Customer Due Report" => "গ্রাহকের বকেয়া রিপোর্ট",
+
+	"Supplier Details" => "সরবরাহকারীর বিবরণ",
+
+	"Clear Due" => "বকেয়া পরিশোধ",
+
+	"Due Clear List" => "বকেয়া পরিশোধের তালিকা",
+
+	"date" => "তারিখ",
+
+	"Note" => "মন্তব্য",
+
+	"Amount" => "টাকার পরিমাণ",
+
+	"Created At" => "তৈরি করার সময়",
+
+	"Start Date" => "শুরুর তারিখ",
+
+	"End Date" => "শেষ তারিখ",
 
 	"Sale Report Chart" => "সেল রিপোর্ট চার্ট ",
 
@@ -1314,7 +1333,7 @@ return [
 
 	"Deposited Balance" => "ডিপোজিট  ব্যালেন্স",
 
-	"Total Due" => "টোটাল  বাকী ",
+	"Total Due" => "মোট বকেয়া",
 
 	"All Notification" => "সমস্ত নোটিফিকেশন ",
 
@@ -1372,4 +1391,7 @@ return [
 	"Receiver" => "প্রাপক",
 	"Select One" => "একটি নির্বাচন করুন",
 	"Not Found" => "পাওয়া যায়নি",
+	"Waste Details" => "জোলাপ বিবরণ",
+	"Product Name" => "পণ্যের নাম",
+	"Close" => "বন্ধ করুন",
 ];

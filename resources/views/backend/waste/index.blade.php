@@ -15,17 +15,21 @@
                             <h3 class="text-center">{{ trans('file.Waste List') }}</h3>
                         </div>
                         {!! Form::open(['route' => 'waste.index', 'method' => 'get']) !!}
-                        <div class="row ml-1 mt-2 mb-3">
+                        <div class="row ml-1 mt-2 mb-3 align-items-end">
                             <div class="col-md-3">
-                                <div class="form-group">
-                                    <label><strong>{{trans('file.Date')}}</strong></label>
-                                    <input type="text" class="daterangepicker-field form-control" value="{{$starting_date}} To {{$ending_date}}" required />
-                                    <input type="hidden" name="starting_date" value="{{$starting_date}}" />
-                                    <input type="hidden" name="ending_date" value="{{$ending_date}}" />
+                                <div class="form-group mb-0">
+                                    <label><strong>{{ trans('file.Start Date') }} *</strong></label>
+                                    <input type="text" name="start_date" class="form-control date" value="{{ $start_date }}" required readonly />
                                 </div>
                             </div>
-                            <div class="col-md-2 mt-4">
-                                <div class="form-group">
+                            <div class="col-md-3">
+                                <div class="form-group mb-0">
+                                    <label><strong>{{ trans('file.End Date') }} *</strong></label>
+                                    <input type="text" name="end_date" class="form-control date" value="{{ $end_date }}" required readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group mb-0">
                                     <button class="btn btn-primary w-100" id="filter-btn" type="submit">{{trans('file.submit')}}</button>
                                 </div>
                             </div>
@@ -43,7 +47,7 @@
                                     <th>{{ trans('file.Date') }}</th>
                                     <th>{{ trans('file.Receiver Type') }}</th>
                                     <th>{{ trans('file.Receiver') }}</th>
-                                    <th>Count</th>
+                                    <th>{{ trans('file.Count') }}</th>
                                     <th>{{ trans('file.Purchase Price') }}</th>
                                     <th>{{ trans('file.Total') }}</th>
                                     <th class="not-exported">{{ trans('file.action') }}</th>
@@ -69,7 +73,7 @@
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title"> Waste Details</h4>
+                                <h4 class="modal-title"> {{ trans('file.Waste Details') }}</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -78,10 +82,10 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Product Name</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Total</th>
+                                            <th>{{ trans('file.Product Name') }}</th>
+                                            <th>{{ trans('file.Quantity') }}</th>
+                                            <th>{{ trans('file.Price') }}</th>
+                                            <th>{{ trans('file.Total') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -103,7 +107,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    aria-label="Close">Close</button>
+                                    aria-label="Close">{{ trans('file.Close') }}</button>
                             </div>
                         </div>
                     </div>
@@ -121,8 +125,8 @@
         $("ul#waste").addClass("show");
         $("ul#waste #waste-list-menu").addClass("active");
 
-        var starting_date = <?php echo json_encode($starting_date); ?>;
-        var ending_date = <?php echo json_encode($ending_date); ?>;
+        var start_date = <?php echo json_encode($start_date); ?>;
+        var end_date = <?php echo json_encode($end_date); ?>;
 
         $(document).ready(function() {
             $('#wasteTable').DataTable({
@@ -131,8 +135,8 @@
                 ajax: {
                     url: '{{ route('waste.wastedata') }}',
                     data: {
-                        starting_date: starting_date,
-                        ending_date: ending_date
+                        start_date: start_date,
+                        end_date: end_date
                     },
                     type: 'GET'
                 },
@@ -195,6 +199,11 @@
                         }
                     }
                 ],
+                createdRow: function(row, data, dataIndex) {
+                    $(row).addClass('waste-link');
+                    $(row).attr('data-id', data['id']);
+                },
+                order: [['0', 'desc']],
                 'columnDefs': [
                     {
                         "orderable": false,
@@ -297,15 +306,9 @@
             }
         }
 
-        $(".daterangepicker-field").daterangepicker({
-          callback: function(startDate, endDate, period){
-            var starting_date = startDate.format('YYYY-MM-DD');
-            var ending_date = endDate.format('YYYY-MM-DD');
-            var title = starting_date + ' To ' + ending_date;
-            $(this).val(title);
-            $('input[name="starting_date"]').val(starting_date);
-            $('input[name="ending_date"]').val(ending_date);
-          }
+        $(document).on("click", "tr.waste-link td:not(:last-child)", function() {
+            var id = $(this).parent().attr('data-id');
+            $('#view-waste-' + id).modal('show');
         });
     </script>
 @endpush

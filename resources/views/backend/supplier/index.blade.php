@@ -108,7 +108,7 @@
                                         <li>
                                             <a href="{{ route('supplier.dueClear.list', $supplier->id) }}"
                                                 class="btn btn-link"><i class="dripicons-document"></i>
-                                                Due Clear List
+                                                {{ trans('file.Due Clear List') }}
                                             </a>
                                         </li>
                                         <li class="divider"></li>
@@ -148,11 +148,11 @@
                         <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
                     </p>
                     <div class="form-group">
-                        <label for="created_at">Date *</label>
+                        <label for="created_at">{{ trans('file.date') }} *</label>
                         <input type="date" name="created_at" class="form-control" required value="{{ date('Y-m-d') }}">
                     </div>
                     <div class="form-group">
-                        <label for="account_id">Account *</label>
+                        <label for="account_id">{{ trans('file.Account') }} *</label>
                         <select name="account_id" class="form-control" required>
                             @foreach ($lims_accounts as $account)
                                 <option value="{{ $account->id }}">{{ $account->name }} ({{ $account->total_balance }}

@@ -48,6 +48,9 @@ class SupplierController extends Controller
         $supplier_due->account_id = $request->account_id;
         $supplier_due->amount = $request->amount;
         $supplier_due->note = $request->note;
+        if ($request->created_at) {
+            $supplier_due->created_at = date('Y-m-d H:i:s', strtotime($request->created_at . ' ' . date('H:i:s')));
+        }
         $supplier_due->save();
         $payment_ids = [];
         $account = Account::find($request->account_id);
@@ -86,7 +89,11 @@ class SupplierController extends Controller
             }
 
             $payment = new Payment();
-            $payment->payment_reference = 'ppr-' . date("Ymd") . '-' . date("his");
+            if ($request->created_at) {
+                $payment->payment_reference = 'ppr-' . date("Ymd", strtotime($request->created_at)) . '-' . date("his");
+            } else {
+                $payment->payment_reference = 'ppr-' . date("Ymd") . '-' . date("his");
+            }
             $payment->purchase_id = $purchase_data->id;
             $payment->user_id = Auth::id();
             $payment->cash_register_id = $cash_register_id;
@@ -95,6 +102,9 @@ class SupplierController extends Controller
             $payment->change = 0;
             $payment->paying_method = $request->account_id == 1 ? 'cash' : 'bank';
             $payment->payment_note = $request->note;
+            if ($request->created_at) {
+                $payment->created_at = date('Y-m-d H:i:s', strtotime($request->created_at . ' ' . date('H:i:s')));
+            }
             $payment->save();
 
             $payment_ids[] = $payment->id;
@@ -110,12 +120,26 @@ class SupplierController extends Controller
         return redirect()->back()->with('message', 'Due cleared successfully');
     }
 
-    public function dueClearList($supplier_id)
+    public function dueClearList(Request $request, $supplier_id)
     {
-        $lims_supplier_due_list = SupplierDue::where('supplier_id', $supplier_id)->get();
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $query = SupplierDue::where('supplier_id', $supplier_id);
+
+        if ($start_date) {
+            $formatted_start_date = \Carbon\Carbon::createFromFormat('d-m-Y', $start_date)->format('Y-m-d');
+            $query->whereDate('created_at', '>=', $formatted_start_date);
+        }
+        if ($end_date) {
+            $formatted_end_date = \Carbon\Carbon::createFromFormat('d-m-Y', $end_date)->format('Y-m-d');
+            $query->whereDate('created_at', '<=', $formatted_end_date);
+        }
+
+        $lims_supplier_due_list = $query->orderBy('created_at', 'desc')->get();
         $lims_accounts = Account::where('is_active', true)->get();
         $lims_supplier = Supplier::where('id', $supplier_id)->first();
-        return view('backend.supplier.due_clear_list', compact('lims_supplier_due_list', 'lims_accounts', 'lims_supplier'));
+        return view('backend.supplier.due_clear_list', compact('lims_supplier_due_list', 'lims_accounts', 'lims_supplier', 'start_date', 'end_date'));
     }
 
     public function clearDueUpdate(Request $request, $id)
@@ -128,6 +152,9 @@ class SupplierController extends Controller
         $lims_supplier_due->account_id = $request->account_id;
         $lims_supplier_due->amount = $request->amount;
         $lims_supplier_due->note = $request->note;
+        if ($request->created_at) {
+            $lims_supplier_due->created_at = date('Y-m-d H:i:s', strtotime($request->created_at . ' ' . date('H:i:s')));
+        }
         $lims_supplier_due->save();
 
         $lims_account = Account::find($request->account_id);
@@ -180,7 +207,11 @@ class SupplierController extends Controller
             }
 
             $payment = new Payment();
-            $payment->payment_reference = 'ppr-' . date("Ymd") . '-' . date("his");
+            if ($request->created_at) {
+                $payment->payment_reference = 'ppr-' . date("Ymd", strtotime($request->created_at)) . '-' . date("his");
+            } else {
+                $payment->payment_reference = 'ppr-' . date("Ymd") . '-' . date("his");
+            }
             $payment->purchase_id = $purchase_data->id;
             $payment->user_id = Auth::id();
             $payment->cash_register_id = $cash_register_id;
@@ -189,6 +220,9 @@ class SupplierController extends Controller
             $payment->change = 0;
             $payment->paying_method = $lims_supplier_due->account_id == 1 ? 'cash' : 'bank';
             $payment->payment_note = $request->note;
+            if ($request->created_at) {
+                $payment->created_at = date('Y-m-d H:i:s', strtotime($request->created_at . ' ' . date('H:i:s')));
+            }
             $payment->save();
 
             $payment_ids[] = $payment->id;
