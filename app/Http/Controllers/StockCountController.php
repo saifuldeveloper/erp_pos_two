@@ -365,6 +365,85 @@ class StockCountController extends Controller
         }
     }
 
+    public function soldProducts($id)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('stock_count')) {
+            $lims_stock_count = StockCount::with('warehouse')->findOrFail($id);
+            
+            $lims_brand_list = Brand::where('is_active', true)->get();
+            $lims_category_list = Category::with('parent')->where('is_active', true)->get();
+
+            $brand_id = request()->input('brand_id', 0);
+            $category_id = request()->input('category_id', 0);
+            $start_date = request()->input('start_date');
+            $end_date = request()->input('end_date');
+
+            $query = \App\Models\Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
+                ->join('products', 'product_sales.product_id', '=', 'products.id')
+                ->leftJoin('product_variants', function($join) {
+                    $join->on('product_sales.product_id', '=', 'product_variants.product_id')
+                         ->on('product_sales.variant_id', '=', 'product_variants.variant_id');
+                })
+                ->where('sales.warehouse_id', $lims_stock_count->warehouse_id)
+                ->where('sales.created_at', '>=', $lims_stock_count->created_at);
+
+            if ($lims_stock_count->is_completed) {
+                $query->where('sales.created_at', '<=', $lims_stock_count->updated_at);
+            }
+
+            if ($brand_id != 0) {
+                $query->where('products.brand_id', $brand_id);
+            }
+            if ($category_id != 0) {
+                $query->where('products.category_id', $category_id);
+            }
+            if ($start_date) {
+                $query->whereDate('sales.created_at', '>=', date('Y-m-d', strtotime($start_date)));
+            }
+            if ($end_date) {
+                $query->whereDate('sales.created_at', '<=', date('Y-m-d', strtotime($end_date)));
+            }
+
+            $soldProducts = $query->select(
+                    'products.id',
+                    'products.name',
+                    DB::raw('COALESCE(product_variants.item_code, products.code) as code'),
+                    'products.price',
+                    'products.cost',
+                    DB::raw('SUM(product_sales.qty) as sold_qty')
+                )
+                ->groupBy('products.id', 'products.name', 'product_variants.item_code', 'products.code', 'products.price', 'products.cost')
+                ->get();
+
+            $soldCount = $soldProducts->count();
+            $soldQty = $soldProducts->sum('sold_qty');
+            $totalSoldPurchaseValue = $soldProducts->sum(function($p) {
+                return $p->sold_qty * $p->cost;
+            });
+            $totalSoldSaleValue = $soldProducts->sum(function($p) {
+                return $p->sold_qty * $p->price;
+            });
+
+            return view('backend.stock_count.sold_products', compact(
+                'lims_stock_count',
+                'soldProducts',
+                'soldCount',
+                'soldQty',
+                'totalSoldPurchaseValue',
+                'totalSoldSaleValue',
+                'lims_brand_list',
+                'lims_category_list',
+                'brand_id',
+                'category_id',
+                'start_date',
+                'end_date'
+            ));
+        } else {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+    }
+
     public function markAsIncomplete($id)
     {
         $role = Role::find(Auth::user()->role_id);

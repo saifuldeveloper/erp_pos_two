@@ -602,6 +602,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
     Route::controller(StockCountController::class)->group(function () {
         Route::get('product_search', 'productSearch')->name('stock-count.search');
         Route::get('stock-count/{id}/remaining-products', 'remainingProducts')->name('stock-count.remaining-products');
+        Route::get('stock-count/{id}/sold-products', 'soldProducts')->name('stock-count.sold-products');
         Route::post('stock-count/{id}/incomplete', 'markAsIncomplete')->name('stock-count.incomplete');
     });
     Route::resource('stock-count', StockCountController::class);

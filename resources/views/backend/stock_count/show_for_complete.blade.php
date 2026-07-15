@@ -68,6 +68,34 @@
         $totalRemainingSaleValue = $remainingProducts->sum(function($p) {
             return $p->qty * $p->price;
         });
+
+        // Fetch sold products under this stock count
+        $soldQuery = \App\Models\Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
+            ->join('products', 'product_sales.product_id', '=', 'products.id')
+            ->leftJoin('product_variants', function($join) {
+                $join->on('product_sales.product_id', '=', 'product_variants.product_id')
+                     ->on('product_sales.variant_id', '=', 'product_variants.variant_id');
+            })
+            ->where('sales.warehouse_id', $lims_stock_count->warehouse_id)
+            ->where('sales.created_at', '>=', $lims_stock_count->created_at);
+
+        if ($lims_stock_count->is_completed) {
+            $soldQuery->where('sales.created_at', '<=', $lims_stock_count->updated_at);
+        }
+
+        $soldProducts = $soldQuery->select(
+                'products.id',
+                'products.name',
+                \Illuminate\Support\Facades\DB::raw('COALESCE(product_variants.item_code, products.code) as code'),
+                'products.price',
+                'products.cost',
+                \Illuminate\Support\Facades\DB::raw('SUM(product_sales.qty) as sold_qty')
+            )
+            ->groupBy('products.id', 'products.name', 'product_variants.item_code', 'products.code', 'products.price', 'products.cost')
+            ->get();
+
+        $soldQty = $soldProducts->sum('sold_qty');
+        $soldCount = $soldProducts->count();
     @endphp
 
     <style>
@@ -88,6 +116,7 @@
         .stat-card.red { border-left: 5px solid #dc3545; }
         .stat-card.orange { border-left: 5px solid #f59e0b; }
         .stat-card.green { border-left: 5px solid #22c55e; }
+        .stat-card.indigo { border-left: 5px solid #6366f1; }
         
         .stat-card .title-small {
             font-size: 11px;
@@ -105,6 +134,7 @@
         .stat-card.red .value-large { color: #dc3545; }
         .stat-card.orange .value-large { color: #f59e0b; }
         .stat-card.green .value-large { color: #22c55e; }
+        .stat-card.indigo .value-large { color: #6366f1; }
 
         .stat-icon-circle {
             width: 35px;
@@ -118,6 +148,7 @@
         .stat-icon-circle.red { background-color: #fde8e8; color: #dc3545; }
         .stat-icon-circle.orange { background-color: #fef3c7; color: #f59e0b; }
         .stat-icon-circle.green { background-color: #dcfce7; color: #22c55e; }
+        .stat-icon-circle.indigo { background-color: #e0e7ff; color: #6366f1; }
 
         /* Dark mode overrides */
         .dark-mode .stat-card {
@@ -143,6 +174,10 @@
             background-color: rgba(34, 197, 94, 0.2);
             color: #22c55e;
         }
+        .dark-mode .stat-icon-circle.indigo {
+            background-color: rgba(99, 102, 241, 0.2);
+            color: #6366f1;
+        }
         .dark-mode .stat-card [style*="color: #4b5563"] {
             color: #eaeaea !important;
         }
@@ -153,7 +188,7 @@
             <!-- Stat Widget Bar -->
             <div class="row">
                 <!-- Card 1: Total Counted (Teal) -->
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-2 col-sm-4">
                     <div class="stat-card teal">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
@@ -171,7 +206,7 @@
                     </div>
                 </div>
                 <!-- Card 2: Remaining (Slate) -->
-                <div class="col-md-3 col-sm-6">
+                <div class="col-md-2 col-sm-4">
                     <a href="{{ route('stock-count.remaining-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
                         <div class="stat-card slate" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
@@ -190,7 +225,27 @@
                         </div>
                     </a>
                 </div>
-                <!-- Card 3: Stock Matched (Green) -->
+                <!-- Card 3: Sold Products (Indigo) -->
+                <div class="col-md-2 col-sm-4">
+                    <a href="{{ route('stock-count.sold-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
+                        <div class="stat-card indigo" style="cursor: pointer;">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <div>
+                                    <div class="title-small"><i class="fa fa-shopping-bag" style="color: #6366f1; margin-right: 5px;"></i> বিক্রিত পণ্য</div>
+                                    <div class="value-large">{{ $soldCount }}</div>
+                                </div>
+                                <div>
+                                    <div class="title-small" style="color: #6366f1;">বিক্রিত জোড়া</div>
+                                    <div class="value-large">{{ number_format($soldQty, 2, '.', '') }}</div>
+                                </div>
+                                <div style="font-size: 28px; color: #6366f1; opacity: 0.8;">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 4: Stock Matched (Green) -->
                 <div class="col-md-2 col-sm-4">
                     <div class="stat-card green">
                         <div class="d-flex w-100 justify-content-between align-items-center">
@@ -204,7 +259,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 4: Over Stock (Red) -->
+                <!-- Card 5: Over Stock (Red) -->
                 <div class="col-md-2 col-sm-4">
                     <div class="stat-card red">
                         <div class="d-flex w-100 justify-content-between align-items-center">
@@ -218,7 +273,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 5: Under Stock (Orange) -->
+                <!-- Card 6: Under Stock (Orange) -->
                 <div class="col-md-2 col-sm-4">
                     <div class="stat-card orange">
                         <div class="d-flex w-100 justify-content-between align-items-center">
