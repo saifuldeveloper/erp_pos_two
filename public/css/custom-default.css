@@ -75,9 +75,17 @@ nav.navbar a.menu-btn:hover {
     border-right: 1px solid #eee;
 }
 .btn-primary {
-    color: color-yiq(#ff8366);
+    color: #fff;
     background-color: #ff8366;
     border-color: #ff8366;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+    background-color: #e07259 !important;
+    border-color: #e07259 !important;
+    color: #fff !important;
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
@@ -450,8 +458,8 @@ th span.number-in-words {
     border-color: #ff8366;
 }
 .btn-primary:hover {
-    background-color: #6244a6;
-    border-color: #6244a6;
+    background-color: #e07259;
+    border-color: #e07259;
 }
 a:hover {
     text-decoration: none;

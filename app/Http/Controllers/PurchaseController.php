@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use App\Models\Account;
 use App\Models\Brand;
 use App\Models\Currency;
@@ -23,10 +23,12 @@ use App\Models\Unit;
 use App\Models\User;
 use App\Models\Warehouse;
 use App\Traits\TenantInfo;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use NumberToWords\Grammar\Form;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Stripe\Charge;
@@ -885,6 +887,125 @@ class PurchaseController extends Controller
             $imei_number = $new_imei_number = $data['imei_number'];
             $product_purchase = [];
 
+            // 🔹 Stock Validation (to prevent negative stock)
+            $old_purchase_qtys = [];
+            foreach ($lims_product_purchase_data as $product_purchase_data) {
+                $lims_product_data = Product::find($product_purchase_data->product_id);
+                $qty_base = 0;
+                $lims_purchase_unit_data = Unit::find($product_purchase_data->purchase_unit_id);
+                if ($lims_purchase_unit_data) {
+                    if ($lims_purchase_unit_data->operator == '*') {
+                        $qty_base = $product_purchase_data->recieved * $lims_purchase_unit_data->operation_value;
+                    } else {
+                        $qty_base = $product_purchase_data->recieved / $lims_purchase_unit_data->operation_value;
+                    }
+                }
+                
+                $key_item = $product_purchase_data->product_id . '_' . ($product_purchase_data->variant_id ?? '') . '_' . ($product_purchase_data->product_batch_id ?? '');
+                $old_purchase_qtys[$key_item] = [
+                    'qty_base' => $qty_base,
+                    'qty_raw' => $product_purchase_data->recieved
+                ];
+            }
+
+            $new_purchase_qtys = [];
+            if ($product_id !== null) {
+                foreach ($product_id as $k => $pro_id) {
+                    $lims_product_data = Product::find($pro_id);
+                    $qty_base = 0;
+                    $variant_id = null;
+                    $batch_id = null;
+
+                    $lims_purchase_unit_data = Unit::where('unit_name', $purchase_unit[$k])->first();
+                    if ($lims_purchase_unit_data) {
+                        if ($lims_purchase_unit_data->operator == '*') {
+                            $qty_base = $recieved[$k] * $lims_purchase_unit_data->operation_value;
+                        } else {
+                            $qty_base = $recieved[$k] / $lims_purchase_unit_data->operation_value;
+                        }
+                    }
+
+                    if ($lims_product_data->is_variant) {
+                        $lims_product_variant_data = ProductVariant::select('variant_id')->FindExactProductWithCode($pro_id, $product_code[$k])->first();
+                        if ($lims_product_variant_data) {
+                            $variant_id = $lims_product_variant_data->variant_id;
+                        }
+                    }
+
+                    if (!empty($batch_no[$k])) {
+                        $product_batch_data = ProductBatch::where([
+                            ['product_id', $pro_id],
+                            ['batch_no', $batch_no[$k]]
+                        ])->first();
+                        if ($product_batch_data) {
+                            $batch_id = $product_batch_data->id;
+                        }
+                    }
+
+                    $key_item = $pro_id . '_' . ($variant_id ?? '') . '_' . ($batch_id ?? '');
+                    $new_purchase_qtys[$key_item] = [
+                        'qty_base' => $qty_base,
+                        'qty_raw' => $recieved[$k]
+                    ];
+                }
+            }
+
+            $all_keys = array_unique(array_merge(array_keys($old_purchase_qtys), array_keys($new_purchase_qtys)));
+            foreach ($all_keys as $item_key) {
+                $old_item = $old_purchase_qtys[$item_key] ?? null;
+                $new_item = $new_purchase_qtys[$item_key] ?? null;
+                
+                $old_qty_base = $old_item ? $old_item['qty_base'] : 0;
+                $new_qty_base = $new_item ? $new_item['qty_base'] : 0;
+                
+                $net_deduction = $old_qty_base - $new_qty_base;
+                
+                if ($net_deduction > 0) {
+                    $parts = explode('_', $item_key);
+                    $pro_id = $parts[0];
+                    $variant_id = $parts[1] !== '' ? $parts[1] : null;
+                    $batch_id = $parts[2] !== '' ? $parts[2] : null;
+                    
+                    $lims_product_data = Product::find($pro_id);
+                    
+                    if ($variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('qty')->FindExactProduct($pro_id, $variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_id', $pro_id],
+                            ['variant_id', $variant_id],
+                            ['warehouse_id', $lims_purchase_data->warehouse_id]
+                        ])->first();
+                        
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $net_deduction) {
+                            throw new \Exception("Cannot update purchase. Product variant '{$lims_product_data->name}' would have negative stock.");
+                        }
+                    } elseif ($batch_id) {
+                        $lims_product_batch_data = ProductBatch::find($batch_id);
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_id', $pro_id],
+                            ['product_batch_id', $batch_id],
+                            ['warehouse_id', $lims_purchase_data->warehouse_id]
+                        ])->first();
+                        
+                        if (!$lims_product_batch_data || $lims_product_batch_data->qty < $net_deduction) {
+                            throw new \Exception("Cannot update purchase. Product batch '{$lims_product_data->name}' would have negative stock.");
+                        }
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_id', $pro_id],
+                            ['warehouse_id', $lims_purchase_data->warehouse_id]
+                        ])->whereNull('variant_id')->whereNull('product_batch_id')->first();
+                    }
+                    
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $net_deduction) {
+                        throw new \Exception("Cannot update purchase. Product '{$lims_product_data->name}' would have negative stock in warehouse.");
+                    }
+                    if ($lims_product_data->qty < $net_deduction) {
+                        throw new \Exception("Cannot update purchase. Product '{$lims_product_data->name}' would have negative global stock.");
+                    }
+                }
+            }
+
             foreach ($lims_product_purchase_data as $product_purchase_data) {
 
                 $old_recieved_value = $product_purchase_data->recieved;
@@ -1361,81 +1482,123 @@ class PurchaseController extends Controller
             $lims_purchase_data = Purchase::find($id);
             $lims_product_purchase_data = ProductPurchase::where('purchase_id', $id)->get();
             $lims_payment_data = Payment::where('purchase_id', $id)->get();
-            foreach ($lims_product_purchase_data as $product_purchase_data) {
-                $lims_purchase_unit_data = Unit::find($product_purchase_data->purchase_unit_id);
-                if ($lims_purchase_unit_data->operator == '*')
-                    $recieved_qty = $product_purchase_data->recieved * $lims_purchase_unit_data->operation_value;
-                else
-                    $recieved_qty = $product_purchase_data->recieved / $lims_purchase_unit_data->operation_value;
 
-                $lims_product_data = Product::find($product_purchase_data->product_id);
-                if ($product_purchase_data->variant_id) {
-                    $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($lims_product_data->id, $product_purchase_data->variant_id)->first();
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_purchase_data->product_id, $product_purchase_data->variant_id, $lims_purchase_data->warehouse_id)
-                        ->first();
-                    // $lims_product_batch_data->qty -= $recieved_qty;
-                    if ($lims_product_variant_data) {
-                        $lims_product_variant_data->qty = ($lims_product_variant_data->qty ?? 0) - $recieved_qty;
-                        $lims_product_variant_data->save();
-                    }
+            DB::beginTransaction();
+            try {
+                // 🔹 Stock Validation (to prevent negative stock)
+                foreach ($lims_product_purchase_data as $product_purchase_data) {
+                    $lims_purchase_unit_data = Unit::find($product_purchase_data->purchase_unit_id);
+                    if ($lims_purchase_unit_data->operator == '*')
+                        $recieved_qty = $product_purchase_data->recieved * $lims_purchase_unit_data->operation_value;
+                    else
+                        $recieved_qty = $product_purchase_data->recieved / $lims_purchase_unit_data->operation_value;
 
-                } elseif ($product_purchase_data->product_batch_id) {
-                    $lims_product_batch_data = ProductBatch::find($product_purchase_data->product_batch_id);
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_batch_id', $product_purchase_data->product_batch_id],
-                        ['warehouse_id', $lims_purchase_data->warehouse_id]
-                    ])->first();
-                    if ($lims_product_batch_data){
-                        $lims_product_batch_data->qty -= ($lims_product_batch_data->qty ?? 0) - $recieved_qty;
-                        $lims_product_batch_data->save();
-                    }
-                    // $lims_product_batch_data->qty -= $recieved_qty;
-
-                } else {
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_purchase_data->product_id, $lims_purchase_data->warehouse_id)
-                        ->first();
-                }
-                //deduct imei number if available
-                if ($product_purchase_data->imei_number) {
-                    $imei_numbers = explode(",", $product_purchase_data->imei_number);
-                    $all_imei_numbers = explode(",", $lims_product_warehouse_data->imei_number);
-                    foreach ($imei_numbers as $number) {
-                        if (($j = array_search($number, $all_imei_numbers)) !== false) {
-                            unset($all_imei_numbers[$j]);
+                    $lims_product_data = Product::find($product_purchase_data->product_id);
+                    if ($product_purchase_data->variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($lims_product_data->id, $product_purchase_data->variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_purchase_data->product_id, $product_purchase_data->variant_id, $lims_purchase_data->warehouse_id)->first();
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $recieved_qty) {
+                            throw new \Exception("Cannot delete purchase. Product variant '{$lims_product_data->name}' would have negative stock (Variant Stock: " . ($lims_product_variant_data ? $lims_product_variant_data->qty : 0) . ", Required Deduction: {$recieved_qty}).");
                         }
+                    } elseif ($product_purchase_data->product_batch_id) {
+                        $lims_product_batch_data = ProductBatch::find($product_purchase_data->product_batch_id);
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_purchase_data->product_batch_id],
+                            ['warehouse_id', $lims_purchase_data->warehouse_id]
+                        ])->first();
+                        if (!$lims_product_batch_data || $lims_product_batch_data->qty < $recieved_qty) {
+                            throw new \Exception("Cannot delete purchase. Product batch '{$lims_product_data->name}' would have negative stock.");
+                        }
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_purchase_data->product_id, $lims_purchase_data->warehouse_id)->first();
                     }
-                    $lims_product_warehouse_data->imei_number = implode(",", $all_imei_numbers);
+
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $recieved_qty) {
+                        throw new \Exception("Cannot delete purchase. Product '{$lims_product_data->name}' would have negative stock in warehouse (Warehouse Stock: " . ($lims_product_warehouse_data ? $lims_product_warehouse_data->qty : 0) . ", Required Deduction: {$recieved_qty}).");
+                    }
+                    if ($lims_product_data->qty < $recieved_qty) {
+                        throw new \Exception("Cannot delete purchase. Product '{$lims_product_data->name}' would have negative global stock (Global Stock: {$lims_product_data->qty}, Required Deduction: {$recieved_qty}).");
+                    }
                 }
 
-                $lims_product_data->qty -= $recieved_qty;
-                $lims_product_warehouse_data->qty -= $recieved_qty;
+                // 🔹 Original logic
+                foreach ($lims_product_purchase_data as $product_purchase_data) {
+                    $lims_purchase_unit_data = Unit::find($product_purchase_data->purchase_unit_id);
+                    if ($lims_purchase_unit_data->operator == '*')
+                        $recieved_qty = $product_purchase_data->recieved * $lims_purchase_unit_data->operation_value;
+                    else
+                        $recieved_qty = $product_purchase_data->recieved / $lims_purchase_unit_data->operation_value;
 
-                $lims_product_warehouse_data->save();
-                $lims_product_data->save();
-                $product_purchase_data->delete();
-            }
-            $lims_pos_setting_data = PosSetting::latest()->first();
-            foreach ($lims_payment_data as $payment_data) {
-                if ($payment_data->paying_method == "Cheque") {
-                    $payment_with_cheque_data = PaymentWithCheque::where('payment_id', $payment_data->id)->first();
-                    $payment_with_cheque_data->delete();
-                } elseif ($payment_data->paying_method == "Credit Card" && $lims_pos_setting_data->stripe_secret_key) {
-                    $payment_with_credit_card_data = PaymentWithCreditCard::where('payment_id', $payment_data->id)->first();
-                    \Stripe\Stripe::setApiKey($lims_pos_setting_data->stripe_secret_key);
-                    \Stripe\Refund::create(array(
-                        "charge" => $payment_with_credit_card_data->charge_id,
-                    ));
+                    $lims_product_data = Product::find($product_purchase_data->product_id);
+                    if ($product_purchase_data->variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($lims_product_data->id, $product_purchase_data->variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_purchase_data->product_id, $product_purchase_data->variant_id, $lims_purchase_data->warehouse_id)
+                            ->first();
+                        if ($lims_product_variant_data) {
+                            $lims_product_variant_data->qty = ($lims_product_variant_data->qty ?? 0) - $recieved_qty;
+                            $lims_product_variant_data->save();
+                        }
+                    } elseif ($product_purchase_data->product_batch_id) {
+                        $lims_product_batch_data = ProductBatch::find($product_purchase_data->product_batch_id);
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_purchase_data->product_batch_id],
+                            ['warehouse_id', $lims_purchase_data->warehouse_id]
+                        ])->first();
+                        if ($lims_product_batch_data){
+                            $lims_product_batch_data->qty -= ($lims_product_batch_data->qty ?? 0) - $recieved_qty;
+                            $lims_product_batch_data->save();
+                        }
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_purchase_data->product_id, $lims_purchase_data->warehouse_id)
+                            ->first();
+                    }
 
-                    $payment_with_credit_card_data->delete();
+                    //deduct imei number if available
+                    if ($product_purchase_data->imei_number) {
+                        $imei_numbers = explode(",", $product_purchase_data->imei_number);
+                        $all_imei_numbers = explode(",", $lims_product_warehouse_data->imei_number);
+                        foreach ($imei_numbers as $number) {
+                            if (($j = array_search($number, $all_imei_numbers)) !== false) {
+                                unset($all_imei_numbers[$j]);
+                            }
+                        }
+                        $lims_product_warehouse_data->imei_number = implode(",", $all_imei_numbers);
+                    }
+
+                    $lims_product_data->qty -= $recieved_qty;
+                    $lims_product_warehouse_data->qty -= $recieved_qty;
+
+                    $lims_product_warehouse_data->save();
+                    $lims_product_data->save();
+                    $product_purchase_data->delete();
                 }
-                $payment_data->delete();
-            }
 
-            $lims_purchase_data->delete();
-            $this->fileDelete('documents/purchase/', $lims_purchase_data->document);
+                $lims_pos_setting_data = PosSetting::latest()->first();
+                foreach ($lims_payment_data as $payment_data) {
+                    if ($payment_data->paying_method == "Cheque") {
+                        $payment_with_cheque_data = PaymentWithCheque::where('payment_id', $payment_data->id)->first();
+                        $payment_with_cheque_data->delete();
+                    } elseif ($payment_data->paying_method == "Credit Card" && $lims_pos_setting_data->stripe_secret_key) {
+                        $payment_with_credit_card_data = PaymentWithCreditCard::where('payment_id', $payment_data->id)->first();
+                        \Stripe\Stripe::setApiKey($lims_pos_setting_data->stripe_secret_key);
+                        \Stripe\Refund::create(array(
+                            "charge" => $payment_with_credit_card_data->charge_id,
+                        ));
+
+                        $payment_with_credit_card_data->delete();
+                    }
+                    $payment_data->delete();
+                }
+
+                $lims_purchase_data->delete();
+                $this->fileDelete('documents/purchase/', $lims_purchase_data->document);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+            }
 
             return redirect('purchases')->with('not_permitted', 'Purchase deleted successfully');
-            ;
         }
     }
 

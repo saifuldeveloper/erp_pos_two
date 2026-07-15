@@ -14,82 +14,90 @@
             <div class="card-header mt-2">
                 <h3 class="text-center">{{trans('file.Sale List')}}</h3>
             </div>
-            {!! Form::open(['route' => 'sales.index', 'method' => 'get']) !!}
-            <div class="row ml-1 mt-2">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label><strong>{{trans('file.Date')}}</strong></label>
-                        <input type="text" class="daterangepicker-field form-control" value="{{$starting_date}} To {{$ending_date}}" required />
-                        <input type="hidden" name="starting_date" value="{{$starting_date}}" />
-                        <input type="hidden" name="ending_date" value="{{$ending_date}}" />
+            
+            <div class="card-body pt-3 pb-3">
+                {!! Form::open(['route' => 'sales.index', 'method' => 'get']) !!}
+                <div class="row align-items-end">
+                    <div class="col-md col-sm-6">
+                        <div class="form-group mb-2">
+                            <label class="font-weight-bold">{{trans('file.Start Date')}}</label>
+                            <input type="text" name="starting_date" class="form-control date" value="{{date('d-m-Y', strtotime($starting_date))}}" required readonly />
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="form-group mb-2">
+                            <label class="font-weight-bold">{{trans('file.End Date')}}</label>
+                            <input type="text" name="ending_date" class="form-control date" value="{{date('d-m-Y', strtotime($ending_date))}}" required readonly />
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6 @if(\Auth::user()->role_id > 2){{'d-none'}}@endif">
+                        <div class="form-group mb-2">
+                            <label class="font-weight-bold">{{trans('file.Warehouse')}}</label>
+                            <select id="warehouse_id" name="warehouse_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" >
+                                <option value="0">{{trans('file.All Warehouse')}}</option>
+                                @foreach($lims_warehouse_list as $warehouse)
+                                    <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="form-group mb-2">
+                            <label class="font-weight-bold">{{trans('file.Sale Status')}}</label>
+                            <select id="sale-status" class="form-control" name="sale_status">
+                                <option value="0">{{trans('file.All')}}</option>
+                                <option value="1">{{trans('file.Completed')}}</option>
+                                <option value="2">{{trans('file.Pending')}}</option>
+                                <option value="4">{{trans('file.Returned')}}</option>
+                                <option value="5">{{trans('file.In Progress')}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="form-group mb-2">
+                            <label class="font-weight-bold">{{trans('file.Payment Status')}}</label>
+                            <select id="payment-status" class="form-control" name="payment_status">
+                                <option value="0">{{trans('file.All')}}</option>
+                                <option value="1">{{trans('file.Pending')}}</option>
+                                <option value="2">{{trans('file.Due')}}</option>
+                                <option value="3">{{trans('file.Partial')}}</option>
+                                <option value="4">{{trans('file.Paid')}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="form-group mb-2">
+                            <label class="font-weight-bold">{{trans('file.Brand')}}</label>
+                            <select id="brand_id" class="form-control" name="brand_id">
+                                <option value="0">{{trans('file.All')}}</option>
+                                @foreach($lims_brand_list as $brand)
+                                    <option value="{{$brand->id}}">{{$brand->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="form-group mb-2">
+                            <label class="font-weight-bold">{{trans('file.Sale Type')}}</label>
+                           <select id="sale_type" class="form-control" name="sale_type">
+                                <option value="website" {{ $sale_type == 'website' ? 'selected' : '' }}>Website</option>
+                                <option value="" {{ $sale_type == 'pos' ? 'selected' : '' }}>POS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md col-sm-6">
+                        <div class="form-group mb-2">
+                            <label class="d-block">&nbsp;</label>
+                            <button class="btn btn-primary w-100" id="filter-btn" type="submit"><i class="fa fa-filter"></i> {{trans('file.submit')}}</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-2 @if(\Auth::user()->role_id > 2){{'d-none'}}@endif">
-                    <div class="form-group">
-                        <label><strong>{{trans('file.Warehouse')}}</strong></label>
-                        <select id="warehouse_id" name="warehouse_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" >
-                            <option value="0">{{trans('file.All Warehouse')}}</option>
-                            @foreach($lims_warehouse_list as $warehouse)
-                                <option value="{{$warehouse->id}}">{{$warehouse->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label><strong>{{trans('file.Sale Status')}}</strong></label>
-                        <select id="sale-status" class="form-control" name="sale_status">
-                            <option value="0">{{trans('file.All')}}</option>
-                            <option value="1">{{trans('file.Completed')}}</option>
-                            <option value="2">{{trans('file.Pending')}}</option>
-                            <option value="4">{{trans('file.Returned')}}</option>
-                            <option value="5">{{trans('file.In Progress')}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label><strong>{{trans('file.Payment Status')}}</strong></label>
-                        <select id="payment-status" class="form-control" name="payment_status">
-                            <option value="0">{{trans('file.All')}}</option>
-                            <option value="1">{{trans('file.Pending')}}</option>
-                            <option value="2">{{trans('file.Due')}}</option>
-                            <option value="3">{{trans('file.Partial')}}</option>
-                            <option value="4">{{trans('file.Paid')}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label><strong>{{trans('file.Brand')}}</strong></label>
-                        <select id="brand_id" class="form-control" name="brand_id">
-                            <option value="0">{{trans('file.All')}}</option>
-                            @foreach($lims_brand_list as $brand)
-                                <option value="{{$brand->id}}">{{$brand->title}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label><strong>{{trans('file.Sale Type')}}</strong></label>
-                       <select id="sale_type" class="form-control" name="sale_type">
-                            <option value="website" {{ $sale_type == 'website' ? 'selected' : '' }}>Website</option>
-                            <option value="" {{ $sale_type == 'pos' ? 'selected' : '' }}>POS</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2 mt-4">
-                    <div class="form-group">
-                        <button class="btn btn-primary w-100" id="filter-btn" type="submit">{{trans('file.submit')}}</button>
-                    </div>
-                </div>
+                {!! Form::close() !!}
             </div>
-            {!! Form::close() !!}
         </div>
         @if(in_array("sales-add", $all_permission))
-            <a href="{{route('sales.create')}}" class="btn btn-info add-sale-btn"><i class="dripicons-plus"></i> {{trans('file.Add Sale')}}</a>&nbsp;
-            <a href="{{url('sales/sale_by_csv')}}" class="btn btn-primary add-sale-btn"><i class="dripicons-copy"></i> {{trans('file.Import Sale')}}</a>
+            <a href="{{route('sales.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> {{trans('file.Add Sale')}}</a>&nbsp;
+            <a href="{{url('sales/sale_by_csv')}}" class="btn btn-primary"><i class="dripicons-copy"></i> {{trans('file.Import Sale')}}</a>
         @endif
     </div>
     <div class="table-responsive">
@@ -531,16 +539,7 @@
     $("#brand_id").val(brand_id);
     $("#sale_type").val(sale_type);
 
-    $(".daterangepicker-field").daterangepicker({
-      callback: function(startDate, endDate, period){
-        var starting_date = startDate.format('YYYY-MM-DD');
-        var ending_date = endDate.format('YYYY-MM-DD');
-        var title = starting_date + ' To ' + ending_date;
-        $(this).val(title);
-        $('input[name="starting_date"]').val(starting_date);
-        $('input[name="ending_date"]').val(ending_date);
-      }
-    });
+
 
 
     $(".gift-card").hide();

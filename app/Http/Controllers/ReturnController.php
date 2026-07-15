@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Mail\ReturnDetails;
+use App\Models\Account;
+use App\Models\Biller;
+use App\Models\CashRegister;
+use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\CustomerGroup;
-use App\Models\Warehouse;
-use App\Models\Biller;
-use App\Models\Product;
-use App\Models\Unit;
-use App\Models\Tax;
+use App\Models\MailSetting;
+use App\Models\Product_Sale;
 use App\Models\Product_Warehouse;
+use App\Models\Product;
 use App\Models\ProductBatch;
-use DB;
-use App\Models\Returns;
-use App\Models\Account;
 use App\Models\ProductReturn;
 use App\Models\ProductVariant;
-use App\Models\Variant;
-use App\Models\CashRegister;
+use App\Models\Returns;
 use App\Models\Sale;
-use App\Models\Product_Sale;
-use App\Models\Currency;
-use Auth;
-use Spatie\Permission\Models\Role;
-use App\Mail\ReturnDetails;
-use Mail;
+use App\Models\Tax;
+use App\Models\Unit;
+use App\Models\Variant;
+use App\Models\Warehouse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use App\Models\MailSetting;
+use Spatie\Permission\Models\Role;
 
 class ReturnController extends Controller
 {
@@ -304,7 +304,7 @@ class ReturnController extends Controller
         ->get();
 
         config()->set('database.connections.mysql.strict', false);
-        \DB::reconnect(); //important as the existing connection if any would be in strict mode
+        DB::reconnect(); //important as the existing connection if any would be in strict mode
 
         $lims_product_with_batch_warehouse_data = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
         ->where([
@@ -319,7 +319,7 @@ class ReturnController extends Controller
 
         //now changing back the strict ON
         config()->set('database.connections.mysql.strict', true);
-        \DB::reconnect();
+        DB::reconnect();
 
         //retrieve data of product with variant
         $lims_product_with_variant_warehouse_data = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
@@ -502,11 +502,11 @@ class ReturnController extends Controller
             $data['document'] = $documentName;
         }
 
-        if(empty($data['is_return'])) { 
+        if(empty($data['is_return'])) {
             $message = 'Please select at least one product to return';
             return back()->with('message', $message);
         }
-        
+
         $lims_return_data = Returns::create($data);
         $lims_customer_data = Customer::find($data['customer_id']);
         //collecting male data
@@ -520,7 +520,7 @@ class ReturnController extends Controller
 
         $product_id = $data['is_return'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null; 
+        $product_batch_id = $data['product_batch_id'] ?? null;
         $product_code = $data['product_code'];
         $qty = $data['qty'];
         $sale_unit = $data['sale_unit'];
@@ -809,7 +809,7 @@ class ReturnController extends Controller
 
         $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null; 
+        $product_batch_id = $data['product_batch_id'] ?? null;
         $product_code = $data['product_code'];
         $product_variant_id = $data['product_variant_id'];
         $qty = $data['qty'];
@@ -820,7 +820,162 @@ class ReturnController extends Controller
         $tax = $data['tax'];
         $total = $data['subtotal'];
 
-        foreach ($lims_product_return_data as $key => $product_return_data) {
+        DB::beginTransaction();
+        try {
+            // 🔹 Stock Validation (to prevent negative stock)
+            $old_return_qtys = [];
+            foreach ($lims_product_return_data as $product_return_data) {
+                $lims_product_data = Product::find($product_return_data->product_id);
+                $qty_base = 0;
+                if ($lims_product_data->type == 'combo') {
+                    // handled separately
+                } elseif ($product_return_data->sale_unit_id != 0) {
+                    $lims_sale_unit_data = Unit::find($product_return_data->sale_unit_id);
+                    if ($lims_sale_unit_data->operator == '*')
+                        $qty_base = $product_return_data->qty * $lims_sale_unit_data->operation_value;
+                    elseif ($lims_sale_unit_data->operator == '/')
+                        $qty_base = $product_return_data->qty / $lims_sale_unit_data->operation_value;
+                }
+
+                $key_item = $product_return_data->product_id . '_' . ($product_return_data->variant_id ?? '') . '_' . ($product_return_data->product_batch_id ?? '');
+                $old_return_qtys[$key_item] = [
+                    'qty_base' => $qty_base,
+                    'qty_raw' => $product_return_data->qty,
+                    'is_combo' => ($lims_product_data->type == 'combo')
+                ];
+            }
+
+            $new_return_qtys = [];
+            if ($product_id !== null) {
+                foreach ($product_id as $k => $pro_id) {
+                    $lims_product_data = Product::find($pro_id);
+                    $qty_base = 0;
+                    $variant_id = null;
+                    $batch_id = $product_batch_id[$k] ?? null;
+
+                    if ($sale_unit[$k] != 'n/a') {
+                        $lims_sale_unit_data = Unit::where('unit_name', $sale_unit[$k])->first();
+                        if ($lims_sale_unit_data) {
+                            if ($lims_sale_unit_data->operator == '*')
+                                $qty_base = $qty[$k] * $lims_sale_unit_data->operation_value;
+                            elseif ($lims_sale_unit_data->operator == '/')
+                                $qty_base = $qty[$k] / $lims_sale_unit_data->operation_value;
+                        }
+                    }
+
+                    if ($lims_product_data->is_variant) {
+                        $lims_product_variant_data = ProductVariant::select('variant_id')->FindExactProductWithCode($pro_id, $product_code[$k])->first();
+                        if ($lims_product_variant_data) {
+                            $variant_id = $lims_product_variant_data->variant_id;
+                        }
+                    }
+
+                    $key_item = $pro_id . '_' . ($variant_id ?? '') . '_' . ($batch_id ?? '');
+                    $new_return_qtys[$key_item] = [
+                        'qty_base' => $qty_base,
+                        'qty_raw' => $qty[$k],
+                        'is_combo' => ($lims_product_data->type == 'combo')
+                    ];
+                }
+            }
+
+            $all_keys = array_unique(array_merge(array_keys($old_return_qtys), array_keys($new_return_qtys)));
+            foreach ($all_keys as $item_key) {
+                $old_item = $old_return_qtys[$item_key] ?? null;
+                $new_item = $new_return_qtys[$item_key] ?? null;
+
+                $old_qty_base = $old_item ? $old_item['qty_base'] : 0;
+                $new_qty_base = $new_item ? $new_item['qty_base'] : 0;
+
+                $net_deduction = $old_qty_base - $new_qty_base;
+
+                if ($net_deduction > 0) {
+                    $parts = explode('_', $item_key);
+                    $pro_id = $parts[0];
+                    $variant_id = $parts[1] !== '' ? $parts[1] : null;
+                    $batch_id = $parts[2] !== '' ? $parts[2] : null;
+
+                    $lims_product_data = Product::find($pro_id);
+
+                    if ($old_item && $old_item['is_combo']) {
+                        $product_list = explode(",", $lims_product_data->product_list);
+                        $variant_list = explode(",", $lims_product_data->variant_list);
+                        $qty_list = explode(",", $lims_product_data->qty_list);
+
+                        $old_qty_raw = $old_item['qty_raw'];
+                        $new_qty_raw = $new_item ? $new_item['qty_raw'] : 0;
+                        $combo_deduction_raw = $old_qty_raw - $new_qty_raw;
+
+                        if ($combo_deduction_raw > 0) {
+                            foreach ($product_list as $index => $child_id) {
+                                $child_data = Product::find($child_id);
+                                $deduct_qty = $combo_deduction_raw * $qty_list[$index];
+
+                                if ($variant_list[$index]) {
+                                    $child_warehouse_data = Product_Warehouse::where([
+                                        ['product_id', $child_id],
+                                        ['variant_id', $variant_list[$index]],
+                                        ['warehouse_id', $lims_return_data->warehouse_id],
+                                    ])->first();
+                                    $child_product_variant_data = ProductVariant::where([
+                                        ['product_id', $child_id],
+                                        ['variant_id', $variant_list[$index]]
+                                    ])->first();
+
+                                    if (!$child_product_variant_data || $child_product_variant_data->qty < $deduct_qty) {
+                                        throw new \Exception("Cannot update return. Product variant '{$child_data->name}' would have negative stock.");
+                                    }
+                                } else {
+                                    $child_warehouse_data = Product_Warehouse::where([
+                                        ['product_id', $child_id],
+                                        ['warehouse_id', $lims_return_data->warehouse_id],
+                                    ])->first();
+                                }
+
+                                if (!$child_warehouse_data || $child_warehouse_data->qty < $deduct_qty) {
+                                    throw new \Exception("Cannot update return. Combo component '{$child_data->name}' would have negative stock in warehouse.");
+                                }
+                                if ($child_data->qty < $deduct_qty) {
+                                    throw new \Exception("Cannot update return. Product '{$child_data->name}' would have negative global stock.");
+                                }
+                            }
+                        }
+                    } else {
+                        if ($variant_id) {
+                            $lims_product_variant_data = ProductVariant::select('qty')->FindExactProduct($pro_id, $variant_id)->first();
+                            $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $variant_id, $lims_return_data->warehouse_id)->first();
+
+                            if (!$lims_product_variant_data || $lims_product_variant_data->qty < $net_deduction) {
+                                throw new \Exception("Cannot update return. Product variant '{$lims_product_data->name}' would have negative stock.");
+                            }
+                        } elseif ($batch_id) {
+                            $lims_product_batch_data = ProductBatch::find($batch_id);
+                            $lims_product_warehouse_data = Product_Warehouse::where([
+                                ['product_batch_id', $batch_id],
+                                ['warehouse_id', $lims_return_data->warehouse_id]
+                            ])->first();
+
+                            $old_qty_raw = $old_item['qty_raw'];
+                            $new_qty_raw = $new_item ? $new_item['qty_raw'] : 0;
+                            $batch_deduction_raw = $old_qty_raw - $new_qty_raw;
+                            if (!$lims_product_batch_data || $lims_product_batch_data->qty < $batch_deduction_raw) {
+                                throw new \Exception("Cannot update return. Product batch '{$lims_product_data->name}' would have negative stock.");
+                            }
+                        } else {
+                            $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $lims_return_data->warehouse_id)->first();
+                        }
+
+                        if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $net_deduction) {
+                            throw new \Exception("Cannot update return. Product '{$lims_product_data->name}' would have negative stock in warehouse.");
+                        }
+                        if ($lims_product_data->qty < $net_deduction) {
+                            throw new \Exception("Cannot update return. Product '{$lims_product_data->name}' would have negative global stock.");
+                        }
+                    }
+                }
+            }
+
+            foreach ($lims_product_return_data as $key => $product_return_data) {
             $old_product_id[] = $product_return_data->product_id;
             $old_product_variant_id[] = null;
             $lims_product_data = Product::find($product_return_data->product_id);
@@ -1046,7 +1201,12 @@ class ReturnController extends Controller
             else
                 ProductReturn::create($product_return);
         }
-        $lims_return_data->update($data);
+            $lims_return_data->update($data);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
         $lims_customer_data = Customer::find($data['customer_id']);
         $mail_setting = MailSetting::latest()->first();
 
@@ -1166,110 +1326,174 @@ class ReturnController extends Controller
         }
         return 'Return deleted successfully!';
     }
-
     public function destroy($id)
     {
         $lims_return_data = Returns::find($id);
         $lims_product_return_data = ProductReturn::where('return_id', $id)->get();
 
-        foreach ($lims_product_return_data as $key => $product_return_data) {
-            $lims_product_data = Product::find($product_return_data->product_id);
-            if( $lims_product_data->type == 'combo' ){
-                $product_list = explode(",", $lims_product_data->product_list);
-                $variant_list = explode(",", $lims_product_data->variant_list);
-                $qty_list = explode(",", $lims_product_data->qty_list);
+        DB::beginTransaction();
+        try {
+            // 🔹 Stock Validation (to prevent negative stock)
+            foreach ($lims_product_return_data as $product_return_data) {
+                $lims_product_data = Product::find($product_return_data->product_id);
+                if ($lims_product_data->type == 'combo') {
+                    $product_list = explode(",", $lims_product_data->product_list);
+                    $variant_list = explode(",", $lims_product_data->variant_list);
+                    $qty_list = explode(",", $lims_product_data->qty_list);
 
-                foreach ($product_list as $index => $child_id) {
-                    $child_data = Product::find($child_id);
-                    if($variant_list[$index]) {
-                        $child_product_variant_data = ProductVariant::where([
-                            ['product_id', $child_id],
-                            ['variant_id', $variant_list[$index]]
+                    foreach ($product_list as $index => $child_id) {
+                        $child_data = Product::find($child_id);
+                        $deduct_qty = $product_return_data->qty * $qty_list[$index];
+
+                        if ($variant_list[$index]) {
+                            $child_warehouse_data = Product_Warehouse::where([
+                                ['product_id', $child_id],
+                                ['variant_id', $variant_list[$index]],
+                                ['warehouse_id', $lims_return_data->warehouse_id],
+                            ])->first();
+                            $child_product_variant_data = ProductVariant::where([
+                                ['product_id', $child_id],
+                                ['variant_id', $variant_list[$index]]
+                            ])->first();
+
+                            if (!$child_product_variant_data || $child_product_variant_data->qty < $deduct_qty) {
+                                throw new \Exception("Cannot delete return. Product variant '{$child_data->name}' would have negative stock (Variant Stock: " . ($child_product_variant_data ? $child_product_variant_data->qty : 0) . ", Required Deduction: {$deduct_qty}).");
+                            }
+                        } else {
+                            $child_warehouse_data = Product_Warehouse::where([
+                                ['product_id', $child_id],
+                                ['warehouse_id', $lims_return_data->warehouse_id],
+                            ])->first();
+                        }
+
+                        if (!$child_warehouse_data || $child_warehouse_data->qty < $deduct_qty) {
+                            throw new \Exception("Cannot delete return. Combo component '{$child_data->name}' would have negative stock in warehouse (Warehouse Stock: " . ($child_warehouse_data ? $child_warehouse_data->qty : 0) . ", Required Deduction: {$deduct_qty}).");
+                        }
+                        if ($child_data->qty < $deduct_qty) {
+                            throw new \Exception("Cannot delete return. Product '{$child_data->name}' would have negative global stock (Global Stock: {$child_data->qty}, Required Deduction: {$deduct_qty}).");
+                        }
+                    }
+                } elseif ($product_return_data->sale_unit_id != 0) {
+                    $lims_sale_unit_data = Unit::find($product_return_data->sale_unit_id);
+
+                    if ($lims_sale_unit_data->operator == '*')
+                        $quantity = $product_return_data->qty * $lims_sale_unit_data->operation_value;
+                    elseif ($lims_sale_unit_data->operator == '/')
+                        $quantity = $product_return_data->qty / $lims_sale_unit_data->operation_value;
+
+                    if ($product_return_data->variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($product_return_data->product_id, $product_return_data->variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_return_data->product_id, $product_return_data->variant_id, $lims_return_data->warehouse_id)->first();
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $quantity) {
+                            throw new \Exception("Cannot delete return. Product variant '{$lims_product_data->name}' would have negative stock (Variant Stock: " . ($lims_product_variant_data ? $lims_product_variant_data->qty : 0) . ", Required Deduction: {$quantity}).");
+                        }
+                    } elseif ($product_return_data->product_batch_id) {
+                        $lims_product_batch_data = ProductBatch::find($product_return_data->product_batch_id);
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_return_data->product_batch_id],
+                            ['warehouse_id', $lims_return_data->warehouse_id]
                         ])->first();
 
-                        $child_warehouse_data = Product_Warehouse::where([
-                            ['product_id', $child_id],
-                            ['variant_id', $variant_list[$index]],
-                            ['warehouse_id', $lims_return_data->warehouse_id ],
-                        ])->first();
-
-                        $child_product_variant_data->qty -= $product_return_data->qty * $qty_list[$index];
-                        $child_product_variant_data->save();
-                    }
-                    else {
-                        $child_warehouse_data = Product_Warehouse::where([
-                            ['product_id', $child_id],
-                            ['warehouse_id', $lims_return_data->warehouse_id ],
-                        ])->first();
+                        if (!$lims_product_batch_data || $lims_product_batch_data->qty < $product_return_data->qty) {
+                            throw new \Exception("Cannot delete return. Product batch '{$lims_product_data->name}' would have negative stock (Batch Stock: " . ($lims_product_batch_data ? $lims_product_batch_data->qty : 0) . ", Required Deduction: {$product_return_data->qty}).");
+                        }
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_return_data->product_id, $lims_return_data->warehouse_id)->first();
                     }
 
-                    $child_data->qty -= $product_return_data->qty * $qty_list[$index];
-                    $child_warehouse_data->qty -= $product_return_data->qty * $qty_list[$index];
-
-                    $child_data->save();
-                    $child_warehouse_data->save();
-                }
-            }
-            elseif($product_return_data->sale_unit_id != 0){
-                $lims_sale_unit_data = Unit::find($product_return_data->sale_unit_id);
-
-                if ($lims_sale_unit_data->operator == '*')
-                    $quantity = $product_return_data->qty * $lims_sale_unit_data->operation_value;
-                elseif($lims_sale_unit_data->operator == '/')
-                    $quantity = $product_return_data->qty / $lims_sale_unit_data->operation_value;
-
-                if($product_return_data->variant_id) {
-                    $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($product_return_data->product_id, $product_return_data->variant_id)->first();
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_return_data->product_id, $product_return_data->variant_id, $lims_return_data->warehouse_id)->first();
-                    $lims_product_variant_data->qty -= $quantity;
-                    $lims_product_variant_data->save();
-                }
-                elseif($product_return_data->product_batch_id) {
-                    $lims_product_batch_data = ProductBatch::find($product_return_data->product_batch_id);
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_batch_id', $product_return_data->product_batch_id],
-                        ['warehouse_id', $lims_return_data->warehouse_id]
-                    ])->first();
-
-                    $lims_product_batch_data->qty -= $product_return_data->qty;
-                    $lims_product_batch_data->save();
-                }
-                else
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_return_data->product_id, $lims_return_data->warehouse_id)->first();
-
-                $lims_product_data->qty -= $quantity;
-                $lims_product_warehouse_data->qty -= $quantity;
-                $lims_product_data->save();
-                $lims_product_warehouse_data->save();
-            }
-            //deduct imei number if available
-            if($product_return_data->imei_number) {
-                $imei_numbers = explode(",", $product_return_data->imei_number);
-                $all_imei_numbers = explode(",", $lims_product_warehouse_data->imei_number);
-                foreach ($imei_numbers as $number) {
-                    if (($j = array_search($number, $all_imei_numbers)) !== false) {
-                        unset($all_imei_numbers[$j]);
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $quantity) {
+                        throw new \Exception("Cannot delete return. Product '{$lims_product_data->name}' would have negative stock in warehouse (Warehouse Stock: " . ($lims_product_warehouse_data ? $lims_product_warehouse_data->qty : 0) . ", Required Deduction: {$quantity}).");
+                    }
+                    if ($lims_product_data->qty < $quantity) {
+                        throw new \Exception("Cannot delete return. Product '{$lims_product_data->name}' would have negative global stock (Global Stock: {$lims_product_data->qty}, Required Deduction: {$quantity}).");
                     }
                 }
-                $lims_product_warehouse_data->imei_number = implode(",", $all_imei_numbers);
-                $lims_product_warehouse_data->save();
+
+                // 🔹 Perform original stock deduction
+                if ($lims_product_data->type == 'combo') {
+                    $product_list = explode(",", $lims_product_data->product_list);
+                    $variant_list = explode(",", $lims_product_data->variant_list);
+                    $qty_list = explode(",", $lims_product_data->qty_list);
+
+                    foreach ($product_list as $index => $child_id) {
+                        $child_data = Product::find($child_id);
+                        if ($variant_list[$index]) {
+                            $child_product_variant_data = ProductVariant::where([
+                                ['product_id', $child_id],
+                                ['variant_id', $variant_list[$index]]
+                            ])->first();
+
+                            $child_warehouse_data = Product_Warehouse::where([
+                                ['product_id', $child_id],
+                                ['variant_id', $variant_list[$index]],
+                                ['warehouse_id', $lims_return_data->warehouse_id],
+                            ])->first();
+
+                            $child_product_variant_data->qty -= $product_return_data->qty * $qty_list[$index];
+                            $child_product_variant_data->save();
+                        } else {
+                            $child_warehouse_data = Product_Warehouse::where([
+                                ['product_id', $child_id],
+                                ['warehouse_id', $lims_return_data->warehouse_id],
+                            ])->first();
+                        }
+
+                        $child_data->qty -= $product_return_data->qty * $qty_list[$index];
+                        $child_warehouse_data->qty -= $product_return_data->qty * $qty_list[$index];
+
+                        $child_data->save();
+                        $child_warehouse_data->save();
+                    }
+                } elseif ($product_return_data->sale_unit_id != 0) {
+                    if ($product_return_data->variant_id) {
+                        $lims_product_variant_data->qty -= $quantity;
+                        $lims_product_variant_data->save();
+                    } elseif ($product_return_data->product_batch_id) {
+                        $lims_product_batch_data->qty -= $product_return_data->qty;
+                        $lims_product_batch_data->save();
+                    }
+
+                    $lims_product_data->qty -= $quantity;
+                    $lims_product_warehouse_data->qty -= $quantity;
+                    $lims_product_data->save();
+                    $lims_product_warehouse_data->save();
+                }
+
+                //deduct imei number if available
+                if ($product_return_data->imei_number) {
+                    $imei_numbers = explode(",", $product_return_data->imei_number);
+                    $all_imei_numbers = explode(",", $lims_product_warehouse_data->imei_number);
+                    foreach ($imei_numbers as $number) {
+                        if (($j = array_search($number, $all_imei_numbers)) !== false) {
+                            unset($all_imei_numbers[$j]);
+                        }
+                    }
+                    $lims_product_warehouse_data->imei_number = implode(",", $all_imei_numbers);
+                    $lims_product_warehouse_data->save();
+                }
+
+                if ($lims_return_data->sale_id) {
+                    $product_sale_data = Product_Sale::where([
+                        ['sale_id', $lims_return_data->sale_id],
+                        ['product_id', $product_return_data->product_id]
+                    ])->select('id', 'return_qty')->first();
+                    $product_sale_data->return_qty -= $product_return_data->qty;
+                    $product_sale_data->save();
+                }
+                $product_return_data->delete();
             }
-            if($lims_return_data->sale_id) {
-                $product_sale_data = Product_Sale::where([
-                    ['sale_id', $lims_return_data->sale_id],
-                    ['product_id', $product_return_data->product_id]
-                ])->select('id', 'return_qty')->first();
-                $product_sale_data->return_qty -= $product_return_data->qty;
-                $product_sale_data->save();
+
+            if ($lims_return_data->sale_id) {
+                Sale::find($lims_return_data->sale_id)->update(['sale_status' => 1]);
             }
-            $product_return_data->delete();
+            $lims_return_data->delete();
+            $this->fileDelete('documents/sale_return/', $lims_return_data->document);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-        if($lims_return_data->sale_id) {
-            Sale::find($lims_return_data->sale_id)->update(['sale_status' => 1]);
-        }
-        $lims_return_data->delete();
-        $this->fileDelete('documents/sale_return/', $lims_return_data->document);
 
-        return redirect('return-sale')->with('not_permitted', 'Data deleted successfully');;
+        return redirect('return-sale')->with('not_permitted', 'Data deleted successfully');
     }
 }

@@ -8,7 +8,7 @@
                         <div class="card-header d-flex align-items-center">
                             <h4>{{ trans('file.Count Stock') }}</h4>
                             <a href="{{ route('report.stockCount') }}" class="btn btn-primary ml-auto">
-                                <i class="fas fa-list"></i>
+                                <i class="fa fa-list"></i>
                                 Stock Count
                             </a>
                         </div>

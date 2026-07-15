@@ -17,7 +17,6 @@ use App\Models\CustomerGroup;
 use App\Models\CustomField;
 use App\Models\Delivery;
 use App\Models\Expense;
-use App\Models\GeneralSetting;
 use App\Models\GiftCard;
 use App\Models\MailSetting;
 use App\Models\Payment;
@@ -40,11 +39,9 @@ use App\Models\Sale;
 use App\Models\Table;
 use App\Models\Tax;
 use App\Models\Unit;
-use App\Models\User;
 use App\Models\Variant;
 use App\Models\Warehouse;
 use App\Services\SaleService;
-use GeniusTS\HijriDate\Date;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -107,6 +104,12 @@ class SaleController extends Controller
             if ($request->input('starting_date')) {
                 $starting_date = $request->input('starting_date');
                 $ending_date = $request->input('ending_date');
+                if (preg_match('/^\d{2}-\d{2}-\d{4}$/', $starting_date)) {
+                    $starting_date = \Carbon\Carbon::createFromFormat('d-m-Y', $starting_date)->format('Y-m-d');
+                }
+                if (preg_match('/^\d{2}-\d{2}-\d{4}$/', $ending_date)) {
+                    $ending_date = \Carbon\Carbon::createFromFormat('d-m-Y', $ending_date)->format('Y-m-d');
+                }
             } else {
                 $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
                 $ending_date = date("Y-m-d");
@@ -151,11 +154,20 @@ class SaleController extends Controller
         $payment_status = $request->input('payment_status');
         $brand_id = $request->input('brand_id');
         $sale_type = $request->input('sale_type');
+        $starting_date = $request->input('starting_date');
+        $ending_date = $request->input('ending_date');
+
+        if ($starting_date && preg_match('/^\d{2}-\d{2}-\d{4}$/', $starting_date)) {
+            $starting_date = \Carbon\Carbon::createFromFormat('d-m-Y', $starting_date)->format('Y-m-d');
+        }
+        if ($ending_date && preg_match('/^\d{2}-\d{2}-\d{4}$/', $ending_date)) {
+            $ending_date = \Carbon\Carbon::createFromFormat('d-m-Y', $ending_date)->format('Y-m-d');
+        }
 
         // ── Base query builder ──
         $baseQuery = fn() => Sale::query()
-            ->whereDate('created_at', '>=', $request->input('starting_date'))
-            ->whereDate('created_at', '<=', $request->input('ending_date'))
+            ->whereDate('created_at', '>=', $starting_date)
+            ->whereDate('created_at', '<=', $ending_date)
             ->when($sale_type, fn($q) => $q->where('sale_type', $sale_type))
             ->when($sale_status, fn($q) => $q->where('sale_status', $sale_status))
             ->when($payment_status, fn($q) => $q->where('payment_status', $payment_status))
@@ -1475,9 +1487,11 @@ class SaleController extends Controller
         else
             $data['payment_status'] = 4;
 
-        $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
-        $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
-        $product_id = $data['product_id'];
+        DB::beginTransaction();
+        try {
+            $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
+            $data['created_at'] = date("Y-m-d", strtotime(str_replace("/", "-", $data['created_at'])));
+            $product_id = $data['product_id'];
         $imei_number = $data['imei_number'];
         $product_batch_id = $data['product_batch_id'] ?? null;
         $product_code = $data['product_code'];
@@ -1605,19 +1619,39 @@ class SaleController extends Controller
                             ['variant_id', $variant_list[$index]],
                             ['warehouse_id', $data['warehouse_id']],
                         ])->first();
-
-                        $child_product_variant_data->qty -= $qty[$key] * $qty_list[$index];
-                        $child_product_variant_data->save();
                     } else {
+                        $child_product_variant_data = null;
                         $child_warehouse_data = Product_Warehouse::where([
                             ['product_id', $child_id],
                             ['warehouse_id', $data['warehouse_id']],
                         ])->first();
                     }
 
+                    if (!$child_warehouse_data) {
+                        $child_warehouse_data = new Product_Warehouse();
+                        $child_warehouse_data->product_id = $child_id;
+                        $child_warehouse_data->warehouse_id = $data['warehouse_id'];
+                        $child_warehouse_data->variant_id = (count($variant_list) && $variant_list[$index]) ? $variant_list[$index] : null;
+                        $child_warehouse_data->qty = 0;
+                        $child_warehouse_data->price = $child_data->price;
+                    }
 
-                    $child_data->qty -= $qty[$key] * $qty_list[$index];
-                    $child_warehouse_data->qty -= $qty[$key] * $qty_list[$index];
+                    $required_qty = $qty[$key] * $qty_list[$index];
+                    if (config('without_stock') == 'no') {
+                        if ($child_warehouse_data->qty < $required_qty) {
+                            throw new \Exception("The quantity for combo component '{$child_data->name}' exceeds available stock in this warehouse (Available: {$child_warehouse_data->qty}).");
+                        }
+                        if ($child_product_variant_data && $child_product_variant_data->qty < $required_qty) {
+                            throw new \Exception("The quantity for combo component variant '{$child_data->name}' exceeds available stock (Available: {$child_product_variant_data->qty}).");
+                        }
+                    }
+
+                    if ($child_product_variant_data) {
+                        $child_product_variant_data->qty -= $required_qty;
+                        $child_product_variant_data->save();
+                    }
+                    $child_data->qty -= $required_qty;
+                    $child_warehouse_data->qty -= $required_qty;
 
                     $child_data->save();
                     $child_warehouse_data->save();
@@ -1639,8 +1673,6 @@ class SaleController extends Controller
                             ->first();
 
                         $product_sale['variant_id'] = $lims_product_variant_data->variant_id;
-                        $lims_product_variant_data->qty -= $new_product_qty;
-                        $lims_product_variant_data->save();
                     } elseif ($product_batch_id[$key]) {
                         $lims_product_warehouse_data = Product_Warehouse::where([
                             ['product_id', $pro_id],
@@ -1649,11 +1681,38 @@ class SaleController extends Controller
                         ])->first();
 
                         $product_batch_data = ProductBatch::find($product_batch_id[$key]);
-                        $product_batch_data->qty -= $new_product_qty;
-                        $product_batch_data->save();
                     } else {
                         $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $data['warehouse_id'])
                             ->first();
+                    }
+
+                    if (!$lims_product_warehouse_data) {
+                        $lims_product_warehouse_data = new Product_Warehouse();
+                        $lims_product_warehouse_data->product_id = $pro_id;
+                        $lims_product_warehouse_data->warehouse_id = $data['warehouse_id'];
+                        $lims_product_warehouse_data->variant_id = $lims_product_data->is_variant ? $lims_product_variant_data->variant_id : null;
+                        $lims_product_warehouse_data->qty = 0;
+                        $lims_product_warehouse_data->price = $lims_product_data->price;
+                    }
+
+                    if (config('without_stock') == 'no') {
+                        if ($lims_product_warehouse_data->qty < $new_product_qty) {
+                            throw new \Exception("The quantity for product '{$lims_product_data->name}' exceeds available stock in this warehouse (Available: {$lims_product_warehouse_data->qty}).");
+                        }
+                        if ($lims_product_data->is_variant && $lims_product_variant_data->qty < $new_product_qty) {
+                            throw new \Exception("The quantity for product variant '{$lims_product_data->name}' exceeds available stock (Available: {$lims_product_variant_data->qty}).");
+                        }
+                        if ($product_batch_id[$key] && $product_batch_data->qty < $new_product_qty) {
+                            throw new \Exception("The quantity for product batch '{$lims_product_data->name}' exceeds available stock (Available: {$product_batch_data->qty}).");
+                        }
+                    }
+
+                    if ($lims_product_data->is_variant) {
+                        $lims_product_variant_data->qty -= $new_product_qty;
+                        $lims_product_variant_data->save();
+                    } elseif ($product_batch_id[$key]) {
+                        $product_batch_data->qty -= $new_product_qty;
+                        $product_batch_data->save();
                     }
                     $lims_product_data->qty -= $new_product_qty;
                     $lims_product_warehouse_data->qty -= $new_product_qty;
@@ -1734,6 +1793,12 @@ class SaleController extends Controller
         }
         if (count($custom_field_data))
             DB::table('sales')->where('id', $lims_sale_data->id)->update($custom_field_data);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
         $lims_customer_data = Customer::find($data['customer_id']);
         $message = 'Sale updated successfully';
         //collecting mail data

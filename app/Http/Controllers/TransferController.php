@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Warehouse;
-use App\Models\Product;
 use App\Models\Product_Warehouse;
-use App\Models\Tax;
-use App\Models\Unit;
-use App\Models\Transfer;
+use App\Models\Product;
+use App\Models\ProductBatch;
 use App\Models\ProductTransfer;
 use App\Models\ProductVariant;
-use App\Models\ProductBatch;
-use Auth;
-use DB;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
+use App\Models\Tax;
+use App\Models\Transfer;
+use App\Models\Unit;
+use App\Models\Warehouse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class TransferController extends Controller
 {
@@ -403,37 +403,76 @@ class TransferController extends Controller
         else
             $data['created_at'] = date("Y-m-d H:i:s");
         $document = $request->document;
-        if ($document) {
-            $v = Validator::make(
-                [
-                    'extension' => strtolower($request->document->getClientOriginalExtension()),
-                ],
-                [
-                    'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
-                ]
-            );
-            if ($v->fails())
-                return redirect()->back()->withErrors($v->errors());
 
-            $documentName = $document->getClientOriginalName();
-            $document->move('public/documents/transfer', $documentName);
-            $data['document'] = $documentName;
-        }
-        $lims_transfer_data = Transfer::create($data);
+        DB::beginTransaction();
+        try {
+            if ($document) {
+                $v = Validator::make(
+                    [
+                        'extension' => strtolower($request->document->getClientOriginalExtension()),
+                    ],
+                    [
+                        'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
+                    ]
+                );
+                if ($v->fails())
+                    return redirect()->back()->withErrors($v->errors());
 
-        $product_id = $data['product_id'];
-        $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null;
-        $product_code = $data['product_code'];
-        $qty = $data['qty'];
-        $purchase_unit = $data['purchase_unit'];
-        $net_unit_cost = $data['net_unit_cost'];
-        $tax_rate = $data['tax_rate'];
-        $tax = $data['tax'];
-        $total = $data['subtotal'];
-        $product_transfer = [];
+                $documentName = $document->getClientOriginalName();
+                $document->move('public/documents/transfer', $documentName);
+                $data['document'] = $documentName;
+            }
 
-        foreach ($product_id as $i => $id) {
+            $product_id = $data['product_id'];
+            $imei_number = $data['imei_number'];
+            $product_batch_id = $data['product_batch_id'] ?? null;
+            $product_code = $data['product_code'];
+            $qty = $data['qty'];
+            $purchase_unit = $data['purchase_unit'];
+            $net_unit_cost = $data['net_unit_cost'];
+            $tax_rate = $data['tax_rate'];
+            $tax = $data['tax'];
+            $total = $data['subtotal'];
+            $product_transfer = [];
+
+            // 🔹 Stock Validation (to prevent negative stock)
+            if ($data['status'] != 2) {
+                foreach ($product_id as $i => $id) {
+                    $lims_purchase_unit_data = Unit::where('unit_name', $purchase_unit[$i])->first();
+                    if ($lims_purchase_unit_data->operator == '*')
+                        $quantity = $qty[$i] * $lims_purchase_unit_data->operation_value;
+                    else
+                        $quantity = $qty[$i] / $lims_purchase_unit_data->operation_value;
+
+                    $lims_product_data = Product::find($id);
+
+                    if ($lims_product_data->is_variant) {
+                        $lims_product_variant_data = ProductVariant::select('id', 'variant_id', 'qty')->FindExactProductWithCode($id, $product_code[$i])->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($id, $lims_product_variant_data->variant_id, $data['from_warehouse_id'])->first();
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $quantity) {
+                            throw new \Exception("Cannot complete transfer. Product variant '{$lims_product_data->name}' would have negative stock (Variant Stock: " . ($lims_product_variant_data ? $lims_product_variant_data->qty : 0) . ", Transfer: {$quantity}).");
+                        }
+                    } elseif ($product_batch_id[$i] ?? null) {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_batch_id[$i]],
+                            ['warehouse_id', $data['from_warehouse_id']]
+                        ])->first();
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_id', $id],
+                            ['warehouse_id', $data['from_warehouse_id']],
+                        ])->first();
+                    }
+
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $quantity) {
+                        throw new \Exception("Cannot complete transfer. Product '{$lims_product_data->name}' would have negative stock in source warehouse (Warehouse Stock: " . ($lims_product_warehouse_data ? $lims_product_warehouse_data->qty : 0) . ", Transfer: {$quantity}).");
+                    }
+                }
+            }
+
+            $lims_transfer_data = Transfer::create($data);
+
+            foreach ($product_id as $i => $id) {
             $lims_purchase_unit_data  = Unit::where('unit_name', $purchase_unit[$i])->first();
             $product_transfer['variant_id'] = null;
             $product_transfer['product_batch_id'] = null;
@@ -534,6 +573,12 @@ class TransferController extends Controller
             $product_transfer['tax'] = $tax[$i];
             $product_transfer['total'] = $total[$i];
             ProductTransfer::create($product_transfer);
+        }
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
         return redirect('transfers')->with('message', 'Transfer created successfully');
@@ -738,37 +783,151 @@ class TransferController extends Controller
 
         $lims_transfer_data = Transfer::find($id);
 
-        if ($document) {
-            $v = Validator::make(
-                [
-                    'extension' => strtolower($request->document->getClientOriginalExtension()),
-                ],
-                [
-                    'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
-                ]
-            );
-            if ($v->fails())
-                return redirect()->back()->withErrors($v->errors());
+        DB::beginTransaction();
+        try {
+            if ($document) {
+                $v = Validator::make(
+                    [
+                        'extension' => strtolower($request->document->getClientOriginalExtension()),
+                    ],
+                    [
+                        'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
+                    ]
+                );
+                if ($v->fails())
+                    return redirect()->back()->withErrors($v->errors());
 
-            $this->fileDelete('documents/transfer/', $lims_transfer_data->document);
+                $this->fileDelete('documents/transfer/', $lims_transfer_data->document);
 
-            $documentName = $document->getClientOriginalName();
-            $document->move('public/documents/transfer', $documentName);
-            $data['document'] = $documentName;
-        }
+                $documentName = $document->getClientOriginalName();
+                $document->move('public/documents/transfer', $documentName);
+                $data['document'] = $documentName;
+            }
 
-        $lims_product_transfer_data = ProductTransfer::where('transfer_id', $id)->get();
-        $product_id = $data['product_id'];
-        $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null; 
-        $product_variant_id = $data['product_variant_id'];
-        $qty = $data['qty'];
-        $purchase_unit = $data['purchase_unit'];
-        $net_unit_cost = $data['net_unit_cost'];
-        $tax_rate = $data['tax_rate'];
-        $tax = $data['tax'];
-        $total = $data['subtotal'];
-        $product_transfer = [];
+            $lims_product_transfer_data = ProductTransfer::where('transfer_id', $id)->get();
+            $product_id = $data['product_id'];
+            $imei_number = $data['imei_number'];
+            $product_batch_id = $data['product_batch_id'] ?? null; 
+            $product_variant_id = $data['product_variant_id'];
+            $qty = $data['qty'];
+            $purchase_unit = $data['purchase_unit'];
+            $net_unit_cost = $data['net_unit_cost'];
+            $tax_rate = $data['tax_rate'];
+            $tax = $data['tax'];
+            $total = $data['subtotal'];
+            $product_transfer = [];
+
+            // 🔹 Stock Validation (to prevent negative stock)
+            $old_status = $lims_transfer_data->status;
+            $old_transfer_qtys = [];
+            foreach ($lims_product_transfer_data as $product_transfer_data) {
+                $qty_base = 0;
+                $lims_transfer_unit_data = Unit::find($product_transfer_data->purchase_unit_id);
+                if ($lims_transfer_unit_data) {
+                    if ($lims_transfer_unit_data->operator == '*') {
+                        $qty_base = $product_transfer_data->qty * $lims_transfer_unit_data->operation_value;
+                    } else {
+                        $qty_base = $product_transfer_data->qty / $lims_transfer_unit_data->operation_value;
+                    }
+                }
+                $key_item = $product_transfer_data->product_id . '_' . ($product_transfer_data->variant_id ?? '') . '_' . ($product_transfer_data->product_batch_id ?? '');
+                $old_transfer_qtys[$key_item] = $qty_base;
+            }
+
+            $new_status = $data['status'];
+            $new_transfer_qtys = [];
+            foreach ($product_id as $i => $id) {
+                $lims_product_data = Product::find($id);
+                $qty_base = 0;
+                $variant_id = null;
+                $batch_id = $product_batch_id[$i] ?? null;
+
+                $lims_purchase_unit_data = Unit::where('unit_name', $purchase_unit[$i])->first();
+                if ($lims_purchase_unit_data) {
+                    if ($lims_purchase_unit_data->operator == '*') {
+                        $qty_base = $qty[$i] * $lims_purchase_unit_data->operation_value;
+                    } else {
+                        $qty_base = $qty[$i] / $lims_purchase_unit_data->operation_value;
+                    }
+                }
+
+                if ($lims_product_data->is_variant) {
+                    $lims_product_variant_data = ProductVariant::select('variant_id')->FindExactProductWithCode($id, $product_code[$i])->first();
+                    if ($lims_product_variant_data) {
+                        $variant_id = $lims_product_variant_data->variant_id;
+                    }
+                }
+
+                $key_item = $id . '_' . ($variant_id ?? '') . '_' . ($batch_id ?? '');
+                $new_transfer_qtys[$key_item] = $qty_base;
+            }
+
+            $all_keys = array_unique(array_merge(array_keys($old_transfer_qtys), array_keys($new_transfer_qtys)));
+            foreach ($all_keys as $item_key) {
+                $old_qty = $old_transfer_qtys[$item_key] ?? 0;
+                $new_qty = $new_transfer_qtys[$item_key] ?? 0;
+
+                $parts = explode('_', $item_key);
+                $pro_id = $parts[0];
+                $variant_id = $parts[1] !== '' ? $parts[1] : null;
+                $batch_id = $parts[2] !== '' ? $parts[2] : null;
+
+                $lims_product_data = Product::find($pro_id);
+
+                // --- 1. Check Source Warehouse Stock Deduction ---
+                $from_old_effect = ($old_status != 2) ? $old_qty : 0;
+                $from_new_effect = ($new_status != 2) ? $new_qty : 0;
+                $from_net_deduction = $from_new_effect - $from_old_effect;
+
+                if ($from_net_deduction > 0) {
+                    if ($variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('qty')->FindExactProduct($pro_id, $variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $variant_id, $data['from_warehouse_id'])->first();
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $from_net_deduction) {
+                            throw new \Exception("Cannot update transfer. Product variant '{$lims_product_data->name}' would have negative stock in source warehouse.");
+                        }
+                    } elseif ($batch_id) {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_id', $pro_id],
+                            ['product_batch_id', $batch_id],
+                            ['warehouse_id', $data['from_warehouse_id']]
+                        ])->first();
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $data['from_warehouse_id'])->first();
+                    }
+
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $from_net_deduction) {
+                        throw new \Exception("Cannot update transfer. Product '{$lims_product_data->name}' would have negative stock in source warehouse.");
+                    }
+                }
+
+                // --- 2. Check Destination Warehouse Stock Deduction ---
+                $to_old_effect = ($old_status == 1) ? $old_qty : 0;
+                $to_new_effect = ($new_status == 1) ? $new_qty : 0;
+                $to_net_deduction = $to_old_effect - $to_new_effect;
+
+                if ($to_net_deduction > 0) {
+                    if ($variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('qty')->FindExactProduct($pro_id, $variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $variant_id, $lims_transfer_data->to_warehouse_id)->first();
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $to_net_deduction) {
+                            throw new \Exception("Cannot update transfer. Product variant '{$lims_product_data->name}' would have negative stock in destination warehouse.");
+                        }
+                    } elseif ($batch_id) {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_id', $pro_id],
+                            ['product_batch_id', $batch_id],
+                            ['warehouse_id', $lims_transfer_data->to_warehouse_id]
+                        ])->first();
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $lims_transfer_data->to_warehouse_id)->first();
+                    }
+
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $to_net_deduction) {
+                        throw new \Exception("Cannot update transfer. Product '{$lims_product_data->name}' would have negative stock in destination warehouse.");
+                    }
+                }
+            }
         foreach ($lims_product_transfer_data as $key => $product_transfer_data) {
             $old_product_id[] = $product_transfer_data->product_id;
             $old_product_variant_id[] = null;
@@ -993,7 +1152,12 @@ class TransferController extends Controller
                 ProductTransfer::create($product_transfer);
         }
 
-        $lims_transfer_data->update($data);
+            $lims_transfer_data->update($data);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
         return redirect('transfers')->with('message', 'Transfer updated successfully');
     }
 
@@ -1049,91 +1213,133 @@ class TransferController extends Controller
 
     public function destroy($id)
     {
-        $lims_transfer_data =Transfer::find($id);
+        $lims_transfer_data = Transfer::find($id);
         $lims_product_transfer_data = ProductTransfer::where('transfer_id', $id)->get();
-        foreach ($lims_product_transfer_data as $product_transfer_data) {
-            $lims_transfer_unit_data = Unit::find($product_transfer_data->purchase_unit_id);
-            if ($lims_transfer_unit_data->operator == '*') {
-                $quantity = $product_transfer_data->qty * $lims_transfer_unit_data->operation_value;
-            } else {
-                $quantity = $product_transfer_data / $lims_transfer_unit_data->operation_value;
-            }
 
-            if($lims_transfer_data->status == 1) {
-                //add quantity for from warehouse
-                if($product_transfer_data->variant_id)
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_transfer_data->product_id, $product_transfer_data->variant_id, $lims_transfer_data->from_warehouse_id)->first();
-                elseif($product_transfer_data->product_batch_id) {
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_batch_id', $product_transfer_data->product_batch_id],
-                        ['warehouse_id', $lims_transfer_data->from_warehouse_id]
-                    ])->first();
-                }
-                else
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_transfer_data->product_id, $lims_transfer_data->from_warehouse_id)->first();
-                //add imei number to from warehouse
-                if($product_transfer_data->imei_number) {
-                    if($lims_product_warehouse_data->imei_number)
-                        $lims_product_warehouse_data->imei_number .= ',' . $product_transfer_data->imei_number;
-                    else
-                        $lims_product_warehouse_data->imei_number = $product_transfer_data->imei_number;
-                }
-
-                $lims_product_warehouse_data->qty += $quantity;
-                $lims_product_warehouse_data->save();
-                //deduct quantity for to warehouse
-                if($product_transfer_data->variant_id)
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_transfer_data->product_id, $product_transfer_data->variant_id, $lims_transfer_data->to_warehouse_id)->first();
-                elseif($product_transfer_data->product_batch_id) {
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_batch_id', $product_transfer_data->product_batch_id],
-                        ['warehouse_id', $lims_transfer_data->to_warehouse_id]
-                    ])->first();
-                }
-                else
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_transfer_data->product_id, $lims_transfer_data->to_warehouse_id)->first();
-                //deduct imei number if available
-                if($product_transfer_data->imei_number) {
-                    $imei_numbers = explode(",", $product_transfer_data->imei_number);
-                    $all_imei_numbers = explode(",", $lims_product_warehouse_data->imei_number);
-                    foreach ($imei_numbers as $number) {
-                        if (($j = array_search($number, $all_imei_numbers)) !== false) {
-                            unset($all_imei_numbers[$j]);
-                        }
+        DB::beginTransaction();
+        try {
+            // 🔹 Stock Validation (to prevent negative stock)
+            if ($lims_transfer_data->status == 1) {
+                foreach ($lims_product_transfer_data as $product_transfer_data) {
+                    $lims_transfer_unit_data = Unit::find($product_transfer_data->purchase_unit_id);
+                    if ($lims_transfer_unit_data->operator == '*') {
+                        $quantity = $product_transfer_data->qty * $lims_transfer_unit_data->operation_value;
+                    } else {
+                        $quantity = $product_transfer_data->qty / $lims_transfer_unit_data->operation_value;
                     }
-                    $lims_product_warehouse_data->imei_number = implode(",", $all_imei_numbers);
+
+                    $lims_product_data = Product::find($product_transfer_data->product_id);
+
+                    if ($product_transfer_data->variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($lims_product_data->id, $product_transfer_data->variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_transfer_data->product_id, $product_transfer_data->variant_id, $lims_transfer_data->to_warehouse_id)->first();
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $quantity) {
+                            throw new \Exception("Cannot delete transfer. Product variant '{$lims_product_data->name}' would have negative stock in destination warehouse.");
+                        }
+                    } elseif ($product_transfer_data->product_batch_id) {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_transfer_data->product_batch_id],
+                            ['warehouse_id', $lims_transfer_data->to_warehouse_id]
+                        ])->first();
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_transfer_data->product_id, $lims_transfer_data->to_warehouse_id)->first();
+                    }
+
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $quantity) {
+                        throw new \Exception("Cannot delete transfer. Product '{$lims_product_data->name}' would have negative stock in destination warehouse.");
+                    }
+                }
+            }
+
+            // 🔹 Original logic
+            foreach ($lims_product_transfer_data as $product_transfer_data) {
+                $lims_transfer_unit_data = Unit::find($product_transfer_data->purchase_unit_id);
+                if ($lims_transfer_unit_data->operator == '*') {
+                    $quantity = $product_transfer_data->qty * $lims_transfer_unit_data->operation_value;
+                } else {
+                    $quantity = $product_transfer_data->qty / $lims_transfer_unit_data->operation_value;
                 }
 
-                $lims_product_warehouse_data->qty -= $quantity;
-                $lims_product_warehouse_data->save();
-            }
-            elseif($lims_transfer_data->status == 3) {
-                //add quantity for from warehouse
-                if($product_transfer_data->variant_id)
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_transfer_data->product_id, $product_transfer_data->variant_id, $lims_transfer_data->from_warehouse_id)->first();
-                elseif($product_transfer_data->product_batch_id) {
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_batch_id', $product_transfer_data->product_batch_id],
-                        ['warehouse_id', $lims_transfer_data->from_warehouse_id]
-                    ])->first();
-                }
-                else
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_transfer_data->product_id, $lims_transfer_data->from_warehouse_id)->first();
-                //add imei number to from warehouse
-                if($product_transfer_data->imei_number) {
-                    if($lims_product_warehouse_data->imei_number)
-                        $lims_product_warehouse_data->imei_number .= ',' . $lims_product_warehouse_data->imei_number;
-                    else
-                        $lims_product_warehouse_data->imei_number = $lims_product_warehouse_data->imei_number;
-                }
+                if ($lims_transfer_data->status == 1) {
+                    //add quantity for from warehouse
+                    if ($product_transfer_data->variant_id)
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_transfer_data->product_id, $product_transfer_data->variant_id, $lims_transfer_data->from_warehouse_id)->first();
+                    elseif ($product_transfer_data->product_batch_id) {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_transfer_data->product_batch_id],
+                            ['warehouse_id', $lims_transfer_data->from_warehouse_id]
+                        ])->first();
+                    } else
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_transfer_data->product_id, $lims_transfer_data->from_warehouse_id)->first();
+                    
+                    //add imei number to from warehouse
+                    if ($product_transfer_data->imei_number) {
+                        if ($lims_product_warehouse_data->imei_number)
+                            $lims_product_warehouse_data->imei_number .= ',' . $product_transfer_data->imei_number;
+                        else
+                            $lims_product_warehouse_data->imei_number = $product_transfer_data->imei_number;
+                    }
 
-                $lims_product_warehouse_data->qty += $quantity;
-                $lims_product_warehouse_data->save();
+                    $lims_product_warehouse_data->qty += $quantity;
+                    $lims_product_warehouse_data->save();
+
+                    //deduct quantity for to warehouse
+                    if ($product_transfer_data->variant_id)
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_transfer_data->product_id, $product_transfer_data->variant_id, $lims_transfer_data->to_warehouse_id)->first();
+                    elseif ($product_transfer_data->product_batch_id) {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_transfer_data->product_batch_id],
+                            ['warehouse_id', $lims_transfer_data->to_warehouse_id]
+                        ])->first();
+                    } else
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_transfer_data->product_id, $lims_transfer_data->to_warehouse_id)->first();
+                    
+                    //deduct imei number if available
+                    if ($product_transfer_data->imei_number) {
+                        $imei_numbers = explode(",", $product_transfer_data->imei_number);
+                        $all_imei_numbers = explode(",", $lims_product_warehouse_data->imei_number);
+                        foreach ($imei_numbers as $number) {
+                            if (($j = array_search($number, $all_imei_numbers)) !== false) {
+                                unset($all_imei_numbers[$j]);
+                            }
+                        }
+                        $lims_product_warehouse_data->imei_number = implode(",", $all_imei_numbers);
+                    }
+
+                    $lims_product_warehouse_data->qty -= $quantity;
+                    $lims_product_warehouse_data->save();
+                } elseif ($lims_transfer_data->status == 3) {
+                    //add quantity for from warehouse
+                    if ($product_transfer_data->variant_id)
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_transfer_data->product_id, $product_transfer_data->variant_id, $lims_transfer_data->from_warehouse_id)->first();
+                    elseif ($product_transfer_data->product_batch_id) {
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_batch_id', $product_transfer_data->product_batch_id],
+                            ['warehouse_id', $lims_transfer_data->from_warehouse_id]
+                        ])->first();
+                    } else
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_transfer_data->product_id, $lims_transfer_data->from_warehouse_id)->first();
+                    
+                    //add imei number to from warehouse
+                    if ($product_transfer_data->imei_number) {
+                        if ($lims_product_warehouse_data->imei_number)
+                            $lims_product_warehouse_data->imei_number .= ',' . $lims_product_warehouse_data->imei_number;
+                        else
+                            $lims_product_warehouse_data->imei_number = $lims_product_warehouse_data->imei_number;
+                    }
+
+                    $lims_product_warehouse_data->qty += $quantity;
+                    $lims_product_warehouse_data->save();
+                }
+                $product_transfer_data->delete();
             }
-            $product_transfer_data->delete();
+            $lims_transfer_data->delete();
+            $this->fileDelete('documents/transfer/', $lims_transfer_data->document);
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-        $lims_transfer_data->delete();
-        $this->fileDelete('documents/transfer/', $lims_transfer_data->document);
 
         return redirect('transfers')->with('not_permitted', 'Transfer deleted successfully');
     }

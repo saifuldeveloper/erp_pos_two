@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Mail\UserNotification;
+use App\Models\Account;
+use App\Models\Currency;
+use App\Models\Product_Warehouse;
+use App\Models\Product;
+use App\Models\ProductBatch;
+use App\Models\ProductPurchase;
+use App\Models\ProductVariant;
+use App\Models\Purchase;
+use App\Models\PurchaseProductReturn;
 use App\Models\ReturnPurchase;
-use App\Models\Warehouse;
 use App\Models\Supplier;
 use App\Models\Tax;
-use App\Models\Product;
-use App\Models\Product_Warehouse;
 use App\Models\Unit;
-use App\Models\PurchaseProductReturn;
-use App\Models\Account;
-use App\Models\ProductVariant;
-use App\Models\ProductBatch;
 use App\Models\Variant;
-use App\Models\Purchase;
-use App\Models\ProductPurchase;
-use App\Models\Currency;
-use Auth;
-use DB;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use App\Mail\UserNotification;
+use App\Models\Warehouse;
+use App\Traits\TenantInfo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use App\Traits\TenantInfo;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class ReturnPurchaseController extends Controller
 {
@@ -817,9 +817,6 @@ class ReturnPurchaseController extends Controller
                 $data['document'] = $documentName;
             }
 
-            // 🔹 Create return record
-            $return = ReturnPurchase::create($data);
-
             // 🔹 Extract product arrays
             $product_ids = $data['is_return'];
             $imei_numbers = $data['imei_number'] ?? [];
@@ -833,6 +830,74 @@ class ReturnPurchaseController extends Controller
             $taxes = $data['tax'];
             $totals = $data['subtotal'];
 
+            // 🔹 Stock Validation (to prevent negative stock)
+            foreach ($product_ids as $key => $pro_id) {
+                $quantity = $qtys[$key];
+                if ($quantity <= 0)
+                    continue;
+
+                if ($purchase_units[$key] != 'n/a') {
+                    $unit = Unit::where('unit_name', $purchase_units[$key])->first();
+                    if ($unit) {
+                        $quantity = ($unit->operator == '*')
+                            ? $qtys[$key] * $unit->operation_value
+                            : $qtys[$key] / $unit->operation_value;
+                    }
+                }
+
+                $product = Product::find($pro_id);
+
+                if ($product->is_variant) {
+                    $product_variant = ProductVariant::select('id', 'variant_id', 'qty')
+                        ->FindExactProductWithCode($pro_id, $product_codes[$key])
+                        ->first();
+
+                    if (!$product_variant || $product_variant->qty < $quantity) {
+                        throw new \Exception("Cannot create purchase return. Product variant '{$product->name}' would have negative stock (Variant Stock: " . ($product_variant ? $product_variant->qty : 0) . ", Return: {$quantity}).");
+                    }
+
+                    $warehouse_product = Product_Warehouse::FindProductWithVariant(
+                        $pro_id,
+                        $product_variant->variant_id,
+                        $data['warehouse_id']
+                    )->first();
+
+                    if (!$warehouse_product || $warehouse_product->qty < $quantity) {
+                        throw new \Exception("Cannot create purchase return. Product variant '{$product->name}' would have negative stock in warehouse (Warehouse Stock: " . ($warehouse_product ? $warehouse_product->qty : 0) . ", Return: {$quantity}).");
+                    }
+                } elseif (!empty($product_batch_ids[$key])) {
+                    $batch = ProductBatch::find($product_batch_ids[$key]);
+                    if (!$batch || $batch->qty < $quantity) {
+                        throw new \Exception("Cannot create purchase return. Product batch '{$product->name}' would have negative stock.");
+                    }
+
+                    $warehouse_product = Product_Warehouse::where([
+                        ['product_batch_id', $product_batch_ids[$key]],
+                        ['warehouse_id', $data['warehouse_id']]
+                    ])->first();
+
+                    if (!$warehouse_product || $warehouse_product->qty < $quantity) {
+                        throw new \Exception("Cannot create purchase return. Product batch '{$product->name}' would have negative stock in warehouse.");
+                    }
+                } else {
+                    $warehouse_product = Product_Warehouse::FindProductWithoutVariant(
+                        $pro_id,
+                        $data['warehouse_id']
+                    )->first();
+
+                    if (!$warehouse_product || $warehouse_product->qty < $quantity) {
+                        throw new \Exception("Cannot create purchase return. Product '{$product->name}' would have negative stock in warehouse (Warehouse Stock: " . ($warehouse_product ? $warehouse_product->qty : 0) . ", Return: {$quantity}).");
+                    }
+                }
+
+                if ($product->qty < $quantity) {
+                    throw new \Exception("Cannot create purchase return. Product '{$product->name}' would have negative global stock (Global Stock: {$product->qty}, Return: {$quantity}).");
+                }
+            }
+
+            // 🔹 Create return record
+            $return = ReturnPurchase::create($data);
+
             // 🔹 Totals
             $item_count = 0;
             $total_qty = 0;
@@ -843,17 +908,15 @@ class ReturnPurchaseController extends Controller
             foreach ($product_ids as $key => $pro_id) {
                 $product = Product::find($pro_id);
                 if (!$product)
-                    continue; // skip if product missing
+                    continue;
 
                 $variant_id = null;
                 $purchase_unit_id = 0;
                 $quantity = $qtys[$key];
 
-                // skip if invalid qty
                 if ($quantity <= 0)
                     continue;
 
-                // 🔹 Handle unit conversion
                 if ($purchase_units[$key] != 'n/a') {
                     $unit = Unit::where('unit_name', $purchase_units[$key])->first();
                     if ($unit) {
@@ -865,16 +928,11 @@ class ReturnPurchaseController extends Controller
                 }
 
                 $warehouse_product = null;
-                $skipProduct = false;
 
-                // 🔹 Variant Product
                 if ($product->is_variant) {
                     $product_variant = ProductVariant::select('id', 'variant_id', 'qty')
                         ->FindExactProductWithCode($pro_id, $product_codes[$key])
                         ->first();
-
-                    if (!$product_variant)
-                        continue;
 
                     $variant = Variant::find($product_variant->variant_id);
                     $variant_id = $variant->id ?? null;
@@ -885,47 +943,24 @@ class ReturnPurchaseController extends Controller
                         $data['warehouse_id']
                     )->first();
 
-                    // check available qty
-                    if ($quantity > $product_variant->qty || $product_variant->qty <= 0) {
-                        $skipProduct = true;
-                    } else {
-                        $product_variant->qty -= $quantity;
-                        $product_variant->save();
-                    }
-                }
-                // 🔹 Batch Product
-                elseif (!empty($product_batch_ids[$key])) {
+                    $product_variant->qty -= $quantity;
+                    $product_variant->save();
+                } elseif (!empty($product_batch_ids[$key])) {
                     $warehouse_product = Product_Warehouse::where([
                         ['product_batch_id', $product_batch_ids[$key]],
                         ['warehouse_id', $data['warehouse_id']]
                     ])->first();
 
                     $batch = ProductBatch::find($product_batch_ids[$key]);
-                    if ($batch) {
-                        if ($quantity > $batch->qty || $batch->qty <= 0) {
-                            $skipProduct = true;
-                        } else {
-                            $batch->qty -= $quantity;
-                            $batch->save();
-                        }
-                    }
-                }
-                // 🔹 Normal Product
-                else {
+                    $batch->qty -= $quantity;
+                    $batch->save();
+                } else {
                     $warehouse_product = Product_Warehouse::FindProductWithoutVariant(
                         $pro_id,
                         $data['warehouse_id']
                     )->first();
-
-                    if (!$warehouse_product || $warehouse_product->qty <= 0 || $quantity > $warehouse_product->qty) {
-                        $skipProduct = true;
-                    }
                 }
 
-                if ($skipProduct)
-                    continue;
-
-                // 🔸 Update main product qty
                 $product->qty -= $quantity;
                 $product->save();
 
@@ -934,13 +969,11 @@ class ReturnPurchaseController extends Controller
                     $warehouse_product->save();
                 }
 
-                // 🔸 Handle IMEI
                 if (!empty($imei_numbers[$key] ?? null) && isset($warehouse_product)) {
                     $warehouse_product->imei_number = trim($warehouse_product->imei_number . ',' . $imei_numbers[$key], ',');
                     $warehouse_product->save();
                 }
 
-                // 🔸 Insert Return Product Record
                 PurchaseProductReturn::insert([
                     'return_id' => $return->id,
                     'product_id' => $pro_id,
@@ -958,7 +991,6 @@ class ReturnPurchaseController extends Controller
                     'updated_at' => now(),
                 ]);
 
-                // 🔹 Update totals
                 $item_count++;
                 $total_qty += $qtys[$key];
                 $total_discount += $discounts[$key];
@@ -966,20 +998,19 @@ class ReturnPurchaseController extends Controller
                 $total_cost += $totals[$key];
             }
 
-            // 🔹 Update final totals in ReturnPurchase
             $return->item = $item_count;
             $return->total_qty = $total_qty;
             $return->total_discount = $total_discount;
             $return->total_tax = $total_tax;
             $return->total_cost = $total_cost;
-            $return->grand_total = $total_cost; // adjust if needed for shipping/extra cost
+            $return->grand_total = $total_cost;
             $return->save();
 
             DB::commit();
 
             return redirect()
                 ->route('return-purchase.index')
-                ->with('message', 'Purchase Return created successfully (unavailable items skipped).');
+                ->with('message', 'Purchase Return created successfully.');
 
         } catch (\Exception $e) {
             DB::rollBack();
@@ -1092,46 +1123,138 @@ class ReturnPurchaseController extends Controller
         $document = $request->document;
         $lims_return_data = ReturnPurchase::find($id);
 
-        if ($document) {
-            $v = Validator::make(
-                [
-                    'extension' => strtolower($request->document->getClientOriginalExtension()),
-                ],
-                [
-                    'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
-                ]
-            );
-            if ($v->fails())
-                return redirect()->back()->withErrors($v->errors());
+        DB::beginTransaction();
+        try {
+            if ($document) {
+                $v = Validator::make(
+                    [
+                        'extension' => strtolower($request->document->getClientOriginalExtension()),
+                    ],
+                    [
+                        'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
+                    ]
+                );
+                if ($v->fails())
+                    return redirect()->back()->withErrors($v->errors());
 
-            $this->fileDelete('documents/purchase_return/', $lims_return_data->document);
+                $this->fileDelete('documents/purchase_return/', $lims_return_data->document);
 
-            $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
-            $documentName = date("Ymdhis");
-            if (!config('database.connections.saleprosaas_landlord')) {
-                $documentName = $documentName . '.' . $ext;
-                $document->move('public/documents/purchase_return', $documentName);
-            } else {
-                $documentName = $this->getTenantId() . '_' . $documentName . '.' . $ext;
-                $document->move('public/documents/purchase_return', $documentName);
+                $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
+                $documentName = date("Ymdhis");
+                if (!config('database.connections.saleprosaas_landlord')) {
+                    $documentName = $documentName . '.' . $ext;
+                    $document->move('public/documents/purchase_return', $documentName);
+                } else {
+                    $documentName = $this->getTenantId() . '_' . $documentName . '.' . $ext;
+                    $document->move('public/documents/purchase_return', $documentName);
+                }
+                $data['document'] = $documentName;
             }
-            $data['document'] = $documentName;
-        }
 
-        $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
+            $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
 
-        $product_id = $data['product_id'];
-        $imei_number = $data['imei_number'];
-        $product_batch_id = $data['product_batch_id'] ?? null;
-        $product_code = $data['product_code'];
-        $product_variant_id = $data['product_variant_id'];
-        $qty = $data['qty'];
-        $purchase_unit = $data['purchase_unit'];
-        $net_unit_cost = $data['net_unit_cost'];
-        $discount = $data['discount'];
-        $tax_rate = $data['tax_rate'];
-        $tax = $data['tax'];
-        $total = $data['subtotal'];
+            $product_id = $data['product_id'];
+            $imei_number = $data['imei_number'];
+            $product_batch_id = $data['product_batch_id'] ?? null;
+            $product_code = $data['product_code'];
+            $product_variant_id = $data['product_variant_id'];
+            $qty = $data['qty'];
+            $purchase_unit = $data['purchase_unit'];
+            $net_unit_cost = $data['net_unit_cost'];
+            $discount = $data['discount'];
+            $tax_rate = $data['tax_rate'];
+            $tax = $data['tax'];
+            $total = $data['subtotal'];
+
+            // 🔹 Stock Validation (to prevent negative stock)
+            $old_return_qtys = [];
+            foreach ($lims_product_return_data as $product_return_data) {
+                $qty_base = 0;
+                if ($product_return_data->purchase_unit_id != 0) {
+                    $lims_purchase_unit_data = Unit::find($product_return_data->purchase_unit_id);
+                    if ($lims_purchase_unit_data) {
+                        if ($lims_purchase_unit_data->operator == '*') {
+                            $qty_base = $product_return_data->qty * $lims_purchase_unit_data->operation_value;
+                        } else {
+                            $qty_base = $product_return_data->qty / $lims_purchase_unit_data->operation_value;
+                        }
+                    }
+                }
+                $key_item = $product_return_data->product_id . '_' . ($product_return_data->variant_id ?? '') . '_' . ($product_return_data->product_batch_id ?? '');
+                $old_return_qtys[$key_item] = $qty_base;
+            }
+
+            $new_return_qtys = [];
+            foreach ($product_id as $key => $pro_id) {
+                $lims_product_data = Product::find($pro_id);
+                $qty_base = 0;
+                $variant_id = null;
+                $batch_id = $product_batch_id[$key] ?? null;
+
+                if ($purchase_unit[$key] != 'n/a') {
+                    $lims_purchase_unit_data = Unit::where('unit_name', $purchase_unit[$key])->first();
+                    if ($lims_purchase_unit_data) {
+                        if ($lims_purchase_unit_data->operator == '*') {
+                            $qty_base = $qty[$key] * $lims_purchase_unit_data->operation_value;
+                        } else {
+                            $qty_base = $qty[$key] / $lims_purchase_unit_data->operation_value;
+                        }
+                    }
+                }
+
+                if ($lims_product_data->is_variant) {
+                    $lims_product_variant_data = ProductVariant::select('variant_id')->FindExactProductWithCode($pro_id, $product_code[$key])->first();
+                    if ($lims_product_variant_data) {
+                        $variant_id = $lims_product_variant_data->variant_id;
+                    }
+                }
+
+                $key_item = $pro_id . '_' . ($variant_id ?? '') . '_' . ($batch_id ?? '');
+                $new_return_qtys[$key_item] = $qty_base;
+            }
+
+            foreach ($all_keys = array_unique(array_merge(array_keys($old_return_qtys), array_keys($new_return_qtys))) as $item_key) {
+                $old_qty_base = $old_return_qtys[$item_key] ?? 0;
+                $new_qty_base = $new_return_qtys[$item_key] ?? 0;
+                
+                $net_deduction = $new_qty_base - $old_qty_base;
+                
+                if ($net_deduction > 0) {
+                    $parts = explode('_', $item_key);
+                    $pro_id = $parts[0];
+                    $variant_id = $parts[1] !== '' ? $parts[1] : null;
+                    $batch_id = $parts[2] !== '' ? $parts[2] : null;
+                    
+                    $lims_product_data = Product::find($pro_id);
+                    
+                    if ($variant_id) {
+                        $lims_product_variant_data = ProductVariant::select('qty')->FindExactProduct($pro_id, $variant_id)->first();
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $variant_id, $data['warehouse_id'])->first();
+                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $net_deduction) {
+                            throw new \Exception("Cannot update purchase return. Product variant '{$lims_product_data->name}' would have negative stock.");
+                        }
+                    } elseif ($batch_id) {
+                        $lims_product_batch_data = ProductBatch::find($batch_id);
+                        $lims_product_warehouse_data = Product_Warehouse::where([
+                            ['product_id', $pro_id],
+                            ['product_batch_id', $batch_id],
+                            ['warehouse_id', $data['warehouse_id']]
+                        ])->first();
+                        if (!$lims_product_batch_data || $lims_product_batch_data->qty < $net_deduction) {
+                            throw new \Exception("Cannot update purchase return. Product batch '{$lims_product_data->name}' would have negative stock.");
+                        }
+                    } else {
+                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $data['warehouse_id'])->first();
+                    }
+                    
+                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $net_deduction) {
+                        throw new \Exception("Cannot update purchase return. Product '{$lims_product_data->name}' would have negative stock in warehouse.");
+                    }
+                    if ($lims_product_data->qty < $net_deduction) {
+                        throw new \Exception("Cannot update purchase return. Product '{$lims_product_data->name}' would have negative global stock.");
+                    }
+                }
+            }
 
         foreach ($lims_product_return_data as $key => $product_return_data) {
             $old_product_id[] = $product_return_data->product_id;
@@ -1294,6 +1417,11 @@ class ReturnPurchaseController extends Controller
             } catch (\Exception $e) {
                 $message = 'Return updated successfully. Please setup your <a href="setting/mail_setting">mail setting</a> to send mail.';
             }
+        }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
         return redirect('return-purchase')->with('message', $message);
     }

@@ -13,10 +13,18 @@ trait FileHandleTrait{
         //    File::delete($filePath.$fileName);
 
 
-        if($fileName && !config('database.connections.saleprosaas_landlord') && file_exists('public/'.$filePath.$fileName))
-            unlink('public/'.$filePath.$fileName);
-        elseif($fileName && file_exists($filePath.$fileName))
-            unlink($filePath.$fileName);
+        if ($fileName && !config('database.connections.saleprosaas_landlord')) {
+            if (file_exists('public/'.$filePath.$fileName)) {
+                unlink('public/'.$filePath.$fileName);
+            }
+            if (file_exists('public/public/'.$filePath.$fileName)) {
+                unlink('public/public/'.$filePath.$fileName);
+            }
+        } elseif ($fileName) {
+            if (file_exists($filePath.$fileName)) {
+                unlink($filePath.$fileName);
+            }
+        }
 
     }
 

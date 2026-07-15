@@ -8,6 +8,8 @@ use App\Models\ProductVariant;
 use App\Models\StockCount;
 use App\Models\StockCountItem;
 use App\Models\Warehouse;
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -191,8 +193,6 @@ class StockCountController extends Controller
                 $batch = $request->resolved_batch;
 
                 if ($batch && count($batch) > 0) {
-                    // ── Step 1: all variants আগে update করো ──
-                    $affected_product_ids = [];
                     foreach ($batch as $data) {
                         $item_code = $data['code'];
                         if ($data['action'] === 'cancel') {
@@ -202,79 +202,62 @@ class StockCountController extends Controller
                         if ($data['action'] !== 'update_stock')
                             continue;
 
-                        $present_qty = DB::table('stock_count_items')->where('stock_count_id', $stock_count->id)->where('item_code', $item_code)->sum('updated_quantity');
+                        // Get the counted item details
+                        $stock_count_items = DB::table('stock_count_items')
+                            ->where('stock_count_id', $stock_count->id)
+                            ->where('item_code', $item_code)
+                            ->get();
 
-                        //  qty কখনো negative হবে না
-                        $present_qty = max(0, $present_qty);
+                        if ($stock_count_items->isEmpty())
+                            continue;
 
+                        $first_item = $stock_count_items->first();
+                        $counted_qty = $stock_count_items->sum('updated_quantity');
+                        $saved_qty = $first_item->current_quantity;
+                        $diff = $counted_qty - $saved_qty;
+
+                        $product = Product::find($first_item->product_id);
+                        if (!$product)
+                            continue;
+
+                        $variant_id = null;
                         $productVariant = ProductVariant::where('item_code', $item_code)->first();
-
                         if ($productVariant) {
-                            $productVariant->qty = $present_qty;
+                            $variant_id = $productVariant->variant_id;
+                        }
+
+                        // 1. Update Product_Warehouse record
+                        if ($variant_id) {
+                            $warehouse_product = Product_Warehouse::FindProductWithVariant($product->id, $variant_id, $stock_count->warehouse_id)->first();
+                        } else {
+                            $warehouse_product = Product_Warehouse::FindProductWithoutVariant($product->id, $stock_count->warehouse_id)->first();
+                        }
+
+                        if ($warehouse_product) {
+                            $warehouse_product->qty = max(0, $warehouse_product->qty + $diff);
+                            $warehouse_product->save();
+                        } else {
+                            // If it didn't exist in this warehouse, create it with the counted quantity
+                            $warehouse_product = new Product_Warehouse();
+                            $warehouse_product->product_id = $product->id;
+                            $warehouse_product->variant_id = $variant_id;
+                            $warehouse_product->warehouse_id = $stock_count->warehouse_id;
+                            $warehouse_product->qty = max(0, $counted_qty);
+                            $warehouse_product->save();
+                        }
+
+                        // 2. Update Global stock
+                        if ($productVariant) {
+                            $productVariant->qty = max(0, $productVariant->qty + $diff);
                             $productVariant->save();
 
-                            $affected_product_ids[] = $productVariant->product_id;
-
+                            // Recalculate main product's global stock (sum of all its variants' global stocks)
+                            $total_variant_qty = ProductVariant::where('product_id', $product->id)->sum('qty');
+                            $product->qty = max(0, $total_variant_qty);
+                            $product->save();
                         } else {
-                            $product = Product::where('code', $item_code)->first();
-                            if ($product) {
-                                $product->qty = $present_qty;
-                                $product->save();
-                            }
-                        }
-                    }
-
-                    // ── Step 2: সব variants update হওয়ার পর
-                    //            main product qty recalculate করো ──
-                    foreach (array_unique($affected_product_ids) as $product_id) {
-                        $mainProduct = Product::find($product_id);
-                        if ($mainProduct) {
-                            $totalQty = ProductVariant::where('product_id', $product_id)->sum('qty');
-                            // product qty ও কখনো negative হবে না
-                            $mainProduct->qty = max(0, $totalQty);
-                            $mainProduct->save();
-                        }
-                    }
-
-                    // ── Step 3: affected product_ids বের করো ──
-                    $product_ids = [];
-                    foreach ($batch as $data) {
-                        $variant = ProductVariant::where('item_code', $data['code'])->first();
-                        if ($variant) {
-                            $product_ids[] = $variant->product_id;
-                        } else {
-                            $product = Product::where('code', $data['code'])->first();
-                            if ($product)
-                                $product_ids[] = $product->id;
-                        }
-                    }
-                    $product_ids = array_unique($product_ids);
-
-                    // ── Step 4: warehouse এর সব পুরানো rows DELETE ──
-                    Product_Warehouse::whereIn('product_id', $product_ids)->where('warehouse_id', $stock_count->warehouse_id)->delete();
-
-                    // ── Step 5: product_variants থেকে পড়ে warehouse এ fresh insert ──
-                    foreach ($product_ids as $product_id) {
-                        $allVariants = ProductVariant::where('product_id', $product_id)->get();
-
-                        if ($allVariants->count() > 0) {
-                            foreach ($allVariants as $variant) {
-                                Product_Warehouse::create([
-                                    'product_id' => $variant->product_id,
-                                    'variant_id' => $variant->variant_id,
-                                    'warehouse_id' => $stock_count->warehouse_id,
-                                    'qty' => max(0, $variant->qty),
-                                ]);
-                            }
-                        } else {
-                            $product = Product::find($product_id);
-                            if ($product) {
-                                Product_Warehouse::create([
-                                    'product_id' => $product->id,
-                                    'warehouse_id' => $stock_count->warehouse_id,
-                                    'qty' => max(0, $product->qty),
-                                ]);
-                            }
+                            $product->qty = max(0, $product->qty + $diff);
+                            $product->save();
                         }
                     }
                 }
@@ -312,5 +295,91 @@ class StockCountController extends Controller
             }
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+    }
+
+    public function remainingProducts($id)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('stock_count')) {
+            $lims_stock_count = StockCount::with('items')->findOrFail($id);
+            $counted_product_ids = $lims_stock_count->items->pluck('product_id')->unique()->toArray();
+            
+            $lims_brand_list = Brand::where('is_active', true)->get();
+            $lims_category_list = Category::with('parent')->where('is_active', true)->get();
+
+            $brand_id = request()->input('brand_id', 0);
+            $category_id = request()->input('category_id', 0);
+            $start_date = request()->input('start_date');
+            $end_date = request()->input('end_date');
+
+            $query = Product::ActiveStandard()
+                ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+                ->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id)
+                ->where('product_warehouse.qty', '>', 0);
+
+            if ($brand_id != 0) {
+                $query->where('products.brand_id', $brand_id);
+            }
+            if ($category_id != 0) {
+                $query->where('products.category_id', $category_id);
+            }
+            if ($start_date) {
+                $query->whereDate('products.created_at', '>=', date('Y-m-d', strtotime($start_date)));
+            }
+            if ($end_date) {
+                $query->whereDate('products.created_at', '<=', date('Y-m-d', strtotime($end_date)));
+            }
+
+            $remainingProducts = $query->select('products.id', 'products.name', 'products.code', 'products.price', 'products.cost', 'product_warehouse.qty')
+                ->groupBy('products.id')
+                ->get()
+                ->filter(function($p) use ($counted_product_ids) {
+                    return !in_array($p->id, $counted_product_ids);
+                });
+
+            $remainingCount = $remainingProducts->count();
+            $remainingQty = $remainingProducts->sum('qty');
+            $totalRemainingPurchaseValue = $remainingProducts->sum(function($p) {
+                return $p->qty * $p->cost;
+            });
+            $totalRemainingSaleValue = $remainingProducts->sum(function($p) {
+                return $p->qty * $p->price;
+            });
+
+            return view('backend.stock_count.remaining_products', compact(
+                'lims_stock_count',
+                'remainingProducts',
+                'remainingCount',
+                'remainingQty',
+                'totalRemainingPurchaseValue',
+                'totalRemainingSaleValue',
+                'lims_brand_list',
+                'lims_category_list',
+                'brand_id',
+                'category_id',
+                'start_date',
+                'end_date'
+            ));
+        } else {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+    }
+
+    public function markAsIncomplete($id)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('stock_count')) {
+            $stock_count = StockCount::findOrFail($id);
+            if ($stock_count->is_completed && !$stock_count->is_resolved) {
+                $stock_count->update([
+                    'is_completed' => false,
+                    'completed_by' => null
+                ]);
+                return redirect()->route('stock-count.show', $id)->with('success', 'Stock count reverted to incomplete state successfully.');
+            }
+            return redirect()->back()->with('error', 'Cannot revert this stock count.');
+        } else {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
     }
 }

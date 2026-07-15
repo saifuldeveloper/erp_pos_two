@@ -1136,6 +1136,180 @@
           }
       });
 
+      // Global transformation for daterangepicker-field to Start Date and End Date inputs
+      $('.daterangepicker-field').each(function() {
+          var $el = $(this);
+          $el.removeClass('daterangepicker-field');
+          
+          var $form = $el.closest('form');
+          var $startInput = $form.find('input[name="starting_date"], input[name="start_date"]');
+          var $endInput = $form.find('input[name="ending_date"], input[name="end_date"]');
+          
+          if ($startInput.length && $endInput.length) {
+              var startVal = $startInput.val();
+              var endVal = $endInput.val();
+              
+              var startDisp = '';
+              var endDisp = '';
+              if (startVal) {
+                  var parts = startVal.split('-');
+                  if (parts.length === 3 && parts[0].length === 4) {
+                      startDisp = parts[2] + '-' + parts[1] + '-' + parts[0];
+                  } else {
+                      startDisp = startVal;
+                  }
+              }
+              if (endVal) {
+                  var parts = endVal.split('-');
+                  if (parts.length === 3 && parts[0].length === 4) {
+                      endDisp = parts[2] + '-' + parts[1] + '-' + parts[0];
+                  } else {
+                      endDisp = endVal;
+                  }
+              }
+              var $parentCol = $el.closest('[class*="col-"]');
+              if ($parentCol.length) {
+                  var colClass = $parentCol.attr('class') || '';
+                  
+                  var startLabelText = "Start Date";
+                  var endLabelText = "End Date";
+                  
+                  var isBengali = false;
+                  var $origLabel = $parentCol.find('label');
+                  if ($origLabel.length) {
+                      var origText = $origLabel.text().trim();
+                      if (origText.indexOf('তারিখ') !== -1) {
+                          isBengali = true;
+                      }
+                  }
+                  
+                  if (isBengali) {
+                      startLabelText = "শুরুর তারিখ";
+                      endLabelText = "শেষ তারিখ";
+                  }
+                  
+                  var $hiddenFields = $parentCol.find('input[type="hidden"]');
+                  $el.hide();
+                  
+                  var $startFormGroup = $('<div class="form-group mb-0"></div>');
+                  var $newStartLabel = $('<label class="font-weight-bold"><strong>' + startLabelText + '</strong></label>');
+                  var $startPicker = $('<input type="text" class="form-control date" readonly required>');
+                  $startPicker.val(startDisp);
+                  $startFormGroup.append($newStartLabel).append($startPicker);
+                  
+                  $parentCol.empty().append($el).append($hiddenFields).append($startFormGroup);
+                  
+                  // Copy classes from parent column but remove offsets
+                  var endColClass = colClass.replace(/offset-md-\d+/g, '');
+                  var $endCol = $('<div class="' + endColClass + '"></div>');
+                  var $endFormGroup = $('<div class="form-group mb-0"></div>');
+                  var $newEndLabel = $('<label class="font-weight-bold"><strong>' + endLabelText + '</strong></label>');
+                  var $endPicker = $('<input type="text" class="form-control date" readonly required>');
+                  $endPicker.val(endDisp);
+                  $endFormGroup.append($newEndLabel).append($endPicker);
+                  $endCol.append($endFormGroup);
+                  
+                  $parentCol.after($endCol);
+                  
+                  var $row = $parentCol.closest('.row');
+                  if ($row.length) {
+                      // Normalize all horizontal layouts (d-flex or form-group row) in this row to vertical layout
+                      $row.find('.form-group.row, .d-flex').each(function() {
+                          var $group = $(this);
+                          $group.removeClass('row d-flex').addClass('form-group mb-0');
+                          
+                          $group.find('.d-tc').each(function() {
+                              $(this).removeClass('d-tc mt-2');
+                          });
+                          
+                          $group.find('label').addClass('font-weight-bold d-block mb-1');
+                          $group.find('div, select').addClass('w-100');
+                      });
+                      
+                      // Check if the row contains any offset classes to identify centered layout
+                      var hasRowOffset = false;
+                      $row.children('[class*="col-"]').each(function() {
+                          var cls = $(this).attr('class') || '';
+                          if (cls.indexOf('offset-') !== -1) {
+                              hasRowOffset = true;
+                          }
+                      });
+                      
+                      // Convert all grid columns in the row while preserving offsets and d-none
+                      $row.children('[class*="col-"]').each(function() {
+                          var $child = $(this);
+                          var hasDNone = $child.hasClass('d-none');
+                          var childClass = $child.attr('class') || '';
+                          
+                          var childOffset = '';
+                          var childOffsetMatch = childClass.match(/offset-md-\d+/);
+                          if (childOffsetMatch) {
+                              childOffset = childOffsetMatch[0];
+                          }
+                          
+                          $child.removeClass(function (index, className) {
+                              return (className.match(/(^|\s)col-\S+/g) || []).join(' ');
+                          });
+                          
+                          if (hasRowOffset) {
+                              var hasInput = $child.find('input, select, button').length > 0;
+                              if (hasInput) {
+                                  $child.addClass('col-md-2');
+                              } else {
+                                  $child.addClass('col-md');
+                              }
+                          } else {
+                              $child.addClass('col-md');
+                          }
+                          
+                          if (childOffset) {
+                              $child.addClass(childOffset);
+                          }
+                          if (hasDNone) {
+                              $child.addClass('d-none');
+                          }
+                      });
+                  }
+                  
+                  // Format and align submit button
+                  var $submitBtn = $form.find('button[type="submit"]');
+                  if ($submitBtn.length) {
+                      if ($submitBtn.find('.fa-filter').length === 0) {
+                          $submitBtn.html('<i class="fa fa-filter"></i> ' + $submitBtn.text().trim());
+                      }
+                      var $submitCol = $submitBtn.closest('[class*="col-"]');
+                      if ($submitCol.length) {
+                          $submitCol.removeClass('mt-4');
+                          $submitBtn.closest('.form-group').removeClass('mt-4');
+                          if ($submitCol.find('label').length === 0) {
+                              $submitBtn.before('<label class="d-block">&nbsp;</label>');
+                          }
+                      }
+                  }
+                  
+                  $startPicker.datepicker({
+                      format: "dd-mm-yyyy",
+                      autoclose: true,
+                      todayHighlight: true
+                  }).on('changeDate', function(e) {
+                      var formatted = e.format('yyyy-mm-dd');
+                      $startInput.val(formatted);
+                      $el.val($startInput.val() + ' To ' + $endInput.val());
+                  });
+                  
+                  $endPicker.datepicker({
+                      format: "dd-mm-yyyy",
+                      autoclose: true,
+                      todayHighlight: true
+                  }).on('changeDate', function(e) {
+                      var formatted = e.format('yyyy-mm-dd');
+                      $endInput.val(formatted);
+                      $el.val($startInput.val() + ' To ' + $endInput.val());
+                  });
+              }
+          }
+      });
+
       $('.date').datepicker({
          format: "dd-mm-yyyy",
          autoclose: true,

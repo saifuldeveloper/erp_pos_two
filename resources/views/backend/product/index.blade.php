@@ -306,7 +306,14 @@
     </div>
 @endsection
 @push('scripts')
+    @php
+        $has_public_in_base = str_contains(url('/'), '/public');
+        $doc_root = $_SERVER['DOCUMENT_ROOT'] ?? '';
+        $is_doc_root_public = (str_ends_with(str_replace('\\', '/', $doc_root), '/public') || str_replace('\\', '/', $doc_root) === str_replace('\\', '/', public_path()));
+        $product_image_url_prefix = ($has_public_in_base || $is_doc_root_public) ? asset('images/product') : asset('public/images/product');
+    @endphp
     <script>
+        var productImagePrefix = '{{ $product_image_url_prefix }}';
         $("ul#product").siblings('a').attr('aria-expanded', 'true');
         $("ul#product").addClass("show");
         $("ul#product #product-list-menu").addClass("active");
@@ -450,16 +457,16 @@
                     for (var i = 0; i < product_image.length; i++) {
                         let activeClass = !i ? 'active' : '';
                         slidertext += '<div class="carousel-item ' + activeClass +
-                            '"><img src="{{ asset('images/product') }}/' +
+                            '"><img src="' + productImagePrefix + '/' +
                             product_image[i] + '" height="300" width="100%"></div>';
                     }
                     slidertext +=
                         '</div><a class="carousel-control-prev" href="#product-img-slider" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#product-img-slider" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>';
                 } else {
-                    slidertext = '<img src="{{ asset('images/product') }}/' + product[18] + '" height="300" width="100%">';
+                    slidertext = '<img src="' + productImagePrefix + '/' + product[18] + '" height="300" width="100%">';
                 }
             } else {
-                slidertext = '<img src="{{ asset('images/product/zummXD2dvAtI.png') }}" height="300" width="100%">';
+                slidertext = '<img src="' + productImagePrefix + '/zummXD2dvAtI.png" height="300" width="100%">';
             }
             $("#combo-header").text('');
             $("table.item-list thead").remove();
@@ -613,7 +620,7 @@
                             var newRow = $("<tr>");
                             var cols = '';
                             cols += '<td>' + colorImages[i][0] + '</td>';
-                            cols += '<td><img src="public/images/product/' + colorImages[i][1] +
+                            cols += '<td><img src="' + productImagePrefix + '/' + colorImages[i][1] +
                                 '" height="100" width="100"></td>';
                             newRow.append(cols);
                             newBody.append(newRow);
@@ -631,7 +638,7 @@
             if (colorImages.length > 0) {
                 colorImageDiv = '<div class="row mt-3">';
                 $.each(colorImages, function(i) {
-                    colorImageDiv += '<div class="col-md-3"><img class="color-image" src="public/images/product/' +
+                    colorImageDiv += '<div class="col-md-3"><img class="color-image" src="' + productImagePrefix + '/' +
                         colorImages[i][1] +
                         '" height="50" width="50"><span>' + colorImages[i][0] + '</span></div>';
                 });

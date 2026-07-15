@@ -9,15 +9,237 @@
             {{ session()->get('not_permitted') }}
         </div>
     @endif
+
+    @php
+        $stockMatched = $lims_stock_count->items->filter(function ($items) {
+            $total = $items->sum('updated_quantity');
+            return $total == $items[0]->current_quantity;
+        });
+
+        $overStock = $lims_stock_count->items->filter(function ($items) {
+            $total = $items->sum('updated_quantity');
+            return $total > $items[0]->current_quantity;
+        });
+
+        $underStock = $lims_stock_count->items->filter(function ($items) {
+            $total = $items->sum('updated_quantity');
+            return $total < $items[0]->current_quantity;
+        });
+
+        $matchedCountQty = 0;
+        foreach($stockMatched as $items) {
+            $matchedCountQty += $items->sum('updated_quantity');
+        }
+
+        $overCountQty = 0;
+        foreach($overStock as $items) {
+            $overCountQty += $items->sum('updated_quantity');
+        }
+
+        $underCountQty = 0;
+        foreach($underStock as $items) {
+            $underCountQty += $items->sum('updated_quantity');
+        }
+
+        $totalCountedQty = $lims_stock_count->items->flatten()->sum('updated_quantity');
+        $totalCountedProducts = count($lims_stock_count->items);
+
+        $counted_product_ids = $lims_stock_count->items->flatten()->pluck('product_id')->unique()->toArray();
+        
+        $lims_product_list_all = \App\Models\Product::ActiveStandard()
+            ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+            ->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id)
+            ->where('product_warehouse.qty', '>', 0)
+            ->select('products.id', 'products.name', 'products.code', 'products.price', 'products.cost', 'product_warehouse.qty')
+            ->groupBy('products.id')
+            ->get();
+            
+        $remainingProducts = $lims_product_list_all->filter(function($p) use ($counted_product_ids) {
+            return !in_array($p->id, $counted_product_ids);
+        });
+
+        $remainingCount = $remainingProducts->count();
+        $remainingQty = $remainingProducts->sum('qty');
+        
+        $totalRemainingPurchaseValue = $remainingProducts->sum(function($p) {
+            return $p->qty * $p->cost;
+        });
+        
+        $totalRemainingSaleValue = $remainingProducts->sum(function($p) {
+            return $p->qty * $p->price;
+        });
+    @endphp
+
+    <style>
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #e4e7eb;
+            border-radius: 8px;
+            padding: 15px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        .stat-card.teal { border-left: 5px solid #0891b2; }
+        .stat-card.slate { border-left: 5px solid #4b5563; }
+        .stat-card.red { border-left: 5px solid #dc3545; }
+        .stat-card.orange { border-left: 5px solid #f59e0b; }
+        .stat-card.green { border-left: 5px solid #22c55e; }
+        
+        .stat-card .title-small {
+            font-size: 11px;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+        }
+        .stat-card .value-large {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .stat-card.teal .value-large { color: #0891b2; }
+        .stat-card.slate .value-large { color: #1f2937; }
+        .stat-card.red .value-large { color: #dc3545; }
+        .stat-card.orange .value-large { color: #f59e0b; }
+        .stat-card.green .value-large { color: #22c55e; }
+
+        .stat-icon-circle {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .stat-icon-circle.red { background-color: #fde8e8; color: #dc3545; }
+        .stat-icon-circle.orange { background-color: #fef3c7; color: #f59e0b; }
+        .stat-icon-circle.green { background-color: #dcfce7; color: #22c55e; }
+
+        /* Dark mode overrides */
+        .dark-mode .stat-card {
+            background-color: #283046;
+            border: 1px solid #3b4253;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+        .dark-mode .stat-card .title-small {
+            color: #b4b7bd;
+        }
+        .dark-mode .stat-card.slate .value-large {
+            color: #eaeaea;
+        }
+        .dark-mode .stat-icon-circle.red {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+        }
+        .dark-mode .stat-icon-circle.orange {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        .dark-mode .stat-icon-circle.green {
+            background-color: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        .dark-mode .stat-card [style*="color: #4b5563"] {
+            color: #eaeaea !important;
+        }
+    </style>
+
     <section class="forms">
         <div class="container-fluid">
+            <!-- Stat Widget Bar -->
+            <div class="row">
+                <!-- Card 1: Total Counted (Teal) -->
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-card teal">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                            <div>
+                                <div class="title-small">মোট চেক করা আইডি</div>
+                                <div class="value-large">{{ $totalCountedProducts }}</div>
+                            </div>
+                            <div>
+                                <div class="title-small">মোট চেক জোড়া</div>
+                                <div class="value-large">{{ number_format($totalCountedQty, 2, '.', '') }}</div>
+                            </div>
+                            <div style="font-size: 28px; color: #0891b2; opacity: 0.8;">
+                                <i class="fa fa-barcode"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2: Remaining (Slate) -->
+                <div class="col-md-3 col-sm-6">
+                    <a href="{{ route('stock-count.remaining-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
+                        <div class="stat-card slate" style="cursor: pointer;">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <div>
+                                    <div class="title-small"><i class="fa fa-list" style="color: #3b82f6; margin-right: 5px;"></i> অবশিষ্ট বাকি আইডি</div>
+                                    <div class="value-large">{{ $remainingCount }}</div>
+                                </div>
+                                <div>
+                                    <div class="title-small" style="color: #3b82f6;">অবশিষ্ট বাকি জোড়া</div>
+                                    <div class="value-large">{{ number_format($remainingQty, 2, '.', '') }}</div>
+                                </div>
+                                <div style="font-size: 28px; color: #4b5563; opacity: 0.8;">
+                                    <i class="fa fa-hourglass-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 3: Stock Matched (Green) -->
+                <div class="col-md-2 col-sm-4">
+                    <div class="stat-card green">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                            <div>
+                                <div class="title-small">সম্পূর্ণ মিল</div>
+                                <div class="value-large">{{ number_format($matchedCountQty, 2, '.', '') }}</div>
+                            </div>
+                            <div class="stat-icon-circle green">
+                                <i class="fa fa-check"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4: Over Stock (Red) -->
+                <div class="col-md-2 col-sm-4">
+                    <div class="stat-card red">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                            <div>
+                                <div class="title-small">অতিরিক্ত ম্যাচ</div>
+                                <div class="value-large">{{ number_format($overCountQty, 2, '.', '') }}</div>
+                            </div>
+                            <div class="stat-icon-circle red">
+                                <i class="fa fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5: Under Stock (Orange) -->
+                <div class="col-md-2 col-sm-4">
+                    <div class="stat-card orange">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                            <div>
+                                <div class="title-small">আন্ডার স্টক</div>
+                                <div class="value-large">{{ number_format($underCountQty, 2, '.', '') }}</div>
+                            </div>
+                            <div class="stat-icon-circle orange">
+                                <i class="fa fa-arrow-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h4>{{ trans('file.Count Stock') }}</h4>
+                            <h4>{{ trans('file.Count Stock') }} ({{ $lims_stock_count->id }})</h4>
                             <a href="{{ route('report.stockCount') }}" class="btn btn-primary ml-auto">
-                                <i class="fas fa-list"></i> Stock Count
+                                <i class="fa fa-list"></i> Stock Count
                             </a>
                         </div>
                         <div class="card-body">
@@ -186,11 +408,11 @@
                             'route' => ['stock-count.update', $lims_stock_count->id],
                             'method' => 'put',
                             'files' => true,
-                            'id' => 'stock-count-form',
+                            'id' => 'complete-form',
                         ]) !!}
                         <input type="hidden" name="status" value="complete">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" id="submit-btn">Complete</button>
+                            <button type="button" class="btn btn-primary" id="complete-btn">Complete</button>
                         </div>
                         {!! Form::close() !!}
                     </div>
@@ -198,6 +420,7 @@
             @endif
         </div>
     </section>
+
 @endsection
 
 @push('scripts')
@@ -342,6 +565,24 @@
             } else {
                 $("#submit-btn").prop('disabled', true);
             }
+        });
+
+        $('#complete-btn').on('click', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '⚠️ Are you sure?',
+                text: "Do you want to mark this stock count as completed? Once completed, you will be taken to the resolve page.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#28a745',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Complete it!',
+                cancelButtonText: 'No, Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#complete-form').submit();
+                }
+            });
         });
 
         // Initialize DataTable

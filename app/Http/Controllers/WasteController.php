@@ -233,33 +233,58 @@ class WasteController extends Controller
             return redirect()->back()->with('not_permitted', 'Please enter quantity for at least one item.');
         }
 
-        $waste = new Waste();
-        $waste->receiver_type = $request->receiver_type;
-        $waste->receiver_id = explode('-', $request->receiver_id)[0];
-        $waste->receiver_name = explode('-', $request->receiver_id)[1];
-        $waste->note = $request->note;
-        $waste->total_price = $request->total;
-        $waste->save();
-
-        $waste->items()->createMany($filtered_products);
-
-        if ($waste) {
+        DB::beginTransaction();
+        try {
+            // 🔹 Stock Validation (to prevent negative stock)
             foreach ($filtered_products as $data) {
                 $product = Product::find($data['product_id']);
-                $product->qty -= $data['qty'];
-                $product->save();
-
                 if (isset($data['varient_code']) && $data['varient_code']) {
                     $product_variant = ProductVariant::where([
                         ['product_id', $data['product_id']],
                         ['item_code', $data['varient_code']]
                     ])->first();
-                    if ($product_variant) {
-                        $product_variant->qty -= $data['qty'];
-                        $product_variant->save();
+                    if (!$product_variant || $product_variant->qty < $data['qty']) {
+                        throw new \Exception("Cannot record waste. Product variant '{$product->name}' would have negative global stock.");
+                    }
+                }
+                
+                if ($product->qty < $data['qty']) {
+                    throw new \Exception("Cannot record waste. Product '{$product->name}' would have negative global stock.");
+                }
+            }
+
+            $waste = new Waste();
+            $waste->receiver_type = $request->receiver_type;
+            $waste->receiver_id = explode('-', $request->receiver_id)[0];
+            $waste->receiver_name = explode('-', $request->receiver_id)[1];
+            $waste->note = $request->note;
+            $waste->total_price = $request->total;
+            $waste->save();
+
+            $waste->items()->createMany($filtered_products);
+
+            if ($waste) {
+                foreach ($filtered_products as $data) {
+                    $product = Product::find($data['product_id']);
+                    $product->qty -= $data['qty'];
+                    $product->save();
+
+                    if (isset($data['varient_code']) && $data['varient_code']) {
+                        $product_variant = ProductVariant::where([
+                            ['product_id', $data['product_id']],
+                            ['item_code', $data['varient_code']]
+                        ])->first();
+                        if ($product_variant) {
+                            $product_variant->qty -= $data['qty'];
+                            $product_variant->save();
+                        }
                     }
                 }
             }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
         return redirect()->route('waste.index');
@@ -346,52 +371,102 @@ class WasteController extends Controller
         }
 
         $waste = Waste::find($id);
-        $waste->receiver_type = $request->receiver_type;
-        $waste->receiver_id = explode('-', $request->receiver_id)[0];
-        $waste->receiver_name = explode('-', $request->receiver_id)[1];
-        $waste->note = $request->note;
-        $waste->total_price = $request->total;
-        $waste->save();
 
-        if ($waste) {
-            foreach ($waste->items as $data) {
-                $product = Product::find($data->product_id);
-                $product->qty += $data->qty;
-                $product->save();
-
-                if ($data->varient_code) {
-                    $product_variant = ProductVariant::where([
-                        ['product_id', $data->product_id],
-                        ['item_code', $data->varient_code]
-                    ])->first();
-                    if ($product_variant) {
-                        $product_variant->qty += $data->qty;
-                        $product_variant->save();
-                    }
-                }
+        DB::beginTransaction();
+        try {
+            // 🔹 Stock Validation (to prevent negative stock)
+            $old_waste_qtys = [];
+            foreach ($waste->items as $item) {
+                $key_item = $item->product_id . '_' . ($item->varient_code ?? '');
+                $old_waste_qtys[$key_item] = ($old_waste_qtys[$key_item] ?? 0) + $item->qty;
             }
-        }
 
-        $waste->items()->delete();
-        $waste->items()->createMany($filtered_products);
-
-        if ($waste) {
+            $new_waste_qtys = [];
             foreach ($filtered_products as $data) {
-                $product = Product::find($data['product_id']);
-                $product->qty -= $data['qty'];
-                $product->save();
+                $key_item = $data['product_id'] . '_' . ($data['varient_code'] ?? '');
+                $new_waste_qtys[$key_item] = ($new_waste_qtys[$key_item] ?? 0) + $data['qty'];
+            }
 
-                if (isset($data['varient_code']) && $data['varient_code']) {
-                    $product_variant = ProductVariant::where([
-                        ['product_id', $data['product_id']],
-                        ['item_code', $data['varient_code']]
-                    ])->first();
-                    if ($product_variant) {
-                        $product_variant->qty -= $data['qty'];
-                        $product_variant->save();
+            foreach ($all_keys = array_unique(array_merge(array_keys($old_waste_qtys), array_keys($new_waste_qtys))) as $item_key) {
+                $old_qty = $old_waste_qtys[$item_key] ?? 0;
+                $new_qty = $new_waste_qtys[$item_key] ?? 0;
+                
+                $net_deduction = $new_qty - $old_qty;
+                
+                if ($net_deduction > 0) {
+                    $parts = explode('_', $item_key);
+                    $pro_id = $parts[0];
+                    $varient_code = $parts[1] !== '' ? $parts[1] : null;
+                    
+                    $product = Product::find($pro_id);
+                    
+                    if ($varient_code) {
+                        $product_variant = ProductVariant::where([
+                            ['product_id', $pro_id],
+                            ['item_code', $varient_code]
+                        ])->first();
+                        if (!$product_variant || $product_variant->qty < $net_deduction) {
+                            throw new \Exception("Cannot update waste. Product variant '{$product->name}' would have negative global stock.");
+                        }
+                    }
+                    
+                    if ($product->qty < $net_deduction) {
+                        throw new \Exception("Cannot update waste. Product '{$product->name}' would have negative global stock.");
                     }
                 }
             }
+
+            $waste->receiver_type = $request->receiver_type;
+            $waste->receiver_id = explode('-', $request->receiver_id)[0];
+            $waste->receiver_name = explode('-', $request->receiver_id)[1];
+            $waste->note = $request->note;
+            $waste->total_price = $request->total;
+            $waste->save();
+
+            if ($waste) {
+                foreach ($waste->items as $data) {
+                    $product = Product::find($data->product_id);
+                    $product->qty += $data->qty;
+                    $product->save();
+
+                    if ($data->varient_code) {
+                        $product_variant = ProductVariant::where([
+                            ['product_id', $data->product_id],
+                            ['item_code', $data->varient_code]
+                        ])->first();
+                        if ($product_variant) {
+                            $product_variant->qty += $data->qty;
+                            $product_variant->save();
+                        }
+                    }
+                }
+            }
+
+            $waste->items()->delete();
+            $waste->items()->createMany($filtered_products);
+
+            if ($waste) {
+                foreach ($filtered_products as $data) {
+                    $product = Product::find($data['product_id']);
+                    $product->qty -= $data['qty'];
+                    $product->save();
+
+                    if (isset($data['varient_code']) && $data['varient_code']) {
+                        $product_variant = ProductVariant::where([
+                            ['product_id', $data['product_id']],
+                            ['item_code', $data['varient_code']]
+                        ])->first();
+                        if ($product_variant) {
+                            $product_variant->qty -= $data['qty'];
+                            $product_variant->save();
+                        }
+                    }
+                }
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
         return redirect()->route('waste.index');

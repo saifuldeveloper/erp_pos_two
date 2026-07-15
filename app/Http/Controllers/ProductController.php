@@ -41,6 +41,47 @@ class ProductController extends Controller
 
     public function index()
     {
+        if (request()->has('debug')) {
+            $test_code = 'A-59dc';
+            $p = Product::where('code', $test_code)->first();
+            $p_img = $p ? explode(',', $p->image) : [];
+            $first_img = $p_img[0] ?? null;
+
+            $paths = [];
+            if ($first_img) {
+                $check_paths = [
+                    'public_path/images/product' => public_path("images/product/" . $first_img),
+                    'public_path/public/images/product' => public_path("public/images/product/" . $first_img),
+                    'project_root/public/images/product' => base_path("public/images/product/" . $first_img),
+                    'project_root/public/public/images/product' => base_path("public/public/images/product/" . $first_img),
+                ];
+                foreach ($check_paths as $key => $path) {
+                    $exists = file_exists($path);
+                    $paths[$key] = [
+                        'path' => $path,
+                        'exists' => $exists,
+                        'readable' => $exists ? is_readable($path) : false,
+                        'perms' => $exists ? substr(sprintf('%o', fileperms($path)), -4) : null,
+                    ];
+                }
+            }
+
+            $debug_info = [
+                'cwd' => getcwd(),
+                'public_path' => public_path(),
+                'base_path' => base_path(),
+                'test_product' => $p ? [
+                    'id' => $p->id,
+                    'name' => $p->name,
+                    'code' => $p->code,
+                    'image_db' => $p->image
+                ] : null,
+                'first_image' => $first_img,
+                'paths_check' => $paths
+            ];
+            return response()->json($debug_info);
+        }
+
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('products-index')) {
             $permissions = Role::findByName($role->name)->permissions;
@@ -327,6 +368,55 @@ class ProductController extends Controller
 
     public function productData(Request $request)
     {
+
+        // Auto-heal double-public images folder by moving files to standard public/images/product folder
+        $doublePublicDir = public_path('public/images/product');
+        $targetDir = public_path('images/product');
+        if (is_dir($doublePublicDir)) {
+            if (!is_dir($targetDir)) {
+                @mkdir($targetDir, 0755, true);
+            }
+            $files = @scandir($doublePublicDir);
+            if ($files) {
+                foreach ($files as $file) {
+                    if ($file !== '.' && $file !== '..') {
+                        $sourceFile = $doublePublicDir . '/' . $file;
+                        $targetFile = $targetDir . '/' . $file;
+                        if (!file_exists($targetFile)) {
+                            @rename($sourceFile, $targetFile);
+                        } else {
+                            @unlink($sourceFile);
+                        }
+                    }
+                }
+            }
+            @rmdir($doublePublicDir);
+            
+            // Also clean up public/public/product/files if any
+            $doublePublicFilesDir = public_path('public/product/files');
+            $targetFilesDir = public_path('product/files');
+            if (is_dir($doublePublicFilesDir)) {
+                if (!is_dir($targetFilesDir)) {
+                    @mkdir($targetFilesDir, 0755, true);
+                }
+                $docFiles = @scandir($doublePublicFilesDir);
+                if ($docFiles) {
+                    foreach ($docFiles as $file) {
+                        if ($file !== '.' && $file !== '..') {
+                            $sourceFile = $doublePublicFilesDir . '/' . $file;
+                            $targetFile = $targetFilesDir . '/' . $file;
+                            if (!file_exists($targetFile)) {
+                                @rename($sourceFile, $targetFile);
+                            } else {
+                                @unlink($sourceFile);
+                            }
+                        }
+                    }
+                }
+                @rmdir($doublePublicFilesDir);
+            }
+        }
+
         $columns = [
             2 => 'name',
             3 => 'code',
@@ -416,18 +506,61 @@ class ProductController extends Controller
             $nestedData['key'] = $key;
 
             // 🖼️ Image Handling (Safe for Local + Live)
-            $product_image = explode(",", $product->image)[0] ?? null;
-            $product_image = htmlspecialchars($product_image);
+            $product_images = explode(",", $product->image);
+            $product_image = null;
+            $image_folder = 'images/product'; // Default fallback
 
-            if ($product_image && $product_image != 'zummXD2dvAtI.png') {
-                $smallImagePath = public_path("images/product/small/" . $product_image);
-                if (file_exists($smallImagePath)) {
-                    $nestedData['image'] = '<img src="' . asset("images/product/small/$product_image") . '" height="80" width="80">';
-                } else {
-                    $nestedData['image'] = '<img src="' . asset("images/product/$product_image") . '" height="80" width="80">';
+            foreach ($product_images as $img) {
+                $img = trim($img);
+                if ($img && $img != 'zummXD2dvAtI.png') {
+                    // Check if it exists in public/public/images/product/ first (double public folder)
+                    if (file_exists(public_path("public/images/product/" . $img)) || file_exists("public/public/images/product/" . $img)) {
+                        $product_image = $img;
+                        $image_folder = 'public/images/product';
+                        break;
+                    }
+                    // Then check standard public/images/product/
+                    elseif (file_exists(public_path("images/product/" . $img)) || file_exists("public/images/product/" . $img)) {
+                        $product_image = $img;
+                        $image_folder = 'images/product';
+                        break;
+                    }
+                    // Check small folder
+                    elseif (file_exists(public_path("images/product/small/" . $img))) {
+                        $product_image = $img;
+                        $image_folder = 'images/product/small';
+                        break;
+                    }
                 }
+            }
+
+            if ($product_image) {
+                // Determine if we need to prefix the URL with 'public/'
+                $has_public_in_base = str_contains(url('/'), '/public');
+                $doc_root = $_SERVER['DOCUMENT_ROOT'] ?? '';
+                $is_doc_root_public = (str_ends_with(str_replace('\\', '/', $doc_root), '/public') || str_replace('\\', '/', $doc_root) === str_replace('\\', '/', public_path()));
+                
+                $url_folder = $image_folder;
+                if (!$has_public_in_base && !$is_doc_root_public) {
+                    if (!str_starts_with($url_folder, 'public/')) {
+                        $url_folder = 'public/' . $url_folder;
+                    }
+                } else {
+                    if (str_starts_with($url_folder, 'public/')) {
+                        $url_folder = substr($url_folder, 7);
+                    }
+                }
+                $nestedData['image'] = '<img src="' . asset("$url_folder/$product_image") . '" height="80" width="80">';
             } else {
-                $nestedData['image'] = '<img src="' . asset("images/product/zummXD2dvAtI.png") . '" height="80" width="80">';
+                $has_public_in_base = str_contains(url('/'), '/public');
+                $doc_root = $_SERVER['DOCUMENT_ROOT'] ?? '';
+                $is_doc_root_public = (str_ends_with(str_replace('\\', '/', $doc_root), '/public') || str_replace('\\', '/', $doc_root) === str_replace('\\', '/', public_path()));
+                
+                $fallback_folder = 'images/product';
+                if (!$has_public_in_base && !$is_doc_root_public) {
+                    $fallback_folder = 'public/' . $fallback_folder;
+                }
+                $nestedData['image'] = '<img src="' . asset("$fallback_folder/zummXD2dvAtI.png") . '" height="80" width="80">';
             }
 
             // 🧾 Basic Info
@@ -630,7 +763,7 @@ class ProductController extends Controller
                 $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
                 $imageName = date("Ymdhis") . ($key + 1);
                 $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
-                $image->move('public/images/product', $imageName);
+                $image->move(public_path('images/product'), $imageName);
                 $image_names[] = $imageName;
             }
             $data['image'] = implode(",", $image_names);
@@ -642,7 +775,7 @@ class ProductController extends Controller
             $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
             $fileName = strtotime(date('Y-m-d H:i:s'));
             $fileName = $fileName . '.' . $ext;
-            $file->move('public/product/files', $fileName);
+            $file->move(public_path('product/files'), $fileName);
             $data['file'] = $fileName;
         }
         if (!isset($data['is_sync_disable']) && \Schema::hasColumn('products', 'is_sync_disable'))
@@ -747,7 +880,7 @@ class ProductController extends Controller
                         $ext = pathinfo($color_image->getClientOriginalName(), PATHINFO_EXTENSION);
                         $imageName = date("Ymdhis") . $key . uniqid();
                         $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
-                        $color_image->move('public/images/product', $imageName);
+                        $color_image->move(public_path('images/product'), $imageName);
 
                         $product_image = new ProductImage();
                         $product_image->product_id = $lims_product_data->id;
@@ -1363,7 +1496,7 @@ class ProductController extends Controller
             foreach ($images as $key => $image) {
                 $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
                 $imageName = $this->getTenantId() . '_' . date("Ymdhis") . ($length + $key + 1) . '.' . $ext;
-                $image->move('public/images/product', $imageName);
+                $image->move(public_path('images/product'), $imageName);
                 $image_names[] = $imageName;
             }
             if ($lims_product_data->image)
@@ -1378,7 +1511,7 @@ class ProductController extends Controller
             $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
             $fileName = strtotime(date('Y-m-d H:i:s'));
             $fileName = $fileName . '.' . $ext;
-            $file->move('public/product/files', $fileName);
+            $file->move(public_path('product/files'), $fileName);
             $data['file'] = $fileName;
         }
 
@@ -1488,20 +1621,22 @@ class ProductController extends Controller
                         if ($product_image) {
                             //remove old image
                             $old_image = $product_image->image;
-                            if (file_exists('public/images/product/' . $old_image))
-                                @unlink('public/images/product/' . $old_image);
+                            if (file_exists(public_path('images/product/' . $old_image)))
+                                @unlink(public_path('images/product/' . $old_image));
+                            if (file_exists(public_path('public/images/product/' . $old_image)))
+                                @unlink(public_path('public/images/product/' . $old_image));
 
                             $ext = pathinfo($color_image->getClientOriginalName(), PATHINFO_EXTENSION);
                             $imageName = date("Ymdhis") . $key . uniqid();
                             $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
-                            $color_image->move('public/images/product', $imageName);
+                            $color_image->move(public_path('images/product'), $imageName);
                             $product_image->image = $imageName;
                             $product_image->save();
                         } else {
                             $ext = pathinfo($color_image->getClientOriginalName(), PATHINFO_EXTENSION);
                             $imageName = date("Ymdhis") . $key . uniqid();
                             $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
-                            $color_image->move('public/images/product', $imageName);
+                            $color_image->move(public_path('images/product'), $imageName);
 
                             $product_image = new ProductImage();
                             $product_image->product_id = $lims_product_data->id;

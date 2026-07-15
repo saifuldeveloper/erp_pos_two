@@ -2,25 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\{
-    Sale,
-    Product,
-    Product_Sale,
-    Customer,
-    Coupon,
-    RewardPointSetting,
-    Payment,
-    CashRegister,
-    Account,
-    Unit,
-    ProductVariant,
-    Product_Warehouse,
-    Variant,
-    Transfer,
-    ProductTransfer
-};
+use App\Models\{ Sale, Product, Product_Sale, Customer, Coupon, RewardPointSetting, Payment, CashRegister, Account, Unit, ProductVariant, Product_Warehouse, Variant, Transfer, ProductTransfer };
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+
 class SaleService
 {
     /**
@@ -263,7 +249,7 @@ class SaleService
                 foreach ($product_list as $key => $child_id) {
                     $child = Product::find($child_id);
 
-                    if (isset($variant_list[$key]) && $variant_list[$key]) {
+                    if (count($variant_list) && $variant_list[$key]) {
                         $child_variant = ProductVariant::where([
                             ['product_id', $child_id],
                             ['variant_id', $variant_list[$key]]
@@ -274,10 +260,8 @@ class SaleService
                             ['variant_id', $variant_list[$key]],
                             ['warehouse_id', $data['warehouse_id']]
                         ])->first();
-
-                        $child_variant->qty -= $data['qty'][$i] * $qty_list[$key];
-                        $child_variant->save();
                     } else {
+                        $child_variant = null;
                         $child_warehouse = Product_Warehouse::where([
                             ['product_id', $child_id],
                             ['warehouse_id', $data['warehouse_id']]
@@ -293,6 +277,23 @@ class SaleService
                         $child_warehouse->price = $child->price;
                     }
 
+                    if (config('without_stock') == 'no') {
+                        $required_qty = $data['qty'][$i] * $qty_list[$key];
+                        if ($child_warehouse->qty < $required_qty) {
+                            throw ValidationException::withMessages([
+                                'qty' => ["The quantity for combo component '{$child->name}' exceeds available stock in this warehouse (Available: " . max(0, $child_warehouse->qty) . ")."]
+                            ]);
+                        }
+                        if ($child_variant && $child_variant->qty < $required_qty) {
+                            throw ValidationException::withMessages([
+                                'qty' => ["The quantity for combo component variant '{$child->name}' exceeds available stock (Available: " . max(0, $child_variant->qty) . ")."]
+                            ]);
+                        }
+                    }
+                    if ($child_variant) {
+                        $child_variant->qty -= $data['qty'][$i] * $qty_list[$key];
+                        $child_variant->save();
+                    }
                     $child->qty -= $data['qty'][$i] * $qty_list[$key];
                     $child_warehouse->qty -= $data['qty'][$i] * $qty_list[$key];
 
@@ -349,7 +350,7 @@ class SaleService
 
                     if ($source_warehouse_product) {
                         $transferQty = min($missingQty, $source_warehouse_product->qty);
-                        
+
                         // Create Transfer
                         $transfer = Transfer::create([
                             'reference_no' => 'tr-' . date("Ymd") . '-' . date("his") . '-' . uniqid(),
@@ -386,7 +387,7 @@ class SaleService
                         if (!empty($data['imei_number'][$i])) {
                             $sale_imeis = explode(',', $data['imei_number'][$i]);
                             $source_imeis = $source_warehouse_product->imei_number ? explode(',', $source_warehouse_product->imei_number) : [];
-                            
+
                             $transferred_imeis = [];
                             foreach ($sale_imeis as $imei) {
                                 if (($key = array_search($imei, $source_imeis)) !== false) {
@@ -394,11 +395,11 @@ class SaleService
                                     $transferred_imeis[] = $imei;
                                 }
                             }
-                            
+
                             if (count($transferred_imeis) > 0) {
                                 $source_warehouse_product->imei_number = implode(',', $source_imeis);
                                 $productTransferData['imei_number'] = implode(',', $transferred_imeis);
-                                
+
                                 if (!$warehouse_product) {
                                     $warehouse_product = new Product_Warehouse();
                                     $warehouse_product->product_id = $id;
@@ -440,6 +441,12 @@ class SaleService
                     $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
                     $warehouse_product->qty = 0;
                     $warehouse_product->price = $product->price;
+                }
+
+                if (config('without_stock') == 'no' && ($warehouse_product->qty < $stockQty)) {
+                    throw ValidationException::withMessages([
+                        'qty' => ["The quantity for product '{$product->name}' exceeds available stock in this warehouse (Available: " . max(0, $warehouse_product->qty) . ")."]
+                    ]);
                 }
 
                 $warehouse_product->qty -= $stockQty;
