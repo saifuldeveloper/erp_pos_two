@@ -1,5 +1,22 @@
 @extends('backend.layout.top-head')
 @section('content')
+<style>
+    .product-img {
+        padding: 5px 4px 0 !important;
+    }
+    .brand-img img,
+    .category-img img,
+    .product-img img {
+        height: 95px !important;
+    }
+    .product-qty {
+        font-size: 12px;
+        color: #6e6b7b;
+        font-weight: bold;
+        margin-top: 4px;
+        display: block;
+    }
+</style>
 @if($errors->has('phone_number'))
 <div class="alert alert-danger alert-dismissible text-center">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('phone_number') }}</div>
@@ -837,11 +854,13 @@
                                     <td class="product-img sound-btn" title="{{$lims_product_list[0+$i*5]->name}}" data-product ="{{$lims_product_list[0+$i*5]->code . ' (' . $lims_product_list[0+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[0+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[0+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[0+$i*5]->code}}</span>
+                                        <span class="product-qty">Qty: {{$lims_product_list[0+$i*5]->qty}}</span>
                                     </td>
                                     @if(!empty($lims_product_list[1+$i*5]))
                                     <td class="product-img sound-btn" title="{{$lims_product_list[1+$i*5]->name}}" data-product ="{{$lims_product_list[1+$i*5]->code . ' (' . $lims_product_list[1+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[1+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[1+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[1+$i*5]->code}}</span>
+                                        <span class="product-qty">Qty: {{$lims_product_list[1+$i*5]->qty}}</span>
                                     </td>
                                     @else
                                     <td style="border:none;"></td>
@@ -850,6 +869,7 @@
                                     <td class="product-img sound-btn" title="{{$lims_product_list[2+$i*5]->name}}" data-product ="{{$lims_product_list[2+$i*5]->code . ' (' . $lims_product_list[2+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[2+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[2+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[2+$i*5]->code}}</span>
+                                        <span class="product-qty">Qty: {{$lims_product_list[2+$i*5]->qty}}</span>
                                     </td>
                                     @else
                                     <td style="border:none;"></td>
@@ -858,6 +878,7 @@
                                     <td class="product-img sound-btn" title="{{$lims_product_list[3+$i*5]->name}}" data-product ="{{$lims_product_list[3+$i*5]->code . ' (' . $lims_product_list[3+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[3+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[3+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[3+$i*5]->code}}</span>
+                                        <span class="product-qty">Qty: {{$lims_product_list[3+$i*5]->qty}}</span>
                                     </td>
                                     @else
                                     <td style="border:none;"></td>
@@ -866,6 +887,7 @@
                                     <td class="product-img sound-btn" title="{{$lims_product_list[4+$i*5]->name}}" data-product ="{{$lims_product_list[4+$i*5]->code . ' (' . $lims_product_list[4+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[4+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[4+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[4+$i*5]->code}}</span>
+                                        <span class="product-qty">Qty: {{$lims_product_list[4+$i*5]->qty}}</span>
                                     </td>
                                     @else
                                     <td style="border:none;"></td>
@@ -1908,9 +1930,10 @@ $('#category-filter').on('click', function(e){
 $('.category-img').on('click', function(){
     var category_id = $(this).data('category');
     var brand_id = 0;
+    var warehouse_id = $('select[name="warehouse_id"]').val();
 
     $(".table-container").children().remove();
-    $.get('sales/getproduct/' + category_id + '/' + brand_id, function(data) {
+    $.get('sales/getproduct/' + category_id + '/' + brand_id + '?warehouse_id=' + warehouse_id, function(data) {
         populateProduct(data);
     });
 });
@@ -1925,16 +1948,18 @@ $('#brand-filter').on('click', function(e){
 $('.brand-img').on('click', function(){
     var brand_id = $(this).data('brand');
     var category_id = 0;
+    var warehouse_id = $('select[name="warehouse_id"]').val();
 
     $(".table-container").children().remove();
-    $.get('sales/getproduct/' + category_id + '/' + brand_id, function(data) {
+    $.get('sales/getproduct/' + category_id + '/' + brand_id + '?warehouse_id=' + warehouse_id, function(data) {
         populateProduct(data);
     });
 });
 
 $('#featured-filter').on('click', function(){
+    var warehouse_id = $('select[name="warehouse_id"]').val();
     $(".table-container").children().remove();
-    $.get('sales/getfeatured', function(data) {
+    $.get('sales/getfeatured?warehouse_id=' + warehouse_id, function(data) {
         populateProduct(data);
     });
 });
@@ -1950,10 +1975,10 @@ function populateProduct(data) {
             else
                 image = 'zummXD2dvAtI.png';
             if(index % 5 == 0 && index != 0) {
-                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span><span class="product-qty">Qty: '+data['qty'][index]+'</span></td>';
             }
             else
-                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span></td>';
+                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span><span class="product-qty">Qty: '+data['qty'][index]+'</span></td>';
         });
 
         if(data['name'].length % 5){
@@ -2024,6 +2049,12 @@ $('select[name="warehouse_id"]').on('change', function() {
     });
 
     isCashRegisterAvailable(warehouse_id);
+
+    // Update the product grid dynamically to show quantity of the newly selected warehouse
+    $(".table-container").children().remove();
+    $.get('sales/getfeatured?warehouse_id=' + warehouse_id, function(data) {
+        populateProduct(data);
+    });
 });
 
 var lims_productcodeSearch = $('#lims_productcodeSearch');

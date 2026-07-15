@@ -795,10 +795,15 @@ class SaleController extends Controller
             $lims_biller_list = Cache::remember('biller_list', 60 * 60 * 24 * 30, function () {
                 return Biller::where('is_active', true)->get();
             });
+            $lims_pos_setting_data = Cache::remember('pos_setting', 60 * 60 * 24 * 30, function () {
+                return PosSetting::latest()->first();
+            });
+            $default_warehouse_id = $lims_pos_setting_data->warehouse_id ?? 0;
             $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
             $lims_tax_list = Cache::remember('tax_list', 60 * 60 * 24 * 30, function () {
                 return Tax::where('is_active', true)->get();
             });
+
             $lims_product_list = Cache::remember('product_list', 60 * 60 * 24, function () {
                 return Product::ActiveFeatured()->whereNull('is_variant')->get();
             });
@@ -808,6 +813,14 @@ class SaleController extends Controller
                     $product->base_image = $images[0];
                 else
                     $product->base_image = 'zummXD2dvAtI.png';
+                
+                // Fetch quantity
+                $product->qty = DB::table('product_warehouse')
+                    ->where([
+                        ['product_id', $product->id],
+                        ['warehouse_id', $default_warehouse_id]
+                    ])->whereNull('variant_id')
+                    ->value('qty') ?? 0;
             }
             $lims_product_list_with_variant = Cache::remember('product_list_with_variant', 60 * 60 * 24, function () {
                 return Product::ActiveFeatured()->whereNotNull('is_variant')->get();
@@ -823,16 +836,21 @@ class SaleController extends Controller
                 $main_name = $product->name;
                 $temp_arr = [];
                 foreach ($lims_product_variant_data as $key => $variant) {
-                    $product->name = $main_name . ' [' . $variant->name . ']';
-                    $product->code = $variant->pivot['item_code'];
-                    $lims_product_list[] = clone ($product);
+                    $cloned_product = clone ($product);
+                    $cloned_product->name = $main_name . ' [' . $variant->name . ']';
+                    $cloned_product->code = $variant->pivot['item_code'];
+                    // Fetch quantity
+                    $cloned_product->qty = DB::table('product_warehouse')
+                        ->where([
+                            ['product_id', $product->id],
+                            ['variant_id', $variant->id],
+                            ['warehouse_id', $default_warehouse_id]
+                        ])->value('qty') ?? 0;
+                    $lims_product_list[] = $cloned_product;
                 }
             }
 
             $product_number = count($lims_product_list);
-            $lims_pos_setting_data = Cache::remember('pos_setting', 60 * 60 * 24 * 30, function () {
-                return PosSetting::latest()->first();
-            });
             if ($lims_pos_setting_data)
                 $options = explode(',', $lims_pos_setting_data->payment_options);
             else
@@ -923,6 +941,12 @@ class SaleController extends Controller
     public function getProductByFilter($category_id, $brand_id)
     {
         $data = [];
+        $warehouse_id = request()->input('warehouse_id');
+        if (!$warehouse_id || $warehouse_id == 'undefined') {
+            $lims_pos_setting_data = DB::table('pos_settings')->latest()->first();
+            $warehouse_id = $lims_pos_setting_data->warehouse_id ?? 0;
+        }
+
         if (($category_id != 0) && ($brand_id != 0)) {
             $lims_product_list = DB::table('products')
                 ->join('categories', 'products.category_id', '=', 'categories.id')
@@ -934,7 +958,7 @@ class SaleController extends Controller
                         ['categories.parent_id', $category_id],
                         ['products.is_active', true],
                         ['brand_id', $brand_id]
-                    ])->select('products.name', 'products.code', 'products.image')->get();
+                    ])->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')->get();
         } elseif (($category_id != 0) && ($brand_id == 0)) {
             $lims_product_list = DB::table('products')
                 ->join('categories', 'products.category_id', '=', 'categories.id')
@@ -965,6 +989,12 @@ class SaleController extends Controller
                     $data['code'][$index] = $variant->pivot['item_code'];
                     $images = explode(",", $product->image);
                     $data['image'][$index] = $images[0];
+                    $data['qty'][$index] = DB::table('product_warehouse')
+                        ->where([
+                            ['product_id', $product->id],
+                            ['variant_id', $variant->id],
+                            ['warehouse_id', $warehouse_id]
+                        ])->value('qty') ?? 0;
                     $index++;
                 }
             } else {
@@ -972,6 +1002,12 @@ class SaleController extends Controller
                 $data['code'][$index] = $product->code;
                 $images = explode(",", $product->image);
                 $data['image'][$index] = $images[0];
+                $data['qty'][$index] = DB::table('product_warehouse')
+                    ->where([
+                        ['product_id', $product->id],
+                        ['warehouse_id', $warehouse_id]
+                    ])->whereNull('variant_id')
+                    ->value('qty') ?? 0;
                 $index++;
             }
         }
@@ -981,6 +1017,12 @@ class SaleController extends Controller
     public function getFeatured()
     {
         $data = [];
+        $warehouse_id = request()->input('warehouse_id');
+        if (!$warehouse_id || $warehouse_id == 'undefined') {
+            $lims_pos_setting_data = DB::table('pos_settings')->latest()->first();
+            $warehouse_id = $lims_pos_setting_data->warehouse_id ?? 0;
+        }
+
         $lims_product_list = Product::where([
             ['is_active', true],
             ['featured', true]
@@ -996,6 +1038,12 @@ class SaleController extends Controller
                     $data['code'][$index] = $variant->pivot['item_code'];
                     $images = explode(",", $product->image);
                     $data['image'][$index] = $images[0];
+                    $data['qty'][$index] = DB::table('product_warehouse')
+                        ->where([
+                            ['product_id', $product->id],
+                            ['variant_id', $variant->id],
+                            ['warehouse_id', $warehouse_id]
+                        ])->value('qty') ?? 0;
                     $index++;
                 }
             } else {
@@ -1003,6 +1051,12 @@ class SaleController extends Controller
                 $data['code'][$index] = $product->code;
                 $images = explode(",", $product->image);
                 $data['image'][$index] = $images[0];
+                $data['qty'][$index] = DB::table('product_warehouse')
+                    ->where([
+                        ['product_id', $product->id],
+                        ['warehouse_id', $warehouse_id]
+                    ])->whereNull('variant_id')
+                    ->value('qty') ?? 0;
                 $index++;
             }
         }

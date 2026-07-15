@@ -188,7 +188,7 @@
             <!-- Stat Widget Bar -->
             <div class="row">
                 <!-- Card 1: Total Counted (Teal) -->
-                <div class="col-md-2 col-sm-4">
+                <div class="col-md-4 col-sm-6">
                     <div class="stat-card teal">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
@@ -206,7 +206,7 @@
                     </div>
                 </div>
                 <!-- Card 2: Remaining (Slate) -->
-                <div class="col-md-2 col-sm-4">
+                <div class="col-md-4 col-sm-6">
                     <a href="{{ route('stock-count.remaining-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
                         <div class="stat-card slate" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
@@ -226,7 +226,7 @@
                     </a>
                 </div>
                 <!-- Card 3: Sold Products (Indigo) -->
-                <div class="col-md-2 col-sm-4">
+                <div class="col-md-4 col-sm-6">
                     <a href="{{ route('stock-count.sold-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
                         <div class="stat-card indigo" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
@@ -246,7 +246,7 @@
                     </a>
                 </div>
                 <!-- Card 4: Stock Matched (Green) -->
-                <div class="col-md-2 col-sm-4">
+                <div class="col-md-4 col-sm-6">
                     <div class="stat-card green">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
@@ -260,7 +260,7 @@
                     </div>
                 </div>
                 <!-- Card 5: Over Stock (Red) -->
-                <div class="col-md-2 col-sm-4">
+                <div class="col-md-4 col-sm-6">
                     <div class="stat-card red">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
@@ -274,7 +274,7 @@
                     </div>
                 </div>
                 <!-- Card 6: Under Stock (Orange) -->
-                <div class="col-md-2 col-sm-4">
+                <div class="col-md-4 col-sm-6">
                     <div class="stat-card orange">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
