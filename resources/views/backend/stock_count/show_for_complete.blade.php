@@ -32,20 +32,24 @@
         }
 
         $overCountQty = 0;
+        $overFindQty = 0;
         foreach($overStock as $items) {
-            $overCountQty += $items->sum('updated_quantity');
+            $overCountQty += $items->sum('updated_quantity') - $items[0]->current_quantity;
+            $overFindQty += $items->sum('updated_quantity');
         }
 
         $underCountQty = 0;
+        $underFindQty = 0;
         foreach($underStock as $items) {
-            $underCountQty += $items->sum('updated_quantity');
+            $underCountQty += $items[0]->current_quantity - $items->sum('updated_quantity');
+            $underFindQty += $items->sum('updated_quantity');
         }
 
         $totalCountedQty = $lims_stock_count->items->flatten()->sum('updated_quantity');
         $totalCountedProducts = count($lims_stock_count->items);
 
         $counted_product_ids = $lims_stock_count->items->flatten()->pluck('product_id')->unique()->toArray();
-        
+
         $lims_product_list_all = \App\Models\Product::ActiveStandard()
             ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
             ->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id)
@@ -53,18 +57,18 @@
             ->select('products.id', 'products.name', 'products.code', 'products.price', 'products.cost', 'product_warehouse.qty')
             ->groupBy('products.id')
             ->get();
-            
+
         $remainingProducts = $lims_product_list_all->filter(function($p) use ($counted_product_ids) {
             return !in_array($p->id, $counted_product_ids);
         });
 
         $remainingCount = $remainingProducts->count();
         $remainingQty = $remainingProducts->sum('qty');
-        
+
         $totalRemainingPurchaseValue = $remainingProducts->sum(function($p) {
             return $p->qty * $p->cost;
         });
-        
+
         $totalRemainingSaleValue = $remainingProducts->sum(function($p) {
             return $p->qty * $p->price;
         });
@@ -159,7 +163,7 @@
         .stat-card.orange { border-left: 5px solid #f59e0b; }
         .stat-card.green { border-left: 5px solid #22c55e; }
         .stat-card.indigo { border-left: 5px solid #6366f1; }
-        
+
         .stat-card .title-small {
             font-size: 11px;
             color: #6b7280;
@@ -329,6 +333,10 @@
                                 <div class="title-small">অতিরিক্ত ম্যাচ</div>
                                 <div class="value-large">{{ number_format($overCountQty, 2, '.', '') }}</div>
                             </div>
+                            <div>
+                                <div class="title-small">ফাইন্ড জোড়া</div>
+                                <div class="value-large">{{ number_format($overFindQty, 2, '.', '') }}</div>
+                            </div>
                             <div class="stat-icon-circle red">
                                 <i class="fa fa-arrow-up"></i>
                             </div>
@@ -342,6 +350,10 @@
                             <div>
                                 <div class="title-small">আন্ডার স্টক</div>
                                 <div class="value-large">{{ number_format($underCountQty, 2, '.', '') }}</div>
+                            </div>
+                            <div>
+                                <div class="title-small">ফাইন্ড জোড়া</div>
+                                <div class="value-large">{{ number_format($underFindQty, 2, '.', '') }}</div>
                             </div>
                             <div class="stat-icon-circle orange">
                                 <i class="fa fa-arrow-down"></i>

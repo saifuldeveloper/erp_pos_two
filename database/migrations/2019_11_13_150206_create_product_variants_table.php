@@ -21,6 +21,10 @@ class CreateProductVariantsTable extends Migration
             $table->string('item_code');
             $table->double('additional_price')->nullable();
             $table->timestamps();
+
+            $table->index('product_id');
+            $table->index('variant_id');
+            $table->index('item_code');
         });
     }
 

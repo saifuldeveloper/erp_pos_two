@@ -24,6 +24,9 @@ class CreateProductWarhouseTable extends Migration
             $table->double('price', 15, 2)->nullable();
             $table->timestamps();
 
+            $table->index('product_id');
+            $table->index('variant_id');
+            $table->index('warehouse_id');
         });
     }
 

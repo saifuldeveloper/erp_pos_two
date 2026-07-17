@@ -27,13 +27,17 @@
         }
 
         $overCountQty = 0;
+        $overFindQty = 0;
         foreach($overStock as $items) {
-            $overCountQty += $items->sum('updated_quantity');
+            $overCountQty += $items->sum('updated_quantity') - $items[0]->current_quantity;
+            $overFindQty += $items->sum('updated_quantity');
         }
 
         $underCountQty = 0;
+        $underFindQty = 0;
         foreach($underStock as $items) {
-            $underCountQty += $items->sum('updated_quantity');
+            $underCountQty += $items[0]->current_quantity - $items->sum('updated_quantity');
+            $underFindQty += $items->sum('updated_quantity');
         }
 
         $totalCountedQty = $lims_stock_count->items->flatten()->sum('updated_quantity');
@@ -325,6 +329,10 @@
                                 <div class="title-small">অতিরিক্ত ম্যাচ</div>
                                 <div class="value-large">{{ number_format($overCountQty, 2, '.', '') }}</div>
                             </div>
+                            <div>
+                                <div class="title-small">ফাইন্ড জোড়া</div>
+                                <div class="value-large">{{ number_format($overFindQty, 2, '.', '') }}</div>
+                            </div>
                             <div class="stat-icon-circle red">
                                 <i class="fa fa-arrow-up"></i>
                             </div>
@@ -338,6 +346,10 @@
                             <div>
                                 <div class="title-small">আন্ডার স্টক</div>
                                 <div class="value-large">{{ number_format($underCountQty, 2, '.', '') }}</div>
+                            </div>
+                            <div>
+                                <div class="title-small">ফাইন্ড জোড়া</div>
+                                <div class="value-large">{{ number_format($underFindQty, 2, '.', '') }}</div>
                             </div>
                             <div class="stat-icon-circle orange">
                                 <i class="fa fa-arrow-down"></i>
