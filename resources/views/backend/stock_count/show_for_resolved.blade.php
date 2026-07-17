@@ -40,6 +40,7 @@
         $totalCountedProducts = count($lims_stock_count->items);
 
         $counted_product_ids = $lims_stock_count->items->flatten()->pluck('product_id')->unique()->toArray();
+        $counted_item_codes = $lims_stock_count->items->flatten()->pluck('item_code')->unique()->toArray();
         
         $lims_product_list_all = \App\Models\Product::ActiveStandard()
             ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
@@ -64,15 +65,25 @@
             return $p->qty * $p->price;
         });
 
-        // Fetch sold products under this stock count
+        // Fetch sold products under this stock count that occurred AFTER they were physically counted
+        $countedItemsSubquery = \DB::table('stock_count_items')
+            ->select('item_code', 'product_id', \DB::raw('MAX(created_at) as last_counted_at'))
+            ->where('stock_count_id', $lims_stock_count->id)
+            ->groupBy('item_code', 'product_id');
+
         $soldQuery = \App\Models\Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
             ->join('products', 'product_sales.product_id', '=', 'products.id')
             ->leftJoin('product_variants', function($join) {
                 $join->on('product_sales.product_id', '=', 'product_variants.product_id')
                      ->on('product_sales.variant_id', '=', 'product_variants.variant_id');
             })
+            ->joinSub($countedItemsSubquery, 'sci', function($join) {
+                $join->on('product_sales.product_id', '=', 'sci.product_id')
+                     ->whereRaw('(product_variants.item_code = sci.item_code OR (product_sales.variant_id IS NULL AND products.code = sci.item_code))');
+            })
             ->where('sales.warehouse_id', $lims_stock_count->warehouse_id)
-            ->where('sales.created_at', '>=', $lims_stock_count->created_at);
+            ->where('sales.created_at', '>=', $lims_stock_count->created_at)
+            ->whereColumn('sales.created_at', '>=', 'sci.last_counted_at');
 
         if ($lims_stock_count->is_completed) {
             $soldQuery->where('sales.created_at', '<=', $lims_stock_count->updated_at);
@@ -91,6 +102,38 @@
 
         $soldQty = $soldProducts->sum('sold_qty');
         $soldCount = $soldProducts->count();
+
+        // Fetch waste products under this stock count that occurred AFTER they were physically counted
+        $wasteItemsSubquery = \DB::table('stock_count_items')
+            ->select('product_id', \DB::raw('MAX(created_at) as last_counted_at'))
+            ->where('stock_count_id', $lims_stock_count->id)
+            ->groupBy('product_id');
+
+        $wasteQuery = \App\Models\WasteItem::join('wastes', 'waste_items.waste_id', '=', 'wastes.id')
+            ->join('products', 'waste_items.product_id', '=', 'products.id')
+            ->joinSub($wasteItemsSubquery, 'sci', function($join) {
+                $join->on('waste_items.product_id', '=', 'sci.product_id');
+            })
+            ->where('wastes.created_at', '>=', $lims_stock_count->created_at)
+            ->whereColumn('wastes.created_at', '>=', 'sci.last_counted_at');
+
+        if ($lims_stock_count->is_completed) {
+            $wasteQuery->where('wastes.created_at', '<=', $lims_stock_count->updated_at);
+        }
+
+        $wasteProducts = $wasteQuery->select(
+                'products.id',
+                'products.name',
+                'products.code as code',
+                'products.price',
+                'products.cost',
+                \Illuminate\Support\Facades\DB::raw('SUM(waste_items.qty) as waste_qty')
+            )
+            ->groupBy('products.id', 'products.name', 'products.code', 'products.price', 'products.cost')
+            ->get();
+
+        $wasteQty = $wasteProducts->sum('waste_qty');
+        $wasteCount = $wasteProducts->count();
     @endphp
 
     <style>
@@ -183,7 +226,7 @@
             <!-- Stat Widget Bar -->
             <div class="row">
                 <!-- Card 1: Total Counted (Teal) -->
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <div class="stat-card teal">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
@@ -201,7 +244,7 @@
                     </div>
                 </div>
                 <!-- Card 2: Remaining (Slate) -->
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <a href="{{ route('stock-count.remaining-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
                         <div class="stat-card slate" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
@@ -221,7 +264,7 @@
                     </a>
                 </div>
                 <!-- Card 3: Sold Products (Indigo) -->
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-3 col-sm-6">
                     <a href="{{ route('stock-count.sold-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
                         <div class="stat-card indigo" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
@@ -235,6 +278,26 @@
                                 </div>
                                 <div style="font-size: 28px; color: #6366f1; opacity: 0.8;">
                                     <i class="fa fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 4: Waste Products (Red) -->
+                <div class="col-md-3 col-sm-6">
+                    <a href="{{ route('stock-count.waste-products', $lims_stock_count->id) }}" class="d-block" style="text-decoration: none; color: inherit;">
+                        <div class="stat-card red" style="cursor: pointer;">
+                            <div class="d-flex w-100 justify-content-between align-items-center">
+                                <div>
+                                    <div class="title-small"><i class="fa fa-trash" style="color: #dc3545; margin-right: 5px;"></i> ওয়েস্ট পণ্য</div>
+                                    <div class="value-large">{{ $wasteCount }}</div>
+                                </div>
+                                <div>
+                                    <div class="title-small" style="color: #dc3545;">ওয়েস্ট জোড়া</div>
+                                    <div class="value-large">{{ number_format($wasteQty, 2, '.', '') }}</div>
+                                </div>
+                                <div style="font-size: 28px; color: #dc3545; opacity: 0.8;">
+                                    <i class="fa fa-trash"></i>
                                 </div>
                             </div>
                         </div>
@@ -439,8 +502,16 @@
                 </div>
             @endif
             <input type="hidden" name="status" value="resolved">
-            <div class="form-group d-flex justify-content-between align-items-center">
-                <button type="submit" class="btn btn-primary" id="submit-btn">Resolved</button>
+            <div class="form-group d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex align-items-center">
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Resolved</button>
+                    <div class="form-check form-check-inline ml-3">
+                        <input class="form-check-input" type="checkbox" name="zero_remaining" id="zero-remaining-checkbox" value="1">
+                        <label class="form-check-label text-danger font-weight-bold" for="zero-remaining-checkbox" style="margin-left: 5px; cursor: pointer; user-select: none;">
+                            ⚠️ Zero Remaining Products Stock (বাকি সব পণ্য ০ করুন)
+                        </label>
+                    </div>
+                </div>
                 <button type="button" class="btn btn-danger" id="revert-btn"><i class="fa fa-undo"></i> Back to Counting</button>
             </div>
             {!! Form::close() !!}
@@ -514,16 +585,35 @@
             let btn = $(this);
             let allData = [];
 
-            $(table.cells().nodes()).find('input[type="radio"]:checked').each(function() {
+            let uniqueNames = new Set();
+            $(table.cells().nodes()).find('input[type="radio"]').each(function() {
                 let name = $(this).attr('name');
-                if (name && name.includes('resolved[')) {
-                    let val = $(this).val();
-                    let itemCode = name.match(/\[(.*?)\]/)[1];
-                    if (itemCode !== 'all') {
-                        allData.push({ code: itemCode, action: val });
-                    }
+                if (name && name.startsWith('resolved[') && !name.includes('resolved[all]')) {
+                    uniqueNames.add(name);
                 }
             });
+
+            let checkedNames = new Set();
+            $(table.cells().nodes()).find('input[type="radio"]:checked').each(function() {
+                let name = $(this).attr('name');
+                if (name && name.startsWith('resolved[') && !name.includes('resolved[all]')) {
+                    checkedNames.add(name);
+                    let val = $(this).val();
+                    let itemCode = name.match(/\[(.*?)\]/)[1];
+                    allData.push({ code: itemCode, action: val });
+                }
+            });
+
+            if (checkedNames.size < uniqueNames.size) {
+                Swal.fire({
+                    title: '⚠️ Incomplete Selection',
+                    text: 'Please select an action (Update Stock or Cancel) for all items before resolving.',
+                    icon: 'warning',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'OK'
+                });
+                return;
+            }
 
             if (allData.length === 0) {
                 alert("Please select at least one item.");
@@ -559,7 +649,9 @@
                     _method: "PUT",
                     status: "resolved",
                     resolved_batch: chunks[index],
-                    is_final_chunk: (index === chunks.length - 1) ? 1 : 0
+                    chunk_index: index,
+                    is_final_chunk: (index === chunks.length - 1) ? 1 : 0,
+                    zero_remaining: $('#zero-remaining-checkbox').is(':checked') ? 1 : 0
                 },
                 success: function() {
                     let progress = Math.round(((index + 1) / chunks.length) * 100);
