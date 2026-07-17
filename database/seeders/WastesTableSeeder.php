@@ -475,18 +475,6 @@ class WastesTableSeeder extends Seeder
                 'created_at' => '2026-06-23 00:25:04',
                 'updated_at' => '2026-06-23 00:25:04',
             ),
-            38 => 
-            array (
-                'id' => 41,
-                'receiver_type' => 'biller',
-                'receiver_id' => 4,
-                'receiver_name' => 'Showroom own',
-                'note' => NULL,
-                'total_price' => '3960.00',
-                'status' => 1,
-                'created_at' => '2026-06-24 00:04:25',
-                'updated_at' => '2026-06-24 00:04:25',
-            ),
         ));
         
         

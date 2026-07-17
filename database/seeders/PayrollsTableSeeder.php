@@ -1969,36 +1969,6 @@ class PayrollsTableSeeder extends Seeder
                 'created_at' => '2026-06-21 22:36:00',
                 'updated_at' => '2026-06-21 22:36:18',
             ),
-            130 => 
-            array (
-                'id' => 132,
-                'payroll_type_id' => '2',
-                'reference_no' => 'payroll-20260627-094153',
-                'employee_id' => 2,
-                'account_id' => 1,
-                'user_id' => 5,
-                'salary' => 18000.0,
-                'amount' => 600.0,
-                'paying_method' => '0',
-                'note' => NULL,
-                'created_at' => '2026-06-26 21:41:00',
-                'updated_at' => '2026-06-27 21:41:53',
-            ),
-            131 => 
-            array (
-                'id' => 133,
-                'payroll_type_id' => '2',
-                'reference_no' => 'payroll-20260627-094211',
-                'employee_id' => 3,
-                'account_id' => 1,
-                'user_id' => 5,
-                'salary' => 13000.0,
-                'amount' => 500.0,
-                'paying_method' => '0',
-                'note' => NULL,
-                'created_at' => '2026-06-26 21:41:00',
-                'updated_at' => '2026-06-27 21:42:11',
-            ),
         ));
         
         

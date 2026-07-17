@@ -32658,13 +32658,13 @@ class PurchasesTableSeeder extends Seeder
                 'order_discount' => 0.0,
                 'shipping_cost' => 8200.0,
                 'grand_total' => 244985.2,
-                'paid_amount' => 238666.4,
+                'paid_amount' => 195416.4,
                 'status' => 1,
                 'payment_status' => 1,
                 'document' => NULL,
                 'note' => NULL,
                 'created_at' => '2025-08-10 15:54:39',
-                'updated_at' => '2026-06-27 21:40:49',
+                'updated_at' => '2026-06-22 10:38:40',
             ),
             209 => 
             array (

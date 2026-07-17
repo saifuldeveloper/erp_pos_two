@@ -1339,28 +1339,6 @@ class SupplierDuesTableSeeder extends Seeder
                 'created_at' => '2026-06-22 10:38:40',
                 'updated_at' => '2026-06-22 10:38:40',
             ),
-            120 => 
-            array (
-                'id' => 121,
-                'supplier_id' => 1,
-                'account_id' => 1,
-                'amount' => '40000.00',
-                'payment_ids' => '[12709]',
-                'note' => 'Brac Bank',
-                'created_at' => '2026-06-25 16:19:22',
-                'updated_at' => '2026-06-25 16:19:23',
-            ),
-            121 => 
-            array (
-                'id' => 122,
-                'supplier_id' => 1,
-                'account_id' => 1,
-                'amount' => '3250.00',
-                'payment_ids' => '[12737]',
-                'note' => 'Pos Pubali',
-                'created_at' => '2026-06-27 21:40:49',
-                'updated_at' => '2026-06-27 21:40:49',
-            ),
         ));
         
         

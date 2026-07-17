@@ -1125,7 +1125,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -1151,7 +1151,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 16:45:44',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2025-08-16 14:25:37',
             ),
             27 => 
             array (
@@ -1167,7 +1167,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -1193,7 +1193,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 16:50:11',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2025-09-13 07:40:08',
             ),
             28 => 
             array (
@@ -1377,7 +1377,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 584.0,
                 'price' => 790.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -1403,7 +1403,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 17:00:57',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-05-27 15:30:08',
             ),
             33 => 
             array (
@@ -2007,7 +2007,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 481.0,
                 'price' => 650.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -2033,7 +2033,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 18:11:30',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2025-04-19 18:11:37',
             ),
             48 => 
             array (
@@ -2175,7 +2175,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.0,
                 'price' => 1195.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -2201,7 +2201,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","39,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 20:25:40',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2025-12-30 19:20:12',
             ),
             52 => 
             array (
@@ -2679,7 +2679,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1546.0,
                 'price' => 2090.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -2705,7 +2705,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","39,40,41,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 21:05:51',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-03-06 11:23:20',
             ),
             64 => 
             array (
@@ -2747,7 +2747,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","40,41,42,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-19 21:11:24',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-02-18 16:09:58',
             ),
             65 => 
             array (
@@ -2931,7 +2931,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1302.0,
                 'price' => 1760.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -2957,7 +2957,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master,White","39,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 10:44:59',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2026-05-26 13:06:21',
             ),
             70 => 
             array (
@@ -2973,7 +2973,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1687.0,
                 'price' => 2280.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -2999,7 +2999,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 10:59:20',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-18 18:14:10',
             ),
             71 => 
             array (
@@ -3141,7 +3141,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 943.0,
                 'price' => 1275.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -3167,7 +3167,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 11:08:28',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-09-20 11:13:48',
             ),
             75 => 
             array (
@@ -3309,7 +3309,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1476.0,
                 'price' => 1995.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -3335,7 +3335,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 11:15:56',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-03-18 15:28:03',
             ),
             79 => 
             array (
@@ -3419,7 +3419,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master","41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 11:19:53',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 16:44:17',
             ),
             81 => 
             array (
@@ -3603,7 +3603,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -3629,7 +3629,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","13,14,15"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 11:36:12',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-10-21 10:32:40',
             ),
             86 => 
             array (
@@ -4401,7 +4401,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.0,
                 'price' => 1595.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -4427,7 +4427,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master","39,40,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 12:38:21',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-05-16 11:56:39',
             ),
             105 => 
             array (
@@ -4443,7 +4443,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1698.0,
                 'price' => 2295.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -4469,7 +4469,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","40,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 12:40:48',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-05-24 12:55:19',
             ),
             106 => 
             array (
@@ -5745,7 +5745,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -5771,7 +5771,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 15:58:14',
-                'updated_at' => '2026-06-24 01:31:36',
+                'updated_at' => '2026-06-22 17:46:07',
             ),
             137 => 
             array (
@@ -5829,7 +5829,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.0,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -5855,7 +5855,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 16:02:18',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2025-08-24 10:37:10',
             ),
             139 => 
             array (
@@ -5913,7 +5913,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 943.0,
                 'price' => 1275.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -5939,7 +5939,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 16:09:05',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-02-27 17:19:58',
             ),
             141 => 
             array (
@@ -6039,7 +6039,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.0,
                 'price' => 1495.0,
-                'qty' => 7.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -6065,7 +6065,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 16:22:06',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-15 13:31:24',
             ),
             144 => 
             array (
@@ -6249,7 +6249,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1550.0,
                 'price' => 2095.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -6275,7 +6275,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 16:46:38',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-16 01:43:16',
             ),
             149 => 
             array (
@@ -7719,7 +7719,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.0,
                 'price' => 855.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -7745,7 +7745,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master","39,40,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 19:01:07',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-09-07 06:23:42',
             ),
             184 => 
             array (
@@ -8391,7 +8391,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.0,
                 'price' => 995.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -8417,7 +8417,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 19:29:01',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2025-05-06 06:42:33',
             ),
             200 => 
             array (
@@ -8601,7 +8601,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.0,
                 'price' => 855.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -8627,7 +8627,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 19:35:45',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2026-01-17 17:08:48',
             ),
             205 => 
             array (
@@ -9147,7 +9147,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1002.0,
                 'price' => 1355.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -9173,7 +9173,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 20:48:22',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-05-11 08:30:40',
             ),
             218 => 
             array (
@@ -9231,7 +9231,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1002.0,
                 'price' => 1355.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -9257,7 +9257,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-20 20:55:46',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-03-06 21:26:28',
             ),
             220 => 
             array (
@@ -9803,7 +9803,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master","44,45,46"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 11:07:28',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-02-01 20:08:41',
             ),
             233 => 
             array (
@@ -10139,7 +10139,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 11:25:24',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-04-21 13:38:58',
             ),
             241 => 
             array (
@@ -10701,7 +10701,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -10727,7 +10727,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","41,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 12:01:10',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-07-26 12:16:38',
             ),
             255 => 
             array (
@@ -11289,7 +11289,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -11315,7 +11315,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master","44,45,46"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 12:38:00',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-15 18:39:22',
             ),
             269 => 
             array (
@@ -11415,7 +11415,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.0,
                 'price' => 1295.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -11441,7 +11441,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","40,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 12:49:54',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-08 20:37:45',
             ),
             272 => 
             array (
@@ -11751,7 +11751,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1002.0,
                 'price' => 1355.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -11777,7 +11777,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","41,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 13:18:29',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-09-18 13:47:59',
             ),
             280 => 
             array (
@@ -11835,7 +11835,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1002.0,
                 'price' => 1355.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -11861,7 +11861,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 13:25:35',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 10:30:49',
             ),
             282 => 
             array (
@@ -11961,7 +11961,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1028.0,
                 'price' => 1390.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -11987,7 +11987,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 13:32:17',
-                'updated_at' => '2026-06-24 16:32:27',
+                'updated_at' => '2025-04-21 13:32:56',
             ),
             285 => 
             array (
@@ -12087,7 +12087,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.0,
                 'price' => 1495.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -12113,7 +12113,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","40,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 13:39:20',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-07-15 10:00:25',
             ),
             288 => 
             array (
@@ -12827,7 +12827,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 15:11:43',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-06-11 12:49:43',
             ),
             305 => 
             array (
@@ -13515,7 +13515,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.0,
                 'price' => 1595.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -13541,7 +13541,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","42,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 15:40:47',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-06-24 14:49:46',
             ),
             322 => 
             array (
@@ -13557,7 +13557,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1254.0,
                 'price' => 1695.0,
-                'qty' => 0.0,
+                'qty' => -1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -13583,7 +13583,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","43,44,45,46"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 15:41:53',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 17:04:20',
             ),
             323 => 
             array (
@@ -13641,7 +13641,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1254.0,
                 'price' => 1695.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -13667,7 +13667,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 15:55:11',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-04-21 15:55:21',
             ),
             325 => 
             array (
@@ -13725,7 +13725,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -13751,7 +13751,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 15:56:55',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-06-17 20:41:58',
             ),
             327 => 
             array (
@@ -13793,7 +13793,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","41,42,43,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 15:58:05',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-11-23 20:43:40',
             ),
             328 => 
             array (
@@ -14061,7 +14061,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.0,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -14087,7 +14087,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 16:21:34',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-02-27 17:06:32',
             ),
             335 => 
             array (
@@ -14271,7 +14271,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.0,
                 'price' => 1595.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -14297,7 +14297,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 16:56:09',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-17 22:47:43',
             ),
             340 => 
             array (
@@ -14313,7 +14313,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -14339,7 +14339,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 17:02:37',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-06-03 14:17:09',
             ),
             341 => 
             array (
@@ -14481,7 +14481,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1772.0,
                 'price' => 2395.0,
-                'qty' => 4.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -14507,7 +14507,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","41,42,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 17:12:03',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-11-22 20:59:24',
             ),
             345 => 
             array (
@@ -14675,7 +14675,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 17:28:28',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-05-17 06:29:19',
             ),
             349 => 
             array (
@@ -14717,7 +14717,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 17:33:59',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-10-04 06:20:16',
             ),
             350 => 
             array (
@@ -14733,7 +14733,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 4.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -14759,7 +14759,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","41,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 17:35:49',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-08-26 14:12:24',
             ),
             351 => 
             array (
@@ -15153,7 +15153,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -15179,7 +15179,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","37,38,40,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 18:27:44',
-                'updated_at' => '2026-06-23 01:33:13',
+                'updated_at' => '2026-01-25 16:42:12',
             ),
             361 => 
             array (
@@ -15221,7 +15221,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee,Master","36,37,38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 18:30:03',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 21:41:24',
             ),
             362 => 
             array (
@@ -15615,7 +15615,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -15641,7 +15641,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","35,37"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 19:31:26',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-01-18 19:26:56',
             ),
             372 => 
             array (
@@ -15741,7 +15741,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -15767,7 +15767,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","35,36,37"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 19:42:32',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2026-04-20 10:25:54',
             ),
             375 => 
             array (
@@ -15783,7 +15783,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -15809,7 +15809,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","35,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 19:47:06',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-08-02 13:15:39',
             ),
             376 => 
             array (
@@ -15825,7 +15825,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1147.0,
                 'price' => 1550.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -15851,7 +15851,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Maroon","36,39,40,35,38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 19:48:20',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-09-16 12:56:14',
             ),
             377 => 
             array (
@@ -16119,7 +16119,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.0,
                 'price' => 755.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -16145,7 +16145,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","35"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 20:17:57',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-08-18 11:57:16',
             ),
             384 => 
             array (
@@ -16161,7 +16161,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.0,
                 'price' => 755.0,
-                'qty' => 0.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -16187,7 +16187,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","35,36,37,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 20:18:54',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-08-25 07:53:05',
             ),
             385 => 
             array (
@@ -16413,7 +16413,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.0,
                 'price' => 755.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -16439,7 +16439,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 20:38:52',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-04-25 14:02:17',
             ),
             391 => 
             array (
@@ -16455,7 +16455,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.0,
                 'price' => 995.0,
-                'qty' => 0.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -16481,7 +16481,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden","37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 20:42:28',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-12-25 16:49:54',
             ),
             392 => 
             array (
@@ -16833,7 +16833,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.0,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -16859,7 +16859,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","6,8,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-21 21:13:24',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2025-09-01 11:33:29',
             ),
             401 => 
             array (
@@ -17463,7 +17463,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -17489,7 +17489,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Maroon","6,8,9"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 11:48:46',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-10-29 06:26:30',
             ),
             416 => 
             array (
@@ -17631,7 +17631,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1028.0,
                 'price' => 1390.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -17657,7 +17657,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden","36,37"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 12:01:52',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-09-13 09:04:18',
             ),
             420 => 
             array (
@@ -18093,7 +18093,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.0,
                 'price' => 855.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18119,7 +18119,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","5,6,8"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 12:28:37',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-04-25 13:56:03',
             ),
             431 => 
             array (
@@ -18177,7 +18177,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.0,
                 'price' => 995.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18203,7 +18203,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 12:36:08',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-04-18 13:54:18',
             ),
             433 => 
             array (
@@ -18303,7 +18303,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.0,
                 'price' => 1055.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18329,7 +18329,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 12:43:25',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 18:22:25',
             ),
             436 => 
             array (
@@ -18429,7 +18429,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18455,7 +18455,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden,Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 12:53:19',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-09 15:10:42',
             ),
             439 => 
             array (
@@ -18471,7 +18471,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18497,7 +18497,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Pink","36,37,38,39,40,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 13:06:35',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-21 12:51:35',
             ),
             440 => 
             array (
@@ -18681,7 +18681,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.0,
                 'price' => 755.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18707,7 +18707,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden","36,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 13:18:58',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-02-10 16:12:51',
             ),
             445 => 
             array (
@@ -18807,7 +18807,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 847.0,
                 'price' => 1145.0,
-                'qty' => 4.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18833,7 +18833,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Golden","37,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 13:24:54',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-07 21:59:27',
             ),
             448 => 
             array (
@@ -18933,7 +18933,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 5.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -18959,7 +18959,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","6,7,8,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 13:31:22',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-04-25 13:49:18',
             ),
             451 => 
             array (
@@ -19059,7 +19059,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 314.0,
                 'price' => 425.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -19085,7 +19085,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee,Maroon","6,7,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 13:35:08',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-08-25 13:07:15',
             ),
             454 => 
             array (
@@ -19101,7 +19101,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 366.0,
                 'price' => 495.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -19127,7 +19127,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","6,7,8,9,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 13:41:46',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-04-29 19:40:11',
             ),
             455 => 
             array (
@@ -19479,7 +19479,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -19505,7 +19505,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","7,8,9,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 14:04:21',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-13 16:14:11',
             ),
             464 => 
             array (
@@ -19689,7 +19689,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 462.0,
                 'price' => 625.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -19715,7 +19715,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Pink","6,7,9,10"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 14:24:30',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2025-07-30 13:53:28',
             ),
             469 => 
             array (
@@ -19815,7 +19815,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 925.0,
                 'price' => 1250.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -19841,7 +19841,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 14:27:48',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2025-07-07 11:25:46',
             ),
             472 => 
             array (
@@ -19857,7 +19857,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.0,
                 'price' => 595.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -19883,7 +19883,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Pink","7,8,9"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 14:30:18',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-07-29 05:19:02',
             ),
             473 => 
             array (
@@ -20319,7 +20319,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.0,
                 'price' => 595.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -20345,7 +20345,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 14:52:09',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-02-26 22:38:36',
             ),
             484 => 
             array (
@@ -20403,7 +20403,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 2.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -20429,7 +20429,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Golden","36,37,38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 14:55:17',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-06-26 05:22:22',
             ),
             486 => 
             array (
@@ -20697,7 +20697,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.0,
                 'price' => 895.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -20723,7 +20723,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 15:11:29',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2025-04-25 13:11:33',
             ),
             493 => 
             array (
@@ -20907,7 +20907,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.0,
                 'price' => 595.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -20933,7 +20933,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 15:22:12',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-09-30 07:25:44',
             ),
             498 => 
             array (
@@ -20991,7 +20991,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.0,
                 'price' => 695.0,
-                'qty' => 4.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -21017,7 +21017,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden","37"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 15:24:57',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-04-25 13:11:02',
             ),
         ));
         \DB::table('products')->insert(array (
@@ -21035,7 +21035,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 462.0,
                 'price' => 625.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -21061,7 +21061,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Maroon","36,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 15:54:34',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-20 22:11:00',
             ),
             1 => 
             array (
@@ -21287,7 +21287,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 314.0,
                 'price' => 425.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -21313,7 +21313,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,9,10"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 17:00:49',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-08-07 09:01:46',
             ),
             7 => 
             array (
@@ -21581,7 +21581,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.0,
                 'price' => 855.0,
-                'qty' => 2.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -21607,7 +21607,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden,Maroon","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 17:20:38',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2025-12-11 15:15:42',
             ),
             14 => 
             array (
@@ -21665,7 +21665,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 703.0,
                 'price' => 950.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -21691,7 +21691,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Silver","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 17:24:51',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-09 13:49:13',
             ),
             16 => 
             array (
@@ -21791,7 +21791,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.0,
                 'price' => 895.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -21817,7 +21817,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 17:31:49',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-04-25 13:02:31',
             ),
             19 => 
             array (
@@ -22001,7 +22001,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.0,
                 'price' => 1055.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -22027,7 +22027,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 17:42:53',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-09-04 08:36:46',
             ),
             24 => 
             array (
@@ -22295,7 +22295,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.0,
                 'price' => 755.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -22321,7 +22321,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 18:17:52',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-02-01 13:31:25',
             ),
             31 => 
             array (
@@ -22883,7 +22883,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.0,
                 'price' => 995.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -22909,7 +22909,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 19:13:57',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-09 17:30:07',
             ),
             45 => 
             array (
@@ -23009,7 +23009,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 703.0,
                 'price' => 950.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -23035,7 +23035,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Pink","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 19:22:25',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-06-17 12:33:41',
             ),
             48 => 
             array (
@@ -23413,7 +23413,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Pink","7,8,9,10"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 19:45:00',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2025-11-16 10:15:35',
             ),
             57 => 
             array (
@@ -23513,7 +23513,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -23539,7 +23539,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee,Pink","6,7,8,10"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 19:55:08',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-02-27 15:48:12',
             ),
             60 => 
             array (
@@ -23681,7 +23681,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.0,
                 'price' => 995.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -23707,7 +23707,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","8,10"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 20:06:01',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-05-27 07:39:51',
             ),
             64 => 
             array (
@@ -24227,7 +24227,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.0,
                 'price' => 1195.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -24253,7 +24253,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","6,7,8,9,10,36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 20:37:46',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-13 11:40:41',
             ),
             77 => 
             array (
@@ -24311,7 +24311,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -24337,7 +24337,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden,Pink","35,36,37,38,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 20:46:38',
-                'updated_at' => '2026-06-23 23:33:06',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             79 => 
             array (
@@ -24563,7 +24563,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 854.0,
                 'price' => 1155.0,
-                'qty' => 10.0,
+                'qty' => 11.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -24589,7 +24589,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","6,7"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 21:05:38',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2025-04-25 12:45:19',
             ),
             85 => 
             array (
@@ -24857,7 +24857,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 777.0,
                 'price' => 1050.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -24883,7 +24883,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","6,7,9,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 21:24:11',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 18:52:35',
             ),
             92 => 
             array (
@@ -24941,7 +24941,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -24967,7 +24967,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","6,8,10,36,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 21:29:17',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-11-05 08:29:16',
             ),
             94 => 
             array (
@@ -24983,7 +24983,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.0,
                 'price' => 1295.0,
-                'qty' => 12.0,
+                'qty' => 10.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -25009,7 +25009,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Cream","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 21:41:59',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-04-29 17:03:38',
             ),
             95 => 
             array (
@@ -25235,7 +25235,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.0,
                 'price' => 1195.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -25261,7 +25261,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","35,36,38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 22:05:48',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-07-16 14:18:46',
             ),
             101 => 
             array (
@@ -25529,7 +25529,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.0,
                 'price' => 755.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -25555,7 +25555,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Maroon","12,13,14"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 22:15:33',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-06-06 15:05:18',
             ),
             108 => 
             array (
@@ -25655,7 +25655,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 706.0,
                 'price' => 995.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -25681,7 +25681,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Cream,Pink","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-22 22:22:14',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2026-03-16 21:07:44',
             ),
             111 => 
             array (
@@ -26285,7 +26285,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 658.0,
                 'price' => 890.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -26311,7 +26311,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 11:41:44',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-16 19:57:04',
             ),
             126 => 
             array (
@@ -26453,7 +26453,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 388.0,
                 'price' => 525.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -26479,7 +26479,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","7"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 11:46:16',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-16 01:41:00',
             ),
             130 => 
             array (
@@ -26663,7 +26663,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.0,
                 'price' => 475.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -26689,7 +26689,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Master","1,2,3,4"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 11:56:54',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-19 21:29:24',
             ),
             135 => 
             array (
@@ -27125,7 +27125,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.0,
                 'price' => 475.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -27151,7 +27151,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,Coffee,Master","1,2,3"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 12:35:04',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-11 15:40:18',
             ),
             146 => 
             array (
@@ -27251,7 +27251,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.0,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -27277,7 +27277,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","36,37,38,39,6,8"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 12:47:01',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-21 21:24:24',
             ),
             149 => 
             array (
@@ -27377,7 +27377,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.0,
                 'price' => 475.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -27403,7 +27403,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","1,2,3"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 13:01:35',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-02 12:53:51',
             ),
             152 => 
             array (
@@ -27545,7 +27545,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.0,
                 'price' => 895.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -27571,7 +27571,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Master,Pink","12,13,31,32,33,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 13:22:16',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             156 => 
             array (
@@ -27797,7 +27797,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.0,
                 'price' => 595.0,
-                'qty' => 16.0,
+                'qty' => 17.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -27823,7 +27823,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Cream","29,30,31,32,33,34"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 13:38:44',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 20:06:20',
             ),
             162 => 
             array (
@@ -28007,7 +28007,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 625.0,
                 'price' => 845.0,
-                'qty' => 16.0,
+                'qty' => 17.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28033,7 +28033,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","30,31,32,33,34,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 14:08:20',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-04-20 18:21:26',
             ),
             167 => 
             array (
@@ -28285,7 +28285,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","21,22,23,24,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 14:24:28',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-20 10:23:21',
             ),
             173 => 
             array (
@@ -28301,7 +28301,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 900.0,
                 'price' => 1300.0,
-                'qty' => 10.0,
+                'qty' => 11.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28327,7 +28327,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","21,22,23,24,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 14:26:56',
-                'updated_at' => '2026-06-26 12:09:06',
+                'updated_at' => '2026-06-03 13:00:56',
             ),
             174 => 
             array (
@@ -28511,7 +28511,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 950.0,
                 'price' => 1400.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28537,7 +28537,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","21,22,23,24,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 14:40:00',
-                'updated_at' => '2026-06-23 23:33:06',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             179 => 
             array (
@@ -28553,7 +28553,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 850.0,
                 'price' => 1250.0,
-                'qty' => 6.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28579,7 +28579,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","21,22,23,24,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 14:42:35',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 10:13:01',
             ),
             180 => 
             array (
@@ -28637,7 +28637,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 950.0,
                 'price' => 1450.0,
-                'qty' => 9.0,
+                'qty' => 8.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28663,7 +28663,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","26,27,28,29,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 15:48:49',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-03 14:28:20',
             ),
             182 => 
             array (
@@ -28679,7 +28679,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1000.0,
                 'price' => 1300.0,
-                'qty' => 9.0,
+                'qty' => 10.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28705,7 +28705,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden,Silver","26,27,28,29,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 15:53:11',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-18 21:41:24',
             ),
             183 => 
             array (
@@ -28831,7 +28831,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden","26,27,28,29,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 15:57:22',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2025-04-23 15:57:43',
             ),
             186 => 
             array (
@@ -28889,7 +28889,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 230.0,
                 'price' => 400.0,
-                'qty' => 4.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28915,7 +28915,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Cream,Maroon,Pink","0"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 16:16:20',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-09 23:25:30',
             ),
             188 => 
             array (
@@ -28931,7 +28931,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 140.0,
                 'price' => 300.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -28957,7 +28957,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,White","0"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 16:18:52',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2026-03-18 13:19:18',
             ),
             189 => 
             array (
@@ -28999,7 +28999,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","31,32,33,35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 16:22:54',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             190 => 
             array (
@@ -29183,7 +29183,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1050.0,
                 'price' => 1300.0,
-                'qty' => 7.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -29209,7 +29209,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Golden,Silver","31,32,33,34,35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 16:32:09',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-04 18:53:03',
             ),
             195 => 
             array (
@@ -29687,7 +29687,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 900.0,
                 'price' => 1450.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -29713,7 +29713,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","26,27,28,29,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:03:54',
-                'updated_at' => '2026-06-28 12:34:17',
+                'updated_at' => '2026-05-22 16:55:19',
             ),
             207 => 
             array (
@@ -29729,7 +29729,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1000.0,
                 'price' => 1450.0,
-                'qty' => 5.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -29755,7 +29755,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","26,27,28,29,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:05:49',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             208 => 
             array (
@@ -29939,7 +29939,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1050.0,
                 'price' => 1550.0,
-                'qty' => 5.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -29965,7 +29965,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Pink","31,32,33,34,35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:21:09',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             213 => 
             array (
@@ -29981,7 +29981,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1200.0,
                 'price' => 1800.0,
-                'qty' => 7.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30007,7 +30007,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Cream","27,28,29,30,31,32"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:23:26',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-06 12:20:31',
             ),
             214 => 
             array (
@@ -30107,7 +30107,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1250.0,
                 'price' => 1900.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30133,7 +30133,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Gray","33,34,35,36,37,38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:33:32',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-20 11:00:24',
             ),
             217 => 
             array (
@@ -30149,7 +30149,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1250.0,
                 'price' => 1900.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30175,7 +30175,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue,Cream","33,34,35,36,37,38"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:38:02',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             218 => 
             array (
@@ -30233,7 +30233,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1250.0,
                 'price' => 1800.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30259,7 +30259,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Gray","31,32,33,34,35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:43:52',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2026-03-06 12:46:06',
             ),
             220 => 
             array (
@@ -30275,7 +30275,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1200.0,
                 'price' => 1700.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30301,7 +30301,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Gray","26,27,28,29,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:45:46',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-01 21:04:14',
             ),
             221 => 
             array (
@@ -30317,7 +30317,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 800.0,
                 'price' => 1300.0,
-                'qty' => 4.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30343,7 +30343,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Master","28,29,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 17:50:08',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-18 13:11:51',
             ),
             222 => 
             array (
@@ -30485,7 +30485,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 900.0,
                 'price' => 1450.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30511,7 +30511,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","27,28,29,30,31"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 18:04:54',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-19 01:10:31',
             ),
             226 => 
             array (
@@ -30695,7 +30695,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 270.0,
                 'price' => 550.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30721,7 +30721,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","21,23,24"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 18:31:22',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-10 14:36:30',
             ),
             231 => 
             array (
@@ -30905,7 +30905,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 290.0,
                 'price' => 600.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -30931,7 +30931,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue","23,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 18:48:27',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-05-28 08:05:27',
             ),
             236 => 
             array (
@@ -31115,7 +31115,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 300.0,
                 'price' => 600.0,
-                'qty' => 6.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -31141,7 +31141,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","20,21,22,23"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 19:04:06',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-02-09 15:47:43',
             ),
             241 => 
             array (
@@ -31241,7 +31241,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 310.0,
                 'price' => 600.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -31267,7 +31267,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Blue","19,20,22,23,24"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 19:12:02',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-31 16:42:05',
             ),
             244 => 
             array (
@@ -31309,7 +31309,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray,Green,Olive","35,36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 19:34:07',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 10:12:09',
             ),
             245 => 
             array (
@@ -31367,7 +31367,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 340.0,
                 'price' => 600.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -31393,7 +31393,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue,Pink","21,22,23,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 19:55:44',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-05-06 06:42:33',
             ),
             247 => 
             array (
@@ -31409,7 +31409,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 300.0,
                 'price' => 600.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -31435,7 +31435,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","23,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 20:05:01',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-06-11 14:49:28',
             ),
             248 => 
             array (
@@ -31661,7 +31661,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 850.0,
                 'price' => 1250.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -31687,7 +31687,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","26,27"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 20:25:52',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2025-04-24 10:52:36',
             ),
             254 => 
             array (
@@ -31703,7 +31703,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 900.0,
                 'price' => 1350.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -31729,7 +31729,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","31,35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 20:26:59',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             255 => 
             array (
@@ -31787,7 +31787,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 740.0,
                 'price' => 1050.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -31813,7 +31813,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","21,23"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 20:38:52',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             257 => 
             array (
@@ -32207,7 +32207,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 480.0,
                 'price' => 1100.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -32233,7 +32233,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","28,29"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 21:10:43',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2025-07-19 11:56:50',
             ),
             267 => 
             array (
@@ -32291,7 +32291,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 900.0,
                 'price' => 1350.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -32317,7 +32317,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","25,27,29"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 21:15:54',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             269 => 
             array (
@@ -32333,7 +32333,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 580.0,
                 'price' => 900.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -32359,7 +32359,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","21,24,25"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 21:21:40',
-                'updated_at' => '2026-06-23 01:33:32',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             270 => 
             array (
@@ -32795,7 +32795,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 285.0,
                 'price' => 550.0,
-                'qty' => 7.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -32821,7 +32821,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray,Olive","18,19,20,21"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 21:51:57',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2025-12-08 10:42:59',
             ),
             281 => 
             array (
@@ -33383,7 +33383,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 285.0,
                 'price' => 550.0,
-                'qty' => 2.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -33409,7 +33409,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Maroon","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-23 22:24:31',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2025-12-04 12:30:02',
             ),
             295 => 
             array (
@@ -34937,7 +34937,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 390.0,
                 'price' => 750.0,
-                'qty' => 10.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -34963,7 +34963,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Brown,Chocolate,Olive,RED","39,40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 12:39:59',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-28 20:19:51',
             ),
             332 => 
             array (
@@ -34979,7 +34979,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1100.0,
                 'price' => 1750.0,
-                'qty' => 9.0,
+                'qty' => 8.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -35005,7 +35005,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue,Navy","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 12:53:24',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-04-16 18:24:14',
             ),
             333 => 
             array (
@@ -35063,7 +35063,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 825.0,
                 'price' => 1400.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -35089,7 +35089,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Pink","37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 13:00:12',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 10:14:02',
             ),
             335 => 
             array (
@@ -35257,7 +35257,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,RED","40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 13:38:32',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2025-08-23 08:55:25',
             ),
             339 => 
             array (
@@ -35425,7 +35425,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 13:52:01',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-20 21:22:43',
             ),
             343 => 
             array (
@@ -35483,7 +35483,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1950.0,
                 'price' => 2750.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -35509,7 +35509,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown,Olive","40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 13:58:46',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 20:08:48',
             ),
             345 => 
             array (
@@ -36197,7 +36197,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1350.0,
                 'price' => 2000.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -36223,7 +36223,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","40,41,42,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 15:55:32',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-29 12:14:47',
             ),
             362 => 
             array (
@@ -36769,7 +36769,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue,Pink","24,25,26,27"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 16:57:08',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 15:35:52',
             ),
             375 => 
             array (
@@ -37079,7 +37079,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 366.0,
                 'price' => 495.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -37105,7 +37105,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","1,2"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 17:24:56',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-18 15:30:10',
             ),
             383 => 
             array (
@@ -37205,7 +37205,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 277.0,
                 'price' => 350.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -37231,7 +37231,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue,Gray","40,41,44,6,8"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 17:40:14',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-16 20:39:54',
             ),
             386 => 
             array (
@@ -38423,7 +38423,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 390.0,
                 'price' => 750.0,
-                'qty' => 3.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -38449,7 +38449,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Blue,Chocolate","39,40,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 21:18:30',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-20 21:54:35',
             ),
             415 => 
             array (
@@ -39179,7 +39179,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -39205,7 +39205,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Pink,Coffee","5,8"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 22:25:48',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             433 => 
             array (
@@ -39263,7 +39263,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.0,
                 'price' => 1195.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -39289,7 +39289,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Pink","6,7,9,37,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 22:34:36',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-13 11:40:41',
             ),
             435 => 
             array (
@@ -39347,7 +39347,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1028.0,
                 'price' => 1390.0,
-                'qty' => 4.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -39373,7 +39373,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Golden","36,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 22:39:24',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-05-03 05:09:00',
             ),
             437 => 
             array (
@@ -39473,7 +39473,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.0,
                 'price' => 855.0,
-                'qty' => 5.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -39499,7 +39499,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee,Maroon","6,7,9"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 22:43:58',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-02-02 15:57:42',
             ),
             440 => 
             array (
@@ -39641,7 +39641,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.0,
                 'price' => 855.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -39667,7 +39667,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee,Pink","8,37,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 22:51:33',
-                'updated_at' => '2026-06-23 23:36:51',
+                'updated_at' => '2026-01-14 15:16:25',
             ),
             444 => 
             array (
@@ -39935,7 +39935,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.0,
                 'price' => 895.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -39961,7 +39961,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Maroon,Pink","37,8"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 23:02:05',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-06-02 07:40:35',
             ),
             451 => 
             array (
@@ -40019,7 +40019,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.0,
                 'price' => 1095.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -40045,7 +40045,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","7,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 23:07:57',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2025-05-19 08:05:53',
             ),
             453 => 
             array (
@@ -40145,7 +40145,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1069.0,
                 'price' => 1445.0,
-                'qty' => 4.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -40171,7 +40171,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-24 23:14:59',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-10-04 06:01:55',
             ),
             456 => 
             array (
@@ -40187,7 +40187,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.0,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -40213,7 +40213,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 10:54:48',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2025-10-01 06:46:28',
             ),
             457 => 
             array (
@@ -40943,7 +40943,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1239.0,
                 'price' => 1675.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -40969,7 +40969,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,47"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 11:42:45',
-                'updated_at' => '2026-06-23 23:36:51',
+                'updated_at' => '2025-05-11 09:24:46',
             ),
             475 => 
             array (
@@ -41321,7 +41321,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.0,
                 'price' => 1055.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -41347,7 +41347,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Golden","35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 12:18:56',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-11-19 13:19:18',
             ),
             484 => 
             array (
@@ -41951,7 +41951,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.0,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -41977,7 +41977,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","13,14,15"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 14:48:30',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2025-07-12 12:22:34',
             ),
             499 => 
             array (
@@ -42079,7 +42079,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1150.0,
                 'price' => 1650.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -42105,7 +42105,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 14:54:36',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-04-25 14:54:45',
             ),
             2 => 
             array (
@@ -42457,7 +42457,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 90.0,
                 'price' => 170.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -42483,7 +42483,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate",null]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 16:49:34',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 10:59:51',
             ),
             11 => 
             array (
@@ -42499,7 +42499,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 20.0,
                 'price' => 70.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -42525,7 +42525,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2025-04-25 16:51:52',
-                'updated_at' => '2026-06-23 23:36:51',
+                'updated_at' => '2025-04-25 16:53:25',
             ),
             12 => 
             array (
@@ -42583,7 +42583,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 40.0,
                 'price' => 120.0,
-                'qty' => 13.0,
+                'qty' => 11.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -42609,7 +42609,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2025-04-25 16:55:00',
-                'updated_at' => '2026-06-23 01:33:15',
+                'updated_at' => '2026-06-22 12:42:01',
             ),
             14 => 
             array (
@@ -43759,7 +43759,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 847.0,
                 'price' => 1145.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -43785,7 +43785,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","39,40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 18:13:37',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-07-06 05:12:57',
             ),
             42 => 
             array (
@@ -43927,7 +43927,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 380.0,
                 'price' => 550.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -43953,7 +43953,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","32,33,34"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 18:27:16',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-12-22 16:54:25',
             ),
             46 => 
             array (
@@ -43969,7 +43969,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 500.0,
                 'price' => 650.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -43995,7 +43995,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 18:28:36',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-09-25 13:50:08',
             ),
             47 => 
             array (
@@ -44053,7 +44053,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.0,
                 'price' => 595.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -44079,7 +44079,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Maroon","10,37"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 18:33:38',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-04-25 18:33:50',
             ),
             49 => 
             array (
@@ -44137,7 +44137,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1028.0,
                 'price' => 1390.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -44163,7 +44163,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Cream","36,37,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 18:38:03',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 14:24:30',
             ),
             51 => 
             array (
@@ -44389,7 +44389,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 773.0,
                 'price' => 1045.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -44415,7 +44415,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Pink","35,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-04-25 18:50:28',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-04-25 18:50:37',
             ),
             57 => 
             array (
@@ -45481,7 +45481,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 430.0,
                 'price' => 600.0,
-                'qty' => 4.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -45507,7 +45507,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","34,35,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-24 07:31:59',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-04-15 11:54:29',
             ),
             83 => 
             array (
@@ -45733,7 +45733,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 320.0,
                 'price' => 700.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -45759,7 +45759,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","31,32,33,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-24 10:59:56',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-10-07 06:07:43',
             ),
             89 => 
             array (
@@ -46237,7 +46237,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 65.0,
                 'price' => 150.0,
-                'qty' => 5.0,
+                'qty' => 11.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -46263,7 +46263,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2025-05-24 13:17:37',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-02-27 20:18:11',
             ),
             101 => 
             array (
@@ -47077,7 +47077,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -47103,7 +47103,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 14:42:04',
-                'updated_at' => '2026-06-23 23:36:51',
+                'updated_at' => '2025-07-01 04:56:36',
             ),
             121 => 
             array (
@@ -47203,7 +47203,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.7,
                 'price' => 755.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -47229,7 +47229,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 15:03:32',
-                'updated_at' => '2026-06-24 01:28:20',
+                'updated_at' => '2025-07-10 09:49:34',
             ),
             124 => 
             array (
@@ -47413,7 +47413,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.7,
                 'price' => 755.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -47439,7 +47439,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 15:03:33',
-                'updated_at' => '2026-06-24 01:27:26',
+                'updated_at' => '2025-08-06 14:46:54',
             ),
             129 => 
             array (
@@ -48253,7 +48253,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -48279,7 +48279,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 16:14:20',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-10-25 10:49:01',
             ),
             149 => 
             array (
@@ -48757,7 +48757,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1402.3,
                 'price' => 1895.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -48783,7 +48783,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 16:22:13',
-                'updated_at' => '2026-06-24 23:52:20',
+                'updated_at' => '2026-05-25 21:03:26',
             ),
             161 => 
             array (
@@ -49135,7 +49135,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -49161,7 +49161,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 20:43:13',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-19 10:10:43',
             ),
             170 => 
             array (
@@ -49261,7 +49261,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -49287,7 +49287,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","6,7,8,9,10,11,36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 20:55:47',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-09-17 13:32:15',
             ),
             173 => 
             array (
@@ -49429,7 +49429,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 0.0,
+                'qty' => -1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -49455,7 +49455,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 20:55:47',
-                'updated_at' => '2026-06-24 00:24:25',
+                'updated_at' => '2026-06-23 00:25:04',
             ),
             177 => 
             array (
@@ -49849,7 +49849,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 499.5,
                 'price' => 675.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -49875,7 +49875,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 20:55:47',
-                'updated_at' => '2026-06-24 01:30:40',
+                'updated_at' => '2025-08-28 08:33:51',
             ),
             187 => 
             array (
@@ -50059,7 +50059,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -50085,7 +50085,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","6,7,8,9,10,11,36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 21:12:58',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-07-14 11:45:21',
             ),
             192 => 
             array (
@@ -50127,7 +50127,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 21:12:58',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-16 21:28:55',
             ),
             193 => 
             array (
@@ -50521,7 +50521,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1402.3,
                 'price' => 1895.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -50547,7 +50547,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 21:24:38',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-11-13 16:02:38',
             ),
             203 => 
             array (
@@ -51067,7 +51067,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1402.3,
                 'price' => 1895.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -51093,7 +51093,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 21:24:39',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-03-17 13:49:08',
             ),
             216 => 
             array (
@@ -51219,7 +51219,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 21:24:39',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-01-24 14:05:56',
             ),
             219 => 
             array (
@@ -51571,7 +51571,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 0.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -51597,7 +51597,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,10"]',
                 'is_active' => 1,
                 'created_at' => '2025-05-28 21:41:59',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2025-05-28 21:41:59',
             ),
             228 => 
             array (
@@ -51949,7 +51949,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 40.0,
                 'price' => 150.0,
-                'qty' => 48.0,
+                'qty' => 47.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -51975,7 +51975,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2025-05-31 05:59:40',
-                'updated_at' => '2026-06-23 01:33:23',
+                'updated_at' => '2026-06-17 15:35:08',
             ),
             237 => 
             array (
@@ -53587,7 +53587,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 584.6,
                 'price' => 790.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -53613,7 +53613,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 11:17:41',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-17 15:50:43',
             ),
             276 => 
             array (
@@ -55099,7 +55099,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -55125,7 +55125,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 11:17:44',
-                'updated_at' => '2026-06-24 19:29:39',
+                'updated_at' => '2025-11-23 16:33:42',
             ),
             312 => 
             array (
@@ -55351,7 +55351,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 851.0,
                 'price' => 1150.0,
-                'qty' => 3.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -55377,7 +55377,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 12:03:15',
-                'updated_at' => '2026-06-24 23:44:06',
+                'updated_at' => '2026-05-24 14:44:52',
             ),
             318 => 
             array (
@@ -55855,7 +55855,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.7,
                 'price' => 755.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -55881,7 +55881,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 12:03:16',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-09 23:43:01',
             ),
             330 => 
             array (
@@ -56385,7 +56385,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 12:03:17',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 19:02:32',
             ),
             342 => 
             array (
@@ -56443,7 +56443,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -56469,7 +56469,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 12:03:17',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-06-06 14:37:04',
             ),
             344 => 
             array (
@@ -56905,7 +56905,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -56931,7 +56931,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 12:03:18',
-                'updated_at' => '2026-06-24 01:16:03',
+                'updated_at' => '2025-11-06 15:08:09',
             ),
             355 => 
             array (
@@ -58711,7 +58711,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -58737,7 +58737,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","6,7,8,9,10,11,36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 12:45:55',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-12 14:17:29',
             ),
             398 => 
             array (
@@ -59383,7 +59383,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -59409,7 +59409,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:02:20',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-12-02 15:30:27',
             ),
             414 => 
             array (
@@ -59451,7 +59451,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","6,7,8,9,10,11,36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:02:20',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-03-20 19:41:43',
             ),
             415 => 
             array (
@@ -59677,7 +59677,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -59703,7 +59703,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","6,7,8,9,10,11,36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:02:20',
-                'updated_at' => '2026-06-27 21:11:42',
+                'updated_at' => '2026-02-24 19:00:05',
             ),
             421 => 
             array (
@@ -59971,7 +59971,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 366.3,
                 'price' => 495.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -59997,7 +59997,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,36,37,38,39,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:26:06',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-27 15:39:12',
             ),
             428 => 
             array (
@@ -60223,7 +60223,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 2142.3,
                 'price' => 2895.0,
-                'qty' => 4.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -60249,7 +60249,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:26:07',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-10-13 08:18:40',
             ),
             434 => 
             array (
@@ -60265,7 +60265,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 481.0,
                 'price' => 650.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -60291,7 +60291,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:26:07',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-01-22 19:00:28',
             ),
             435 => 
             array (
@@ -60333,7 +60333,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:26:07',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 21:30:24',
             ),
             436 => 
             array (
@@ -60391,7 +60391,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -60417,7 +60417,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,36,37,38,39,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:26:07',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-02-15 17:49:15',
             ),
             438 => 
             array (
@@ -60769,7 +60769,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 477.3,
                 'price' => 645.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -60795,7 +60795,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","6,7,8,9,36,37,38,39,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:26:08',
-                'updated_at' => '2026-06-24 01:42:08',
+                'updated_at' => '2026-03-07 12:19:20',
             ),
             447 => 
             array (
@@ -60811,7 +60811,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 943.5,
                 'price' => 1275.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -60837,7 +60837,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:54:32',
-                'updated_at' => '2026-06-25 16:18:09',
+                'updated_at' => '2026-05-20 19:54:59',
             ),
             448 => 
             array (
@@ -61021,7 +61021,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -61047,7 +61047,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","12,13,14,15,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 14:54:33',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2025-09-22 14:40:52',
             ),
             453 => 
             array (
@@ -61357,7 +61357,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 625.3,
                 'price' => 845.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -61383,7 +61383,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:01:01',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2025-08-25 05:48:17',
             ),
             461 => 
             array (
@@ -61987,7 +61987,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -62013,7 +62013,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:07:03',
-                'updated_at' => '2026-06-23 01:31:59',
+                'updated_at' => '2026-06-13 16:32:39',
             ),
             476 => 
             array (
@@ -62181,7 +62181,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:18:08',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 20:06:20',
             ),
             480 => 
             array (
@@ -62449,7 +62449,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -62475,7 +62475,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:38:29',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 20:51:06',
             ),
             487 => 
             array (
@@ -62575,7 +62575,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.7,
                 'price' => 1055.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -62601,7 +62601,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:38:29',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-13 16:36:47',
             ),
             490 => 
             array (
@@ -62659,7 +62659,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 410.7,
                 'price' => 555.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -62685,7 +62685,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,10,11,36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:38:29',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-18 18:01:38',
             ),
             492 => 
             array (
@@ -62869,7 +62869,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -62895,7 +62895,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","6,7,8,9,10,11,36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:38:30',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-16 15:05:17',
             ),
             497 => 
             array (
@@ -63249,7 +63249,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -63275,7 +63275,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:38:30',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2025-10-21 04:30:46',
             ),
             6 => 
             array (
@@ -63417,7 +63417,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -63443,7 +63443,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:38:31',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-03-06 15:50:46',
             ),
             10 => 
             array (
@@ -63795,7 +63795,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 2216.3,
                 'price' => 2995.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -63821,7 +63821,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:54:37',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2025-08-27 04:39:52',
             ),
             19 => 
             array (
@@ -64047,7 +64047,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -64073,7 +64073,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:54:37',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-15 23:43:47',
             ),
             25 => 
             array (
@@ -64341,7 +64341,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 851.0,
                 'price' => 1150.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -64367,7 +64367,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:54:38',
-                'updated_at' => '2026-06-24 13:12:23',
+                'updated_at' => '2026-04-23 13:25:55',
             ),
             32 => 
             array (
@@ -64871,7 +64871,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-10 15:54:38',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 16:07:14',
             ),
             44 => 
             array (
@@ -65265,7 +65265,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 170.0,
                 'price' => 350.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -65291,7 +65291,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["RED","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-08-13 05:38:13',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-25 15:49:16',
             ),
             54 => 
             array (
@@ -66357,7 +66357,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 906.5,
                 'price' => 1225.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -66383,7 +66383,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-09-29 15:32:04',
-                'updated_at' => '2026-06-24 20:23:26',
+                'updated_at' => '2025-12-03 16:43:37',
             ),
             80 => 
             array (
@@ -66693,7 +66693,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 939.8,
                 'price' => 1270.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -66719,7 +66719,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-09-29 15:32:05',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2026-03-18 14:38:53',
             ),
             88 => 
             array (
@@ -66735,7 +66735,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 939.8,
                 'price' => 1270.0,
-                'qty' => 0.0,
+                'qty' => -1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -66761,7 +66761,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-09-29 15:32:05',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 18:05:12',
             ),
             89 => 
             array (
@@ -67029,7 +67029,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -67055,7 +67055,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-09-29 15:32:06',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-05-16 20:35:12',
             ),
             96 => 
             array (
@@ -67533,7 +67533,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1050.0,
                 'price' => 1500.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -67559,7 +67559,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","35,36,34,33,37"]',
                 'is_active' => 1,
                 'created_at' => '2025-10-30 10:29:22',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-06-04 14:42:48',
             ),
             108 => 
             array (
@@ -68147,7 +68147,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Maroon,Pink,Purple","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 05:52:48',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 19:00:50',
             ),
             122 => 
             array (
@@ -68163,7 +68163,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 750.0,
                 'price' => 1350.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -68189,7 +68189,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Maroon,Navy,Purple","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 06:27:44',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-06 12:14:42',
             ),
             123 => 
             array (
@@ -68625,7 +68625,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 920.0,
                 'price' => 1650.0,
-                'qty' => 7.0,
+                'qty' => 8.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -68651,7 +68651,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown,Green","40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 12:59:53',
-                'updated_at' => '2026-06-25 18:42:23',
+                'updated_at' => '2026-06-03 20:10:31',
             ),
             134 => 
             array (
@@ -68793,7 +68793,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 290.0,
                 'price' => 600.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -68819,7 +68819,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 14:16:48',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-19 11:11:49',
             ),
             138 => 
             array (
@@ -68903,7 +68903,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 14:32:54',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 19:16:01',
             ),
             140 => 
             array (
@@ -69255,7 +69255,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 939.8,
                 'price' => 1270.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -69281,7 +69281,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 14:52:23',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-18 18:08:32',
             ),
             149 => 
             array (
@@ -69717,7 +69717,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -69743,7 +69743,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 14:52:23',
-                'updated_at' => '2026-06-24 01:26:15',
+                'updated_at' => '2026-06-08 16:54:19',
             ),
             160 => 
             array (
@@ -70373,7 +70373,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","31,32,33,34,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 15:21:24',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 20:29:27',
             ),
             175 => 
             array (
@@ -71271,7 +71271,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 943.5,
                 'price' => 1275.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -71297,7 +71297,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 15:21:26',
-                'updated_at' => '2026-06-24 01:08:35',
+                'updated_at' => '2026-03-17 14:32:38',
             ),
             197 => 
             array (
@@ -71985,7 +71985,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 943.5,
                 'price' => 1275.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -72011,7 +72011,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 15:21:27',
-                'updated_at' => '2026-06-25 16:18:09',
+                'updated_at' => '2026-06-18 12:24:45',
             ),
             214 => 
             array (
@@ -72027,7 +72027,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -72053,7 +72053,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","1,2,3,4"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 15:21:27',
-                'updated_at' => '2026-06-28 13:58:21',
+                'updated_at' => '2026-05-11 14:10:26',
             ),
             215 => 
             array (
@@ -72825,7 +72825,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.3,
                 'price' => 595.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -72851,7 +72851,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 18:17:24',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-04-19 18:16:53',
             ),
             234 => 
             array (
@@ -72867,7 +72867,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.3,
                 'price' => 595.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -72893,7 +72893,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 18:17:24',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 11:46:20',
             ),
             235 => 
             array (
@@ -72951,7 +72951,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 410.7,
                 'price' => 555.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -72977,7 +72977,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","38,41,39,40,37,36,35,6,7,8,9,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 18:17:24',
-                'updated_at' => '2026-06-28 14:31:45',
+                'updated_at' => '2026-06-15 10:38:35',
             ),
             237 => 
             array (
@@ -73833,7 +73833,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -73859,7 +73859,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-01 18:27:12',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-18 15:59:15',
             ),
             258 => 
             array (
@@ -74631,7 +74631,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 536.5,
                 'price' => 725.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -74657,7 +74657,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:01:07',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-04-26 11:48:56',
             ),
             277 => 
             array (
@@ -74757,7 +74757,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -74783,7 +74783,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:01:07',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-20 12:17:55',
             ),
             280 => 
             array (
@@ -75261,7 +75261,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -75287,7 +75287,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:01:08',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-02-24 14:18:37',
             ),
             292 => 
             array (
@@ -75765,7 +75765,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -75791,7 +75791,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:01:09',
-                'updated_at' => '2026-06-24 01:34:52',
+                'updated_at' => '2026-03-05 19:52:58',
             ),
             304 => 
             array (
@@ -76227,7 +76227,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 3.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -76253,7 +76253,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:11',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-14 12:26:16',
             ),
             315 => 
             array (
@@ -76521,7 +76521,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1076.7,
                 'price' => 1455.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -76547,7 +76547,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:12',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-19 15:52:18',
             ),
             322 => 
             array (
@@ -76563,7 +76563,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -76589,7 +76589,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:12',
-                'updated_at' => '2026-06-27 20:39:35',
+                'updated_at' => '2026-05-17 20:46:49',
             ),
             323 => 
             array (
@@ -76815,7 +76815,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -76841,7 +76841,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:12',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-05-27 16:38:24',
             ),
             329 => 
             array (
@@ -77009,7 +77009,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:13',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-07 16:37:54',
             ),
             333 => 
             array (
@@ -77109,7 +77109,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.3,
                 'price' => 1295.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -77135,7 +77135,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:13',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-13 20:23:45',
             ),
             336 => 
             array (
@@ -77319,7 +77319,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1147.0,
                 'price' => 1550.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -77345,7 +77345,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:13',
-                'updated_at' => '2026-06-24 20:52:32',
+                'updated_at' => '2026-03-18 15:50:27',
             ),
             341 => 
             array (
@@ -77445,7 +77445,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 721.5,
                 'price' => 975.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -77471,7 +77471,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:13',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-24 15:57:15',
             ),
             344 => 
             array (
@@ -77529,7 +77529,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 6.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -77555,7 +77555,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:13',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-16 21:07:40',
             ),
             346 => 
             array (
@@ -77571,7 +77571,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -77597,7 +77597,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 15:37:14',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-20 22:07:16',
             ),
             347 => 
             array (
@@ -78243,7 +78243,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.3,
                 'price' => 1295.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -78269,7 +78269,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 16:42:28',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-02-15 11:35:10',
             ),
             363 => 
             array (
@@ -78327,7 +78327,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -78353,7 +78353,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 16:42:28',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 21:17:53',
             ),
             365 => 
             array (
@@ -78579,7 +78579,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1076.7,
                 'price' => 1455.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -78605,7 +78605,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 16:42:28',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-04-12 14:56:36',
             ),
             371 => 
             array (
@@ -79083,7 +79083,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 2216.3,
                 'price' => 2995.0,
-                'qty' => 3.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -79109,7 +79109,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 17:10:25',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-05 15:24:37',
             ),
             383 => 
             array (
@@ -79277,7 +79277,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 17:10:25',
-                'updated_at' => '2026-06-24 20:21:12',
+                'updated_at' => '2026-03-17 22:19:46',
             ),
             387 => 
             array (
@@ -79445,7 +79445,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 17:10:26',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-19 12:26:07',
             ),
             391 => 
             array (
@@ -79671,7 +79671,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 2216.3,
                 'price' => 2995.0,
-                'qty' => 6.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -79697,7 +79697,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 17:10:26',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-21 03:20:19',
             ),
             397 => 
             array (
@@ -79865,7 +79865,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 17:10:26',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 15:40:42',
             ),
             401 => 
             array (
@@ -79881,7 +79881,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1846.3,
                 'price' => 2495.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -79907,7 +79907,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 17:10:26',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-15 19:16:27',
             ),
             402 => 
             array (
@@ -79923,7 +79923,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1846.3,
                 'price' => 2495.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -79949,7 +79949,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-02 17:10:27',
-                'updated_at' => '2026-06-24 20:23:26',
+                'updated_at' => '2026-04-13 16:16:54',
             ),
             403 => 
             array (
@@ -80301,7 +80301,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 370.0,
                 'price' => 650.0,
-                'qty' => 7.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -80327,7 +80327,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Blue","24,25,26,27"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-03 08:01:36',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-02-10 14:21:55',
             ),
             412 => 
             array (
@@ -80385,7 +80385,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 350.0,
                 'price' => 650.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -80411,7 +80411,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue,Pink","26,25,27,28,29,30"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-03 08:10:35',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-01-22 17:02:44',
             ),
             414 => 
             array (
@@ -80679,7 +80679,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.0,
                 'price' => 1350.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -80705,7 +80705,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Maroon,Navy,Purple","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2025-11-04 09:55:22',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-24 11:04:59',
             ),
             421 => 
             array (
@@ -81393,7 +81393,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 50.0,
                 'price' => 150.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -81419,7 +81419,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2025-11-09 07:05:22',
-                'updated_at' => '2026-06-23 23:36:51',
+                'updated_at' => '2026-06-16 18:01:26',
             ),
             438 => 
             array (
@@ -81561,7 +81561,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 750.0,
                 'price' => 1400.0,
-                'qty' => 7.0,
+                'qty' => 8.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -81587,7 +81587,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Blue,Gray,Pink","36,37,38,40,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-03 13:42:04',
-                'updated_at' => '2026-06-24 18:50:04',
+                'updated_at' => '2026-05-06 14:17:37',
             ),
             442 => 
             array (
@@ -81603,7 +81603,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 750.0,
                 'price' => 1350.0,
-                'qty' => 6.0,
+                'qty' => 10.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -81629,7 +81629,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Pink,Purple","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-03 13:59:01',
-                'updated_at' => '2026-06-24 20:46:57',
+                'updated_at' => '2026-05-23 13:37:58',
             ),
             443 => 
             array (
@@ -81645,7 +81645,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 750.0,
                 'price' => 1350.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -81671,7 +81671,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Blue,Purple","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-03 14:15:01',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 20:51:06',
             ),
             444 => 
             array (
@@ -81729,7 +81729,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 750.0,
                 'price' => 1350.0,
-                'qty' => 1.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -81755,7 +81755,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Navy","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-03 14:36:35',
-                'updated_at' => '2026-06-26 21:09:50',
+                'updated_at' => '2026-06-18 15:14:17',
             ),
             446 => 
             array (
@@ -81813,7 +81813,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1050.0,
                 'price' => 1600.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -81839,7 +81839,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Maroon","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-03 14:46:53',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-25 19:15:56',
             ),
             448 => 
             array (
@@ -81981,7 +81981,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -82007,7 +82007,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 10:45:10',
-                'updated_at' => '2026-06-26 18:17:56',
+                'updated_at' => '2026-06-16 20:29:50',
             ),
             452 => 
             array (
@@ -82275,7 +82275,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.0,
                 'price' => 1595.0,
-                'qty' => 10.0,
+                'qty' => 15.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -82301,7 +82301,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 10:45:11',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-19 11:37:27',
             ),
             459 => 
             array (
@@ -82443,7 +82443,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -82469,7 +82469,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 10:45:11',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-05-12 14:50:01',
             ),
             463 => 
             array (
@@ -82905,7 +82905,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -82931,7 +82931,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 10:45:12',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-06-13 16:30:44',
             ),
             474 => 
             array (
@@ -83199,7 +83199,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 9.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -83225,7 +83225,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 10:46:43',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-10 12:05:31',
             ),
             481 => 
             array (
@@ -83829,7 +83829,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 500.0,
                 'price' => 650.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -83855,7 +83855,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","37,38,39,40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 12:58:09',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-04-07 11:25:37',
             ),
             496 => 
             array (
@@ -83871,7 +83871,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 430.0,
                 'price' => 550.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -83897,7 +83897,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 13:08:31',
-                'updated_at' => '2026-06-24 12:24:46',
+                'updated_at' => '2026-05-20 12:24:23',
             ),
             497 => 
             array (
@@ -83913,7 +83913,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 430.0,
                 'price' => 600.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -83939,7 +83939,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","34,35,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-05 13:12:49',
-                'updated_at' => '2026-06-27 16:55:21',
+                'updated_at' => '2026-04-25 11:23:17',
             ),
             498 => 
             array (
@@ -84209,7 +84209,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 260.0,
                 'price' => 500.0,
-                'qty' => 7.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -84235,7 +84235,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Blue,Coffee","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-01-07 11:48:00',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-14 13:31:54',
             ),
             5 => 
             array (
@@ -84839,7 +84839,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 775.0,
                 'price' => 1300.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -84865,7 +84865,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-09 18:19:48',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-04-11 13:10:20',
             ),
             20 => 
             array (
@@ -85049,7 +85049,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 800.0,
                 'price' => 1300.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -85075,7 +85075,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Brown","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-09 18:35:58',
-                'updated_at' => '2026-06-25 18:33:27',
+                'updated_at' => '2026-05-15 16:22:56',
             ),
             25 => 
             array (
@@ -85091,7 +85091,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 775.0,
                 'price' => 1350.0,
-                'qty' => 7.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -85117,7 +85117,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray,Purple","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-09 19:02:51',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 20:54:19',
             ),
             26 => 
             array (
@@ -85217,7 +85217,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 800.0,
                 'price' => 1350.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -85243,7 +85243,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-09 19:11:37',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-17 23:23:12',
             ),
             29 => 
             array (
@@ -85285,7 +85285,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate,White","35,36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-09 19:17:30',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 18:52:35',
             ),
             30 => 
             array (
@@ -85385,7 +85385,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 500.0,
                 'price' => 650.0,
-                'qty' => 8.0,
+                'qty' => 10.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -85411,7 +85411,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","37,38,39,40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-09 19:34:27',
-                'updated_at' => '2026-06-28 11:43:29',
+                'updated_at' => '2026-06-20 16:33:17',
             ),
             33 => 
             array (
@@ -85469,7 +85469,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 950.0,
                 'price' => 1450.0,
-                'qty' => 6.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -85495,7 +85495,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","32,33,34,35,36,37"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-09 21:47:47',
-                'updated_at' => '2026-06-25 14:22:37',
+                'updated_at' => '2026-03-17 22:29:34',
             ),
             35 => 
             array (
@@ -85889,7 +85889,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 670.0,
                 'price' => 1150.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -85915,7 +85915,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-10 13:57:10',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-06-08 18:37:45',
             ),
             45 => 
             array (
@@ -86183,7 +86183,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 851.0,
                 'price' => 1150.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -86209,7 +86209,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:35:38',
-                'updated_at' => '2026-06-24 01:37:19',
+                'updated_at' => '2026-03-24 11:12:33',
             ),
             52 => 
             array (
@@ -86519,7 +86519,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 851.0,
                 'price' => 1150.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -86545,7 +86545,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:35:38',
-                'updated_at' => '2026-06-27 16:50:07',
+                'updated_at' => '2026-03-24 11:14:58',
             ),
             60 => 
             array (
@@ -86561,7 +86561,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 925.0,
                 'price' => 1250.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -86587,7 +86587,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:35:38',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-03-18 10:37:25',
             ),
             61 => 
             array (
@@ -86939,7 +86939,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -86965,7 +86965,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:35:39',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-25 11:29:41',
             ),
             70 => 
             array (
@@ -86981,7 +86981,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 925.0,
                 'price' => 1250.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -87007,7 +87007,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:35:39',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-04-11 13:13:30',
             ),
             71 => 
             array (
@@ -88535,7 +88535,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -88561,7 +88561,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:53',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-17 10:29:14',
             ),
             108 => 
             array (
@@ -88661,7 +88661,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -88687,7 +88687,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:53',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-02-16 18:19:28',
             ),
             111 => 
             array (
@@ -88829,7 +88829,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -88855,7 +88855,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:53',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-16 15:36:07',
             ),
             115 => 
             array (
@@ -88981,7 +88981,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:54',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 18:57:22',
             ),
             118 => 
             array (
@@ -89039,7 +89039,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1076.7,
                 'price' => 1455.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89065,7 +89065,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:54',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 14:27:54',
             ),
             120 => 
             array (
@@ -89123,7 +89123,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89149,7 +89149,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:54',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-18 00:22:19',
             ),
             122 => 
             array (
@@ -89249,7 +89249,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89275,7 +89275,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:54',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-06 17:28:46',
             ),
             125 => 
             array (
@@ -89375,7 +89375,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1110.0,
                 'price' => 1500.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89401,7 +89401,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:38:54',
-                'updated_at' => '2026-06-23 21:05:11',
+                'updated_at' => '2026-03-17 19:35:25',
             ),
             128 => 
             array (
@@ -89653,7 +89653,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:39:44',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-25 21:07:12',
             ),
             134 => 
             array (
@@ -89753,7 +89753,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89779,7 +89779,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:39:44',
-                'updated_at' => '2026-06-24 01:40:25',
+                'updated_at' => '2026-03-30 12:37:00',
             ),
             137 => 
             array (
@@ -89837,7 +89837,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 499.5,
                 'price' => 675.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89863,7 +89863,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:39:44',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-03-11 23:47:42',
             ),
             139 => 
             array (
@@ -89879,7 +89879,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.7,
                 'price' => 1055.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89905,7 +89905,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","12,13,30,31"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:39:44',
-                'updated_at' => '2026-06-24 00:04:25',
+                'updated_at' => '2026-03-19 12:34:01',
             ),
             140 => 
             array (
@@ -89921,7 +89921,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -89947,7 +89947,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:39:44',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-25 16:36:40',
             ),
             141 => 
             array (
@@ -90089,7 +90089,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.5,
                 'price' => 475.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -90115,7 +90115,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:39:44',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-11 15:40:18',
             ),
             145 => 
             array (
@@ -90173,7 +90173,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1002.7,
                 'price' => 1355.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -90199,7 +90199,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["White","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:39:45',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-02-11 17:39:51',
             ),
             147 => 
             array (
@@ -91013,7 +91013,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.5,
                 'price' => 475.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -91039,7 +91039,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:40:37',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-19 16:12:00',
             ),
             167 => 
             array (
@@ -91475,7 +91475,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 499.5,
                 'price' => 675.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -91501,7 +91501,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:40:38',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-09 17:15:03',
             ),
             178 => 
             array (
@@ -91601,7 +91601,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 610.5,
                 'price' => 825.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -91627,7 +91627,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","31,32,33,34,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:40:38',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-20 22:38:18',
             ),
             181 => 
             array (
@@ -91895,7 +91895,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 12.0,
+                'qty' => 11.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -91921,7 +91921,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Green","26,27,28,23,24,25,17,18,19"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:40:38',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-06-07 15:01:06',
             ),
             188 => 
             array (
@@ -92047,7 +92047,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","26,27,28,23,24,25,17,18,19"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:40:39',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 11:46:20',
             ),
             191 => 
             array (
@@ -92063,7 +92063,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -92089,7 +92089,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","26,27,28,23,24,25,17,18,19"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:40:39',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-06-14 14:08:30',
             ),
             192 => 
             array (
@@ -92735,7 +92735,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -92761,7 +92761,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:41:26',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-06-16 15:01:14',
             ),
             208 => 
             array (
@@ -93029,7 +93029,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -93055,7 +93055,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:42:30',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-03-19 22:20:59',
             ),
             215 => 
             array (
@@ -93071,7 +93071,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -93097,7 +93097,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:42:30',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-03-12 00:27:42',
             ),
             216 => 
             array (
@@ -93827,7 +93827,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -93853,7 +93853,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:42:31',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-11 12:34:31',
             ),
             234 => 
             array (
@@ -93895,7 +93895,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:42:31',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-18 18:03:29',
             ),
             235 => 
             array (
@@ -94415,7 +94415,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 980.5,
                 'price' => 1325.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -94441,7 +94441,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:43:16',
-                'updated_at' => '2026-06-23 01:32:01',
+                'updated_at' => '2026-06-13 11:29:15',
             ),
             248 => 
             array (
@@ -94567,7 +94567,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:43:16',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 12:10:01',
             ),
             251 => 
             array (
@@ -95087,7 +95087,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -95113,7 +95113,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:43:17',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-02-11 17:43:23',
             ),
             264 => 
             array (
@@ -95675,7 +95675,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -95701,7 +95701,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:01',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-19 12:08:34',
             ),
             278 => 
             array (
@@ -95717,7 +95717,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1032.3,
                 'price' => 1395.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -95743,7 +95743,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:01',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 13:35:30',
             ),
             279 => 
             array (
@@ -95759,7 +95759,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.7,
                 'price' => 1055.0,
-                'qty' => 7.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -95785,7 +95785,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:01',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-06 17:09:39',
             ),
             280 => 
             array (
@@ -95969,7 +95969,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.7,
                 'price' => 1055.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -95995,7 +95995,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:01',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-04-18 14:32:23',
             ),
             285 => 
             array (
@@ -96011,7 +96011,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1032.3,
                 'price' => 1395.0,
-                'qty' => 7.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96037,7 +96037,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:01',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-25 20:54:00',
             ),
             286 => 
             array (
@@ -96095,7 +96095,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.7,
                 'price' => 1055.0,
-                'qty' => 1.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96121,7 +96121,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Silver","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:02',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-03-25 11:14:24',
             ),
             288 => 
             array (
@@ -96179,7 +96179,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96205,7 +96205,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:02',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-04-15 18:57:04',
             ),
             290 => 
             array (
@@ -96389,7 +96389,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96415,7 +96415,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:58',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-04-25 11:45:37',
             ),
             295 => 
             array (
@@ -96431,7 +96431,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1032.3,
                 'price' => 1395.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96457,7 +96457,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:58',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-05-27 17:11:39',
             ),
             296 => 
             array (
@@ -96473,7 +96473,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1032.3,
                 'price' => 1395.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96499,7 +96499,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:59',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-06-16 16:16:36',
             ),
             297 => 
             array (
@@ -96599,7 +96599,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 699.3,
                 'price' => 945.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96625,7 +96625,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:59',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-04-22 15:34:09',
             ),
             300 => 
             array (
@@ -96809,7 +96809,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.7,
                 'price' => 755.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -96835,7 +96835,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:45:59',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-05 19:31:30',
             ),
             305 => 
             array (
@@ -97103,7 +97103,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -97129,7 +97129,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:46:00',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-13 10:17:17',
             ),
             312 => 
             array (
@@ -97145,7 +97145,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.7,
                 'price' => 755.0,
-                'qty' => 11.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -97171,7 +97171,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:46:00',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-06 16:46:00',
             ),
             313 => 
             array (
@@ -97271,7 +97271,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.7,
                 'price' => 755.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -97297,7 +97297,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:46:00',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-04-14 12:15:31',
             ),
             316 => 
             array (
@@ -97355,7 +97355,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 558.7,
                 'price' => 755.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -97381,7 +97381,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:46:00',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-04-28 18:15:34',
             ),
             318 => 
             array (
@@ -97397,7 +97397,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -97423,7 +97423,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:46:00',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-19 20:07:23',
             ),
             319 => 
             array (
@@ -97733,7 +97733,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -97759,7 +97759,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:49:08',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-02-11 17:49:11',
             ),
             327 => 
             array (
@@ -97817,7 +97817,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 292.3,
                 'price' => 395.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -97843,7 +97843,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","6,7,8,9,10,11,36,37"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:49:08',
-                'updated_at' => '2026-06-25 14:57:45',
+                'updated_at' => '2026-05-25 21:11:28',
             ),
             329 => 
             array (
@@ -98027,7 +98027,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 4.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -98053,7 +98053,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:49:08',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-20 21:44:15',
             ),
             334 => 
             array (
@@ -98279,7 +98279,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1073.0,
                 'price' => 1450.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -98305,7 +98305,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:49:08',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-05-11 12:12:43',
             ),
             340 => 
             array (
@@ -98809,7 +98809,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:50:18',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 17:59:59',
             ),
             352 => 
             array (
@@ -98951,7 +98951,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -98977,7 +98977,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:50:18',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2026-05-24 12:58:47',
             ),
             356 => 
             array (
@@ -98993,7 +98993,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.3,
                 'price' => 1295.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -99019,7 +99019,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:50:18',
-                'updated_at' => '2026-06-24 12:22:47',
+                'updated_at' => '2026-05-21 16:40:28',
             ),
             357 => 
             array (
@@ -99287,7 +99287,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1073.0,
                 'price' => 1450.0,
-                'qty' => 4.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -99313,7 +99313,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:50:19',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-05-15 15:47:59',
             ),
             364 => 
             array (
@@ -99497,7 +99497,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -99523,7 +99523,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:50:19',
-                'updated_at' => '2026-06-27 16:50:07',
+                'updated_at' => '2026-05-26 16:13:29',
             ),
             369 => 
             array (
@@ -99691,7 +99691,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:50:19',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 13:40:15',
             ),
             373 => 
             array (
@@ -100547,7 +100547,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.3,
                 'price' => 595.0,
-                'qty' => 0.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -100573,7 +100573,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-11 17:51:25',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-02-11 17:51:31',
             ),
             394 => 
             array (
@@ -102647,7 +102647,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 380.0,
                 'price' => 700.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -102673,7 +102673,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2026-02-14 15:46:20',
-                'updated_at' => '2026-06-23 17:17:22',
+                'updated_at' => '2026-03-13 20:35:10',
             ),
             444 => 
             array (
@@ -102857,7 +102857,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 300.0,
                 'price' => 600.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -102883,7 +102883,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2026-02-14 16:14:54',
-                'updated_at' => '2026-06-23 01:33:23',
+                'updated_at' => '2026-05-19 13:31:06',
             ),
             449 => 
             array (
@@ -102941,7 +102941,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 280.0,
                 'price' => 550.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -102967,7 +102967,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2026-02-14 16:27:26',
-                'updated_at' => '2026-06-23 23:36:51',
+                'updated_at' => '2026-05-24 17:39:05',
             ),
             451 => 
             array (
@@ -102983,7 +102983,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 2,
                 'cost' => 350.0,
                 'price' => 650.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -103009,7 +103009,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => NULL,
                 'is_active' => 1,
                 'created_at' => '2026-02-14 16:29:28',
-                'updated_at' => '2026-06-24 23:52:20',
+                'updated_at' => '2026-02-14 16:29:45',
             ),
             452 => 
             array (
@@ -103151,7 +103151,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.5,
                 'price' => 475.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -103177,7 +103177,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-15 19:48:28',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-25 17:20:50',
             ),
             456 => 
             array (
@@ -103235,7 +103235,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 980.5,
                 'price' => 1325.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -103261,7 +103261,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-15 19:48:29',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-05-09 19:48:48',
             ),
             458 => 
             array (
@@ -103697,7 +103697,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.3,
                 'price' => 1295.0,
-                'qty' => 5.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -103723,7 +103723,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","36,37,38,39,6,7,8"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 12:21:39',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-26 21:27:44',
             ),
             469 => 
             array (
@@ -103865,7 +103865,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.3,
                 'price' => 595.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -103891,7 +103891,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","1,2,3,4,12,13,30,31,32"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 12:21:39',
-                'updated_at' => '2026-06-26 16:41:23',
+                'updated_at' => '2026-05-27 17:35:58',
             ),
             473 => 
             array (
@@ -103949,7 +103949,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -103975,7 +103975,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 12:21:39',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-05-24 11:28:38',
             ),
             475 => 
             array (
@@ -104075,7 +104075,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -104101,7 +104101,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 12:21:40',
-                'updated_at' => '2026-06-24 20:45:52',
+                'updated_at' => '2026-03-20 21:15:38',
             ),
             478 => 
             array (
@@ -104201,7 +104201,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 906.5,
                 'price' => 1225.0,
-                'qty' => 3.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -104227,7 +104227,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 12:21:40',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2026-03-19 23:05:52',
             ),
             481 => 
             array (
@@ -104243,7 +104243,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 7.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -104269,7 +104269,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44,38,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 12:21:40',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 21:04:25',
             ),
             482 => 
             array (
@@ -104495,7 +104495,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 573.5,
                 'price' => 775.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -104521,7 +104521,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 12:21:40',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-17 11:20:20',
             ),
             488 => 
             array (
@@ -105253,7 +105253,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -105279,7 +105279,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:34',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-13 10:51:00',
             ),
             6 => 
             array (
@@ -105337,7 +105337,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -105363,7 +105363,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:34',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-25 16:11:42',
             ),
             8 => 
             array (
@@ -105589,7 +105589,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 703.0,
                 'price' => 950.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -105615,7 +105615,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:34',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-04-08 13:28:36',
             ),
             14 => 
             array (
@@ -105715,7 +105715,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -105741,7 +105741,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:35',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-03 17:58:07',
             ),
             17 => 
             array (
@@ -105883,7 +105883,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 703.0,
                 'price' => 950.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -105909,7 +105909,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:35',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-12 20:53:15',
             ),
             21 => 
             array (
@@ -106093,7 +106093,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -106119,7 +106119,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:35',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-15 15:45:31',
             ),
             26 => 
             array (
@@ -106161,7 +106161,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:35',
-                'updated_at' => '2026-06-24 20:33:03',
+                'updated_at' => '2026-06-16 18:51:23',
             ),
             27 => 
             array (
@@ -106303,7 +106303,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -106329,7 +106329,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:36',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-04-18 15:59:15',
             ),
             31 => 
             array (
@@ -106345,7 +106345,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 4.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -106371,7 +106371,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 15:32:36',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-19 19:51:29',
             ),
             32 => 
             array (
@@ -106413,7 +106413,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,10,11,36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 16:21:37',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 14:12:07',
             ),
             33 => 
             array (
@@ -106639,7 +106639,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 366.3,
                 'price' => 495.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -106665,7 +106665,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 16:21:37',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-05-15 11:21:58',
             ),
             39 => 
             array (
@@ -106723,7 +106723,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 366.3,
                 'price' => 495.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -106749,7 +106749,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 16:21:38',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-13 18:03:57',
             ),
             41 => 
             array (
@@ -107563,7 +107563,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.7,
                 'price' => 855.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -107589,7 +107589,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 16:21:39',
-                'updated_at' => '2026-06-24 00:04:25',
+                'updated_at' => '2026-05-11 18:53:05',
             ),
             61 => 
             array (
@@ -107647,7 +107647,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -107673,7 +107673,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-16 16:21:39',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-04-30 19:06:58',
             ),
             63 => 
             array (
@@ -107773,7 +107773,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 780.0,
                 'price' => 1250.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -107799,7 +107799,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Cream","33,34,35,36,37,38"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-18 11:03:57',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-06-13 12:41:18',
             ),
             66 => 
             array (
@@ -108067,7 +108067,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 800.0,
                 'price' => 950.0,
-                'qty' => 9.0,
+                'qty' => 10.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -108093,7 +108093,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","27,28,29,30,31"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-25 10:51:58',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-26 20:41:44',
             ),
             73 => 
             array (
@@ -108109,7 +108109,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 800.0,
                 'price' => 950.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -108135,7 +108135,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","24,25,26,27"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-25 10:57:26',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-18 13:27:07',
             ),
             74 => 
             array (
@@ -108193,7 +108193,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 850.0,
                 'price' => 1200.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -108219,7 +108219,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","32,33,34,35,36,37"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-25 11:29:36',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-06-17 14:34:16',
             ),
             76 => 
             array (
@@ -108403,7 +108403,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 850.0,
                 'price' => 1200.0,
-                'qty' => 9.0,
+                'qty' => 8.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -108429,7 +108429,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","32,33,34,35,36,37"]',
                 'is_active' => 1,
                 'created_at' => '2026-02-25 22:40:11',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-17 00:26:30',
             ),
             81 => 
             array (
@@ -108739,7 +108739,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -108765,7 +108765,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:58:29',
-                'updated_at' => '2026-06-24 00:04:25',
+                'updated_at' => '2026-06-14 09:48:34',
             ),
             89 => 
             array (
@@ -109159,7 +109159,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -109185,7 +109185,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:58:30',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-06-14 09:48:34',
             ),
             99 => 
             array (
@@ -109201,7 +109201,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 13.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -109227,7 +109227,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:58:30',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-06 13:58:36',
             ),
             100 => 
             array (
@@ -109537,7 +109537,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -109563,7 +109563,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:42',
-                'updated_at' => '2026-06-25 12:13:11',
+                'updated_at' => '2026-03-15 22:51:41',
             ),
             108 => 
             array (
@@ -109663,7 +109663,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -109689,7 +109689,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:42',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-03-17 13:04:40',
             ),
             111 => 
             array (
@@ -109789,7 +109789,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -109815,7 +109815,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:42',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-19 13:13:24',
             ),
             114 => 
             array (
@@ -109873,7 +109873,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -109899,7 +109899,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:43',
-                'updated_at' => '2026-06-23 11:43:02',
+                'updated_at' => '2026-03-21 01:23:29',
             ),
             116 => 
             array (
@@ -109941,7 +109941,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:43',
-                'updated_at' => '2026-06-27 19:54:23',
+                'updated_at' => '2026-06-08 18:33:08',
             ),
             117 => 
             array (
@@ -109957,7 +109957,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -109983,7 +109983,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:43',
-                'updated_at' => '2026-06-24 01:35:40',
+                'updated_at' => '2026-05-22 19:07:41',
             ),
             118 => 
             array (
@@ -110193,7 +110193,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:43',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 11:43:43',
             ),
             123 => 
             array (
@@ -110377,7 +110377,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1176.6,
                 'price' => 1590.0,
-                'qty' => 1.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -110403,7 +110403,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:44',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-16 14:39:34',
             ),
             128 => 
             array (
@@ -110419,7 +110419,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 980.5,
                 'price' => 1325.0,
-                'qty' => 1.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -110445,7 +110445,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:44',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-06-10 12:44:58',
             ),
             129 => 
             array (
@@ -110461,7 +110461,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 980.5,
                 'price' => 1325.0,
-                'qty' => 5.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -110487,7 +110487,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:44',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-16 16:55:37',
             ),
             130 => 
             array (
@@ -110503,7 +110503,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 980.5,
                 'price' => 1325.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -110529,7 +110529,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 13:59:44',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-17 16:33:19',
             ),
             131 => 
             array (
@@ -110949,7 +110949,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 14:03:07',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 21:28:01',
             ),
             141 => 
             array (
@@ -110965,7 +110965,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 2.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -110991,7 +110991,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 14:03:08',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-18 23:11:46',
             ),
             142 => 
             array (
@@ -111411,7 +111411,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 14:03:08',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-24 20:18:02',
             ),
             152 => 
             array (
@@ -111873,7 +111873,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","6,7,8,9,10,11,36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 14:04:02',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-05-04 13:00:49',
             ),
             163 => 
             array (
@@ -112015,7 +112015,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -112041,7 +112041,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 14:04:03',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-13 16:22:35',
             ),
             167 => 
             array (
@@ -112293,7 +112293,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 14:04:03',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 18:55:04',
             ),
             173 => 
             array (
@@ -112435,7 +112435,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -112461,7 +112461,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 14:04:03',
-                'updated_at' => '2026-06-24 01:38:48',
+                'updated_at' => '2026-05-19 20:56:10',
             ),
             177 => 
             array (
@@ -112561,7 +112561,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 860.0,
                 'price' => 1450.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -112587,7 +112587,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream,Gray","40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-06 19:30:52',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-04-02 14:27:36',
             ),
             180 => 
             array (
@@ -112645,7 +112645,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 943.5,
                 'price' => 1275.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -112671,7 +112671,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:38',
-                'updated_at' => '2026-06-23 21:04:34',
+                'updated_at' => '2026-04-16 15:02:22',
             ),
             182 => 
             array (
@@ -112729,7 +112729,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 610.5,
                 'price' => 825.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -112755,7 +112755,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","31,32,33,34,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:38',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-19 13:33:02',
             ),
             184 => 
             array (
@@ -112855,7 +112855,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.3,
                 'price' => 1295.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -112881,7 +112881,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:38',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-06-11 13:40:57',
             ),
             187 => 
             array (
@@ -112981,7 +112981,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 388.5,
                 'price' => 525.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -113007,7 +113007,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,6,7,8,9"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:38',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-14 16:17:51',
             ),
             190 => 
             array (
@@ -113023,7 +113023,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -113049,7 +113049,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","16,17,18,43"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:39',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2026-06-16 19:42:27',
             ),
             191 => 
             array (
@@ -113317,7 +113317,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 388.5,
                 'price' => 525.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -113343,7 +113343,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,6,7,8,9"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:39',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-17 15:03:30',
             ),
             198 => 
             array (
@@ -113569,7 +113569,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -113595,7 +113595,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","1,2,3,4,12,13"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:39',
-                'updated_at' => '2026-06-26 12:04:29',
+                'updated_at' => '2026-05-26 15:54:24',
             ),
             204 => 
             array (
@@ -113763,7 +113763,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","1,2,3,4,30,31"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:40',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 19:46:23',
             ),
             208 => 
             array (
@@ -113863,7 +113863,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -113889,7 +113889,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-07 11:24:40',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-19 23:08:04',
             ),
             211 => 
             array (
@@ -113947,7 +113947,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -113973,7 +113973,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 11:52:12',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-19 21:47:42',
             ),
             213 => 
             array (
@@ -114241,7 +114241,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 7.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -114267,7 +114267,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Olive","36,37,38,39,6,7,8,9,10,11"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:29',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-10 12:00:35',
             ),
             220 => 
             array (
@@ -114283,7 +114283,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 388.5,
                 'price' => 525.0,
-                'qty' => 1.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -114309,7 +114309,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,36,37"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:30',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-06-02 17:48:23',
             ),
             221 => 
             array (
@@ -114687,7 +114687,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","6,7,8,9,36,37"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:30',
-                'updated_at' => '2026-06-24 20:03:49',
+                'updated_at' => '2026-05-20 19:40:19',
             ),
             230 => 
             array (
@@ -114745,7 +114745,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -114771,7 +114771,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","6,7,8,9,10,11,36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:30',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-03-13 15:27:24',
             ),
             232 => 
             array (
@@ -114913,7 +114913,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.3,
                 'price' => 595.0,
-                'qty' => 5.0,
+                'qty' => 0.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -114939,7 +114939,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:31',
-                'updated_at' => '2026-06-23 18:04:33',
+                'updated_at' => '2026-03-20 17:24:49',
             ),
             236 => 
             array (
@@ -115149,7 +115149,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:31',
-                'updated_at' => '2026-06-28 14:48:53',
+                'updated_at' => '2026-04-11 17:03:22',
             ),
             241 => 
             array (
@@ -115165,7 +115165,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.5,
                 'price' => 475.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -115191,7 +115191,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:31',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-06-04 12:59:40',
             ),
             242 => 
             array (
@@ -115249,7 +115249,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1073.0,
                 'price' => 1450.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -115275,7 +115275,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:00:31',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-14 17:18:43',
             ),
             244 => 
             array (
@@ -115501,7 +115501,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1002.7,
                 'price' => 1355.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -115527,7 +115527,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:48',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-04-11 13:15:10',
             ),
             250 => 
             array (
@@ -115585,7 +115585,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -115611,7 +115611,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:48',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 20:29:27',
             ),
             252 => 
             array (
@@ -115837,7 +115837,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1002.7,
                 'price' => 1355.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -115863,7 +115863,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:49',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-11 21:55:47',
             ),
             258 => 
             array (
@@ -116005,7 +116005,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -116031,7 +116031,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:49',
-                'updated_at' => '2026-06-23 01:33:21',
+                'updated_at' => '2026-03-17 21:04:39',
             ),
             262 => 
             array (
@@ -116047,7 +116047,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 925.0,
                 'price' => 1250.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -116073,7 +116073,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:49',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-24 15:03:35',
             ),
             263 => 
             array (
@@ -116131,7 +116131,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -116157,7 +116157,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:49',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-03-24 20:13:25',
             ),
             265 => 
             array (
@@ -116215,7 +116215,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -116241,7 +116241,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:49',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-05-27 15:41:27',
             ),
             267 => 
             array (
@@ -116257,7 +116257,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 980.5,
                 'price' => 1325.0,
-                'qty' => 1.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -116283,7 +116283,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:01:49',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-10 12:01:56',
             ),
             268 => 
             array (
@@ -116887,7 +116887,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -116913,7 +116913,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,39,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:02:37',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-08 18:31:08',
             ),
             283 => 
             array (
@@ -116929,7 +116929,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 351.5,
                 'price' => 475.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -116955,7 +116955,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","1,2,3,4,30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-10 12:02:37',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-06-04 12:59:56',
             ),
             284 => 
             array (
@@ -117517,7 +117517,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -117543,7 +117543,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:11:16',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-17 20:40:19',
             ),
             298 => 
             array (
@@ -117559,7 +117559,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 7.0,
+                'qty' => 8.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -117585,7 +117585,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:11:16',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-13 14:04:44',
             ),
             299 => 
             array (
@@ -117753,7 +117753,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:11:16',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 17:26:34',
             ),
             303 => 
             array (
@@ -117879,7 +117879,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:11:16',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 20:19:03',
             ),
             306 => 
             array (
@@ -117979,7 +117979,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 958.3,
                 'price' => 1295.0,
-                'qty' => 1.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -118005,7 +118005,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","6,7,8,9"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:11:16',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-03-17 21:38:14',
             ),
             309 => 
             array (
@@ -118105,7 +118105,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 481.0,
                 'price' => 650.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -118131,7 +118131,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","1,2,3,4,30,31"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:11:17',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-03 20:26:43',
             ),
             312 => 
             array (
@@ -118483,7 +118483,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -118509,7 +118509,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Green","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:13:43',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-05-03 10:30:14',
             ),
             321 => 
             array (
@@ -118551,7 +118551,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:13:43',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 17:41:55',
             ),
             322 => 
             array (
@@ -118735,7 +118735,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 8.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -118761,7 +118761,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Green","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:13:43',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-03-12 16:13:49',
             ),
             327 => 
             array (
@@ -118903,7 +118903,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -118929,7 +118929,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:13:44',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-03-21 01:27:15',
             ),
             331 => 
             array (
@@ -119013,7 +119013,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:13:44',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 18:35:28',
             ),
             333 => 
             array (
@@ -119155,7 +119155,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -119181,7 +119181,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","12,13,14,15"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:13:44',
-                'updated_at' => '2026-06-23 01:33:31',
+                'updated_at' => '2026-06-17 18:35:37',
             ),
             337 => 
             array (
@@ -119197,7 +119197,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 943.5,
                 'price' => 1275.0,
-                'qty' => 4.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -119223,7 +119223,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:20:54',
-                'updated_at' => '2026-06-24 14:46:44',
+                'updated_at' => '2026-05-24 21:18:25',
             ),
             338 => 
             array (
@@ -119575,7 +119575,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1180.3,
                 'price' => 1595.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -119601,7 +119601,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:20:54',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-06-09 15:26:02',
             ),
             347 => 
             array (
@@ -119769,7 +119769,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:20:55',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-19 18:50:02',
             ),
             351 => 
             array (
@@ -119853,7 +119853,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:20:55',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-03-25 18:22:31',
             ),
             353 => 
             array (
@@ -119911,7 +119911,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 884.3,
                 'price' => 1195.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -119937,7 +119937,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-12 16:22:10',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-26 20:40:34',
             ),
             355 => 
             array (
@@ -120037,7 +120037,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 3.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -120063,7 +120063,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-15 10:59:09',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-04-11 18:05:31',
             ),
             358 => 
             array (
@@ -120147,7 +120147,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-15 10:59:09',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-16 18:27:31',
             ),
             360 => 
             array (
@@ -120205,7 +120205,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -120231,7 +120231,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-15 10:59:09',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-07 13:20:32',
             ),
             362 => 
             array (
@@ -120247,7 +120247,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 8.0,
+                'qty' => 7.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -120273,7 +120273,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-15 10:59:09',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-15 17:30:38',
             ),
             363 => 
             array (
@@ -120331,7 +120331,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -120357,7 +120357,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-17 14:48:58',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-26 17:18:22',
             ),
             365 => 
             array (
@@ -120499,7 +120499,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -120525,7 +120525,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-17 14:48:58',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-18 18:06:32',
             ),
             369 => 
             array (
@@ -120583,7 +120583,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -120609,7 +120609,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-17 14:48:58',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-18 18:15:49',
             ),
             371 => 
             array (
@@ -120819,7 +120819,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-03-17 14:48:58',
-                'updated_at' => '2026-06-23 23:33:08',
+                'updated_at' => '2026-06-22 21:47:46',
             ),
             376 => 
             array (
@@ -120945,7 +120945,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Chocolate","40,41,42,43"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-07 13:16:34',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 20:19:03',
             ),
             379 => 
             array (
@@ -121129,7 +121129,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 830.0,
                 'price' => 1400.0,
-                'qty' => 8.0,
+                'qty' => 9.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -121155,7 +121155,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Gray","40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-07 15:00:44',
-                'updated_at' => '2026-06-23 21:02:57',
+                'updated_at' => '2026-06-02 11:43:15',
             ),
             384 => 
             array (
@@ -121617,7 +121617,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Brown","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-07 16:23:11',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 18:55:04',
             ),
             395 => 
             array (
@@ -121633,7 +121633,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 310.0,
                 'price' => 600.0,
-                'qty' => 9.0,
+                'qty' => 10.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -121659,7 +121659,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Coffee","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-07 16:26:01',
-                'updated_at' => '2026-06-23 21:51:17',
+                'updated_at' => '2026-05-23 19:13:14',
             ),
             396 => 
             array (
@@ -121675,7 +121675,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 850.0,
                 'price' => 1350.0,
-                'qty' => 8.0,
+                'qty' => 9.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -121701,7 +121701,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-07 16:30:15',
-                'updated_at' => '2026-06-27 13:07:43',
+                'updated_at' => '2026-06-03 14:20:14',
             ),
             397 => 
             array (
@@ -121927,7 +121927,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 462.5,
                 'price' => 625.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -121953,7 +121953,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 13:57:27',
-                'updated_at' => '2026-06-27 14:59:31',
+                'updated_at' => '2026-06-11 17:56:53',
             ),
             403 => 
             array (
@@ -122053,7 +122053,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -122079,7 +122079,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 13:57:27',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 16:53:51',
             ),
             406 => 
             array (
@@ -122221,7 +122221,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -122247,7 +122247,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 13:57:28',
-                'updated_at' => '2026-06-24 16:15:00',
+                'updated_at' => '2026-06-20 16:35:03',
             ),
             410 => 
             array (
@@ -122347,7 +122347,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 3.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -122373,7 +122373,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 13:57:28',
-                'updated_at' => '2026-06-27 16:50:07',
+                'updated_at' => '2026-05-25 22:41:32',
             ),
             413 => 
             array (
@@ -122473,7 +122473,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -122499,7 +122499,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,43,44,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 13:57:28',
-                'updated_at' => '2026-06-27 18:20:50',
+                'updated_at' => '2026-05-26 13:16:00',
             ),
             416 => 
             array (
@@ -122515,7 +122515,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -122541,7 +122541,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","12,13,14,15,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 13:57:28',
-                'updated_at' => '2026-06-25 14:57:45',
+                'updated_at' => '2026-06-18 12:37:33',
             ),
             417 => 
             array (
@@ -122557,7 +122557,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -122583,7 +122583,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 13:57:28',
-                'updated_at' => '2026-06-27 19:18:31',
+                'updated_at' => '2026-06-02 16:28:18',
             ),
             418 => 
             array (
@@ -122599,7 +122599,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -122625,7 +122625,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:00:27',
-                'updated_at' => '2026-06-23 20:59:50',
+                'updated_at' => '2026-06-10 20:14:14',
             ),
             419 => 
             array (
@@ -122877,7 +122877,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:00:27',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 15:35:52',
             ),
             425 => 
             array (
@@ -122977,7 +122977,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 573.5,
                 'price' => 775.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123003,7 +123003,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","12,13,14,15,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:00:27',
-                'updated_at' => '2026-06-23 17:52:10',
+                'updated_at' => '2026-06-07 13:28:35',
             ),
             428 => 
             array (
@@ -123087,7 +123087,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:00:27',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 18:24:26',
             ),
             430 => 
             array (
@@ -123103,7 +123103,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 4.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123129,7 +123129,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","12,13,14,15,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:00:28',
-                'updated_at' => '2026-06-25 16:29:16',
+                'updated_at' => '2026-05-13 14:00:33',
             ),
             431 => 
             array (
@@ -123271,7 +123271,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123297,7 +123297,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:00:28',
-                'updated_at' => '2026-06-23 21:49:06',
+                'updated_at' => '2026-05-31 12:08:25',
             ),
             435 => 
             array (
@@ -123355,7 +123355,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 0.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123381,7 +123381,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:00:28',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-13 14:00:35',
             ),
             437 => 
             array (
@@ -123481,7 +123481,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 462.5,
                 'price' => 625.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123507,7 +123507,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:16',
-                'updated_at' => '2026-06-27 19:37:57',
+                'updated_at' => '2026-05-13 14:01:19',
             ),
             440 => 
             array (
@@ -123649,7 +123649,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123675,7 +123675,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:17',
-                'updated_at' => '2026-06-26 21:11:35',
+                'updated_at' => '2026-05-13 14:01:20',
             ),
             444 => 
             array (
@@ -123691,7 +123691,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 481.0,
                 'price' => 650.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123717,7 +123717,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:17',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-24 17:12:15',
             ),
             445 => 
             array (
@@ -123775,7 +123775,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.7,
                 'price' => 855.0,
-                'qty' => 11.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123801,7 +123801,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:17',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-06-18 10:29:26',
             ),
             447 => 
             array (
@@ -123817,7 +123817,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 462.5,
                 'price' => 625.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -123843,7 +123843,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:17',
-                'updated_at' => '2026-06-24 21:00:10',
+                'updated_at' => '2026-05-13 14:01:21',
             ),
             448 => 
             array (
@@ -124111,7 +124111,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 0.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124137,7 +124137,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:17',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-13 14:01:24',
             ),
             455 => 
             array (
@@ -124153,7 +124153,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.3,
                 'price' => 595.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124179,7 +124179,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:18',
-                'updated_at' => '2026-06-23 01:31:56',
+                'updated_at' => '2026-05-26 17:20:41',
             ),
             456 => 
             array (
@@ -124195,7 +124195,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 440.3,
                 'price' => 595.0,
-                'qty' => 0.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124221,7 +124221,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:18',
-                'updated_at' => '2026-06-23 01:33:29',
+                'updated_at' => '2026-05-13 14:01:25',
             ),
             457 => 
             array (
@@ -124263,7 +124263,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:46',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 18:50:45',
             ),
             458 => 
             array (
@@ -124347,7 +124347,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:46',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 17:33:42',
             ),
             460 => 
             array (
@@ -124389,7 +124389,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:46',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 19:41:34',
             ),
             461 => 
             array (
@@ -124431,7 +124431,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:46',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 16:38:57',
             ),
             462 => 
             array (
@@ -124641,7 +124641,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:46',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-19 11:20:05',
             ),
             467 => 
             array (
@@ -124657,7 +124657,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124683,7 +124683,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:47',
-                'updated_at' => '2026-06-27 19:56:04',
+                'updated_at' => '2026-06-18 12:20:48',
             ),
             468 => 
             array (
@@ -124699,7 +124699,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124725,7 +124725,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:47',
-                'updated_at' => '2026-06-25 18:46:34',
+                'updated_at' => '2026-05-13 14:01:51',
             ),
             469 => 
             array (
@@ -124825,7 +124825,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 13.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124851,7 +124851,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:47',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-13 14:01:52',
             ),
             472 => 
             array (
@@ -124867,7 +124867,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 12.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124893,7 +124893,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:47',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 21:07:19',
             ),
             473 => 
             array (
@@ -124909,7 +124909,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 555.0,
                 'price' => 750.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124935,7 +124935,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:47',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 19:43:41',
             ),
             474 => 
             array (
@@ -124951,7 +124951,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 462.5,
                 'price' => 625.0,
-                'qty' => 4.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -124977,7 +124977,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:47',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 21:04:26',
             ),
             475 => 
             array (
@@ -125035,7 +125035,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 462.5,
                 'price' => 625.0,
-                'qty' => 2.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -125061,7 +125061,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:01:47',
-                'updated_at' => '2026-06-27 20:14:14',
+                'updated_at' => '2026-06-14 15:33:52',
             ),
             477 => 
             array (
@@ -125229,7 +125229,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:13',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 22:23:29',
             ),
             481 => 
             array (
@@ -125271,7 +125271,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:13',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 18:48:28',
             ),
             482 => 
             array (
@@ -125497,7 +125497,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 1106.3,
                 'price' => 1495.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -125523,7 +125523,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:14',
-                'updated_at' => '2026-06-25 13:16:48',
+                'updated_at' => '2026-06-14 09:47:40',
             ),
             488 => 
             array (
@@ -125875,7 +125875,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 851.0,
                 'price' => 1150.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -125901,7 +125901,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:14',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-14 12:43:20',
             ),
             497 => 
             array (
@@ -126129,7 +126129,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 658.6,
                 'price' => 890.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -126155,7 +126155,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:38',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-13 14:02:40',
             ),
             3 => 
             array (
@@ -126255,7 +126255,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 880.6,
                 'price' => 1190.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -126281,7 +126281,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:38',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 13:44:51',
             ),
             6 => 
             array (
@@ -126365,7 +126365,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:38',
-                'updated_at' => '2026-06-24 12:39:45',
+                'updated_at' => '2026-06-16 12:39:43',
             ),
             8 => 
             array (
@@ -126633,7 +126633,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 603.1,
                 'price' => 815.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -126659,7 +126659,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:02:39',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 14:59:06',
             ),
             15 => 
             array (
@@ -126827,7 +126827,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:02',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 20:46:54',
             ),
             19 => 
             array (
@@ -126969,7 +126969,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 510.6,
                 'price' => 690.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -126995,7 +126995,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","16,17,18,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:03',
-                'updated_at' => '2026-06-27 16:29:34',
+                'updated_at' => '2026-05-13 14:03:06',
             ),
             23 => 
             array (
@@ -127011,7 +127011,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 588.3,
                 'price' => 795.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -127037,7 +127037,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","16,17,18,43,44,45"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:03',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 20:51:06',
             ),
             24 => 
             array (
@@ -127137,7 +127137,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -127163,7 +127163,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:03',
-                'updated_at' => '2026-06-27 21:11:42',
+                'updated_at' => '2026-05-13 14:03:07',
             ),
             27 => 
             array (
@@ -127179,7 +127179,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 999.0,
                 'price' => 1350.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -127205,7 +127205,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:03',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-05-16 17:14:06',
             ),
             28 => 
             array (
@@ -127499,7 +127499,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","16,17,18,43"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:04',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 17:34:59',
             ),
             35 => 
             array (
@@ -127625,7 +127625,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","12,13,14,15,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:27',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 18:58:48',
             ),
             38 => 
             array (
@@ -127893,7 +127893,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 684.5,
                 'price' => 925.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -127919,7 +127919,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:27',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-06-18 11:40:02',
             ),
             45 => 
             array (
@@ -128103,7 +128103,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 806.6,
                 'price' => 1090.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -128129,7 +128129,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:27',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 16:17:25',
             ),
             50 => 
             array (
@@ -128187,7 +128187,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 806.6,
                 'price' => 1090.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -128213,7 +128213,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Silver","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:28',
-                'updated_at' => '2026-06-25 14:29:28',
+                'updated_at' => '2026-05-13 14:03:34',
             ),
             52 => 
             array (
@@ -128229,7 +128229,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 484.7,
                 'price' => 655.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -128255,7 +128255,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:28',
-                'updated_at' => '2026-06-23 01:33:26',
+                'updated_at' => '2026-06-14 14:10:43',
             ),
             53 => 
             array (
@@ -128271,7 +128271,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 684.5,
                 'price' => 925.0,
-                'qty' => 2.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -128297,7 +128297,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:28',
-                'updated_at' => '2026-06-23 01:33:24',
+                'updated_at' => '2026-06-11 12:17:38',
             ),
             54 => 
             array (
@@ -128481,7 +128481,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 810.3,
                 'price' => 1095.0,
-                'qty' => 3.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -128507,7 +128507,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:28',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 20:21:39',
             ),
             59 => 
             array (
@@ -128607,7 +128607,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 777.0,
                 'price' => 1050.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -128633,7 +128633,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:28',
-                'updated_at' => '2026-06-27 18:42:36',
+                'updated_at' => '2026-05-22 21:43:14',
             ),
             62 => 
             array (
@@ -128801,7 +128801,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Green","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:57',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 19:15:10',
             ),
             66 => 
             array (
@@ -129095,7 +129095,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","6,7,8,9,10,11,12,13,14,15,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:58',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 16:57:06',
             ),
             73 => 
             array (
@@ -129237,7 +129237,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 662.3,
                 'price' => 895.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -129263,7 +129263,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:58',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 20:51:06',
             ),
             77 => 
             array (
@@ -129531,7 +129531,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -129557,7 +129557,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:59',
-                'updated_at' => '2026-06-23 01:33:20',
+                'updated_at' => '2026-05-23 15:19:21',
             ),
             84 => 
             array (
@@ -129599,7 +129599,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:59',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 18:18:07',
             ),
             85 => 
             array (
@@ -129615,7 +129615,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -129641,7 +129641,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:59',
-                'updated_at' => '2026-06-28 13:00:59',
+                'updated_at' => '2026-05-13 14:04:07',
             ),
             86 => 
             array (
@@ -129699,7 +129699,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -129725,7 +129725,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:59',
-                'updated_at' => '2026-06-28 13:01:00',
+                'updated_at' => '2026-06-06 10:41:45',
             ),
             88 => 
             array (
@@ -129909,7 +129909,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 736.3,
                 'price' => 995.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -129935,7 +129935,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Gray","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:03:59',
-                'updated_at' => '2026-06-23 01:33:27',
+                'updated_at' => '2026-05-13 14:04:10',
             ),
             93 => 
             array (
@@ -130145,7 +130145,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","6,7,8,9,10,11,36,37,38,39"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:41',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 18:35:21',
             ),
             98 => 
             array (
@@ -130245,7 +130245,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 632.7,
                 'price' => 855.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -130271,7 +130271,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:41',
-                'updated_at' => '2026-06-24 00:04:25',
+                'updated_at' => '2026-06-19 12:43:28',
             ),
             101 => 
             array (
@@ -130287,7 +130287,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -130313,7 +130313,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:41',
-                'updated_at' => '2026-06-25 13:36:34',
+                'updated_at' => '2026-06-21 18:03:35',
             ),
             102 => 
             array (
@@ -130329,7 +130329,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -130355,7 +130355,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:41',
-                'updated_at' => '2026-06-25 14:29:28',
+                'updated_at' => '2026-06-13 16:28:56',
             ),
             103 => 
             array (
@@ -130649,7 +130649,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Pink","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:42',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-21 14:22:03',
             ),
             110 => 
             array (
@@ -130749,7 +130749,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 6.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -130775,7 +130775,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:42',
-                'updated_at' => '2026-06-27 16:50:08',
+                'updated_at' => '2026-06-01 19:15:41',
             ),
             113 => 
             array (
@@ -130791,7 +130791,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 5.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -130817,7 +130817,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:42',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 11:46:20',
             ),
             114 => 
             array (
@@ -130833,7 +130833,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 629.0,
                 'price' => 850.0,
-                'qty' => 0.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -130859,7 +130859,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Cream","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:42',
-                'updated_at' => '2026-06-25 14:29:28',
+                'updated_at' => '2026-06-18 16:53:51',
             ),
             115 => 
             array (
@@ -130959,7 +130959,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 499.5,
                 'price' => 675.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -130985,7 +130985,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:42',
-                'updated_at' => '2026-06-24 19:07:19',
+                'updated_at' => '2026-05-20 13:07:01',
             ),
             118 => 
             array (
@@ -131001,7 +131001,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 0.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131027,7 +131027,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:42',
-                'updated_at' => '2026-06-27 18:42:36',
+                'updated_at' => '2026-06-21 14:22:03',
             ),
             119 => 
             array (
@@ -131069,7 +131069,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:42',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 18:32:15',
             ),
             120 => 
             array (
@@ -131085,7 +131085,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131111,7 +131111,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Brown","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:43',
-                'updated_at' => '2026-06-27 19:18:31',
+                'updated_at' => '2026-06-13 17:20:12',
             ),
             121 => 
             array (
@@ -131127,7 +131127,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 925.0,
                 'price' => 1250.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131153,7 +131153,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Green","36,37,38,39,40,41"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:43',
-                'updated_at' => '2026-06-24 20:35:12',
+                'updated_at' => '2026-06-04 19:04:14',
             ),
             122 => 
             array (
@@ -131169,7 +131169,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131195,7 +131195,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","12,13,14,15,41,42"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:43',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-18 18:46:11',
             ),
             123 => 
             array (
@@ -131295,7 +131295,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131321,7 +131321,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:04:43',
-                'updated_at' => '2026-06-23 21:51:17',
+                'updated_at' => '2026-06-04 12:37:41',
             ),
             126 => 
             array (
@@ -131337,7 +131337,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 499.5,
                 'price' => 675.0,
-                'qty' => 6.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131363,7 +131363,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40,41,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:05:21',
-                'updated_at' => '2026-06-23 01:33:18',
+                'updated_at' => '2026-05-13 14:05:24',
             ),
             127 => 
             array (
@@ -131841,7 +131841,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 477.3,
                 'price' => 645.0,
-                'qty' => 4.0,
+                'qty' => 5.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131867,7 +131867,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Chocolate","30,31,32,33"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:05:22',
-                'updated_at' => '2026-06-26 16:41:23',
+                'updated_at' => '2026-05-15 18:09:24',
             ),
             139 => 
             array (
@@ -131925,7 +131925,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -131951,7 +131951,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:05:22',
-                'updated_at' => '2026-06-23 17:59:56',
+                'updated_at' => '2026-06-13 17:53:19',
             ),
             141 => 
             array (
@@ -132051,7 +132051,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 499.5,
                 'price' => 675.0,
-                'qty' => 5.0,
+                'qty' => 6.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -132077,7 +132077,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","39,40,41,42,43,44"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:05:23',
-                'updated_at' => '2026-06-23 17:56:43',
+                'updated_at' => '2026-05-13 14:05:30',
             ),
             144 => 
             array (
@@ -132303,7 +132303,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 1.0,
+                'qty' => 2.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -132329,7 +132329,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:05:23',
-                'updated_at' => '2026-06-24 18:00:20',
+                'updated_at' => '2026-06-15 16:09:48',
             ),
             150 => 
             array (
@@ -132429,7 +132429,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 514.3,
                 'price' => 695.0,
-                'qty' => 2.0,
+                'qty' => 3.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -132455,7 +132455,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Master","38,41,39,40,37,36"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:05:23',
-                'updated_at' => '2026-06-23 17:37:26',
+                'updated_at' => '2026-06-17 19:34:59',
             ),
             153 => 
             array (
@@ -132497,7 +132497,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Coffee","38,41,39,40,37,36,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-13 14:05:23',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-22 19:54:27',
             ),
             154 => 
             array (
@@ -132597,7 +132597,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 270.0,
                 'price' => 500.0,
-                'qty' => 0.0,
+                'qty' => 1.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -132623,7 +132623,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Blue","6,7,8,9,10"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-16 15:23:25',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-20 17:59:59',
             ),
             157 => 
             array (
@@ -132639,7 +132639,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 450.0,
                 'price' => 600.0,
-                'qty' => 9.0,
+                'qty' => 10.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -132665,7 +132665,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black,Gray","30,31,32,33,34,35"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-16 15:31:14',
-                'updated_at' => '2026-06-23 23:33:05',
+                'updated_at' => '2026-06-19 18:40:23',
             ),
             158 => 
             array (
@@ -132723,7 +132723,7 @@ class ProductsTableSeeder extends Seeder
                 'sale_unit_id' => 1,
                 'cost' => 850.0,
                 'price' => 1200.0,
-                'qty' => 3.0,
+                'qty' => 4.0,
                 'alert_quantity' => NULL,
                 'daily_sale_objective' => NULL,
                 'promotion' => NULL,
@@ -132749,7 +132749,7 @@ class ProductsTableSeeder extends Seeder
                 'variant_value' => '["Black","36,37,38,39,40"]',
                 'is_active' => 1,
                 'created_at' => '2026-05-17 20:55:04',
-                'updated_at' => '2026-06-23 23:33:06',
+                'updated_at' => '2026-06-22 12:39:25',
             ),
             160 => 
             array (

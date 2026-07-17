@@ -1515,50 +1515,6 @@ class WasteItemsTableSeeder extends Seeder
                 'created_at' => '2026-06-23 00:25:04',
                 'updated_at' => '2026-06-23 00:25:04',
             ),
-            136 => 
-            array (
-                'id' => 139,
-                'waste_id' => 41,
-                'product_id' => 3101,
-                'qty' => 1,
-                'unit_price' => 855.0,
-                'subtotal' => 855.0,
-                'created_at' => '2026-06-24 00:04:25',
-                'updated_at' => '2026-06-24 00:04:25',
-            ),
-            137 => 
-            array (
-                'id' => 140,
-                'waste_id' => 41,
-                'product_id' => 2589,
-                'qty' => 1,
-                'unit_price' => 1195.0,
-                'subtotal' => 1195.0,
-                'created_at' => '2026-06-24 00:04:25',
-                'updated_at' => '2026-06-24 00:04:25',
-            ),
-            138 => 
-            array (
-                'id' => 141,
-                'waste_id' => 41,
-                'product_id' => 2561,
-                'qty' => 1,
-                'unit_price' => 855.0,
-                'subtotal' => 855.0,
-                'created_at' => '2026-06-24 00:04:25',
-                'updated_at' => '2026-06-24 00:04:25',
-            ),
-            139 => 
-            array (
-                'id' => 142,
-                'waste_id' => 41,
-                'product_id' => 2140,
-                'qty' => 1,
-                'unit_price' => 1055.0,
-                'subtotal' => 1055.0,
-                'created_at' => '2026-06-24 00:04:25',
-                'updated_at' => '2026-06-24 00:04:25',
-            ),
         ));
         
         
