@@ -425,6 +425,7 @@
         var lims_productcodeSearch = $('#lims_productcodeSearch');
 
         lims_productcodeSearch.autocomplete({
+            delay: 0,
             source: function(request, response) {
                 $.ajax({
                     url: "{{ route('stock-count.autocomplete') }}",
@@ -438,6 +439,9 @@
                 });
             },
             response: function(event, ui) {
+                if ($('#lims_productcodeSearch').val().trim() === '') {
+                    return;
+                }
                 if (ui.content.length == 1) {
                     var data = ui.content[0].value;
                     $(this).autocomplete("close");
@@ -447,6 +451,24 @@
             select: function(event, ui) {
                 var data = ui.item.value;
                 productSearch(data);
+            }
+        });
+
+        lims_productcodeSearch.on('keydown', function(e) {
+            if (e.which == 13) {
+                var autocompleteInstance = $(this).autocomplete('instance');
+                var isMenuVisible = autocompleteInstance && autocompleteInstance.menu && autocompleteInstance.menu.element.is(':visible');
+                var hasSelectedItem = isMenuVisible && autocompleteInstance.menu.active;
+
+                if (!hasSelectedItem) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var code = $(this).val().trim();
+                    if (code.length > 0) {
+                        $(this).autocomplete("close");
+                        productSearch(code);
+                    }
+                }
             }
         });
 
@@ -521,7 +543,7 @@
         $(window).keydown(function(e) {
             if (e.which == 13) {
                 var $targ = $(e.target);
-                if (!$targ.is("textarea") && !$targ.is(":button,:submit")) {
+                if (!$targ.is("textarea") && !$targ.is("#lims_productcodeSearch") && !$targ.is(":button,:submit")) {
                     var focusNext = false;
                     $(this).find(":input:visible:not([disabled],[readonly]), a").each(function() {
                         if (this === e.target) {

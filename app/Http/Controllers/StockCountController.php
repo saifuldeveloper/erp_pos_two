@@ -252,6 +252,7 @@ class StockCountController extends Controller
                       ->orWhere('products.code', 'LIKE', '%' . $term . '%');
             })
             ->select('products.code', 'products.name')
+            ->groupBy('products.id')
             ->limit(20)
             ->get();
 

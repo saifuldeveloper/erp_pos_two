@@ -1394,4 +1394,9 @@ return [
 	"Waste Details" => "জোলাপ বিবরণ",
 	"Product Name" => "পণ্যের নাম",
 	"Close" => "বন্ধ করুন",
+	"Zero Remaining Products Stock" => "বাকি সব পণ্য ০ করুন",
+	"Deduct Sold Products Stock" => "বিক্রিত পণ্য বিয়োগ করুন",
+	"Deduct Waste Products Stock" => "ওয়েস্ট পণ্য বিয়োগ করুন",
+	"Incomplete Selection" => "অসম্পূর্ণ সিলেকশন",
+	"Please select an action (Update Stock or Cancel) for all items before resolving." => "দয়া করে রেজোলিউশন করার আগে সমস্ত আইটেমের জন্য একটি অ্যাকশন (স্টক আপডেট বা বাতিল) সিলেক্ট করুন।",
 ];

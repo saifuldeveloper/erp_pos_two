@@ -1472,4 +1472,9 @@ return [
 	"Not Found" => "Not Found",
 	"Waste Details" => "Waste Details",
 	"Close" => "Close",
+	"Zero Remaining Products Stock" => "Zero Remaining Products Stock",
+	"Deduct Sold Products Stock" => "Deduct Sold Products Stock",
+	"Deduct Waste Products Stock" => "Deduct Waste Products Stock",
+	"Incomplete Selection" => "Incomplete Selection",
+	"Please select an action (Update Stock or Cancel) for all items before resolving." => "Please select an action (Update Stock or Cancel) for all items before resolving.",
 ];

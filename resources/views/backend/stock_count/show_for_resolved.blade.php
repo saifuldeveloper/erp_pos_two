@@ -372,19 +372,19 @@
                     <div class="form-check form-check-inline ml-3">
                         <input class="form-check-input" type="checkbox" name="zero_remaining" id="zero-remaining-checkbox" value="1">
                         <label class="form-check-label text-danger font-weight-bold" for="zero-remaining-checkbox" style="margin-left: 5px; cursor: pointer; user-select: none;">
-                            ⚠️ Zero Remaining Products Stock (বাকি সব পণ্য ০ করুন)
+                            ⚠️ {{ trans('file.Zero Remaining Products Stock') }}
                         </label>
                     </div>
                     <div class="form-check form-check-inline ml-3">
                         <input class="form-check-input" type="checkbox" name="deduct_sold" id="deduct-sold-checkbox" value="1">
                         <label class="form-check-label text-warning font-weight-bold" for="deduct-sold-checkbox" style="margin-left: 5px; cursor: pointer; user-select: none;">
-                            🛒 Deduct Sold Products Stock (বিক্রিত পণ্য বিয়োগ করুন)
+                            🛒 {{ trans('file.Deduct Sold Products Stock') }}
                         </label>
                     </div>
                     <div class="form-check form-check-inline ml-3">
                         <input class="form-check-input" type="checkbox" name="deduct_waste" id="deduct-waste-checkbox" value="1">
                         <label class="form-check-label text-warning font-weight-bold" for="deduct-waste-checkbox" style="margin-left: 5px; cursor: pointer; user-select: none;">
-                            🗑️ Deduct Waste Products Stock (ওয়েস্ট পণ্য বিয়োগ করুন)
+                            🗑️ {{ trans('file.Deduct Waste Products Stock') }}
                         </label>
                     </div>
                 </div>
@@ -482,8 +482,8 @@
 
             if (checkedNames.size < uniqueNames.size) {
                 Swal.fire({
-                    title: '⚠️ Incomplete Selection',
-                    text: 'Please select an action (Update Stock or Cancel) for all items before resolving.',
+                    title: '⚠️ ' + '{{ trans("file.Incomplete Selection") }}',
+                    text: '{{ trans("file.Please select an action (Update Stock or Cancel) for all items before resolving.") }}',
                     icon: 'warning',
                     confirmButtonColor: '#3085d6',
                     confirmButtonText: 'OK'
