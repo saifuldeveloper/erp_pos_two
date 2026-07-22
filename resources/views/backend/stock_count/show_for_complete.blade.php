@@ -10,139 +10,7 @@
         </div>
     @endif
 
-    @php
-        $stockMatched = $lims_stock_count->items->filter(function ($items) {
-            $total = $items->sum('updated_quantity');
-            return $total == $items[0]->current_quantity;
-        });
 
-        $overStock = $lims_stock_count->items->filter(function ($items) {
-            $total = $items->sum('updated_quantity');
-            return $total > $items[0]->current_quantity;
-        });
-
-        $underStock = $lims_stock_count->items->filter(function ($items) {
-            $total = $items->sum('updated_quantity');
-            return $total < $items[0]->current_quantity;
-        });
-
-        $matchedCountQty = 0;
-        foreach($stockMatched as $items) {
-            $matchedCountQty += $items->sum('updated_quantity');
-        }
-
-        $overCountQty = 0;
-        $overFindQty = 0;
-        foreach($overStock as $items) {
-            $overCountQty += $items->sum('updated_quantity') - $items[0]->current_quantity;
-            $overFindQty += $items->sum('updated_quantity');
-        }
-
-        $underCountQty = 0;
-        $underFindQty = 0;
-        foreach($underStock as $items) {
-            $underCountQty += $items[0]->current_quantity - $items->sum('updated_quantity');
-            $underFindQty += $items->sum('updated_quantity');
-        }
-
-        $totalCountedQty = $lims_stock_count->items->flatten()->sum('updated_quantity');
-        $totalCountedProducts = count($lims_stock_count->items);
-
-        $counted_product_ids = $lims_stock_count->items->flatten()->pluck('product_id')->unique()->toArray();
-
-        $lims_product_list_all = \App\Models\Product::ActiveStandard()
-            ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-            ->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id)
-            ->where('product_warehouse.qty', '>', 0)
-            ->select('products.id', 'products.name', 'products.code', 'products.price', 'products.cost', 'product_warehouse.qty')
-            ->groupBy('products.id')
-            ->get();
-
-        $remainingProducts = $lims_product_list_all->filter(function($p) use ($counted_product_ids) {
-            return !in_array($p->id, $counted_product_ids);
-        });
-
-        $remainingCount = $remainingProducts->count();
-        $remainingQty = $remainingProducts->sum('qty');
-
-        $totalRemainingPurchaseValue = $remainingProducts->sum(function($p) {
-            return $p->qty * $p->cost;
-        });
-
-        $totalRemainingSaleValue = $remainingProducts->sum(function($p) {
-            return $p->qty * $p->price;
-        });
-
-        // Fetch sold products under this stock count that occurred AFTER they were physically counted
-        $countedItemsSubquery = \DB::table('stock_count_items')
-            ->select('item_code', 'product_id', \DB::raw('MAX(created_at) as last_counted_at'))
-            ->where('stock_count_id', $lims_stock_count->id)
-            ->groupBy('item_code', 'product_id');
-
-        $soldQuery = \App\Models\Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
-            ->join('products', 'product_sales.product_id', '=', 'products.id')
-            ->leftJoin('product_variants', function($join) {
-                $join->on('product_sales.product_id', '=', 'product_variants.product_id')
-                     ->on('product_sales.variant_id', '=', 'product_variants.variant_id');
-            })
-            ->joinSub($countedItemsSubquery, 'sci', function($join) {
-                $join->on('product_sales.product_id', '=', 'sci.product_id')
-                     ->whereRaw('(product_variants.item_code = sci.item_code OR (product_sales.variant_id IS NULL AND products.code = sci.item_code))');
-            })
-            ->where('sales.warehouse_id', $lims_stock_count->warehouse_id)
-            ->where('sales.created_at', '>=', $lims_stock_count->created_at)
-            ->whereColumn('sales.created_at', '>=', 'sci.last_counted_at');
-
-        if ($lims_stock_count->is_completed) {
-            $soldQuery->where('sales.created_at', '<=', $lims_stock_count->updated_at);
-        }
-
-        $soldProducts = $soldQuery->select(
-                'products.id',
-                'products.name',
-                \Illuminate\Support\Facades\DB::raw('COALESCE(product_variants.item_code, products.code) as code'),
-                'products.price',
-                'products.cost',
-                \Illuminate\Support\Facades\DB::raw('SUM(product_sales.qty) as sold_qty')
-            )
-            ->groupBy('products.id', 'products.name', 'product_variants.item_code', 'products.code', 'products.price', 'products.cost')
-            ->get();
-
-        $soldQty = $soldProducts->sum('sold_qty');
-        $soldCount = $soldProducts->count();
-
-        // Fetch waste products under this stock count that occurred AFTER they were physically counted
-        $wasteItemsSubquery = \DB::table('stock_count_items')
-            ->select('product_id', \DB::raw('MAX(created_at) as last_counted_at'))
-            ->where('stock_count_id', $lims_stock_count->id)
-            ->groupBy('product_id');
-
-        $wasteQuery = \App\Models\WasteItem::join('wastes', 'waste_items.waste_id', '=', 'wastes.id')
-            ->join('products', 'waste_items.product_id', '=', 'products.id')
-            ->joinSub($wasteItemsSubquery, 'sci', function($join) {
-                $join->on('waste_items.product_id', '=', 'sci.product_id');
-            })
-            ->where('wastes.created_at', '>=', $lims_stock_count->created_at)
-            ->whereColumn('wastes.created_at', '>=', 'sci.last_counted_at');
-
-        if ($lims_stock_count->is_completed) {
-            $wasteQuery->where('wastes.created_at', '<=', $lims_stock_count->updated_at);
-        }
-
-        $wasteProducts = $wasteQuery->select(
-                'products.id',
-                'products.name',
-                'products.code as code',
-                'products.price',
-                'products.cost',
-                \Illuminate\Support\Facades\DB::raw('SUM(waste_items.qty) as waste_qty')
-            )
-            ->groupBy('products.id', 'products.name', 'products.code', 'products.price', 'products.cost')
-            ->get();
-
-        $wasteQty = $wasteProducts->sum('waste_qty');
-        $wasteCount = $wasteProducts->count();
-    @endphp
 
     <style>
         .stat-card {
@@ -434,21 +302,6 @@
                 <div class="row">
                     <div class="col-md-12">
                         @php
-                            $stockMatched = $lims_stock_count->items->filter(function ($items) {
-                                $total = $items->sum('updated_quantity');
-                                return $total == $items[0]->current_quantity;
-                            });
-
-                            $overStock = $lims_stock_count->items->filter(function ($items) {
-                                $total = $items->sum('updated_quantity');
-                                return $total > $items[0]->current_quantity;
-                            });
-
-                            $underStock = $lims_stock_count->items->filter(function ($items) {
-                                $total = $items->sum('updated_quantity');
-                                return $total < $items[0]->current_quantity;
-                            });
-
                             $stockCounts = [
                                 ['title' => 'Stock Matched', 'data' => $stockMatched],
                                 ['title' => 'Over Stock', 'data' => $overStock],
@@ -569,22 +422,20 @@
         $('.selectpicker').selectpicker('refresh');
         $('[data-toggle="tooltip"]').tooltip();
 
-        <?php $productArray = []; ?>
-        var lims_product_code = [
-            @foreach ($lims_product_list as $product)
-                <?php $productArray[] = htmlspecialchars($product->code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($product->name)); ?>
-            @endforeach
-            <?php echo '"' . implode('","', $productArray) . '"'; ?>
-        ];
-
         var lims_productcodeSearch = $('#lims_productcodeSearch');
 
         lims_productcodeSearch.autocomplete({
             source: function(request, response) {
-                var matcher = new RegExp(".?" + $.ui.autocomplete.escapeRegex(request.term), "i");
-                response($.grep(lims_product_code, function(item) {
-                    return matcher.test(item);
-                }));
+                $.ajax({
+                    url: "{{ route('stock-count.autocomplete') }}",
+                    dataType: "json",
+                    data: {
+                        term: request.term
+                    },
+                    success: function(data) {
+                        response(data);
+                    }
+                });
             },
             response: function(event, ui) {
                 if (ui.content.length == 1) {

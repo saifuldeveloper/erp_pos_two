@@ -600,6 +600,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
     Route::resource('attendance', AttendanceController::class);
 
     Route::controller(StockCountController::class)->group(function () {
+        Route::get('stock-count/autocomplete', 'autocomplete')->name('stock-count.autocomplete');
         Route::get('product_search', 'productSearch')->name('stock-count.search');
         Route::get('stock-count/{id}/remaining-products', 'remainingProducts')->name('stock-count.remaining-products');
         Route::get('stock-count/{id}/sold-products', 'soldProducts')->name('stock-count.sold-products');
