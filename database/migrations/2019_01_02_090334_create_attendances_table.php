@@ -19,7 +19,8 @@ class CreateAttendancesTable extends Migration
             $table->integer('employee_id');
             $table->integer('user_id');
             $table->string('checkin');
-            $table->string('checkout');
+            $table->string('checkout')->nullable();
+            $table->unique(['date', 'employee_id', 'checkin']);
             $table->integer('status');
             $table->text('note')->nullable();
             $table->timestamps();

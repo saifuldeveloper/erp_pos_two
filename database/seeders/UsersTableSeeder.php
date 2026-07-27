@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2023-08-12 10:51:23',
                 'updated_at' => '2025-01-06 10:45:37',
                 'phone' => '+880123456789',
-                'company_name' => 'Avijatry cumilla',
+                'company_name' => 'Avijatry Retailer',
                 'role_id' => 1,
                 'biller_id' => NULL,
                 'warehouse_id' => NULL,

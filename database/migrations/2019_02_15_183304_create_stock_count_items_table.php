@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('stock_count_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('stock_count_id');
-            $table->integer('product_id');
+            $table->integer('stock_count_id')->index();
+            $table->integer('product_id')->index();
             $table->string('item_code');
             $table->integer('current_quantity');
             $table->integer('updated_quantity');

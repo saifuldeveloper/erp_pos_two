@@ -15,6 +15,8 @@ class CreateWarehouseTable extends Migration
             $table->string('email')->nullable(); 
             $table->text('address');
             $table->boolean('is_active')->nullable();
+            $table->boolean('is_default')->default(true); // From 2024_11_16_181754_add_is_default_to_warehouses_table.php
+
             $table->timestamps();
         });
     }

@@ -19,6 +19,9 @@ class CreateDeliveriesTable extends Migration
             $table->string('note')->nullable();
             $table->string('courier_tracking_id')->nullable();
             $table->string('status');
+            $table->integer('user_id')->nullable(); // From 2020_09_26_130426_add_user_id_to_deliveries_table.php
+            $table->integer('courier_id')->nullable(); // From 2023_07_23_174343_add_courier_id_to_deliveries_table.php
+
             $table->timestamps();
         });
     }

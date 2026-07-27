@@ -27,6 +27,8 @@ class CreateTransfersTable extends Migration
             $table->double('grand_total');
             $table->string('document')->nullable();
             $table->text('note')->nullable();
+            $table->integer('user_id'); // From 2018_06_21_103512_add_user_id_to_transfers_table.php
+
             $table->timestamps();
         });
     }

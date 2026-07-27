@@ -33,6 +33,8 @@ class CreateQuotationTable extends Migration
             $table->integer('quotation_status');
             $table->string('document')->nullable();
             $table->text('note')->nullable();
+            $table->integer('user_id'); // From 2018_06_23_061058_add_user_id_to_quotations_table.php
+
             $table->timestamps();
         });
     }

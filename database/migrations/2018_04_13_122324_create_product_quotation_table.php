@@ -24,6 +24,9 @@ class CreateProductQuotationTable extends Migration
             $table->double('tax_rate');
             $table->double('tax');
             $table->double('total');
+            $table->integer('variant_id')->nullable(); // From 2019_12_04_121311_add_variant_id_to_product_quotation_table.php
+            $table->integer('product_batch_id')->nullable(); // From 2021_05_26_153106_add_product_batch_id_to_product_quotation_table.php
+
             $table->timestamps();
         });
     }

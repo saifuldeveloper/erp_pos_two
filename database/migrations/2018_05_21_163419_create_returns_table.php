@@ -19,6 +19,12 @@ class CreateReturnsTable extends Migration
             $table->integer('customer_id');
             $table->integer('warehouse_id');
             $table->integer('biller_id');
+            $table->integer('user_id')->index();
+            $table->integer('account_id');
+            $table->integer('currency_id')->nullable();
+            $table->double('exchange_rate')->nullable();
+            $table->integer('cash_register_id')->nullable();
+            $table->integer('sale_id')->nullable();
             $table->integer('item');
             $table->double('total_qty');
             $table->double('total_discount');
@@ -31,6 +37,7 @@ class CreateReturnsTable extends Migration
             $table->text('return_note')->nullable();
             $table->text('staff_note')->nullable();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

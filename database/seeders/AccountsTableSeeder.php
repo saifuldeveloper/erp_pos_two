@@ -22,7 +22,7 @@ class AccountsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'account_no' => 'Avijatry Comilla',
+                'account_no' => 'Avijatry Retailer',
                 'name' => 'Hand Cash',
                 'initial_balance' => 0.0,
                 'total_balance' => -6678500.0,
@@ -30,7 +30,20 @@ class AccountsTableSeeder extends Seeder
                 'is_default' => 1,
                 'is_active' => 1,
                 'created_at' => '2024-10-07 18:35:08',
-                'updated_at' => '2026-06-22 10:38:40',
+                'updated_at' => '2026-06-28 14:05:59',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'account_no' => 'Avijatry',
+                'name' => 'Brac',
+                'initial_balance' => 10000.0,
+                'total_balance' => 10000.0,
+                'note' => NULL,
+                'is_default' => NULL,
+                'is_active' => 1,
+                'created_at' => '2026-06-28 14:03:25',
+                'updated_at' => '2026-06-28 14:05:59',
             ),
         ));
         

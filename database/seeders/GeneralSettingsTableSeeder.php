@@ -22,11 +22,11 @@ class GeneralSettingsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'site_title' => 'Avijatry Cumilla',
-                'site_logo' => '20260612110013.png',
+                'site_title' => 'Avijatry Retailer',
+                'site_logo' => '20260725025259.png',
                 'is_rtl' => 0,
                 'created_at' => '2023-06-21 05:00:00',
-                'updated_at' => '2026-06-12 23:00:13',
+                'updated_at' => '2026-07-25 14:52:59',
                 'currency' => '1',
                 'package_id' => NULL,
                 'staff_access' => 'all',

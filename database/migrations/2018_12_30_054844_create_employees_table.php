@@ -26,6 +26,9 @@ class CreateEmployeesTable extends Migration
             $table->decimal('salary', 15, 2)->nullable();
             $table->json('salary_history')->nullable();
             $table->boolean('is_active');
+            $table->integer('department_id'); // From 2018_12_31_150446_add_department_id_to_employees_table.php
+            $table->string('staff_id', 191)->nullable(); // From 2023_08_12_124016_add_staff_id_to_employees_table.php
+
             $table->timestamps();
         });
     }

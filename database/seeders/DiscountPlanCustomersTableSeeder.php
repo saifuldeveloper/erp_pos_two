@@ -18,16 +18,6 @@ class DiscountPlanCustomersTableSeeder extends Seeder
 
         \DB::table('discount_plan_customers')->delete();
         
-        \DB::table('discount_plan_customers')->insert(array (
-            0 => 
-            array (
-                'id' => 1,
-                'discount_plan_id' => 1,
-                'customer_id' => 1,
-                'created_at' => '2024-12-27 12:26:59',
-                'updated_at' => '2024-12-27 12:26:59',
-            ),
-        ));
         
         
     }

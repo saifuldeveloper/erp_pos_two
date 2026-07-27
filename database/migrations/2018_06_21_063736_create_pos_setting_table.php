@@ -20,7 +20,15 @@ class CreatePosSettingTable extends Migration
             $table->integer('biller_id');
             $table->integer('product_number');
             $table->string('stripe_public_key')->nullable();
-            $table->string('stripe_secret_key');
+            $table->string('stripe_secret_key')->nullable();
+            $table->boolean('keybord_active'); // From 2018_09_02_044042_add_keybord_active_to_pos_setting_table.php
+            $table->string('paypal_live_api_username')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
+            $table->string('paypal_live_api_password')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
+            $table->string('paypal_live_api_secret')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
+            $table->text('payment_options')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
+            $table->string('invoice_option',10)->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
+            $table->boolean('is_table')->default(0); // From 2023_05_29_115039_add_is_table_to_pos_setting_table.php
+
             $table->timestamps();
         });
     }

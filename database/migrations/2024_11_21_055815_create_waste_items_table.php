@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('waste_items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('waste_id');
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('waste_id')->index();
+            $table->unsignedBigInteger('product_id')->index();
             $table->string('varient_code')->nullable();
             $table->integer('qty');
             $table->double('unit_price');

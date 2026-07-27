@@ -21,6 +21,8 @@ class CreateAccountsTable extends Migration
             $table->double('total_balance');
             $table->text('note')->nullable();
             $table->boolean('is_active');
+            $table->boolean('is_default')->nullable(); // From 2018_12_17_112253_add_is_default_to_accounts_table.php
+
             $table->timestamps();
         });
     }

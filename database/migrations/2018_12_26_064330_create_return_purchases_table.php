@@ -12,9 +12,9 @@ class CreateReturnPurchasesTable extends Migration
         Schema::create('return_purchases', function (Blueprint $table) {
             $table->increments('id');
             $table->string('reference_no');
-            $table->integer('supplier_id')->nullable();
+            $table->integer('supplier_id')->nullable()->index();
             $table->integer('warehouse_id');
-            $table->integer('user_id');
+            $table->integer('user_id')->index();
             $table->integer('account_id');
             $table->integer('item')->default(0);
             $table->integer('total_qty')->default(0);
@@ -27,7 +27,12 @@ class CreateReturnPurchasesTable extends Migration
             $table->string('document')->nullable();
             $table->text('return_note')->nullable();
             $table->text('staff_note')->nullable();
+            $table->integer('purchase_id')->nullable(); // From 2022_09_04_195610_add_purchase_id_to_return_purchases_table.php
+            $table->integer('currency_id')->nullable(); // From 2023_03_27_132747_add_currency_id_and_exchange_rate_to_return_purchases_table.php
+            $table->double('exchange_rate')->nullable(); // From 2023_03_27_132747_add_currency_id_and_exchange_rate_to_return_purchases_table.php
+
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

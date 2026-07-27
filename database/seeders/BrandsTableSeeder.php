@@ -23,46 +23,37 @@ class BrandsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'title' => 'Avijatry',
-                'image' => '20250419013907.jpg',
-                'is_active' => 1,
-                'created_at' => '2025-04-19 13:39:07',
-                'updated_at' => '2025-04-19 13:39:07',
+                'image' => '20260628123405.png',
+                'is_active' => 0,
+                'created_at' => '2026-06-28 12:34:05',
+                'updated_at' => '2026-06-28 12:34:22',
             ),
             1 => 
             array (
                 'id' => 2,
-                'title' => 'China',
-                'image' => '20250419013945.jpg',
+                'title' => 'Avijatry',
+                'image' => '20260628123539.png',
                 'is_active' => 1,
-                'created_at' => '2025-04-19 13:39:45',
-                'updated_at' => '2025-04-19 13:39:45',
+                'created_at' => '2026-06-28 12:35:39',
+                'updated_at' => '2026-06-28 12:35:39',
             ),
             2 => 
             array (
                 'id' => 3,
-                'title' => 'Avijatry Discount',
-                'image' => '20250420082854.jpg',
+                'title' => 'Bata',
+                'image' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-04-20 20:28:54',
-                'updated_at' => '2025-04-20 20:28:54',
+                'created_at' => '2026-06-28 12:58:39',
+                'updated_at' => '2026-06-28 12:58:39',
             ),
             3 => 
             array (
                 'id' => 4,
-                'title' => 'China Discount',
-                'image' => '20250424040942.png',
+                'title' => 'Loto',
+                'image' => NULL,
                 'is_active' => 1,
-                'created_at' => '2025-04-24 16:09:43',
-                'updated_at' => '2025-04-24 16:09:43',
-            ),
-            4 => 
-            array (
-                'id' => 5,
-                'title' => 'Accessories',
-                'image' => '20250425044000.jpg',
-                'is_active' => 1,
-                'created_at' => '2025-04-25 16:40:00',
-                'updated_at' => '2025-04-25 16:40:00',
+                'created_at' => '2026-06-28 12:58:48',
+                'updated_at' => '2026-06-28 12:58:48',
             ),
         ));
         

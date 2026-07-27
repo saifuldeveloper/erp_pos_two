@@ -18,6 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->integer('parent_id')->nullable();
             $table->boolean('is_active')->nullable();
+            $table->string('image')->nullable(); // From 2020_07_01_193151_add_image_to_categories_table.php
+
             $table->timestamps();
         });
     }

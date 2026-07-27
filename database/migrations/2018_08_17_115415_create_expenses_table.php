@@ -15,6 +15,10 @@ class CreateExpensesTable extends Migration
             $table->integer('warehouse_id');
             $table->double('amount');
             $table->text('note')->nullable();
+            $table->integer('account_id'); // From 2018_12_20_065900_add_account_id_to_expenses_table.php
+            $table->integer('user_id'); // From 2019_01_01_062708_add_user_id_to_expenses_table.php
+            $table->integer('cash_register_id')->nullable(); // From 2020_10_18_124200_add_cash_register_id_to_expenses_table.php
+
             $table->timestamps();
         });
     }
