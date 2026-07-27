@@ -486,7 +486,8 @@
                 type: 'GET',
                 url: "{{ route('stock-count.search') }}",
                 data: {
-                    data: data
+                    data: data,
+                    stock_count_id: "{{ $lims_stock_count->id }}"
                 },
                 success: function(datas) {
                     $("input[name='product_code_name']").val('');

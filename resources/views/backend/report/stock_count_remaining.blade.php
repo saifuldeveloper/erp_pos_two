@@ -1,58 +1,151 @@
-@extends('backend.layout.main') @section('content')
+@extends('backend.layout.main')
+
+@section('content')
     @if (session()->has('message'))
-        <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close"
-                data-dismiss="alert" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div>
+        <div class="alert alert-success alert-dismissible text-center">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session()->get('message') }}
+        </div>
     @endif
     @if (session()->has('not_permitted'))
-        <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert"
-                aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}
+        <div class="alert alert-danger alert-dismissible text-center">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session()->get('not_permitted') }}
         </div>
     @endif
 
-    <section>
+    <style>
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #e4e7eb;
+            border-radius: 8px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+        .stat-card.teal { border-left: 5px solid #0891b2; }
+        .stat-card.slate { border-left: 5px solid #4b5563; }
+        .stat-card.orange { border-left: 5px solid #f59e0b; }
+        .stat-card.green { border-left: 5px solid #22c55e; }
+        
+        .stat-card .title-small {
+            font-size: 13px;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+        }
+        .stat-card .value-large {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .stat-card.teal .value-large { color: #0891b2; }
+        .stat-card.slate .value-large { color: #1f2937; }
+        .stat-card.orange .value-large { color: #f59e0b; }
+        .stat-card.green .value-large { color: #22c55e; }
+
+        .stat-icon {
+            font-size: 28px;
+            opacity: 0.8;
+        }
+        .stat-icon.teal { color: #0891b2; }
+        .stat-icon.slate { color: #4b5563; }
+        .stat-icon.orange { color: #f59e0b; }
+        .stat-icon.green { color: #22c55e; }
+
+        /* Dark mode overrides */
+        .dark-mode .stat-card {
+            background-color: #283046;
+            border: 1px solid #3b4253;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+        .dark-mode .stat-card .title-small {
+            color: #b4b7bd;
+        }
+        .dark-mode .stat-card.slate .value-large {
+            color: #eaeaea;
+        }
+        .dark-mode .stat-icon.slate {
+            color: #b4b7bd;
+        }
+    </style>
+
+    <section class="forms">
         <div class="container-fluid">
-            <div class="card">
-                <div class="card-header mt-2">
-                    <div class="d-flex">
-                        <h3 class="text-start"> {{ trans('file.Stock Count Report') }}</h3><br>
-
-                        <a href="{{ route('report.stockCount') }}" class="btn btn-primary ml-auto">
-                            <i class="fas fa-list"></i>
-                            Stock Count
-                        </a>
-
-                    </div>
-                    <div>
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="wrapper count-title">
-                                    <h4><strong style="color: #ff8040">Total Qty:</strong>{{ $count_data['total_qty'] }}</h4>
-                                </div>
-
-                            </div>
-                            <div class="col-4">
-                                <div class="wrapper count-title">
-                                    <h4><strong style="color: #ff8040">Total Price:</strong> {{ $count_data['total_price'] }}</h4>
-                                </div>
-                            </div>
-
-                            <div class="col-4">
-                                <div class="wrapper count-title">
-                                    <h4><strong style="color: #ff8040">Cost:</strong> {{ $count_data['total_cost'] }}</h4>
-                                </div>
-                            </div>
-
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header d-flex align-items-center">
+                            <h4>{{ trans('file.Stock Count Report') }}</h4>
+                            <a href="{{ route('report.stockCount') }}" class="btn btn-info ml-auto">
+                                <i class="fa fa-list"></i> Stock Count
+                            </a>
                         </div>
-                    </div>
-                    <div>
-                        {!! Form::open(['route' => 'report.stockCount.remaining', 'method' => 'get']) !!}
-                        <div class="row mb-3">
-                            <div class="col-md-4 offset-md-1 mt-4">
-                                <div class="form-group row">
-                                    <label class="d-tc mt-2"><strong>{{ trans('file.Choose Your Date') }}</strong>
-                                        &nbsp;</label>
-                                    <div class="d-tc">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <!-- Card 1: Total Items (Teal) -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="stat-card teal">
+                                        <div>
+                                            <div class="title-small">মোট আইটেম</div>
+                                            <div class="value-large">{{ $remainingCount }}</div>
+                                        </div>
+                                        <div class="stat-icon teal">
+                                            <i class="fa fa-th-list"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card 2: Total Quantity (Slate) -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="stat-card slate">
+                                        <div>
+                                            <div class="title-small">মোট পরিমাণ</div>
+                                            <div class="value-large">{{ number_format($remainingQty, 2, '.', '') }}</div>
+                                        </div>
+                                        <div class="stat-icon slate">
+                                            <i class="fa fa-cubes"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card 3: Total Purchase Value (Orange) -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="stat-card orange">
+                                        <div>
+                                            <div class="title-small">সর্বমোট ক্রয় মূল্য</div>
+                                            <div class="value-large">{{ number_format($totalRemainingPurchaseValue, 2, '.', '') }}</div>
+                                        </div>
+                                        <div class="stat-icon orange">
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card 4: Total Sale Value (Green) -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="stat-card green">
+                                        <div>
+                                            <div class="title-small">সর্বমোট বিক্রয় মূল্য</div>
+                                            <div class="value-large">{{ number_format($totalRemainingSaleValue, 2, '.', '') }}</div>
+                                        </div>
+                                        <div class="stat-icon green">
+                                            <i class="fa fa-tags"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {!! Form::open(['route' => 'report.stockCount.remaining', 'method' => 'GET', 'id' => 'filter-form']) !!}
+                            <div class="row mb-4 align-items-end">
+                                <div class="col-md-3">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label font-weight-bold">{{ trans('file.Choose Your Date') }}</label>
                                         <div class="input-group">
                                             <input type="text" class="daterangepicker-field form-control"
                                                 value="{{ request('start_date') ?? date('Y-m-d') }} To {{ request('end_date') ?? date('Y-m-d') }}">
@@ -61,62 +154,148 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2 mt-4">
-                                <input type="text" class="form-control" name="countID" value="{{ request('countID') }}"
-                                    placeholder="Enter Counting ID">
-                            </div>
-                            <div class="col-md-3 mt-4">
-                                <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">{{ trans('file.submit') }}</button>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label font-weight-bold">Brand</label>
+                                        <select name="brand_id" class="form-control selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Brand...">
+                                            <option value="0">All Brands</option>
+                                            @foreach($lims_brand_list as $brand)
+                                                <option value="{{ $brand->id }}" {{ $brand_id == $brand->id ? 'selected' : '' }}>{{ $brand->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label font-weight-bold">Category</label>
+                                        <select name="category_id" class="form-control selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Category...">
+                                            <option value="0">All Categories</option>
+                                            @foreach($lims_category_list as $category)
+                                                <option value="{{ $category->id }}" {{ $category_id == $category->id ? 'selected' : '' }}>{{ $category->parent ? $category->parent->name . ' - ' . $category->name : $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label font-weight-bold">Stock Count ID</label>
+                                        <input type="text" class="form-control" name="countID" value="{{ request('countID') }}" placeholder="Enter Counting ID">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex">
+                                        <button type="submit" class="btn btn-primary mr-2" style="flex: 1;"><i class="fa fa-filter"></i> Filter</button>
+                                        <a href="{{ route('report.stockCount.remaining') }}" class="btn btn-secondary" style="flex: 1;"><i class="fa fa-undo"></i> Reset</a>
+                                    </div>
                                 </div>
                             </div>
+                            {!! Form::close() !!}
+                            
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="stock-count-report-table" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>{{ trans('file.Product') }}</th>
+                                            <th>{{ trans('file.item code') }}</th>
+                                            <th>Cost</th>
+                                            <th>Price</th>
+                                            <th>{{ trans('file.Current Quantity') }}</th>
+                                            <th>Total Cost</th>
+                                            <th>Total Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($products as $index => $product)
+                                            @php
+                                                $rowPurchaseVal = $product->qty * $product->cost;
+                                                $rowSaleVal = $product->qty * $product->price;
+                                            @endphp
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $product->code }}</td>
+                                                <td>{{ number_format($product->cost, 2, '.', '') }}</td>
+                                                <td>{{ number_format($product->price, 2, '.', '') }}</td>
+                                                <td>{{ number_format($product->qty, 2, '.', '') }}</td>
+                                                <td>{{ number_format($rowPurchaseVal, 2, '.', '') }}</td>
+                                                <td>{{ number_format($rowSaleVal, 2, '.', '') }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Total:</th>
+                                            <th>{{ $remainingCount }} Items</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>{{ number_format($remainingQty, 2, '.', '') }}</th>
+                                            <th>{{ number_format($totalRemainingPurchaseValue, 2, '.', '') }}</th>
+                                            <th>{{ number_format($totalRemainingSaleValue, 2, '.', '') }}</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="stock-count-report-table">
-                            <thead>
-                                <tr>
-                                    {{-- <th>{{ trans('file.Warehouse') }}</th> --}}
-                                    <th>{{ trans('file.Product') }}</th>
-                                    <th>{{ trans('file.item code') }}</th>
-                                    <th>Cost</th>
-                                    <th>Price</th>
-                                    <th>{{ trans('file.Current Quantity') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($products as $product)
-                                    <tr>
-                                        {{-- <td>{{ $product->warehouse_name }}</td> --}}
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->code }}</td>
-                                        <td>{{ $product->cost }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>{{ $product->qty }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+
 @push('scripts')
     <script type="text/javascript">
+        // Sidebar active menu
+        $("ul#report").siblings('a').attr('aria-expanded','true');
+        $("ul#report").addClass("show");
+        $("ul#report #stock-count-remaining-menu").addClass("active");
+
+        // DataTable Initialization
         $('#stock-count-report-table').DataTable({
             "order": [],
-            "columnDefs": [{
-                "targets": [0, 1, 2],
-                "orderable": false
-            }]
+            "pageLength": 25,
+            "lengthMenu": [
+                [10, 25, 50, 100, -1],
+                [10, 25, 50, 100, "All"]
+            ],
+            'language': {
+                'lengthMenu': '_MENU_ {{ trans("file.records per page") }}',
+                "info": '<small>{{ trans("file.Showing") }} _START_ - _END_ (_TOTAL_)</small>',
+                "search": '{{ trans("file.Search") }}',
+                'paginate': {
+                    'previous': '<i class="dripicons-chevron-left"></i>',
+                    'next': '<i class="dripicons-chevron-right"></i>'
+                }
+            },
+            dom: '<"row"lfB>rtip',
+            buttons: [
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                    exportOptions: {
+                        columns: ':visible:Not(.not-export)',
+                        rows: ':visible'
+                    }
+                },
+                {
+                    extend: 'csv',
+                    text: '<i class="fa fa-file-excel-o"></i> CSV',
+                    exportOptions: {
+                        columns: ':visible:Not(.not-export)',
+                        rows: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i> Print',
+                    exportOptions: {
+                        columns: ':visible:Not(.not-export)',
+                        rows: ':visible'
+                    }
+                }
+            ]
         });
 
         $(".daterangepicker-field").daterangepicker({

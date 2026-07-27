@@ -624,6 +624,13 @@
                             {{ trans('file.Stock Count Report') }}
                         </a>
                     </li>
+                    @if (Auth::user()->role_id <= 2 || $role_has_permissions_list->where('name', 'overview-report')->first())
+                        <li id="overview-report-menu">
+                            <a href="{{ route('report.overview') }}">
+                                {{ trans('file.Overview Report') }}
+                            </a>
+                        </li>
+                    @endif
                     {{-- @if ($dso_report_active)
                             <li id="daily-sale-objective-menu">
                                 <a

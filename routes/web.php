@@ -50,6 +50,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\OverviewReportController;
 use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\ReturnPurchaseController;
 use App\Http\Controllers\RoleController;
@@ -100,7 +101,6 @@ Route::get('clear', function () {
 
 Route::get('update-coupon', [CouponController::class, 'updateCoupon']);
 
-Route::get('auto-update-dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Auto Update
 Route::group(['prefix' => 'developer-section'], function () {
@@ -491,6 +491,8 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
             Route::get('stock-count/remaining', 'stockCountRemaining')->name('report.stockCount.remaining');
         });
     });
+
+    Route::get('report/overview', [OverviewReportController::class, 'index'])->name('report.overview');
 
 
     Route::controller(UserController::class)->group(function () {

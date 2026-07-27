@@ -3007,7 +3007,19 @@ class RoleHasPermissionsTableSeeder extends Seeder
                 'role_id' => 8,
             ),
         ));
-        
-        
+
+        $permission = \DB::table('permissions')->where('name', 'overview-report')->first();
+        if ($permission) {
+            $roles = [1, 2];
+            foreach ($roles as $roleId) {
+                $roleExists = \DB::table('roles')->where('id', $roleId)->exists();
+                if ($roleExists) {
+                    \DB::table('role_has_permissions')->updateOrInsert([
+                        'permission_id' => $permission->id,
+                        'role_id' => $roleId,
+                    ]);
+                }
+            }
+        }
     }
 }

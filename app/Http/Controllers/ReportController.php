@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\ExpenseCategory;
 use App\Models\Employee;
 use App\Models\Product;
@@ -4903,17 +4904,51 @@ class ReportController extends Controller
             ->pluck('correct_product_id')
             ->filter()
             ->toArray();
-        $total = Product::where('is_active', 1)
-            ->whereNotIn('id', $product_ids)
-            ->selectRaw('COALESCE(SUM(qty),0) as total_qty, COALESCE(SUM(qty * cost),0) as total_cost, COALESCE(SUM(qty * price),0) as total_price')
-            ->first();
+
+        $lims_brand_list = Brand::where('is_active', true)->get();
+        $lims_category_list = Category::with('parent')->where('is_active', true)->get();
+
+        $brand_id = $request->input('brand_id', 0);
+        $category_id = $request->input('category_id', 0);
+
+        $query = Product::where('is_active', 1)
+            ->whereNotIn('id', $product_ids);
+
+        if ($brand_id != 0) {
+            $query->where('brand_id', $brand_id);
+        }
+        if ($category_id != 0) {
+            $query->where('category_id', $category_id);
+        }
+
+        $products = $query->get();
+
+        $remainingCount = $products->count();
+        $remainingQty = $products->sum('qty');
+        $totalRemainingPurchaseValue = $products->sum(function($p) {
+            return $p->qty * $p->cost;
+        });
+        $totalRemainingSaleValue = $products->sum(function($p) {
+            return $p->qty * $p->price;
+        });
 
         $count_data = [
-            'total_qty' => $total->total_qty,
-            'total_cost' => $total->total_cost,
-            'total_price' => $total->total_price,
+            'total_qty' => $remainingQty,
+            'total_cost' => $totalRemainingPurchaseValue,
+            'total_price' => $totalRemainingSaleValue,
         ];
-        $products = Product::where('is_active', 1)->whereNotIn('id', $product_ids)->get();
-        return view('backend.report.stock_count_remaining', compact('products', 'count_data'));
+
+        return view('backend.report.stock_count_remaining', compact(
+            'products',
+            'count_data',
+            'lims_brand_list',
+            'lims_category_list',
+            'brand_id',
+            'category_id',
+            'remainingCount',
+            'remainingQty',
+            'totalRemainingPurchaseValue',
+            'totalRemainingSaleValue'
+        ));
     }
 }

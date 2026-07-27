@@ -92,67 +92,100 @@ class StockCountController extends Controller
 
     public function productSearch(Request $request)
     {
-        $stock_count = StockCount::where('is_completed', false)
-            ->orWhere('is_resolved', false)
-            ->first();
+        $stock_count_id = $request->input('stock_count_id');
+        if ($stock_count_id) {
+            $stock_count = StockCount::find($stock_count_id);
+        } else {
+            $stock_count = StockCount::where('is_completed', false)
+                ->orWhere('is_resolved', false)
+                ->first();
+        }
 
+        if (!$stock_count) {
+            return response()->json([]);
+        }
 
         $product_code = explode("|", $request['data']);
         $product_code[0] = rtrim($product_code[0], " ");
 
+        // First try to find by main product code
+        $product = Product::where([
+            ['code', $product_code[0]],
+            ['is_active', true]
+        ])->first();
 
-        // Product find
-        $product = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-            ->where([
-                ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
-                ['products.code', $product_code[0]],
-                ['products.is_active', true]
-            ])
-            ->select('products.*')
-            ->first();
-
+        // If not found, try to find by variant item code
+        if (!$product) {
+            $variant = ProductVariant::where('item_code', $product_code[0])->first();
+            if ($variant) {
+                $product = Product::where([
+                    ['id', $variant->product_id],
+                    ['is_active', true]
+                ])->first();
+            }
+        }
 
         if ($product && $product->is_variant) {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-                ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+                ->leftJoin('product_warehouse', function ($join) use ($stock_count) {
+                    $join->on('product_variants.product_id', '=', 'product_warehouse.product_id')
+                         ->on('product_variants.variant_id', '=', 'product_warehouse.variant_id')
+                         ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id);
+                })
                 ->where([
                     ['product_variants.product_id', $product->id],
-                    ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
                     ['products.is_active', true]
                 ])
-                ->select('products.*', 'product_variants.item_code', 'product_variants.qty')
+                ->select(
+                    'products.id',
+                    'products.name',
+                    'products.code',
+                    'products.is_variant',
+                    'product_variants.item_code',
+                    DB::raw('COALESCE(product_warehouse.qty, 0) as qty')
+                )
                 ->groupBy('product_variants.id')
                 ->get();
-        } else {
-            $lims_product_data = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
+        } elseif ($product) {
+            $lims_product_data = Product::leftJoin('product_warehouse', function ($join) use ($stock_count) {
+                    $join->on('products.id', '=', 'product_warehouse.product_id')
+                         ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id);
+                })
                 ->where([
-                    ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
-                    ['products.code', $product_code[0]],
+                    ['products.id', $product->id],
                     ['products.is_active', true]
                 ])
-                ->select('products.*', 'product_warehouse.qty')
+                ->select(
+                    'products.id',
+                    'products.name',
+                    'products.code',
+                    'products.is_variant',
+                    DB::raw('COALESCE(product_warehouse.qty, 0) as qty')
+                )
                 ->groupBy('products.id')
                 ->get();
+        } else {
+            $lims_product_data = [];
         }
-
 
         $products = [];
 
-
-        foreach ($lims_product_data as $key => $product) {
-            //  Duplicate check
+        foreach ($lims_product_data as $key => $item) {
+            $itemCode = $item->is_variant ? $item->item_code : $item->code;
+            
+            // Duplicate check by item_code
             $exists = StockCountItem::where('stock_count_id', $stock_count->id)
-                ->where('product_id', $product->id)
+                ->where('item_code', $itemCode)
                 ->exists();
+
             $products[$key] = [
-                'name' => $product->name,
-                'code' => $product->is_variant ? $product->item_code : $product->code,
-                'qty' => $product->qty,
-                'id' => $product->id,
-                'exists' => $exists //  important flag
+                'name' => $item->name,
+                'code' => $itemCode,
+                'qty' => $item->qty,
+                'id' => $item->id,
+                'exists' => $exists
             ];
         }
-
 
         return response()->json($products);
     }
@@ -206,12 +239,14 @@ class StockCountController extends Controller
                 $batch = $request->resolved_batch;
                 if ($batch && count($batch) > 0) {
                     $this->processBatchUpdates($stock_count, $batch);
-                    $this->recalculateGlobalStocks();
                 }
                 if ($request->is_final_chunk) {
                     if ($request->zero_remaining == 1) {
                         $this->zeroRemainingProductsStock($stock_count);
                     }
+                    // Recalculate global stock ONCE on the final chunk
+                    $this->recalculateGlobalStocks();
+
                     $stock_count->update([
                         'is_resolved' => true,
                         'resolved_by' => Auth::id()
@@ -244,17 +279,50 @@ class StockCountController extends Controller
             return response()->json([]);
         }
 
+        // First, check if there is an exact match on products.code
+        $exactProduct = Product::ActiveStandard()
+            ->where('code', $term)
+            ->select('code', 'name')
+            ->first();
+            
+        if ($exactProduct) {
+            $results = [htmlspecialchars($exactProduct->code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($exactProduct->name))];
+            return response()->json($results);
+        }
+
+        // Second, check if there is an exact match on product_variants.item_code
+        $exactVariant = ProductVariant::join('products', 'products.id', '=', 'product_variants.product_id')
+            ->where('product_variants.item_code', $term)
+            ->where('products.is_active', true)
+            ->select('product_variants.item_code as code', 'products.name')
+            ->first();
+
+        if ($exactVariant) {
+            $results = [htmlspecialchars($exactVariant->code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($exactVariant->name))];
+            return response()->json($results);
+        }
+
         $products = Product::ActiveStandard()
-            ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-            ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id)
             ->where(function($query) use ($term) {
                 $query->where('products.name', 'LIKE', '%' . $term . '%')
                       ->orWhere('products.code', 'LIKE', '%' . $term . '%');
             })
             ->select('products.code', 'products.name')
-            ->groupBy('products.id')
+            ->distinct()
             ->limit(20)
             ->get();
+
+        if ($products->count() < 20) {
+            $variantProducts = Product::ActiveStandard()
+                ->join('product_variants', 'products.id', 'product_variants.product_id')
+                ->where('product_variants.item_code', 'LIKE', '%' . $term . '%')
+                ->select('product_variants.item_code as code', 'products.name')
+                ->distinct()
+                ->limit(20 - $products->count())
+                ->get();
+            
+            $products = $products->concat($variantProducts);
+        }
 
         $results = [];
         foreach ($products as $product) {
@@ -273,8 +341,8 @@ class StockCountController extends Controller
                 abort(404);
             }
             
-            $itemsGrouped = $lims_stock_count->items->groupBy('item_code');
-            $lims_stock_count->items = $itemsGrouped;
+            $itemsGrouped = collect($lims_stock_count->items)->groupBy('item_code');
+            $lims_stock_count->setRelation('items', $itemsGrouped);
 
             // 1. Calculate Stock Matched, Over Stock, Under Stock
             $stockMatched = $itemsGrouped->filter(function ($items) {
@@ -698,17 +766,11 @@ class StockCountController extends Controller
     {
         DB::update("
             UPDATE stock_count_items sci
-            JOIN product_variants pv ON pv.item_code = sci.item_code
-            SET sci.product_id = pv.product_id
+            LEFT JOIN product_variants pv ON pv.item_code = sci.item_code
+            LEFT JOIN products p ON p.code = sci.item_code
+            SET sci.product_id = COALESCE(pv.product_id, p.id)
             WHERE sci.stock_count_id = :stock_count_id
-        ", ['stock_count_id' => $stock_count->id]);
-
-        DB::update("
-            UPDATE stock_count_items sci
-            JOIN products p ON p.code = sci.item_code
-            SET sci.product_id = p.id
-            WHERE sci.stock_count_id = :stock_count_id
-              AND NOT EXISTS (SELECT 1 FROM product_variants pv WHERE pv.item_code = sci.item_code)
+              AND (pv.product_id IS NOT NULL OR p.id IS NOT NULL)
         ", ['stock_count_id' => $stock_count->id]);
     }
 

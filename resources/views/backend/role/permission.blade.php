@@ -1096,6 +1096,18 @@
 						                <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
+							                    	@if(in_array("overview-report", $all_permission))
+							                    	<input type="checkbox" value="1" id="overview-report" name="overview-report" checked>
+							                    	@else
+							                    	<input type="checkbox" value="1" id="overview-report" name="overview-report">
+							                    	@endif
+								                    <label for="overview-report" class="padding05">{{trans('file.Overview Report')}} &nbsp;&nbsp;</label>
+								                </div>
+								            </div>
+						                </span>
+						                <span>
+						                    <div aria-checked="false" aria-disabled="false">
+								                <div class="checkbox">
 							                    	@if(in_array("sale-report-chart", $all_permission))
 							                    	<input type="checkbox" value="1" id="sale-report-chart" name="sale-report-chart" checked>
 							                    	@else
