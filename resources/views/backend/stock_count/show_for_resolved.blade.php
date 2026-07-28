@@ -496,8 +496,8 @@
                 return;
             }
 
-            // 2 Split data into chunks of 100
-            let chunkSize = 100;
+            // 2 Split data into chunks of 500
+            let chunkSize = 500;
             let chunks = [];
             for (let i = 0; i < allData.length; i += chunkSize) {
                 chunks.push(allData.slice(i, i + chunkSize));

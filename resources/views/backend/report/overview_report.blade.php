@@ -50,18 +50,18 @@
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0 text-center">
-                                <thead class="text-white" style="background-color: #f9785e;">
+                                <thead>
                                     <tr>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Supplier') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Pair') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Purchase Price') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Sale Price') }}</th>
+                                        <th>{{ trans('file.Brand') }}</th>
+                                        <th>{{ trans('file.Pair') }}</th>
+                                        <th>{{ trans('file.Purchase Price') }}</th>
+                                        <th>{{ trans('file.Sale Price') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($purchases_by_supplier as $p)
+                                    @forelse($purchases_by_brand as $p)
                                     <tr>
-                                        <td class="font-weight-bold">{{ $p->supplier_name }}</td>
+                                        <td class="font-weight-bold">{{ $p->brand_name }}</td>
                                         <td>{{ number_format((float)$p->total_qty, 0, '.', '') }}</td>
                                         <td>{{ number_format((float)$p->total_cost, $general_setting->decimal, '.', '') }}</td>
                                         <td>{{ number_format((float)$p->total_selling_price, $general_setting->decimal, '.', '') }}</td>
@@ -93,15 +93,27 @@
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0 text-center">
-                                <thead class="text-white" style="background-color: #f9785e;">
+                                <thead>
                                     <tr>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Supplier') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Pair') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Purchase Price') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Sale Price') }}</th>
+                                        <th>{{ trans('file.Brand') }}</th>
+                                        <th>{{ trans('file.Pair') }}</th>
+                                        <th>{{ trans('file.Purchase Price') }}</th>
+                                        <th>{{ trans('file.Sale Price') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse($sales_by_brand as $s)
+                                    <tr>
+                                        <td class="font-weight-bold">{{ $s->brand_name }}</td>
+                                        <td>{{ number_format((float)$s->total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$s->total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$s->total_revenue, $general_setting->decimal, '.', '') }}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4">{{ trans('file.Not Found') }}</td>
+                                    </tr>
+                                    @endforelse
                                     <tr class="font-weight-bold">
                                         <td>{{ trans('file.Total sale') }}</td>
                                         <td>{{ number_format((float)$sales_total_qty, 0, '.', '') }}</td>
@@ -127,18 +139,18 @@
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0 text-center">
-                                <thead class="text-white" style="background-color: #f9785e;">
+                                <thead>
                                     <tr>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Supplier') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Pair') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Purchase Price') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Sale Price') }}</th>
+                                        <th>{{ trans('file.Brand') }}</th>
+                                        <th>{{ trans('file.Pair') }}</th>
+                                        <th>{{ trans('file.Purchase Price') }}</th>
+                                        <th>{{ trans('file.Sale Price') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($purchase_returns_by_supplier as $pr)
+                                    @forelse($purchase_returns_by_brand as $pr)
                                     <tr>
-                                        <td class="font-weight-bold">{{ $pr->supplier_name }}</td>
+                                        <td class="font-weight-bold">{{ $pr->brand_name }}</td>
                                         <td>{{ number_format((float)$pr->total_qty, 0, '.', '') }}</td>
                                         <td>{{ number_format((float)$pr->total_cost, $general_setting->decimal, '.', '') }}</td>
                                         <td>{{ number_format((float)$pr->total_selling_price, $general_setting->decimal, '.', '') }}</td>
@@ -170,20 +182,121 @@
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0 text-center">
-                                <thead class="text-white" style="background-color: #f9785e;">
+                                <thead>
                                     <tr>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Supplier') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Pair') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Purchase Price') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Sale Price') }}</th>
+                                        <th>{{ trans('file.Brand') }}</th>
+                                        <th>{{ trans('file.Pair') }}</th>
+                                        <th>{{ trans('file.Purchase Price') }}</th>
+                                        <th>{{ trans('file.Sale Price') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse($sale_returns_by_brand as $sr)
+                                    <tr>
+                                        <td class="font-weight-bold">{{ $sr->brand_name }}</td>
+                                        <td>{{ number_format((float)$sr->total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$sr->total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$sr->total_revenue, $general_setting->decimal, '.', '') }}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4">{{ trans('file.Not Found') }}</td>
+                                    </tr>
+                                    @endforelse
                                     <tr class="font-weight-bold">
                                         <td>{{ trans('file.Total') }} {{ trans('file.Sale Return') }}</td>
                                         <td>{{ number_format((float)$sale_returns_total_qty, 0, '.', '') }}</td>
                                         <td>{{ number_format((float)$sale_returns_total_cost, $general_setting->decimal, '.', '') }}</td>
                                         <td>{{ number_format((float)$sale_returns_total_revenue, $general_setting->decimal, '.', '') }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3: Stock Adjustment (Increment) and Stock Adjustment (Decrement) -->
+        <div class="row mt-2">
+            <!-- Stock Adjustment (Increment) Table -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header py-2 text-center">
+                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Stock Adjustment') }} (+)</h4>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-0 text-center">
+                                <thead>
+                                    <tr>
+                                        <th>{{ trans('file.Brand') }}</th>
+                                        <th>{{ trans('file.Pair') }}</th>
+                                        <th>{{ trans('file.Purchase Price') }}</th>
+                                        <th>{{ trans('file.Sale Price') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($adjustments_increment_by_brand as $adj_inc)
+                                    <tr>
+                                        <td class="font-weight-bold">{{ $adj_inc->brand_name }}</td>
+                                        <td>{{ number_format((float)$adj_inc->total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_inc->total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_inc->total_selling_price, $general_setting->decimal, '.', '') }}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4">{{ trans('file.Not Found') }}</td>
+                                    </tr>
+                                    @endforelse
+                                    <tr class="font-weight-bold">
+                                        <td>{{ trans('file.Total') }} {{ trans('file.Stock Adjustment') }} (+)</td>
+                                        <td>{{ number_format((float)$adj_inc_total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_inc_total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_inc_total_selling_price, $general_setting->decimal, '.', '') }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stock Adjustment (Decrement) Table -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header py-2 text-center">
+                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Stock Adjustment') }} (-)</h4>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-0 text-center">
+                                <thead>
+                                    <tr>
+                                        <th>{{ trans('file.Brand') }}</th>
+                                        <th>{{ trans('file.Pair') }}</th>
+                                        <th>{{ trans('file.Purchase Price') }}</th>
+                                        <th>{{ trans('file.Sale Price') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($adjustments_decrement_by_brand as $adj_dec)
+                                    <tr>
+                                        <td class="font-weight-bold">{{ $adj_dec->brand_name }}</td>
+                                        <td>{{ number_format((float)$adj_dec->total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_dec->total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_dec->total_selling_price, $general_setting->decimal, '.', '') }}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="4">{{ trans('file.Not Found') }}</td>
+                                    </tr>
+                                    @endforelse
+                                    <tr class="font-weight-bold">
+                                        <td>{{ trans('file.Total') }} {{ trans('file.Stock Adjustment') }} (-)</td>
+                                        <td>{{ number_format((float)$adj_dec_total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_dec_total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$adj_dec_total_selling_price, $general_setting->decimal, '.', '') }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -222,12 +335,12 @@
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0 text-center">
-                                <thead class="text-white" style="background-color: #f9785e;">
+                                <thead>
                                     <tr>
-                                        <th style="background-color: #f9785e; border: 1px solid #dee2e6;"></th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Pair') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Sale Price') }}</th>
-                                        <th class="text-white font-weight-bold">{{ trans('file.Purchase Price') }}</th>
+                                        <th></th>
+                                        <th>{{ trans('file.Pair') }}</th>
+                                        <th>{{ trans('file.Sale Price') }}</th>
+                                        <th>{{ trans('file.Purchase Price') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -280,6 +393,7 @@
                                         <td>{{ number_format((float)$row7_revenue, $general_setting->decimal, '.', '') }}</td>
                                         <td>{{ number_format((float)$row7_cost, $general_setting->decimal, '.', '') }}</td>
                                     </tr>
+
                                     <!-- Waste Row -->
                                     <tr>
                                         <td class="font-weight-bold text-left pl-3">{{ trans('file.Waste') }}</td>
@@ -322,6 +436,57 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Adjustment Log Table -->
+        <div class="row mt-4">
+            <div class="col-md-12 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header py-2 text-center">
+                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Stock Adjustment') }} Log</h4>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-0 text-center">
+                                <thead>
+                                    <tr>
+                                        <th>{{ trans('file.date') }}</th>
+                                        <th>{{ trans('file.reference') }}</th>
+                                        <th>{{ trans('file.Brand') }}</th>
+                                        <th>{{ trans('file.product') }}</th>
+                                        <th>{{ trans('file.variant') }}</th>
+                                        <th>Action</th>
+                                        <th>{{ trans('file.qty') }} (Pairs)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($detailed_adjustments as $adj)
+                                    <tr>
+                                        <td>{{ date($general_setting->date_format, strtotime($adj->created_at)) }}</td>
+                                        <td>{{ $adj->reference_no }}</td>
+                                        <td>{{ $adj->brand_name }}</td>
+                                        <td>{{ $adj->product_name }} ({{ $adj->product_code }})</td>
+                                        <td>{{ $adj->variant_name ?? '-' }}</td>
+                                        <td>
+                                            @if($adj->action == '+')
+                                                <span class="badge badge-success"><i class="fa fa-plus"></i> Increment</span>
+                                            @else
+                                                <span class="badge badge-danger"><i class="fa fa-minus"></i> Decrement</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ number_format((float)$adj->qty, 0, '.', '') }}</td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="7">{{ trans('file.Not Found') }}</td>
+                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

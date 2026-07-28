@@ -1410,4 +1410,5 @@ return [
 	"Difference" => "পার্থক্য",
 	"Waste" => "অপচয়",
 	"Stock Summary" => "স্টক সামারি",
+	"Stock Adjustment" => "স্টক সমন্বয়",
 ];

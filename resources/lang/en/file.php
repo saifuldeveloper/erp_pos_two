@@ -1488,4 +1488,5 @@ return [
 	"Difference" => "Difference",
 	"Waste" => "Waste",
 	"Stock Summary" => "Stock Summary",
+	"Stock Adjustment" => "Stock Adjustment",
 ];

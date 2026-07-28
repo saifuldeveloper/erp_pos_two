@@ -27,6 +27,7 @@ class CreateProductWarhouseTable extends Migration
             $table->index('product_id');
             $table->index('variant_id');
             $table->index('warehouse_id');
+            $table->index(['product_id', 'warehouse_id', 'variant_id'], 'idx_pw_prod_wh_var');
         });
     }
 
