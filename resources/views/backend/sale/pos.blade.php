@@ -3121,24 +3121,89 @@ function confirmCancel() {
 }
 
 $(document).on('submit', '.payment-form', function(e) {
+    var biller_val = $('select[name="biller_id"]').val();
+    if (!biller_val) {
+        Swal.fire({
+            icon: 'warning',
+            title: "{{trans('file.Attention')}}",
+            text: "{{trans('file.Please select Biller!')}}",
+            confirmButtonColor: '#17a2b8'
+        });
+        e.preventDefault();
+        return false;
+    }
+
+    var warehouse_val = $('select[name="warehouse_id"]').val();
+    if (!warehouse_val) {
+        Swal.fire({
+            icon: 'warning',
+            title: "{{trans('file.Attention')}}",
+            text: "{{trans('file.Please select Warehouse!')}}",
+            confirmButtonColor: '#17a2b8'
+        });
+        e.preventDefault();
+        return false;
+    }
+
+    var customer_val = $('select[name="customer_id"]').val();
+    if (!customer_val) {
+        Swal.fire({
+            icon: 'warning',
+            title: "{{trans('file.Attention')}}",
+            text: "{{trans('file.Please select Customer!')}}",
+            confirmButtonColor: '#17a2b8'
+        });
+        e.preventDefault();
+        return false;
+    }
+
+    var qty_empty = false;
     $("table.order-list tbody .qty").each(function(index) {
         if ($(this).val() == '') {
-            alert('One of products has no quantity!');
-            e.preventDefault();
+            qty_empty = true;
         }
     });
+    if (qty_empty) {
+        Swal.fire({
+            icon: 'warning',
+            title: "{{trans('file.Attention')}}",
+            text: "{{trans('file.One of products has no quantity!')}}",
+            confirmButtonColor: '#17a2b8'
+        });
+        e.preventDefault();
+        return false;
+    }
+
     var rownumber = $('table.order-list tbody tr:last').index();
     if (rownumber < 0) {
-        alert("Please insert product to order table!")
+        Swal.fire({
+            icon: 'warning',
+            title: "{{trans('file.Attention')}}",
+            text: "{{trans('file.Please insert product to order table!')}}",
+            confirmButtonColor: '#17a2b8'
+        });
         e.preventDefault();
+        return false;
     }
     else if(parseFloat($('input[name="total_qty"]').val()) <= 0) {
-        alert('Product quantity is 0');
+        Swal.fire({
+            icon: 'warning',
+            title: "{{trans('file.Attention')}}",
+            text: "{{trans('file.Product quantity is 0')}}",
+            confirmButtonColor: '#17a2b8'
+        });
         e.preventDefault();
+        return false;
     }
     else if( parseFloat( $('input[name="paying_amount"]').val() ) < parseFloat( $('input[name="paid_amount"]').val() ) ){
-        alert('Paying amount cannot be bigger than recieved amount');
+        Swal.fire({
+            icon: 'warning',
+            title: "{{trans('file.Attention')}}",
+            text: "{{trans('file.Paying amount cannot be bigger than received amount')}}",
+            confirmButtonColor: '#17a2b8'
+        });
         e.preventDefault();
+        return false;
     }
     else {
         $("#submit-button").prop('disabled', true);
@@ -3160,5 +3225,6 @@ $('#product-table').DataTable( {
     dom: 'tp'
 });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 @endpush

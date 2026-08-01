@@ -14,8 +14,20 @@ class SaleService
      */
     public function store(array $data)
     {
+        $rules = [
+            'warehouse_id' => 'required',
+        ];
 
+        if (!isset($data['sale_type']) || $data['sale_type'] !== 'website') {
+            $rules['biller_id'] = 'required';
+            $rules['customer_id'] = 'required';
+        }
 
+        $validator = \Illuminate\Support\Facades\Validator::make($data, $rules);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
 
         return DB::transaction(function () use ($data) {
 

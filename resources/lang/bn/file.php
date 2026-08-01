@@ -1417,4 +1417,12 @@ return [
 	"Waste" => "অপচয়",
 	"Stock Summary" => "স্টক সামারি",
 	"Stock Adjustment" => "স্টক সমন্বয়",
+	"Attention" => "সতর্কতা",
+	"Please select Biller!" => "অনুগ্রহ করে বিলার নির্বাচন করুন!",
+	"Please select Warehouse!" => "অনুগ্রহ করে ওয়্যারহাউস নির্বাচন করুন!",
+	"Please select Customer!" => "অনুগ্রহ করে কাস্টমার নির্বাচন করুন!",
+	"One of products has no quantity!" => "যেকোনো একটি পণ্যের পরিমাণ নেই!",
+	"Please insert product to order table!" => "অনুগ্রহ করে অর্ডার টেবিলে পণ্য যোগ করুন!",
+	"Product quantity is 0" => "পণ্যের পরিমাণ ০",
+	"Paying amount cannot be bigger than received amount" => "পরিশোধের পরিমাণ প্রাপ্ত পরিমাণের চেয়ে বেশি হতে পারে না",
 ];

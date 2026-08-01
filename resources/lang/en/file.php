@@ -1496,4 +1496,12 @@ return [
 	"Waste" => "Waste",
 	"Stock Summary" => "Stock Summary",
 	"Stock Adjustment" => "Stock Adjustment",
+	"Attention" => "Attention",
+	"Please select Biller!" => "Please select Biller!",
+	"Please select Warehouse!" => "Please select Warehouse!",
+	"Please select Customer!" => "Please select Customer!",
+	"One of products has no quantity!" => "One of products has no quantity!",
+	"Please insert product to order table!" => "Please insert product to order table!",
+	"Product quantity is 0" => "Product quantity is 0",
+	"Paying amount cannot be bigger than received amount" => "Paying amount cannot be bigger than received amount",
 ];
