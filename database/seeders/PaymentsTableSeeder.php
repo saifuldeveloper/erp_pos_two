@@ -22,20 +22,20 @@ class PaymentsTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'purchase_id' => NULL,
                 'sale_id' => 2,
-                'cash_register_id' => NULL,
-                'account_id' => 1,
                 'payment_reference' => 'spr-20260726-054821',
-                'user_id' => 1,
                 'amount' => 2000.0,
-                'used_points' => NULL,
                 'paying_method' => 'Cash',
                 'payment_note' => NULL,
                 'due_payment' => 0,
+                'purchase_id' => NULL,
+                'user_id' => 1,
+                'account_id' => 1,
+                'cash_register_id' => NULL,
+                'used_points' => NULL,
+                'change' => 0.0,
                 'created_at' => '2026-07-26 17:48:21',
                 'updated_at' => '2026-07-26 17:48:21',
-                'change' => 0.0,
             ),
         ));
         

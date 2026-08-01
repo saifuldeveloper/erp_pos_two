@@ -208,9 +208,67 @@
                     <p class="italic">
                         <small>{{ trans('file.The field labels marked with * are required input fields') }}.</small>
                     </p>
-                    <p>{{ trans('file.The correct column order is') }} (image, name*, code*, type*, brand, category*,
-                        unit_code*, cost*, price*, product_details, variant_name, item_code, additional_price)
-                        {{ trans('file.and you must follow this') }}.</p>
+                    <p class="mb-2">{{ trans('file.The correct column order is') }} {{ trans('file.and you must follow this') }}:</p>
+                    
+                    <div class="table-responsive mb-3" style="border: 1px solid #e4e6fc; border-radius: 8px; overflow-x: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                        <table class="table table-bordered table-striped" style="margin-bottom: 0; min-width: 1300px; font-size: 12px; border-collapse: collapse; width: 100%;">
+                            <thead>
+                                <tr style="background-color: #3b3f5c; color: white;">
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">image</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50; color: #ff7675;">name *</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50; color: #ff7675;">code *</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50; color: #ff7675;">type *</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">brand</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50; color: #ff7675;">category *</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50; color: #ff7675;">unit_code *</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50; color: #ff7675;">cost *</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50; color: #ff7675;">price *</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">product_details</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">variant_value</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">variant_name</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">item_code</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">additional_cost</th>
+                                    <th style="font-weight: 800; padding: 10px; text-transform: uppercase; border-bottom: 3px solid #ff7675; text-align: left; background: #2c3e50;">additional_price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px; color: #7f8c8d;">polo-tshirt.jpg</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">Polo T-Shirt</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">polo-101</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">standard</td>
+                                    <td style="padding: 8px; color: #7f8c8d;">Lotto</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">Clothing</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">pc</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">350.00</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">500.00</td>
+                                    <td style="padding: 8px; color: #7f8c8d;">Premium Cotton Polo T-Shirt</td>
+                                    <td style="padding: 8px; color: #bdc3c7; text-align: center;">-</td>
+                                    <td style="padding: 8px; color: #bdc3c7; text-align: center;">-</td>
+                                    <td style="padding: 8px; color: #bdc3c7; text-align: center;">-</td>
+                                    <td style="padding: 8px; color: #bdc3c7; text-align: center;">-</td>
+                                    <td style="padding: 8px; color: #bdc3c7; text-align: center;">-</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; color: #7f8c8d;">nike-air.jpg</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">Nike Air Shoes</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">nike-202</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">standard</td>
+                                    <td style="padding: 8px; color: #7f8c8d;">Nike</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">Footwear</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">pair</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">4500.00</td>
+                                    <td style="padding: 8px; font-weight: bold; color: #2c3e50;">6000.00</td>
+                                    <td style="padding: 8px; color: #7f8c8d;">Running shoes with variants</td>
+                                    <td style="padding: 8px; color: #2c3e50; font-family: monospace;">Size[M/L],Color[Blue/Black]</td>
+                                    <td style="padding: 8px; color: #2c3e50; font-family: monospace;">M/Blue,M/Black,L/Blue,L/Black</td>
+                                    <td style="padding: 8px; color: #2c3e50; font-family: monospace;">M/Blue-202,M/Black-202,...</td>
+                                    <td style="padding: 8px; color: #2c3e50; font-family: monospace;">0,0,100,100</td>
+                                    <td style="padding: 8px; color: #2c3e50; font-family: monospace;">0,0,200,200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p>{{ trans('file.To display Image it must be stored in') }} public/images/product
                         {{ trans('file.directory') }}. {{ trans('file.Image name must be same as product name') }}</p>
                     <div class="row">

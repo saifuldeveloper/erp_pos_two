@@ -1,7 +1,13 @@
 <?php
 
 return [
-
+	'Stock Count List' => 'স্টক গণনার তালিকা',
+	'Stock Count ID' => 'স্টক গণনা আইডি',
+	'Current Stock' => 'বর্তমান স্টক',
+	'Stock Find' => 'গণনা করা স্টক',
+	'Stock Increment' => 'স্টক বৃদ্ধি',
+	'Stock Decrement' => 'স্টক হ্রাস',
+	'Date' => 'তারিখ',
 	'Count' => 'পরিমাণ',
 	"dashboard" => "ড্যাশবোর্ড",
 	'Clinet ID' =>'ক্লায়েন্ট আইডি',

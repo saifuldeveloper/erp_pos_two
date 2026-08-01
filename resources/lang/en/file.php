@@ -1,5 +1,12 @@
 <?php
 return [
+	'Stock Count List' => 'Stock Count List',
+	'Stock Count ID' => 'Stock Count ID',
+	'Current Stock' => 'Current Stock',
+	'Stock Find' => 'Stock Find',
+	'Stock Increment' => 'Stock Increment',
+	'Stock Decrement' => 'Stock Decrement',
+	'Date' => 'Date',
 	'Count' => 'Count',
 	'Clinet ID' =>'Clinet ID',
 	'Store ID' =>'Store ID',

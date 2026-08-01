@@ -27,9 +27,9 @@ class WarehousesTableSeeder extends Seeder
                 'email' => NULL,
                 'address' => 'Kandirpar, Comilla',
                 'is_active' => 1,
+                'is_default' => 1,
                 'created_at' => '2025-04-19 11:20:40',
                 'updated_at' => '2026-06-18 23:47:41',
-                'is_default' => 1,
             ),
             1 => 
             array (
@@ -39,9 +39,9 @@ class WarehousesTableSeeder extends Seeder
                 'email' => 'comilladiscount@gmail.com',
                 'address' => 'Kandirpar, Comilla',
                 'is_active' => 1,
+                'is_default' => 1,
                 'created_at' => '2025-04-21 10:07:06',
                 'updated_at' => '2025-04-21 10:07:32',
-                'is_default' => 1,
             ),
         ));
         

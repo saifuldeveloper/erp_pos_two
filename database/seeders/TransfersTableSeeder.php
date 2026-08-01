@@ -23,7 +23,6 @@ class TransfersTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'reference_no' => 'tr-20260726-054821-6a65f40531131',
-                'user_id' => 1,
                 'status' => 1,
                 'from_warehouse_id' => 2,
                 'to_warehouse_id' => 1,
@@ -35,6 +34,7 @@ class TransfersTableSeeder extends Seeder
                 'grand_total' => 1000.0,
                 'document' => NULL,
                 'note' => 'Auto-transfer created during POS sale #2',
+                'user_id' => 1,
                 'created_at' => '2026-07-26 17:48:21',
                 'updated_at' => '2026-07-26 17:48:21',
             ),

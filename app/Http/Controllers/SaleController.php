@@ -362,7 +362,10 @@ class SaleController extends Controller
                 }
                 $ratio = $invoice_product_total > 0 ? ($brand_product_total / $invoice_product_total) : 0;
             } else {
-                $brand_qty = $sale->total_qty;
+                $brand_qty = 0;
+                foreach ($sale->productSales as $productSale) {
+                    $brand_qty += $productSale->qty;
+                }
             }
 
             $nestedData['id'] = $sale->id;

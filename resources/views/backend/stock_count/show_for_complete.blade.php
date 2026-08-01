@@ -235,7 +235,10 @@
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
                             <h4>{{ trans('file.Count Stock') }} ({{ $lims_stock_count->id }})</h4>
-                            <a href="{{ route('report.stockCount') }}" class="btn btn-primary ml-auto">
+                            <a href="{{ route('report.overview', ['stock_count_id' => $lims_stock_count->id]) }}" class="btn btn-info ml-auto mr-2">
+                                <i class="fa fa-pie-chart"></i> Overview Report
+                            </a>
+                            <a href="{{ route('report.stockCount') }}" class="btn btn-primary">
                                 <i class="fa fa-list"></i> Stock Count
                             </a>
                         </div>

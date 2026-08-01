@@ -237,6 +237,9 @@ class StockCountController extends Controller
                     }
                 }
                 $batch = $request->resolved_batch;
+                if (is_string($batch)) {
+                    $batch = json_decode($batch, true);
+                }
                 if ($batch && count($batch) > 0) {
                     $this->processBatchUpdates($stock_count, $batch);
                 }
@@ -248,8 +251,10 @@ class StockCountController extends Controller
                     $this->recalculateGlobalStocks();
 
                     $stock_count->update([
+                        'is_completed' => true,
                         'is_resolved' => true,
-                        'resolved_by' => Auth::id()
+                        'resolved_by' => Auth::id(),
+                        'completed_by' => $stock_count->completed_by ?: Auth::id()
                     ]);
                 }
 

@@ -1,3 +1,4 @@
-image,name,code,type,brand,category,unit_code,cost,price,product_details,variant_value,variant_name,item_code,additional_cost,additional_price
-,tinko,9999,standard,Lotto,accessories,pc,15,20,this is test product with variant,"Size[S/M/L],Color[Red/Green]","S/Red,S/Green,M/Red,M/Green,L/Red,L/Green","S/Red-9999,S/Green-9999,M/Red-9999,M/Green-9999,L/Red-9999,L/Green-9999","0,0,0,0,5,5","0,0,0,0,10,10"
-,tinki,1111,standard,,food,kg,10,15,this is test product without variant,,,,,
+IMAGE,NAME,CODE,TYPE,BRAND,CATEGORY,UNIT_CODE,COST,PRICE,PRODUCT_DETAILS,VARIANT_VALUE,VARIANT_NAME,ITEM_CODE,ADDITIONAL_COST,ADDITIONAL_PRICE
+polo-tshirt.jpg,Polo T-Shirt,polo-101,standard,Lotto,Clothing,pc,350.00,500.00,Premium Quality Cotton Polo T-Shirt,,,,,
+fresh-apple.jpg,Fuji Apple,apple-001,standard,,Fruits,kg,180.00,240.00,Fresh Red Fuji Apples,,,,,
+nike-air.jpg,Nike Air Running Shoes,nike-202,standard,Nike,Footwear,pair,4500.00,6000.00,Running shoes with size and color variants,"Size[M/L],Color[Blue/Black]","M/Blue,M/Black,L/Blue,L/Black","M/Blue-202,M/Black-202,L/Blue-202,L/Black-202","0,0,100,100","0,0,200,200"

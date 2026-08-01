@@ -524,7 +524,7 @@
                     _token: "{{ csrf_token() }}",
                     _method: "PUT",
                     status: "resolved",
-                    resolved_batch: chunks[index],
+                    resolved_batch: JSON.stringify(chunks[index]),
                     chunk_index: index,
                     is_final_chunk: (index === chunks.length - 1) ? 1 : 0,
                     zero_remaining: $('#zero-remaining-checkbox').is(':checked') ? 1 : 0,

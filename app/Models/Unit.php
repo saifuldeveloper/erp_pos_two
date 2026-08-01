@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Unit extends Model
 {
     protected $fillable =[
-
-       "unit_name", "operation_value", "operator", "is_active"
+        "unit_code", "unit_name", "base_unit", "operation_value", "operator", "is_active"
     ];
 
     public function product()

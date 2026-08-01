@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <h3 class="text-center">{{ trans('file.Overview Report') }}</h3>
     </div>
-    
+
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -128,10 +128,10 @@
             </div>
         </div>
 
-        <!-- Row 2: Purchase Return and Sale Return -->
+        <!-- Row 2: Purchase Return, Sale Return and Waste -->
         <div class="row mt-2">
             <!-- Purchase Return Table -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-header py-2 text-center">
                         <h4 class="mb-0 font-weight-bold">{{ trans('file.Purchase Return') }}</h4>
@@ -174,7 +174,7 @@
             </div>
 
             <!-- Sale Return Table -->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-header py-2 text-center">
                         <h4 class="mb-0 font-weight-bold">{{ trans('file.Sale Return') }}</h4>
@@ -215,15 +215,12 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Row 3: Stock Adjustment (Increment) and Stock Adjustment (Decrement) -->
-        <div class="row mt-2">
-            <!-- Stock Adjustment (Increment) Table -->
-            <div class="col-md-6 mb-4">
+            <!-- Waste Table -->
+            <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-header py-2 text-center">
-                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Stock Adjustment') }} (+)</h4>
+                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Waste') }}</h4>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
@@ -237,12 +234,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($adjustments_increment_by_brand as $adj_inc)
+                                    @forelse($wastes_by_brand as $w)
                                     <tr>
-                                        <td class="font-weight-bold">{{ $adj_inc->brand_name }}</td>
-                                        <td>{{ number_format((float)$adj_inc->total_qty, 0, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_inc->total_cost, $general_setting->decimal, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_inc->total_selling_price, $general_setting->decimal, '.', '') }}</td>
+                                        <td class="font-weight-bold">{{ $w->brand_name }}</td>
+                                        <td>{{ number_format((float)$w->total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$w->total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$w->total_revenue, $general_setting->decimal, '.', '') }}</td>
                                     </tr>
                                     @empty
                                     <tr>
@@ -250,53 +247,10 @@
                                     </tr>
                                     @endforelse
                                     <tr class="font-weight-bold">
-                                        <td>{{ trans('file.Total') }} {{ trans('file.Stock Adjustment') }} (+)</td>
-                                        <td>{{ number_format((float)$adj_inc_total_qty, 0, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_inc_total_cost, $general_setting->decimal, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_inc_total_selling_price, $general_setting->decimal, '.', '') }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stock Adjustment (Decrement) Table -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100">
-                    <div class="card-header py-2 text-center">
-                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Stock Adjustment') }} (-)</h4>
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-bordered mb-0 text-center">
-                                <thead>
-                                    <tr>
-                                        <th>{{ trans('file.Brand') }}</th>
-                                        <th>{{ trans('file.Pair') }}</th>
-                                        <th>{{ trans('file.Purchase Price') }}</th>
-                                        <th>{{ trans('file.Sale Price') }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse($adjustments_decrement_by_brand as $adj_dec)
-                                    <tr>
-                                        <td class="font-weight-bold">{{ $adj_dec->brand_name }}</td>
-                                        <td>{{ number_format((float)$adj_dec->total_qty, 0, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_dec->total_cost, $general_setting->decimal, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_dec->total_selling_price, $general_setting->decimal, '.', '') }}</td>
-                                    </tr>
-                                    @empty
-                                    <tr>
-                                        <td colspan="4">{{ trans('file.Not Found') }}</td>
-                                    </tr>
-                                    @endforelse
-                                    <tr class="font-weight-bold">
-                                        <td>{{ trans('file.Total') }} {{ trans('file.Stock Adjustment') }} (-)</td>
-                                        <td>{{ number_format((float)$adj_dec_total_qty, 0, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_dec_total_cost, $general_setting->decimal, '.', '') }}</td>
-                                        <td>{{ number_format((float)$adj_dec_total_selling_price, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ trans('file.Total') }} {{ trans('file.Waste') }}</td>
+                                        <td>{{ number_format((float)$waste_total_qty, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$waste_total_cost, $general_setting->decimal, '.', '') }}</td>
+                                        <td>{{ number_format((float)$waste_total_revenue, $general_setting->decimal, '.', '') }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -305,6 +259,8 @@
                 </div>
             </div>
         </div>
+
+
 
         @php
             // Intermediate calculations
@@ -408,34 +364,27 @@
                                         <td>{{ number_format((float)$expected_revenue, $general_setting->decimal, '.', '') }}</td>
                                         <td>{{ number_format((float)$expected_cost, $general_setting->decimal, '.', '') }}</td>
                                     </tr>
-                                    <!-- Software Stock Row (From Stock Count) -->
+                                    <!-- Stock Count Row (From Stock Count) -->
                                     <tr>
-                                        <td class="font-weight-bold text-left pl-3">{{ trans('file.Software Stock') }}</td>
-                                        <td>{{ $stock_count_id ? number_format((float)$stock_count_current_qty, 0, '.', '') : '-' }}</td>
-                                        <td>{{ $stock_count_id ? number_format((float)$stock_count_current_revenue, $general_setting->decimal, '.', '') : '-' }}</td>
-                                        <td>{{ $stock_count_id ? number_format((float)$stock_count_current_cost, $general_setting->decimal, '.', '') : '-' }}</td>
-                                    </tr>
-                                    <!-- Not Found Row (From Stock Count) -->
-                                    <tr>
-                                        <td class="font-weight-bold text-left pl-3 text-danger">{{ trans('file.Not Found') }}</td>
-                                        <td class="text-danger">{{ $stock_count_id ? number_format((float)($stock_count_current_qty - $stock_count_updated_qty), 0, '.', '') : '-' }}</td>
-                                        <td class="text-danger">{{ $stock_count_id ? number_format((float)($stock_count_current_revenue - $stock_count_updated_revenue), $general_setting->decimal, '.', '') : '-' }}</td>
-                                        <td class="text-danger">{{ $stock_count_id ? number_format((float)($stock_count_current_cost - $stock_count_updated_cost), $general_setting->decimal, '.', '') : '-' }}</td>
-                                    </tr>
-                                    <!-- Physical Stock Row (From Stock Count) -->
-                                    <tr class="font-weight-bold">
-                                        <td class="text-left pl-3">{{ trans('file.Physical Stock') }}</td>
+                                        <td class="font-weight-bold text-left pl-3">{{ trans('file.Stock Count') }}</td>
                                         <td>{{ $stock_count_id ? number_format((float)$stock_count_updated_qty, 0, '.', '') : '-' }}</td>
                                         <td>{{ $stock_count_id ? number_format((float)$stock_count_updated_revenue, $general_setting->decimal, '.', '') : '-' }}</td>
                                         <td>{{ $stock_count_id ? number_format((float)$stock_count_updated_cost, $general_setting->decimal, '.', '') : '-' }}</td>
                                     </tr>
+                                    <!-- Not Found Row (From Stock Count) -->
+                                    {{-- <tr>
+                                        <td class="font-weight-bold text-left pl-3 text-danger">{{ trans('file.Not Found') }}</td>
+                                        <td class="text-danger">{{ $stock_count_id ? number_format((float)($stock_count_current_qty - $stock_count_updated_qty), 0, '.', '') : '-' }}</td>
+                                        <td class="text-danger">{{ $stock_count_id ? number_format((float)($stock_count_current_revenue - $stock_count_updated_revenue), $general_setting->decimal, '.', '') : '-' }}</td>
+                                        <td class="text-danger">{{ $stock_count_id ? number_format((float)($stock_count_current_cost - $stock_count_updated_cost), $general_setting->decimal, '.', '') : '-' }}</td>
+                                    </tr> --}}
                                     <!-- Difference Row -->
-                                    <tr class="font-weight-bold" style="background-color: #ff9800; color: white;">
+                                    {{-- <tr class="font-weight-bold" style="background-color: #ff9800; color: white;">
                                         <td class="text-left pl-3">{{ trans('file.Difference') }}</td>
                                         <td>{{ $stock_count_id ? number_format((float)($expected_qty - $stock_count_updated_qty), 0, '.', '') : '-' }}</td>
                                         <td></td>
                                         <td></td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
@@ -444,47 +393,40 @@
             </div>
         </div>
 
-        <!-- Detailed Adjustment Log Table -->
-        <div class="row mt-4">
-            <div class="col-md-12 mb-4">
+
+        <!-- Stock Count List Table -->
+        {{-- <div class="row mt-4 justify-content-center">
+            <div class="col-md-9 mb-4">
                 <div class="card shadow-sm">
                     <div class="card-header py-2 text-center">
-                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Stock Adjustment') }} Log</h4>
+                        <h4 class="mb-0 font-weight-bold">{{ trans('file.Stock Count List') }}</h4>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0 text-center">
                                 <thead>
                                     <tr>
-                                        <th>{{ trans('file.date') }}</th>
-                                        <th>{{ trans('file.reference') }}</th>
-                                        <th>{{ trans('file.Brand') }}</th>
-                                        <th>{{ trans('file.product') }}</th>
-                                        <th>{{ trans('file.variant') }}</th>
-                                        <th>Action</th>
-                                        <th>{{ trans('file.qty') }} (Pairs)</th>
+                                        <th>{{ trans('file.Stock Count ID') }}</th>
+                                        <th>{{ trans('file.Date') }}</th>
+                                        <th>{{ trans('file.Current Stock') }}</th>
+                                        <th>{{ trans('file.Stock Find') }}</th>
+                                        <th>{{ trans('file.Stock Increment') }}</th>
+                                        <th>{{ trans('file.Stock Decrement') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($detailed_adjustments as $adj)
+                                    @forelse($stock_count_list as $sc)
                                     <tr>
-                                        <td>{{ date($general_setting->date_format, strtotime($adj->created_at)) }}</td>
-                                        <td>{{ $adj->reference_no }}</td>
-                                        <td>{{ $adj->brand_name }}</td>
-                                        <td>{{ $adj->product_name }} ({{ $adj->product_code }})</td>
-                                        <td>{{ $adj->variant_name ?? '-' }}</td>
-                                        <td>
-                                            @if($adj->action == '+')
-                                                <span class="badge badge-success"><i class="fa fa-plus"></i> Increment</span>
-                                            @else
-                                                <span class="badge badge-danger"><i class="fa fa-minus"></i> Decrement</span>
-                                            @endif
-                                        </td>
-                                        <td>{{ number_format((float)$adj->qty, 0, '.', '') }}</td>
+                                        <td class="font-weight-bold">{{ $sc->id }}</td>
+                                        <td>{{ date('d-m-Y', strtotime($sc->created_at)) }}</td>
+                                        <td>{{ number_format((float)$sc->current_stock, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$sc->stock_find, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$sc->stock_increment, 0, '.', '') }}</td>
+                                        <td>{{ number_format((float)$sc->stock_decrement, 0, '.', '') }}</td>
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="7">{{ trans('file.Not Found') }}</td>
+                                        <td colspan="6">{{ trans('file.Not Found') }}</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
@@ -493,7 +435,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
+
     </div>
 </section>
 

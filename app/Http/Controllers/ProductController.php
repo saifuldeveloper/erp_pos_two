@@ -962,7 +962,8 @@ class ProductController extends Controller
             'discount' => 0,
             'tax_rate' => $tax_rate,
             'tax' => $tax,
-            'total' => $cost
+            'total' => $cost,
+            'selling_price' => $product_data->price
         ]);
         //inserting data to payments table
         Payment::create([
@@ -1907,14 +1908,22 @@ class ProductController extends Controller
     {
         //get file
         $upload = $request->file('file');
+        if (!$upload || !$upload->isValid()) {
+            return redirect()->back()->with('message', 'Uploaded file is not valid.');
+        }
         $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
         if ($ext != 'csv')
             return redirect()->back()->with('message', 'Please upload a CSV file');
 
-        $filePath = $upload->getRealPath();
-        //open and read
+        $filePath = $upload->getPathname();
+        if (empty($filePath)) {
+            return redirect()->back()->with('message', 'Uploaded file path is empty.');
+        }
         $file = fopen($filePath, 'r');
         $header = fgetcsv($file);
+        if ($header === false) {
+            return redirect()->back()->with('message', 'The CSV file is empty.');
+        }
         $escapedHeader = [];
         //validate
         foreach ($header as $key => $value) {
@@ -1924,10 +1933,34 @@ class ProductController extends Controller
         }
         //looping through other columns
         while ($columns = fgetcsv($file)) {
-            foreach ($columns as $key => $value) {
-                $value = preg_replace('/\D/', '', $value);
+            if (empty($columns) || (count($columns) === 1 && empty($columns[0]))) {
+                continue;
+            }
+            if (count($columns) < count($escapedHeader)) {
+                $columns = array_pad($columns, count($escapedHeader), '');
+            } elseif (count($columns) > count($escapedHeader)) {
+                $columns = array_slice($columns, 0, count($escapedHeader));
             }
             $data = array_combine($escapedHeader, $columns);
+
+            $data = array_merge([
+                'image' => '',
+                'name' => '',
+                'code' => '',
+                'type' => 'standard',
+                'brand' => '',
+                'category' => '',
+                'unitcode' => '',
+                'cost' => '0',
+                'price' => '0',
+                'productdetails' => '',
+                'variantvalue' => '',
+                'variantname' => '',
+                'itemcode' => '',
+                'additionalcost' => '',
+                'additionalprice' => ''
+            ], $data);
+
 
             if ($data['brand'] != 'N/A' && $data['brand'] != '') {
                 $lims_brand_data = Brand::firstOrCreate(['title' => $data['brand'], 'is_active' => true]);
@@ -1937,9 +1970,70 @@ class ProductController extends Controller
 
             $lims_category_data = Category::firstOrCreate(['name' => $data['category'], 'is_active' => true]);
 
-            $lims_unit_data = Unit::where('unit_code', $data['unitcode'])->first();
-            if (!$lims_unit_data)
+            // Find unit by code or name (case-insensitive)
+            $unit_val = trim($data['unitcode']);
+            $lims_unit_data = Unit::where(function($query) use ($unit_val) {
+                $query->where('unit_code', $unit_val)
+                      ->orWhere('unit_name', $unit_val);
+            })->first();
+            
+            // If still not found, try to map common aliases
+            if (!$lims_unit_data) {
+                $aliases = [
+                    'pc' => ['pieces', 'piece', 'pc', 'pcs'],
+                    'pair' => ['pair', 'pairs', 'pr'],
+                    'kg' => ['kilogram', 'kilograms', 'kg', 'kgs'],
+                ];
+                $matched_alias = null;
+                foreach ($aliases as $key => $values) {
+                    if (in_array(strtolower($unit_val), $values)) {
+                        $matched_alias = $key;
+                        break;
+                    }
+                }
+                if ($matched_alias) {
+                    $aliases_to_check = $aliases[$matched_alias];
+                    $lims_unit_data = Unit::where(function($query) use ($aliases_to_check) {
+                        foreach ($aliases_to_check as $alias) {
+                            $query->orWhere('unit_name', 'like', '%' . $alias . '%');
+                        }
+                    })->first();
+                }
+            }
+
+            // Auto-create standard unit if missing
+            if (!$lims_unit_data && !empty($unit_val)) {
+                $standard_names = [
+                    'pc' => 'Pieces',
+                    'pcs' => 'Pieces',
+                    'pair' => 'Pair',
+                    'kg' => 'Kilogram',
+                    'g' => 'Gram',
+                    'gm' => 'Gram',
+                    'ltr' => 'Litre',
+                    'l' => 'Litre',
+                    'box' => 'Box',
+                    'pack' => 'Pack'
+                ];
+                $u_name = $standard_names[strtolower($unit_val)] ?? ucfirst($unit_val);
+                
+                $lims_unit_data = Unit::create([
+                    'unit_code' => strtolower($unit_val),
+                    'unit_name' => $u_name,
+                    'operator' => '*',
+                    'operation_value' => 1.0,
+                    'is_active' => true
+                ]);
+            }
+
+            if ($lims_unit_data && empty($lims_unit_data->unit_code)) {
+                $lims_unit_data->unit_code = strtolower($unit_val);
+                $lims_unit_data->save();
+            }
+
+            if (!$lims_unit_data) {
                 return redirect()->back()->with('not_permitted', 'Unit code does not exist in the database.');
+            }
 
             $product = Product::firstOrNew(['name' => $data['name'], 'is_active' => true]);
             if ($data['image'])
@@ -2020,10 +2114,10 @@ class ProductController extends Controller
                     }
                 }
             } elseif (config('without_stock') == 'yes') {
-                foreach ($warehouse_ids as $key => $warehouse_id) {
+                foreach ($warehouse_ids as $key => $warehouse_id_item) {
                     Product_Warehouse::create([
                         'product_id' => $product->id,
-                        'warehouse_id' => $warehouse_id,
+                        'warehouse_id' => $warehouse_id_item,
                         'qty' => 0
                     ]);
                 }

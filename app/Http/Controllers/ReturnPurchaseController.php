@@ -162,6 +162,11 @@ class ReturnPurchaseController extends Controller
                 ->groupBy('ppr.return_id')
                 ->pluck('total', 'return_id');
 
+            $returnQties = DB::table('purchase_product_return')
+                ->whereIn('return_id', $return_ids)
+                ->groupBy('return_id')
+                ->pluck(DB::raw('SUM(qty)'), 'return_id');
+
             foreach ($returnss as $key => $returns) {
                 $sale_total = $saleTotals[$returns->id] ?? 0;
                 $nestedData['id'] = $returns->id;
@@ -182,7 +187,7 @@ class ReturnPurchaseController extends Controller
                     $supplier = new Supplier;
                     $nestedData['supplier'] = 'N/A';
                 }
-                $nestedData['qty'] = number_format($returns->total_qty, config('decimal'));
+                $nestedData['qty'] = number_format($returnQties[$returns->id] ?? 0, config('decimal'));
                 $nestedData['sale_total'] = number_format($sale_total, config('decimal'));
                 $nestedData['grand_total'] = number_format($returns->grand_total, config('decimal'));
                 $nestedData['options'] = '<div class="btn-group">
