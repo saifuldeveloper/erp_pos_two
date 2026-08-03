@@ -53,7 +53,7 @@
                         @forelse ($invoice['invoice_entries'] as $key => $entry)
                             @if ($purchase)
                                 @php
-                                    $product = App\Models\Product::where('code', 'A-' . $entry['shoe']['id'])->first();
+                                    $product = App\Models\Product::where('code', 'A-' . $entry['shoe']['code'])->first();
                                     $productPurchase = $purchase->productPurchases->where('product_id', $product->id);
                                 @endphp
                             @else
@@ -61,9 +61,9 @@
                                     $productPurchase = null;
                                 @endphp
                             @endif
-                            <tr id="product-{{ $entry['shoe']['id'] }}">
+                            <tr id="product-{{ $entry['shoe']['code'] }}">
                                 <td><strong>{{ $key + 1 }}</strong></td>
-                                <td>{{ $entry['shoe']['id'] }} [{{ $entry['shoe']['id'] }}]</td>
+                                <td>{{ $entry['shoe']['code'] }} [{{ $entry['shoe']['code'] }}]</td>
                                 <td>{{ $entry['count'] }} Pair</td>
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -116,11 +116,11 @@
                                                 @if (
                                                     $shoe_to_size['reference_id'] == $entry['invoice_id'] &&
                                                         $shoe_to_size['type'] == 'sale' &&
-                                                        strtolower($shoe_to_size['shoe_id']) == strtolower($entry['shoe_id']))
+                                                        strtolower($shoe_to_size['shoe_id']) == strtolower($entry['shoe']['id']))
                                                     @php
                                                         $product = App\Models\Product::where(
                                                             'code',
-                                                            'A-' . $entry['shoe']['id'],
+                                                            'A-' . $entry['shoe']['code'],
                                                         )->first();
                                                         if ($product) {
                                                             $productVariant = App\Models\ProductVariant::where(
@@ -148,10 +148,10 @@
                                                         </div>
                                                         <div class="col-md-3">
                                                             <input type="hidden"
-                                                                name="sent_quantity[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
+                                                                name="sent_quantity[{{ $entry['shoe']['code'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 value="{{ $shoe_to_size['quantity'] }}">
                                                             <input type="number" step="any"
-                                                                name="received_quantity[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
+                                                                name="received_quantity[{{ $entry['shoe']['code'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 class="form-control" required min="0"
                                                                 max="{{ $shoe_to_size['quantity'] }}"
                                                                 value="{{ $proPurchase ? $proPurchase->recieved : $shoe_to_size['quantity'] }}"
@@ -159,10 +159,10 @@
                                                         </div>
                                                         <div class="col-md-3">
                                                             <input type="hidden"
-                                                                name="retail_price[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
+                                                                name="retail_price[{{ $entry['shoe']['code'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 value="{{ $entry['shoe']['retail_price'] }}">
                                                             <input type="number" readonly step="any"
-                                                                name="price[{{ $entry['shoe_id'] }}][{{ $shoe_to_size['size']['name'] }}]"
+                                                                name="price[{{ $entry['shoe']['code'] }}][{{ $shoe_to_size['size']['name'] }}]"
                                                                 class="form-control" required min="0"
                                                                 value="{{ $proPurchase ? $proPurchase->total : $entry['shoe']['retail_price'] * $shoe_to_size['quantity'] }}">
                                                         </div>
@@ -302,8 +302,9 @@
                 inputValue = max;
             }
 
-            let shoeId = inputName.match(/\[(\d+)\]/)[1].replace(/\[|\]/g, '');
-            let sizeId = inputName.match(/\[(\d+)\]/g)[1].replace(/\[|\]/g, '');
+            let matches = inputName.match(/\[([^\]]+)\]/g);
+            let shoeId = matches[0].replace(/[\[\]]/g, '');
+            let sizeId = matches[1].replace(/[\[\]]/g, '');
 
 
             let $retailPriceInput = $(`input[name="retail_price[${shoeId}][${sizeId}]"]`);
@@ -320,9 +321,12 @@
             //get all shoe id
             let shoeIds = [];
             $('input[name^="received_quantity"]').each(function() {
-                let shoeId = $(this).attr('name').match(/\[(\d+)\]/)[1].replace(/\[|\]/g, '');
-                if (!shoeIds.includes(shoeId)) {
-                    shoeIds.push(shoeId);
+                let matches = $(this).attr('name').match(/\[([^\]]+)\]/);
+                if (matches) {
+                    let shoeId = matches[1];
+                    if (!shoeIds.includes(shoeId)) {
+                        shoeIds.push(shoeId);
+                    }
                 }
             });
 

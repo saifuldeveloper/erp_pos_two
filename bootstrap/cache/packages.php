@@ -35,18 +35,6 @@
       0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
-  'laravelcollective/html' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Collective\\Html\\HtmlServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Form' => 'Collective\\Html\\FormFacade',
-      'Html' => 'Collective\\Html\\HtmlFacade',
-    ),
-  ),
   'maatwebsite/excel' => 
   array (
     'aliases' => 
@@ -107,6 +95,18 @@
     'providers' => 
     array (
       0 => 'Orangehill\\Iseed\\IseedServiceProvider',
+    ),
+  ),
+  'prabowosd/laravel-collective-html' => 
+  array (
+    'aliases' => 
+    array (
+      'Form' => 'Collective\\Html\\FormFacade',
+      'Html' => 'Collective\\Html\\HtmlFacade',
+    ),
+    'providers' => 
+    array (
+      0 => 'Collective\\Html\\HtmlServiceProvider',
     ),
   ),
   'spatie/laravel-ignition' => 
