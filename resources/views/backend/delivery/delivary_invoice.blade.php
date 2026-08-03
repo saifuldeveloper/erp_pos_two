@@ -107,8 +107,7 @@
                     Note:{{ $sale->sale_status }}
                 </div>
                 <div class="col-12">
-                    <span class="mb-0 fixed_note">[ মার্চেন্ট এর অনুমতি ছাড়া পার্সেল ডেলিভারি করা যাবেনা। যদি কোন
-                        সমস্যা হয় তাহলে +25252 নাম্বারে যোগাযোগ করবেন। ]</span>
+                    <span class="mb-0 fixed_note">{{ trans('file.Parcel cannot be delivered without merchant permission. If any issue, contact +25252.') }}</span>
                 </div>
             </div>
         </div>

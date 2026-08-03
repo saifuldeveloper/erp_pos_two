@@ -9,6 +9,7 @@ use App\Models\Supplier;
 use App\Models\Warehouse;
 use App\Models\Biller;
 use App\Models\Product;
+use App\Enums\ProductType;
 use App\Models\Unit;
 use App\Models\Tax;
 use App\Models\Quotation;
@@ -558,7 +559,7 @@ class QuotationController extends Controller
             $product_batch_id[] = null;
         }
         //retrieve product data of digital and combo
-        $lims_product_data = Product::whereNotIn('type', ['standard'])->where('is_active', true)->get();
+        $lims_product_data = Product::whereNotIn('type', [ProductType::STANDARD->value])->where('is_active', true)->get();
         foreach ($lims_product_data as $product)
         {
             $product_qty[] = $product->qty;
@@ -608,7 +609,7 @@ class QuotationController extends Controller
             $product[] = 'No Tax';
         }
         $product[] = $lims_product_data->tax_method;
-        if($lims_product_data->type == 'standard'){
+        if($lims_product_data->isType(ProductType::STANDARD)){
             $units = Unit::where("base_unit", $lims_product_data->unit_id)
                         ->orWhere('id', $lims_product_data->unit_id)
                         ->get();

@@ -98,7 +98,6 @@ Route::get('clear', function () {
 });
 
 
-
 Route::get('update-coupon', [CouponController::class, 'updateCoupon']);
 
 

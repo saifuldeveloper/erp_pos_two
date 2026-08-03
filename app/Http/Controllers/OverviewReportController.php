@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product_Sale;
 use App\Models\Product;
+use App\Enums\ProductType;
 use App\Models\ProductReturn;
 use App\Models\Unit;
 use Illuminate\Http\Request;
@@ -208,7 +209,7 @@ class OverviewReportController extends Controller
         $products = Product::whereIn('id', $product_ids)->get()->keyBy('id');
         $sub_product_ids = [];
         foreach ($products as $product) {
-            if ($product->type == 'combo') {
+            if ($product->isType(ProductType::COMBO)) {
                 $combo_pids = explode(",", $product->product_list);
                 foreach ($combo_pids as $pid) {
                     $sub_product_ids[] = (int)$pid;
@@ -335,7 +336,7 @@ class OverviewReportController extends Controller
         $product_cost = 0;
         $product_data = $products->get($product_sale->product_id);
 
-        if ($product_data && $product_data->type == 'combo') {
+        if ($product_data && $product_data->isType(ProductType::COMBO)) {
             $product_list = explode(",", $product_data->product_list);
             $variant_list = $product_data->variant_list ? explode(",", $product_data->variant_list) : [];
             $qty_list = explode(",", $product_data->qty_list);

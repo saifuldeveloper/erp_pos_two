@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\PaymentStatus;
+use App\Enums\PurchaseStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
@@ -44,5 +46,15 @@ class Purchase extends Model
     public function warehouse()
     {
         return $this->belongsTo('App\Models\Warehouse');
+    }
+
+    public function isStatus(PurchaseStatus $status): bool
+    {
+        return (int) $this->status === $status->value;
+    }
+
+    public function isPaymentStatus(PaymentStatus $status): bool
+    {
+        return (int) $this->payment_status === $status->value;
     }
 }

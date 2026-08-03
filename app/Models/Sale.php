@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\PaymentStatus;
+use App\Enums\SaleStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
@@ -75,5 +77,15 @@ class Sale extends Model
     public function productSales()
     {
         return $this->hasMany('App\Models\Product_Sale');
+    }
+
+    public function isStatus(SaleStatus $status): bool
+    {
+        return (int) $this->sale_status === $status->value;
+    }
+
+    public function isPaymentStatus(PaymentStatus $status): bool
+    {
+        return (int) $this->payment_status === $status->value;
     }
 }

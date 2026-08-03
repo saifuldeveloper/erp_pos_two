@@ -101,11 +101,11 @@
                     <div class="stat-card teal">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
-                                <div class="title-small">মোট চেক করা আইডি</div>
+                                <div class="title-small">{{ trans('file.Total Checked ID') }}</div>
                                 <div class="value-large">{{ $totalCountedProducts }}</div>
                             </div>
                             <div>
-                                <div class="title-small">মোট চেক জোড়া</div>
+                                <div class="title-small">{{ trans('file.Total Checked Pairs') }}</div>
                                 <div class="value-large">{{ number_format($totalCountedQty, 2, '.', '') }}</div>
                             </div>
                             <div style="font-size: 28px; color: #0891b2; opacity: 0.8;">
@@ -120,11 +120,11 @@
                         <div class="stat-card slate" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
-                                    <div class="title-small"><i class="fa fa-list" style="color: #3b82f6; margin-right: 5px;"></i> অবশিষ্ট বাকি আইডি</div>
+                                    <div class="title-small"><i class="fa fa-list" style="color: #3b82f6; margin-right: 5px;"></i> {{ trans('file.Remaining ID') }}</div>
                                     <div class="value-large">{{ $remainingCount }}</div>
                                 </div>
                                 <div>
-                                    <div class="title-small" style="color: #3b82f6;">অবশিষ্ট বাকি জোড়া</div>
+                                    <div class="title-small" style="color: #3b82f6;">{{ trans('file.Remaining Pairs') }}</div>
                                     <div class="value-large">{{ number_format($remainingQty, 2, '.', '') }}</div>
                                 </div>
                                 <div style="font-size: 28px; color: #4b5563; opacity: 0.8;">
@@ -140,11 +140,11 @@
                         <div class="stat-card indigo" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
-                                    <div class="title-small"><i class="fa fa-shopping-bag" style="color: #6366f1; margin-right: 5px;"></i> বিক্রিত পণ্য</div>
+                                    <div class="title-small"><i class="fa fa-shopping-bag" style="color: #6366f1; margin-right: 5px;"></i> {{ trans('file.Sold Products') }}</div>
                                     <div class="value-large">{{ $soldCount }}</div>
                                 </div>
                                 <div>
-                                    <div class="title-small" style="color: #6366f1;">বিক্রিত জোড়া</div>
+                                    <div class="title-small" style="color: #6366f1;">{{ trans('file.Sold Pairs') }}</div>
                                     <div class="value-large">{{ number_format($soldQty, 2, '.', '') }}</div>
                                 </div>
                                 <div style="font-size: 28px; color: #6366f1; opacity: 0.8;">
@@ -160,11 +160,11 @@
                         <div class="stat-card red" style="cursor: pointer;">
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
-                                    <div class="title-small"><i class="fa fa-trash" style="color: #dc3545; margin-right: 5px;"></i> ওয়েস্ট পণ্য</div>
+                                    <div class="title-small"><i class="fa fa-trash" style="color: #dc3545; margin-right: 5px;"></i> {{ trans('file.Waste Products') }}</div>
                                     <div class="value-large">{{ $wasteCount }}</div>
                                 </div>
                                 <div>
-                                    <div class="title-small" style="color: #dc3545;">ওয়েস্ট জোড়া</div>
+                                    <div class="title-small" style="color: #dc3545;">{{ trans('file.Waste Pairs') }}</div>
                                     <div class="value-large">{{ number_format($wasteQty, 2, '.', '') }}</div>
                                 </div>
                                 <div style="font-size: 28px; color: #dc3545; opacity: 0.8;">
@@ -179,7 +179,7 @@
                     <div class="stat-card green">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
-                                <div class="title-small">সম্পূর্ণ মিল</div>
+                                <div class="title-small">{{ trans('file.Stock Matched') }}</div>
                                 <div class="value-large">{{ number_format($matchedCountQty, 2, '.', '') }}</div>
                             </div>
                             <div class="stat-icon-circle green">
@@ -193,11 +193,11 @@
                     <div class="stat-card red">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
-                                <div class="title-small">অতিরিক্ত ম্যাচ</div>
+                                <div class="title-small">{{ trans('file.Over Match') }}</div>
                                 <div class="value-large">{{ number_format($overCountQty, 2, '.', '') }}</div>
                             </div>
                             <div>
-                                <div class="title-small">ফাইন্ড জোড়া</div>
+                                <div class="title-small">{{ trans('file.Pairs Found') }}</div>
                                 <div class="value-large">{{ number_format($overFindQty, 2, '.', '') }}</div>
                             </div>
                             <div class="stat-icon-circle red">
@@ -211,11 +211,11 @@
                     <div class="stat-card orange">
                         <div class="d-flex w-100 justify-content-between align-items-center">
                             <div>
-                                <div class="title-small">আন্ডার স্টক</div>
+                                <div class="title-small">{{ trans('file.Under Stock') }}</div>
                                 <div class="value-large">{{ number_format($underCountQty, 2, '.', '') }}</div>
                             </div>
                             <div>
-                                <div class="title-small">ফাইন্ড জোড়া</div>
+                                <div class="title-small">{{ trans('file.Pairs Found') }}</div>
                                 <div class="value-large">{{ number_format($underFindQty, 2, '.', '') }}</div>
                             </div>
                             <div class="stat-icon-circle orange">
@@ -249,7 +249,7 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h5>{{ $stockCount['title'] }}</h5>
+                                                <h5>{{ trans('file.' . $stockCount['title']) }}</h5>
                                             </div>
                                         </div>
                                         <div class="table-responsive">
@@ -258,9 +258,9 @@
                                                     <tr>
                                                         <th>{{ trans('file.name') }}</th>
                                                         <th>{{ trans('file.Code') }}</th>
-                                                        <th>Current Quantity</th>
-                                                        <th>Quantity Find</th>
-                                                        <th>Remarks</th>
+                                                        <th>{{ trans('file.Current Quantity') }}</th>
+                                                        <th>{{ trans('file.Quantity Find') }}</th>
+                                                        <th>{{ trans('file.Remarks') }}</th>
                                                         <th>
                                                             <div class="form-check form-check-inline">
                                                                 <input
@@ -269,7 +269,7 @@
                                                                     type="radio" name="resolved[all]"
                                                                     id="update_stock-all" value="update_stock">
                                                                 <label class="form-check label" for="update_stock-all"
-                                                                    style="margin-right: 10px;">Update All</label>
+                                                                    style="margin-right: 10px;">{{ trans('file.Update All') }}</label>
                                                             </div>
                                                             <div
                                                                 class="form-check
@@ -277,7 +277,7 @@
                                                                 <input class="form-check input all" type="radio"
                                                                     name="resolved[all]" id="cancel-all" value="cancel">
                                                                 <label class="form-check label" for="cancel-all"
-                                                                    style="margin-right: 10px;">Cancel All</label>
+                                                                    style="margin-right: 10px;">{{ trans('file.Cancel All') }}</label>
                                                             </div>
                                                         </th>
                                                     </tr>
@@ -309,7 +309,8 @@
                                                                 @endforeach
                                                                 = {{ $total }}
                                                             </td>
-                                                            <td>{{ $stockCount['title'] }}
+                                                            <td>
+                                                                {{ trans('file.' . $stockCount['title']) }}
                                                                 @if ($stockCount['title'] != 'Stock Matched')
                                                                     ({{ abs($total - $item->current_quantity) }})
                                                                 @endif
@@ -323,7 +324,7 @@
                                                                     <label class="form-check label"
                                                                         for="update_stock-{{ $item->id }}"
                                                                         style="margin-right: 10px;">
-                                                                        Update Stock
+                                                                        {{ trans('file.Update Stock') }}
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
@@ -333,7 +334,7 @@
                                                                     <label class="form-check label"
                                                                         for="cancel-{{ $item->id }}"
                                                                         style="margin-right: 10px;">
-                                                                        Cancel
+                                                                        {{ trans('file.Cancel') }}
                                                                     </label>
                                                                 </div>
                                                             </td>
@@ -342,7 +343,7 @@
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Total:</th>
+                                                        <th>{{ trans('file.Total') }}:</th>
                                                         <th></th>
                                                         <th>{{ $total_current_qty }}</th>
                                                         <th>{{ $total_find_qty }}</th>
@@ -368,7 +369,7 @@
             <input type="hidden" name="status" value="resolved">
             <div class="form-group d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex align-items-center">
-                    <button type="submit" class="btn btn-primary" id="submit-btn">Resolved</button>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">{{ trans('file.Resolved') }}</button>
                     <div class="form-check form-check-inline ml-3">
                         <input class="form-check-input" type="checkbox" name="zero_remaining" id="zero-remaining-checkbox" value="1">
                         <label class="form-check-label text-danger font-weight-bold" for="zero-remaining-checkbox" style="margin-left: 5px; cursor: pointer; user-select: none;">
@@ -388,7 +389,7 @@
                         </label>
                     </div>
                 </div>
-                <button type="button" class="btn btn-danger" id="revert-btn"><i class="fa fa-undo"></i> Back to Counting</button>
+                <button type="button" class="btn btn-danger" id="revert-btn"><i class="fa fa-undo"></i> {{ trans('file.Back to Counting') }}</button>
             </div>
             {!! Form::close() !!}
 

@@ -79,18 +79,18 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h4>ওয়েস্ট প্রোডাক্টস (Warehouse: {{ $lims_stock_count->warehouse->name }}) ({{ $lims_stock_count->id }})</h4>
+                            <h4>{{ trans('file.Waste Products') }} (Warehouse: {{ $lims_stock_count->warehouse->name }}) ({{ $lims_stock_count->id }})</h4>
                             <a href="{{ route('stock-count.show', $lims_stock_count->id) }}" class="btn btn-info ml-auto">
                                 <i class="fa fa-arrow-left"></i> Back to Count
                             </a>
                         </div>
                         <div class="card-body">
                             <div class="row mb-3">
-                                <!-- Card 1: Total Items (Red) -->
+                                <!-- Card 1: Total Waste Items (Red) -->
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card red">
                                         <div>
-                                            <div class="title-small">মোট ওয়েস্ট আইটেম</div>
+                                            <div class="title-small">{{ trans('file.Total Waste Items') }}</div>
                                             <div class="value-large">{{ $wasteCount }}</div>
                                         </div>
                                         <div class="stat-icon red">
@@ -102,7 +102,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card slate">
                                         <div>
-                                            <div class="title-small">মোট ওয়েস্ট জোড়া</div>
+                                            <div class="title-small">{{ trans('file.Total Waste Pairs') }}</div>
                                             <div class="value-large">{{ number_format($wasteQty, 2, '.', '') }}</div>
                                         </div>
                                         <div class="stat-icon slate">
@@ -114,7 +114,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card orange">
                                         <div>
-                                            <div class="title-small">ওয়েস্ট প্রোডাক্টের মোট ক্রয় মূল্য</div>
+                                            <div class="title-small">{{ trans('file.Total Waste Purchase Value') }}</div>
                                             <div class="value-large">{{ number_format($totalWastePurchaseValue, 2, '.', '') }}</div>
                                         </div>
                                         <div class="stat-icon orange">
@@ -126,7 +126,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card green">
                                         <div>
-                                            <div class="title-small">ওয়েস্ট প্রোডাক্টের মোট বিক্রয় মূল্য</div>
+                                            <div class="title-small">{{ trans('file.Total Waste Sale Value') }}</div>
                                             <div class="value-large">{{ number_format($totalWasteSaleValue, 2, '.', '') }}</div>
                                         </div>
                                         <div class="stat-icon green">
@@ -173,13 +173,13 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>প্রোডাক্টের নাম</th>
-                                            <th>কোড</th>
-                                            <th>ক্রয় মূল্য (Unit)</th>
-                                            <th>বিক্রয় মূল্য (Unit)</th>
-                                            <th>ওয়েস্ট জোড়া</th>
-                                            <th>মোট ক্রয় মূল্য</th>
-                                            <th>মোট বিক্রয় মূল্য</th>
+                                            <th>{{ trans('file.Product Name') }}</th>
+                                            <th>{{ trans('file.Code') }}</th>
+                                            <th>{{ trans('file.Purchase Price (Unit)') }}</th>
+                                            <th>{{ trans('file.Sale Price (Unit)') }}</th>
+                                            <th>{{ trans('file.Waste Pairs') }}</th>
+                                            <th>{{ trans('file.Total Purchase Value') }}</th>
+                                            <th>{{ trans('file.Total Sale Value') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -202,8 +202,8 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Total:</th>
-                                            <th>{{ $wasteCount }} Items</th>
+                                            <th>{{ trans('file.Total') }}:</th>
+                                            <th>{{ $wasteCount }} {{ trans('file.Items') }}</th>
                                             <th></th>
                                             <th></th>
                                             <th></th>

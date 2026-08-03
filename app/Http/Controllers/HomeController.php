@@ -11,6 +11,7 @@ use App\Models\Payroll;
 use App\Models\Product_Sale;
 use App\Models\Product_Warehouse;
 use App\Models\Product;
+use App\Enums\ProductType;
 use App\Models\ProductPurchase;
 use App\Models\Purchase;
 use App\Models\Quotation;
@@ -429,7 +430,7 @@ class HomeController extends Controller
         $product_cost = 0;
         foreach ($product_sale_data as $key => $product_sale) {
             $product_data = Product::select('type', 'product_list', 'variant_list', 'qty_list')->find($product_sale->product_id);
-            if ($product_data && $product_data->type == 'combo') {
+            if ($product_data && $product_data->isType(ProductType::COMBO)) {
                 $product_list = explode(",", $product_data->product_list);
                 if ($product_data->variant_list)
                     $variant_list = explode(",", $product_data->variant_list);

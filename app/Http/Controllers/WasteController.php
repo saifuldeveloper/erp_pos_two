@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Waste;
 use App\Models\Biller;
 use App\Models\Product;
+use App\Enums\ProductType;
 use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Supplier;
@@ -569,7 +570,7 @@ class WasteController extends Controller
             $product[] = 'No Tax';
         }
         $product[] = $lims_product_data->tax_method;
-        if ($lims_product_data->type == 'standard') {
+        if ($lims_product_data->isType(ProductType::STANDARD)) {
             $units = Unit::where("base_unit", $lims_product_data->unit_id)
                 ->orWhere('id', $lims_product_data->unit_id)
                 ->get();

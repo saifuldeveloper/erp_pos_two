@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product_Sale;
 use App\Models\Product_Warehouse;
 use App\Models\Product;
+use App\Enums\ProductType;
 use App\Models\ProductVariant;
 use App\Models\StockCount;
 use App\Models\StockCountItem;
@@ -397,7 +398,7 @@ class StockCountController extends Controller
                 ->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id)
                 ->where('product_warehouse.qty', '>', 0)
                 ->where('products.is_active', true)
-                ->where('products.type', 'standard')
+                ->where('products.type', ProductType::STANDARD->value)
                 ->whereNotIn('products.id', $counted_product_ids);
 
             $remainingCount = $remainingQuery->count('products.id');
@@ -1034,7 +1035,7 @@ class StockCountController extends Controller
                 GROUP BY product_id
             ) pv ON p.id = pv.product_id
             SET p.qty = GREATEST(0, pv.sum_qty)
-            WHERE p.type = 'standard'
+            WHERE p.type = '" . ProductType::STANDARD->value . "'
         ");
 
         DB::statement("
@@ -1046,7 +1047,7 @@ class StockCountController extends Controller
                 GROUP BY product_id
             ) pw ON p.id = pw.product_id
             SET p.qty = GREATEST(0, pw.sum_qty)
-            WHERE p.type = 'standard' AND NOT EXISTS (SELECT 1 FROM product_variants pv WHERE pv.product_id = p.id)
+            WHERE p.type = '" . ProductType::STANDARD->value . "' AND NOT EXISTS (SELECT 1 FROM product_variants pv WHERE pv.product_id = p.id)
         ");
     }
 
@@ -1106,7 +1107,7 @@ class StockCountController extends Controller
             ->whereNull('pw.id')
             ->whereNull('pv.id')
             ->where('p.is_active', true)
-            ->where('p.type', 'standard')
+            ->where('p.type', ProductType::STANDARD->value)
             ->select('p.id')
             ->get();
 

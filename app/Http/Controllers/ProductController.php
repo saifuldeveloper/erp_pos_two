@@ -10,6 +10,7 @@ use App\Models\Payment;
 use App\Models\Product_Supplier;
 use App\Models\Product_Warehouse;
 use App\Models\Product;
+use App\Enums\ProductType;
 use App\Models\ProductBatch;
 use App\Models\ProductImage;
 use App\Models\ProductPurchase;
@@ -740,7 +741,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($data['name'], '-');
         $data['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '', $data['slug']);
         $data['slug'] = str_replace('\/', '/', $data['slug']);
-        if ($data['type'] == 'combo') {
+        if ($data['type'] == ProductType::COMBO->value) {
             $data['product_list'] = implode(",", $data['product_id']);
             $data['variant_list'] = implode(",", $data['variant_id']);
             $data['qty_list'] = implode(",", $data['product_qty']);
@@ -1432,7 +1433,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($data['name'], '-');
         $data['slug'] = preg_replace('/[^A-Za-z0-9\-]/', '', $data['slug']);
         $data['slug'] = str_replace('\/', '/', $data['slug']);
-        if ($data['type'] == 'combo') {
+        if ($data['type'] == ProductType::COMBO->value) {
             $data['product_list'] = implode(",", $data['product_id']);
             $data['variant_list'] = implode(",", $data['variant_id']);
             $data['qty_list'] = implode(",", $data['product_qty']);

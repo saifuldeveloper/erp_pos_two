@@ -76,7 +76,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h4>অবশিষ্ট বাকি প্রোডাক্টস (Warehouse: {{ $lims_stock_count->warehouse->name }}) ({{ $lims_stock_count->id }})</h4>
+                            <h4>{{ trans('file.Remaining Products') }} (Warehouse: {{ $lims_stock_count->warehouse->name }}) ({{ $lims_stock_count->id }})</h4>
                             <a href="{{ route('stock-count.show', $lims_stock_count->id) }}" class="btn btn-info ml-auto">
                                 <i class="fa fa-arrow-left"></i> Back to Count
                             </a>
@@ -87,7 +87,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card teal">
                                         <div>
-                                            <div class="title-small">মোট আইটেম</div>
+                                            <div class="title-small">{{ trans('file.Total Items') }}</div>
                                             <div class="value-large">{{ $remainingCount }}</div>
                                         </div>
                                         <div class="stat-icon teal">
@@ -99,7 +99,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card slate">
                                         <div>
-                                            <div class="title-small">মোট পরিমাণ</div>
+                                            <div class="title-small">{{ trans('file.Total Quantity') }}</div>
                                             <div class="value-large">{{ number_format($remainingQty, 2, '.', '') }}</div>
                                         </div>
                                         <div class="stat-icon slate">
@@ -111,7 +111,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card orange">
                                         <div>
-                                            <div class="title-small">সর্বমোট ক্রয় মূল্য</div>
+                                            <div class="title-small">{{ trans('file.Grand Total Purchase Value') }}</div>
                                             <div class="value-large">{{ number_format($totalRemainingPurchaseValue, 2, '.', '') }}</div>
                                         </div>
                                         <div class="stat-icon orange">
@@ -123,7 +123,7 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="stat-card green">
                                         <div>
-                                            <div class="title-small">সর্বমোট বিক্রয় মূল্য</div>
+                                            <div class="title-small">{{ trans('file.Grand Total Sale Value') }}</div>
                                             <div class="value-large">{{ number_format($totalRemainingSaleValue, 2, '.', '') }}</div>
                                         </div>
                                         <div class="stat-icon green">
@@ -170,13 +170,13 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>প্রোডাক্টের নাম</th>
-                                            <th>কোড</th>
-                                            <th>ক্রয় মূল্য (Unit)</th>
-                                            <th>বিক্রয় মূল্য (Unit)</th>
-                                            <th>স্টক কোয়ান্টিটি</th>
-                                            <th>মোট ক্রয় মূল্য</th>
-                                            <th>মোট বিক্রয় মূল্য</th>
+                                            <th>{{ trans('file.Product Name') }}</th>
+                                            <th>{{ trans('file.Code') }}</th>
+                                            <th>{{ trans('file.Purchase Price (Unit)') }}</th>
+                                            <th>{{ trans('file.Sale Price (Unit)') }}</th>
+                                            <th>{{ trans('file.Stock Quantity') }}</th>
+                                            <th>{{ trans('file.Total Purchase Value') }}</th>
+                                            <th>{{ trans('file.Total Sale Value') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -199,8 +199,8 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Total:</th>
-                                            <th>{{ $remainingCount }} Items</th>
+                                            <th>{{ trans('file.Total') }}:</th>
+                                            <th>{{ $remainingCount }} {{ trans('file.Items') }}</th>
                                             <th></th>
                                             <th></th>
                                             <th></th>

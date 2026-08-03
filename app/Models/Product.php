@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\ProductType;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -136,5 +137,10 @@ class Product extends Model
     public function stockCountItems()
     {
         return $this->hasMany(StockCountItem::class);
+    }
+
+    public function isType(ProductType $type): bool
+    {
+        return $this->type === $type->value;
     }
 }

@@ -13,6 +13,7 @@ use App\Models\MailSetting;
 use App\Models\Product_Sale;
 use App\Models\Product_Warehouse;
 use App\Models\Product;
+use App\Enums\ProductType;
 use App\Models\ProductBatch;
 use App\Models\ProductReturn;
 use App\Models\ProductVariant;
@@ -372,7 +373,7 @@ class ReturnController extends Controller
             $product_type[] = $lims_product_data->type;
             $is_batch[] = null;
         }
-        $lims_product_data = Product::select('code', 'name', 'type')->where('is_active', true)->whereNotIn('type', ['standard'])->get();
+        $lims_product_data = Product::select('code', 'name', 'type')->where('is_active', true)->whereNotIn('type', [ProductType::STANDARD->value])->get();
         foreach ($lims_product_data as $product)
         {
             $product_qty[] = $product->qty;
@@ -424,7 +425,7 @@ class ReturnController extends Controller
             $product[] = 'No Tax';
         }
         $product[] = $lims_product_data->tax_method;
-        if($lims_product_data->type == 'standard'){
+        if($lims_product_data->isType(ProductType::STANDARD)){
             $units = Unit::where("base_unit", $lims_product_data->unit_id)
                     ->orWhere('id', $lims_product_data->unit_id)
                     ->get();
@@ -581,7 +582,7 @@ class ReturnController extends Controller
                 $lims_product_warehouse_data->save();
             }
             else {
-                if($lims_product_data->type == 'combo') {
+                if($lims_product_data->isType(ProductType::COMBO)) {
                     $product_list = explode(",", $lims_product_data->product_list);
                     if($lims_product_data->variant_list)
                         $variant_list = explode(",", $lims_product_data->variant_list);
@@ -832,7 +833,7 @@ class ReturnController extends Controller
             foreach ($lims_product_return_data as $product_return_data) {
                 $lims_product_data = Product::find($product_return_data->product_id);
                 $qty_base = 0;
-                if ($lims_product_data->type == 'combo') {
+                if ($lims_product_data->isType(ProductType::COMBO)) {
                     // handled separately
                 } elseif ($product_return_data->sale_unit_id != 0) {
                     $lims_sale_unit_data = Unit::find($product_return_data->sale_unit_id);
@@ -846,7 +847,7 @@ class ReturnController extends Controller
                 $old_return_qtys[$key_item] = [
                     'qty_base' => $qty_base,
                     'qty_raw' => $product_return_data->qty,
-                    'is_combo' => ($lims_product_data->type == 'combo')
+                    'is_combo' => ($lims_product_data->isType(ProductType::COMBO))
                 ];
             }
 
@@ -879,7 +880,7 @@ class ReturnController extends Controller
                     $new_return_qtys[$key_item] = [
                         'qty_base' => $qty_base,
                         'qty_raw' => $qty[$k],
-                        'is_combo' => ($lims_product_data->type == 'combo')
+                        'is_combo' => ($lims_product_data->isType(ProductType::COMBO))
                     ];
                 }
             }
@@ -984,7 +985,7 @@ class ReturnController extends Controller
             $old_product_id[] = $product_return_data->product_id;
             $old_product_variant_id[] = null;
             $lims_product_data = Product::find($product_return_data->product_id);
-            if($lims_product_data->type == 'combo') {
+            if($lims_product_data->isType(ProductType::COMBO)) {
                 $product_list = explode(",", $lims_product_data->product_list);
                 $variant_list = explode(",", $lims_product_data->variant_list);
                 $qty_list = explode(",", $lims_product_data->qty_list);
@@ -1117,7 +1118,7 @@ class ReturnController extends Controller
                 $lims_product_warehouse_data->save();
             }
             else {
-                if($lims_product_data->type == 'combo'){
+                if($lims_product_data->isType(ProductType::COMBO)){
                     $product_list = explode(",", $lims_product_data->product_list);
                     $variant_list = explode(",", $lims_product_data->variant_list);
                     $qty_list = explode(",", $lims_product_data->qty_list);
@@ -1248,7 +1249,7 @@ class ReturnController extends Controller
 
             foreach ($lims_product_return_data as $key => $product_return_data) {
                 $lims_product_data = Product::find($product_return_data->product_id);
-                if( $lims_product_data->type == 'combo' ){
+                if( $lims_product_data->isType(ProductType::COMBO) ){
                     $product_list = explode(",", $lims_product_data->product_list);
                     $variant_list = explode(",", $lims_product_data->variant_list);
                     $qty_list = explode(",", $lims_product_data->qty_list);
@@ -1341,7 +1342,7 @@ class ReturnController extends Controller
             // 🔹 Stock Validation (to prevent negative stock)
             foreach ($lims_product_return_data as $product_return_data) {
                 $lims_product_data = Product::find($product_return_data->product_id);
-                if ($lims_product_data->type == 'combo') {
+                if ($lims_product_data->isType(ProductType::COMBO)) {
                     $product_list = explode(",", $lims_product_data->product_list);
                     $variant_list = explode(",", $lims_product_data->variant_list);
                     $qty_list = explode(",", $lims_product_data->qty_list);
@@ -1415,7 +1416,7 @@ class ReturnController extends Controller
                 }
 
                 // 🔹 Perform original stock deduction
-                if ($lims_product_data->type == 'combo') {
+                if ($lims_product_data->isType(ProductType::COMBO)) {
                     $product_list = explode(",", $lims_product_data->product_list);
                     $variant_list = explode(",", $lims_product_data->variant_list);
                     $qty_list = explode(",", $lims_product_data->qty_list);

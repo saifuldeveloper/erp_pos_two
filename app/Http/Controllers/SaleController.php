@@ -28,6 +28,9 @@ use App\Models\PosSetting;
 use App\Models\Product_Sale;
 use App\Models\Product_Warehouse;
 use App\Models\Product;
+use App\Enums\ProductType;
+use App\Enums\SaleStatus;
+use App\Enums\PaymentStatus;
 use App\Models\ProductBatch;
 use App\Models\ProductPurchase;
 use App\Models\ProductReturn;
@@ -757,7 +760,7 @@ class SaleController extends Controller
             }
         }
         //retrieve product with type of digital, combo and service
-        $lims_product_data = Product::whereNotIn('type', ['standard'])->where('is_active', true)->get();
+        $lims_product_data = Product::whereNotIn('type', [ProductType::STANDARD->value])->where('is_active', true)->get();
         foreach ($lims_product_data as $product) {
             $product_qty[] = $product->qty;
             $product_code[] = $product->code;
@@ -1167,7 +1170,7 @@ class SaleController extends Controller
             $product[] = 'No Tax';
         }
         $product[] = $lims_product_data->tax_method;
-        if ($lims_product_data->type == 'standard') {
+        if ($lims_product_data->isType(ProductType::STANDARD)) {
             $units = Unit::where("base_unit", $lims_product_data->unit_id)
                 ->orWhere('id', $lims_product_data->unit_id)
                 ->get();
@@ -1203,7 +1206,7 @@ class SaleController extends Controller
         $product[] = $lims_product_data->price;
         $product[] = $lims_product_data->price - $product[2];
 
-        if ($lims_product_data->type == 'standard') {
+        if ($lims_product_data->isType(ProductType::STANDARD)) {
             if ($lims_product_data->is_variant) {
                 $global_stock = \DB::table('product_warehouse')
                     ->where('product_id', $lims_product_data->id)
@@ -1567,7 +1570,7 @@ class SaleController extends Controller
             $old_product_variant_id[] = null;
             $lims_product_data = Product::find($product_sale_data->product_id);
 
-            if (($lims_sale_data->sale_status == 1) && ($lims_product_data->type == 'combo')) {
+            if ($lims_sale_data->isStatus(SaleStatus::COMPLETED) && $lims_product_data->isType(ProductType::COMBO)) {
                 $product_list = explode(",", $lims_product_data->product_list);
                 $variant_list = explode(",", $lims_product_data->variant_list);
                 if ($lims_product_data->variant_list)
@@ -1654,7 +1657,7 @@ class SaleController extends Controller
         foreach ($product_id as $key => $pro_id) {
             $lims_product_data = Product::find($pro_id);
             $product_sale['variant_id'] = null;
-            if ($lims_product_data->type == 'combo' && $data['sale_status'] == 1) {
+            if ($lims_product_data->isType(ProductType::COMBO) && $data['sale_status'] == SaleStatus::COMPLETED->value) {
                 $product_list = explode(",", $lims_product_data->product_list);
                 $variant_list = explode(",", $lims_product_data->variant_list);
                 if ($lims_product_data->variant_list)
@@ -2561,7 +2564,7 @@ class SaleController extends Controller
             foreach ($lims_product_sale_data as $product_sale) {
                 $lims_product_data = Product::find($product_sale->product_id);
                 //adjust product quantity
-                if (($lims_sale_data->sale_status == 1) && ($lims_product_data->type == 'combo')) {
+                if ($lims_sale_data->isStatus(SaleStatus::COMPLETED) && $lims_product_data->isType(ProductType::COMBO)) {
                     $product_list = explode(",", $lims_product_data->product_list);
                     if ($lims_product_data->variant_list)
                         $variant_list = explode(",", $lims_product_data->variant_list);
@@ -2687,7 +2690,7 @@ class SaleController extends Controller
         foreach ($lims_product_sale_data as $product_sale) {
             $lims_product_data = Product::find($product_sale->product_id);
             //adjust product quantity
-            if (($lims_sale_data->sale_status == 1) && ($lims_product_data->type == 'combo')) {
+            if ($lims_sale_data->isStatus(SaleStatus::COMPLETED) && $lims_product_data->isType(ProductType::COMBO)) {
                 $product_list = explode(",", $lims_product_data->product_list);
                 $variant_list = explode(",", $lims_product_data->variant_list);
                 $qty_list = explode(",", $lims_product_data->qty_list);
