@@ -6,6 +6,7 @@ use App\Models\{ Sale, Product, Product_Sale, Customer, Coupon, RewardPointSetti
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
 
 class SaleService
 {
@@ -23,7 +24,7 @@ class SaleService
             $rules['customer_id'] = 'required';
         }
 
-        $validator = \Illuminate\Support\Facades\Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules);
 
         if ($validator->fails()) {
             throw new ValidationException($validator);

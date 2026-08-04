@@ -818,8 +818,23 @@ class SaleController extends Controller
                 return Tax::where('is_active', true)->get();
             });
 
+            // Fetch all quantities for this warehouse in a single query to prevent N+1 query performance bottleneck
+            $warehouse_products = DB::table('product_warehouse')
+                ->where('warehouse_id', $default_warehouse_id)
+                ->select('product_id', 'variant_id', 'qty')
+                ->get();
+
+            $qty_map = [];
+            foreach ($warehouse_products as $wp) {
+                $key = $wp->product_id . '-' . ($wp->variant_id ?? '0');
+                $qty_map[$key] = $wp->qty;
+            }
+
             $lims_product_list = Cache::remember('product_list', 60 * 60 * 24, function () {
-                return Product::ActiveFeatured()->whereNull('is_variant')->get();
+                return Product::ActiveFeatured()
+                    ->whereNull('is_variant')
+                    ->select('id', 'name', 'code', 'image', 'is_variant')
+                    ->get();
             });
             foreach ($lims_product_list as $key => $product) {
                 $images = explode(",", $product->image);
@@ -828,16 +843,15 @@ class SaleController extends Controller
                 else
                     $product->base_image = 'zummXD2dvAtI.png';
                 
-                // Fetch quantity
-                $product->qty = DB::table('product_warehouse')
-                    ->where([
-                        ['product_id', $product->id],
-                        ['warehouse_id', $default_warehouse_id]
-                    ])->whereNull('variant_id')
-                    ->value('qty') ?? 0;
+                // Fetch quantity from memory map
+                $product->qty = $qty_map[$product->id . '-0'] ?? 0;
             }
             $lims_product_list_with_variant = Cache::remember('product_list_with_variant', 60 * 60 * 24, function () {
-                return Product::ActiveFeatured()->whereNotNull('is_variant')->get();
+                return Product::ActiveFeatured()
+                    ->whereNotNull('is_variant')
+                    ->with('variant')
+                    ->select('id', 'name', 'code', 'image', 'is_variant')
+                    ->get();
             });
 
             foreach ($lims_product_list_with_variant as $product) {
@@ -846,20 +860,15 @@ class SaleController extends Controller
                     $product->base_image = $images[0];
                 else
                     $product->base_image = 'zummXD2dvAtI.png';
-                $lims_product_variant_data = $product->variant()->orderBy('position')->get();
+                $lims_product_variant_data = $product->variant;
                 $main_name = $product->name;
                 $temp_arr = [];
                 foreach ($lims_product_variant_data as $key => $variant) {
                     $cloned_product = clone ($product);
                     $cloned_product->name = $main_name . ' [' . $variant->name . ']';
                     $cloned_product->code = $variant->pivot['item_code'];
-                    // Fetch quantity
-                    $cloned_product->qty = DB::table('product_warehouse')
-                        ->where([
-                            ['product_id', $product->id],
-                            ['variant_id', $variant->id],
-                            ['warehouse_id', $default_warehouse_id]
-                        ])->value('qty') ?? 0;
+                    // Fetch quantity from memory map
+                    $cloned_product->qty = $qty_map[$product->id . '-' . $variant->id] ?? 0;
                     $lims_product_list[] = $cloned_product;
                 }
             }
