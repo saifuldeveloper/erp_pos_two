@@ -132,7 +132,7 @@ class SaleService
             $this->updateRewardPoints($data);
 
             // Process Products & generate mail_data
-            $mail_data = $this->processProducts($data, $sale->id);
+            $mail_data = $this->processProducts($data, $sale);
 
             // Handle Payment
             if (
@@ -232,8 +232,9 @@ class SaleService
     }
 
 
-    private function processProducts(array $data, int $sale_id)
+    private function processProducts(array $data, Sale $sale)
     {
+        $sale_id = $sale->id;
         $mail_data = [
             'products' => [],
             'file' => [],
@@ -334,14 +335,20 @@ class SaleService
                     $variant->qty -= $stockQty;
                     $variant->save();
 
+                    $this->mergeProductWarehouseDuplicates($id, $variant->variant_id);
+
                     $warehouse_product = Product_Warehouse::FindProductWithVariant($id, $variant->variant_id, $data['warehouse_id'])->first();
                 } else {
+                    $this->mergeProductWarehouseDuplicates($id, null);
+
                     $warehouse_product = Product_Warehouse::FindProductWithoutVariant($id, $data['warehouse_id'])->first();
                 }
 
                 // Check if we need to auto-transfer stock from another warehouse
                 $currentQty = $warehouse_product ? $warehouse_product->qty : 0;
-                if ($currentQty < $stockQty) {
+                $remaining_imeis = !empty($data['imei_number'][$i]) ? explode(',', $data['imei_number'][$i]) : [];
+
+                while ($currentQty < $stockQty) {
                     $missingQty = $stockQty - $currentQty;
                     if ($product->is_variant) {
                         $source_warehouse_product = Product_Warehouse::where('product_id', $id)
@@ -360,90 +367,94 @@ class SaleService
                             ->first();
                     }
 
-                    if ($source_warehouse_product) {
-                        $transferQty = min($missingQty, $source_warehouse_product->qty);
-
-                        // Create Transfer
-                        $transfer = Transfer::create([
-                            'reference_no' => 'tr-' . date("Ymd") . '-' . date("his") . '-' . uniqid(),
-                            'user_id' => Auth::id() ? Auth::id() : 1,
-                            'status' => 1, // Completed
-                            'from_warehouse_id' => $source_warehouse_product->warehouse_id,
-                            'to_warehouse_id' => $data['warehouse_id'],
-                            'item' => 1,
-                            'total_qty' => $transferQty,
-                            'total_tax' => 0,
-                            'total_cost' => $transferQty * ($product->cost ?? 0),
-                            'shipping_cost' => 0,
-                            'grand_total' => $transferQty * ($product->cost ?? 0),
-                            'note' => 'Auto-transfer created during POS sale #' . $sale_id
-                        ]);
-
-                        // Create ProductTransfer
-                        $productTransferData = [
-                            'transfer_id' => $transfer->id,
-                            'product_id' => $id,
-                            'variant_id' => $product->is_variant ? $variant->variant_id : null,
-                            'qty' => $transferQty,
-                            'purchase_unit_id' => $product->purchase_unit_id ?? $product->unit_id,
-                            'net_unit_cost' => $product->cost ?? 0,
-                            'tax_rate' => 0,
-                            'tax' => 0,
-                            'total' => $transferQty * ($product->cost ?? 0),
-                        ];
-
-                        // Deduct stock from source warehouse
-                        $source_warehouse_product->qty -= $transferQty;
-
-                        // Handle IMEI transfer
-                        if (!empty($data['imei_number'][$i])) {
-                            $sale_imeis = explode(',', $data['imei_number'][$i]);
-                            $source_imeis = $source_warehouse_product->imei_number ? explode(',', $source_warehouse_product->imei_number) : [];
-
-                            $transferred_imeis = [];
-                            foreach ($sale_imeis as $imei) {
-                                if (($key = array_search($imei, $source_imeis)) !== false) {
-                                    unset($source_imeis[$key]);
-                                    $transferred_imeis[] = $imei;
-                                }
-                            }
-
-                            if (count($transferred_imeis) > 0) {
-                                $source_warehouse_product->imei_number = implode(',', $source_imeis);
-                                $productTransferData['imei_number'] = implode(',', $transferred_imeis);
-
-                                if (!$warehouse_product) {
-                                    $warehouse_product = new Product_Warehouse();
-                                    $warehouse_product->product_id = $id;
-                                    $warehouse_product->warehouse_id = $data['warehouse_id'];
-                                    $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
-                                    $warehouse_product->qty = 0;
-                                    $warehouse_product->price = $product->price;
-                                    $warehouse_product->imei_number = implode(',', $transferred_imeis);
-                                } else {
-                                    $target_imeis = $warehouse_product->imei_number ? explode(',', $warehouse_product->imei_number) : [];
-                                    $target_imeis = array_merge($target_imeis, $transferred_imeis);
-                                    $warehouse_product->imei_number = implode(',', $target_imeis);
-                                }
-                            }
-                        }
-
-                        $source_warehouse_product->save();
-                        ProductTransfer::create($productTransferData);
-
-                        // Add stock to target warehouse
-                        if (!$warehouse_product) {
-                            $warehouse_product = new Product_Warehouse();
-                            $warehouse_product->product_id = $id;
-                            $warehouse_product->warehouse_id = $data['warehouse_id'];
-                            $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
-                            $warehouse_product->qty = $transferQty;
-                            $warehouse_product->price = $product->price;
-                        } else {
-                            $warehouse_product->qty += $transferQty;
-                        }
-                        $warehouse_product->save();
+                    if (!$source_warehouse_product) {
+                        break;
                     }
+
+                    $transferQty = min($missingQty, $source_warehouse_product->qty);
+
+                    // Create Transfer
+                    $transfer = Transfer::create([
+                        'reference_no' => 'tr-' . date("Ymd") . '-' . date("his") . '-' . uniqid(),
+                        'user_id' => Auth::id() ? Auth::id() : 1,
+                        'status' => 1, // Completed
+                        'from_warehouse_id' => $source_warehouse_product->warehouse_id,
+                        'to_warehouse_id' => $data['warehouse_id'],
+                        'item' => 1,
+                        'total_qty' => $transferQty,
+                        'total_tax' => 0,
+                        'total_cost' => $transferQty * ($product->cost ?? 0),
+                        'shipping_cost' => 0,
+                        'grand_total' => $transferQty * ($product->cost ?? 0),
+                        'note' => 'Auto-transfer created during POS sale #' . $sale->reference_no
+                    ]);
+
+                    // Create ProductTransfer
+                    $productTransferData = [
+                        'transfer_id' => $transfer->id,
+                        'product_id' => $id,
+                        'variant_id' => $product->is_variant ? $variant->variant_id : null,
+                        'qty' => $transferQty,
+                        'purchase_unit_id' => $product->purchase_unit_id ?? $product->unit_id,
+                        'net_unit_cost' => $product->cost ?? 0,
+                        'tax_rate' => 0,
+                        'tax' => 0,
+                        'total' => $transferQty * ($product->cost ?? 0),
+                    ];
+
+                    // Deduct stock from source warehouse
+                    $source_warehouse_product->qty -= $transferQty;
+
+                    // Handle IMEI transfer
+                    if (count($remaining_imeis) > 0) {
+                        $source_imeis = $source_warehouse_product->imei_number ? explode(',', $source_warehouse_product->imei_number) : [];
+                        $transferred_imeis = [];
+                        foreach ($remaining_imeis as $key => $imei) {
+                            if (($idx = array_search($imei, $source_imeis)) !== false) {
+                                unset($source_imeis[$idx]);
+                                $transferred_imeis[] = $imei;
+                                unset($remaining_imeis[$key]);
+                            }
+                        }
+
+                        if (count($transferred_imeis) > 0) {
+                            $source_warehouse_product->imei_number = implode(',', $source_imeis);
+                            $productTransferData['imei_number'] = implode(',', $transferred_imeis);
+
+                            if (!$warehouse_product) {
+                                $warehouse_product = new Product_Warehouse();
+                                $warehouse_product->product_id = $id;
+                                $warehouse_product->warehouse_id = $data['warehouse_id'];
+                                $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
+                                $warehouse_product->qty = 0;
+                                $warehouse_product->price = $product->price;
+                                $warehouse_product->imei_number = implode(',', $transferred_imeis);
+                            } else {
+                                $target_imeis = $warehouse_product->imei_number ? explode(',', $warehouse_product->imei_number) : [];
+                                $target_imeis = array_merge($target_imeis, $transferred_imeis);
+                                $warehouse_product->imei_number = implode(',', $target_imeis);
+                            }
+                        }
+                    }
+
+                    $source_warehouse_product->save();
+                    ProductTransfer::create($productTransferData);
+
+                    // Add stock to target warehouse
+                    if (!$warehouse_product) {
+                        $warehouse_product = new Product_Warehouse();
+                        $warehouse_product->product_id = $id;
+                        $warehouse_product->warehouse_id = $data['warehouse_id'];
+                        $warehouse_product->variant_id = $product->is_variant ? $variant->variant_id : null;
+                        $warehouse_product->qty = $transferQty;
+                        $warehouse_product->price = $product->price;
+                    } else {
+                        $warehouse_product->qty += $transferQty;
+                    }
+                    $warehouse_product->save();
+
+                    // Reload/Update currentQty
+                    $currentQty += $transferQty;
                 }
 
                 if (!$warehouse_product) {
@@ -547,5 +558,51 @@ class SaleService
             6 => 'Deposit',
             7 => 'Points'
         ][$id] ?? 'Cash';
+    }
+
+    private function mergeProductWarehouseDuplicates(int $product_id, ?int $variant_id)
+    {
+        $query = DB::table('product_warehouse')
+            ->select('warehouse_id', 'product_batch_id', DB::raw('COUNT(*) as count'))
+            ->where('product_id', $product_id);
+
+        if ($variant_id !== null) {
+            $query = $query->where('variant_id', $variant_id);
+        } else {
+            $query = $query->whereNull('variant_id');
+        }
+
+        $duplicates = $query->groupBy('warehouse_id', 'product_batch_id')
+            ->having('count', '>', 1)
+            ->get();
+
+        foreach ($duplicates as $dup) {
+            $rowsQuery = DB::table('product_warehouse')
+                ->where('product_id', $product_id)
+                ->where('warehouse_id', $dup->warehouse_id)
+                ->where('product_batch_id', $dup->product_batch_id);
+
+            if ($variant_id !== null) {
+                $rowsQuery = $rowsQuery->where('variant_id', $variant_id);
+            } else {
+                $rowsQuery = $rowsQuery->whereNull('variant_id');
+            }
+
+            $rows = $rowsQuery->orderBy('id', 'asc')->get();
+
+            $firstRow = $rows->first();
+            $totalQty = $rows->sum('qty');
+
+            // Update first row
+            DB::table('product_warehouse')
+                ->where('id', $firstRow->id)
+                ->update(['qty' => $totalQty]);
+
+            // Delete duplicates
+            $deleteIds = $rows->slice(1)->pluck('id')->toArray();
+            DB::table('product_warehouse')
+                ->whereIn('id', $deleteIds)
+                ->delete();
+        }
     }
 }

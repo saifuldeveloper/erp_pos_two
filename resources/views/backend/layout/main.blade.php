@@ -914,7 +914,7 @@
         document.getElementById("content").style.display = "block";
       }
 
-      $("div.alert:not(#update-alert-section)").delay(4000).slideUp(800);
+      $("div.alert:not(#update-alert-section):not(.alert-danger)").delay(4000).slideUp(800);
 
       function confirmDelete() {
           if (confirm("Are you sure want to delete?")) {

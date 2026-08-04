@@ -629,9 +629,6 @@ class SaleController extends Controller
 
     public function getProduct($id)
     {
-        config()->set('database.connections.mysql.strict', false);
-        DB::reconnect();
-
         $query = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id');
         if (config('without_stock') == 'no') {
             $query = $query->where([
@@ -645,8 +642,8 @@ class SaleController extends Controller
         }
         $lims_product_warehouse_data = $query->whereNull('product_warehouse.variant_id')
             ->whereNull('product_warehouse.product_batch_id')
-            ->selectRaw('product_warehouse.product_id, products.is_embeded, SUM(product_warehouse.qty) as qty, MAX(product_warehouse.price) as price')
-            ->groupBy('product_warehouse.product_id')
+            ->selectRaw('product_warehouse.product_id, products.is_embeded, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . (int)$id . ' THEN product_warehouse.price ELSE NULL END) as price')
+            ->groupBy('product_warehouse.product_id', 'products.is_embeded')
             ->get();
 
         $query = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id');
@@ -664,8 +661,8 @@ class SaleController extends Controller
 
         $lims_product_with_batch_warehouse_data = $query->whereNull('product_warehouse.variant_id')
             ->whereNotNull('product_warehouse.product_batch_id')
-            ->selectRaw('product_warehouse.product_id, products.is_embeded, product_warehouse.product_batch_id, SUM(product_warehouse.qty) as qty, MAX(product_warehouse.price) as price')
-            ->groupBy('product_warehouse.product_id', 'product_warehouse.product_batch_id')
+            ->selectRaw('product_warehouse.product_id, products.is_embeded, product_warehouse.product_batch_id, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . (int)$id . ' THEN product_warehouse.price ELSE NULL END) as price')
+            ->groupBy('product_warehouse.product_id', 'product_warehouse.product_batch_id', 'products.is_embeded')
             ->get();
 
         $query = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id');
@@ -680,12 +677,9 @@ class SaleController extends Controller
             ]);
         }
         $lims_product_with_variant_warehouse_data = $query->whereNotNull('product_warehouse.variant_id')
-            ->selectRaw('product_warehouse.product_id, products.is_embeded, product_warehouse.variant_id, SUM(product_warehouse.qty) as qty, MAX(product_warehouse.price) as price')
-            ->groupBy('product_warehouse.product_id', 'product_warehouse.variant_id')
+            ->selectRaw('product_warehouse.product_id, products.is_embeded, product_warehouse.variant_id, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . (int)$id . ' THEN product_warehouse.price ELSE NULL END) as price')
+            ->groupBy('product_warehouse.product_id', 'product_warehouse.variant_id', 'products.is_embeded')
             ->get();
-
-        config()->set('database.connections.mysql.strict', true);
-        DB::reconnect();
 
         $product_code = [];
         $product_name = [];
@@ -702,8 +696,12 @@ class SaleController extends Controller
         //product without variant
         foreach ($lims_product_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
-            $product_price[] = $product_warehouse->price;
             $lims_product_data = Product::find($product_warehouse->product_id);
+            if ($product_warehouse->price !== null) {
+                $product_price[] = $product_warehouse->price;
+            } else {
+                $product_price[] = $lims_product_data->price;
+            }
             $product_code[] = $lims_product_data->code;
             $product_name[] = htmlspecialchars($lims_product_data->name);
             $product_type[] = $lims_product_data->type;
@@ -721,8 +719,12 @@ class SaleController extends Controller
         //product with batches
         foreach ($lims_product_with_batch_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
-            $product_price[] = $product_warehouse->price;
             $lims_product_data = Product::find($product_warehouse->product_id);
+            if ($product_warehouse->price !== null) {
+                $product_price[] = $product_warehouse->price;
+            } else {
+                $product_price[] = $lims_product_data->price;
+            }
             $product_code[] = $lims_product_data->code;
             $product_name[] = htmlspecialchars($lims_product_data->name);
             $product_type[] = $lims_product_data->type;
@@ -742,8 +744,13 @@ class SaleController extends Controller
         foreach ($lims_product_with_variant_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
             $lims_product_data = Product::find($product_warehouse->product_id);
-            $lims_product_variant_data = ProductVariant::select('item_code')->FindExactProduct($product_warehouse->product_id, $product_warehouse->variant_id)->first();
+            $lims_product_variant_data = ProductVariant::select('item_code', 'additional_price')->FindExactProduct($product_warehouse->product_id, $product_warehouse->variant_id)->first();
             if ($lims_product_variant_data) {
+                if ($product_warehouse->price !== null) {
+                    $product_price[] = $product_warehouse->price;
+                } else {
+                    $product_price[] = $lims_product_data->price + $lims_product_variant_data->additional_price;
+                }
                 $product_code[] = $lims_product_variant_data->item_code;
                 $product_name[] = htmlspecialchars($lims_product_data->name);
                 $product_type[] = $lims_product_data->type;
@@ -763,6 +770,7 @@ class SaleController extends Controller
         $lims_product_data = Product::whereNotIn('type', [ProductType::STANDARD->value])->where('is_active', true)->get();
         foreach ($lims_product_data as $product) {
             $product_qty[] = $product->qty;
+            $product_price[] = $product->price;
             $product_code[] = $product->code;
             $product_name[] = $product->name;
             $product_type[] = $product->type;
@@ -1079,18 +1087,11 @@ class SaleController extends Controller
     public function limsProductSearch(Request $request)
     {
         $todayDate = date('Y-m-d');
-        $product_code = explode("(", $request['data']);
         $product_info = explode("?", $request['data']);
-        $customer_id = $product_info[1];
-        if (strpos($request['data'], '|')) {
-            $product_info = explode("|", $request['data']);
-            $embeded_code = $product_code[0];
-            $product_code[0] = substr($embeded_code, 0, 7);
-            $qty = substr($embeded_code, 7, 5) / 1000;
-        } else {
-            $product_code[0] = rtrim($product_code[0], " ");
-            $qty = $product_info[2];
-        }
+        $customer_id = $product_info[1] ?? null;
+        $qty = $product_info[2] ?? null;
+        $product_code = explode("(", $product_info[0]);
+        $product_code[0] = rtrim($product_code[0], " ");
         $product_variant_id = null;
         $parent_variant_id = null;
         $all_discount = DB::table('discount_plan_customers')
@@ -1104,30 +1105,74 @@ class SaleController extends Controller
             ])
             ->select('discounts.*')
             ->get();
-        $lims_product_data = Product::where([
-            ['code', $product_code[0]],
-            ['is_active', true]
-        ])->first();
+
+        $search_code = $product_code[0];
+        $normalized_code = str_replace(' ', '-', $search_code);
+
+        \Log::info("limsProductSearch input: " . $request['data'] . " | warehouse_id: " . $request->input('warehouse_id'));
+        \Log::info("search_code: '" . $search_code . "' | normalized_code: '" . $normalized_code . "'");
+
+        $lims_product_data = Product::where(function($q) use ($search_code, $normalized_code) {
+            $q->where('code', $search_code)
+              ->orWhere('code', $normalized_code);
+        })->where('is_active', true)->first();
+
         if (!$lims_product_data) {
+            \Log::info("Not found in products. Searching variants...");
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
                 ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.variant_id', 'product_variants.item_code', 'product_variants.additional_price')
-                ->where([
-                    ['product_variants.item_code', $product_code[0]],
-                    ['products.is_active', true]
-                ])->first();
+                ->where('products.is_active', true)
+                ->where(function($q) use ($search_code, $normalized_code) {
+                    $q->where('product_variants.item_code', $search_code)
+                      ->orWhere('product_variants.item_code', $normalized_code);
+                })->first();
             if ($lims_product_data) {
+                \Log::info("Found in variants! Product ID: " . $lims_product_data->id);
                 $product_variant_id = $lims_product_data->product_variant_id;
                 $parent_variant_id = $lims_product_data->variant_id;
+            } else {
+                \Log::info("Not found in variants!");
             }
+        }
+
+        if (!$lims_product_data) {
+            \Log::info("limsProductSearch returning nokey");
+            return 'nokey';
         }
 
         if ($lims_product_data && $lims_product_data->is_variant && !$parent_variant_id) {
             $pv = DB::table('product_variants')
                 ->where('product_id', $lims_product_data->id)
-                ->where('item_code', $product_code[0])
+                ->where(function($q) use ($search_code, $normalized_code) {
+                    $q->where('item_code', $search_code)
+                      ->orWhere('item_code', $normalized_code);
+                })
                 ->first();
             if ($pv) {
                 $parent_variant_id = $pv->variant_id;
+                $lims_product_data->additional_price = $pv->additional_price;
+            }
+        }
+
+        $warehouse_id = $request->input('warehouse_id');
+        if ($warehouse_id) {
+            if ($lims_product_data->is_variant) {
+                $pw = DB::table('product_warehouse')
+                    ->where('product_id', $lims_product_data->id)
+                    ->where('variant_id', $parent_variant_id)
+                    ->where('warehouse_id', $warehouse_id)
+                    ->first();
+            } else {
+                $pw = DB::table('product_warehouse')
+                    ->where('product_id', $lims_product_data->id)
+                    ->whereNull('variant_id')
+                    ->whereNull('product_batch_id')
+                    ->where('warehouse_id', $warehouse_id)
+                    ->first();
+            }
+            if ($pw && $pw->price !== null) {
+                $lims_product_data->price = $pw->price;
+                $lims_product_data->additional_price = 0;
             }
         }
 
@@ -1206,6 +1251,7 @@ class SaleController extends Controller
         $product[] = $lims_product_data->price;
         $product[] = $lims_product_data->price - $product[2];
 
+        $warehouse_id = $request->input('warehouse_id');
         if ($lims_product_data->isType(ProductType::STANDARD)) {
             if ($lims_product_data->is_variant) {
                 $global_stock = \DB::table('product_warehouse')

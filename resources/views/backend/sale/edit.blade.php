@@ -861,7 +861,8 @@
             type: 'GET',
             url: '../lims_product_search',
             data: {
-                data: data
+                data: data,
+                warehouse_id: $('#warehouse_id').val()
             },
             success: function(data) {
                 var flag = 1;

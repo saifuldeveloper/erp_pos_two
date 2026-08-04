@@ -503,7 +503,7 @@
             $("#lims_productcodeSearch").focus();
           }
 
-          $("div.alert").delay(3000).slideUp(750);
+          $("div.alert:not(.alert-danger)").delay(3000).slideUp(750);
           $('select').selectpicker({
               style: 'btn-link',
           });

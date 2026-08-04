@@ -64,6 +64,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductTransferTableSeeder::class);
         $this->call(ProductVariantsTableSeeder::class);
         $this->call(ProductWarehouseTableSeeder::class);
+        $this->call(MergeProductWarehouseDuplicatesSeeder::class);
         $this->call(ProductsTableSeeder::class);
         $this->call(PurchaseProductReturnTableSeeder::class);
         $this->call(PurchasesTableSeeder::class);

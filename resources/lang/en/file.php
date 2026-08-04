@@ -1550,4 +1550,9 @@ return [
 
 	"Parcel cannot be delivered without merchant permission. If any issue, contact +25252." => "[ Parcel cannot be delivered without merchant permission. If any issue, contact +25252. ]",
 	"Total Cost" => "Total Cost",
+	"VAT Registration Number" => "VAT Registration Number",
+	"Table Management" => "Table Management",
+	"Invoice Size" => "Invoice Size",
+	"A4" => "A4",
+	"Thermal POS receipt" => "Thermal POS receipt",
 ];

@@ -1471,4 +1471,9 @@ return [
 
 	"Parcel cannot be delivered without merchant permission. If any issue, contact +25252." => "[ মার্চেন্ট এর অনুমতি ছাড়া পার্সেল ডেলিভারি করা যাবেনা। যদি কোন সমস্যা হয় তাহলে +25252 নাম্বারে যোগাযোগ করবেন। ]",
 	"Total Cost" => "মোট খরচ",
+	"VAT Registration Number" => "ভ্যাট রেজিস্ট্রেশন নম্বর",
+	"Table Management" => "টেবিল ব্যবস্থাপনা",
+	"Invoice Size" => "ইনভয়েস সাইজ",
+	"A4" => "A4",
+	"Thermal POS receipt" => "থার্মাল পস রসিদ",
 ];

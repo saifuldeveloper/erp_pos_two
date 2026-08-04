@@ -154,24 +154,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" style="display: none;">
                                     <div class="form-group">
                                         <label>{{trans('file.Sale and Quotation without stock')}} *</label><br>
-                                        @if($lims_general_setting_data->without_stock == 'yes')
-                                        <label class="radio-inline">
-                                            <input type="radio" name="without_stock" value="yes" checked> {{trans('file.Yes')}}
-                                        </label>
-                                        <label class="radio-inline">
-                                          <input type="radio" name="without_stock" value="no"> {{trans('file.No')}}
-                                        </label>
-                                        @else
                                         <label class="radio-inline">
                                             <input type="radio" name="without_stock" value="yes"> {{trans('file.Yes')}}
                                         </label>
                                         <label class="radio-inline">
                                           <input type="radio" name="without_stock" value="no" checked> {{trans('file.No')}}
                                         </label>
-                                        @endif
                                     </div>
                                 </div>
                                 <!--

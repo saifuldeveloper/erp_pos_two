@@ -1,17 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateProductWarhouseTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('product_warehouse', function (Blueprint $table) {
             $table->increments('id');
@@ -24,10 +24,13 @@ class CreateProductWarhouseTable extends Migration
             $table->double('price', 15, 2)->nullable();
             $table->timestamps();
 
+            // Laravel 11 standard virtual stored generated column
+            $table->string('unique_key')->storedAs("CONCAT(product_id, '-', warehouse_id, '-', COALESCE(variant_id, 0), '-', COALESCE(product_batch_id, 0))");
+
             $table->index('product_id');
             $table->index('variant_id');
             $table->index('warehouse_id');
-            $table->index(['product_id', 'warehouse_id', 'variant_id'], 'idx_pw_prod_wh_var');
+            $table->unique('unique_key', 'unique_stock_index');
         });
     }
 
@@ -36,8 +39,8 @@ class CreateProductWarhouseTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('product_warehouse');
     }
-}
+};

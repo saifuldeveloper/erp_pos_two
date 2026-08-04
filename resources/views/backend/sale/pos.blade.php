@@ -21,6 +21,16 @@
 <div class="alert alert-danger alert-dismissible text-center">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('phone_number') }}</div>
 @endif
+@if ($errors->any())
+    <div class="alert alert-danger alert-dismissible text-center">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <ul style="list-style-type:none; margin:0; padding:0;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 @if(session()->has('message'))
     <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{!! session()->get('message') !!}</div>
 @endif
@@ -1407,6 +1417,9 @@ var product_type = [];
 var product_id = [];
 var product_list = [];
 var qty_list = [];
+var product_warehouse_price = [];
+var batch_no = [];
+var product_batch_id = [];
 var global_product_qty = {};
 
 // array data with selection
@@ -1843,12 +1856,8 @@ $.get('sales/getproduct/' + id, function(data) {
     product_warehouse_price = data[7];
     batch_no = data[8];
     product_batch_id = data[9];
-    is_embeded = data[11];
     $.each(product_code, function(index) {
-        if(is_embeded[index])
-            lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')|' + is_embeded[index]);
-        else
-            lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')');
+        lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')');
     });
 });
 
@@ -2039,12 +2048,8 @@ $('select[name="warehouse_id"]').on('change', function() {
         product_warehouse_price = data[7];
         batch_no = data[8];
         product_batch_id = data[9];
-        is_embeded = data[11];
         $.each(product_code, function(index) {
-            if(is_embeded[index])
-                lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')|' + is_embeded[index]);
-            else
-                lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')');
+            lims_product_array.push(product_code[index] + ' (' + product_name[index] + ')');
         });
     });
 
@@ -2061,9 +2066,12 @@ var lims_productcodeSearch = $('#lims_productcodeSearch');
 
 lims_productcodeSearch.autocomplete({
     source: function(request, response) {
-        var matcher = new RegExp(".?" + $.ui.autocomplete.escapeRegex(request.term), "i");
+        var term = request.term.replace(/[- ]/g, '').toLowerCase();
+        var matcher = new RegExp($.ui.autocomplete.escapeRegex(term), "i");
         response($.grep(lims_product_array, function(item) {
-            return matcher.test(item);
+            var itemCode = item.split(' (')[0].replace(/[- ]/g, '').toLowerCase();
+            var itemName = item.split(' (')[1] ? item.split(' (')[1].replace(/[- ]/g, '').toLowerCase() : '';
+            return matcher.test(itemCode) || matcher.test(itemName);
         }));
     },
     response: function(event, ui) {
@@ -2072,8 +2080,13 @@ lims_productcodeSearch.autocomplete({
             $(this).autocomplete( "close" );
             productSearch(data);
         }
-        else if(ui.content.length == 0 && $('#lims_productcodeSearch').val().length == 13) {
-          productSearch($('#lims_productcodeSearch').val()+'|'+1);
+        else if(ui.content.length == 0 && $('#lims_productcodeSearch').val().length >= 3) {
+            var searchVal = $('#lims_productcodeSearch').val();
+            if (searchVal.length == 13) {
+                productSearch(searchVal + '|' + 1);
+            } else {
+                productSearch(searchVal);
+            }
         }
     },
     select: function(event, ui) {
@@ -2081,6 +2094,38 @@ lims_productcodeSearch.autocomplete({
         ui.item.value = '';
         productSearch(data);
     },
+});
+
+$('#lims_productcodeSearch').on('keydown', function(e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        var value = $(this).val().trim();
+        if (value.length > 0) {
+            var normalizedVal = value.replace(/[- ]/g, '').toLowerCase();
+            var matchedValue = null;
+            $.each(lims_product_array, function(index, item) {
+                var itemCode = item.split(' (')[0].replace(/[- ]/g, '').toLowerCase();
+                if (itemCode === normalizedVal) {
+                    matchedValue = item;
+                    return false;
+                }
+            });
+
+            if (matchedValue) {
+                $('#lims_productcodeSearch').autocomplete("close");
+                $('#lims_productcodeSearch').val('');
+                productSearch(matchedValue);
+            } else {
+                $('#lims_productcodeSearch').autocomplete("close");
+                $('#lims_productcodeSearch').val('');
+                if (value.length == 13) {
+                    productSearch(value + '|' + 1);
+                } else {
+                    productSearch(value);
+                }
+            }
+        }
+    }
 });
 
 $('#myTable').keyboard({
@@ -2516,9 +2561,14 @@ function productSearch(data) {
         async: false,
         url: 'sales/lims_product_search',
         data: {
-            data: data
+            data: data,
+            warehouse_id: $('#warehouse_id').val()
         },
         success: function(data) {
+            if (data == 'nokey') {
+                alert('Product does not exist!');
+                return;
+            }
             // Check if the product code is in the global product_code array
             var global_pos = window.product_code.indexOf(data[1]);
             var globalStock = parseFloat(data[18]);
@@ -2530,7 +2580,7 @@ function productSearch(data) {
                 }
                 window.product_code.push(data[1]);
                 window.product_name.push(data[0]);
-                window.product_qty.push(0);
+                window.product_qty.push(globalStock);
                 window.product_type.push('standard');
                 window.product_id.push(data[9]);
                 window.product_list.push(null);
@@ -2540,6 +2590,7 @@ function productSearch(data) {
                 window.product_batch_id.push(null);
                 global_pos = window.product_code.length - 1;
             } else {
+                window.product_qty[global_pos] = globalStock;
                 if (without_stock == 'no' && (isNaN(globalStock) || globalStock <= 0)) {
                     alert('Product is out of stock!');
                     return;
