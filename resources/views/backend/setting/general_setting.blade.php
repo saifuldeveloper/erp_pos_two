@@ -52,7 +52,7 @@
                                 @if($lims_general_setting_data->is_rtl)
                                 <input type="hidden" name="is_rtl" value="1">
                                 @endif
-                                @if(config('database.connections.saleprosaas_landlord'))
+                                @if(config('database.connections.saas_landlord'))
                                     <div class="col-md-4 mt-4">
                                         <div class="form-group">
                                             @if($lims_general_setting_data->is_zatca)
@@ -232,7 +232,7 @@
                                 </div>
                                 -->
                                 <input type="hidden" name="developed_by" value="{{$lims_general_setting_data->developed_by}}">
-                                @if(config('database.connections.saleprosaas_landlord'))
+                                @if(config('database.connections.saas_landlord'))
                                     <br>
                                     <div class="col-md-2">
                                         <div class="form-group">
@@ -344,7 +344,7 @@
         $('#custom-style').attr('href', style_link);
     });
 
-    @if(config('database.connections.saleprosaas_landlord'))
+    @if(config('database.connections.saas_landlord'))
         $.ajax({
             type: 'GET',
             async: false,

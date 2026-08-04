@@ -440,7 +440,7 @@ class ReturnPurchaseController extends Controller
 
     //         $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
     //         $documentName = date("Ymdhis");
-    //         if(!config('database.connections.saleprosaas_landlord')) {
+    //         if(!config('database.connections.saas_landlord')) {
     //             $documentName = $documentName . '.' . $ext;
     //             $document->move('public/documents/purchase_return', $documentName);
     //         }
@@ -628,7 +628,7 @@ class ReturnPurchaseController extends Controller
 //             if ($v->fails()) return back()->withErrors($v->errors());
 
     //             $ext = $request->document->getClientOriginalExtension();
-//             $documentName = (config('database.connections.saleprosaas_landlord')
+//             $documentName = (config('database.connections.saas_landlord')
 //                 ? $this->getTenantId() . '_'
 //                 : '') . date("Ymdhis") . '.' . $ext;
 
@@ -814,7 +814,7 @@ class ReturnPurchaseController extends Controller
                     return back()->withErrors($v->errors());
 
                 $ext = $request->document->getClientOriginalExtension();
-                $documentName = (config('database.connections.saleprosaas_landlord')
+                $documentName = (config('database.connections.saas_landlord')
                     ? $this->getTenantId() . '_'
                     : '') . date("Ymdhis") . '.' . $ext;
 
@@ -1146,7 +1146,7 @@ class ReturnPurchaseController extends Controller
 
                 $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
                 $documentName = date("Ymdhis");
-                if (!config('database.connections.saleprosaas_landlord')) {
+                if (!config('database.connections.saas_landlord')) {
                     $documentName = $documentName . '.' . $ext;
                     $document->move('public/documents/purchase_return', $documentName);
                 } else {

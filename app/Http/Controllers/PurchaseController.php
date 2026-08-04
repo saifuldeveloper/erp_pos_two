@@ -457,7 +457,7 @@ class PurchaseController extends Controller
 
             $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
             $documentName = date("Ymdhis");
-            if (!config('database.connections.saleprosaas_landlord')) {
+            if (!config('database.connections.saas_landlord')) {
                 $documentName = $documentName . '.' . $ext;
                 $document->move('public/documents/purchase', $documentName);
             } else {
@@ -726,7 +726,7 @@ class PurchaseController extends Controller
 
             $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
             $documentName = date("Ymdhis");
-            if (!config('database.connections.saleprosaas_landlord')) {
+            if (!config('database.connections.saas_landlord')) {
                 $documentName = $documentName . '.' . $ext;
                 $document->move('public/documents/purchase', $documentName);
             } else {
@@ -845,7 +845,7 @@ class PurchaseController extends Controller
 
             $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
             $documentName = date("Ymdhis");
-            if (!config('database.connections.saleprosaas_landlord')) {
+            if (!config('database.connections.saas_landlord')) {
                 $documentName = $documentName . '.' . $ext;
                 $document->move('public/documents/purchase', $documentName);
             } else {
@@ -1620,7 +1620,7 @@ class PurchaseController extends Controller
 
             $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
             $documentName = date("Ymdhis");
-            if (!config('database.connections.saleprosaas_landlord')) {
+            if (!config('database.connections.saas_landlord')) {
                 $documentName = $documentName . '.' . $ext;
                 $document->move('public/documents/purchase', $documentName);
             } else {

@@ -243,7 +243,7 @@ class SettingController extends Controller
         $host = env('DB_HOST');
         $username = env('DB_USERNAME');
         $password = env('DB_PASSWORD');
-        if(!config('database.connections.saleprosaas_landlord'))
+        if(!config('database.connections.saas_landlord'))
             $database_name = env('DB_DATABASE');
         else
             $database_name = env('DB_PREFIX').$this->getTenantId();

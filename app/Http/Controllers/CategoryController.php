@@ -175,7 +175,7 @@ class CategoryController extends Controller
         if ($image) {
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $imageName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $imageName = $imageName . '.' . $ext;
                 $image->move('public/images/category', $imageName);
             }
@@ -193,7 +193,7 @@ class CategoryController extends Controller
             }
             $ext = pathinfo($icon->getClientOriginalName(), PATHINFO_EXTENSION);
             $iconName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $iconName = $iconName . '.' . $ext;
                 $icon->move('public/images/category/icons/', $iconName);
             }
@@ -257,7 +257,7 @@ class CategoryController extends Controller
 
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $imageName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $imageName = $imageName . '.' . $ext;
                 $image->move('public/images/category', $imageName);
             }
@@ -278,7 +278,7 @@ class CategoryController extends Controller
 
             $ext = pathinfo($icon->getClientOriginalName(), PATHINFO_EXTENSION);
             $iconName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $iconName = $iconName . '.' . $ext;
                 $icon->move('public/images/category/icons/', $iconName);
             }

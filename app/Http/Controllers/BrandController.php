@@ -39,7 +39,7 @@ class BrandController extends Controller
         if ($image) {
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $imageName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $imageName = $imageName . '.' . $ext;
                 $image->move('public/images/brand', $imageName);
             }
@@ -78,7 +78,7 @@ class BrandController extends Controller
         if ($image) {
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $imageName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $imageName = $imageName . '.' . $ext;
                 $image->move('public/images/brand', $imageName);
             }
@@ -137,7 +137,7 @@ class BrandController extends Controller
         $brand_id = $request['brandIdArray'];
         foreach ($brand_id as $id) {
             $lims_brand_data = Brand::findOrFail($id);
-            if($lims_brand_data->image && !config('database.connections.saleprosaas_landlord') && file_exists('public/images/brand/'.$lims_brand_data->image)) {
+            if($lims_brand_data->image && !config('database.connections.saas_landlord') && file_exists('public/images/brand/'.$lims_brand_data->image)) {
                 unlink('public/images/brand/'.$lims_brand_data->image);
             }
             elseif($lims_brand_data->image && file_exists('images/brand/'.$lims_brand_data->image)) {
@@ -154,7 +154,7 @@ class BrandController extends Controller
     {
         $lims_brand_data = Brand::findOrFail($id);
         $lims_brand_data->is_active = false;
-        if($lims_brand_data->image && !config('database.connections.saleprosaas_landlord') && file_exists('public/images/brand/'.$lims_brand_data->image)) {
+        if($lims_brand_data->image && !config('database.connections.saas_landlord') && file_exists('public/images/brand/'.$lims_brand_data->image)) {
             unlink('public/images/brand/'.$lims_brand_data->image);
         }
         elseif($lims_brand_data->image && file_exists('images/brand/'.$lims_brand_data->image)) {

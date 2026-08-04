@@ -321,7 +321,7 @@ class QuotationController extends Controller
                 return redirect()->back()->withErrors($v->errors());
             $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
             $documentName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $documentName = $documentName . '.' . $ext;
                 $document->move('public/documents/quotation', $documentName);
             }
@@ -719,7 +719,7 @@ class QuotationController extends Controller
 
             $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
             $documentName = date("Ymdhis");
-            if(!config('database.connections.saleprosaas_landlord')) {
+            if(!config('database.connections.saas_landlord')) {
                 $documentName = $documentName . '.' . $ext;
                 $document->move('public/documents/quotation', $documentName);
             }

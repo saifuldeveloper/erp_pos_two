@@ -193,7 +193,7 @@
     $("ul#setting").addClass("show");
     $("ul#setting #warehouse-menu").addClass("active");
 
-    @if(config('database.connections.saleprosaas_landlord'))
+    @if(config('database.connections.saas_landlord'))
         numberOfWarehouse = <?php echo json_encode($numberOfWarehouse)?>;
         $.ajax({
             type: 'GET',

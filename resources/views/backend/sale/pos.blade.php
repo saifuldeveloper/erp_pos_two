@@ -1381,7 +1381,7 @@
         }
     });
 
-    @if(config('database.connections.saleprosaas_landlord'))
+    @if(config('database.connections.saas_landlord'))
         numberOfInvoice = <?php echo json_encode($numberOfInvoice)?>;
         $.ajax({
             type: 'GET',

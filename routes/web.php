@@ -20,7 +20,6 @@ use App\Http\Controllers\BillerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CashRegisterController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ClientAutoUpdateController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CurrencyController;
@@ -109,14 +108,6 @@ Route::group(['prefix' => 'developer-section'], function () {
         Route::post('/bug-update-setting', 'bugUpdateSetting')->name('bug-update-setting.submit');
         Route::post('/version-upgrade-setting', 'versionUpgradeSetting')->name('version-upgrade-setting.submit');
     });
-});
-
-Route::controller(ClientAutoUpdateController::class)->group(function () {
-    Route::get('/new-release', 'newVersionReleasePage')->name('new-release');
-    Route::get('/bugs', 'bugUpdatePage')->name('bug-update-page');
-    // Action on Client server
-    Route::post('version-upgrade', 'versionUpgrade')->name('version-upgrade');
-    Route::post('bug-update', 'bugUpdate')->name('bug-update');
 });
 
 

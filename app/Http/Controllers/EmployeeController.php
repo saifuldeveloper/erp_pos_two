@@ -95,7 +95,7 @@ class EmployeeController extends Controller
         if ($image) {
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $imageName = date("Ymdhis");
-            if (!config('database.connections.saleprosaas_landlord')) {
+            if (!config('database.connections.saas_landlord')) {
                 $imageName = $imageName . '.' . $ext;
                 $image->move('public/images/employee', $imageName);
             } else {
@@ -149,7 +149,7 @@ class EmployeeController extends Controller
             $this->fileDelete('images/employee/', $lims_employee_data->image);
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
             $imageName = date("Ymdhis");
-            if (!config('database.connections.saleprosaas_landlord')) {
+            if (!config('database.connections.saas_landlord')) {
                 $imageName = $imageName . '.' . $ext;
                 $image->move('public/images/employee', $imageName);
             } else {
@@ -192,7 +192,7 @@ class EmployeeController extends Controller
 
         $this->fileDelete('images/employee/', $lims_employee_data->image);
 
-        // if($lims_employee_data->image && !config('database.connections.saleprosaas_landlord')) {
+        // if($lims_employee_data->image && !config('database.connections.saas_landlord')) {
         //     unlink('public/images/employee/'.$lims_employee_data->image);
         // }
         // elseif($lims_employee_data->image) {
