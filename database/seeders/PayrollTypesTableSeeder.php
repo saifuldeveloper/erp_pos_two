@@ -37,6 +37,15 @@ class PayrollTypesTableSeeder extends Seeder
                 'created_at' => '2025-04-08 21:39:11',
                 'updated_at' => '2025-04-08 21:50:06',
             ),
+            2 => 
+            array (
+                'id' => 3,
+                'name' => 'Bonus',
+                'slug' => 'bonus',
+                'status' => 'Active',
+                'created_at' => '2026-01-12 00:21:01',
+                'updated_at' => '2026-01-12 00:21:01',
+            ),
         ));
         
         

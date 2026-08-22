@@ -337,7 +337,7 @@ class AvijatryController extends Controller
                 if ($productWarehouse) {
                     $productWarehouse->qty -= $purchase->productPurchases()->where('product_id', $product->id)->where('variant_id', $productWarehouse->variant_id)->sum('recieved') ?? 0;
                     $productWarehouse->qty += $received_qty;
-                    $productWarehouse->price = $product->cost;
+                    $productWarehouse->price = $product->price;
                     $productWarehouse->save();
                 } else {
                     $productWarehouse = new Product_Warehouse();
@@ -345,7 +345,7 @@ class AvijatryController extends Controller
                     $productWarehouse->warehouse_id = Warehouse::first()->id;
                     $productWarehouse->variant_id = $productVariant->variant_id;
                     $productWarehouse->qty = $received_qty;
-                    $productWarehouse->price = $product->cost;
+                    $productWarehouse->price = $product->price;
                     $productWarehouse->save();
                 }
             }

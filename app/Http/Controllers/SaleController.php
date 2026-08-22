@@ -697,11 +697,7 @@ class SaleController extends Controller
         foreach ($lims_product_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
             $lims_product_data = Product::find($product_warehouse->product_id);
-            if ($product_warehouse->price !== null) {
-                $product_price[] = $product_warehouse->price;
-            } else {
-                $product_price[] = $lims_product_data->price;
-            }
+            $product_price[] = $lims_product_data->price;
             $product_code[] = $lims_product_data->code;
             $product_name[] = htmlspecialchars($lims_product_data->name);
             $product_type[] = $lims_product_data->type;
@@ -720,11 +716,7 @@ class SaleController extends Controller
         foreach ($lims_product_with_batch_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
             $lims_product_data = Product::find($product_warehouse->product_id);
-            if ($product_warehouse->price !== null) {
-                $product_price[] = $product_warehouse->price;
-            } else {
-                $product_price[] = $lims_product_data->price;
-            }
+            $product_price[] = $lims_product_data->price;
             $product_code[] = $lims_product_data->code;
             $product_name[] = htmlspecialchars($lims_product_data->name);
             $product_type[] = $lims_product_data->type;
@@ -746,11 +738,7 @@ class SaleController extends Controller
             $lims_product_data = Product::find($product_warehouse->product_id);
             $lims_product_variant_data = ProductVariant::select('item_code', 'additional_price')->FindExactProduct($product_warehouse->product_id, $product_warehouse->variant_id)->first();
             if ($lims_product_variant_data) {
-                if ($product_warehouse->price !== null) {
-                    $product_price[] = $product_warehouse->price;
-                } else {
-                    $product_price[] = $lims_product_data->price + $lims_product_variant_data->additional_price;
-                }
+                $product_price[] = $lims_product_data->price + $lims_product_variant_data->additional_price;
                 $product_code[] = $lims_product_variant_data->item_code;
                 $product_name[] = htmlspecialchars($lims_product_data->name);
                 $product_type[] = $lims_product_data->type;
@@ -1163,7 +1151,7 @@ class SaleController extends Controller
             }
         }
 
-        $warehouse_id = $request->input('warehouse_id');
+        /* $warehouse_id = $request->input('warehouse_id');
         if ($warehouse_id) {
             if ($lims_product_data->is_variant) {
                 $pw = DB::table('product_warehouse')
@@ -1183,7 +1171,7 @@ class SaleController extends Controller
                 $lims_product_data->price = $pw->price;
                 $lims_product_data->additional_price = 0;
             }
-        }
+        } */
 
         $product[] = $lims_product_data->name;
         if ($lims_product_data->is_variant) {

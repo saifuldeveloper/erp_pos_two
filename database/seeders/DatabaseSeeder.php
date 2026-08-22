@@ -63,8 +63,20 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductSalesTableSeeder::class);
         $this->call(ProductTransferTableSeeder::class);
         $this->call(ProductVariantsTableSeeder::class);
+        try {
+            \Illuminate\Support\Facades\Schema::table('product_warehouse', function (\Illuminate\Database\Schema\Blueprint $table) {
+                $table->dropUnique('unique_stock_index');
+            });
+        } catch (\Exception $e) {
+            // Index might not exist, ignore
+        }
+
         $this->call(ProductWarehouseTableSeeder::class);
         $this->call(MergeProductWarehouseDuplicatesSeeder::class);
+
+        \Illuminate\Support\Facades\Schema::table('product_warehouse', function (\Illuminate\Database\Schema\Blueprint $table) {
+            $table->unique('unique_key', 'unique_stock_index');
+        });
         $this->call(ProductsTableSeeder::class);
         $this->call(PurchaseProductReturnTableSeeder::class);
         $this->call(PurchasesTableSeeder::class);
