@@ -177,6 +177,7 @@
                                             <th>{{ trans('file.Stock Quantity') }}</th>
                                             <th>{{ trans('file.Total Purchase Value') }}</th>
                                             <th>{{ trans('file.Total Sale Value') }}</th>
+                                            <th class="not-export text-center">{{ trans('file.action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -185,15 +186,29 @@
                                                 $rowPurchaseVal = $product->qty * $product->cost;
                                                 $rowSaleVal = $product->qty * $product->price;
                                             @endphp
-                                            <tr>
+                                            <tr data-id="{{ $product->id }}" 
+                                                data-name="{{ $product->name }}" 
+                                                data-code="{{ $product->code }}" 
+                                                data-cost="{{ number_format($product->cost, 2, '.', '') }}" 
+                                                data-price="{{ number_format($product->price, 2, '.', '') }}" 
+                                                data-qty="{{ number_format($product->qty, 2, '.', '') }}">
                                                 <td>{{ $index + 1 }}</td>
-                                                <td>{{ $product->name }}</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" class="view-stock-btn font-weight-bold text-primary" data-id="{{ $product->id }}">
+                                                        {{ $product->name }}
+                                                    </a>
+                                                </td>
                                                 <td>{{ $product->code }}</td>
                                                 <td>{{ number_format($product->cost, 2, '.', '') }}</td>
                                                 <td>{{ number_format($product->price, 2, '.', '') }}</td>
                                                 <td>{{ number_format($product->qty, 2, '.', '') }}</td>
                                                 <td>{{ number_format($rowPurchaseVal, 2, '.', '') }}</td>
                                                 <td>{{ number_format($rowSaleVal, 2, '.', '') }}</td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-sm btn-info view-stock-btn" data-id="{{ $product->id }}" title="{{ trans('file.View') }}">
+                                                        <i class="fa fa-eye"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -207,6 +222,7 @@
                                             <th>{{ number_format($remainingQty, 2, '.', '') }}</th>
                                             <th>{{ number_format($totalRemainingPurchaseValue, 2, '.', '') }}</th>
                                             <th>{{ number_format($totalRemainingSaleValue, 2, '.', '') }}</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -217,6 +233,59 @@
             </div>
         </div>
     </section>
+
+    <!-- Product Stock Details Modal -->
+    <div id="product-details" tabindex="-1" role="dialog" aria-labelledby="productDetailsLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="productDetailsLabel" class="modal-title">{{ trans('file.Product Details') }}</h5>
+                    <button id="print-stock-btn" type="button" class="btn btn-default btn-sm ml-3">
+                        <i class="dripicons-print"></i> {{ trans('file.Print') }}
+                    </button>
+                    <button type="button" id="close-btn" data-dismiss="modal" aria-label="Close" class="close">
+                        <span aria-hidden="true"><i class="dripicons-cross"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body" id="printable-modal-body">
+                    <div class="row">
+                        <!-- Top: Warehouse Quantity (Full Width) -->
+                        <div class="col-md-12" id="product-warehouse-section">
+                            <h5>{{ trans('file.Warehouse Quantity') }}</h5>
+                            <table class="table table-bordered table-hover product-warehouse-list">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Bottom Left: Product Variant Information (col-md-7) -->
+                        <div class="col-md-7 mt-3" id="product-variant-section">
+                            <h5>{{ trans('file.Product Variant Information') }}</h5>
+                            <table class="table table-bordered table-hover product-variant-list">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Bottom Right: Warehouse quantity of product variants (col-md-5) -->
+                        <div class="col-md-5 mt-3" id="product-variant-warehouse-section">
+                            <h5>{{ trans('file.Warehouse quantity of product variants') }}</h5>
+                            <table class="table table-bordered table-hover product-variant-warehouse-list">
+                                <thead>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
@@ -270,6 +339,120 @@
                     }
                 }
             ]
+        });
+
+        // View Stock Details Handler
+        $(document).on("click", ".view-stock-btn", function(e) {
+            e.preventDefault();
+            var row = $(this).closest('tr');
+            var productId = $(this).data('id') || row.data('id');
+
+            $("table.product-warehouse-list thead").empty();
+            $("table.product-warehouse-list tbody").empty();
+            $("table.product-variant-list thead").empty();
+            $("table.product-variant-list tbody").empty();
+            $("table.product-variant-warehouse-list thead").empty();
+            $("table.product-variant-warehouse-list tbody").empty();
+
+            $("#product-warehouse-section").addClass('d-none');
+            $("#product-variant-section").addClass('d-none');
+            $("#product-variant-warehouse-section").addClass('d-none');
+
+            // 1. Fetch Variant Information
+            $.get('{{ url("products/variant-data") }}/' + productId, function(variantData) {
+                if (variantData && variantData.length > 0) {
+                    var newHead = $("<thead>");
+                    var newBody = $("<tbody>");
+                    var newRow = $("<tr>");
+                    newRow.append('<th>{{ trans("file.Variant") }}</th><th>{{ trans("file.Item Code") }}</th><th>{{ trans("file.Additional Cost") }}</th><th>{{ trans("file.Additional Price") }}</th><th>{{ trans("file.Qty") }}</th>');
+                    newHead.append(newRow);
+                    
+                    $.each(variantData, function(i, v) {
+                        var newRow = $("<tr>");
+                        var cols = '';
+                        cols += '<td>' + (v.name || 'N/A') + '</td>';
+                        cols += '<td>' + (v.item_code || 'N/A') + '</td>';
+                        cols += '<td>' + (v.additional_cost ? v.additional_cost : 0) + '</td>';
+                        cols += '<td>' + (v.additional_price ? v.additional_price : 0) + '</td>';
+                        cols += '<td>' + (v.qty ? v.qty : 0) + '</td>';
+                        newRow.append(cols);
+                        newBody.append(newRow);
+                    });
+
+                    $("table.product-variant-list").append(newHead).append(newBody);
+                    $("#product-variant-section").removeClass('d-none');
+                }
+            });
+
+            // 2. Fetch Warehouse & Variant Warehouse Quantities
+            $.get('{{ url("products/product_warehouse") }}/' + productId, function(data) {
+                if (data.product_warehouse && data.product_warehouse[0] && data.product_warehouse[0].length > 0) {
+                    var warehouses = data.product_warehouse[0];
+                    var quantities = data.product_warehouse[1];
+                    var imeiNumbers = data.product_warehouse[4] || [];
+
+                    var newHead = $("<thead>");
+                    var newBody = $("<tbody>");
+                    var newRow = $("<tr>");
+                    newRow.append('<th>{{ trans("file.Warehouse") }}</th><th>{{ trans("file.Quantity") }}</th><th>{{ trans("file.IMEI or Serial Numbers") }}</th>');
+                    newHead.append(newRow);
+
+                    $.each(warehouses, function(index) {
+                        var newRow = $("<tr>");
+                        var cols = '';
+                        cols += '<td>' + warehouses[index] + '</td>';
+                        cols += '<td>' + quantities[index] + '</td>';
+                        cols += '<td>' + (imeiNumbers[index] || 'N/A') + '</td>';
+                        newRow.append(cols);
+                        newBody.append(newRow);
+                    });
+
+                    $("table.product-warehouse-list").append(newHead).append(newBody);
+                    $("#product-warehouse-section").removeClass('d-none');
+                }
+
+                if (data.product_variant_warehouse && data.product_variant_warehouse[0] && data.product_variant_warehouse[0].length > 0) {
+                    var vWarehouses = data.product_variant_warehouse[0];
+                    var vNames = data.product_variant_warehouse[1];
+                    var vQuantities = data.product_variant_warehouse[2];
+
+                    var newHead = $("<thead>");
+                    var newBody = $("<tbody>");
+                    var newRow = $("<tr>");
+                    newRow.append('<th>{{ trans("file.Warehouse") }}</th><th>{{ trans("file.Variant") }}</th><th>{{ trans("file.Quantity") }}</th>');
+                    newHead.append(newRow);
+
+                    $.each(vWarehouses, function(index) {
+                        var newRow = $("<tr>");
+                        var cols = '';
+                        cols += '<td>' + vWarehouses[index] + '</td>';
+                        cols += '<td>' + vNames[index] + '</td>';
+                        cols += '<td>' + vQuantities[index] + '</td>';
+                        newRow.append(cols);
+                        newBody.append(newRow);
+                    });
+
+                    $("table.product-variant-warehouse-list").append(newHead).append(newBody);
+                    $("#product-variant-warehouse-section").removeClass('d-none');
+                }
+            });
+
+            $('#product-details').modal('show');
+        });
+
+        // Print Stock Details
+        $("#print-stock-btn").on("click", function() {
+            var divToPrint = document.getElementById('printable-modal-body');
+            var newWin = window.open('', 'Print-Window');
+            newWin.document.open();
+            newWin.document.write(
+                '<link rel="stylesheet" href="<?php echo asset("vendor/bootstrap/css/bootstrap.min.css"); ?>" type="text/css"><style type="text/css">@media print {.modal-dialog { max-width: 1000px;} table { width: 100%; } }</style><body onload="window.print()">' +
+                divToPrint.innerHTML + '</body>'
+            );
+            newWin.document.close();
+            setTimeout(function() {
+                newWin.close();
+            }, 10);
         });
     </script>
 @endpush

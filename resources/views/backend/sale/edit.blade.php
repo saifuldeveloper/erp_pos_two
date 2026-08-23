@@ -275,11 +275,11 @@
                                             <label>{{trans('file.Order Discount Type')}}</label>
                                             <select class="form-control" name="order_discount_type">
                                                 @if($lims_sale_data->order_discount_type == 'Percentage')
-                                                <option value="Percentage">Percentage</option>
-                                                <option value="Flat">Flat</option>
+                                                <option value="Percentage">{{trans('file.Percentage')}}</option>
+                                                <option value="Flat">{{trans('file.Flat')}}</option>
                                                 @else
-                                                <option value="Flat">Flat</option>
-                                                <option value="Percentage">Percentage</option>
+                                                <option value="Flat">{{trans('file.Flat')}}</option>
+                                                <option value="Percentage">{{trans('file.Percentage')}}</option>
                                                 @endif
                                             </select>
                                         </div>

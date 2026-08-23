@@ -365,7 +365,7 @@
                                             <label>{{ trans('file.Featured') }}</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <div class="form-group mt-3">
                                             @if ($lims_product_data->is_embeded)
                                                 <input type="checkbox" name="is_embeded" value="1" checked>
@@ -376,7 +376,7 @@
                                                     data-toggle="tooltip"
                                                     title="{{ trans('file.Check this if this product will be used in weight scale machine.') }}"></i></label>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>{{ trans('file.Product Image') }}</strong> </label> <i

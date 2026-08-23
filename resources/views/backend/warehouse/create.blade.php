@@ -15,7 +15,7 @@
     <div class="container-fluid">
         @if(in_array("warehouse-add", $all_permission))
         <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-info add-warehouse-btn"><i class="dripicons-plus"></i> {{trans('file.Add Warehouse')}}</a>
-        <a href="#" data-toggle="modal" data-target="#importWarehouse" class="btn btn-primary add-warehouse-btn"><i class="dripicons-copy"></i> {{trans('file.Import Warehouse')}}</a>
+        {{-- <a href="#" data-toggle="modal" data-target="#importWarehouse" class="btn btn-primary add-warehouse-btn"><i class="dripicons-copy"></i> {{trans('file.Import Warehouse')}}</a> --}}
         @endif
     </div>
     <div class="table-responsive">

@@ -13,8 +13,8 @@
             @if (in_array('suppliers-add', $all_permission))
                 <a href="{{ route('supplier.create') }}" class="btn btn-info"><i class="dripicons-plus"></i>
                     {{ trans('file.Add Supplier') }}</a>
-                <a href="#" data-toggle="modal" data-target="#importSupplier" class="btn btn-primary"><i
-                        class="dripicons-copy"></i> {{ trans('file.Import Supplier') }}</a>
+                {{-- <a href="#" data-toggle="modal" data-target="#importSupplier" class="btn btn-primary"><i
+                        class="dripicons-copy"></i> {{ trans('file.Import Supplier') }}</a> --}}
             @endif
         </div>
         <div class="table-responsive">

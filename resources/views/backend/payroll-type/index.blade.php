@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header mt-2">
-                    <h3 class="text-center">Payroll Types</h3>
+                    <h3 class="text-center">{{ trans('file.Payroll Types') }}</h3>
                 </div>
             </div>
             <div class="container-fluid mb-2">
@@ -37,9 +37,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>{{ trans('file.Name') }}</th>
+                        <th>{{ trans('file.name') }}</th>
                         <th>{{ trans('file.Status') }}</th>
-                        <th>{{ trans('file.Action') }}</th>
+                        <th>{{ trans('file.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
