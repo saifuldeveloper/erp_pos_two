@@ -1382,7 +1382,7 @@
                                 @else
                                     <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
                                 @endif
-                                <p class="text-center">{{$category->parent->name.'-'.$category->name }}</p>
+                                <p class="text-center">{{$category->parent ? $category->parent->name.'-'.$category->name : $category->name }}</p>
                             </div>
                             @endforeach
                         </div>

@@ -6,13 +6,25 @@ use App\Models\Color;
 use App\Models\ProductVariant;
 use App\Models\Variant;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Auth;
 
 class ColorController extends Controller
 {
     public function index()
     {
-        $colors = Color::all();
-        return view('backend.color.index', compact('colors'));
+        $role = Role::find(Auth::user()->role_id);
+        if($role->hasPermissionTo('color-index')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
+            $colors = Color::all();
+            return view('backend.color.index', compact('colors', 'all_permission'));
+        }
+        else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
 
@@ -99,10 +111,30 @@ class ColorController extends Controller
 
 
 
+    public function deleteBySelection(Request $request)
+    {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('color-delete'))
+            return 'Sorry! You are not allowed to delete color';
+
+        $color_id = $request['colorIdArray'];
+        foreach ($color_id as $id) {
+            $color = Color::find($id);
+            if($color)
+                $color->delete();
+        }
+        return 'Color deleted successfully!';
+    }
+
     public function destroy(string $id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('color-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete color');
+
         $color = Color::find($id);
-        $color->delete();
+        if($color)
+            $color->delete();
 
         return redirect()->route('color.index');
     }

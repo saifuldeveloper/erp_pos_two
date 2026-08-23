@@ -1353,7 +1353,7 @@ class ProductController extends Controller
 
     public function variantData($id)
     {
-        if (Auth::user()->role_id > 2 && Auth::user()->role_id != 3) {
+        if (Auth::user()->role_id > 2 && Auth::user()->role_id != 3 && Auth::user()->warehouse_id) {
             return ProductVariant::join('variants', 'product_variants.variant_id', '=', 'variants.id')
                 ->join('product_warehouse', function ($join) {
                     $join->on('product_variants.product_id', '=', 'product_warehouse.product_id');
@@ -2131,6 +2131,10 @@ class ProductController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('products-delete'))
+            return 'Sorry! You are not allowed to delete product';
+
         $product_id = $request['productIdArray'];
         foreach ($product_id as $id) {
             $lims_product_data = Product::findOrFail($id);
@@ -2151,6 +2155,9 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('products-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete product');
 
         $lims_product_data = Product::findOrFail($id);
         $lims_product_data->is_active = false;

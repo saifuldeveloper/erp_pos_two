@@ -175,8 +175,16 @@ class OverviewReportController extends Controller
                 ];
             }
 
+            $lims_stock_count_list = DB::table('stock_counts')
+                ->leftJoin('warehouses', 'stock_counts.warehouse_id', '=', 'warehouses.id')
+                ->select('stock_counts.id', 'stock_counts.created_at', 'stock_counts.is_completed', 'stock_counts.is_resolved', 'warehouses.name as warehouse_name')
+                ->orderBy('stock_counts.id', 'desc')
+                ->limit(30)
+                ->get();
+
             return view('backend.report.overview_report', compact(
                 'start_date', 'end_date', 'stock_count_id',
+                'lims_stock_count_list',
                 'purchases_by_brand', 'purchase_total_qty', 'purchase_total_cost', 'purchase_total_selling_price',
                 'sales_by_brand', 'sales_total_qty', 'sales_total_cost', 'sales_total_revenue',
                 'purchase_returns_by_brand', 'purchase_return_total_qty', 'purchase_return_total_cost', 'purchase_return_total_selling_price',

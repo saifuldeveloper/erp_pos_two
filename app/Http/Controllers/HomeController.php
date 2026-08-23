@@ -62,7 +62,6 @@ class HomeController extends Controller
     {
         if (Auth::user()->role_id == 5) {
             $customer = Customer::select('id', 'points')->where('user_id', Auth::id())->first();
-            $customer = Customer::select('id', 'points')->where('user_id', Auth::id())->first();
             if ($customer) {
                 $lims_sale_data = Sale::with('warehouse')
                     ->where('customer_id', $customer->id)
@@ -85,15 +84,10 @@ class HomeController extends Controller
                     ->where('customer_id', $customer->id)
                     ->orderBy('created_at', 'desc')
                     ->get();
-            } else {
-                $lims_sale_data = collect();
-                $lims_payment_data = collect();
-                $lims_return_data = collect();
-                $lims_quotation_data = collect();
-            }
 
-            $lims_reward_point_setting_data = RewardPointSetting::select('per_point_amount')->latest()->first();
-            return view('backend.customer_index', compact('customer', 'lims_sale_data', 'lims_payment_data', 'lims_quotation_data', 'lims_return_data', 'lims_reward_point_setting_data'));
+                $lims_reward_point_setting_data = RewardPointSetting::select('per_point_amount')->latest()->first();
+                return view('backend.customer_index', compact('customer', 'lims_sale_data', 'lims_payment_data', 'lims_quotation_data', 'lims_return_data', 'lims_reward_point_setting_data'));
+            }
         }
 
         $start_date = date("Y") . '-' . date("m") . '-' . '01';

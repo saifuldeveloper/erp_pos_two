@@ -22,7 +22,12 @@ class WasteController extends Controller
     public function index(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-index')) {
+        if ($role->hasPermissionTo('waste-index') || $role->hasPermissionTo('sales-index')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
             $start_date = $request->start_date ?? date('d-m-Y', strtotime('-30 days'));
             $end_date = $request->end_date ?? date('d-m-Y');
             $formatted_start_date = \Carbon\Carbon::createFromFormat('d-m-Y', $start_date)->format('Y-m-d');
@@ -30,8 +35,10 @@ class WasteController extends Controller
             $wastes = Waste::whereDate('created_at', '>=', $formatted_start_date)
                 ->whereDate('created_at', '<=', $formatted_end_date)
                 ->get();
-            return view('backend.waste.index', compact('wastes', 'start_date', 'end_date'));
+            return view('backend.waste.index', compact('wastes', 'start_date', 'end_date', 'all_permission'));
         }
+        else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     // public function wastedata(Request $request)
@@ -475,6 +482,11 @@ class WasteController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('waste-delete')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete waste');
+        }
+
         $waste = Waste::find($id);
         if ($waste) {
             foreach ($waste->items as $data) {
@@ -498,7 +510,7 @@ class WasteController extends Controller
         $waste->items()->delete();
         $waste->delete();
 
-        return redirect()->route('waste.index');
+        return redirect()->route('waste.index')->with('not_permitted', 'Waste deleted successfully');
     }
 
     public function limsProductSearch(Request $request)

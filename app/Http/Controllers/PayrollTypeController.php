@@ -5,13 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\PayrollType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Auth;
 
 class PayrollTypeController extends Controller
 {
     public function index()
     {
-        $payrollTypes = PayrollType::all();
-        return view('backend.payroll-type.index', compact('payrollTypes'));
+        $role = Role::find(Auth::user()->role_id);
+        if ($role->hasPermissionTo('payroll-type-index') || $role->hasPermissionTo('payroll')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
+            $payrollTypes = PayrollType::all();
+            return view('backend.payroll-type.index', compact('payrollTypes', 'all_permission'));
+        }
+        else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
@@ -57,6 +69,10 @@ class PayrollTypeController extends Controller
 
     public function destroy(string $id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('payroll-type-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete payroll type');
+
         $payrollType = PayrollType::findOrFail($id);
         $payrollType->delete();
 

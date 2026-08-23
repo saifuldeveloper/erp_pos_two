@@ -50,7 +50,7 @@
                                                     title="Select Category...">
                                                     @foreach ($lims_category_list as $category)
                                                         <option value="{{ $category->id }}">
-                                                            {{ $category->parent->name . '-' . $category->name }}</option>
+                                                            {{ $category->parent ? $category->parent->name . '-' . $category->name : $category->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -486,7 +486,7 @@
                                                 {{ trans('file.This product has batch and expired date') }}</h5>
                                         @endif
                                     </div>
-                                    <div class="col-md-12 mt-3" id="imei-option">
+                                    {{-- <div class="col-md-12 mt-3" id="imei-option">
                                         @if ($lims_product_data->is_imei)
                                             <h5><input name="is_imei" type="checkbox" id="is-imei" value="1"
                                                     checked>&nbsp;
@@ -496,7 +496,7 @@
                                                     value="1">&nbsp;
                                                 {{ trans('file.This product has IMEI or Serial numbers') }}</h5>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-12 mt-3" id="variant-option">
                                         @if ($lims_product_data->is_variant)
                                             <h5 class="d-none"><input name="is_variant" type="checkbox" id="is-variant"

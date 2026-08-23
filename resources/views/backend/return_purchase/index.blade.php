@@ -315,6 +315,7 @@
                 },
                 footer:true
             },
+            @if(in_array("returns-delete", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
@@ -330,9 +331,9 @@
                         if(sale_id.length && confirm("Are you sure want to delete?")) {
                             $.ajax({
                                 type:'POST',
-                                url:'sales/deletebyselection',
+                                url:'return-purchase/deletebyselection',
                                 data:{
-                                    saleIdArray: sale_id
+                                    returnIdArray: sale_id
                                 },
                                 success:function(data){
                                     alert(data);
@@ -348,6 +349,7 @@
                         alert('This feature is disable for demo!');
                 }
             },
+            @endif
             {
                 extend: 'colvis',
                 text: '<i title="column visibility" class="fa fa-eye"></i>',

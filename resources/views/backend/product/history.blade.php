@@ -170,8 +170,8 @@
 
                              
                                 <td>{{$stockCountItem->created_at}}</td>
-                                <td>{{$stockCountItem->stockCount->reference_no}}</td>
-                                <td>{{$stockCountItem->stockCount->warehouse->name}}</td>
+                                <td>{{$stockCountItem->stockCount->reference_no ?? ('#' . $stockCountItem->stock_count_id)}}</td>
+                                <td>{{$stockCountItem->warehouse->name ?? ($stockCountItem->stockCount->warehouse->name ?? trans('file.All Warehouse'))}}</td>
                                 <td>{{$stockCountItem->item_code}}</td>
                                 <td>{{$stockCountItem->current_quantity}}</td>
                                 <td>{{$stockCountItem->updated_quantity}}</td>

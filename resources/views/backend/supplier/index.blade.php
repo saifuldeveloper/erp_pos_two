@@ -111,9 +111,9 @@
                                                 {{ trans('file.Due Clear List') }}
                                             </a>
                                         </li>
-                                        <li class="divider"></li>
                                         @if (in_array('suppliers-delete', $all_permission))
                                             @if ($supplier->id !== 1)
+                                                <li class="divider"></li>
                                                 {{ Form::open(['route' => ['supplier.destroy', $supplier->id], 'method' => 'DELETE']) }}
                                                 <li>
                                                     <button type="submit" class="btn btn-link"
@@ -351,6 +351,7 @@
                         stripHtml: false
                     },
                 },
+                @if(in_array('suppliers-delete', $all_permission))
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
                     className: 'buttons-delete',
@@ -383,6 +384,7 @@
                             alert('This feature is disable for demo!');
                     }
                 },
+                @endif
                 {
                     extend: 'colvis',
                     text: '<i title="column visibility" class="fa fa-eye"></i>',

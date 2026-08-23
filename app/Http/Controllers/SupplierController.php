@@ -381,6 +381,10 @@ class SupplierController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('suppliers-delete'))
+            return 'Sorry! You are not allowed to delete supplier';
+
         $supplier_id = $request['supplierIdArray'];
         foreach ($supplier_id as $id) {
             $lims_supplier_data = Supplier::findOrFail($id);
@@ -393,6 +397,10 @@ class SupplierController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('suppliers-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete supplier');
+
         $lims_supplier_data = Supplier::findOrFail($id);
         $lims_supplier_data->is_active = false;
         $lims_supplier_data->save();

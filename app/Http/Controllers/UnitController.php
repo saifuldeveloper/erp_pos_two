@@ -14,9 +14,14 @@ class UnitController extends Controller
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('unit')) {
+        if($role->hasPermissionTo('unit-index') || $role->hasPermissionTo('unit')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
             $lims_unit_all = Unit::where('is_active', true)->get();
-            return view('backend.unit.create', compact('lims_unit_all'));
+            return view('backend.unit.create', compact('lims_unit_all', 'all_permission'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -143,6 +148,10 @@ class UnitController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('unit-delete'))
+            return 'Sorry! You are not allowed to delete unit';
+
         $unit_id = $request['unitIdArray'];
         foreach ($unit_id as $id) {
             $lims_unit_data = Unit::findOrFail($id);
@@ -154,6 +163,10 @@ class UnitController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('unit-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete unit');
+
         $lims_unit_data = Unit::findOrFail($id);
         $lims_unit_data->is_active = false;
         $lims_unit_data->save();

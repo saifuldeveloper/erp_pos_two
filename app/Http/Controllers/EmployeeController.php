@@ -164,6 +164,10 @@ class EmployeeController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('employees-delete'))
+            return 'Sorry! You are not allowed to delete employee';
+
         $employee_id = $request['employeeIdArray'];
         foreach ($employee_id as $id) {
             $lims_employee_data = Employee::find($id);
@@ -183,6 +187,10 @@ class EmployeeController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('employees-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete employee');
+
         $lims_employee_data = Employee::find($id);
         if ($lims_employee_data->user_id) {
             $lims_user_data = User::find($lims_employee_data->user_id);

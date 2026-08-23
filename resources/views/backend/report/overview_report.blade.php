@@ -10,26 +10,30 @@
         <div class="card">
             <div class="card-body">
                 <form action="{{ route('report.overview') }}" method="GET" id="overview-filter-form">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><strong>{{ trans('file.Choose Your Date') }}</strong></label>
-                                <div class="input-group">
-                                    <input type="text" class="daterangepicker-field form-control" value="{{ $start_date }} To {{ $end_date }}" required autocomplete="off" />
-                                    <input type="hidden" name="start_date" value="{{ $start_date }}" />
-                                    <input type="hidden" name="end_date" value="{{ $end_date }}" />
-                                </div>
+                    <div class="row align-items-end">
+                        <div class="col-md-5 mb-2">
+                            <label><strong>{{ trans('file.Choose Your Date') }}</strong></label>
+                            <div class="input-group">
+                                <input type="text" class="daterangepicker-field form-control" value="{{ $start_date }} To {{ $end_date }}" required autocomplete="off" />
+                                <input type="hidden" name="start_date" value="{{ $start_date }}" />
+                                <input type="hidden" name="end_date" value="{{ $end_date }}" />
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label><strong>{{ trans('file.Stock Count') }} ID</strong></label>
-                                <input type="number" name="stock_count_id" class="form-control" value="{{ $stock_count_id }}" placeholder="Stock Count ID" />
-                            </div>
+                        <div class="col-md-4 mb-2">
+                            <label><strong><i class="fa fa-hashtag text-primary"></i> Stock Count Session</strong></label>
+                            <select name="stock_count_id" class="form-control selectpicker" data-live-search="true" title="Choose Stock Count...">
+                                <option value="">All / Choose Session...</option>
+                                @foreach($lims_stock_count_list as $sc)
+                                    <option value="{{ $sc->id }}" {{ $stock_count_id == $sc->id ? 'selected' : '' }}>
+                                        #{{ $sc->id }} ({{ date('d-m-Y', strtotime($sc->created_at)) }}) - {{ $sc->warehouse_name ?? 'All Warehouse' }} {{ $sc->is_resolved ? '[Resolved]' : ($sc->is_completed ? '[Completed]' : '[Pending]') }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-block" type="submit">{{ trans('file.submit') }}</button>
+                        <div class="col-md-3 mb-2">
+                            <div class="d-flex">
+                                <button class="btn btn-primary mr-2" style="flex: 1;" type="submit"><i class="fa fa-filter"></i> {{ trans('file.submit') }}</button>
+                                <a href="{{ route('report.overview') }}" class="btn btn-secondary" style="flex: 1;"><i class="fa fa-undo"></i> Reset</a>
                             </div>
                         </div>
                     </div>
@@ -379,12 +383,12 @@
                                         <td class="text-danger">{{ $stock_count_id ? number_format((float)($stock_count_current_cost - $stock_count_updated_cost), $general_setting->decimal, '.', '') : '-' }}</td>
                                     </tr> --}}
                                     <!-- Difference Row -->
-                                    {{-- <tr class="font-weight-bold" style="background-color: #ff9800; color: white;">
+                                     <tr class="font-weight-bold" style="background-color: #ff9800; color: white;">
                                         <td class="text-left pl-3">{{ trans('file.Difference') }}</td>
                                         <td>{{ $stock_count_id ? number_format((float)($expected_qty - $stock_count_updated_qty), 0, '.', '') : '-' }}</td>
                                         <td></td>
                                         <td></td>
-                                    </tr> --}}
+                                    </tr> 
                                 </tbody>
                             </table>
                         </div>

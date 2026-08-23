@@ -60,9 +60,8 @@
                                     <a href="{{ route('biller.edit', $biller->id) }}" class="btn btn-link"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}</a>
                                 </li>
                                 @endif
-                                <li class="divider"></li>
                                 @if(in_array("billers-delete", $all_permission))
-
+                                <li class="divider"></li>
                                 {{ Form::open(['route' => ['biller.destroy', $biller->id], 'method' => 'DELETE'] ) }}
                                 <li>
                                     <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
@@ -247,6 +246,7 @@
                     stripHtml: false
                 },
             },
+            @if(in_array("billers-delete", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
@@ -278,6 +278,7 @@
                         alert('This feature is disable for demo!');
                 }
             },
+            @endif
             {
                 extend: 'colvis',
                 text: '<i title="column visibility" class="fa fa-eye"></i>',

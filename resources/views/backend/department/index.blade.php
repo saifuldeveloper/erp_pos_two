@@ -12,7 +12,9 @@
 
 <section>
     <div class="container-fluid">
+        @if(in_array("department-add", $all_permission))
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i> {{trans('file.Add Department')}}</button>
+        @endif
     </div>
     <div class="table-responsive">
         <table id="department-table" class="table">
@@ -35,15 +37,19 @@
                               <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+                                @if(in_array("department-edit", $all_permission))
                                 <li>
                                     <button type="button" data-id="{{$department->id}}" data-name="{{$department->name}}" class="edit-btn btn btn-link" data-toggle="modal" data-target="#editModal" ><i class="dripicons-document-edit"></i>  {{trans('file.edit')}}</button>
                                 </li>
+                                @endif
+                                @if(in_array("department-delete", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['departments.destroy', $department->id], 'method' => 'DELETE'] ) }}
                                 <li>
                                   <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
                                 </li>
                                 {{ Form::close() }}
+                                @endif
                             </ul>
                         </div>
                     </td>
@@ -206,6 +212,7 @@ $(document).ready(function() {
                 },
                 footer:true
             },
+            @if(in_array("department-delete", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
@@ -237,6 +244,7 @@ $(document).ready(function() {
                         alert('This feature is disable for demo!');
                 }
             },
+            @endif
             {
                 extend: 'colvis',
                 text: '<i title="column visibility" class="fa fa-eye"></i>',

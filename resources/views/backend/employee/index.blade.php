@@ -110,8 +110,8 @@
                                                 </button>
                                             </li>
                                         @endif
-                                        <li class="divider"></li>
                                         @if (in_array('employees-delete', $all_permission))
+                                        <li class="divider"></li>
                                             {{ Form::open(['route' => ['employees.destroy', $employee->id], 'method' => 'DELETE']) }}
                                             <li>
                                                 <button type="submit" class="btn btn-link"
@@ -532,6 +532,7 @@
                         stripHtml: false
                     },
                 },
+                @if(in_array('employees-delete', $all_permission))
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
                     className: 'buttons-delete',
@@ -564,6 +565,7 @@
                             alert('This feature is disable for demo!');
                     }
                 },
+                @endif
                 {
                     extend: 'colvis',
                     text: '<i title="column visibility" class="fa fa-eye"></i>',

@@ -24,8 +24,10 @@
 
     <section>
         <div class="container-fluid">
+            @if(in_array("color-add", $all_permission))
             <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-primary"><i
                     class="dripicons-plus"></i> {{ trans('file.Add Color') }}</a>&nbsp;
+            @endif
         </div>
         <div class="table-responsive">
             <table id="color-table" class="table">
@@ -53,6 +55,7 @@
                                     </button>
                                     <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default"
                                         user="menu">
+                                        @if(in_array("color-edit", $all_permission))
                                         <li>
                                             <button type="button" data-id="{{ $color->id }}"
                                                 class="open-EditColorDialog btn btn-link" data-toggle="modal"
@@ -60,6 +63,8 @@
                                                 {{ trans('file.edit') }}
                                             </button>
                                         </li>
+                                        @endif
+                                        @if(in_array("color-delete", $all_permission))
                                         <li class="divider"></li>
                                         {{ Form::open(['route' => ['color.destroy', $color->id], 'method' => 'DELETE']) }}
                                         <li>
@@ -67,6 +72,7 @@
                                                     class="dripicons-trash"></i> {{ trans('file.delete') }}</button>
                                         </li>
                                         {{ Form::close() }}
+                                        @endif
                                     </ul>
                                 </div>
                             </td>
@@ -223,6 +229,7 @@
                             rows: ':visible'
                         },
                     },
+                    @if(in_array("color-delete", $all_permission))
                     {
                         text: '<i title="delete" class="dripicons-cross"></i>',
                         className: 'buttons-delete',
@@ -255,6 +262,7 @@
                                 alert('This feature is disable for demo!');
                         }
                     },
+                    @endif
                     {
                         extend: 'colvis',
                         text: '<i title="column visibility" class="fa fa-eye"></i>',

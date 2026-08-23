@@ -24,8 +24,13 @@ class CategoryController extends Controller
     {
         $role = Role::find(Auth::user()->role_id);
         $parents = Category::where('parent_id', null)->where('is_active', 1)->select('id', 'name')->get();
-        if($role->hasPermissionTo('category')) {
-            return view('backend.category.create',compact('parents'));
+        if($role->hasPermissionTo('category-index') || $role->hasPermissionTo('category')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
+            return view('backend.category.create',compact('parents', 'all_permission'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -33,6 +38,10 @@ class CategoryController extends Controller
 
     public function categoryData(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        $can_edit = $role->hasPermissionTo('category-edit');
+        $can_delete = $role->hasPermissionTo('category-delete');
+
         $columns = array(
             1 =>'name',
             2 => 'parent_id',
@@ -128,22 +137,26 @@ class CategoryController extends Controller
                 else
                     $nestedData['stock_worth'] = $total_price.' '.config('currency').' / '.$total_cost.' '.config('currency');
 
-                $nestedData['options'] = '<div class="btn-group">
+                $options = '<div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.trans("file.action").'
                               <span class="caret"></span>
                               <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                <li>
+                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">';
+                if($can_edit) {
+                    $options .= '<li>
                                     <button type="button" data-id="'.$category->id.'" class="open-EditCategoryDialog btn btn-link" data-toggle="modal" data-target="#editModal" ><i class="dripicons-document-edit"></i> '.trans("file.edit").'</button>
-                                </li>
-                                <li class="divider"></li>'.
+                                </li>';
+                }
+                if($can_delete) {
+                    $options .= '<li class="divider"></li>'.
                                 \Form::open(["route" => ["category.destroy", $category->id], "method" => "DELETE"] ).'
                                 <li>
                                   <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> '.trans("file.delete").'</button>
-                                </li>'.\Form::close().'
-                            </ul>
-                        </div>';
+                                </li>'.\Form::close();
+                }
+                $options .= '</ul></div>';
+                $nestedData['options'] = $options;
                 $data[] = $nestedData;
             }
         }
@@ -303,9 +316,14 @@ class CategoryController extends Controller
     public function parentCategory()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('category')) {
+        if($role->hasPermissionTo('category-index') || $role->hasPermissionTo('category')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
             $parents = Category::where('parent_id', null)->where('is_active', 1)->select('id', 'name')->get();
-            return view('backend.parent_category.create', compact('parents'));
+            return view('backend.parent_category.create', compact('parents', 'all_permission'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -357,6 +375,10 @@ class CategoryController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('category-delete'))
+            return 'Sorry! You are not allowed to delete category';
+
         $category_id = $request['categoryIdArray'];
         foreach ($category_id as $id) {
             $lims_product_data = Product::where('category_id', $id)->get();
@@ -377,6 +399,10 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('category-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete category');
+
         $lims_category_data = Category::findOrFail($id);
         $lims_category_data->is_active = false;
         $lims_product_data = Product::where('category_id', $id)->get();

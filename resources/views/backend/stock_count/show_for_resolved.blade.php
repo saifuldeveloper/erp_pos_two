@@ -263,20 +263,15 @@
                                                         <th>{{ trans('file.Remarks') }}</th>
                                                         <th>
                                                             <div class="form-check form-check-inline">
-                                                                <input
-                                                                    class="form-check
-                                                                    input all"
-                                                                    type="radio" name="resolved[all]"
+                                                                <input class="form-check-input all" type="radio" name="resolved[all]"
                                                                     id="update_stock-all" value="update_stock">
-                                                                <label class="form-check label" for="update_stock-all"
+                                                                <label class="form-check-label" for="update_stock-all"
                                                                     style="margin-right: 10px;">{{ trans('file.Update All') }}</label>
                                                             </div>
-                                                            <div
-                                                                class="form-check
-                                                                form-check-inline">
-                                                                <input class="form-check input all" type="radio"
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input all" type="radio"
                                                                     name="resolved[all]" id="cancel-all" value="cancel">
-                                                                <label class="form-check label" for="cancel-all"
+                                                                <label class="form-check-label" for="cancel-all"
                                                                     style="margin-right: 10px;">{{ trans('file.Cancel All') }}</label>
                                                             </div>
                                                         </th>
@@ -291,28 +286,44 @@
                                                     @foreach ($stockCount['data'] as $items)
                                                         @php
                                                             $item = $items[0];
+                                                            $total_current = $items->groupBy('warehouse_id')->map(function($whItems) {
+                                                                return floatval($whItems->first()->current_quantity);
+                                                            })->sum();
                                                             $total = $items->sum('updated_quantity');
-                                                            $total_current_qty += $item->current_quantity;
+                                                            $total_current_qty += $total_current;
                                                             $total_find_qty += $total;
-                                                            $total_diff += abs($total - $item->current_quantity);
+                                                            $total_diff += abs($total - $total_current);
                                                         @endphp
                                                         <tr>
                                                             <td>{{ @$item->product->name }}</td>
-                                                            <td>{{ $item->item_code }}</td>
-                                                            <td>{{ $item->current_quantity }}</td>
+                                                            <td><span class="badge badge-light border">{{ $item->item_code }}</span></td>
+                                                            <td>{{ $total_current }}</td>
                                                             <td>
-                                                                @foreach ($items as $item)
-                                                                    {{ $item->updated_quantity }}
-                                                                    @if (!$loop->last)
-                                                                        +
-                                                                    @endif
-                                                                @endforeach
-                                                                = {{ $total }}
+                                                                @if (!$lims_stock_count->warehouse_id)
+                                                                    @foreach ($items->groupBy('warehouse_id') as $whId => $whItems)
+                                                                        @php
+                                                                            $whName = $whItems->first()->warehouse->name ?? 'WH';
+                                                                            $whCounted = $whItems->sum('updated_quantity');
+                                                                        @endphp
+                                                                        <span class="badge badge-light border mr-1" title="{{ $whName }}">
+                                                                            {{ $whName }}: <strong>{{ $whCounted }}</strong>
+                                                                        </span>
+                                                                    @endforeach
+                                                                    <span class="font-weight-bold text-primary">= {{ $total }}</span>
+                                                                @else
+                                                                    @foreach ($items as $sci)
+                                                                        {{ $sci->updated_quantity }}
+                                                                        @if (!$loop->last)
+                                                                            +
+                                                                        @endif
+                                                                    @endforeach
+                                                                    = {{ $total }}
+                                                                @endif
                                                             </td>
                                                             <td>
                                                                 {{ trans('file.' . $stockCount['title']) }}
                                                                 @if ($stockCount['title'] != 'Stock Matched')
-                                                                    ({{ abs($total - $item->current_quantity) }})
+                                                                    ({{ abs($total - $total_current) }})
                                                                 @endif
                                                             </td>
                                                             <td>

@@ -13,11 +13,17 @@ class StockCountItem extends Model
 
     protected $fillable = [
         'stock_count_id',
+        'warehouse_id',
         'product_id',
         'item_code',
         'current_quantity',
         'updated_quantity'
     ];
+
+    public function warehouse()
+    {
+        return $this->belongsTo(Warehouse::class);
+    }
 
     public function stockCount()
     {

@@ -38,6 +38,8 @@
                                                 <label>{{ trans('file.Warehouse') }} *</label>
                                                 <select required name="warehouse_id" class="selectpicker form-control"
                                                     data-live-search="true" title="Select warehouse...">
+                                                    <option value="all" {{ (!$lims_stock_count->warehouse_id || $lims_stock_count->warehouse_id == 0) ? 'selected' : '' }}>
+                                                        {{ trans('file.All Warehouse') }} (সমস্ত গোডাউন এক সাথে)</option>
                                                     @foreach ($lims_warehouse_list as $warehouse)
                                                         <option value="{{ $warehouse->id }}"
                                                             {{ $warehouse->id == $lims_stock_count->warehouse_id ? 'selected' : '' }}>
@@ -86,7 +88,7 @@
                                                         <input type="hidden" name="product_id[]" value="{{ $stock_count_product->product_id }}" />
                                                             <tr>
                                                                 <td>
-                                                                    {{ $stock_count_product->product->name }}
+                                                                    {{ $stock_count_product->product->name ?? $stock_count_product->item_code }}
                                                                 </td>
                                                                 <td>
                                                                     {{ $stock_count_product->item_code }}

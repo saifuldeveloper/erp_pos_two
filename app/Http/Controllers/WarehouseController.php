@@ -9,19 +9,35 @@ use Keygen;
 use Auth;
 use DB;
 use App\Traits\CacheForget;
+use Spatie\Permission\Models\Role;
 
 class WarehouseController extends Controller
 {
     use CacheForget;
     public function index()
     {
-        $lims_warehouse_all = Warehouse::where('is_active', true)->get();
-        $numberOfWarehouse = Warehouse::where('is_active', true)->count();
-        return view('backend.warehouse.create', compact('lims_warehouse_all', 'numberOfWarehouse'));
+        $role = Role::find(Auth::user()->role_id);
+        if($role->hasPermissionTo('warehouse-index')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
+            $lims_warehouse_all = Warehouse::where('is_active', true)->get();
+            $numberOfWarehouse = Warehouse::where('is_active', true)->count();
+            return view('backend.warehouse.create', compact('lims_warehouse_all', 'numberOfWarehouse', 'all_permission'));
+        }
+        else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('warehouse-add')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to create warehouse');
+        }
+
         $this->validate($request, [
             'name' => [
                 'max:255',
@@ -39,12 +55,22 @@ class WarehouseController extends Controller
 
     public function edit($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('warehouse-edit')) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
         $lims_warehouse_data = Warehouse::findOrFail($id);
         return $lims_warehouse_data;
     }
 
     public function update(Request $request, $id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('warehouse-edit')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to edit warehouse');
+        }
+
         $this->validate($request, [
             'name' => [
                 'max:255',
@@ -62,6 +88,11 @@ class WarehouseController extends Controller
 
     public function importWarehouse(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('warehouse-add')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to import warehouse');
+        }
+
         //get file
         $upload=$request->file('file');
         $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
@@ -104,6 +135,11 @@ class WarehouseController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('warehouse-delete')) {
+            return 'You are not allowed to delete warehouse';
+        }
+
         $warehouse_id = $request['warehouseIdArray'];
         foreach ($warehouse_id as $id) {
             $lims_warehouse_data = Warehouse::find($id);
@@ -116,6 +152,11 @@ class WarehouseController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('warehouse-delete')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete warehouse');
+        }
+
         $lims_warehouse_data = Warehouse::find($id);
         $lims_warehouse_data->is_active = false;
         $lims_warehouse_data->save();

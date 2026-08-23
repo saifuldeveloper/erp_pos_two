@@ -612,6 +612,10 @@ class CustomerController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('customers-delete'))
+            return 'Sorry! You are not allowed to delete customer';
+
         $customer_id = $request['customerIdArray'];
         foreach ($customer_id as $id) {
             $lims_customer_data = Customer::find($id);
@@ -624,6 +628,10 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('customers-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete customer');
+
         $lims_customer_data = Customer::find($id);
         $lims_customer_data->is_active = false;
         $lims_customer_data->save();

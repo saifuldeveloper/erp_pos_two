@@ -31,6 +31,7 @@
                                         <label>{{ trans('file.Warehouse') }} *</label>
                                         <select required name="warehouse_id" class="selectpicker form-control"
                                             data-live-search="true" title="Select warehouse...">
+                                            <option value="all" selected>{{ trans('file.All Warehouse') }} (সমস্ত গোডাউন এক সাথে)</option>
                                             @foreach ($lims_warehouse_list as $warehouse)
                                                 <option value="{{ $warehouse->id }}">
                                                     {{ $warehouse->name }}</option>

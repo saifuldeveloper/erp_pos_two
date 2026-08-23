@@ -147,6 +147,8 @@ class ExpenseController extends Controller
                             </li>'.\Form::close().'
                         </ul>
                     </div>';
+                else
+                    $nestedData['options'] .= '</ul></div>';
                 $data[] = $nestedData;
             }
         }
@@ -212,6 +214,10 @@ class ExpenseController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('expenses-delete'))
+            return 'Sorry! You are not allowed to delete expense';
+
         $expense_id = $request['expenseIdArray'];
         foreach ($expense_id as $id) {
             $lims_expense_data = Expense::find($id);
@@ -222,6 +228,10 @@ class ExpenseController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('expenses-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete expense');
+
         $lims_expense_data = Expense::find($id);
         $lims_expense_data->delete();
         return redirect('expenses')->with('not_permitted', 'Data deleted successfully');

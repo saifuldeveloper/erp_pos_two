@@ -12,7 +12,6 @@
 */
 
 use App\Http\Controllers\AccountsController;
-use App\Http\Controllers\AddonInstallController;
 use App\Http\Controllers\AdjustmentController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AvijatryController;
@@ -636,7 +635,6 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
 
     Route::resource('custom-fields', CustomFieldController::class);
 
-    Route::post('woocommerce-install', [AddonInstallController::class, 'woocommerceInstall'])->name('woocommerce.install');
 
 
     Route::controller(AvijatryController::class)->group(function () {

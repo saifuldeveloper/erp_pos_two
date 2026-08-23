@@ -22,7 +22,13 @@ class PayrollController extends Controller
     public function index(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('payroll')) {
+        if ($role->hasPermissionTo('payroll-index') || $role->hasPermissionTo('payroll')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
+
             if ($request->input('starting_date')) {
                 $starting_date = $request->input('starting_date');
                 $ending_date = $request->input('ending_date');
@@ -56,7 +62,7 @@ class PayrollController extends Controller
                     ->get();
             }
             $lims_payroll_types = PayrollType::where('status', 'Active')->get();
-            return view('backend.payroll.index', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id', 'lims_payroll_types'));
+            return view('backend.payroll.index', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id', 'lims_payroll_types', 'all_permission'));
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
@@ -117,6 +123,10 @@ class PayrollController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('payroll-delete'))
+            return 'Sorry! You are not allowed to delete payroll';
+
         $payroll_id = $request['payrollIdArray'];
         foreach ($payroll_id as $id) {
             $lims_payroll_data = Payroll::find($id);
@@ -127,6 +137,10 @@ class PayrollController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('payroll-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete payroll');
+
         $lims_payroll_data = Payroll::find($id);
         $lims_payroll_data->delete();
         return redirect('payroll')->with('not_permitted', 'Payroll deleted succesfully');

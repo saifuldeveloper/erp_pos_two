@@ -213,6 +213,10 @@ class BillerController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('billers-delete'))
+            return 'Sorry! You are not allowed to delete biller';
+
         $biller_id = $request['billerIdArray'];
         // Biller::whereIn($biller_id)->update(['is_active'=>false]);
 
@@ -230,6 +234,10 @@ class BillerController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('billers-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete biller');
+
         $lims_biller_data = Biller::find($id);
         $this->fileDelete('images/biller/', $lims_biller_data->image);
 

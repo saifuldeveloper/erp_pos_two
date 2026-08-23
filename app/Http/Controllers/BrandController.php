@@ -7,6 +7,8 @@ use App\Models\Brand;
 use Illuminate\Validation\Rule;
 use App\Traits\TenantInfo;
 use App\Traits\CacheForget;
+use Spatie\Permission\Models\Role;
+use Auth;
 
 class BrandController extends Controller
 {
@@ -15,8 +17,18 @@ class BrandController extends Controller
 
     public function index()
     {
-        $lims_brand_all = Brand::where('is_active',true)->get();
-        return view('backend.brand.create', compact('lims_brand_all'));
+        $role = Role::find(Auth::user()->role_id);
+        if($role->hasPermissionTo('brand-index') || $role->hasPermissionTo('brand')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
+            $lims_brand_all = Brand::where('is_active',true)->get();
+            return view('backend.brand.create', compact('lims_brand_all', 'all_permission'));
+        }
+        else
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
@@ -134,6 +146,10 @@ class BrandController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('brand-delete'))
+            return 'Sorry! You are not allowed to delete brand';
+
         $brand_id = $request['brandIdArray'];
         foreach ($brand_id as $id) {
             $lims_brand_data = Brand::findOrFail($id);
@@ -152,6 +168,10 @@ class BrandController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('brand-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete brand');
+
         $lims_brand_data = Brand::findOrFail($id);
         $lims_brand_data->is_active = false;
         if($lims_brand_data->image && !config('database.connections.saas_landlord') && file_exists('public/images/brand/'.$lims_brand_data->image)) {

@@ -46,9 +46,8 @@ class UserController extends Controller
             $lims_role_list = Roles::where('is_active', true)->get();
             $lims_biller_list = Biller::where('is_active', true)->get();
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_customer_group_list = CustomerGroup::where('is_active', true)->get();
             $numberOfUserAccount = User::where('is_active', true)->count();
-            return view('backend.user.create', compact('lims_role_list', 'lims_biller_list', 'lims_warehouse_list', 'lims_customer_group_list', 'numberOfUserAccount'));
+            return view('backend.user.create', compact('lims_role_list', 'lims_biller_list', 'lims_warehouse_list', 'numberOfUserAccount'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -78,16 +77,6 @@ class UserController extends Controller
             ],
         ]);
 
-        if($request->role_id == 5) {
-            $this->validate($request, [
-                'phone_number' => [
-                    'max:255',
-                        Rule::unique('customers')->where(function ($query) {
-                        return $query->where('is_active', 1);
-                    }),
-                ],
-            ]);
-        }
         $data = $request->all();
         $message = 'User created successfully';
         $mail_setting = MailSetting::latest()->first();
@@ -106,12 +95,6 @@ class UserController extends Controller
         $data['password'] = bcrypt($data['password']);
         $data['phone'] = $data['phone_number'];
         User::create($data);
-        if($data['role_id'] == 5) {
-            $data['name'] = $data['customer_name'];
-            $data['phone_number'] = $data['phone'];
-            $data['is_active'] = true;
-            Customer::create($data);
-        }
         return redirect('user')->with('message1', $message);
     }
 
@@ -201,6 +184,10 @@ class UserController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('users-delete'))
+            return 'Sorry! You are not allowed to delete user';
+
         $user_id = $request['userIdArray'];
         foreach ($user_id as $id) {
             $lims_user_data = User::find($id);
@@ -213,6 +200,10 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('users-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete user');
+
         $lims_user_data = User::find($id);
         $lims_user_data->is_deleted = true;
         $lims_user_data->is_active = false;

@@ -114,14 +114,14 @@
 
     var role_id = $("input[name='role_id_hidden']").val();
     $('select[name=role_id]').val(role_id);
-    if(role_id == 4) { // Biller
+    if(role_id == 5 || role_id == 4) { // Biller
         $('#biller-id').show();
         $('select[name=biller_id]').val($("input[name='biller_id_hidden']").val());
         $('select[name="biller_id"]').prop('required',true);
         $('#warehouseId').hide();
         $('select[name="warehouse_id"]').prop('required',false);
     }
-    else if(role_id > 2 && role_id != 3){
+    else if(role_id > 2 && role_id != 3 && role_id != 5){
         $('#warehouseId').show();
         $('select[name=warehouse_id]').val($("input[name='warehouse_id_hidden']").val());
         $('select[name="warehouse_id"]').prop('required',true);
@@ -138,13 +138,13 @@
     $('.selectpicker').selectpicker('refresh');
 
     $('select[name="role_id"]').on('change', function() {
-        if($(this).val() == 4) { // Biller
+        if($(this).val() == 5 || $(this).val() == 4) { // Biller
             $('select[name="warehouse_id"]').prop('required',false);
             $('select[name="biller_id"]').prop('required',true);
             $('#biller-id').show(300);
             $('#warehouseId').hide(300);
         }
-        else if($(this).val() > 2 && $(this).val() != 3){
+        else if($(this).val() > 2 && $(this).val() != 3 && $(this).val() != 5){
             $('select[name="warehouse_id"]').prop('required',true);
             $('select[name="biller_id"]').prop('required',true);
             $('#biller-id').show(300);

@@ -14,9 +14,14 @@ class DepartmentController extends Controller
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('department')) {
+        if($role->hasPermissionTo('department-index') || $role->hasPermissionTo('department')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            foreach ($permissions as $permission)
+                $all_permission[] = $permission->name;
+            if(empty($all_permission))
+                $all_permission[] = 'dummy text';
             $lims_department_all = Department::where('is_active', true)->get();
-            return view('backend.department.index', compact('lims_department_all'));
+            return view('backend.department.index', compact('lims_department_all', 'all_permission'));
         }
         else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -58,6 +63,10 @@ class DepartmentController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('department-delete'))
+            return 'Sorry! You are not allowed to delete department';
+
         $department_id = $request['departmentIdArray'];
         foreach ($department_id as $id) {
             $lims_department_data = Department::find($id);
@@ -69,6 +78,10 @@ class DepartmentController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if(!$role->hasPermissionTo('department-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete department');
+
         $lims_department_data = Department::find($id);
         $lims_department_data->is_active = false;
         $lims_department_data->save();

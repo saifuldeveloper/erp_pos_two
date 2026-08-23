@@ -37,59 +37,19 @@ class StockCountController extends Controller
     public function product()
     {
         $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
+        if (!$stock_count) return [];
 
-        return Product::ActiveStandard()
-            ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-            ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id)
-            ->select('products.id', 'products.name', 'products.code')
+        $query = Product::ActiveStandard()
+            ->join('product_warehouse', 'products.id', 'product_warehouse.product_id');
+
+        if ($stock_count->warehouse_id) {
+            $query->where('product_warehouse.warehouse_id', $stock_count->warehouse_id);
+        }
+
+        return $query->select('products.id', 'products.name', 'products.code')
             ->groupBy('products.id')
             ->get();
     }
-
-    // public function productSearch(Request $request)
-    // {
-    //     $stock_count = StockCount::where('is_completed', false)->orWhere('is_resolved', false)->first();
-    //     $product_code = explode("|", $request['data']);
-    //     $product_code[0] = rtrim($product_code[0], " ");
-    //     $product = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-    //         ->where([
-    //             ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
-    //             ['products.code', $product_code[0]],
-    //             ['products.is_active', true]
-    //         ])
-    //         ->select('products.*')
-    //         ->first();
-    //     if ($product && $product->is_variant) {
-    //         $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-    //             ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-    //             ->where([
-    //                 ['product_variants.product_id', $product->id],
-    //                 ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
-    //                 ['products.is_active', true]
-    //             ])
-    //             ->select('products.*', 'product_variants.item_code', 'product_variants.qty')
-    //             ->groupBy('product_variants.id')
-    //             ->get();
-    //     } else {
-    //         $lims_product_data = Product::join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-    //             ->where([
-    //                 ['product_warehouse.warehouse_id', $stock_count->warehouse_id],
-    //                 ['products.code', $product_code[0]],
-    //                 ['products.is_active', true]
-    //             ])
-    //             ->groupBy('products.id')
-    //             ->get();
-    //     }
-
-    //     $products = [];
-    //     foreach ($lims_product_data as $key => $product) {
-    //         $products[$key][] = $product->name;
-    //         $products[$key][] = $product->is_variant ? $product->item_code : $product->code;
-    //         $products[$key][] = $product->qty;
-    //         $products[$key][] = $product->id;
-    //     }
-    //     return $products;
-    // }
 
     public function productSearch(Request $request)
     {
@@ -126,77 +86,98 @@ class StockCountController extends Controller
             }
         }
 
-        if ($product && $product->is_variant) {
-            $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-                ->leftJoin('product_warehouse', function ($join) use ($stock_count) {
-                    $join->on('product_variants.product_id', '=', 'product_warehouse.product_id')
-                         ->on('product_variants.variant_id', '=', 'product_warehouse.variant_id')
-                         ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id);
-                })
-                ->where([
-                    ['product_variants.product_id', $product->id],
-                    ['products.is_active', true]
-                ])
-                ->select(
-                    'products.id',
-                    'products.name',
-                    'products.code',
-                    'products.is_variant',
-                    'product_variants.item_code',
-                    DB::raw('COALESCE(product_warehouse.qty, 0) as qty')
-                )
-                ->groupBy('product_variants.id')
-                ->get();
-        } elseif ($product) {
-            $lims_product_data = Product::leftJoin('product_warehouse', function ($join) use ($stock_count) {
-                    $join->on('products.id', '=', 'product_warehouse.product_id')
-                         ->where('product_warehouse.warehouse_id', $stock_count->warehouse_id);
-                })
-                ->where([
-                    ['products.id', $product->id],
-                    ['products.is_active', true]
-                ])
-                ->select(
-                    'products.id',
-                    'products.name',
-                    'products.code',
-                    'products.is_variant',
-                    DB::raw('COALESCE(product_warehouse.qty, 0) as qty')
-                )
-                ->groupBy('products.id')
-                ->get();
-        } else {
-            $lims_product_data = [];
+        if (!$product) {
+            return response()->json([]);
+        }
+
+        $activeWarehouses = Warehouse::where('is_active', true)->get();
+        if ($stock_count->warehouse_id) {
+            $activeWarehouses = $activeWarehouses->where('id', $stock_count->warehouse_id);
         }
 
         $products = [];
 
-        foreach ($lims_product_data as $key => $item) {
-            $itemCode = $item->is_variant ? $item->item_code : $item->code;
-            
-            // Duplicate check by item_code
+        if ($product->is_variant) {
+            $variants = ProductVariant::where('product_id', $product->id)->orderBy('position')->get();
+            $pwRecords = DB::table('product_warehouse')
+                ->where('product_id', $product->id)
+                ->whereIn('warehouse_id', $activeWarehouses->pluck('id'))
+                ->get();
+
+            foreach ($variants as $variant) {
+                $itemCode = $variant->item_code;
+                $exists = StockCountItem::where('stock_count_id', $stock_count->id)
+                    ->where('item_code', $itemCode)
+                    ->exists();
+
+                $whList = [];
+                $totalQty = 0;
+                foreach ($activeWarehouses as $wh) {
+                    $pw = $pwRecords->first(function ($item) use ($variant, $wh) {
+                        return $item->variant_id == $variant->variant_id && $item->warehouse_id == $wh->id;
+                    });
+                    $current_wh_qty = $pw ? floatval($pw->qty) : 0;
+                    $whList[] = [
+                        'warehouse_id' => $wh->id,
+                        'warehouse_name' => $wh->name,
+                        'qty' => $current_wh_qty
+                    ];
+                    $totalQty += $current_wh_qty;
+                }
+
+                $products[] = [
+                    'name' => $product->name,
+                    'code' => $itemCode,
+                    'qty' => $totalQty,
+                    'id' => $product->id,
+                    'exists' => $exists,
+                    'warehouses' => $whList
+                ];
+            }
+        } else {
+            $pwRecords = DB::table('product_warehouse')
+                ->where('product_id', $product->id)
+                ->whereNull('variant_id')
+                ->whereIn('warehouse_id', $activeWarehouses->pluck('id'))
+                ->get();
+
+            $itemCode = $product->code;
             $exists = StockCountItem::where('stock_count_id', $stock_count->id)
                 ->where('item_code', $itemCode)
                 ->exists();
 
-            $products[$key] = [
-                'name' => $item->name,
+            $whList = [];
+            $totalQty = 0;
+            foreach ($activeWarehouses as $wh) {
+                $pw = $pwRecords->first(function ($item) use ($wh) {
+                    return $item->warehouse_id == $wh->id;
+                });
+                $current_wh_qty = $pw ? floatval($pw->qty) : 0;
+                $whList[] = [
+                    'warehouse_id' => $wh->id,
+                    'warehouse_name' => $wh->name,
+                    'qty' => $current_wh_qty
+                ];
+                $totalQty += $current_wh_qty;
+            }
+
+            $products[] = [
+                'name' => $product->name,
                 'code' => $itemCode,
-                'qty' => $item->qty,
-                'id' => $item->id,
-                'exists' => $exists
+                'qty' => $totalQty,
+                'id' => $product->id,
+                'exists' => $exists,
+                'warehouses' => $whList
             ];
         }
 
         return response()->json($products);
     }
 
-
-
     public function store(Request $request)
     {
         $stock_count = new StockCount();
-        $stock_count->warehouse_id = $request->warehouse_id;
+        $stock_count->warehouse_id = ($request->warehouse_id === 'all' || empty($request->warehouse_id)) ? null : $request->warehouse_id;
         $stock_count->save();
         return redirect()->route('stock-count.show', $stock_count->id);
     }
@@ -205,18 +186,37 @@ class StockCountController extends Controller
     {
         $stock_count = StockCount::findOrFail($id);
         if ($request->status === 'add') {
-            foreach ($request['product_code'] as $key => $product_code) {
-                if ($request['qty'][$key] == 0 && $request['current_qty'][$key] == 0)
-                    continue;
-                DB::table('stock_count_items')->insert([
-                    'stock_count_id' => $stock_count->id,
-                    'product_id' => $request['product_id'][$key],
-                    'item_code' => $request['product_code'][$key],
-                    'current_quantity' => $request['current_qty'][$key],
-                    'updated_quantity' => $request['qty'][$key],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+            if ($request->has('items') && is_array($request->items)) {
+                foreach ($request->items as $item) {
+                    if (($item['qty'] ?? 0) == 0 && ($item['current_qty'] ?? 0) == 0) {
+                        continue;
+                    }
+                    DB::table('stock_count_items')->insert([
+                        'stock_count_id' => $stock_count->id,
+                        'warehouse_id' => $item['warehouse_id'] ?? $stock_count->warehouse_id,
+                        'product_id' => $item['product_id'],
+                        'item_code' => $item['code'],
+                        'current_quantity' => $item['current_qty'] ?? 0,
+                        'updated_quantity' => $item['qty'] ?? 0,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            } elseif ($request->has('product_code')) {
+                foreach ($request['product_code'] as $key => $product_code) {
+                    if ($request['qty'][$key] == 0 && $request['current_qty'][$key] == 0)
+                        continue;
+                    DB::table('stock_count_items')->insert([
+                        'stock_count_id' => $stock_count->id,
+                        'warehouse_id' => isset($request['warehouse_id'][$key]) ? $request['warehouse_id'][$key] : $stock_count->warehouse_id,
+                        'product_id' => $request['product_id'][$key],
+                        'item_code' => $request['product_code'][$key],
+                        'current_quantity' => $request['current_qty'][$key],
+                        'updated_quantity' => $request['qty'][$key],
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
             }
             return back()->with('success', 'Stock count items added successfully.');
         } elseif ($request->status === 'complete') {
@@ -342,28 +342,39 @@ class StockCountController extends Controller
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('stock_count')) {
-            $lims_stock_count = StockCount::with(['items.product'])->find($id);
+            $lims_stock_count = StockCount::with(['items.product', 'items.warehouse', 'warehouse'])->find($id);
             if (!$lims_stock_count) {
                 abort(404);
             }
-            
+
+            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+
             $itemsGrouped = collect($lims_stock_count->items)->groupBy('item_code');
             $lims_stock_count->setRelation('items', $itemsGrouped);
 
+            $getCurrentQty = function($items) {
+                return $items->groupBy('warehouse_id')->map(function($whItems) {
+                    return floatval($whItems->first()->current_quantity);
+                })->sum();
+            };
+
             // 1. Calculate Stock Matched, Over Stock, Under Stock
-            $stockMatched = $itemsGrouped->filter(function ($items) {
-                $total = $items->sum('updated_quantity');
-                return $total == $items[0]->current_quantity;
+            $stockMatched = $itemsGrouped->filter(function ($items) use ($getCurrentQty) {
+                $total_counted = $items->sum('updated_quantity');
+                $total_current = $getCurrentQty($items);
+                return $total_counted == $total_current;
             });
 
-            $overStock = $itemsGrouped->filter(function ($items) {
-                $total = $items->sum('updated_quantity');
-                return $total > $items[0]->current_quantity;
+            $overStock = $itemsGrouped->filter(function ($items) use ($getCurrentQty) {
+                $total_counted = $items->sum('updated_quantity');
+                $total_current = $getCurrentQty($items);
+                return $total_counted > $total_current;
             });
 
-            $underStock = $itemsGrouped->filter(function ($items) {
-                $total = $items->sum('updated_quantity');
-                return $total < $items[0]->current_quantity;
+            $underStock = $itemsGrouped->filter(function ($items) use ($getCurrentQty) {
+                $total_counted = $items->sum('updated_quantity');
+                $total_current = $getCurrentQty($items);
+                return $total_counted < $total_current;
             });
 
             // 2. Statistics sums
@@ -375,34 +386,41 @@ class StockCountController extends Controller
             $overCountQty = 0;
             $overFindQty = 0;
             foreach ($overStock as $items) {
-                $overCountQty += $items->sum('updated_quantity') - $items[0]->current_quantity;
-                $overFindQty += $items->sum('updated_quantity');
+                $total_current = $getCurrentQty($items);
+                $total_counted = $items->sum('updated_quantity');
+                $overCountQty += ($total_counted - $total_current);
+                $overFindQty += $total_counted;
             }
 
             $underCountQty = 0;
             $underFindQty = 0;
             foreach ($underStock as $items) {
-                $underCountQty += $items[0]->current_quantity - $items->sum('updated_quantity');
-                $underFindQty += $items->sum('updated_quantity');
+                $total_current = $getCurrentQty($items);
+                $total_counted = $items->sum('updated_quantity');
+                $underCountQty += ($total_current - $total_counted);
+                $underFindQty += $total_counted;
             }
 
             $totalCountedQty = $lims_stock_count->items->flatten()->sum('updated_quantity');
-            $totalCountedProducts = count($lims_stock_count->items);
 
             // 3. Counted product IDs
-            $counted_product_ids = $lims_stock_count->items->flatten()->pluck('product_id')->unique()->toArray();
+            $counted_product_ids = $lims_stock_count->items->flatten()->pluck('product_id')->filter()->unique()->values()->toArray();
+            $totalCountedProducts = count($counted_product_ids);
 
             // 4. Remaining Products Count & Qty
             $remainingQuery = DB::table('product_warehouse')
                 ->join('products', 'products.id', '=', 'product_warehouse.product_id')
-                ->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id)
                 ->where('product_warehouse.qty', '>', 0)
                 ->where('products.is_active', true)
                 ->where('products.type', ProductType::STANDARD->value)
                 ->whereNotIn('products.id', $counted_product_ids);
 
-            $remainingCount = $remainingQuery->count('products.id');
-            $remainingQty = $remainingQuery->sum('product_warehouse.qty');
+            if ($lims_stock_count->warehouse_id) {
+                $remainingQuery->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id);
+            }
+
+            $remainingCount = (clone $remainingQuery)->distinct()->count('products.id');
+            $remainingQty = (clone $remainingQuery)->sum('product_warehouse.qty');
 
             // 5. Sold Products Count & Qty
             $countedItemsSubquery = DB::table('stock_count_items')
@@ -421,9 +439,12 @@ class StockCountController extends Controller
                     $join->on('product_sales.product_id', '=', 'sci.product_id')
                          ->whereRaw('(product_variants.item_code = sci.item_code OR (product_sales.variant_id IS NULL AND products.code = sci.item_code))');
                 })
-                ->where('sales.warehouse_id', $lims_stock_count->warehouse_id)
                 ->where('sales.created_at', '>=', $lims_stock_count->created_at)
                 ->whereColumn('sales.created_at', '>=', 'sci.last_counted_at');
+
+            if ($lims_stock_count->warehouse_id) {
+                $soldQuery->where('sales.warehouse_id', $lims_stock_count->warehouse_id);
+            }
 
             if ($lims_stock_count->is_completed) {
                 $soldQuery->where('sales.created_at', '<=', $lims_stock_count->updated_at);
@@ -466,6 +487,7 @@ class StockCountController extends Controller
 
             $compactData = compact(
                 'lims_stock_count',
+                'lims_warehouse_list',
                 'stockMatched',
                 'overStock',
                 'underStock',
@@ -500,7 +522,7 @@ class StockCountController extends Controller
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('stock_count')) {
-            $lims_stock_count = StockCount::with('items')->findOrFail($id);
+            $lims_stock_count = StockCount::with(['items', 'warehouse'])->findOrFail($id);
             $counted_product_ids = $lims_stock_count->items->pluck('product_id')->unique()->toArray();
 
             $lims_brand_list = Brand::where('is_active', true)->get();
@@ -513,8 +535,11 @@ class StockCountController extends Controller
 
             $query = Product::ActiveStandard()
                 ->join('product_warehouse', 'products.id', 'product_warehouse.product_id')
-                ->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id)
                 ->where('product_warehouse.qty', '>', 0);
+
+            if ($lims_stock_count->warehouse_id) {
+                $query->where('product_warehouse.warehouse_id', $lims_stock_count->warehouse_id);
+            }
 
             if ($brand_id != 0) {
                 $query->where('products.brand_id', $brand_id);
@@ -531,8 +556,8 @@ class StockCountController extends Controller
 
             $query->whereNotIn('products.id', $counted_product_ids);
 
-            $remainingProducts = $query->select('products.id', 'products.name', 'products.code', 'products.price', 'products.cost', 'product_warehouse.qty')
-                ->groupBy('products.id')
+            $remainingProducts = $query->select('products.id', 'products.name', 'products.code', 'products.price', 'products.cost', DB::raw('SUM(product_warehouse.qty) as qty'))
+                ->groupBy('products.id', 'products.name', 'products.code', 'products.price', 'products.cost')
                 ->get();
 
             $remainingCount = $remainingProducts->count();
@@ -598,9 +623,12 @@ class StockCountController extends Controller
                     $join->on('product_sales.product_id', '=', 'sci.product_id')
                          ->whereRaw('(product_variants.item_code = sci.item_code OR (product_sales.variant_id IS NULL AND products.code = sci.item_code))');
                 })
-                ->where('sales.warehouse_id', $lims_stock_count->warehouse_id)
                 ->where('sales.created_at', '>=', $lims_stock_count->created_at)
                 ->whereColumn('sales.created_at', '>=', 'sci.last_counted_at');
+
+            if ($lims_stock_count->warehouse_id) {
+                $query->where('sales.warehouse_id', $lims_stock_count->warehouse_id);
+            }
 
             if ($lims_stock_count->is_completed) {
                 $query->where('sales.created_at', '<=', $lims_stock_count->updated_at);
@@ -759,7 +787,7 @@ class StockCountController extends Controller
                 ]);
                 return redirect()->route('stock-count.show', $id)->with('success', 'Stock count reverted to incomplete state successfully.');
             }
-            return redirect()->back()->with('error', 'Cannot revert this stock count.');
+            return redirect()->route('stock-count.show', $id)->with('not_permitted', 'Cannot revert this stock count.');
         } else {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
         }
@@ -781,21 +809,27 @@ class StockCountController extends Controller
     }
 
     /**
-     * Clean up duplicate rows in product_warehouse and product_variants.
+     * Clean duplicate product_warehouse records to enforce standard structure (1 row per product-variant-warehouse).
      */
     private function cleanDuplicateWarehousesAndVariants($stock_count)
     {
-        $duplicates = DB::table('product_warehouse')
-            ->select('product_id', 'variant_id', DB::raw('MIN(id) as keep_id'))
-            ->where('warehouse_id', $stock_count->warehouse_id)
-            ->groupBy('product_id', 'variant_id')
-            ->havingRaw('COUNT(*) > 1')
-            ->get();
+        $warehouse_duplicates_query = DB::table('product_warehouse')
+            ->select('product_id', 'warehouse_id', 'variant_id', DB::raw('MIN(id) as keep_id'))
+            ->groupBy('product_id', 'warehouse_id', 'variant_id')
+            ->havingRaw('COUNT(*) > 1');
 
-        foreach ($duplicates as $dup) {
-            $query = Product_Warehouse::where('warehouse_id', $stock_count->warehouse_id)
+        if ($stock_count->warehouse_id) {
+            $warehouse_duplicates_query->where('warehouse_id', $stock_count->warehouse_id);
+        }
+
+        $warehouse_duplicates = $warehouse_duplicates_query->get();
+
+        foreach ($warehouse_duplicates as $dup) {
+            $query = DB::table('product_warehouse')
                 ->where('product_id', $dup->product_id)
+                ->where('warehouse_id', $dup->warehouse_id)
                 ->where('id', '!=', $dup->keep_id);
+
             if (is_null($dup->variant_id)) {
                 $query->whereNull('variant_id');
             } else {
@@ -824,11 +858,11 @@ class StockCountController extends Controller
     private function deductSoldProductsStock($stock_count)
     {
         $countedItemsSubquery = DB::table('stock_count_items')
-            ->select('item_code', 'product_id', DB::raw('MAX(created_at) as last_counted_at'))
+            ->select('item_code', 'product_id', 'warehouse_id', DB::raw('MAX(created_at) as last_counted_at'))
             ->where('stock_count_id', $stock_count->id)
-            ->groupBy('item_code', 'product_id');
+            ->groupBy('item_code', 'product_id', 'warehouse_id');
 
-        $soldProducts = Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
+        $soldQuery = Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
             ->join('products', 'product_sales.product_id', '=', 'products.id')
             ->leftJoin('product_variants', function($join) {
                 $join->on('product_sales.product_id', '=', 'product_variants.product_id')
@@ -836,25 +870,36 @@ class StockCountController extends Controller
             })
             ->joinSub($countedItemsSubquery, 'sci', function($join) {
                 $join->on('product_sales.product_id', '=', 'sci.product_id')
-                     ->whereRaw('(product_variants.item_code = sci.item_code OR (product_sales.variant_id IS NULL AND products.code = sci.item_code))');
+                     ->whereRaw('(product_variants.item_code = sci.item_code OR (product_sales.variant_id IS NULL AND products.code = sci.item_code))')
+                     ->whereRaw('(sci.warehouse_id IS NULL OR sales.warehouse_id = sci.warehouse_id)');
             })
-            ->where('sales.warehouse_id', $stock_count->warehouse_id)
             ->where('sales.created_at', '>=', $stock_count->created_at)
-            ->whereColumn('sales.created_at', '>=', 'sci.last_counted_at')
-            ->select(
-                DB::raw('COALESCE(product_variants.item_code, products.code) as item_code'),
-                DB::raw('SUM(product_sales.qty) as sold_qty')
-            )
-            ->groupBy('item_code')
-            ->get();
+            ->whereColumn('sales.created_at', '>=', 'sci.last_counted_at');
+
+        if ($stock_count->warehouse_id) {
+            $soldQuery->where('sales.warehouse_id', $stock_count->warehouse_id);
+        }
+
+        $soldProducts = $soldQuery->select(
+            DB::raw('COALESCE(product_variants.item_code, products.code) as item_code'),
+            'sales.warehouse_id',
+            DB::raw('SUM(product_sales.qty) as sold_qty')
+        )
+        ->groupBy('item_code', 'sales.warehouse_id')
+        ->get();
 
         foreach ($soldProducts as $sold) {
-            DB::table('stock_count_items')
+            $q = DB::table('stock_count_items')
                 ->where('stock_count_id', $stock_count->id)
-                ->where('item_code', $sold->item_code)
-                ->update([
-                    'updated_quantity' => DB::raw("GREATEST(0, updated_quantity - " . floatval($sold->sold_qty) . ")")
-                ]);
+                ->where('item_code', $sold->item_code);
+            if ($sold->warehouse_id) {
+                $q->where(function($subQ) use ($sold) {
+                    $subQ->where('warehouse_id', $sold->warehouse_id)->orWhereNull('warehouse_id');
+                });
+            }
+            $q->update([
+                'updated_quantity' => DB::raw("GREATEST(0, updated_quantity - " . floatval($sold->sold_qty) . ")")
+            ]);
         }
     }
 
@@ -942,24 +987,6 @@ class StockCountController extends Controller
                 continue;
             }
 
-            $counted_qty = $stock_count_items->sum('updated_quantity');
-
-            // Clean up duplicate stock_count_items to keep only one row with the summed quantity
-            if ($stock_count_items->count() > 1) {
-                $first_item = $stock_count_items->sortByDesc('id')->first();
-                DB::table('stock_count_items')
-                    ->where('stock_count_id', $stock_count->id)
-                    ->where('item_code', $item_code)
-                    ->where('id', '!=', $first_item->id)
-                    ->delete();
-
-                DB::table('stock_count_items')
-                    ->where('id', $first_item->id)
-                    ->update(['updated_quantity' => $counted_qty]);
-            } else {
-                $first_item = $stock_count_items->first();
-            }
-
             // Find product and variant using item_code (to handle shifted product IDs from database imports)
             $productVariant = ProductVariant::where('item_code', $item_code)->first();
             $product = null;
@@ -971,7 +998,7 @@ class StockCountController extends Controller
             } else {
                 $product = Product::where('code', $item_code)->first();
                 if (!$product) {
-                    $product = Product::find($first_item->product_id);
+                    $product = Product::find($stock_count_items->first()->product_id);
                     if ($product) {
                         $productVariant = ProductVariant::join('variants', 'product_variants.variant_id', '=', 'variants.id')
                             ->where('variants.name', $item_code)
@@ -989,25 +1016,57 @@ class StockCountController extends Controller
                 continue;
             }
 
-            $new_qty = max(0, $counted_qty);
+            if ($stock_count->warehouse_id) {
+                // Single warehouse stock count
+                $counted_qty = $stock_count_items->sum('updated_quantity');
+                $new_qty = max(0, $counted_qty);
 
-            // Update Product_Warehouse record
-            if ($variant_id) {
-                $warehouse_product = Product_Warehouse::FindProductWithVariant($product->id, $variant_id, $stock_count->warehouse_id)->first();
-            } else {
-                $warehouse_product = Product_Warehouse::FindProductWithoutVariant($product->id, $stock_count->warehouse_id)->first();
-            }
+                if ($variant_id) {
+                    $warehouse_product = Product_Warehouse::FindProductWithVariant($product->id, $variant_id, $stock_count->warehouse_id)->first();
+                } else {
+                    $warehouse_product = Product_Warehouse::FindProductWithoutVariant($product->id, $stock_count->warehouse_id)->first();
+                }
 
-            if ($warehouse_product) {
-                $warehouse_product->qty = $new_qty;
-                $warehouse_product->save();
+                if ($warehouse_product) {
+                    $warehouse_product->qty = $new_qty;
+                    $warehouse_product->save();
+                } else {
+                    $warehouse_product = new Product_Warehouse();
+                    $warehouse_product->product_id = $product->id;
+                    $warehouse_product->variant_id = $variant_id;
+                    $warehouse_product->warehouse_id = $stock_count->warehouse_id;
+                    $warehouse_product->qty = $new_qty;
+                    $warehouse_product->save();
+                }
             } else {
-                $warehouse_product = new Product_Warehouse();
-                $warehouse_product->product_id = $product->id;
-                $warehouse_product->variant_id = $variant_id;
-                $warehouse_product->warehouse_id = $stock_count->warehouse_id;
-                $warehouse_product->qty = $new_qty;
-                $warehouse_product->save();
+                // Multi warehouse stock count: Group by warehouse_id
+                $byWarehouse = $stock_count_items->groupBy('warehouse_id');
+                foreach ($byWarehouse as $wh_id => $itemsGroup) {
+                    $target_wh_id = $wh_id;
+                    if (!$target_wh_id) {
+                        $defWh = Warehouse::where('is_default', 1)->first() ?? Warehouse::first();
+                        $target_wh_id = $defWh ? $defWh->id : 1;
+                    }
+                    $wh_qty = max(0, $itemsGroup->sum('updated_quantity'));
+
+                    if ($variant_id) {
+                        $warehouse_product = Product_Warehouse::FindProductWithVariant($product->id, $variant_id, $target_wh_id)->first();
+                    } else {
+                        $warehouse_product = Product_Warehouse::FindProductWithoutVariant($product->id, $target_wh_id)->first();
+                    }
+
+                    if ($warehouse_product) {
+                        $warehouse_product->qty = $wh_qty;
+                        $warehouse_product->save();
+                    } else {
+                        $warehouse_product = new Product_Warehouse();
+                        $warehouse_product->product_id = $product->id;
+                        $warehouse_product->variant_id = $variant_id;
+                        $warehouse_product->warehouse_id = $target_wh_id;
+                        $warehouse_product->qty = $wh_qty;
+                        $warehouse_product->save();
+                    }
+                }
             }
         }
     }
@@ -1056,116 +1115,130 @@ class StockCountController extends Controller
      */
     private function zeroRemainingProductsStock($stock_count)
     {
-        // Get all counted item codes and resolve their current product IDs using item_code
+        // 1. Get all counted item codes BEFORE inserting zeroed records
         $counted_items = DB::table('stock_count_items')
             ->where('stock_count_id', $stock_count->id)
             ->select('product_id', 'item_code')
             ->get();
 
-        $counted_item_codes = $counted_items->pluck('item_code')->unique()->toArray();
+        $counted_item_codes = $counted_items->pluck('item_code')->filter()->unique()->toArray();
 
-        $counted_variants = ProductVariant::whereIn('item_code', $counted_item_codes)->pluck('variant_id')->toArray();
-        $counted_variant_product_ids = ProductVariant::whereIn('item_code', $counted_item_codes)->pluck('product_id')->toArray();
-
-        $counted_standard_product_ids = Product::whereIn('code', $counted_item_codes)->pluck('id')->toArray();
-        $counted_product_ids = array_unique(array_merge($counted_variant_product_ids, $counted_standard_product_ids));
-
-        // Insert missing product_warehouse records for variants (so they exist in this warehouse)
-        $missing_variants = DB::table('product_variants as pv')
-            ->leftJoin('product_warehouse as pw', function($join) use ($stock_count) {
+        // 2. Capture all uncounted variants with stock > 0
+        $uncountedVariantsQuery = DB::table('product_warehouse as pw')
+            ->join('product_variants as pv', function($join) {
                 $join->on('pv.product_id', '=', 'pw.product_id')
-                     ->on('pv.variant_id', '=', 'pw.variant_id')
-                     ->where('pw.warehouse_id', '=', $stock_count->warehouse_id);
+                     ->on('pv.variant_id', '=', 'pw.variant_id');
             })
-            ->whereNull('pw.id')
-            ->select('pv.product_id', 'pv.variant_id')
-            ->get();
+            ->where('pw.qty', '>', 0)
+            ->whereNotNull('pw.variant_id')
+            ->whereNotIn('pv.item_code', $counted_item_codes);
 
-        $insertDataVariants = [];
-        foreach ($missing_variants as $mv) {
-            $insertDataVariants[] = [
-                'product_id' => $mv->product_id,
-                'variant_id' => $mv->variant_id,
-                'warehouse_id' => $stock_count->warehouse_id,
-                'qty' => 0,
-                'created_at' => now(),
-                'updated_at' => now()
-            ];
-        }
-        foreach (array_chunk($insertDataVariants, 500) as $chunk) {
-            DB::table('product_warehouse')->insert($chunk);
+        if ($stock_count->warehouse_id) {
+            $uncountedVariantsQuery->where('pw.warehouse_id', $stock_count->warehouse_id);
         }
 
-        // Insert missing product_warehouse records for standard products without variants
-        $missing_products = DB::table('products as p')
-            ->leftJoin('product_warehouse as pw', function($join) use ($stock_count) {
-                $join->on('p.id', '=', 'pw.product_id')
-                     ->whereNull('pw.variant_id')
-                     ->where('pw.warehouse_id', '=', $stock_count->warehouse_id);
-            })
-            ->leftJoin('product_variants as pv', 'p.id', '=', 'pv.product_id')
-            ->whereNull('pw.id')
-            ->whereNull('pv.id')
+        $uncountedVariants = $uncountedVariantsQuery->select(
+            'pw.id as pw_id',
+            'pw.warehouse_id',
+            'pw.product_id',
+            'pv.item_code',
+            'pw.qty as current_qty'
+        )->get();
+
+        // 3. Capture all uncounted standard products (without variants) with stock > 0
+        $uncountedProductsQuery = DB::table('product_warehouse as pw')
+            ->join('products as p', 'p.id', '=', 'pw.product_id')
+            ->where('pw.qty', '>', 0)
+            ->whereNull('pw.variant_id')
             ->where('p.is_active', true)
             ->where('p.type', ProductType::STANDARD->value)
-            ->select('p.id')
-            ->get();
+            ->whereNotIn('p.code', $counted_item_codes);
 
-        $insertDataProducts = [];
-        foreach ($missing_products as $mp) {
-            $insertDataProducts[] = [
-                'product_id' => $mp->id,
-                'variant_id' => null,
-                'warehouse_id' => $stock_count->warehouse_id,
-                'qty' => 0,
+        if ($stock_count->warehouse_id) {
+            $uncountedProductsQuery->where('pw.warehouse_id', $stock_count->warehouse_id);
+        }
+
+        $uncountedProducts = $uncountedProductsQuery->select(
+            'pw.id as pw_id',
+            'pw.warehouse_id',
+            'pw.product_id',
+            'p.code as item_code',
+            'pw.qty as current_qty'
+        )->get();
+
+        // 4. Record uncounted items into stock_count_items with updated_quantity = 0 so the loss/zeroing is permanently tracked
+        $allUncounted = $uncountedVariants->concat($uncountedProducts);
+        $zeroedItemsToInsert = [];
+        foreach ($allUncounted as $uncounted) {
+            $zeroedItemsToInsert[] = [
+                'stock_count_id' => $stock_count->id,
+                'warehouse_id' => $uncounted->warehouse_id,
+                'product_id' => $uncounted->product_id,
+                'item_code' => $uncounted->item_code,
+                'current_quantity' => $uncounted->current_qty,
+                'updated_quantity' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ];
         }
-        foreach (array_chunk($insertDataProducts, 500) as $chunk) {
-            DB::table('product_warehouse')->insert($chunk);
+
+        foreach (array_chunk($zeroedItemsToInsert, 500) as $chunk) {
+            DB::table('stock_count_items')->insert($chunk);
         }
 
-        // Zero out uncounted variants & standard products in this warehouse
-        DB::update("
-            UPDATE product_warehouse pw
-            SET pw.qty = 0
-            WHERE pw.warehouse_id = :warehouse_id
-              AND pw.variant_id IS NOT NULL
-              AND NOT EXISTS (
-                  SELECT 1 FROM stock_count_items sci
-                  JOIN product_variants pv ON pv.product_id = pw.product_id AND pv.variant_id = pw.variant_id
-                  WHERE sci.stock_count_id = :stock_count_id
-                    AND sci.item_code = pv.item_code
-              )
-        ", [
-            'warehouse_id' => $stock_count->warehouse_id,
-            'stock_count_id' => $stock_count->id
-        ]);
+        // 5. Directly set product_warehouse qty = 0 for all uncounted items!
+        $pwIdsToZero = $allUncounted->pluck('pw_id')->filter()->toArray();
+        if (!empty($pwIdsToZero)) {
+            foreach (array_chunk($pwIdsToZero, 500) as $chunk) {
+                DB::table('product_warehouse')->whereIn('id', $chunk)->update(['qty' => 0, 'updated_at' => now()]);
+            }
+        }
 
-        DB::update("
-            UPDATE product_warehouse pw
-            SET pw.qty = 0
-            WHERE pw.warehouse_id = :warehouse_id
-              AND pw.variant_id IS NULL
-              AND NOT EXISTS (
-                  SELECT 1 FROM stock_count_items sci
-                  JOIN products p ON p.id = pw.product_id
-                  WHERE sci.stock_count_id = :stock_count_id
-                    AND sci.item_code = p.code
-              )
-        ", [
-            'warehouse_id' => $stock_count->warehouse_id,
-            'stock_count_id' => $stock_count->id
-        ]);
+        // 6. Also ensure any other uncounted variant or product in target warehouse(s) is 0
+        if ($stock_count->warehouse_id) {
+            DB::table('product_warehouse as pw')
+                ->join('product_variants as pv', function($join) {
+                    $join->on('pv.product_id', '=', 'pw.product_id')
+                         ->on('pv.variant_id', '=', 'pw.variant_id');
+                })
+                ->where('pw.warehouse_id', $stock_count->warehouse_id)
+                ->whereNotNull('pw.variant_id')
+                ->whereNotIn('pv.item_code', $counted_item_codes)
+                ->update(['pw.qty' => 0, 'pw.updated_at' => now()]);
 
-        // Zero out any remaining negative warehouse quantities
-        DB::table('product_warehouse')
-            ->where('warehouse_id', $stock_count->warehouse_id)
-            ->where('qty', '<', 0)
-            ->update(['qty' => 0]);
+            DB::table('product_warehouse as pw')
+                ->join('products as p', 'p.id', '=', 'pw.product_id')
+                ->where('pw.warehouse_id', $stock_count->warehouse_id)
+                ->whereNull('pw.variant_id')
+                ->whereNotIn('p.code', $counted_item_codes)
+                ->update(['pw.qty' => 0, 'pw.updated_at' => now()]);
 
-        // Bulk recalculate global stocks in product_variants and products tables
+            DB::table('product_warehouse')
+                ->where('warehouse_id', $stock_count->warehouse_id)
+                ->where('qty', '<', 0)
+                ->update(['qty' => 0, 'updated_at' => now()]);
+        } else {
+            DB::table('product_warehouse as pw')
+                ->join('product_variants as pv', function($join) {
+                    $join->on('pv.product_id', '=', 'pw.product_id')
+                         ->on('pv.variant_id', '=', 'pw.variant_id');
+                })
+                ->whereNotNull('pw.variant_id')
+                ->whereNotIn('pv.item_code', $counted_item_codes)
+                ->update(['pw.qty' => 0, 'pw.updated_at' => now()]);
+
+            DB::table('product_warehouse as pw')
+                ->join('products as p', 'p.id', '=', 'pw.product_id')
+                ->whereNull('pw.variant_id')
+                ->whereNotIn('p.code', $counted_item_codes)
+                ->update(['pw.qty' => 0, 'pw.updated_at' => now()]);
+
+            DB::table('product_warehouse')
+                ->where('qty', '<', 0)
+                ->update(['qty' => 0, 'updated_at' => now()]);
+        }
+
+        // 7. Bulk recalculate global stocks in product_variants and products tables
         $this->recalculateGlobalStocks();
     }
 }

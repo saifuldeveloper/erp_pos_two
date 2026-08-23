@@ -25,9 +25,11 @@
                 </div>
             </div>
             <div class="container-fluid mb-2">
+                @if(in_array("payroll-type-add", $all_permission))
                 <button class="btn btn-info" data-toggle="modal" data-target="#createModal">
                     <i class="dripicons-plus"></i> {{ trans('file.Add Payroll Type') }}
                 </button>
+                @endif
             </div>
         </div>
         <div class="table-responsive container-fluid">
@@ -47,11 +49,14 @@
                             <td>{{ $type->name }}</td>
                             <td>{{ $type->status }}</td>
                             <td>
+                                @if(in_array("payroll-type-edit", $all_permission))
                                 <button type="button" class="btn btn-sm btn-primary edit-btn" data-id="{{ $type->id }}"
                                     data-name="{{ $type->name }}" data-status="{{ $type->status }}" data-toggle="modal"
                                     data-target="#editModal">
                                     <i class="dripicons-document-edit"></i> {{ trans('file.edit') }}
                                 </button>
+                                @endif
+                                @if(in_array("payroll-type-delete", $all_permission))
                                 <form action="{{ route('payroll-types.destroy', $type->id) }}" method="POST"
                                     style="display:inline;">
                                     @csrf
@@ -60,6 +65,7 @@
                                         <i class="dripicons-trash"></i> {{ trans('file.delete') }}
                                     </button>
                                 </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

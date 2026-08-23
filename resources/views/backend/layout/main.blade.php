@@ -96,7 +96,7 @@
               </a>
               <ul class="dropdown-menu">
                 <?php
-                    $category_permission_active = $role_has_permissions_list->where('name', 'category')->first();
+                    $category_permission_active = $role_has_permissions_list->where('name', 'category-add')->first() ?: $role_has_permissions_list->where('name', 'category')->first();
                 ?>
                 @if($category_permission_active)
                 <li class="dropdown-item"><a data-toggle="modal" data-target="#category-modal">{{__('file.Add Category')}}</a></li>

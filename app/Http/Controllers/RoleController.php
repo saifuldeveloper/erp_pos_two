@@ -907,6 +907,24 @@ class RoleController extends Controller
         else
             $role->revokePermissionTo('supplier-due-report');
 
+        if($request->has('salary-report')){
+            $permission = Permission::firstOrCreate(['name' => 'salary-report']);
+            if(!$role->hasPermissionTo('salary-report')){
+                $role->givePermissionTo($permission);
+            }
+        }
+        else
+            $role->revokePermissionTo('salary-report');
+
+        if($request->has('stock-count-report')){
+            $permission = Permission::firstOrCreate(['name' => 'stock-count-report']);
+            if(!$role->hasPermissionTo('stock-count-report')){
+                $role->givePermissionTo($permission);
+            }
+        }
+        else
+            $role->revokePermissionTo('stock-count-report');
+
         if($request->has('backup_database')){
             $permission = Permission::firstOrCreate(['name' => 'backup_database']);
             if(!$role->hasPermissionTo('backup_database')){
@@ -1207,6 +1225,69 @@ class RoleController extends Controller
                 $role->revokePermissionTo('custom_field');
         }
 
+        $dynamic_permissions = [
+            'category-index', 'category-add', 'category-edit', 'category-delete',
+            'brand-index', 'brand-add', 'brand-edit', 'brand-delete',
+            'unit-index', 'unit-add', 'unit-edit', 'unit-delete',
+            'color-index', 'color-add', 'color-edit', 'color-delete',
+            'warehouse-index', 'warehouse-add', 'warehouse-edit', 'warehouse-delete',
+            'waste-index', 'waste-add', 'waste-edit', 'waste-delete',
+            'department-index', 'department-add', 'department-edit', 'department-delete',
+            'payroll-index', 'payroll-add', 'payroll-edit', 'payroll-delete',
+            'payroll-type-index', 'payroll-type-add', 'payroll-type-edit', 'payroll-type-delete',
+        ];
+
+        foreach ($dynamic_permissions as $perm_name) {
+            if ($request->has($perm_name)) {
+                $permission = Permission::firstOrCreate(['name' => $perm_name]);
+                if (!$role->hasPermissionTo($perm_name)) {
+                    $role->givePermissionTo($permission);
+                }
+            } else {
+                if ($role->hasPermissionTo($perm_name)) {
+                    $role->revokePermissionTo($perm_name);
+                }
+            }
+        }
+
+        // Backward compatibility
+        if ($request->has('category-index')) {
+            $cat_perm = Permission::firstOrCreate(['name' => 'category']);
+            if (!$role->hasPermissionTo('category')) $role->givePermissionTo($cat_perm);
+        } else {
+            if ($role->hasPermissionTo('category')) $role->revokePermissionTo('category');
+        }
+
+        if ($request->has('brand-index')) {
+            $brand_perm = Permission::firstOrCreate(['name' => 'brand']);
+            if (!$role->hasPermissionTo('brand')) $role->givePermissionTo($brand_perm);
+        } else {
+            if ($role->hasPermissionTo('brand')) $role->revokePermissionTo('brand');
+        }
+
+        if ($request->has('unit-index')) {
+            $unit_perm = Permission::firstOrCreate(['name' => 'unit']);
+            if (!$role->hasPermissionTo('unit')) $role->givePermissionTo($unit_perm);
+        } else {
+            if ($role->hasPermissionTo('unit')) $role->revokePermissionTo('unit');
+        }
+
+        if ($request->has('department-index')) {
+            $dept_perm = Permission::firstOrCreate(['name' => 'department']);
+            if (!$role->hasPermissionTo('department')) $role->givePermissionTo($dept_perm);
+        } else {
+            if ($role->hasPermissionTo('department')) $role->revokePermissionTo('department');
+        }
+
+        if ($request->has('payroll-index')) {
+            $pay_perm = Permission::firstOrCreate(['name' => 'payroll']);
+            if (!$role->hasPermissionTo('payroll')) $role->givePermissionTo($pay_perm);
+        } else {
+            if ($role->hasPermissionTo('payroll')) $role->revokePermissionTo('payroll');
+        }
+
+        $this->cacheForget('role_has_permissions');
+        $this->cacheForget('role_has_permissions_list' . $request['role_id']);
         cache()->forget('permissions');
 
         return redirect('role')->with('message', 'Permission updated successfully');

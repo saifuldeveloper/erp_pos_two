@@ -26,6 +26,6 @@ class Product_Warehouse extends Model
     	return $query->where([
             ['product_id', $product_id],
             ['warehouse_id', $warehouse_id]
-        ]);
+        ])->whereNull('variant_id');
     }
 }

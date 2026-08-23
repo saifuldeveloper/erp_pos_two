@@ -2080,7 +2080,7 @@ class ReportController extends Controller
     public function salaryReport(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('payroll')) {
+        if ($role->hasPermissionTo('salary-report')) {
             if ($request->input('starting_date')) {
                 $starting_date = $request->input('starting_date');
                 $ending_date = $request->input('ending_date');
@@ -4823,45 +4823,220 @@ class ReportController extends Controller
 
     public function stockCount(Request $request)
     {
-        $stockCountItems = StockCountItem::with('stockCount', 'product.brand')
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('stock-count-report')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+
+        $countID = $request->input('countID');
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $warehouse_id = $request->input('warehouse_id');
+
+        // If no filter given and stock counts exist, default to the latest stock count so report isn't mixing everything
+        if (!$countID && !$start_date && !$end_date && !$warehouse_id) {
+            $latestCount = DB::table('stock_counts')->orderBy('id', 'desc')->first();
+            if ($latestCount) {
+                $countID = $latestCount->id;
+            }
+        }
+
+        $query = DB::table('stock_count_items')
             ->join('stock_counts', 'stock_counts.id', '=', 'stock_count_items.stock_count_id')
-            ->where('stock_counts.is_completed', 1)
-            ->where('stock_counts.is_resolved', 1)
-            ->groupBy('item_code')
-            ->select(
-                'stock_count_items.id',
-                'stock_count_id',
-                'product_id',
-                'item_code',
-                'current_quantity',
-                DB::raw('SUM(updated_quantity) as updated_quantity')
-            )
-            ->when($request->countID, function ($query) use ($request) {
-                return $query->where('stock_count_id', $request->countID);
+            ->leftJoin('warehouses as item_wh', 'item_wh.id', '=', 'stock_count_items.warehouse_id')
+            ->leftJoin('warehouses as count_wh', 'count_wh.id', '=', 'stock_counts.warehouse_id')
+            ->leftJoin('product_variants', 'product_variants.item_code', '=', 'stock_count_items.item_code')
+            ->leftJoin('products', function($join) {
+                $join->on('products.id', '=', 'product_variants.product_id')
+                     ->orOn('products.id', '=', 'stock_count_items.product_id');
             })
-            ->when(!$request->countID && ($request->start_date || $request->end_date), function ($query) use ($request) {
-                if ($request->start_date && $request->end_date) {
-                    return $query->whereBetween('stock_counts.created_at', [
-                        $request->start_date . ' 00:00:00',
-                        $request->end_date . ' 23:59:59',
-                    ]);
+            ->leftJoin('brands', 'brands.id', '=', 'products.brand_id');
+
+        if ($countID) {
+            $query->where('stock_count_items.stock_count_id', $countID);
+        } else {
+            if ($start_date && $end_date) {
+                $query->whereBetween('stock_counts.created_at', [
+                    $start_date . ' 00:00:00',
+                    $end_date . ' 23:59:59',
+                ]);
+            } elseif ($start_date) {
+                $query->where('stock_counts.created_at', '>=', $start_date . ' 00:00:00');
+            } elseif ($end_date) {
+                $query->where('stock_counts.created_at', '<=', $end_date . ' 23:59:59');
+            }
+        }
+
+        if ($warehouse_id && $warehouse_id !== 'all') {
+            $query->where(function($q) use ($warehouse_id) {
+                $q->where('stock_count_items.warehouse_id', $warehouse_id)
+                  ->orWhere('stock_counts.warehouse_id', $warehouse_id);
+            });
+        }
+
+        $rawItems = $query->select(
+            'stock_count_items.stock_count_id',
+            'stock_counts.created_at as count_date',
+            'stock_counts.is_completed',
+            'stock_counts.is_resolved',
+            'products.id as product_id',
+            DB::raw('COALESCE(products.name, "Unknown Product") as product_name'),
+            'stock_count_items.item_code',
+            DB::raw('COALESCE(brands.title, "No Brand") as brand_name'),
+            DB::raw('COALESCE(item_wh.name, count_wh.name, "All Warehouse") as warehouse_name'),
+            DB::raw('COALESCE(products.cost + product_variants.additional_cost, products.cost, 0) as unit_cost'),
+            DB::raw('COALESCE(products.price + product_variants.additional_price, products.price, 0) as unit_price'),
+            DB::raw('SUM(stock_count_items.current_quantity) as current_quantity'),
+            DB::raw('SUM(stock_count_items.updated_quantity) as updated_quantity')
+        )
+        ->groupBy(
+            'stock_count_items.stock_count_id',
+            'stock_counts.created_at',
+            'stock_counts.is_completed',
+            'stock_counts.is_resolved',
+            'products.id',
+            'products.name',
+            'stock_count_items.item_code',
+            'brands.title',
+            'item_wh.name',
+            'count_wh.name',
+            'products.cost',
+            'product_variants.additional_cost',
+            'products.price',
+            'product_variants.additional_price'
+        )
+        ->orderBy('stock_count_items.stock_count_id', 'desc')
+        ->orderBy('products.name', 'asc')
+        ->orderBy('stock_count_items.item_code', 'asc')
+        ->get();
+
+        $totalCurrentQty = 0;
+        $totalUpdatedQty = 0;
+        $totalCurrentCost = 0;
+        $totalCurrentRevenue = 0;
+        $totalUpdatedCost = 0;
+        $totalUpdatedRevenue = 0;
+        $matchedCount = 0;
+        $overCount = 0;
+        $underCount = 0;
+        $zeroedCount = 0;
+        $matchedQty = 0;
+        $overQty = 0;
+        $underQty = 0;
+        $zeroedQty = 0;
+        $zeroedCost = 0;
+        $zeroedRevenue = 0;
+        $brandWiseStockCounts = [];
+        $uniqueProductIds = [];
+
+        foreach ($rawItems as $item) {
+            $currQty = floatval($item->current_quantity);
+            $updQty = floatval($item->updated_quantity);
+            $cost = floatval($item->unit_cost);
+            $price = floatval($item->unit_price);
+
+            $diffQty = $updQty - $currQty;
+            $item->diff_quantity = $diffQty;
+            $item->diff_cost = $diffQty * $cost;
+            $item->diff_price = $diffQty * $price;
+            $item->current_total_cost = $currQty * $cost;
+            $item->current_total_price = $currQty * $price;
+            $item->updated_total_cost = $updQty * $cost;
+            $item->updated_total_price = $updQty * $price;
+
+            if ($diffQty == 0) {
+                $item->status_type = 'matched';
+                $matchedCount++;
+                $matchedQty += $updQty;
+            } elseif ($diffQty > 0) {
+                $item->status_type = 'over';
+                $overCount++;
+                $overQty += $diffQty;
+            } else {
+                if ($currQty > 0 && $updQty == 0) {
+                    $item->status_type = 'zeroed';
+                    $zeroedCount++;
+                    $zeroedQty += $currQty;
+                    $zeroedCost += ($currQty * $cost);
+                    $zeroedRevenue += ($currQty * $price);
+                } else {
+                    $item->status_type = 'under';
                 }
-                if ($request->start_date) {
-                    return $query->where('stock_counts.created_at', '>=', $request->start_date . ' 00:00:00');
-                }
-                if ($request->end_date) {
-                    return $query->where('stock_counts.created_at', '<=', $request->end_date . ' 23:59:59');
-                }
-            })
-            ->orderBy('stock_count_id', 'desc')
+                $underCount++;
+                $underQty += abs($diffQty);
+            }
+
+            if ($item->product_id) {
+                $uniqueProductIds[$item->product_id] = true;
+            }
+
+            $totalCurrentQty += $currQty;
+            $totalUpdatedQty += $updQty;
+            $totalCurrentCost += ($currQty * $cost);
+            $totalCurrentRevenue += ($currQty * $price);
+            $totalUpdatedCost += ($updQty * $cost);
+            $totalUpdatedRevenue += ($updQty * $price);
+
+            $brand = $item->brand_name ?? 'No Brand';
+            if (!isset($brandWiseStockCounts[$brand])) {
+                $brandWiseStockCounts[$brand] = [
+                    'current_qty' => 0,
+                    'updated_qty' => 0,
+                    'diff_qty' => 0,
+                ];
+            }
+            $brandWiseStockCounts[$brand]['current_qty'] += $currQty;
+            $brandWiseStockCounts[$brand]['updated_qty'] += $updQty;
+            $brandWiseStockCounts[$brand]['diff_qty'] += $diffQty;
+        }
+
+        $totalProducts = count($uniqueProductIds);
+        $totalItems = count($rawItems);
+        $totalDiffQty = $totalUpdatedQty - $totalCurrentQty;
+        $totalDiffCost = $totalUpdatedCost - $totalCurrentCost;
+        $totalDiffRevenue = $totalUpdatedRevenue - $totalCurrentRevenue;
+
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $lims_stock_count_list = DB::table('stock_counts')
+            ->leftJoin('warehouses', 'stock_counts.warehouse_id', '=', 'warehouses.id')
+            ->select('stock_counts.id', 'stock_counts.created_at', 'stock_counts.is_completed', 'stock_counts.is_resolved', 'warehouses.name as warehouse_name')
+            ->orderBy('stock_counts.id', 'desc')
+            ->limit(30)
             ->get();
 
-        $brandWiseStockCounts = [];
-        foreach ($stockCountItems as $item) {
-            $brandTitle = optional(optional($item->product)->brand)->title ?? 'Unknown Brand';
-            $brandWiseStockCounts[$brandTitle][] = $item;
-        }
-        return view('backend.report.stock_count', compact('stockCountItems', 'brandWiseStockCounts'));
+        $stockCountItems = $rawItems;
+
+        return view('backend.report.stock_count', compact(
+            'stockCountItems',
+            'brandWiseStockCounts',
+            'totalProducts',
+            'totalItems',
+            'totalCurrentQty',
+            'totalUpdatedQty',
+            'totalDiffQty',
+            'totalCurrentCost',
+            'totalCurrentRevenue',
+            'totalUpdatedCost',
+            'totalUpdatedRevenue',
+            'totalDiffCost',
+            'totalDiffRevenue',
+            'matchedCount',
+            'overCount',
+            'underCount',
+            'zeroedCount',
+            'matchedQty',
+            'overQty',
+            'underQty',
+            'zeroedQty',
+            'zeroedCost',
+            'zeroedRevenue',
+            'countID',
+            'start_date',
+            'end_date',
+            'warehouse_id',
+            'lims_warehouse_list',
+            'lims_stock_count_list'
+        ));
     }
 
     // public function stockCountRemaining(Request $request)
@@ -4880,29 +5055,48 @@ class ReportController extends Controller
 
     public function stockCountRemaining(Request $request)
     {
-        $product_ids = StockCountItem::join('stock_counts', 'stock_counts.id', '=', 'stock_count_items.stock_count_id')
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('stock-count-report')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+
+        $countID = $request->input('countID');
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $warehouse_id = $request->input('warehouse_id');
+
+        if (!$countID && !$start_date && !$end_date && !$warehouse_id) {
+            $latestCount = DB::table('stock_counts')->orderBy('id', 'desc')->first();
+            if ($latestCount) {
+                $countID = $latestCount->id;
+            }
+        }
+
+        $counted_product_ids = DB::table('stock_count_items')
+            ->join('stock_counts', 'stock_counts.id', '=', 'stock_count_items.stock_count_id')
             ->leftJoin('product_variants', 'product_variants.item_code', '=', 'stock_count_items.item_code')
             ->leftJoin('products', 'products.code', '=', 'stock_count_items.item_code')
-            ->when($request->countID, function ($query) use ($request) {
-                return $query->where('stock_count_id', $request->countID);
+            ->when($countID, function ($query) use ($countID) {
+                return $query->where('stock_count_items.stock_count_id', $countID);
             })
-            ->when(!$request->countID && ($request->start_date || $request->end_date), function ($query) use ($request) {
-                if ($request->start_date && $request->end_date) {
+            ->when(!$countID && ($start_date || $end_date), function ($query) use ($start_date, $end_date) {
+                if ($start_date && $end_date) {
                     return $query->whereBetween('stock_counts.created_at', [
-                        $request->start_date . ' 00:00:00',
-                        $request->end_date . ' 23:59:59',
+                        $start_date . ' 00:00:00',
+                        $end_date . ' 23:59:59',
                     ]);
                 }
-                if ($request->start_date) {
-                    return $query->where('stock_counts.created_at', '>=', $request->start_date . ' 00:00:00');
+                if ($start_date) {
+                    return $query->where('stock_counts.created_at', '>=', $start_date . ' 00:00:00');
                 }
-                if ($request->end_date) {
-                    return $query->where('stock_counts.created_at', '<=', $request->end_date . ' 23:59:59');
+                if ($end_date) {
+                    return $query->where('stock_counts.created_at', '<=', $end_date . ' 23:59:59');
                 }
             })
-            ->selectRaw('COALESCE(product_variants.product_id, products.id) as correct_product_id')
+            ->selectRaw('COALESCE(product_variants.product_id, products.id, stock_count_items.product_id) as correct_product_id')
             ->pluck('correct_product_id')
             ->filter()
+            ->unique()
             ->toArray();
 
         $lims_brand_list = Brand::where('is_active', true)->get();
@@ -4912,7 +5106,7 @@ class ReportController extends Controller
         $category_id = $request->input('category_id', 0);
 
         $query = Product::where('is_active', 1)
-            ->whereNotIn('id', $product_ids);
+            ->whereNotIn('id', $counted_product_ids);
 
         if ($brand_id != 0) {
             $query->where('brand_id', $brand_id);
@@ -4938,13 +5132,24 @@ class ReportController extends Controller
             'total_price' => $totalRemainingSaleValue,
         ];
 
+        $lims_stock_count_list = DB::table('stock_counts')
+            ->leftJoin('warehouses', 'stock_counts.warehouse_id', '=', 'warehouses.id')
+            ->select('stock_counts.id', 'stock_counts.created_at', 'stock_counts.is_completed', 'stock_counts.is_resolved', 'warehouses.name as warehouse_name')
+            ->orderBy('stock_counts.id', 'desc')
+            ->limit(30)
+            ->get();
+
         return view('backend.report.stock_count_remaining', compact(
             'products',
             'count_data',
             'lims_brand_list',
             'lims_category_list',
+            'lims_stock_count_list',
             'brand_id',
             'category_id',
+            'countID',
+            'start_date',
+            'end_date',
             'remainingCount',
             'remainingQty',
             'totalRemainingPurchaseValue',

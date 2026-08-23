@@ -51,8 +51,10 @@
                 {!! Form::close() !!}
             </div>
             <div class="container-fluid">
+                @if(in_array("payroll-add", $all_permission))
                 <button class="btn btn-info" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i>
                     {{ trans('file.Add Payroll') }} </button>
+                @endif
             </div>
         </div>
         <div class="table-responsive">
@@ -104,6 +106,7 @@
                                     </button>
                                     <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default"
                                         user="menu">
+                                        @if(in_array("payroll-edit", $all_permission))
                                         <li>
                                             <button type="button" data-id="{{ $payroll->id }}"
                                                 data-date="{{ $payroll->created_at }}"
@@ -119,6 +122,8 @@
                                                 {{ trans('file.edit') }}
                                             </button>
                                         </li>
+                                        @endif
+                                        @if(in_array("payroll-delete", $all_permission))
                                         <li class="divider"></li>
                                         {{ Form::open(['route' => ['payroll.destroy', $payroll->id], 'method' => 'DELETE']) }}
                                         <li>
@@ -127,6 +132,7 @@
                                                 {{ trans('file.delete') }}</button>
                                         </li>
                                         {{ Form::close() }}
+                                        @endif
                                     </ul>
                                 </div>
                             </td>
@@ -493,6 +499,7 @@
                     },
                     footer: true
                 },
+                @if(in_array("payroll-delete", $all_permission))
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
                     className: 'buttons-delete',
@@ -525,6 +532,7 @@
                             alert('This feature is disable for demo!');
                     }
                 },
+                @endif
                 {
                     extend: 'colvis',
                     text: '<i title="column visibility" class="fa fa-eye"></i>',

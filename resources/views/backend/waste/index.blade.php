@@ -167,7 +167,7 @@
                     {
                         data: 'id',
                         render: function(data, type, row) {
-                            return `<div class="btn-group">
+                            var html = `<div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ trans('file.action') }}
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
@@ -185,17 +185,21 @@
                                         <i class="dripicons-preview"></i>
                                         {{ trans('file.View') }}
                                     </a>
-                                </li>
-                                <form action="{{ url('wastes') }}/${data}" method="POST">
+                                </li>`;
+
+                            @if(in_array("waste-delete", $all_permission))
+                            html += `<form action="{{ url('wastes') }}/${data}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <li class="divider"></li>
                                 <li>
                                     <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure want to delete?')"><i class="dripicons-trash"></i> {{ trans('file.delete') }}</button>
                                 </li>
-                                </form>
-                            </ul>
-                        </div>`;
+                                </form>`;
+                            @endif
+
+                            html += `</ul></div>`;
+                            return html;
                         }
                     }
                 ],

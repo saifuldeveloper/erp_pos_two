@@ -145,12 +145,25 @@
                             <div class="row mb-4 align-items-end">
                                 <div class="col-md-3">
                                     <div class="form-group mb-0">
+                                        <label class="form-label font-weight-bold"><i class="fa fa-hashtag text-primary"></i> Stock Count Session</label>
+                                        <select name="countID" class="form-control selectpicker" data-live-search="true" title="Choose Stock Count...">
+                                            <option value="">All / Latest Count</option>
+                                            @foreach($lims_stock_count_list as $sc)
+                                                <option value="{{ $sc->id }}" {{ $countID == $sc->id ? 'selected' : '' }}>
+                                                    #{{ $sc->id }} ({{ date('d-m-Y', strtotime($sc->created_at)) }}) - {{ $sc->warehouse_name ?? 'All Warehouse' }} {{ $sc->is_resolved ? '[Resolved]' : ($sc->is_completed ? '[Completed]' : '[Pending]') }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group mb-0">
                                         <label class="form-label font-weight-bold">{{ trans('file.Choose Your Date') }}</label>
                                         <div class="input-group">
                                             <input type="text" class="daterangepicker-field form-control"
-                                                value="{{ request('start_date') ?? date('Y-m-d') }} To {{ request('end_date') ?? date('Y-m-d') }}">
-                                            <input type="hidden" name="start_date" value="{{ request('start_date') }}" />
-                                            <input type="hidden" name="end_date" value="{{ request('end_date') }}" />
+                                                value="{{ $start_date ? $start_date . ' To ' . $end_date : '' }}" placeholder="Select date range...">
+                                            <input type="hidden" name="start_date" value="{{ $start_date }}" />
+                                            <input type="hidden" name="end_date" value="{{ $end_date }}" />
                                         </div>
                                     </div>
                                 </div>
@@ -176,15 +189,9 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-group mb-0">
-                                        <label class="form-label font-weight-bold">Stock Count ID</label>
-                                        <input type="text" class="form-control" name="countID" value="{{ request('countID') }}" placeholder="Enter Counting ID">
-                                    </div>
-                                </div>
                                 <div class="col-md-3">
                                     <div class="d-flex">
-                                        <button type="submit" class="btn btn-primary mr-2" style="flex: 1;"><i class="fa fa-filter"></i> Filter</button>
+                                        <button type="submit" class="btn btn-primary mr-2" style="flex: 1;"><i class="fa fa-filter"></i> {{ trans('file.submit') }}</button>
                                         <a href="{{ route('report.stockCount.remaining') }}" class="btn btn-secondary" style="flex: 1;"><i class="fa fa-undo"></i> Reset</a>
                                     </div>
                                 </div>
@@ -225,11 +232,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>{{ trans('file.Total') }}:</th>
-                                            <th>{{ $remainingCount }} {{ trans('file.Items') }}</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
+                                            <th colspan="5" style="text-align: right;">Total:</th>
                                             <th>{{ number_format($remainingQty, 2, '.', '') }}</th>
                                             <th>{{ number_format($totalRemainingPurchaseValue, 2, '.', '') }}</th>
                                             <th>{{ number_format($totalRemainingSaleValue, 2, '.', '') }}</th>
@@ -255,10 +258,10 @@
         // DataTable Initialization
         $('#stock-count-report-table').DataTable({
             "order": [],
-            "pageLength": 25,
+            "pageLength": 10,
             "lengthMenu": [
-                [10, 25, 50, 100, -1],
-                [10, 25, 50, 100, "All"]
+                [10, 20, 50, 100, -1],
+                [10, 20, 50, 100, "All"]
             ],
             'language': {
                 'lengthMenu': '_MENU_ {{ trans("file.records per page") }}',
@@ -269,11 +272,11 @@
                     'next': '<i class="dripicons-chevron-right"></i>'
                 }
             },
-            dom: '<"row"lfB>rtip',
+            dom: '<"row align-items-center mb-2"<"col-md-3"l><"col-md-5"B><"col-md-4"f>><"row"<"col-md-12"tr>><"row mt-2"<"col-md-5"i><"col-md-7"p>>',
             buttons: [
                 {
                     extend: 'pdf',
-                    text: '<i class="fa fa-file-pdf-o"></i> PDF',
+                    text: '<i class="fa fa-file-pdf"></i> PDF',
                     exportOptions: {
                         columns: ':visible:Not(.not-export)',
                         rows: ':visible'
@@ -281,7 +284,7 @@
                 },
                 {
                     extend: 'csv',
-                    text: '<i class="fa fa-file-excel-o"></i> CSV',
+                    text: '<i class="fa fa-file-excel"></i> CSV',
                     exportOptions: {
                         columns: ':visible:Not(.not-export)',
                         rows: ':visible'
@@ -299,14 +302,24 @@
         });
 
         $(".daterangepicker-field").daterangepicker({
-            callback: function(startDate, endDate, period) {
-                var start_date = startDate.format('YYYY-MM-DD');
-                var end_date = endDate.format('YYYY-MM-DD');
-                var title = start_date + ' to ' + end_date;
-                $(this).val(title);
-                $('input[name="start_date"]').val(start_date);
-                $('input[name="end_date"]').val(end_date);
+            autoUpdateInput: false,
+            locale: {
+                cancelLabel: 'Clear'
             }
+        });
+
+        $(".daterangepicker-field").on('apply.daterangepicker', function(ev, picker) {
+            var start_date = picker.startDate.format('YYYY-MM-DD');
+            var end_date = picker.endDate.format('YYYY-MM-DD');
+            $(this).val(start_date + ' To ' + end_date);
+            $('input[name="start_date"]').val(start_date);
+            $('input[name="end_date"]').val(end_date);
+        });
+
+        $(".daterangepicker-field").on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+            $('input[name="start_date"]').val('');
+            $('input[name="end_date"]').val('');
         });
     </script>
 @endpush

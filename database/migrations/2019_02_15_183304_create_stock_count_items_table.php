@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('stock_count_id')->index();
             $table->integer('product_id')->index();
+            $table->integer('warehouse_id')->unsigned()->nullable()->index();
             $table->string('item_code')->index();
             $table->index(['stock_count_id', 'item_code'], 'idx_sci_sc_item');
             $table->integer('current_quantity');

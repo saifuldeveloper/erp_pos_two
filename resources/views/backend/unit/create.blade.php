@@ -17,7 +17,9 @@
 
 <section>
     <div class="container-fluid">
+        @if(in_array("unit-add", $all_permission))
         <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-primary"><i class="dripicons-plus"></i> {{trans('file.Add Unit')}}</a>&nbsp;
+        @endif
         {{-- <a href="#" data-toggle="modal" data-target="#importUnit" class="btn btn-primary"><i class="dripicons-copy"></i> {{trans('file.Import Unit')}}</a> --}}
     </div>
     <div class="table-responsive">
@@ -62,16 +64,20 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+                                @if(in_array("unit-edit", $all_permission))
                                 <li>
                                     <button type="button" data-id="{{$unit->id}}" class="open-EditUnitDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}
                                 </button>
                                 </li>
+                                @endif
+                                @if(in_array("unit-delete", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['unit.destroy', $unit->id], 'method' => 'DELETE'] ) }}
                                 <li>
                                     <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
                                 </li>
                                 {{ Form::close() }}
+                                @endif
                             </ul>
                         </div>
                     </td>
@@ -388,6 +394,7 @@
                     rows: ':visible'
                 },
             },
+            @if(in_array("unit-delete", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
@@ -419,6 +426,7 @@
                         alert('This feature is disable for demo!');
                 }
             },
+            @endif
             {
                 extend: 'colvis',
                 text: '<i title="column visibility" class="fa fa-eye"></i>',

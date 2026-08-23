@@ -39,7 +39,7 @@
 
                                                     @foreach ($lims_category_list as $category)
                                                         <option value="{{ $category->id }}">
-                                                            {{ $category->parent->name . '-' . $category->name }}</option>
+                                                            {{ $category->parent ? $category->parent->name . '-' . $category->name : $category->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -137,11 +137,11 @@
                                         <label>{{ trans('file.Product Unit') }} *</strong> </label>
                                         <div class="input-group">
                                             <select required class="form-control selectpicker" name="unit_id">
-                                                <option value="" disabled selected>Select Product Unit...
+                                                <option value="" disabled>Select Product Unit...
                                                 </option>
                                                 @foreach ($lims_unit_list as $unit)
                                                     @if ($unit->base_unit == null)
-                                                        <option value="{{ $unit->id }}">
+                                                        <option value="{{ $unit->id }}" {{ (strtolower($unit->unit_name) == 'pair' || strtolower($unit->unit_name) == 'pairs') ? 'selected' : '' }}>
                                                             {{ $unit->unit_name }}</option>
                                                     @endif
                                                 @endforeach
@@ -475,10 +475,10 @@
                                         <h5><input name="is_batch" type="checkbox" id="is-batch" value="1">&nbsp;
                                             {{ trans('file.This product has batch and expired date') }}</h5>
                                     </div> --}}
-                                    <div class="col-md-12 mt-3" id="imei-option">
+                                    {{-- <div class="col-md-12 mt-3" id="imei-option">
                                         <h5><input name="is_imei" type="checkbox" id="is-imei" value="1">&nbsp;
                                             {{ trans('file.This product has IMEI or Serial numbers') }}</h5>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-12 mt-3">
                                         <h5><input name="promotion" type="checkbox" id="promotion" value="1">&nbsp;
                                             {{ trans('file.Add Promotional Price') }}</h5>
@@ -1185,6 +1185,11 @@
                 $('select[name="purchase_unit_id"]').empty();
             }
         });
+
+        var initialUnitId = $('select[name="unit_id"]').val();
+        if (initialUnitId) {
+            populate_category(initialUnitId);
+        }
         <?php $productArray = []; ?>
         var lims_product_code = [
             @foreach ($lims_product_list_without_variant as $product)

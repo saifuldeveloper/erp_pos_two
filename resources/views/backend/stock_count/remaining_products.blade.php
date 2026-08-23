@@ -76,7 +76,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h4>{{ trans('file.Remaining Products') }} (Warehouse: {{ $lims_stock_count->warehouse->name }}) ({{ $lims_stock_count->id }})</h4>
+                            <h4>{{ trans('file.Remaining Products') }} (Warehouse: {{ $lims_stock_count->warehouse->name ?? trans('file.All Warehouse') }}) (#{{ $lims_stock_count->id }})</h4>
                             <a href="{{ route('stock-count.show', $lims_stock_count->id) }}" class="btn btn-info ml-auto">
                                 <i class="fa fa-arrow-left"></i> Back to Count
                             </a>

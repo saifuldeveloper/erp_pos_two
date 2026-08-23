@@ -21,8 +21,10 @@
     <section>
         <div class="container-fluid">
             <!-- Trigger the modal with a button -->
+            @if(in_array("category-add", $all_permission))
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#category-modal"><i
                     class="dripicons-plus"></i> {{ trans('file.Add Category') }}</button>&nbsp;
+            @endif
             {{-- <button class="btn btn-info" data-toggle="modal" data-target="#importCategory"><i class="dripicons-copy"></i>
                 {{ trans('file.Import Category') }}</button> --}}
         </div>
@@ -287,6 +289,7 @@
                     },
                     footer: true
                 },
+                @if(in_array("category-delete", $all_permission))
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
                     className: 'buttons-delete',
@@ -298,9 +301,7 @@
                                     category_id[i - 1] = $(this).closest('tr').data('id');
                                 }
                             });
-                            if (category_id.length && confirm(
-                                    "If you delete category all products under this category will also be deleted. Are you sure want to delete?"
-                                )) {
+                            if (category_id.length && confirm("Are you sure want to delete?")) {
                                 $.ajax({
                                     type: 'POST',
                                     url: 'category/deletebyselection',
@@ -308,22 +309,20 @@
                                         categoryIdArray: category_id
                                     },
                                     success: function(data) {
-                                        dt.rows({
-                                            page: 'current',
-                                            selected: true
-                                        }).deselect();
-                                        dt.rows({
-                                            page: 'current',
-                                            selected: true
-                                        }).remove().draw(false);
+                                        alert(data);
                                     }
                                 });
+                                dt.rows({
+                                    page: 'current',
+                                    selected: true
+                                }).remove().draw(false);
                             } else if (!category_id.length)
                                 alert('No category is selected!');
                         } else
                             alert('This feature is disable for demo!');
                     }
                 },
+                @endif
                 {
                     extend: 'colvis',
                     text: '<i title="column visibility" class="fa fa-eye"></i>',

@@ -249,6 +249,8 @@ class ReturnController extends Controller
                             </li>'.\Form::close().'
                         </ul>
                     </div>';
+                else
+                    $nestedData['options'] .= '</ul></div>';
 
                 if($returns->currency_id)
                     $currency_code = Currency::select('code')->find($returns->currency_id)->code;
@@ -1242,6 +1244,10 @@ class ReturnController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(\Auth::user()->role_id);
+        if (!$role->hasPermissionTo('returns-delete'))
+            return 'Sorry! You are not allowed to delete return';
+            
         $return_id = $request['returnIdArray'];
         foreach ($return_id as $id) {
             $lims_return_data = Returns::find($id);
@@ -1334,6 +1340,10 @@ class ReturnController extends Controller
     }
     public function destroy($id)
     {
+        $role = Role::find(\Auth::user()->role_id);
+        if (!$role->hasPermissionTo('returns-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete return');
+
         $lims_return_data = Returns::find($id);
         $lims_product_return_data = ProductReturn::where('return_id', $id)->get();
 

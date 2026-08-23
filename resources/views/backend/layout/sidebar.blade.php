@@ -5,7 +5,7 @@
 
             $index_permission_active = $role_has_permissions_list->where('name', 'products-index')->first();
 
-            $category_permission_active = $role_has_permissions_list->where('name', 'category')->first();
+            $category_permission_active = $role_has_permissions_list->where('name', 'category-index')->first() ?: $role_has_permissions_list->where('name', 'category')->first();
 
             $print_barcode_active = $role_has_permissions_list->where('name', 'print_barcode')->first();
 
@@ -13,16 +13,21 @@
 
             $adjustment_active = $role_has_permissions_list->where('name', 'adjustment')->first();
 
-            $brand_permission_active = $role_has_permissions_list->where('name', 'brand')->first();
+            $brand_permission_active = $role_has_permissions_list->where('name', 'brand-index')->first() ?: $role_has_permissions_list->where('name', 'brand')->first();
 
-            $unit_permission_active = $role_has_permissions_list->where('name', 'unit')->first();
+            $unit_permission_active = $role_has_permissions_list->where('name', 'unit-index')->first() ?: $role_has_permissions_list->where('name', 'unit')->first();
+
+            $color_permission_active = $role_has_permissions_list->where('name', 'color-index')->first();
             ?>
             @if (
                 $category_permission_active ||
                     $index_permission_active ||
                     $print_barcode_active ||
                     $stock_count_active ||
-                    $adjustment_active)
+                    $adjustment_active ||
+                    $brand_permission_active ||
+                    $unit_permission_active ||
+                    $color_permission_active)
                 <li><a href="#product" aria-expanded="false" data-toggle="collapse"> <i
                             class="dripicons-list"></i><span>{{ __('file.product') }}</span><span></a>
                     <ul id="product" class="collapse list-unstyled ">
@@ -32,13 +37,15 @@
                         @if ($unit_permission_active)
                             <li id="unit-menu"><a href="{{ route('unit.index') }}">{{ trans('file.Unit') }}</a></li>
                         @endif
+                        @if ($color_permission_active)
                         <li id="color-menu"><a href="{{ route('color.index') }}">{{ __('file.color') }} </a></li>
+                        @endif
                         @if ($category_permission_active)
                             <li id="category-menu"><a
-                                    href="{{ route('category.index') }}">{{ __('file.category') }}</a>
+                                     href="{{ route('category.index') }}">{{ __('file.category') }}</a>
                             </li>
                             <li id="parent-menu"><a
-                                    href="{{ route('category.parent') }}">{{ __('file.Parent Category') }}</a>
+                                     href="{{ route('category.parent') }}">{{ __('file.Parent Category') }}</a>
                             </li>
                         @endif
                         @if ($index_permission_active)
@@ -138,6 +145,10 @@
                     </ul>
                 </li>
             @endif
+            <?php
+            $waste_permission_active = $role_has_permissions_list->where('name', 'waste-index')->first() ?: $role_has_permissions_list->where('name', 'waste')->first();
+            ?>
+            @if ($waste_permission_active)
             <li>
                 <a href="#waste" aria-expanded="false" data-toggle="collapse">
                     <i class="dripicons-trash"></i>
@@ -147,11 +158,14 @@
                     <li id="waste-list-menu">
                         <a href="{{ route('waste.index') }}">{{ trans('file.Waste List') }}</a>
                     </li>
+                    @if ($role_has_permissions_list->where('name', 'waste-add')->first())
                     <li id="waste-create-menu">
                         <a href="{{ route('waste.create') }}">{{ trans('file.Add Waste') }}</a>
                     </li>
+                    @endif
                 </ul>
             </li>
+            @endif
             <?php
             $index_permission_active = $role_has_permissions_list->where('name', 'expenses-index')->first();
             ?>
@@ -279,18 +293,20 @@
         </li>
         @endif
         <?php
-        $department_active = $role_has_permissions_list->where('name', 'department')->first();
+        $department_active = $role_has_permissions_list->where('name', 'department-index')->first() ?: $role_has_permissions_list->where('name', 'department')->first();
 
         $index_employee_active = $role_has_permissions_list->where('name', 'employees-index')->first();
 
         $attendance_active = $role_has_permissions_list->where('name', 'attendance')->first();
 
-        $payroll_active = $role_has_permissions_list->where('name', 'payroll')->first();
+        $payroll_active = $role_has_permissions_list->where('name', 'payroll-index')->first() ?: $role_has_permissions_list->where('name', 'payroll')->first();
+
+        $payroll_type_active = $role_has_permissions_list->where('name', 'payroll-type-index')->first() ?: $role_has_permissions_list->where('name', 'payroll')->first();
 
         $holiday_active = $role_has_permissions_list->where('name', 'holiday')->first();
         ?>
 
-        @if ($department_active || $index_employee_active || $attendance_active || $payroll_active || $holiday_active)
+        @if ($department_active || $index_employee_active || $attendance_active || $payroll_active || $payroll_type_active || $holiday_active)
             <li class=""><a href="#hrm" aria-expanded="false" data-toggle="collapse"> <i
                         class="dripicons-user-group"></i><span>HRM</span></a>
                 <ul id="hrm" class="collapse list-unstyled ">
@@ -309,10 +325,11 @@
                         <li id="payroll-menu"><a href="{{ route('payroll.index') }}">{{ trans('file.Payroll') }}</a>
                         </li>
                     @endif
+                    @if ($payroll_type_active)
                     <li id="payroll-type-menu">
                         <a href="{{ route('payroll-types.index') }}">{{ trans('file.Payroll Type') }}</a>
-
                     </li>
+                    @endif
                     {{-- @if ($holiday_active)
                 <li id="holiday-menu"><a href="{{route('holidays.index')}}">{{trans('file.Holiday')}}</a></li>
                 @endif --}}
@@ -430,6 +447,10 @@
 
         $supplier_due_report_active = $role_has_permissions_list->where('name', 'supplier-due-report')->first();
 
+        $salary_report_active = $role_has_permissions_list->where('name', 'salary-report')->first();
+
+        $stock_count_report_active = $role_has_permissions_list->where('name', 'stock-count-report')->first();
+
         ?>
         @if (
             $profit_loss_active ||
@@ -452,7 +473,9 @@
                 $customer_report_active ||
                 $supplier_report_active ||
                 $due_report_active ||
-                $supplier_due_report_active)
+                $supplier_due_report_active ||
+                $salary_report_active ||
+                $stock_count_report_active)
             <li><a href="#report" aria-expanded="false" data-toggle="collapse"> <i
                         class="dripicons-document-remove"></i><span>{{ trans('file.Reports') }}</span></a>
                 <ul id="report" class="collapse list-unstyled ">
@@ -538,11 +561,13 @@
                             {{ trans('file.Expense Report') }}
                         </a>
                     </li>
+                    @if ($salary_report_active)
                     <li id="salary-report-menu">
                         <a href="{{ route('report.salary') }}">
                             Salary Report
                         </a>
                     </li>
+                    @endif
                     @if ($payment_report_active)
                         <li id="payment-report-menu">
                             {!! Form::open(['route' => 'report.paymentByDate', 'method' => 'post', 'id' => 'payment-report-form']) !!}
@@ -619,11 +644,13 @@
                             <a href="{{ route('report.qtyAlert') }}">{{ trans('file.Product Quantity Alert') }}</a>
                         </li>
                     @endif
+                    @if ($stock_count_report_active)
                     <li id="stock-count-report-menu">
                         <a href="{{ route('report.stockCount') }}">
                             {{ trans('file.Stock Count Report') }}
                         </a>
                     </li>
+                    @endif
                     @if (Auth::user()->role_id <= 2 || $role_has_permissions_list->where('name', 'overview-report')->first())
                         <li id="overview-report-menu">
                             <a href="{{ route('report.overview') }}">
@@ -653,7 +680,7 @@
 
                 $send_notification_permission_active = $role_has_permissions_list->where('name', 'send_notification')->first();
 
-                $warehouse_permission_active = $role_has_permissions_list->where('name', 'warehouse')->first();
+                $warehouse_permission_active = $role_has_permissions_list->where('name', 'warehouse-index')->first() ?: $role_has_permissions_list->where('name', 'warehouse')->first();
 
                 $customer_group_permission_active = $role_has_permissions_list->where('name', 'customer_group')->first();
                 $currency_permission_active = $role_has_permissions_list->where('name', 'currency')->first();

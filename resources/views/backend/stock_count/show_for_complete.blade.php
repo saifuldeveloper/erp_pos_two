@@ -234,7 +234,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header d-flex align-items-center">
-                            <h4>{{ trans('file.Count Stock') }} ({{ $lims_stock_count->id }})</h4>
+                            <h4>{{ trans('file.Count Stock') }} #{{ $lims_stock_count->id }} - <span class="text-primary">{{ $lims_stock_count->warehouse->name ?? trans('file.All Warehouse') }}</span></h4>
                             <a href="{{ route('report.overview', ['stock_count_id' => $lims_stock_count->id]) }}" class="btn btn-info ml-auto mr-2">
                                 <i class="fa fa-pie-chart"></i> Overview Report
                             </a>
@@ -277,8 +277,18 @@
                                                         <tr>
                                                             <th>{{ trans('file.name') }}</th>
                                                             <th>{{ trans('file.Code') }}</th>
-                                                            <th>{{ trans('file.Current Quantity') }}</th>
-                                                            <th>{{ trans('file.Quantity') }}</th>
+                                                            @if (!$lims_stock_count->warehouse_id)
+                                                                @foreach ($lims_warehouse_list as $wh)
+                                                                    <th class="text-center" style="background-color: #f1f5f9; border-left: 2px solid #cbd5e1;">
+                                                                        <span class="badge badge-primary" style="font-size: 13px;">{{ $wh->name }}</span>
+                                                                        <div style="font-size: 11px; color: #64748b; font-weight: normal; margin-top: 2px;">(Current / Counted)</div>
+                                                                    </th>
+                                                                @endforeach
+                                                                <th class="text-center" style="width: 100px;">{{ trans('file.Total') }}</th>
+                                                            @else
+                                                                <th>{{ trans('file.Current Quantity') }}</th>
+                                                                <th>{{ trans('file.Quantity') }}</th>
+                                                            @endif
                                                             <th><i class="dripicons-trash"></i></th>
                                                         </tr>
                                                     </thead>
@@ -340,28 +350,44 @@
                                                     @foreach ($stockCount['data'] as $items)
                                                         @php
                                                             $item = $items[0];
+                                                            $total_current = $items->groupBy('warehouse_id')->map(function($whItems) {
+                                                                return floatval($whItems->first()->current_quantity);
+                                                            })->sum();
                                                             $total = $items->sum('updated_quantity');
-                                                            $total_current_qty += $item->current_quantity;
+                                                            $total_current_qty += $total_current;
                                                             $total_find_qty += $total;
-                                                            $total_diff += abs($total - $item->current_quantity);
+                                                            $total_diff += abs($total - $total_current);
                                                         @endphp
                                                         <tr>
                                                             <td>{{ @$item->product->name }}</td>
-                                                            <td>{{ $item->item_code }}</td>
-                                                            <td>{{ $item->current_quantity }}</td>
+                                                            <td><span class="badge badge-light border">{{ $item->item_code }}</span></td>
+                                                            <td>{{ $total_current }}</td>
                                                             <td>
-                                                                @foreach ($items as $item)
-                                                                    {{ $item->updated_quantity }}
-                                                                    @if (!$loop->last)
-                                                                        +
-                                                                    @endif
-                                                                @endforeach
-                                                                = {{ $total }}
+                                                                @if (!$lims_stock_count->warehouse_id)
+                                                                    @foreach ($items->groupBy('warehouse_id') as $whId => $whItems)
+                                                                        @php
+                                                                            $whName = $whItems->first()->warehouse->name ?? 'WH';
+                                                                            $whCounted = $whItems->sum('updated_quantity');
+                                                                        @endphp
+                                                                        <span class="badge badge-light border mr-1" title="{{ $whName }}">
+                                                                            {{ $whName }}: <strong>{{ $whCounted }}</strong>
+                                                                        </span>
+                                                                    @endforeach
+                                                                    <span class="font-weight-bold text-primary">= {{ $total }}</span>
+                                                                @else
+                                                                    @foreach ($items as $sci)
+                                                                        {{ $sci->updated_quantity }}
+                                                                        @if (!$loop->last)
+                                                                            +
+                                                                        @endif
+                                                                    @endforeach
+                                                                    = {{ $total }}
+                                                                @endif
                                                             </td>
                                                             <td>
                                                                 {{ trans('file.' . $stockCount['title']) }}
                                                                 @if ($stockCount['title'] != 'Stock Matched')
-                                                                    ({{ abs($total - $item->current_quantity) }})
+                                                                    ({{ abs($total - $total_current) }})
                                                                 @endif
                                                             </td>
                                                         </tr>
@@ -425,6 +451,8 @@
         $('.selectpicker').selectpicker('refresh');
         $('[data-toggle="tooltip"]').tooltip();
 
+        var isMultiWarehouse = {{ (!$lims_stock_count->warehouse_id) ? 'true' : 'false' }};
+        var rowCounter = 0;
         var lims_productcodeSearch = $('#lims_productcodeSearch');
 
         lims_productcodeSearch.autocomplete({
@@ -476,14 +504,12 @@
         });
 
         // Delete product
-        // Delete product
         $("table.order-list tbody").on("click", ".ibtnDel", function(event) {
             rowindex = $(this).closest('tr').index();
             $(this).closest("tr").remove();
             if (typeof calculateTotal === "function") calculateTotal();
         });
 
-        // --- EI KHANE PORIBORTON HOBE ---
         function productSearch(data) {
             $.ajax({
                 type: 'GET',
@@ -497,11 +523,10 @@
 
                     if (datas.length === 0) return;
 
-                    // Check korbe kono variant list-e ager theke ache kina
+                    // Check if any item already exists in stock count
                     let hasExistingProduct = datas.some(item => item.exists);
 
                     if (hasExistingProduct) {
-                        // Shudhu ekbar warning ashbe shob variant-er jonno
                         Swal.fire({
                             title: '⚠️ Warning',
                             text: "This product (or some of its variants) already exists in stock count. Do you want to add them anyway?",
@@ -511,14 +536,12 @@
                             cancelButtonText: 'No'
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                // 'Yes' bolle shobgulo variant ekebare add hobe
                                 datas.forEach(function(item) {
                                     addRow(item);
                                 });
                             }
                         });
                     } else {
-                        // Kono duplicate na thakle direct shob add hobe
                         datas.forEach(function(item) {
                             addRow(item);
                         });
@@ -526,22 +549,76 @@
                 }
             });
         }
-        // --- PURONO processProducts FUNCTION TA EKHAN THEKE DELTE KORE DISI ---
 
         function addRow(data) {
-            var newRow = `<tr>
-                <td>${data.name}</td>
-                <td>${data.code}</td>
-                <td>${data.qty}</td>
-                <td><input type="number" class="form-control qty" name="qty[]" value="${data.qty}" step="any" required/></td>
-                <td><button type="button" class="ibtnDel btn btn-danger">Delete</button></td>
-                <input type="hidden" class="product-code" name="product_code[]" value="${data.code}"/>
-                <input type="hidden" name="product_id[]" value="${data.id}"/>
-                <input type="hidden" name="current_qty[]" value="${data.qty}"/>
-            </tr>`;
+            rowCounter++;
+            var rowUid = 'row_' + Date.now() + '_' + rowCounter;
 
-            $("table.order-list tbody").prepend(newRow);
+            if (isMultiWarehouse && data.warehouses && data.warehouses.length > 0) {
+                var whColumns = '';
+                var totalInitialQty = 0;
+
+                data.warehouses.forEach(function(wh, idx) {
+                    var whQty = parseFloat(wh.qty) || 0;
+                    totalInitialQty += whQty;
+                    whColumns += `
+                        <td style="border-left: 2px solid #cbd5e1; vertical-align: middle; background-color: #f8fafc;">
+                            <div class="d-flex align-items-center justify-content-center" style="gap: 8px;">
+                                <span class="badge badge-secondary" style="font-size: 13px; min-width: 28px;" title="Current Stock in ${wh.warehouse_name}">${wh.qty}</span>
+                                <input type="number" 
+                                    class="form-control form-control-sm wh-qty-input ${rowUid}-wh-qty" 
+                                    name="items[${rowUid}_${wh.warehouse_id}][qty]" 
+                                    value="${wh.qty}" 
+                                    min="0" 
+                                    step="any" 
+                                    required 
+                                    style="width: 80px; text-align: center; font-weight: bold;"
+                                    data-row="${rowUid}"
+                                />
+                                <input type="hidden" name="items[${rowUid}_${wh.warehouse_id}][warehouse_id]" value="${wh.warehouse_id}"/>
+                                <input type="hidden" name="items[${rowUid}_${wh.warehouse_id}][current_qty]" value="${wh.qty}"/>
+                                <input type="hidden" name="items[${rowUid}_${wh.warehouse_id}][product_id]" value="${data.id}"/>
+                                <input type="hidden" name="items[${rowUid}_${wh.warehouse_id}][code]" value="${data.code}"/>
+                            </div>
+                        </td>
+                    `;
+                });
+
+                var newRow = `<tr id="${rowUid}">
+                    <td style="vertical-align: middle;"><strong>${data.name}</strong></td>
+                    <td style="vertical-align: middle;"><span class="badge badge-light border" style="font-size: 13px;">${data.code}</span></td>
+                    ${whColumns}
+                    <td class="text-center font-weight-bold ${rowUid}-total-qty" style="vertical-align: middle; font-size: 15px; color: #0284c7;">
+                        ${totalInitialQty}
+                    </td>
+                    <td style="vertical-align: middle;"><button type="button" class="ibtnDel btn btn-sm btn-danger"><i class="dripicons-trash"></i></button></td>
+                </tr>`;
+
+                $("table.order-list tbody").prepend(newRow);
+            } else {
+                var newRow = `<tr>
+                    <td style="vertical-align: middle;"><strong>${data.name}</strong></td>
+                    <td style="vertical-align: middle;"><span class="badge badge-light border" style="font-size: 13px;">${data.code}</span></td>
+                    <td style="vertical-align: middle;">${data.qty}</td>
+                    <td style="vertical-align: middle;"><input type="number" class="form-control qty" name="qty[]" value="${data.qty}" step="any" required/></td>
+                    <td style="vertical-align: middle;"><button type="button" class="ibtnDel btn btn-sm btn-danger"><i class="dripicons-trash"></i></button></td>
+                    <input type="hidden" class="product-code" name="product_code[]" value="${data.code}"/>
+                    <input type="hidden" name="product_id[]" value="${data.id}"/>
+                    <input type="hidden" name="current_qty[]" value="${data.qty}"/>
+                </tr>`;
+
+                $("table.order-list tbody").prepend(newRow);
+            }
         }
+
+        $(document).on('input', '.wh-qty-input', function() {
+            var rowUid = $(this).data('row');
+            var total = 0;
+            $('.' + rowUid + '-wh-qty').each(function() {
+                total += parseFloat($(this).val()) || 0;
+            });
+            $('.' + rowUid + '-total-qty').text(total);
+        });
 
         // Enter key navigation configuration
         $(window).keydown(function(e) {

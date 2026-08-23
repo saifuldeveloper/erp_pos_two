@@ -211,6 +211,8 @@ class ReturnPurchaseController extends Controller
                             </li>' . \Form::close() . '
                         </ul>
                     </div>';
+                else
+                    $nestedData['options'] .= '</ul></div>';
                 // data for purchase details by one click
 
                 if ($returns->currency_id)
@@ -1433,6 +1435,10 @@ class ReturnPurchaseController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(\Auth::user()->role_id);
+        if (!$role->hasPermissionTo('returns-delete'))
+            return 'Sorry! You are not allowed to delete return purchase';
+
         $return_id = $request['returnIdArray'];
         foreach ($return_id as $id) {
             $lims_return_data = ReturnPurchase::find($id);
@@ -1481,6 +1487,10 @@ class ReturnPurchaseController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(\Auth::user()->role_id);
+        if (!$role->hasPermissionTo('returns-delete'))
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete return purchase');
+
         $lims_return_data = ReturnPurchase::find($id);
         $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
 
