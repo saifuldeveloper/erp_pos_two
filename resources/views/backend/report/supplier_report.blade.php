@@ -1,48 +1,62 @@
-@extends('backend.layout.main') @section('content')
-    <section class="forms">
-        <div class="container-fluid">
-            <div class="card">
-                <div class="card-header mt-2">
-                    <h3 class="text-center">{{ trans('file.Supplier Report') }}</h3>
-                </div>
-                {!! Form::open(['route' => 'report.supplier', 'method' => 'post']) !!}
-                <div class="row mb-3">
-                    <div class="col-md-4 offset-md-1 mt-3">
-                        <div class="form-group row">
-                            <label class="d-tc mt-2"><strong>{{ trans('file.Choose Your Date') }}</strong> &nbsp;</label>
-                            <div class="d-tc">
-                                <div class="input-group">
-                                    <input type="text" class="daterangepicker-field form-control"
-                                        value="{{ $start_date }} To {{ $end_date }}" required />
-                                    <input type="hidden" name="start_date" value="{{ $start_date }}" />
-                                    <input type="hidden" name="end_date" value="{{ $end_date }}" />
+@extends('backend.layout.main')
+@section('content')
+<style>
+    .filter-card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+</style>
+<section class="forms">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center mb-4">{{ trans('file.Supplier Report') }}</h3>
+
+                <div class="filter-card">
+                    {!! Form::open(['route' => 'report.supplier', 'method' => 'post', 'id' => 'supplier-filter-form']) !!}
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-3 col-sm-6 mb-2">
+                            <label class="font-weight-bold">Start Date:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control date-picker" id="start_date" name="start_date"
+                                    value="{{ $start_date }}" readonly style="background-color: #fff; cursor: pointer;" required />
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <div class="form-group row">
-                            <label class="d-tc mt-2"><strong>{{ trans('file.Choose Supplier') }}</strong> &nbsp;</label>
-                            <div class="d-tc">
-                                <input type="hidden" name="supplier_id_hidden" value="{{ $supplier_id }}" />
-                                <select id="supplier_id" name="supplier_id" class="selectpicker form-control"
-                                    data-live-search="true" data-live-search-style="begins">
-                                    @foreach ($lims_supplier_list as $supplier)
-                                        <option value="{{ $supplier->id }}">{{ $supplier->name }}
-                                            ({{ $supplier->phone_number }})
-                                        </option>
-                                    @endforeach
-                                </select>
+                        <div class="col-md-3 col-sm-6 mb-2">
+                            <label class="font-weight-bold">End Date:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control date-picker" id="end_date" name="end_date"
+                                    value="{{ $end_date }}" readonly style="background-color: #fff; cursor: pointer;" required />
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <div class="form-group">
-                            <button class="btn btn-primary" type="submit">{{ trans('file.submit') }}</button>
+                        <div class="col-md-4 col-sm-6 mb-2">
+                            <label class="font-weight-bold">{{ trans('file.Choose Supplier') }}:</label>
+                            <input type="hidden" name="supplier_id_hidden" value="{{ $supplier_id }}" />
+                            <select id="supplier_id" name="supplier_id" class="selectpicker form-control"
+                                data-live-search="true" data-live-search-style="begins">
+                                @foreach ($lims_supplier_list as $supplier)
+                                    <option value="{{ $supplier->id }}">{{ $supplier->name }}
+                                        ({{ $supplier->phone_number }})
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-2 col-sm-6 mb-2 mt-md-4">
+                            <button class="btn btn-primary btn-block" type="submit">
+                                <i class="fa fa-filter"></i> {{ trans('file.submit') }}
+                            </button>
                         </div>
                     </div>
+                    {!! Form::close() !!}
                 </div>
-                {!! Form::close() !!}
             </div>
         </div>
         <ul class="nav nav-tabs ml-4 mt-3" role="tablist">
@@ -212,7 +226,43 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Product Details Modal -->
+<div id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true" class="modal fade text-left">
+    <div role="document" class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 id="productModalLabel" class="modal-title font-weight-bold text-dark">
+                    <i class="fa fa-cubes text-primary mr-1"></i> <span id="productModalTitle">Products List</span>
+                </h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-3">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover mb-0" id="productModalTable">
+                        <thead class="bg-light">
+                            <tr>
+                                <th style="width: 8%;" class="text-center">#</th>
+                                <th style="width: 50%;">{{ trans('file.product') }}</th>
+                                <th style="width: 22%;">{{ trans('file.Code') ?? 'Code' }}</th>
+                                <th style="width: 20%;" class="text-right">{{ trans('file.qty') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">{{ trans('file.close') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('scripts')
@@ -968,15 +1018,40 @@
             }
         }
 
-        $(".daterangepicker-field").daterangepicker({
-            callback: function(startDate, endDate, period) {
-                var start_date = startDate.format('YYYY-MM-DD');
-                var end_date = endDate.format('YYYY-MM-DD');
-                var title = start_date + ' to ' + end_date;
-                $(this).val(title);
-                $('input[name="start_date"]').val(start_date);
-                $('input[name="end_date"]').val(end_date);
+        $('#start_date').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('#end_date').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $(document).on('click', '.view-products-btn', function(e) {
+            e.preventDefault();
+            var reference = $(this).data('reference') || '';
+            var products = $(this).data('products') || [];
+            
+            $('#productModalTitle').text('Products for Reference: ' + reference);
+            var rows = '';
+            if (products.length > 0) {
+                $.each(products, function(idx, item) {
+                    var codeBadge = item.code ? '<span class="badge badge-secondary px-2 py-1" style="font-size: 0.85rem;">' + item.code + '</span>' : '<span class="text-muted">-</span>';
+                    rows += '<tr>' +
+                        '<td class="text-center font-weight-bold text-secondary">' + (idx + 1) + '</td>' +
+                        '<td><strong class="text-dark">' + item.name + '</strong></td>' +
+                        '<td>' + codeBadge + '</td>' +
+                        '<td class="text-right font-weight-bold text-primary" style="font-size: 0.95rem;">' + item.qty + '</td>' +
+                        '</tr>';
+                });
+            } else {
+                rows = '<tr><td colspan="4" class="text-center text-muted">No products found</td></tr>';
             }
+            $('#productModalTable tbody').html(rows);
+            $('#productModal').modal('show');
         });
     </script>
 @endpush

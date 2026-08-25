@@ -60,29 +60,27 @@ class Common
         else
             $dso_alert_product_no = 0;
         View::share(['alert_product' => $alert_product, 'dso_alert_product_no' => $dso_alert_product_no]);
-        $role = Cache::remember('user_role', 60*60*24*365, function () {
-            return DB::table('roles')->find(Auth::user()->role_id);
-        });
+        $role = DB::table('roles')->find(Auth::user()->role_id);
         View::share('role', $role);
-        $permission_list = Cache::remember('permissions', 60*60*24*365, function () {
-            return DB::table('permissions')->get();
-        });
+
+        $permission_list = DB::table('permissions')->get();
         View::share('permission_list', $permission_list);
-        $role_has_permissions = Cache::remember('role_has_permissions', 60*60*24*365, function () {
-            return DB::table('role_has_permissions')->where('role_id', Auth::user()->role_id)->get();
-        });
+
+        $role_has_permissions = DB::table('role_has_permissions')->where('role_id', Auth::user()->role_id)->get();
         View::share('role_has_permissions', $role_has_permissions);
 
-        $role_has_permissions_list = Cache::remember('role_has_permissions_list'.Auth::user()->role_id, 60*60*24*365, function () {
-            return DB::table('permissions')->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')->where('role_id', Auth::user()->role_id)->select('permissions.name')->get();
-        });
+        $role_has_permissions_list = DB::table('permissions')
+            ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
+            ->where('role_id', Auth::user()->role_id)
+            ->select('permissions.name')
+            ->get();
         View::share('role_has_permissions_list', $role_has_permissions_list);
 
-        $categories_list = Cache::remember('category_list', 60*60*24*365, function () {
-            return DB::table('categories')->where('parent_id', null)->where('is_active', 1)->select('id', 'name')->get();
-        });
-
-       
+        $categories_list = DB::table('categories')
+            ->where('parent_id', null)
+            ->where('is_active', 1)
+            ->select('id', 'name')
+            ->get();
         View::share('categories_list', $categories_list);
         return $next($request);
     }

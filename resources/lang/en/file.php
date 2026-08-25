@@ -83,6 +83,7 @@ return [
 	'sale' => 'Sale',
 	'latest' => 'Latest',
 	'best selling product' => 'Best Selling Product',
+	'View All' => 'View All',
 	'top' => 'Top',
 	'date' => 'Date',
 	'reference' => 'Reference',

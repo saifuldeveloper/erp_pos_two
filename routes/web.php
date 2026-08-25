@@ -127,6 +127,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
         Route::get('/yearly-best-selling-price', 'yearlyBestSellingPrice');
         Route::get('/yearly-best-selling-qty', 'yearlyBestSellingQty');
         Route::get('/monthly-best-selling-qty', 'monthlyBestSellingQty');
+        Route::get('/dashboard-best-seller', 'dashboardBestSeller');
         Route::get('/recent-sale', 'recentSale');
         Route::get('/recent-purchase', 'recentPurchase');
         Route::get('/recent-quotation', 'recentQuotation');
@@ -430,7 +431,7 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
             Route::post('daily_purchase/{year}/{month}', 'dailyPurchaseByWarehouse')->name('report.dailyPurchaseByWarehouse');
             Route::get('monthly_purchase/{year}', 'monthlyPurchase');
             Route::post('monthly_purchase/{year}', 'monthlyPurchaseByWarehouse')->name('report.monthlyPurchaseByWarehouse');
-            Route::get('best_seller', 'bestSeller');
+            Route::get('best_seller', 'bestSeller')->name('report.bestSeller');
             Route::post('best_seller', 'bestSellerByWarehouse')->name('report.bestSellerByWarehouse');
             Route::post('profit_loss', 'profitLoss')->name('report.profitLoss');
             Route::post('cash_in_hand', 'cashInHand')->name('report.cashInHand');

@@ -288,7 +288,7 @@
       @endif
 
 
-      <div style="display:none" id="content" class="">
+      <div id="content" class="animate-bottom">
             @include('includes.session_message')
             @yield('content')
       </div>
@@ -813,7 +813,7 @@
         <script type="text/javascript" src="<?php echo asset('../../vendor/jquery.cookie/jquery.cookie.js') ?>">
         </script>
         <script type="text/javascript" src="<?php echo asset('../../vendor/chart.js/Chart.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo asset('../../js/charts-custom.js') ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('../../js/charts-custom.js?v=' . time()) ?>"></script>
         <script type="text/javascript" src="<?php echo asset('../../vendor/jquery-validation/jquery.validate.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo asset('../../vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')?>"></script>
         @if( Config::get('app.locale') == 'ar' || $general_setting->is_rtl)

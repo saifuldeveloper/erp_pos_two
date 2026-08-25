@@ -197,6 +197,8 @@ return [
 
 	"View" => "দেখুন",
 
+	"View All" => "সব দেখুন",
+
 	"Warehouse" => "গোদাম",
 
 	"Attach Document" => "ডকুমেন্ট সংযুক্ত করুন",
@@ -321,9 +323,9 @@ return [
 
 	"Net Profit" => "নেট লাভ",
 
-	"Best Seller" => "সেরা বিক্রেতা",
+	"Best Seller" => "সেরা বিক্রি",
 
-	"Best Seller From" => "থেকে সেরা বিক্রেতা",
+	"Best Seller From" => "থেকে সেরা বিক্রি",
 
 	"Product Report" => "পণ্য রিপোর্ট",
 
@@ -886,6 +888,26 @@ return [
 
 	"All Warehouse" => "সমস্ত গোডাউন",
 
+	"All Brand" => "সমস্ত ব্র্যান্ড",
+
+	"All Brands" => "সমস্ত ব্র্যান্ড",
+
+	"Total Revenue" => "মোট রাজস্ব",
+
+	"Items Sold" => "মোট বিক্রিত আইটেম",
+
+	"No Data" => "তথ্য পাওয়া যায়নি",
+
+	"Product Details" => "পণ্যের বিবরণ",
+
+	"Purchased Amount" => "ক্রয়কৃত পরিমাণ",
+
+	"Sold Amount" => "বিক্রয়কৃত পরিমাণ",
+
+	"Sales vs Purchase" => "বিক্রয় বনাম ক্রয়",
+
+	"yearly report" => "বার্ষিক বিক্রয় ও ক্রয়",
+
 	"Net Profit" => "নিট লাভ",
 
 	"Net Loss" => "নিট লস",
@@ -897,6 +919,8 @@ return [
 	"Net Return" => "নিট ফেরত ",
 
 	"Payment Received" => "পেমেন্ট প্রাপ্ত",
+
+	"Payment Recieved" => "পেমেন্ট প্রাপ্ত",
 
 	"Payment Sent" => "পেমেন্ট প্রেরিত",
 

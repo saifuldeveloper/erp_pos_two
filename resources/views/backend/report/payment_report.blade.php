@@ -1,73 +1,97 @@
-@extends('backend.layout.main') @section('content')
+@extends('backend.layout.main')
+@section('content')
+<style>
+    .filter-card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+</style>
 <section class="forms">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header mt-2">
-                <h3 class="text-center">{{trans('file.Payment Report')}}</h3>
-            </div>
-            {!! Form::open(['route' => 'report.paymentByDate', 'method' => 'post']) !!}
-            <div class="col-md-6 offset-md-3 mt-3 mb-3">
-                <div class="form-group row">
-                    <label class="d-tc mt-2"><strong>{{trans('file.Choose Your Date')}}</strong> &nbsp;</label>
-                    <div class="d-tc">
-                        <div class="input-group">
-                            <input type="text" class="daterangepicker-field form-control" value="{{$start_date}} To {{$end_date}}" required />
-                            <input type="hidden" name="start_date" />
-                            <input type="hidden" name="end_date" />
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit">{{trans('file.submit')}}</button>
+            <div class="card-body">
+                <h3 class="text-center mb-4">{{trans('file.Payment Report')}}</h3>
+
+                <div class="filter-card">
+                    {!! Form::open(['route' => 'report.paymentByDate', 'method' => 'post', 'id' => 'payment-filter-form']) !!}
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-3 col-sm-5 mb-2">
+                            <label class="font-weight-bold">Start Date:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control date-picker" id="start_date" name="start_date" value="{{ $start_date }}" readonly style="background-color: #fff; cursor: pointer;" required />
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-md-3 col-sm-5 mb-2">
+                            <label class="font-weight-bold">End Date:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control date-picker" id="end_date" name="end_date" value="{{ $end_date }}" readonly style="background-color: #fff; cursor: pointer;" required />
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-2 mb-2 mt-md-4">
+                            <button class="btn btn-primary btn-block" type="submit">
+                                <i class="fa fa-filter"></i> {{trans('file.submit')}}
+                            </button>
+                        </div>
                     </div>
+                    {!! Form::close() !!}
                 </div>
+
+                <div class="table-responsive mb-4">
+                    <table id="report-table" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="not-exported"></th>
+                                <th>{{trans('file.Date')}}</th>
+                                <th>{{trans('file.Payment Reference')}} </th>
+                                <th>{{trans('file.Sale Reference')}}</th>
+                                <th>{{trans('file.Purchase Reference')}}</th>
+                                <th>{{trans('file.Paid By')}}</th>
+                                <th>{{trans('file.Amount')}}</th>
+                                <th>{{trans('file.Created By')}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($lims_payment_data as $payment)
+                            <?php
+                                $sale = DB::table('sales')->find($payment->sale_id);
+                                $purchase = DB::table('purchases')->find($payment->purchase_id);
+                                $user = DB::table('users')->find($payment->user_id);
+                            ?>
+                            <tr>
+                                <td></td>
+                                <td>{{date($general_setting->date_format, strtotime($payment->created_at->toDateString())) . ' '. $payment->created_at->toTimeString()}}</td>
+                                <td>{{$payment->payment_reference}}</td>
+                                <td>@if($sale){{$sale->reference_no}}@endif</td>
+                                <td>@if($purchase){{$purchase->reference_no}}@endif</td>
+                                <td>{{$payment->paying_method}}</td>
+                                <td>{{$payment->amount}}</td>
+                                <td>{{$user->name ?? 'N/A'}}<br>{{$user->email ?? ''}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot class="tfoot active">
+                            <th></th>
+                            <th>{{trans('file.Total')}}:</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>{{number_format(0, $general_setting->decimal, '.', '')}}</th>
+                            <th></th>
+                        </tfoot>
+                    </table>
+                </div>
+
             </div>
-            {!! Form::close() !!}
         </div>
-    </div>
-    <div class="table-responsive mb-4">
-        <table id="report-table" class="table table-hover">
-            <thead>
-                <tr>
-                    <th class="not-exported"></th>
-                    <th>{{trans('file.Date')}}</th>
-                    <th>{{trans('file.Payment Reference')}} </th>
-                    <th>{{trans('file.Sale Reference')}}</th>
-                    <th>{{trans('file.Purchase Reference')}}</th>
-                    <th>{{trans('file.Paid By')}}</th>
-                    <th>{{trans('file.Amount')}}</th>
-                    <th>{{trans('file.Created By')}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($lims_payment_data as $payment)
-                <?php
-                    $sale = DB::table('sales')->find($payment->sale_id);
-                    $purchase = DB::table('purchases')->find($payment->purchase_id);
-                    $user = DB::table('users')->find($payment->user_id);
-                ?>
-                <tr>
-                    <td></td>
-                    <td>{{date($general_setting->date_format, strtotime($payment->created_at->toDateString())) . ' '. $payment->created_at->toTimeString()}}</td>
-                    <td>{{$payment->payment_reference}}</td>
-                    <td>@if($sale){{$sale->reference_no}}@endif</td>
-                    <td>@if($purchase){{$purchase->reference_no}}@endif</td>
-                    <td>{{$payment->paying_method}}</td>
-                    <td>{{$payment->amount}}</td>
-                    <td>{{$user->name}}<br>{{$user->email}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-            <tfoot class="tfoot active">
-                <th></th>
-                <th>{{trans('file.Total')}}:</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>{{number_format(0, $general_setting->decimal, '.', '')}}<</th>
-                <th></th>
-            </tfoot>
-        </table>
     </div>
 </section>
 
@@ -78,6 +102,18 @@
     $("ul#report").siblings('a').attr('aria-expanded','true');
     $("ul#report").addClass("show");
     $("ul#report li#payment-report-menu").addClass("active");
+
+    $('#start_date').datepicker({
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        todayHighlight: true
+    });
+
+    $('#end_date').datepicker({
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        todayHighlight: true
+    });
 
     $('#report-table').DataTable( {
         "order": [],
@@ -192,17 +228,5 @@
             $( dt_selector.column( 6 ).footer() ).html(dt_selector.column( 6, {page:'current'} ).data().sum().toFixed({{$general_setting->decimal}}));
         }
     }
-
-$(".daterangepicker-field").daterangepicker({
-  callback: function(startDate, endDate, period){
-    var start_date = startDate.format('YYYY-MM-DD');
-    var end_date = endDate.format('YYYY-MM-DD');
-    var title = start_date + ' to ' + end_date;
-    $(this).val(title);
-    $('input[name="start_date"]').val(start_date);
-    $('input[name="end_date"]').val(end_date);
-  }
-});
-
 </script>
 @endpush

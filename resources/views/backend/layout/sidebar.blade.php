@@ -709,7 +709,7 @@
 
                 $custom_field_permission_active = $role_has_permissions_list->where('name', 'custom_field')->first();
                 ?>
-                @if ($role->id <= 2)
+                @if (Auth::user()->role_id <= 2)
                     <li id="role-menu"><a href="{{ route('role.index') }}">{{ trans('file.Role Permission') }}</a>
                     </li>
                     {{-- @if ($custom_field_permission_active)
