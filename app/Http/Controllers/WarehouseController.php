@@ -2,33 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\WarehouseService;
 use Illuminate\Http\Request;
-use App\Models\Warehouse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-use Keygen;
-use Auth;
-use DB;
-use App\Traits\CacheForget;
 use Spatie\Permission\Models\Role;
 
 class WarehouseController extends Controller
 {
-    use CacheForget;
+    protected WarehouseService $warehouseService;
+
+    public function __construct(WarehouseService $warehouseService)
+    {
+        $this->warehouseService = $warehouseService;
+    }
+
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('warehouse-index')) {
+        if ($role->hasPermissionTo('warehouse-index')) {
             $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
+            $all_permission = [];
+            foreach ($permissions as $permission) {
                 $all_permission[] = $permission->name;
-            if(empty($all_permission))
+            }
+            if (empty($all_permission)) {
                 $all_permission[] = 'dummy text';
-            $lims_warehouse_all = Warehouse::where('is_active', true)->get();
-            $numberOfWarehouse = Warehouse::where('is_active', true)->count();
+            }
+            $lims_warehouse_all = $this->warehouseService->getActiveWarehouses();
+            $numberOfWarehouse = $this->warehouseService->countActiveWarehouses();
+
             return view('backend.warehouse.create', compact('lims_warehouse_all', 'numberOfWarehouse', 'all_permission'));
         }
-        else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
@@ -41,15 +48,14 @@ class WarehouseController extends Controller
         $this->validate($request, [
             'name' => [
                 'max:255',
-                    Rule::unique('warehouses')->where(function ($query) {
+                Rule::unique('warehouses')->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ],
         ]);
-        $input = $request->all();
-        $input['is_active'] = true;
-        Warehouse::create($input);
-        $this->cacheForget('warehouse_list');
+
+        $this->warehouseService->createWarehouse($request->all());
+
         return redirect('warehouse')->with('message', 'Data inserted successfully');
     }
 
@@ -60,8 +66,7 @@ class WarehouseController extends Controller
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
-        $lims_warehouse_data = Warehouse::findOrFail($id);
-        return $lims_warehouse_data;
+        return $this->warehouseService->getWarehouseById($id);
     }
 
     public function update(Request $request, $id)
@@ -74,15 +79,14 @@ class WarehouseController extends Controller
         $this->validate($request, [
             'name' => [
                 'max:255',
-                    Rule::unique('warehouses')->ignore($request->warehouse_id)->where(function ($query) {
+                Rule::unique('warehouses')->ignore($request->warehouse_id)->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ],
         ]);
-        $input = $request->all();
-        $lims_warehouse_data = Warehouse::find($input['warehouse_id']);
-        $lims_warehouse_data->update($input);
-        $this->cacheForget('warehouse_list');
+
+        $this->warehouseService->updateWarehouse($request->warehouse_id, $request->all());
+
         return redirect('warehouse')->with('message', 'Data updated successfully');
     }
 
@@ -93,43 +97,14 @@ class WarehouseController extends Controller
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to import warehouse');
         }
 
-        //get file
-        $upload=$request->file('file');
+        $upload = $request->file('file');
         $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
-        if($ext != 'csv')
+        if ($ext != 'csv') {
             return redirect()->back()->with('not_permitted', 'Please upload a CSV file');
-        $filename =  $upload->getClientOriginalName();
-        $upload=$request->file('file');
-        $filePath=$upload->getRealPath();
-        //open and read
-        $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
-        $escapedHeader=[];
-        //validate
-        foreach ($header as $key => $value) {
-            $lheader=strtolower($value);
-            $escapedItem=preg_replace('/[^a-z]/', '', $lheader);
-            array_push($escapedHeader, $escapedItem);
         }
-        //looping through othe columns
-        while($columns=fgetcsv($file))
-        {
-            if($columns[0]=="")
-                continue;
-            foreach ($columns as $key => $value) {
-                $value=preg_replace('/\D/','',$value);
-            }
-           $data= array_combine($escapedHeader, $columns);
 
-           $warehouse = Warehouse::firstOrNew([ 'name'=>$data['name'], 'is_active'=>true ]);
-           $warehouse->name = $data['name'];
-           $warehouse->phone = $data['phone'];
-           $warehouse->email = $data['email'];
-           $warehouse->address = $data['address'];
-           $warehouse->is_active = true;
-           $warehouse->save();
-        }
-        $this->cacheForget('warehouse_list');
+        $this->warehouseService->importWarehouses($upload);
+
         return redirect('warehouse')->with('message', 'Warehouse imported successfully');
     }
 
@@ -141,12 +116,8 @@ class WarehouseController extends Controller
         }
 
         $warehouse_id = $request['warehouseIdArray'];
-        foreach ($warehouse_id as $id) {
-            $lims_warehouse_data = Warehouse::find($id);
-            $lims_warehouse_data->is_active = false;
-            $lims_warehouse_data->save();
-        }
-        $this->cacheForget('warehouse_list');
+        $this->warehouseService->deleteMultipleWarehouses($warehouse_id);
+
         return 'Warehouse deleted successfully!';
     }
 
@@ -157,27 +128,17 @@ class WarehouseController extends Controller
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete warehouse');
         }
 
-        $lims_warehouse_data = Warehouse::find($id);
-        $lims_warehouse_data->is_active = false;
-        $lims_warehouse_data->save();
-        $this->cacheForget('warehouse_list');
+        $this->warehouseService->deleteWarehouse($id);
+
         return redirect('warehouse')->with('not_permitted', 'Data deleted successfully');
     }
 
     public function warehouseAll()
     {
-        if(Auth::user()->role_id > 2 && Auth::user()->role_id != 3)
-            $lims_warehouse_list = DB::table('warehouses')->where([
-            ['is_active', true],
-            ['id', Auth::user()->warehouse_id]
-        ])->get();
-        else
-            $lims_warehouse_list = DB::table('warehouses')->where('is_active', true)->get();
-
-        $html = '';
-        foreach($lims_warehouse_list as $warehouse){
-            $html .='<option value="'.$warehouse->id.'">'.$warehouse->name.'</option>';
-        }
+        $html = $this->warehouseService->getWarehouseOptionsHtml(
+            Auth::user()->role_id,
+            Auth::user()->warehouse_id
+        );
 
         return response()->json($html);
     }

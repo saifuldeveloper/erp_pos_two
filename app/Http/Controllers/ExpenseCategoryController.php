@@ -2,35 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ExpenseCategoryService;
 use Illuminate\Http\Request;
-use App\Models\ExpenseCategory;
-use Keygen;
-use DB;
 use Illuminate\Validation\Rule;
 
 class ExpenseCategoryController extends Controller
 {
-    public function index()
-    {
-        // $lims_expense_category_all = ExpenseCategory::where('is_active', true)->get();
+    protected ExpenseCategoryService $expenseCategoryService;
 
-        $lims_expense_category_all = ExpenseCategory::where('is_active', true)
-            ->leftJoin('expenses', 'expenses.expense_category_id', '=', 'expense_categories.id') 
-            ->select('expense_categories.*', DB::raw('SUM(expenses.amount) as total_amount')) // Select the category and the sum of amounts
-            ->groupBy('expense_categories.id') // Group by the expense category ID
-            ->get();
-        return view('backend.expense_category.index', compact('lims_expense_category_all'));
+    public function __construct(ExpenseCategoryService $expenseCategoryService)
+    {
+        $this->expenseCategoryService = $expenseCategoryService;
     }
 
-    public function create()
+    public function index()
     {
-        //
+        $lims_expense_category_all = $this->expenseCategoryService->getCategoriesWithTotals();
+        return view('backend.expense_category.index', compact('lims_expense_category_all'));
     }
 
     public function generateCode()
     {
-        $id = Keygen::numeric(8)->generate();
-        return $id;
+        return $this->expenseCategoryService->generateCode();
     }
 
     public function store(Request $request)
@@ -38,26 +31,20 @@ class ExpenseCategoryController extends Controller
         $this->validate($request, [
             'code' => [
                 'max:255',
-                    Rule::unique('expense_categories')->where(function ($query) {
+                Rule::unique('expense_categories')->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ]
         ]);
 
-        $data = $request->all();
-        ExpenseCategory::create($data);
-        return redirect('expense_categories')->with('message', 'Data inserted successfully');
-    }
+        $this->expenseCategoryService->createCategory($request->all());
 
-    public function show($id)
-    {
-        //
+        return redirect('expense_categories')->with('message', 'Data inserted successfully');
     }
 
     public function edit($id)
     {
-        $lims_expense_category_data = ExpenseCategory::find($id);
-        return $lims_expense_category_data;
+        return $this->expenseCategoryService->getCategoryById($id);
     }
 
     public function update(Request $request, $id)
@@ -65,82 +52,48 @@ class ExpenseCategoryController extends Controller
         $this->validate($request, [
             'code' => [
                 'max:255',
-                    Rule::unique('expense_categories')->ignore($request->expense_category_id)->where(function ($query) {
+                Rule::unique('expense_categories')->ignore($request->expense_category_id)->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ]
         ]);
 
-        $data = $request->all();
-        $lims_expense_category_data = ExpenseCategory::find($data['expense_category_id']);
-        $lims_expense_category_data->update($data);
+        $this->expenseCategoryService->updateCategory($request->expense_category_id, $request->all());
+
         return redirect('expense_categories')->with('message', 'Data updated successfully');
     }
 
     public function import(Request $request)
     {
-        //get file
-        $upload=$request->file('file');
+        $upload = $request->file('file');
         $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
-        if($ext != 'csv')
+        if ($ext != 'csv') {
             return redirect()->back()->with('not_permitted', 'Please upload a CSV file');
-        $filename =  $upload->getClientOriginalName();
-        $filePath=$upload->getRealPath();
-        //open and read
-        $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
-        $escapedHeader=[];
-        //validate
-        foreach ($header as $key => $value) {
-            $lheader=strtolower($value);
-            $escapedItem=preg_replace('/[^a-z]/', '', $lheader);
-            array_push($escapedHeader, $escapedItem);
         }
-        //looping through othe columns
-        while($columns=fgetcsv($file))
-        {
-            if($columns[0]=="")
-                continue;
-            foreach ($columns as $key => $value) {
-                $value=preg_replace('/\D/','',$value);
-            }
-           $data= array_combine($escapedHeader, $columns);
-           $expense_category = ExpenseCategory::firstOrNew(['code' => $data['code'], 'is_active' => true ]);
-           $expense_category->code = $data['code'];
-           $expense_category->name = $data['name'];
-           $expense_category->is_active = true;
-           $expense_category->save();
-        }
+
+        $this->expenseCategoryService->importCategories($upload);
+
         return redirect('expense_categories')->with('message', 'ExpenseCategory imported successfully');
     }
 
     public function deleteBySelection(Request $request)
     {
-        $expense_category_id = $request['expense_categoryIdArray'];
-        foreach ($expense_category_id as $id) {
-            $lims_expense_category_data = ExpenseCategory::find($id);
-            $lims_expense_category_data->is_active = false;
-            $lims_expense_category_data->save();
-        }
+        $expense_category_id = $request['expense_categoryIdArray'] ?? [];
+        $this->expenseCategoryService->deleteMultipleCategories($expense_category_id);
+
         return 'Expense Category deleted successfully!';
     }
 
     public function destroy($id)
     {
-        $lims_expense_category_data = ExpenseCategory::find($id);
-        $lims_expense_category_data->is_active = false;
-        $lims_expense_category_data->save();
+        $this->expenseCategoryService->deleteCategory($id);
+
         return redirect('expense_categories')->with('not_permitted', 'Data deleted successfully');
     }
 
     public function expenseCategoriesAll()
     {
-        $lims_expense_category_list = DB::table('expense_categories')->where('is_active', true)->get();
-        $html = '';
-        foreach($lims_expense_category_list as $expense_category){
-            $html .='<option value="'.$expense_category->id.'">'.$expense_category->name . ' (' . $expense_category->code. ')'.'</option>';
-        }
-
+        $html = $this->expenseCategoryService->getCategoryOptionsHtml();
         return response()->json($html);
     }
 }
