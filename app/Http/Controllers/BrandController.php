@@ -2,33 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BrandService;
 use Illuminate\Http\Request;
-use App\Models\Brand;
 use Illuminate\Validation\Rule;
-use App\Traits\TenantInfo;
-use App\Traits\CacheForget;
 use Spatie\Permission\Models\Role;
 use Auth;
 
 class BrandController extends Controller
 {
-    use CacheForget;
-    use TenantInfo;
+    protected BrandService $brandService;
+
+    public function __construct(BrandService $brandService)
+    {
+        $this->brandService = $brandService;
+    }
 
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('brand-index') || $role->hasPermissionTo('brand')) {
+        if ($role->hasPermissionTo('brand-index') || $role->hasPermissionTo('brand')) {
             $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
+            $all_permission = [];
+            foreach ($permissions as $permission) {
                 $all_permission[] = $permission->name;
-            if(empty($all_permission))
+            }
+            if (empty($all_permission)) {
                 $all_permission[] = 'dummy text';
-            $lims_brand_all = Brand::where('is_active',true)->get();
+            }
+            $lims_brand_all = $this->brandService->getActiveBrands();
             return view('backend.brand.create', compact('lims_brand_all', 'all_permission'));
         }
-        else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
@@ -37,39 +42,22 @@ class BrandController extends Controller
         $this->validate($request, [
             'title' => [
                 'max:255',
-                    Rule::unique('brands')->where(function ($query) {
+                Rule::unique('brands')->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ],
-
             'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
         ]);
 
         $input = $request->except('image');
-        $input['is_active'] = true;
-        $image = $request->image;
-        if ($image) {
-            $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
-            $imageName = date("Ymdhis");
-            if(!config('database.connections.saas_landlord')) {
-                $imageName = $imageName . '.' . $ext;
-                $image->move('public/images/brand', $imageName);
-            }
-            else {
-                $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
-                $image->move('public/images/brand', $imageName);
-            }
-            $input['image'] = $imageName;
-        }
-        Brand::create($input);
-        $this->cacheForget('brand_list');
+        $this->brandService->createBrand($input, $request->file('image'));
+
         return redirect('brand');
     }
 
     public function edit($id)
     {
-        $lims_brand_data = Brand::findOrFail($id);
-        return $lims_brand_data;
+        return $this->brandService->getBrandById($id);
     }
 
     public function update(Request $request, $id)
@@ -77,132 +65,58 @@ class BrandController extends Controller
         $this->validate($request, [
             'title' => [
                 'max:255',
-                    Rule::unique('brands')->ignore($request->brand_id)->where(function ($query) {
+                Rule::unique('brands')->ignore($request->brand_id)->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ],
-
             'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
         ]);
-        $lims_brand_data = Brand::findOrFail($request->brand_id);
-        $lims_brand_data->title = $request->title;
-        $image = $request->image;
-        if ($image) {
-            $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
-            $imageName = date("Ymdhis");
-            if(!config('database.connections.saas_landlord')) {
-                $imageName = $imageName . '.' . $ext;
-                $image->move('public/images/brand', $imageName);
-            }
-            else {
-                $imageName = $this->getTenantId() . '_' . $imageName . '.' . $ext;
-                $image->move('public/images/brand', $imageName);
-            }
-            $lims_brand_data->image = $imageName;
-        }
-        $lims_brand_data->save();
-        $this->cacheForget('brand_list');
+
+        $data = ['title' => $request->title];
+        $this->brandService->updateBrand($request->brand_id, $data, $request->file('image'));
+
         return redirect('brand');
     }
 
     public function importBrand(Request $request)
     {
-        //get file
-        $upload=$request->file('file');
+        $upload = $request->file('file');
         $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
-        if($ext != 'csv')
+        if ($ext != 'csv') {
             return redirect()->back()->with('not_permitted', 'Please upload a CSV file');
-        $filename =  $upload->getClientOriginalName();
-        $filePath=$upload->getRealPath();
-        //open and read
-        $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
-        $escapedHeader=[];
-        //validate
-        foreach ($header as $key => $value) {
-            $lheader=strtolower($value);
-            $escapedItem=preg_replace('/[^a-z]/', '', $lheader);
-            array_push($escapedHeader, $escapedItem);
         }
-        //looping through othe columns
-        while($columns=fgetcsv($file))
-        {
-            if($columns[0]=="")
-                continue;
-            foreach ($columns as $key => $value) {
-                $value=preg_replace('/\D/','',$value);
-            }
-           $data= array_combine($escapedHeader, $columns);
 
-           $brand = Brand::firstOrNew([ 'title'=>$data['title'], 'is_active'=>true ]);
-           $brand->title = $data['title'];
-           $brand->image = $data['image'];
-           $brand->is_active = true;
-           $brand->save();
-        }
-        $this->cacheForget('brand_list');
+        $this->brandService->importBrands($upload);
+
         return redirect('brand')->with('message', 'Brand imported successfully');
     }
 
     public function deleteBySelection(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
-        if(!$role->hasPermissionTo('brand-delete'))
+        if (!$role->hasPermissionTo('brand-delete')) {
             return 'Sorry! You are not allowed to delete brand';
-
-        $brand_id = $request['brandIdArray'];
-        foreach ($brand_id as $id) {
-            $lims_brand_data = Brand::findOrFail($id);
-            if($lims_brand_data->image && !config('database.connections.saas_landlord') && file_exists('public/images/brand/'.$lims_brand_data->image)) {
-                unlink('public/images/brand/'.$lims_brand_data->image);
-            }
-            elseif($lims_brand_data->image && file_exists('images/brand/'.$lims_brand_data->image)) {
-                unlink('images/brand/'.$lims_brand_data->image);
-            }
-            $lims_brand_data->is_active = false;
-            $lims_brand_data->save();
         }
-        $this->cacheForget('brand_list');
+
+        $this->brandService->deleteMultipleBrands($request['brandIdArray']);
+
         return 'Brand deleted successfully!';
     }
 
     public function destroy($id)
     {
         $role = Role::find(Auth::user()->role_id);
-        if(!$role->hasPermissionTo('brand-delete'))
+        if (!$role->hasPermissionTo('brand-delete')) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete brand');
+        }
 
-        $lims_brand_data = Brand::findOrFail($id);
-        $lims_brand_data->is_active = false;
-        if($lims_brand_data->image && !config('database.connections.saas_landlord') && file_exists('public/images/brand/'.$lims_brand_data->image)) {
-            unlink('public/images/brand/'.$lims_brand_data->image);
-        }
-        elseif($lims_brand_data->image && file_exists('images/brand/'.$lims_brand_data->image)) {
-            unlink('images/brand/'.$lims_brand_data->image);
-        }
-        $lims_brand_data->save();
-        $this->cacheForget('brand_list');
+        $this->brandService->deleteBrand($id);
+
         return redirect('brand')->with('not_permitted', 'Brand deleted successfully!');
     }
 
     public function exportBrand(Request $request)
     {
-        $lims_brand_data = $request['brandArray'];
-        $csvData=array('Brand Title, Image');
-        foreach ($lims_brand_data as $brand) {
-            if($brand > 0) {
-                $data = Brand::where('id', $brand)->first();
-                $csvData[]=$data->title.','.$data->image;
-            }
-        }
-        $filename=date('Y-m-d').".csv";
-        $file_path=public_path().'/downloads/'.$filename;
-        $file_url=url('/').'/downloads/'.$filename;
-        $file = fopen($file_path,"w+");
-        foreach ($csvData as $exp_data){
-          fputcsv($file,explode(',',$exp_data));
-        }
-        fclose($file);
-        return $file_url;
+        return $this->brandService->exportBrands($request['brandArray']);
     }
 }
