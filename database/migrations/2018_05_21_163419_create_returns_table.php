@@ -15,16 +15,16 @@ class CreateReturnsTable extends Migration
     {
         Schema::create('returns', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('customer_id');
-            $table->integer('warehouse_id');
-            $table->integer('biller_id');
+            $table->string('reference_no')->index();
+            $table->integer('customer_id')->index();
+            $table->integer('warehouse_id')->index();
+            $table->integer('biller_id')->index();
             $table->integer('user_id')->index();
-            $table->integer('account_id');
+            $table->integer('account_id')->index();
             $table->integer('currency_id')->nullable();
             $table->double('exchange_rate')->nullable();
             $table->integer('cash_register_id')->nullable();
-            $table->integer('sale_id')->nullable();
+            $table->integer('sale_id')->nullable()->index();
             $table->integer('item');
             $table->double('total_qty');
             $table->double('total_discount');

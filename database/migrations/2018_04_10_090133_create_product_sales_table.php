@@ -30,6 +30,8 @@ class CreateProductSalesTable extends Migration
             $table->double('return_qty')->default(0); // From 2023_10_15_124306_add_return_qty_to_product_sales_table.php
 
             $table->timestamps();
+            $table->index('created_at');
+            $table->index(['product_id', 'created_at']);
         });
     }
 

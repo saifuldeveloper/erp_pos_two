@@ -15,10 +15,10 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('customer_id');
-            $table->integer('warehouse_id');
-            $table->integer('biller_id');
+            $table->string('reference_no')->index();
+            $table->integer('customer_id')->index();
+            $table->integer('warehouse_id')->index();
+            $table->integer('biller_id')->index();
             $table->integer('item');
             $table->double('total_qty');
             $table->double('total_discount');
@@ -29,9 +29,9 @@ class CreateSalesTable extends Migration
             $table->double('order_tax')->nullable();
             $table->double('order_discount')->nullable();
             $table->double('shipping_cost')->nullable();
-            $table->integer('sale_status');
+            $table->integer('sale_status')->index();
             $table->string('sale_type')->nullable();
-            $table->integer('payment_status');
+            $table->integer('payment_status')->index();
             $table->string('document')->nullable();
             $table->double('paid_amount')->nullable();
             $table->text('payment_note')->nullable();

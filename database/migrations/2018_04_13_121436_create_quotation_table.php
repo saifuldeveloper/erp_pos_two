@@ -15,11 +15,11 @@ class CreateQuotationTable extends Migration
     {
         Schema::create('quotations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('biller_id');
-            $table->integer('supplier_id')->nullable();
-            $table->integer('customer_id');
-            $table->integer('warehouse_id');
+            $table->string('reference_no')->index();
+            $table->integer('biller_id')->index();
+            $table->integer('supplier_id')->nullable()->index();
+            $table->integer('customer_id')->index();
+            $table->integer('warehouse_id')->index();
             $table->integer('item');
             $table->double('total_qty');
             $table->double('total_discount');
@@ -33,9 +33,10 @@ class CreateQuotationTable extends Migration
             $table->integer('quotation_status');
             $table->string('document')->nullable();
             $table->text('note')->nullable();
-            $table->integer('user_id'); // From 2018_06_23_061058_add_user_id_to_quotations_table.php
+            $table->integer('user_id')->index(); // From 2018_06_23_061058_add_user_id_to_quotations_table.php
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

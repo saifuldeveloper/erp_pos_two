@@ -10,11 +10,12 @@ class CreateMoneyTransfersTable extends Migration
     {
         Schema::create('money_transfers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('from_account_id');
-            $table->integer('to_account_id');
+            $table->string('reference_no')->index();
+            $table->integer('from_account_id')->index();
+            $table->integer('to_account_id')->index();
             $table->double('amount');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

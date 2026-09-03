@@ -31,6 +31,8 @@ class CreateProductPurchasesTable extends Migration
             $table->double('selling_price', 8, 2); // From 2024_10_09_180729_add_selling_price_to_product_purchases_table.php
 
             $table->timestamps();
+            $table->index('created_at');
+            $table->index(['product_id', 'created_at']);
         });
     }
 

@@ -16,15 +16,17 @@ class CreatePayrollsTable extends Migration
         Schema::create('payrolls', function (Blueprint $table) {
             $table->increments('id');
             $table->string('payroll_type_id');
-            $table->string('reference_no');
-            $table->integer('employee_id');
-            $table->integer('account_id');
-            $table->integer('user_id');
+            $table->string('reference_no')->index();
+            $table->integer('employee_id')->index();
+            $table->integer('account_id')->index();
+            $table->integer('user_id')->index();
             $table->double('salary');
             $table->double('amount');
             $table->string('paying_method');
             $table->text('note')->nullable();
+
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

@@ -176,37 +176,38 @@ class HomeController extends Controller
         $end_ts = strtotime(date('Y-m-' . date('t', mktime(0, 0, 0, date("m"), 1, date("Y")))));
         $cf_start_date = date("Y-m-d", $start_ts);
         $cf_end_date = date("Y-m-d", $end_ts);
+        $cf_start_dt = $cf_start_date . ' 00:00:00';
+        $cf_end_dt = $cf_end_date . ' 23:59:59';
 
         $is_staff_own = (Auth::user()->role_id > 2 && cache()->get('general_setting')->staff_access == 'own');
         $auth_user_id = Auth::id();
 
-        $cf_payments_recv = DB::table('payments')->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(amount) as total")
-            ->whereNotNull('sale_id')->whereDate('created_at', '>=', $cf_start_date)->whereDate('created_at', '<=', $cf_end_date);
-        if ($is_staff_own) $cf_payments_recv->where('user_id', $auth_user_id);
-        $cf_payments_recv_data = $cf_payments_recv->groupBy('ym')->pluck('total', 'ym');
-
-        $cf_payments_sent = DB::table('payments')->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(amount) as total")
-            ->whereNotNull('purchase_id')->whereDate('created_at', '>=', $cf_start_date)->whereDate('created_at', '<=', $cf_end_date);
-        if ($is_staff_own) $cf_payments_sent->where('user_id', $auth_user_id);
-        $cf_payments_sent_data = $cf_payments_sent->groupBy('ym')->pluck('total', 'ym');
+        $cf_payments_query = DB::table('payments')
+            ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, 
+                         SUM(CASE WHEN sale_id IS NOT NULL THEN amount ELSE 0 END) as recv_total,
+                         SUM(CASE WHEN purchase_id IS NOT NULL THEN amount ELSE 0 END) as sent_total")
+            ->where('created_at', '>=', $cf_start_dt)
+            ->where('created_at', '<=', $cf_end_dt);
+        if ($is_staff_own) $cf_payments_query->where('user_id', $auth_user_id);
+        $cf_payments_data = $cf_payments_query->groupBy('ym')->get()->keyBy('ym');
 
         $cf_returns = Returns::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(grand_total) as total")
-            ->whereDate('created_at', '>=', $cf_start_date)->whereDate('created_at', '<=', $cf_end_date);
+            ->where('created_at', '>=', $cf_start_dt)->where('created_at', '<=', $cf_end_dt);
         if ($is_staff_own) $cf_returns->where('user_id', $auth_user_id);
         $cf_returns_data = $cf_returns->groupBy('ym')->pluck('total', 'ym');
 
         $cf_purchase_returns = ReturnPurchase::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(grand_total) as total")
-            ->whereDate('created_at', '>=', $cf_start_date)->whereDate('created_at', '<=', $cf_end_date);
+            ->where('created_at', '>=', $cf_start_dt)->where('created_at', '<=', $cf_end_dt);
         if ($is_staff_own) $cf_purchase_returns->where('user_id', $auth_user_id);
         $cf_purchase_returns_data = $cf_purchase_returns->groupBy('ym')->pluck('total', 'ym');
 
         $cf_expenses = Expense::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(amount) as total")
-            ->whereDate('created_at', '>=', $cf_start_date)->whereDate('created_at', '<=', $cf_end_date);
+            ->where('created_at', '>=', $cf_start_dt)->where('created_at', '<=', $cf_end_dt);
         if ($is_staff_own) $cf_expenses->where('user_id', $auth_user_id);
         $cf_expenses_data = $cf_expenses->groupBy('ym')->pluck('total', 'ym');
 
         $cf_payrolls = Payroll::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(amount) as total")
-            ->whereDate('created_at', '>=', $cf_start_date)->whereDate('created_at', '<=', $cf_end_date);
+            ->where('created_at', '>=', $cf_start_dt)->where('created_at', '<=', $cf_end_dt);
         if ($is_staff_own) $cf_payrolls->where('user_id', $auth_user_id);
         $cf_payrolls_data = $cf_payrolls->groupBy('ym')->pluck('total', 'ym');
 
@@ -217,12 +218,13 @@ class HomeController extends Controller
         $curr = $start_ts;
         while ($curr < $end_ts) {
             $ym = date("Y-m", $curr);
-            $recieved_amount = $cf_payments_recv_data[$ym] ?? 0;
-            $purchase_return_amount = $cf_purchase_returns_data[$ym] ?? 0;
-            $sent_amount = ($cf_payments_sent_data[$ym] ?? 0)
-                + ($cf_returns_data[$ym] ?? 0)
-                + ($cf_expenses_data[$ym] ?? 0)
-                + ($cf_payrolls_data[$ym] ?? 0);
+            $pmt_row = $cf_payments_data->get($ym);
+            $recieved_amount = (float)($pmt_row->recv_total ?? 0);
+            $purchase_return_amount = (float)($cf_purchase_returns_data[$ym] ?? 0);
+            $sent_amount = (float)($pmt_row->sent_total ?? 0)
+                + (float)($cf_returns_data[$ym] ?? 0)
+                + (float)($cf_expenses_data[$ym] ?? 0)
+                + (float)($cf_payrolls_data[$ym] ?? 0);
 
             $payment_recieved[] = number_format((float) ($recieved_amount + $purchase_return_amount), config('decimal'), '.', '');
             $payment_sent[] = number_format((float) $sent_amount, config('decimal'), '.', '');
@@ -258,29 +260,37 @@ class HomeController extends Controller
         }
 
         $initial_balance = Account::where('is_active', true)->sum('initial_balance');
-        $cashin = Payment::whereNotNull('sale_id')->sum('amount')
-            + Deposit::sum('amount')
-            + ReturnPurchase::sum('grand_total');
-        $cashout = Payment::whereNotNull('purchase_id')->sum('amount')
-            + Expense::sum('amount')
-            + Returns::sum('grand_total')
-            + Payroll::sum('amount');
+        $pmt_totals = Payment::selectRaw('
+            SUM(CASE WHEN sale_id IS NOT NULL THEN amount ELSE 0 END) as total_cashin,
+            SUM(CASE WHEN purchase_id IS NOT NULL THEN amount ELSE 0 END) as total_cashout
+        ')->first();
+        $dep_sum = (float)(Deposit::sum('amount') ?? 0);
+        $ret_pur_sum = (float)(ReturnPurchase::sum('grand_total') ?? 0);
+        $exp_sum = (float)(Expense::sum('amount') ?? 0);
+        $ret_sale_sum = (float)(Returns::sum('grand_total') ?? 0);
+        $pay_sum = (float)(Payroll::sum('amount') ?? 0);
+
+        $cashin = (float)($pmt_totals->total_cashin ?? 0) + $dep_sum + $ret_pur_sum;
+        $cashout = (float)($pmt_totals->total_cashout ?? 0) + $exp_sum + $ret_sale_sum + $pay_sum;
         $total_current_balance = $initial_balance + $cashin - $cashout;
         $cash = collect(['in' => $cashin, 'out' => $cashout, 'initial_balance' => $initial_balance, 'balance' => $total_current_balance]);
 
         $stock_calc = Product::selectRaw('sum(COALESCE(qty, 0) * COALESCE(cost, 0)) as total_stock_value, sum(COALESCE(qty, 0) * COALESCE(price, 0)) as total_stock_price')
             ->where('is_active', true)->first();
 
+        $sale_tot_due = Sale::selectRaw('sum(grand_total - paid_amount) as total_due_from_sale')->first()->total_due_from_sale ?? 0;
+        $pur_tot_due = Purchase::selectRaw('sum(grand_total - paid_amount) as total_due_from_purchase')->first()->total_due_from_purchase ?? 0;
+
         $assets = collect([
             'total_stock_value' => $stock_calc->total_stock_value ?? 0,
             'total_stock_price' => $stock_calc->total_stock_price ?? 0,
-            'total_due' => Sale::selectRaw('sum(grand_total - paid_amount) as total_due_from_sale')->first()->total_due_from_sale ?? 0,
+            'total_due' => $sale_tot_due,
             'total_current_balance' => $total_current_balance
         ]);
 
         $liability = collect([
-            'total_due' => Purchase::selectRaw('sum(grand_total - paid_amount) as total_due_from_purchase')->first()->total_due_from_purchase ?? 0,
-            'customer_advance' => Deposit::sum('amount') ?? 0,
+            'total_due' => $pur_tot_due,
+            'customer_advance' => $dep_sum,
         ]);
         return view('backend.index', compact('purchase_paid', 'purchase_due', 'due_payment_received', 'sale_due', 'sale_paid', 'salary', 'customers', 'suppliers', 'cash', 'liability', 'assets', 'revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'sale_chart_labels'));
     }
@@ -561,20 +571,17 @@ class HomeController extends Controller
         $purchases_data = $purchases_q->groupBy('time_slot')->pluck('total', 'time_slot');
 
         // Cash Flow Queries (Payment Received vs Payment Sent)
-        $cf_p_recv_q = DB::table('payments')->selectRaw("DATE_FORMAT(created_at, '{$fmt}') as time_slot, SUM(amount) as total")
-            ->whereNotNull('sale_id')->where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
-        if ($is_staff_own) $cf_p_recv_q->where('user_id', $auth_user_id);
-        $cf_p_recv = $cf_p_recv_q->groupBy('time_slot')->pluck('total', 'time_slot');
+        $cf_pmts_filter_q = DB::table('payments')->selectRaw("DATE_FORMAT(created_at, '{$fmt}') as time_slot, 
+            SUM(CASE WHEN sale_id IS NOT NULL THEN amount ELSE 0 END) as recv_total,
+            SUM(CASE WHEN purchase_id IS NOT NULL THEN amount ELSE 0 END) as sent_total")
+            ->where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
+        if ($is_staff_own) $cf_pmts_filter_q->where('user_id', $auth_user_id);
+        $cf_pmts_filter = $cf_pmts_filter_q->groupBy('time_slot')->get()->keyBy('time_slot');
 
         $cf_pret_q = ReturnPurchase::selectRaw("DATE_FORMAT(created_at, '{$fmt}') as time_slot, SUM(grand_total) as total")
             ->where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
         if ($is_staff_own) $cf_pret_q->where('user_id', $auth_user_id);
         $cf_pret = $cf_pret_q->groupBy('time_slot')->pluck('total', 'time_slot');
-
-        $cf_p_sent_q = DB::table('payments')->selectRaw("DATE_FORMAT(created_at, '{$fmt}') as time_slot, SUM(amount) as total")
-            ->whereNotNull('purchase_id')->where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
-        if ($is_staff_own) $cf_p_sent_q->where('user_id', $auth_user_id);
-        $cf_p_sent = $cf_p_sent_q->groupBy('time_slot')->pluck('total', 'time_slot');
 
         $cf_sret_q = Returns::selectRaw("DATE_FORMAT(created_at, '{$fmt}') as time_slot, SUM(grand_total) as total")
             ->where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
@@ -603,8 +610,9 @@ class HomeController extends Controller
                 $chart_labels[] = date('g A', strtotime($slot));
                 $chart_sales[] = (float) number_format((float)($sales_data[$slot] ?? 0), config('decimal'), '.', '');
                 $chart_purchases[] = (float) number_format((float)($purchases_data[$slot] ?? 0), config('decimal'), '.', '');
-                $rec = (float)(($cf_p_recv[$slot] ?? 0) + ($cf_pret[$slot] ?? 0));
-                $snt = (float)(($cf_p_sent[$slot] ?? 0) + ($cf_sret[$slot] ?? 0) + ($cf_exp[$slot] ?? 0) + ($cf_pay[$slot] ?? 0));
+                $pmt_r = $cf_pmts_filter->get($slot);
+                $rec = (float)(($pmt_r->recv_total ?? 0) + ($cf_pret[$slot] ?? 0));
+                $snt = (float)(($pmt_r->sent_total ?? 0) + ($cf_sret[$slot] ?? 0) + ($cf_exp[$slot] ?? 0) + ($cf_pay[$slot] ?? 0));
                 $cf_received[] = (float) number_format($rec, config('decimal'), '.', '');
                 $cf_sent[] = (float) number_format($snt, config('decimal'), '.', '');
             }
@@ -615,8 +623,9 @@ class HomeController extends Controller
                 $chart_labels[] = date('d M', $current);
                 $chart_sales[] = (float) number_format((float)($sales_data[$slot] ?? 0), config('decimal'), '.', '');
                 $chart_purchases[] = (float) number_format((float)($purchases_data[$slot] ?? 0), config('decimal'), '.', '');
-                $rec = (float)(($cf_p_recv[$slot] ?? 0) + ($cf_pret[$slot] ?? 0));
-                $snt = (float)(($cf_p_sent[$slot] ?? 0) + ($cf_sret[$slot] ?? 0) + ($cf_exp[$slot] ?? 0) + ($cf_pay[$slot] ?? 0));
+                $pmt_r = $cf_pmts_filter->get($slot);
+                $rec = (float)(($pmt_r->recv_total ?? 0) + ($cf_pret[$slot] ?? 0));
+                $snt = (float)(($pmt_r->sent_total ?? 0) + ($cf_sret[$slot] ?? 0) + ($cf_exp[$slot] ?? 0) + ($cf_pay[$slot] ?? 0));
                 $cf_received[] = (float) number_format($rec, config('decimal'), '.', '');
                 $cf_sent[] = (float) number_format($snt, config('decimal'), '.', '');
                 $current = strtotime('+1 day', $current);
@@ -629,8 +638,9 @@ class HomeController extends Controller
                 $chart_labels[] = date('M Y', $current);
                 $chart_sales[] = (float) number_format((float)($sales_data[$slot] ?? 0), config('decimal'), '.', '');
                 $chart_purchases[] = (float) number_format((float)($purchases_data[$slot] ?? 0), config('decimal'), '.', '');
-                $rec = (float)(($cf_p_recv[$slot] ?? 0) + ($cf_pret[$slot] ?? 0));
-                $snt = (float)(($cf_p_sent[$slot] ?? 0) + ($cf_sret[$slot] ?? 0) + ($cf_exp[$slot] ?? 0) + ($cf_pay[$slot] ?? 0));
+                $pmt_r = $cf_pmts_filter->get($slot);
+                $rec = (float)(($pmt_r->recv_total ?? 0) + ($cf_pret[$slot] ?? 0));
+                $snt = (float)(($pmt_r->sent_total ?? 0) + ($cf_sret[$slot] ?? 0) + ($cf_exp[$slot] ?? 0) + ($cf_pay[$slot] ?? 0));
                 $cf_received[] = (float) number_format($rec, config('decimal'), '.', '');
                 $cf_sent[] = (float) number_format($snt, config('decimal'), '.', '');
                 $current = strtotime('+1 month', $current);

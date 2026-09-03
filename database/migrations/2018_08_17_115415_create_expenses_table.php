@@ -10,16 +10,17 @@ class CreateExpensesTable extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('expense_category_id');
-            $table->integer('warehouse_id');
+            $table->string('reference_no')->index();
+            $table->integer('expense_category_id')->index();
+            $table->integer('warehouse_id')->index();
             $table->double('amount');
             $table->text('note')->nullable();
-            $table->integer('account_id'); // From 2018_12_20_065900_add_account_id_to_expenses_table.php
-            $table->integer('user_id'); // From 2019_01_01_062708_add_user_id_to_expenses_table.php
+            $table->integer('account_id')->index(); // From 2018_12_20_065900_add_account_id_to_expenses_table.php
+            $table->integer('user_id')->index(); // From 2019_01_01_062708_add_user_id_to_expenses_table.php
             $table->integer('cash_register_id')->nullable(); // From 2020_10_18_124200_add_cash_register_id_to_expenses_table.php
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

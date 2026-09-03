@@ -16,10 +16,11 @@ class CreateDepositsTable extends Migration
         Schema::create('deposits', function (Blueprint $table) {
             $table->increments('id');
             $table->double('amount');
-            $table->integer('customer_id');
-            $table->integer('user_id');
+            $table->integer('customer_id')->index();
+            $table->integer('user_id')->index();
             $table->text('note')->nullable();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

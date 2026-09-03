@@ -20,13 +20,13 @@ class CreateSuppliersTable extends Migration
             $table->string('company_name');
             $table->string('vat_number')->nullable();
             $table->string('email');
-            $table->string('phone_number');
+            $table->string('phone_number')->index();
             $table->string('address');
             $table->string('city');
             $table->string('state')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->boolean('is_active')->nullable()->index();
             $table->timestamps();
         });
     }

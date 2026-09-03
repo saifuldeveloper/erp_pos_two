@@ -14,8 +14,8 @@ class CreateProductsTable extends Migration
             $table->string('code')->index();
             $table->string('type')->nullable();
             $table->string('barcode_symbology')->nullable();
-            $table->integer('brand_id')->nullable();
-            $table->integer('category_id');
+            $table->integer('brand_id')->nullable()->index();
+            $table->integer('category_id')->index();
             $table->integer('unit_id');
             $table->integer('purchase_unit_id');
             $table->integer('sale_unit_id');
@@ -30,9 +30,9 @@ class CreateProductsTable extends Migration
             $table->integer('tax_id')->nullable();
             $table->integer('tax_method')->nullable();
             $table->longText('image')->nullable();
-            $table->tinyInteger('featured')->nullable();
+            $table->tinyInteger('featured')->nullable()->index();
             $table->text('product_details')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->boolean('is_active')->nullable()->index();
             $table->string('file')->nullable(); // From 2018_07_22_130541_add_digital_to_products_table.php
             $table->string('product_list')->nullable(); // From 2018_11_19_094650_add_combo_to_products_table.php
             $table->string('qty_list')->nullable(); // From 2018_11_19_094650_add_combo_to_products_table.php

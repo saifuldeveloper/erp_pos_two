@@ -15,8 +15,8 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('warehouse_id');
+            $table->string('reference_no')->index();
+            $table->integer('warehouse_id')->index();
             $table->integer('supplier_id')->nullable()->index();
             $table->integer('item');
             $table->integer('total_qty');
@@ -29,8 +29,8 @@ class CreatePurchasesTable extends Migration
             $table->double('shipping_cost')->nullable();
             $table->double('grand_total');
             $table->double('paid_amount');
-            $table->integer('status');
-            $table->integer('payment_status');
+            $table->integer('status')->index();
+            $table->integer('payment_status')->index();
             $table->string('document')->nullable();
             $table->text('note')->nullable();
             $table->integer('user_id')->index(); // From 2018_06_21_101529_add_user_id_to_purchases_table.php
