@@ -34,6 +34,18 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     }
 
     /**
+     * Get all active categories.
+     *
+     * @return Collection
+     */
+    public function getActiveCategories(): Collection
+    {
+        return $this->model
+            ->where('is_active', 1)
+            ->get();
+    }
+
+    /**
      * Count total active categories with non-null parent_id.
      *
      * @return int

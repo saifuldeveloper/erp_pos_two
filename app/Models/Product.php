@@ -126,7 +126,7 @@ class Product extends Model
 
     public function purchases()
     {
-        return $this->hasMany(Purchase::class);
+        return $this->belongsToMany(Purchase::class, 'product_purchases');
     }
 
     public function productPurchases()

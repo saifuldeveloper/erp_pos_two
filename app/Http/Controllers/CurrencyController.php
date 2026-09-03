@@ -2,65 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CurrencyService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use App\Models\Currency;
-use App\Models\GeneralSetting;
-use Auth;
-use Cache;
 
 class CurrencyController extends Controller
 {
+    protected CurrencyService $currencyService;
+
+    public function __construct(CurrencyService $currencyService)
+    {
+        $this->currencyService = $currencyService;
+    }
+
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('currency')) {
-            $lims_currency_all = Currency::where('is_active', true)->get();
+        if ($role->hasPermissionTo('currency')) {
+            $lims_currency_all = $this->currencyService->getActiveCurrencies();
             return view('backend.currency.index', compact('lims_currency_all'));
         }
-        else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
-    }
 
-    public function create()
-    {
-        //
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
-        Currency::create($data);
-        cache()->forget('currency');
+        $this->currencyService->createCurrency($request->all());
+
         return redirect()->back()->with('message', 'Currency created successfully');
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
     }
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        if($data['exchange_rate'] == 1) {
-            GeneralSetting::latest()->first()->update(['currency' => $data['currency_id']]);
-        }
-        Currency::find($data['currency_id'])->update($data);
-        cache()->forget('currency');
+        $this->currencyService->updateCurrency($request->currency_id, $request->all());
+
         return redirect()->back()->with('message', 'Currency updated successfully');
     }
 
     public function destroy($id)
     {
-        Currency::find($id)->update(['is_active' => false]);
-        cache()->forget('currency');
+        $this->currencyService->deleteCurrency($id);
+
         return redirect()->back()->with('message', 'Currency deleted successfully');
     }
 }

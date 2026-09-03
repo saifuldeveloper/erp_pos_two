@@ -2,29 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Department;
+use App\Services\DepartmentService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Auth;
 
 class DepartmentController extends Controller
 {
+    protected DepartmentService $departmentService;
+
+    public function __construct(DepartmentService $departmentService)
+    {
+        $this->departmentService = $departmentService;
+    }
+
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('department-index') || $role->hasPermissionTo('department')) {
+        if ($role->hasPermissionTo('department-index') || $role->hasPermissionTo('department')) {
             $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
+            $all_permission = [];
+            foreach ($permissions as $permission) {
                 $all_permission[] = $permission->name;
-            if(empty($all_permission))
+            }
+            if (empty($all_permission)) {
                 $all_permission[] = 'dummy text';
-            $lims_department_all = Department::where('is_active', true)->get();
+            }
+
+            $lims_department_all = $this->departmentService->getActiveDepartments();
             return view('backend.department.index', compact('lims_department_all', 'all_permission'));
         }
-        else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
@@ -32,21 +43,20 @@ class DepartmentController extends Controller
         $this->validate($request, [
             'name' => [
                 'max:255',
-                    Rule::unique('departments')->where(function ($query) {
+                Rule::unique('departments')->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ],
         ]);
 
-        $data = $request->all();
-        $data['is_active'] = true;
-        Department::create($data);
+        $this->departmentService->createDepartment($request->all());
+
         return redirect('departments')->with('message', 'Department created successfully');
     }
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => [
                 'max:255',
                 Rule::unique('departments')->ignore($request->department_id)->where(function ($query) {
@@ -55,36 +65,33 @@ class DepartmentController extends Controller
             ],
         ]);
 
-        $data = $request->all();
-        $lims_department_data = Department::find($data['department_id']);
-        $lims_department_data->update($data);
+        $this->departmentService->updateDepartment($request->department_id, $request->all());
+
         return redirect('departments')->with('message', 'Department updated successfully');
     }
 
     public function deleteBySelection(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
-        if(!$role->hasPermissionTo('department-delete'))
+        if (!$role->hasPermissionTo('department-delete')) {
             return 'Sorry! You are not allowed to delete department';
-
-        $department_id = $request['departmentIdArray'];
-        foreach ($department_id as $id) {
-            $lims_department_data = Department::find($id);
-            $lims_department_data->is_active = false;
-            $lims_department_data->save();
         }
+
+        $department_ids = $request['departmentIdArray'] ?? [];
+        $this->departmentService->deleteMultipleDepartments($department_ids);
+
         return 'Department deleted successfully!';
     }
 
     public function destroy($id)
     {
         $role = Role::find(Auth::user()->role_id);
-        if(!$role->hasPermissionTo('department-delete'))
+        if (!$role->hasPermissionTo('department-delete')) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete department');
+        }
 
-        $lims_department_data = Department::find($id);
-        $lims_department_data->is_active = false;
-        $lims_department_data->save();
+        $this->departmentService->deleteDepartment($id);
+
         return redirect('departments')->with('message', 'Department deleted successfully');
     }
 }

@@ -31,6 +31,16 @@ class MoneyTransferService
     }
 
     /**
+     * Get all money transfers (alias).
+     *
+     * @return Collection
+     */
+    public function getAllMoneyTransfers(): Collection
+    {
+        return $this->moneyTransferRepository->getAllTransfers();
+    }
+
+    /**
      * Create a new money transfer.
      *
      * @param array $requestData

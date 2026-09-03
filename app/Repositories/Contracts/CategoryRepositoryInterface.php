@@ -15,6 +15,13 @@ interface CategoryRepositoryInterface extends BaseRepositoryInterface
     public function getActiveParentCategories(): Collection;
 
     /**
+     * Get all active categories.
+     *
+     * @return Collection
+     */
+    public function getActiveCategories(): Collection;
+
+    /**
      * Get categories query/data for DataTables with sorting, limit, and search.
      *
      * @param int $start

@@ -38,6 +38,16 @@ class AccountService
     }
 
     /**
+     * Get all accounts.
+     *
+     * @return Collection
+     */
+    public function getAllAccounts(): Collection
+    {
+        return $this->accountRepository->getActiveAccounts();
+    }
+
+    /**
      * Get account by ID.
      *
      * @param int|string $id

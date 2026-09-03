@@ -2,49 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\UserNotification;
-use App\Models\Account;
-use App\Models\Currency;
-use App\Models\Product_Warehouse;
 use App\Models\Product;
-use App\Models\ProductBatch;
-use App\Models\ProductPurchase;
-use App\Models\ProductVariant;
-use App\Models\Purchase;
 use App\Models\PurchaseProductReturn;
 use App\Models\ReturnPurchase;
 use App\Models\Supplier;
 use App\Models\Tax;
 use App\Models\Unit;
-use App\Models\Variant;
 use App\Models\Warehouse;
-use App\Traits\TenantInfo;
+use App\Repositories\Contracts\ReturnPurchaseRepositoryInterface;
+use App\Services\ReturnPurchaseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class ReturnPurchaseController extends Controller
 {
-    use TenantInfo;
+    protected ReturnPurchaseService $returnPurchaseService;
+    protected ReturnPurchaseRepositoryInterface $returnPurchaseRepository;
+
+    public function __construct(ReturnPurchaseService $returnPurchaseService, ReturnPurchaseRepositoryInterface $returnPurchaseRepository)
+    {
+        $this->returnPurchaseService = $returnPurchaseService;
+        $this->returnPurchaseRepository = $returnPurchaseRepository;
+    }
 
     public function index(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('returns-index')) {
             $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
+            $all_permission = [];
+            foreach ($permissions as $permission) {
                 $all_permission[] = $permission->name;
-            if (empty($all_permission))
+            }
+            if (empty($all_permission)) {
                 $all_permission[] = 'dummy text';
+            }
 
-            if ($request->input('warehouse_id'))
-                $warehouse_id = $request->input('warehouse_id');
-            else
-                $warehouse_id = 0;
+            $warehouse_id = $request->input('warehouse_id', 0);
 
             if ($request->input('starting_date')) {
                 $starting_date = $request->input('starting_date');
@@ -56,344 +51,82 @@ class ReturnPurchaseController extends Controller
 
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
             return view('backend.return_purchase.index', compact('starting_date', 'ending_date', 'warehouse_id', 'all_permission', 'lims_warehouse_list'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function returnData(Request $request)
     {
-        $columns = array(
-            1 => 'created_at',
-            2 => 'reference_no',
-        );
+        $allPermissions = $request->input('all_permission', []);
+        $jsonData = $this->returnPurchaseService->getReturnDataTable($request, $allPermissions);
 
-        $warehouse_id = $request->input('warehouse_id');
-
-        if (Auth::user()->role_id > 2 && config('staff_access') == 'own')
-            $totalData = ReturnPurchase::where('user_id', Auth::id())
-                ->whereDate('created_at', '>=', $request->input('starting_date'))
-                ->whereDate('created_at', '<=', $request->input('ending_date'))
-                ->count();
-        elseif ($warehouse_id != 0)
-            $totalData = ReturnPurchase::where('warehouse_id', $warehouse_id)
-                ->whereDate('created_at', '>=', $request->input('starting_date'))
-                ->whereDate('created_at', '<=', $request->input('ending_date'))
-                ->count();
-        else
-            $totalData = ReturnPurchase::whereDate('created_at', '>=', $request->input('starting_date'))
-                ->whereDate('created_at', '<=', $request->input('ending_date'))
-                ->count();
-
-        $totalFiltered = $totalData;
-        if ($request->input('length') != -1)
-            $limit = $request->input('length');
-        else
-            $limit = $totalData;
-        $start = $request->input('start');
-        $order = 'return_purchases.' . $columns[$request->input('order.0.column')];
-        $dir = $request->input('order.0.dir');
-        if (empty($request->input('search.value'))) {
-            $q = ReturnPurchase::with('supplier', 'warehouse', 'user')
-                ->whereDate('created_at', '>=', $request->input('starting_date'))
-                ->whereDate('created_at', '<=', $request->input('ending_date'))
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir);
-            if (Auth::user()->role_id > 2 && config('staff_access') == 'own')
-                $q = $q->where('user_id', Auth::id());
-            elseif ($warehouse_id != 0)
-                $q = $q->where('warehouse_id', $warehouse_id);
-            $returnss = $q->get();
-        } else {
-            $search = $request->input('search.value');
-            $q = ReturnPurchase::leftJoin('suppliers', 'return_purchases.supplier_id', '=', 'suppliers.id')
-                ->whereDate('return_purchases.created_at', '=', date('Y-m-d', strtotime(str_replace('/', '-', $search))))
-                ->offset($start)
-                ->limit($limit)
-                ->orderBy($order, $dir);
-            if (Auth::user()->role_id > 2 && config('staff_access') == 'own') {
-                $returnss = $q->select('return_purchases.*')
-                    ->with('supplier', 'warehouse', 'user')
-                    ->where('return_purchases.user_id', Auth::id())
-                    ->orwhere([
-                        ['return_purchases.reference_no', 'LIKE', "%{$search}%"],
-                        ['return_purchases.user_id', Auth::id()]
-                    ])
-                    ->orwhere([
-                        ['suppliers.name', 'LIKE', "%{$search}%"],
-                        ['return_purchases.user_id', Auth::id()]
-                    ])
-                    ->get();
-
-                $totalFiltered = $q->where('return_purchases.user_id', Auth::id())
-                    ->orwhere([
-                        ['return_purchases.reference_no', 'LIKE', "%{$search}%"],
-                        ['return_purchases.user_id', Auth::id()]
-                    ])
-                    ->orwhere([
-                        ['suppliers.name', 'LIKE', "%{$search}%"],
-                        ['return_purchases.user_id', Auth::id()]
-                    ])
-                    ->count();
-            } else {
-                $returnss = $q->select('return_purchases.*')
-                    ->with('supplier', 'warehouse', 'user')
-                    ->orwhere('return_purchases.reference_no', 'LIKE', "%{$search}%")
-                    ->orwhere('suppliers.name', 'LIKE', "%{$search}%")
-                    ->get();
-
-                $totalFiltered = $q->orwhere('return_purchases.reference_no', 'LIKE', "%{$search}%")
-                    ->orwhere('suppliers.name', 'LIKE', "%{$search}%")
-                    ->count();
-            }
-        }
-        $data = array();
-        if (!empty($returnss)) {
-            $return_ids = $returnss->pluck('id')->toArray();
-
-            $saleTotals = DB::table('purchase_product_return as ppr')
-                ->join('products as p', 'ppr.product_id', '=', 'p.id')
-                ->leftJoin('product_variants as pv', function ($join) {
-                    $join->on('ppr.product_id', '=', 'pv.product_id')
-                        ->on('ppr.variant_id', '=', 'pv.variant_id');
-                })
-                ->whereIn('ppr.return_id', $return_ids)
-                ->selectRaw('ppr.return_id, SUM(ppr.qty * (COALESCE(p.price, 0) + COALESCE(pv.additional_price, 0))) as total')
-                ->groupBy('ppr.return_id')
-                ->pluck('total', 'return_id');
-
-            $returnQties = DB::table('purchase_product_return')
-                ->whereIn('return_id', $return_ids)
-                ->groupBy('return_id')
-                ->pluck(DB::raw('SUM(qty)'), 'return_id');
-
-            foreach ($returnss as $key => $returns) {
-                $sale_total = $saleTotals[$returns->id] ?? 0;
-                $nestedData['id'] = $returns->id;
-                $nestedData['key'] = $key;
-                // $nestedData['date'] = date(config('date_format'), strtotime($returns->created_at->toDateString()));
-                $nestedData['date'] = date(config('date_format') . ' (h:i A)', strtotime($returns->created_at));
-                $nestedData['reference_no'] = $returns->reference_no;
-                $nestedData['warehouse'] = $returns->warehouse->name;
-                if ($returns->purchase_id) {
-                    $purchase_data = Purchase::select('reference_no')->find($returns->purchase_id);
-                    $nestedData['purchase_reference'] = $purchase_data->reference_no;
-                } else
-                    $nestedData['purchase_reference'] = 'N/A';
-                if ($returns->supplier) {
-                    $supplier = $returns->supplier;
-                    $nestedData['supplier'] = $returns->supplier->name;
-                } else {
-                    $supplier = new Supplier;
-                    $nestedData['supplier'] = 'N/A';
-                }
-                $nestedData['qty'] = number_format($returnQties[$returns->id] ?? 0, config('decimal'));
-                $nestedData['sale_total'] = number_format($sale_total, config('decimal'));
-                $nestedData['grand_total'] = number_format($returns->grand_total, config('decimal'));
-                $nestedData['options'] = '<div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans("file.action") . '
-                              <span class="caret"></span>
-                              <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                <li>
-                                    <button type="button" class="btn btn-link view"><i class="fa fa-eye"></i> ' . trans('file.View') . '</button>
-                                </li>';
-                if (in_array("returns-edit", $request['all_permission'])) {
-                    $nestedData['options'] .= '<li>
-                        <a href="' . route('return-purchase.edit', $returns->id) . '" class="btn btn-link"><i class="dripicons-document-edit"></i> ' . trans('file.edit') . '</a>
-                        </li>';
-                }
-                if (in_array("returns-delete", $request['all_permission']))
-                    $nestedData['options'] .= \Form::open(["route" => ["return-purchase.destroy", $returns->id], "method" => "DELETE"]) . '
-                            <li>
-                              <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> ' . trans("file.delete") . '</button>
-                            </li>' . \Form::close() . '
-                        </ul>
-                    </div>';
-                else
-                    $nestedData['options'] .= '</ul></div>';
-                // data for purchase details by one click
-
-                if ($returns->currency_id)
-                    $currency_code = Currency::select('code')->find($returns->currency_id)->code;
-                else
-                    $currency_code = 'N/A';
-
-                $nestedData['return'] = array(
-                    '[ "' . date(config('date_format'), strtotime($returns->created_at->toDateString())) . '"',
-                    ' "' . $returns->reference_no . '"',
-                    ' "' . $returns->warehouse->name . '"',
-                    ' "' . $returns->warehouse->phone . '"',
-                    ' "' . $returns->warehouse->address . '"',
-                    ' "' . $supplier->name . '"',
-                    ' "' . $supplier->company_name . '"',
-                    ' "' . $supplier->email . '"',
-                    ' "' . $supplier->phone_number . '"',
-                    ' "' . $supplier->address . '"',
-                    ' "' . $supplier->city . '"',
-                    ' "' . $returns->id . '"',
-                    ' "' . $returns->total_tax . '"',
-                    ' "' . $returns->total_discount . '"',
-                    ' "' . $returns->total_cost . '"',
-                    ' "' . $returns->order_tax . '"',
-                    ' "' . $returns->order_tax_rate . '"',
-                    ' "' . $returns->grand_total . '"',
-                    ' "' . preg_replace('/[\n\r]/', "<br>", $returns->return_note) . '"',
-                    ' "' . preg_replace('/[\n\r]/', "<br>", $returns->staff_note) . '"',
-                    ' "' . @$returns->user->name . '"',
-                    ' "' . @$returns->user->email . '"',
-                    ' "' . $nestedData['purchase_reference'] . '"',
-                    ' "' . $returns->document . '"',
-                    ' "' . $currency_code . '"',
-                    ' "' . $returns->exchange_rate . '"]'
-                );
-                $data[] = $nestedData;
-            }
-        }
-        $json_data = array(
-            "draw" => intval($request->input('draw')),
-            "recordsTotal" => intval($totalData),
-            "recordsFiltered" => intval($totalFiltered),
-            "data" => $data
-        );
-
-        echo json_encode($json_data);
+        return response()->json($jsonData);
     }
 
     public function create(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('purchase-return-add')) {
-            $lims_purchase_data = Purchase::select('id')->where('reference_no', $request->input('reference_no'))->first();
-            if (!$lims_purchase_data)
-                return redirect()->back()->with('not_permitted', 'This reference no does not exist!');
-            $lims_product_purchase_data = ProductPurchase::where('purchase_id', $lims_purchase_data->id)->get();
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_tax_list = Tax::where('is_active', true)->get();
-            $lims_account_list = Account::where('is_active', true)->get();
-            return view('backend.return_purchase.create', compact('lims_warehouse_list', 'lims_tax_list', 'lims_account_list', 'lims_purchase_data', 'lims_product_purchase_data'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        if ($role->hasPermissionTo('returns-add')) {
+            $formData = $this->returnPurchaseService->getCreateFormData();
+            return view('backend.return_purchase.create', $formData);
+        }
+
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function getProduct($id)
+    public function getSupplier($id)
     {
-        //retrieve data of product without variant
-        $lims_product_warehouse_data = DB::table('products')
-            ->join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
-            ->select('products.code', 'products.name', 'products.type', 'product_warehouse.qty')
-            ->where([
-                ['product_warehouse.warehouse_id', $id],
-                ['products.is_active', true]
-            ])
-            ->whereNull('product_warehouse.variant_id')
-            ->whereNull('product_warehouse.product_batch_id')
-            ->get();
-
-        config()->set('database.connections.mysql.strict', false);
-        \DB::reconnect(); //important as the existing connection if any would be in strict mode
-
-        //retrieve data of product with batch
-        $lims_product_with_batch_warehouse_data = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
-            ->where([
-                ['products.is_active', true],
-                ['product_warehouse.warehouse_id', $id],
-            ])
-            ->whereNull('product_warehouse.variant_id')
-            ->whereNotNull('product_warehouse.product_batch_id')
-            ->select('product_warehouse.*')
-            ->groupBy('product_warehouse.product_id')
-            ->get();
-
-        //now changing back the strict ON
-        config()->set('database.connections.mysql.strict', true);
-        \DB::reconnect();
-
-        //retrieve data of product with variant
-        $lims_product_with_variant_warehouse_data = DB::table('products')
-            ->join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
-            ->select('products.id', 'products.code', 'products.name', 'products.type', 'product_warehouse.qty', 'product_warehouse.variant_id')
-            ->where([
-                ['product_warehouse.warehouse_id', $id],
-                ['products.is_active', true]
-            ])
-            ->whereNotNull('product_warehouse.variant_id')
-            ->get();
-
-        $product_code = [];
-        $product_name = [];
-        $product_qty = [];
-        $is_batch = [];
-        $product_data = [];
-        foreach ($lims_product_warehouse_data as $product_warehouse) {
-            $product_qty[] = $product_warehouse->qty;
-            $product_code[] = $product_warehouse->code;
-            $product_name[] = $product_warehouse->name;
-            $product_type[] = $product_warehouse->type;
-            $is_batch[] = null;
-        }
-        //product with batches
-        foreach ($lims_product_with_batch_warehouse_data as $product_warehouse) {
-            $product_qty[] = $product_warehouse->qty;
-            $lims_product_data = Product::select('code', 'name', 'type', 'is_batch')->find($product_warehouse->product_id);
-            $product_code[] = $lims_product_data->code;
-            $product_name[] = htmlspecialchars($lims_product_data->name);
-            $product_type[] = $lims_product_data->type;
-            $product_batch_data = ProductBatch::select('id', 'batch_no')->find($product_warehouse->product_batch_id);
-            $is_batch[] = $lims_product_data->is_batch;
-        }
-
-        foreach ($lims_product_with_variant_warehouse_data as $product_warehouse) {
-            $lims_product_variant_data = ProductVariant::select('item_code')->FindExactProduct($product_warehouse->id, $product_warehouse->variant_id)->first();
-            $product_qty[] = $product_warehouse->qty;
-            $product_code[] = $lims_product_variant_data->item_code;
-            $product_name[] = $product_warehouse->name;
-            $product_type[] = $product_warehouse->type;
-            $is_batch[] = null;
-        }
-
-        $product_data = [$product_code, $product_name, $product_qty, $product_type, $is_batch];
-        return $product_data;
+        return Supplier::find($id);
     }
 
     public function limsProductSearch(Request $request)
     {
         $product_code = explode("(", $request['data']);
         $product_code[0] = rtrim($product_code[0], " ");
-        $lims_product_data = Product::where('code', $product_code[0])->first();
-        $product_variant_id = null;
+
+        $lims_product_data = Product::where([
+            ['code', $product_code[0]],
+            ['is_active', true]
+        ])->first();
+
         if (!$lims_product_data) {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-                ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.item_code', 'product_variants.additional_cost')
-                ->where('product_variants.item_code', $product_code[0])
-                ->first();
-            $lims_product_data->code = $lims_product_data->item_code;
-            $lims_product_data->cost += $lims_product_data->additional_cost;
-            $product_variant_id = $lims_product_data->product_variant_id;
+                ->select('products.*', 'product_variants.item_code', 'product_variants.additional_cost', 'product_variants.variant_id')
+                ->where([
+                    ['product_variants.item_code', $product_code[0]],
+                    ['products.is_active', true]
+                ])->first();
         }
 
+        $product = [];
         $product[] = $lims_product_data->name;
-        $product[] = $lims_product_data->code;
-        $product[] = $lims_product_data->cost;
+        if ($lims_product_data->is_variant) {
+            $product[] = $lims_product_data->item_code;
+            $product[] = $lims_product_data->cost + $lims_product_data->additional_cost;
+        } else {
+            $product[] = $lims_product_data->code;
+            $product[] = $lims_product_data->cost;
+        }
 
         if ($lims_product_data->tax_id) {
-            $lims_tax_data = Tax::find($lims_product_data->tax_id);
-            $product[] = $lims_tax_data->rate;
-            $product[] = $lims_tax_data->name;
+            $tax = Tax::find($lims_product_data->tax_id);
+            $product[] = $tax ? $tax->rate : 0;
+            $product[] = $tax ? $tax->name : 'No Tax';
         } else {
             $product[] = 0;
             $product[] = 'No Tax';
         }
+
         $product[] = $lims_product_data->tax_method;
 
         $units = Unit::where("base_unit", $lims_product_data->unit_id)
             ->orWhere('id', $lims_product_data->unit_id)
             ->get();
 
-        $unit_name = array();
-        $unit_operator = array();
-        $unit_operation_value = array();
+        $unit_name = [];
+        $unit_operator = [];
+        $unit_operation_value = [];
         foreach ($units as $unit) {
             if ($lims_product_data->purchase_unit_id == $unit->id) {
                 array_unshift($unit_name, $unit->unit_name);
@@ -410,1136 +143,65 @@ class ReturnPurchaseController extends Controller
         $product[] = implode(",", $unit_operator) . ',';
         $product[] = implode(",", $unit_operation_value) . ',';
         $product[] = $lims_product_data->id;
-        $product[] = $product_variant_id;
+        $product[] = $lims_product_data->is_variant ? $lims_product_data->variant_id : null;
+        $product[] = $lims_product_data->is_batch;
         $product[] = $lims_product_data->is_imei;
+
         return $product;
     }
 
-    // public function store(Request $request)
-    // {
-    //     $data = $request->except('document');
-    //     $data['reference_no'] = 'prr-' . date("Ymd") . '-'. date("his");
-    //     $data['user_id'] = Auth::id();
-    //     $lims_purchase_data = Purchase::select('warehouse_id', 'supplier_id', 'currency_id', 'exchange_rate')->find($data['purchase_id']);
-    //     $data['user_id'] = Auth::id();
-    //     $data['account_id'] = 1; 
-    //     $data['supplier_id'] = $lims_purchase_data->supplier_id;
-    //     $data['warehouse_id'] = $lims_purchase_data->warehouse_id;
-    //     $data['currency_id'] = $lims_purchase_data->currency_id;
-    //     $data['exchange_rate'] = $lims_purchase_data->exchange_rate;
-    //     $document = $request->document;
-    //     if ($document) {
-    //         $v = Validator::make(
-    //             [
-    //                 'extension' => strtolower($request->document->getClientOriginalExtension()),
-    //             ],
-    //             [
-    //                 'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
-    //             ]
-    //         );
-    //         if ($v->fails())
-    //             return redirect()->back()->withErrors($v->errors());
-
-    //         $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
-    //         $documentName = date("Ymdhis");
-    //         if(!config('database.connections.saas_landlord')) {
-    //             $documentName = $documentName . '.' . $ext;
-    //             $document->move('public/documents/purchase_return', $documentName);
-    //         }
-    //         else {
-    //             $documentName = $this->getTenantId() . '_' . $documentName . '.' . $ext;
-    //             $document->move('public/documents/purchase_return', $documentName);
-    //         }
-    //         $data['document'] = $documentName;
-    //     }
-
-    //     $lims_return_data = ReturnPurchase::create($data);
-    //     $mail_data['email'] = '';
-    //     if($data['supplier_id']) {
-    //         $lims_supplier_data = Supplier::find($data['supplier_id']);
-    //         //collecting male data
-    //         $mail_data['email'] = $lims_supplier_data->email;
-    //         $mail_data['reference_no'] = $lims_return_data->reference_no;
-    //         $mail_data['total_qty'] = $lims_return_data->total_qty;
-    //         $mail_data['total_price'] = $lims_return_data->total_price;
-    //         $mail_data['order_tax'] = $lims_return_data->order_tax;
-    //         $mail_data['order_tax_rate'] = $lims_return_data->order_tax_rate;
-    //         $mail_data['grand_total'] = $lims_return_data->grand_total;
-    //     }
-
-    //     $product_id = $data['is_return'];
-    //     $imei_number = $data['imei_number'];
-    //     $product_batch_id = $data['product_batch_id'] ?? null;
-    //     $product_code = $data['product_code'];
-    //     $qty = $data['qty'];
-    //     $purchase_unit = $data['purchase_unit'];
-    //     $net_unit_cost = $data['net_unit_cost'];
-    //     $discount = $data['discount'];
-    //     $tax_rate = $data['tax_rate'];
-    //     $tax = $data['tax'];
-    //     $total = $data['subtotal'];
-
-    //     foreach ($product_id as $check=>$pro_id) {
-    //         $key = array_search($pro_id, $data['product_id']);
-    //         //return $key;
-    //         $lims_product_data = Product::find($pro_id);
-    //         $variant_id = null;
-    //         if($purchase_unit[$key] != 'n/a') {
-    //             $lims_purchase_unit_data  = Unit::where('unit_name', $purchase_unit[$key])->first();
-    //             $purchase_unit_id = $lims_purchase_unit_data->id;
-    //             if($lims_purchase_unit_data->operator == '*')
-    //                 $quantity = $qty[$check] * $lims_purchase_unit_data->operation_value;
-    //             elseif($lims_purchase_unit_data->operator == '/')
-    //                 $quantity = $qty[$check] / $lims_purchase_unit_data->operation_value;
-
-    //             if($lims_product_data->is_variant) {
-    //                 $lims_product_variant_data = ProductVariant::
-    //                     select('id', 'variant_id', 'qty')
-    //                     ->FindExactProductWithCode($pro_id, $product_code[$check])
-    //                     ->first();
-    //                 $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $lims_product_variant_data->variant_id, $data['warehouse_id'])->first();
-    //                 $lims_product_variant_data->qty -= $quantity;
-    //                 $lims_product_variant_data->save();
-    //                 $variant_data = Variant::find($lims_product_variant_data->variant_id);
-    //                 $variant_id = $variant_data->id;
-    //             }
-    //             elseif($product_batch_id[$key]) {
-    //                 $lims_product_warehouse_data = Product_Warehouse::where([
-    //                     ['product_batch_id', $product_batch_id[$key] ],
-    //                     ['warehouse_id', $data['warehouse_id'] ]
-    //                 ])->first();
-    //                 $lims_product_batch_data = ProductBatch::find($product_batch_id[$key]);
-    //                 //increase product batch quantity
-    //                 $lims_product_batch_data->qty -= $quantity;
-    //                 $lims_product_batch_data->save();
-    //             }
-    //             else
-    //                 $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $data['warehouse_id'])->first();
-    //             $lims_product_data->qty -=  $quantity;
-    //             $lims_product_warehouse_data->qty -= $quantity;
-
-    //             $lims_product_data->save();
-    //             $lims_product_warehouse_data->save();
-    //         }
-    //         else {
-    //             if($lims_product_data->type == 'combo') {
-    //                 $product_list = explode(",", $lims_product_data->product_list);
-    //                 $variant_list = explode(",", $lims_product_data->variant_list);
-    //                 $qty_list = explode(",", $lims_product_data->qty_list);
-    //                 $price_list = explode(",", $lims_product_data->price_list);
-
-    //                 foreach ($product_list as $index => $child_id) {
-    //                     $child_data = Product::find($child_id);
-    //                     if($variant_list[$index]) {
-    //                         $child_product_variant_data = ProductVariant::where([
-    //                             ['product_id', $child_id],
-    //                             ['variant_id', $variant_list[$index]]
-    //                         ])->first();
-
-    //                         $child_warehouse_data = Product_Warehouse::where([
-    //                             ['product_id', $child_id],
-    //                             ['variant_id', $variant_list[$index]],
-    //                             ['warehouse_id', $data['warehouse_id'] ],
-    //                         ])->first();
-
-    //                         $child_product_variant_data->qty += $qty[$key] * $qty_list[$index];
-    //                         $child_product_variant_data->save();
-    //                     }
-    //                     else {
-    //                         $child_warehouse_data = Product_Warehouse::where([
-    //                             ['product_id', $child_id],
-    //                             ['warehouse_id', $data['warehouse_id'] ],
-    //                         ])->first();
-    //                     }
-
-    //                     $child_data->qty -= $qty[$key] * $qty_list[$index];
-    //                     $child_warehouse_data->qty -= $qty[$key] * $qty_list[$index];
-
-    //                     $child_data->save();
-    //                     $child_warehouse_data->save();
-    //                 }
-    //             }
-    //             $purchase_unit_id = 0;
-    //         }
-    //         //add imei number if available
-    //         if($imei_number[$key]) {
-    //             if($lims_product_warehouse_data->imei_number)
-    //                 $lims_product_warehouse_data->imei_number .= ',' . $imei_number[$key];
-    //              else
-    //                 $lims_product_warehouse_data->imei_number = $imei_number[$key];
-    //             $lims_product_warehouse_data->save();
-    //         }
-    //         if($lims_product_data->is_variant)
-    //             $mail_data['products'][$key] = $lims_product_data->name . ' [' . $variant_data->name . ']';
-    //         else
-    //             $mail_data['products'][$key] = $lims_product_data->name;
-
-    //         if($purchase_unit_id)
-    //             $mail_data['unit'][$key] = $lims_purchase_unit_data->unit_code;
-    //         else
-    //             $mail_data['unit'][$key] = '';
-
-    //         $mail_data['qty'][$key] = $qty[$key];
-    //         $mail_data['total'][$key] = $total[$key];
-    //         PurchaseProductReturn::insert(
-    //             ['return_id' => $lims_return_data->id, 'product_id' => $pro_id, 'product_batch_id' => $product_batch_id[$key], 'variant_id' => $variant_id, 'imei_number' => $imei_number[$key], 'qty' => $qty[$key], 'purchase_unit_id' => $purchase_unit_id, 'net_unit_cost' => $net_unit_cost[$key], 'discount' => $discount[$key], 'tax_rate' => $tax_rate[$key], 'tax' => $tax[$key], 'total' => $total[$key], 'created_at' => \Carbon\Carbon::now(),  'updated_at' => \Carbon\Carbon::now()]
-    //         );
-    //     }
-    //     $message = 'Return created successfully';
-    //     // if($mail_data['email']){
-    //     //     try{
-    //     //         Mail::send( 'mail.return_details', $mail_data, function( $message ) use ($mail_data)
-    //     //         {
-    //     //             $message->to( $mail_data['email'] )->subject( 'Return Details' );
-    //     //         });
-    //     //     }
-    //     //     catch(\Exception $e){
-    //     //         $message = 'Return created successfully. Please setup your <a href="setting/mail_setting">mail setting</a> to send mail.';
-    //     //     }
-    //     // }
-    //     return redirect('return-purchase')->with('message', $message);
-    // }
-
-
-
-    //    public function store(Request $request)
-// {
-
-    //     DB::beginTransaction();
-//     try {
-//         $data = $request->except('document');
-//         $data['reference_no'] = 'prr-' . date("Ymd") . '-' . date("his");
-//         $data['user_id'] = Auth::id();
-
-    //         // 🔹 Get related purchase info
-//         $purchase = Purchase::select('warehouse_id', 'supplier_id', 'currency_id', 'exchange_rate')
-//             ->findOrFail($data['purchase_id']);
-
-    //         $data['account_id'] = $data['account_id'] ?? 1;
-//         $data['supplier_id'] = $purchase->supplier_id;
-//         $data['warehouse_id'] = $purchase->warehouse_id;
-//         $data['currency_id'] = $purchase->currency_id;
-//         $data['exchange_rate'] = $purchase->exchange_rate;
-
-    //         // 🔹 Document upload
-//         if ($request->hasFile('document')) {
-//             $v = Validator::make(
-//                 ['extension' => strtolower($request->document->getClientOriginalExtension())],
-//                 ['extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt']
-//             );
-//             if ($v->fails()) return back()->withErrors($v->errors());
-
-    //             $ext = $request->document->getClientOriginalExtension();
-//             $documentName = (config('database.connections.saas_landlord')
-//                 ? $this->getTenantId() . '_'
-//                 : '') . date("Ymdhis") . '.' . $ext;
-
-    //             $request->document->move('public/documents/purchase_return', $documentName);
-//             $data['document'] = $documentName;
-//         }
-
-    //         // 🔹 Create return
-//         $return = ReturnPurchase::create($data);
-
-    //         // 🔹 Extract product arrays
-//         $product_ids = $data['is_return'];
-//         $imei_numbers = $data['imei_number'] ?? [];
-//         $product_batch_ids = $data['product_batch_id'] ?? [];
-//         $product_codes = $data['product_code'];
-//         $qtys = $data['qty'];
-//         $purchase_units = $data['purchase_unit'];
-//         $net_unit_costs = $data['net_unit_cost'];
-//         $discounts = $data['discount'];
-//         $tax_rates = $data['tax_rate'];
-//         $taxes = $data['tax'];
-//         $totals = $data['subtotal'];
-
-    //         foreach ($product_ids as $key => $pro_id) {
-//             $product = Product::find($pro_id);
-//             if (!$product) continue; // skip if product missing
-
-    //             $variant_id = null;
-//             $purchase_unit_id = 0;
-//             $quantity = $qtys[$key];
-
-    //             // skip if invalid qty
-//             if ($quantity <= 0) continue;
-
-    //             // 🔹 Handle unit conversion
-//             if ($purchase_units[$key] != 'n/a') {
-//                 $unit = Unit::where('unit_name', $purchase_units[$key])->first();
-//                 if ($unit) {
-//                     $purchase_unit_id = $unit->id;
-//                     $quantity = ($unit->operator == '*')
-//                         ? $qtys[$key] * $unit->operation_value
-//                         : $qtys[$key] / $unit->operation_value;
-//                 }
-//             }
-
-    //             $warehouse_product = null;
-//             $skipProduct = false;
-
-    //             // 🔹 Variant Product
-//             if ($product->is_variant) {
-//                 $product_variant = ProductVariant::select('id', 'variant_id', 'qty')
-//                     ->FindExactProductWithCode($pro_id, $product_codes[$key])
-//                     ->first();
-
-    //                 if (!$product_variant) continue; // skip if no variant
-
-    //                 $variant = Variant::find($product_variant->variant_id);
-//                 $variant_id = $variant->id ?? null;
-
-    //                 $warehouse_product = Product_Warehouse::FindProductWithVariant(
-//                     $pro_id,
-//                     $product_variant->variant_id,
-//                     $data['warehouse_id']
-//                 )->first();
-
-    //                 // check available qty
-//                 if ($quantity > $product_variant->qty || $product_variant->qty <= 0) {
-//                     $skipProduct = true;
-//                 } else {
-//                     $product_variant->qty -= $quantity;
-//                     $product_variant->save();
-//                 }
-//             }
-//             // 🔹 Batch Product
-//             elseif (!empty($product_batch_ids[$key])) {
-//                 $warehouse_product = Product_Warehouse::where([
-//                     ['product_batch_id', $product_batch_ids[$key]],
-//                     ['warehouse_id', $data['warehouse_id']]
-//                 ])->first();
-
-    //                 $batch = ProductBatch::find($product_batch_ids[$key]);
-//                 if ($batch) {
-//                     if ($quantity > $batch->qty || $batch->qty <= 0) {
-//                         $skipProduct = true;
-//                     } else {
-//                         $batch->qty -= $quantity;
-//                         $batch->save();
-//                     }
-//                 }
-//             }
-//             // 🔹 Normal Product
-//             else {
-//                 $warehouse_product = Product_Warehouse::FindProductWithoutVariant(
-//                     $pro_id,
-//                     $data['warehouse_id']
-//                 )->first();
-
-    //                 if (!$warehouse_product || $warehouse_product->qty <= 0 || $quantity > $warehouse_product->qty) {
-//                     $skipProduct = true;
-//                 }
-//             }
-
-    //             // skip this product if no enough qty
-//             if ($skipProduct) continue;
-
-    //             // 🔸 Update main product qty
-//             $product->qty -= $quantity;
-//             if ($warehouse_product) {
-//                 $warehouse_product->qty -= $quantity;
-//                 $warehouse_product->save();
-//             }
-//             $product->save();
-
-    //             // 🔸 Handle IMEI
-//             if (!empty($imei_numbers[$key] ?? null) && isset($warehouse_product)) {
-//                 $warehouse_product->imei_number = trim($warehouse_product->imei_number . ',' . $imei_numbers[$key], ',');
-//                 $warehouse_product->save();
-//             }
-
-    //             // 🔸 Insert Return Product Record
-//             PurchaseProductReturn::insert([
-//                 'return_id' => $return->id,
-//                 'product_id' => $pro_id,
-//                 'product_batch_id' => $product_batch_ids[$key] ?? null,
-//                 'variant_id' => $variant_id,
-//                 'imei_number' => $imei_numbers[$key] ?? null,
-//                 'qty' => $qtys[$key],
-//                 'purchase_unit_id' => $purchase_unit_id,
-//                 'net_unit_cost' => $net_unit_costs[$key],
-//                 'discount' => $discounts[$key],
-//                 'tax_rate' => $tax_rates[$key],
-//                 'tax' => $taxes[$key],
-//                 'total' => $totals[$key],
-//                 'created_at' => now(),
-//                 'updated_at' => now(),
-//             ]);
-//         }
-//         $return =ReturnPurchase::find($return->id);
-//         $return->item =
-//         $return->total_qty =
-//         $return->total_discount=
-//         $rerurn->total_tax =
-//         $return->total_cost
-//         $return->grand_total =
-//         $reurtn->save();
-
-    //         DB::commit();
-//         return redirect()->route('return-purchase.index')->with('message', 'Purchase Return created successfully (unavailable items skipped).');
-
-    //     } catch (\Exception $e) {
-//         DB::rollBack();
-//         return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-//     }
-// }
-
+    public function productReturnData($id)
+    {
+        return $this->returnPurchaseRepository->getProductReturnDataByReturnId($id);
+    }
 
     public function store(Request $request)
     {
-        DB::beginTransaction();
+        $this->returnPurchaseService->createReturnPurchase($request->all(), $request->file('document'));
 
-        try {
-            $data = $request->except('document');
-            $data['reference_no'] = 'prr-' . date("Ymd") . '-' . date("his");
-            $data['user_id'] = Auth::id();
-
-            // 🔹 Get related purchase info
-            $purchase = Purchase::select('warehouse_id', 'supplier_id', 'currency_id', 'exchange_rate')
-                ->findOrFail($data['purchase_id']);
-
-            $data['account_id'] = $data['account_id'] ?? 1;
-            $data['supplier_id'] = $purchase->supplier_id;
-            $data['warehouse_id'] = $purchase->warehouse_id;
-            $data['currency_id'] = $purchase->currency_id;
-            $data['exchange_rate'] = $purchase->exchange_rate;
-
-            // 🔹 Document upload
-            if ($request->hasFile('document')) {
-                $v = Validator::make(
-                    ['extension' => strtolower($request->document->getClientOriginalExtension())],
-                    ['extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt']
-                );
-                if ($v->fails())
-                    return back()->withErrors($v->errors());
-
-                $ext = $request->document->getClientOriginalExtension();
-                $documentName = (config('database.connections.saas_landlord')
-                    ? $this->getTenantId() . '_'
-                    : '') . date("Ymdhis") . '.' . $ext;
-
-                $request->document->move('public/documents/purchase_return', $documentName);
-                $data['document'] = $documentName;
-            }
-
-            // 🔹 Extract product arrays
-            $product_ids = $data['is_return'];
-            $imei_numbers = $data['imei_number'] ?? [];
-            $product_batch_ids = $data['product_batch_id'] ?? [];
-            $product_codes = $data['product_code'];
-            $qtys = $data['qty'];
-            $purchase_units = $data['purchase_unit'];
-            $net_unit_costs = $data['net_unit_cost'];
-            $discounts = $data['discount'];
-            $tax_rates = $data['tax_rate'];
-            $taxes = $data['tax'];
-            $totals = $data['subtotal'];
-
-            // 🔹 Stock Validation (to prevent negative stock)
-            foreach ($product_ids as $key => $pro_id) {
-                $quantity = $qtys[$key];
-                if ($quantity <= 0)
-                    continue;
-
-                if ($purchase_units[$key] != 'n/a') {
-                    $unit = Unit::where('unit_name', $purchase_units[$key])->first();
-                    if ($unit) {
-                        $quantity = ($unit->operator == '*')
-                            ? $qtys[$key] * $unit->operation_value
-                            : $qtys[$key] / $unit->operation_value;
-                    }
-                }
-
-                $product = Product::find($pro_id);
-
-                if ($product->is_variant) {
-                    $product_variant = ProductVariant::select('id', 'variant_id', 'qty')
-                        ->FindExactProductWithCode($pro_id, $product_codes[$key])
-                        ->first();
-
-                    if (!$product_variant || $product_variant->qty < $quantity) {
-                        throw new \Exception("Cannot create purchase return. Product variant '{$product->name}' would have negative stock (Variant Stock: " . ($product_variant ? $product_variant->qty : 0) . ", Return: {$quantity}).");
-                    }
-
-                    $warehouse_product = Product_Warehouse::FindProductWithVariant(
-                        $pro_id,
-                        $product_variant->variant_id,
-                        $data['warehouse_id']
-                    )->first();
-
-                    if (!$warehouse_product || $warehouse_product->qty < $quantity) {
-                        throw new \Exception("Cannot create purchase return. Product variant '{$product->name}' would have negative stock in warehouse (Warehouse Stock: " . ($warehouse_product ? $warehouse_product->qty : 0) . ", Return: {$quantity}).");
-                    }
-                } elseif (!empty($product_batch_ids[$key])) {
-                    $batch = ProductBatch::find($product_batch_ids[$key]);
-                    if (!$batch || $batch->qty < $quantity) {
-                        throw new \Exception("Cannot create purchase return. Product batch '{$product->name}' would have negative stock.");
-                    }
-
-                    $warehouse_product = Product_Warehouse::where([
-                        ['product_batch_id', $product_batch_ids[$key]],
-                        ['warehouse_id', $data['warehouse_id']]
-                    ])->first();
-
-                    if (!$warehouse_product || $warehouse_product->qty < $quantity) {
-                        throw new \Exception("Cannot create purchase return. Product batch '{$product->name}' would have negative stock in warehouse.");
-                    }
-                } else {
-                    $warehouse_product = Product_Warehouse::FindProductWithoutVariant(
-                        $pro_id,
-                        $data['warehouse_id']
-                    )->first();
-
-                    if (!$warehouse_product || $warehouse_product->qty < $quantity) {
-                        throw new \Exception("Cannot create purchase return. Product '{$product->name}' would have negative stock in warehouse (Warehouse Stock: " . ($warehouse_product ? $warehouse_product->qty : 0) . ", Return: {$quantity}).");
-                    }
-                }
-
-                if ($product->qty < $quantity) {
-                    throw new \Exception("Cannot create purchase return. Product '{$product->name}' would have negative global stock (Global Stock: {$product->qty}, Return: {$quantity}).");
-                }
-            }
-
-            // 🔹 Create return record
-            $return = ReturnPurchase::create($data);
-
-            // 🔹 Totals
-            $item_count = 0;
-            $total_qty = 0;
-            $total_discount = 0;
-            $total_tax = 0;
-            $total_cost = 0;
-
-            foreach ($product_ids as $key => $pro_id) {
-                $product = Product::find($pro_id);
-                if (!$product)
-                    continue;
-
-                $variant_id = null;
-                $purchase_unit_id = 0;
-                $quantity = $qtys[$key];
-
-                if ($quantity <= 0)
-                    continue;
-
-                if ($purchase_units[$key] != 'n/a') {
-                    $unit = Unit::where('unit_name', $purchase_units[$key])->first();
-                    if ($unit) {
-                        $purchase_unit_id = $unit->id;
-                        $quantity = ($unit->operator == '*')
-                            ? $qtys[$key] * $unit->operation_value
-                            : $qtys[$key] / $unit->operation_value;
-                    }
-                }
-
-                $warehouse_product = null;
-
-                if ($product->is_variant) {
-                    $product_variant = ProductVariant::select('id', 'variant_id', 'qty')
-                        ->FindExactProductWithCode($pro_id, $product_codes[$key])
-                        ->first();
-
-                    $variant = Variant::find($product_variant->variant_id);
-                    $variant_id = $variant->id ?? null;
-
-                    $warehouse_product = Product_Warehouse::FindProductWithVariant(
-                        $pro_id,
-                        $product_variant->variant_id,
-                        $data['warehouse_id']
-                    )->first();
-
-                    $product_variant->qty -= $quantity;
-                    $product_variant->save();
-                } elseif (!empty($product_batch_ids[$key])) {
-                    $warehouse_product = Product_Warehouse::where([
-                        ['product_batch_id', $product_batch_ids[$key]],
-                        ['warehouse_id', $data['warehouse_id']]
-                    ])->first();
-
-                    $batch = ProductBatch::find($product_batch_ids[$key]);
-                    $batch->qty -= $quantity;
-                    $batch->save();
-                } else {
-                    $warehouse_product = Product_Warehouse::FindProductWithoutVariant(
-                        $pro_id,
-                        $data['warehouse_id']
-                    )->first();
-                }
-
-                $product->qty -= $quantity;
-                $product->save();
-
-                if ($warehouse_product) {
-                    $warehouse_product->qty -= $quantity;
-                    $warehouse_product->save();
-                }
-
-                if (!empty($imei_numbers[$key] ?? null) && isset($warehouse_product)) {
-                    $warehouse_product->imei_number = trim($warehouse_product->imei_number . ',' . $imei_numbers[$key], ',');
-                    $warehouse_product->save();
-                }
-
-                PurchaseProductReturn::insert([
-                    'return_id' => $return->id,
-                    'product_id' => $pro_id,
-                    'product_batch_id' => $product_batch_ids[$key] ?? null,
-                    'variant_id' => $variant_id,
-                    'imei_number' => $imei_numbers[$key] ?? null,
-                    'qty' => $qtys[$key],
-                    'purchase_unit_id' => $purchase_unit_id,
-                    'net_unit_cost' => $net_unit_costs[$key],
-                    'discount' => $discounts[$key],
-                    'tax_rate' => $tax_rates[$key],
-                    'tax' => $taxes[$key],
-                    'total' => $totals[$key],
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-
-                $item_count++;
-                $total_qty += $qtys[$key];
-                $total_discount += $discounts[$key];
-                $total_tax += $taxes[$key];
-                $total_cost += $totals[$key];
-            }
-
-            $return->item = $item_count;
-            $return->total_qty = $total_qty;
-            $return->total_discount = $total_discount;
-            $return->total_tax = $total_tax;
-            $return->total_cost = $total_cost;
-            $return->grand_total = $total_cost;
-            $return->save();
-
-            DB::commit();
-
-            return redirect()
-                ->route('return-purchase.index')
-                ->with('message', 'Purchase Return created successfully.');
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
-    }
-
-
-    public function productReturnData($id)
-    {
-        $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
-        foreach ($lims_product_return_data as $key => $product_return_data) {
-            $product = Product::find($product_return_data->product_id);
-            if ($product_return_data->purchase_unit_id != 0) {
-                $unit_data = Unit::find($product_return_data->purchase_unit_id);
-                $unit = $unit_data->unit_code;
-            } else
-                $unit = '';
-
-            if ($product_return_data->variant_id) {
-                $lims_product_variant_data = ProductVariant::select('item_code')->FindExactProduct($product_return_data->product_id, $product_return_data->variant_id)->first();
-                $product->code = $lims_product_variant_data->item_code;
-            }
-            if ($product_return_data->product_batch_id) {
-                $product_batch_data = ProductBatch::select('batch_no')->find($product_return_data->product_batch_id);
-                $product_return[7][$key] = $product_batch_data->batch_no;
-            } else
-                $product_return[7][$key] = 'N/A';
-            $product_return[0][$key] = $product->name . ' [' . $product->code . ']';
-            if ($product_return_data->imei_number)
-                $product_return[0][$key] .= '<br>IMEI or Serial Number: ' . $product_return_data->imei_number;
-            $product_return[1][$key] = $product_return_data->qty;
-            $product_return[2][$key] = $unit;
-            $product_return[3][$key] = $product_return_data->tax;
-            $product_return[4][$key] = $product_return_data->tax_rate;
-            $product_return[5][$key] = $product_return_data->discount;
-            $product_return[6][$key] = $product_return_data->total;
-        }
-        return $product_return;
-    }
-
-    public function sendMail(Request $request)
-    {
-        $data = $request->all();
-        $lims_return_data = ReturnPurchase::find($data['return_id']);
-        //return $lims_return_data;
-        $lims_product_return_data = PurchaseProductReturn::where('return_id', $data['return_id'])->get();
-        if ($lims_return_data->supplier_id) {
-            $lims_supplier_data = Supplier::find($lims_return_data->supplier_id);
-            //collecting male data
-            $mail_data['email'] = $lims_supplier_data->email;
-            $mail_data['reference_no'] = $lims_return_data->reference_no;
-            $mail_data['total_qty'] = $lims_return_data->total_qty;
-            $mail_data['total_price'] = $lims_return_data->total_cost;
-            $mail_data['order_tax'] = $lims_return_data->order_tax;
-            $mail_data['order_tax_rate'] = $lims_return_data->order_tax_rate;
-            $mail_data['grand_total'] = $lims_return_data->grand_total;
-
-            foreach ($lims_product_return_data as $key => $product_return_data) {
-                $lims_product_data = Product::find($product_return_data->product_id);
-                if ($product_return_data->variant_id) {
-                    $variant_data = Variant::find($product_return_data->variant_id);
-                    $mail_data['products'][$key] = $lims_product_data->name . ' [' . $variant_data->name . ']';
-                } else
-                    $mail_data['products'][$key] = $lims_product_data->name;
-
-                if ($product_return_data->purchase_unit_id) {
-                    $lims_unit_data = Unit::find($product_return_data->purchase_unit_id);
-                    $mail_data['unit'][$key] = $lims_unit_data->unit_code;
-                } else
-                    $mail_data['unit'][$key] = '';
-
-                $mail_data['qty'][$key] = $product_return_data->qty;
-                $mail_data['total'][$key] = $product_return_data->qty;
-            }
-            try {
-                Mail::send('mail.return_details', $mail_data, function ($message) use ($mail_data) {
-                    $message->to($mail_data['email'])->subject('Return Details');
-                });
-                $message = 'Mail sent successfully';
-            } catch (\Exception $e) {
-                $message = 'Please setup your <a href="setting/mail_setting">mail setting</a> to send mail.';
-            }
-        } else
-            $message = "This return doesn't belong to any supplier";
-
-        return redirect()->back()->with('message', $message);
+        return redirect('return-purchase')->with('message', 'Return created successfully');
     }
 
     public function edit($id)
     {
         $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('purchase-return-edit')) {
-            $lims_supplier_list = Supplier::where('is_active', true)->get();
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_account_list = Account::where('is_active', true)->get();
-            $lims_tax_list = Tax::where('is_active', true)->get();
-            $lims_return_data = ReturnPurchase::find($id);
-            $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
-            return view('backend.return_purchase.edit', compact('lims_supplier_list', 'lims_warehouse_list', 'lims_tax_list', 'lims_account_list', 'lims_return_data', 'lims_product_return_data'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
-        ;
+        if ($role->hasPermissionTo('returns-edit')) {
+            $formData = $this->returnPurchaseService->getEditFormData($id);
+            return view('backend.return_purchase.edit', $formData);
+        }
+
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function update(Request $request, $id)
     {
-        $data = $request->except('document');
-        //return dd($data);
-        $document = $request->document;
-        $lims_return_data = ReturnPurchase::find($id);
+        $this->returnPurchaseService->updateReturnPurchase($id, $request->all(), $request->file('document'));
 
-        DB::beginTransaction();
-        try {
-            if ($document) {
-                $v = Validator::make(
-                    [
-                        'extension' => strtolower($request->document->getClientOriginalExtension()),
-                    ],
-                    [
-                        'extension' => 'in:jpg,jpeg,png,gif,pdf,csv,docx,xlsx,txt',
-                    ]
-                );
-                if ($v->fails())
-                    return redirect()->back()->withErrors($v->errors());
-
-                $this->fileDelete('documents/purchase_return/', $lims_return_data->document);
-
-                $ext = pathinfo($document->getClientOriginalName(), PATHINFO_EXTENSION);
-                $documentName = date("Ymdhis");
-                if (!config('database.connections.saas_landlord')) {
-                    $documentName = $documentName . '.' . $ext;
-                    $document->move('public/documents/purchase_return', $documentName);
-                } else {
-                    $documentName = $this->getTenantId() . '_' . $documentName . '.' . $ext;
-                    $document->move('public/documents/purchase_return', $documentName);
-                }
-                $data['document'] = $documentName;
-            }
-
-            $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
-
-            $product_id = $data['product_id'];
-            $imei_number = $data['imei_number'];
-            $product_batch_id = $data['product_batch_id'] ?? null;
-            $product_code = $data['product_code'];
-            $product_variant_id = $data['product_variant_id'];
-            $qty = $data['qty'];
-            $purchase_unit = $data['purchase_unit'];
-            $net_unit_cost = $data['net_unit_cost'];
-            $discount = $data['discount'];
-            $tax_rate = $data['tax_rate'];
-            $tax = $data['tax'];
-            $total = $data['subtotal'];
-
-            // 🔹 Stock Validation (to prevent negative stock)
-            $old_return_qtys = [];
-            foreach ($lims_product_return_data as $product_return_data) {
-                $qty_base = 0;
-                if ($product_return_data->purchase_unit_id != 0) {
-                    $lims_purchase_unit_data = Unit::find($product_return_data->purchase_unit_id);
-                    if ($lims_purchase_unit_data) {
-                        if ($lims_purchase_unit_data->operator == '*') {
-                            $qty_base = $product_return_data->qty * $lims_purchase_unit_data->operation_value;
-                        } else {
-                            $qty_base = $product_return_data->qty / $lims_purchase_unit_data->operation_value;
-                        }
-                    }
-                }
-                $key_item = $product_return_data->product_id . '_' . ($product_return_data->variant_id ?? '') . '_' . ($product_return_data->product_batch_id ?? '');
-                $old_return_qtys[$key_item] = $qty_base;
-            }
-
-            $new_return_qtys = [];
-            foreach ($product_id as $key => $pro_id) {
-                $lims_product_data = Product::find($pro_id);
-                $qty_base = 0;
-                $variant_id = null;
-                $batch_id = $product_batch_id[$key] ?? null;
-
-                if ($purchase_unit[$key] != 'n/a') {
-                    $lims_purchase_unit_data = Unit::where('unit_name', $purchase_unit[$key])->first();
-                    if ($lims_purchase_unit_data) {
-                        if ($lims_purchase_unit_data->operator == '*') {
-                            $qty_base = $qty[$key] * $lims_purchase_unit_data->operation_value;
-                        } else {
-                            $qty_base = $qty[$key] / $lims_purchase_unit_data->operation_value;
-                        }
-                    }
-                }
-
-                if ($lims_product_data->is_variant) {
-                    $lims_product_variant_data = ProductVariant::select('variant_id')->FindExactProductWithCode($pro_id, $product_code[$key])->first();
-                    if ($lims_product_variant_data) {
-                        $variant_id = $lims_product_variant_data->variant_id;
-                    }
-                }
-
-                $key_item = $pro_id . '_' . ($variant_id ?? '') . '_' . ($batch_id ?? '');
-                $new_return_qtys[$key_item] = $qty_base;
-            }
-
-            foreach ($all_keys = array_unique(array_merge(array_keys($old_return_qtys), array_keys($new_return_qtys))) as $item_key) {
-                $old_qty_base = $old_return_qtys[$item_key] ?? 0;
-                $new_qty_base = $new_return_qtys[$item_key] ?? 0;
-                
-                $net_deduction = $new_qty_base - $old_qty_base;
-                
-                if ($net_deduction > 0) {
-                    $parts = explode('_', $item_key);
-                    $pro_id = $parts[0];
-                    $variant_id = $parts[1] !== '' ? $parts[1] : null;
-                    $batch_id = $parts[2] !== '' ? $parts[2] : null;
-                    
-                    $lims_product_data = Product::find($pro_id);
-                    
-                    if ($variant_id) {
-                        $lims_product_variant_data = ProductVariant::select('qty')->FindExactProduct($pro_id, $variant_id)->first();
-                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $variant_id, $data['warehouse_id'])->first();
-                        if (!$lims_product_variant_data || $lims_product_variant_data->qty < $net_deduction) {
-                            throw new \Exception("Cannot update purchase return. Product variant '{$lims_product_data->name}' would have negative stock.");
-                        }
-                    } elseif ($batch_id) {
-                        $lims_product_batch_data = ProductBatch::find($batch_id);
-                        $lims_product_warehouse_data = Product_Warehouse::where([
-                            ['product_id', $pro_id],
-                            ['product_batch_id', $batch_id],
-                            ['warehouse_id', $data['warehouse_id']]
-                        ])->first();
-                        if (!$lims_product_batch_data || $lims_product_batch_data->qty < $net_deduction) {
-                            throw new \Exception("Cannot update purchase return. Product batch '{$lims_product_data->name}' would have negative stock.");
-                        }
-                    } else {
-                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $data['warehouse_id'])->first();
-                    }
-                    
-                    if (!$lims_product_warehouse_data || $lims_product_warehouse_data->qty < $net_deduction) {
-                        throw new \Exception("Cannot update purchase return. Product '{$lims_product_data->name}' would have negative stock in warehouse.");
-                    }
-                    if ($lims_product_data->qty < $net_deduction) {
-                        throw new \Exception("Cannot update purchase return. Product '{$lims_product_data->name}' would have negative global stock.");
-                    }
-                }
-            }
-
-        foreach ($lims_product_return_data as $key => $product_return_data) {
-            $old_product_id[] = $product_return_data->product_id;
-            $old_product_variant_id[] = null;
-            $lims_product_data = Product::find($product_return_data->product_id);
-            if ($product_return_data->purchase_unit_id != 0) {
-                $lims_purchase_unit_data = Unit::find($product_return_data->purchase_unit_id);
-                if ($lims_purchase_unit_data->operator == '*')
-                    $quantity = $product_return_data->qty * $lims_purchase_unit_data->operation_value;
-                elseif ($lims_purchase_unit_data->operator == '/')
-                    $quantity = $product_return_data->qty / $lims_purchase_unit_data->operation_value;
-
-                if ($product_return_data->variant_id) {
-                    $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($product_return_data->product_id, $product_return_data->variant_id)->first();
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_return_data->product_id, $product_return_data->variant_id, $lims_return_data->warehouse_id)
-                        ->first();
-                    $old_product_variant_id[$key] = $lims_product_variant_data->id;
-                    $lims_product_variant_data->qty += $quantity;
-                    $lims_product_variant_data->save();
-                } elseif ($product_return_data->product_batch_id) {
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_id', $product_return_data->product_id],
-                        ['product_batch_id', $product_return_data->product_batch_id],
-                        ['warehouse_id', $lims_return_data->warehouse_id]
-                    ])->first();
-
-                    $product_batch_data = ProductBatch::find($product_return_data->product_batch_id);
-                    $product_batch_data->qty += $quantity;
-                    $product_batch_data->save();
-                } else
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_return_data->product_id, $lims_return_data->warehouse_id)
-                        ->first();
-
-                if ($product_return_data->imei_number) {
-                    if ($lims_product_warehouse_data->imei_number)
-                        $lims_product_warehouse_data->imei_number .= ',' . $product_return_data->imei_number;
-                    else
-                        $lims_product_warehouse_data->imei_number = $product_return_data->imei_number;
-                }
-
-                $lims_product_data->qty += $quantity;
-                $lims_product_warehouse_data->qty += $quantity;
-                $lims_product_data->save();
-                $lims_product_warehouse_data->save();
-            }
-            if ($product_return_data->variant_id && !(in_array($old_product_variant_id[$key], $product_variant_id))) {
-                $product_return_data->delete();
-            } elseif (!(in_array($old_product_id[$key], $product_id)))
-                $product_return_data->delete();
-        }
-        foreach ($product_id as $key => $pro_id) {
-            $lims_product_data = Product::find($pro_id);
-            $product_return['variant_id'] = null;
-            if ($purchase_unit[$key] != 'n/a') {
-                $lims_purchase_unit_data = Unit::where('unit_name', $purchase_unit[$key])->first();
-                $purchase_unit_id = $lims_purchase_unit_data->id;
-                if ($lims_purchase_unit_data->operator == '*')
-                    $quantity = $qty[$key] * $lims_purchase_unit_data->operation_value;
-                elseif ($lims_purchase_unit_data->operator == '/')
-                    $quantity = $qty[$key] / $lims_purchase_unit_data->operation_value;
-
-                if ($lims_product_data->is_variant) {
-                    $lims_product_variant_data = ProductVariant::select('id', 'variant_id', 'qty')->FindExactProductWithCode($pro_id, $product_code[$key])->first();
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($pro_id, $lims_product_variant_data->variant_id, $data['warehouse_id'])
-                        ->first();
-                    $variant_data = Variant::find($lims_product_variant_data->variant_id);
-
-                    $product_return['variant_id'] = $lims_product_variant_data->variant_id;
-                    $lims_product_variant_data->qty -= $quantity;
-                    $lims_product_variant_data->save();
-                } elseif ($product_batch_id[$key]) {
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_id', $pro_id],
-                        ['product_batch_id', $product_batch_id[$key]],
-                        ['warehouse_id', $data['warehouse_id']]
-                    ])->first();
-
-                    $product_batch_data = ProductBatch::find($product_batch_id[$key]);
-                    $product_batch_data->qty -= $quantity;
-                    $product_batch_data->save();
-                } else {
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($pro_id, $data['warehouse_id'])
-                        ->first();
-                }
-                //deduct imei number if available
-                if ($imei_number[$key]) {
-                    $imei_numbers = explode(",", $imei_number[$key]);
-                    $all_imei_numbers = explode(",", $lims_product_warehouse_data->imei_number);
-                    foreach ($imei_numbers as $number) {
-                        if (($j = array_search($number, $all_imei_numbers)) !== false) {
-                            unset($all_imei_numbers[$j]);
-                        }
-                    }
-                    $lims_product_warehouse_data->imei_number = implode(",", $all_imei_numbers);
-                }
-
-                $lims_product_data->qty -= $quantity;
-                $lims_product_warehouse_data->qty -= $quantity;
-
-                $lims_product_data->save();
-                $lims_product_warehouse_data->save();
-            }
-
-            if ($lims_product_data->is_variant)
-                $mail_data['products'][$key] = $lims_product_data->name . ' [' . $variant_data->name . ']';
-            else
-                $mail_data['products'][$key] = $lims_product_data->name;
-
-            if ($purchase_unit_id)
-                $mail_data['unit'][$key] = $lims_purchase_unit_data->unit_code;
-            else
-                $mail_data['unit'][$key] = '';
-
-            $mail_data['qty'][$key] = $qty[$key];
-            $mail_data['total'][$key] = $total[$key];
-
-            $product_return['return_id'] = $id;
-            $product_return['product_id'] = $pro_id;
-            $product_return['imei_number'] = $imei_number[$key];
-            $product_return['product_batch_id'] = $product_batch_id[$key];
-            $product_return['qty'] = $qty[$key];
-            $product_return['purchase_unit_id'] = $purchase_unit_id;
-            $product_return['net_unit_cost'] = $net_unit_cost[$key];
-            $product_return['discount'] = $discount[$key];
-            $product_return['tax_rate'] = $tax_rate[$key];
-            $product_return['tax'] = $tax[$key];
-            $product_return['total'] = $total[$key];
-
-            if ($product_return['variant_id'] && in_array($product_variant_id[$key], $old_product_variant_id)) {
-                PurchaseProductReturn::where([
-                    ['product_id', $pro_id],
-                    ['variant_id', $product_return['variant_id']],
-                    ['return_id', $id]
-                ])->update($product_return);
-            } elseif ($product_return['variant_id'] === null && (in_array($pro_id, $old_product_id))) {
-                PurchaseProductReturn::where([
-                    ['return_id', $id],
-                    ['product_id', $pro_id]
-                ])->update($product_return);
-            } else
-                PurchaseProductReturn::create($product_return);
-        }
-        $lims_return_data->update($data);
-        $message = 'Return updated successfully';
-        if ($data['supplier_id']) {
-            $lims_supplier_data = Supplier::find($data['supplier_id']);
-            //collecting male data
-            $mail_data['email'] = $lims_supplier_data->email;
-            $mail_data['reference_no'] = $lims_return_data->reference_no;
-            $mail_data['total_qty'] = $lims_return_data->total_qty;
-            $mail_data['total_price'] = $lims_return_data->total_cost;
-            $mail_data['order_tax'] = $lims_return_data->order_tax;
-            $mail_data['order_tax_rate'] = $lims_return_data->order_tax_rate;
-            $mail_data['grand_total'] = $lims_return_data->grand_total;
-
-            try {
-                Mail::send('mail.return_details', $mail_data, function ($message) use ($mail_data) {
-                    $message->to($mail_data['email'])->subject('Return Details');
-                });
-            } catch (\Exception $e) {
-                $message = 'Return updated successfully. Please setup your <a href="setting/mail_setting">mail setting</a> to send mail.';
-            }
-        }
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
-        return redirect('return-purchase')->with('message', $message);
+        return redirect('return-purchase')->with('message', 'Return updated successfully');
     }
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(\Auth::user()->role_id);
-        if (!$role->hasPermissionTo('returns-delete'))
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('returns-delete')) {
             return 'Sorry! You are not allowed to delete return purchase';
-
-        $return_id = $request['returnIdArray'];
-        foreach ($return_id as $id) {
-            $lims_return_data = ReturnPurchase::find($id);
-            $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
-
-            foreach ($lims_product_return_data as $key => $product_return_data) {
-                $lims_product_data = Product::find($product_return_data->product_id);
-
-                if ($product_return_data->purchase_unit_id != 0) {
-                    $lims_purchase_unit_data = Unit::find($product_return_data->purchase_unit_id);
-
-                    if ($lims_purchase_unit_data->operator == '*')
-                        $quantity = $product_return_data->qty * $lims_purchase_unit_data->operation_value;
-                    elseif ($lims_purchase_unit_data->operator == '/')
-                        $quantity = $product_return_data->qty / $lims_purchase_unit_data->operation_value;
-
-                    if ($product_return_data->variant_id) {
-                        $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($product_return_data->product_id, $product_return_data->variant_id)->first();
-                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_return_data->product_id, $product_return_data->variant_id, $lims_return_data->warehouse_id)->first();
-                        $lims_product_variant_data->qty += $quantity;
-                        $lims_product_variant_data->save();
-                    } elseif ($product_return_data->product_batch_id) {
-                        $lims_product_batch_data = ProductBatch::find($product_return_data->product_batch_id);
-                        $lims_product_warehouse_data = Product_Warehouse::where([
-                            ['product_batch_id', $product_return_data->product_batch_id],
-                            ['warehouse_id', $lims_return_data->warehouse_id]
-                        ])->first();
-
-                        $lims_product_batch_data->qty += $product_return_data->qty;
-                        $lims_product_batch_data->save();
-                    } else
-                        $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_return_data->product_id, $lims_return_data->warehouse_id)->first();
-
-                    $lims_product_data->qty += $quantity;
-                    $lims_product_warehouse_data->qty += $quantity;
-                    $lims_product_data->save();
-                    $lims_product_warehouse_data->save();
-                    $product_return_data->delete();
-                }
-            }
-            $lims_return_data->delete();
-            $this->fileDelete('documents/purchase_return/', $lims_return_data->document);
         }
+
+        $return_ids = $request['returnIdArray'] ?? [];
+        $this->returnPurchaseService->deleteMultipleReturnPurchases($return_ids);
+
         return 'Return deleted successfully!';
     }
 
     public function destroy($id)
     {
-        $role = Role::find(\Auth::user()->role_id);
-        if (!$role->hasPermissionTo('returns-delete'))
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('returns-delete')) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete return purchase');
-
-        $lims_return_data = ReturnPurchase::find($id);
-        $lims_product_return_data = PurchaseProductReturn::where('return_id', $id)->get();
-
-        foreach ($lims_product_return_data as $key => $product_return_data) {
-            $lims_product_data = Product::find($product_return_data->product_id);
-
-            if ($product_return_data->purchase_unit_id != 0) {
-                $lims_purchase_unit_data = Unit::find($product_return_data->purchase_unit_id);
-
-                if ($lims_purchase_unit_data->operator == '*')
-                    $quantity = $product_return_data->qty * $lims_purchase_unit_data->operation_value;
-                elseif ($lims_purchase_unit_data->operator == '/')
-                    $quantity = $product_return_data->qty / $lims_purchase_unit_data->operation_value;
-
-                if ($product_return_data->variant_id) {
-                    $lims_product_variant_data = ProductVariant::select('id', 'qty')->FindExactProduct($product_return_data->product_id, $product_return_data->variant_id)->first();
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithVariant($product_return_data->product_id, $product_return_data->variant_id, $lims_return_data->warehouse_id)->first();
-                    $lims_product_variant_data->qty += $quantity;
-                    $lims_product_variant_data->save();
-                } elseif ($product_return_data->product_batch_id) {
-                    $lims_product_batch_data = ProductBatch::find($product_return_data->product_batch_id);
-                    $lims_product_warehouse_data = Product_Warehouse::where([
-                        ['product_batch_id', $product_return_data->product_batch_id],
-                        ['warehouse_id', $lims_return_data->warehouse_id]
-                    ])->first();
-
-                    $lims_product_batch_data->qty += $product_return_data->qty;
-                    $lims_product_batch_data->save();
-                } else
-                    $lims_product_warehouse_data = Product_Warehouse::FindProductWithoutVariant($product_return_data->product_id, $lims_return_data->warehouse_id)->first();
-
-                if ($product_return_data->imei_number) {
-                    if ($lims_product_warehouse_data->imei_number)
-                        $lims_product_warehouse_data->imei_number .= ',' . $product_return_data->imei_number;
-                    else
-                        $lims_product_warehouse_data->imei_number = $product_return_data->imei_number;
-                }
-
-                $lims_product_data->qty += $quantity;
-                $lims_product_warehouse_data->qty += $quantity;
-                $lims_product_data->save();
-                $lims_product_warehouse_data->save();
-                $product_return_data->delete();
-            }
         }
-        $lims_return_data->delete();
-        $this->fileDelete('documents/purchase_return/', $lims_return_data->document);
+
+        $this->returnPurchaseService->deleteReturnPurchase($id);
 
         return redirect('return-purchase')->with('not_permitted', 'Data deleted successfully');
-        ;
     }
 }

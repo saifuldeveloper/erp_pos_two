@@ -2,49 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CourierService;
 use Illuminate\Http\Request;
-use App\Models\Courier;
 
 class CourierController extends Controller
 {
+    protected CourierService $courierService;
+
+    public function __construct(CourierService $courierService)
+    {
+        $this->courierService = $courierService;
+    }
 
     public function index()
     {
-        $lims_courier_all = Courier::where('is_active', true)->orderBy('id', 'desc')->get();
+        $lims_courier_all = $this->courierService->getActiveCouriers();
         return view('backend.courier.index', compact('lims_courier_all'));
-    }
-
-    public function create()
-    {
-        //
     }
 
     public function store(Request $request)
     {
-        $request->is_active = true;
-        Courier::create($request->all());
+        $this->courierService->createCourier($request->all());
+
         return redirect()->back()->with('message', 'Courier created successfully');
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
     }
 
     public function update(Request $request, $id)
     {
-        Courier::find($request->id)->update($request->all());
+        $this->courierService->updateCourier($request->id, $request->all());
+
         return redirect()->back()->with('message', 'Courier updated successfully');
     }
 
     public function destroy($id)
     {
-        Courier::find($id)->update(['is_active' => false]);
+        $this->courierService->deleteCourier($id);
+
         return redirect()->back()->with('not_permitted', 'Courier deleted successfully');
     }
 }

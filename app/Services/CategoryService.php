@@ -44,6 +44,16 @@ class CategoryService
     }
 
     /**
+     * Get all active categories.
+     *
+     * @return Collection
+     */
+    public function getActiveCategories(): Collection
+    {
+        return $this->categoryRepository->getActiveCategories();
+    }
+
+    /**
      * Get category by ID.
      *
      * @param int|string $id

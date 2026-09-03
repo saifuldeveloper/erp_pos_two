@@ -62,6 +62,16 @@ class ProductService
     }
 
     /**
+     * Get all active products.
+     *
+     * @return Collection
+     */
+    public function getActiveProducts(): Collection
+    {
+        return $this->productRepository->getActiveStandardProducts();
+    }
+
+    /**
      * Get summary data for product index view.
      *
      * @return array
