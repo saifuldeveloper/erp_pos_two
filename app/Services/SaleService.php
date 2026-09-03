@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -88,7 +89,9 @@ class SaleService
 
         $warehouses = Warehouse::where('is_active', true)->get();
         $accounts = Account::where('is_active', true)->get();
-        $posSetting = PosSetting::latest()->first();
+        $posSetting = Cache::remember('pos_setting', 60 * 60 * 24 * 365, function () {
+            return PosSetting::latest()->first();
+        });
 
         $customFields = CustomField::where([
             ['belongs_to', 'sale'],
@@ -361,7 +364,9 @@ class SaleService
 
             // Customer Reward Points
             $customer = Customer::find($data['customer_id']);
-            $reward = RewardPointSetting::first();
+            $reward = Cache::remember('reward_point_setting', 60 * 60 * 24 * 365, function () {
+                return RewardPointSetting::latest()->first();
+            });
 
             if ($reward && $reward->is_active && $customer && $data['grand_total'] >= $reward->minimum_amount) {
                 $points = (int) ($data['grand_total'] / $reward->per_point_amount);

@@ -4,12 +4,15 @@ namespace App\Services;
 
 use App\Models\Unit;
 use App\Repositories\Contracts\UnitRepositoryInterface;
+use App\Traits\CacheForget;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class UnitService
 {
+    use CacheForget;
+
     protected UnitRepositoryInterface $unitRepository;
 
     /**
@@ -29,7 +32,9 @@ class UnitService
      */
     public function getActiveUnits(): Collection
     {
-        return $this->unitRepository->getActiveUnits();
+        return cache()->remember('unit_list', 60 * 60 * 24 * 365, function () {
+            return $this->unitRepository->getActiveUnits();
+        });
     }
 
     /**
@@ -62,7 +67,10 @@ class UnitService
     public function createUnit(array $data): Unit
     {
         $data['is_active'] = true;
-        return $this->unitRepository->create($data);
+        $unit = $this->unitRepository->create($data);
+        $this->cacheForget('unit_list');
+
+        return $unit;
     }
 
     /**
@@ -74,7 +82,10 @@ class UnitService
      */
     public function updateUnit($id, array $data): Unit
     {
-        return $this->unitRepository->update($id, $data);
+        $unit = $this->unitRepository->update($id, $data);
+        $this->cacheForget('unit_list');
+
+        return $unit;
     }
 
     /**
@@ -136,6 +147,7 @@ class UnitService
         }
 
         fclose($handle);
+        $this->cacheForget('unit_list');
     }
 
     /**
@@ -146,7 +158,10 @@ class UnitService
      */
     public function deleteUnit($id): bool
     {
-        return $this->unitRepository->deactivate($id);
+        $result = $this->unitRepository->deactivate($id);
+        $this->cacheForget('unit_list');
+
+        return $result;
     }
 
     /**
@@ -157,6 +172,9 @@ class UnitService
      */
     public function deleteMultipleUnits(array $ids): bool
     {
-        return $this->unitRepository->deactivateMultiple($ids);
+        $result = $this->unitRepository->deactivateMultiple($ids);
+        $this->cacheForget('unit_list');
+
+        return $result;
     }
 }

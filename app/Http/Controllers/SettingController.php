@@ -215,6 +215,7 @@ class SettingController extends Controller
         $mail_setting->password = $data['password'];
         $mail_setting->encryption = $data['encryption'];
         $mail_setting->save();
+        cache()->forget('mail_setting');
         return redirect()->back()->with('message', 'Data updated successfully');
     }
 
@@ -232,6 +233,7 @@ class SettingController extends Controller
         else
             $data['is_active'] = false;
         RewardPointSetting::latest()->first()->update($data);
+        cache()->forget('reward_point_setting');
         return redirect()->back()->with('message', 'Reward point setting updated successfully');
     }
 
@@ -360,6 +362,7 @@ class SettingController extends Controller
         $mail_setting->password = $data['password'];
         $mail_setting->encryption = $data['encryption'];
         $mail_setting->save();
+        cache()->forget('mail_setting');
         return redirect()->back()->with('message', 'Data updated successfully');
     }
 
@@ -431,6 +434,7 @@ class SettingController extends Controller
         $lims_hrm_setting_data->checkin = $data['checkin'];
         $lims_hrm_setting_data->checkout = $data['checkout'];
         $lims_hrm_setting_data->save();
+        cache()->forget('hrm_setting');
         return redirect()->back()->with('message', 'Data updated successfully');
 
     }

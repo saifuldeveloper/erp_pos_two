@@ -49,8 +49,21 @@ class Common
             return \App\Models\Currency::find($settingData->currency);
         });
 
+        $pos_setting = Cache::remember('pos_setting', 60*60*24*365, function () {
+            return DB::table('pos_settings')->latest()->first();
+        });
+
+        $reward_point_setting = Cache::remember('reward_point_setting', 60*60*24*365, function () {
+            return DB::table('reward_point_settings')->latest()->first();
+        });
+
+        $mail_setting = Cache::remember('mail_setting', 60*60*24*365, function () {
+            return DB::table('mail_settings')->latest()->first();
+        });
+
         View::share('general_setting', $general_setting);
         View::share('currency', $currency);
+        View::share('pos_setting', $pos_setting);
         config(['staff_access' => $general_setting->staff_access, 'date_format' => $general_setting->date_format, 'currency' => $currency->code, 'currency_position' => $general_setting->currency_position, 'decimal' => $general_setting->decimal, 'is_zatca' => $general_setting->is_zatca, 'company_name' => $general_setting->company_name, 'vat_registration_number' => $general_setting->vat_registration_number, 'without_stock' => $general_setting->without_stock]);
 
         $alert_product = DB::table('products')->where('is_active', true)->whereColumn('alert_quantity', '>', 'qty')->count();

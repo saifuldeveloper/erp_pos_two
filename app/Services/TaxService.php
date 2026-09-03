@@ -32,7 +32,9 @@ class TaxService
      */
     public function getActiveTaxes(): Collection
     {
-        return $this->taxRepository->getActiveTaxes();
+        return cache()->remember('tax_list', 60 * 60 * 24 * 365, function () {
+            return $this->taxRepository->getActiveTaxes();
+        });
     }
 
     /**
