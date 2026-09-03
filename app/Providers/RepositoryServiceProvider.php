@@ -5,6 +5,12 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\BrandRepositoryInterface;
 use App\Repositories\Eloquent\BrandRepository;
+use App\Repositories\Contracts\ColorRepositoryInterface;
+use App\Repositories\Eloquent\ColorRepository;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\Contracts\UnitRepositoryInterface;
+use App\Repositories\Eloquent\UnitRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -14,7 +20,10 @@ class RepositoryServiceProvider extends ServiceProvider
      * @var array
      */
     public array $bindings = [
-        BrandRepositoryInterface::class => BrandRepository::class,
+        BrandRepositoryInterface::class    => BrandRepository::class,
+        ColorRepositoryInterface::class    => ColorRepository::class,
+        CategoryRepositoryInterface::class => CategoryRepository::class,
+        UnitRepositoryInterface::class     => UnitRepository::class,
     ];
 
     /**

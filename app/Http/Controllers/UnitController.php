@@ -2,29 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UnitService;
 use Illuminate\Http\Request;
-use App\Models\Unit;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Auth;
 
 class UnitController extends Controller
 {
+    protected UnitService $unitService;
+
+    public function __construct(UnitService $unitService)
+    {
+        $this->unitService = $unitService;
+    }
+
     public function index()
     {
         $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('unit-index') || $role->hasPermissionTo('unit')) {
+        if ($role->hasPermissionTo('unit-index') || $role->hasPermissionTo('unit')) {
             $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
+            $all_permission = [];
+            foreach ($permissions as $permission) {
                 $all_permission[] = $permission->name;
-            if(empty($all_permission))
+            }
+            if (empty($all_permission)) {
                 $all_permission[] = 'dummy text';
-            $lims_unit_all = Unit::where('is_active', true)->get();
+            }
+            $lims_unit_all = $this->unitService->getActiveUnits();
             return view('backend.unit.create', compact('lims_unit_all', 'all_permission'));
         }
-        else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+
+        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
     public function store(Request $request)
@@ -32,41 +41,35 @@ class UnitController extends Controller
         $this->validate($request, [
             'unit_code' => [
                 'max:255',
-                    Rule::unique('units')->where(function ($query) {
+                Rule::unique('units')->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ],
-
             'unit_name' => [
                 'max:255',
-                    Rule::unique('units')->where(function ($query) {
+                Rule::unique('units')->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
-            ]
-
+            ],
         ]);
-        $input = $request->all();
-        $input['is_active'] = true;
-        // if(!$input['base_unit']){
-        //     $input['operator'] = '*';
-        //     $input['operation_value'] = 1;
-        // }
-        Unit::create($input);
+
+        $this->unitService->createUnit($request->all());
+
         return redirect('unit');
     }
 
     public function limsUnitSearch()
     {
         $lims_unit_name = $_GET['lims_unitNameSearch'];
-        $lims_unit_all = Unit::where('unit_name', $lims_unit_name)->paginate(5);
-        $lims_unit_list = Unit::all();
-        return view('backend.unit.create', compact('lims_unit_all','lims_unit_list'));
+        $lims_unit_all = $this->unitService->searchUnitsByName($lims_unit_name, 5);
+        $lims_unit_list = $this->unitService->getAllUnits();
+
+        return view('backend.unit.create', compact('lims_unit_all', 'lims_unit_list'));
     }
 
     public function edit($id)
     {
-        $lims_unit_data = Unit::findOrFail($id);
-        return $lims_unit_data;
+        return $this->unitService->getUnitById($id);
     }
 
     public function update(Request $request, $id)
@@ -74,102 +77,53 @@ class UnitController extends Controller
         $this->validate($request, [
             'unit_code' => [
                 'max:255',
-                    Rule::unique('units')->ignore($request->unit_id)->where(function ($query) {
+                Rule::unique('units')->ignore($request->unit_id)->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
             ],
             'unit_name' => [
                 'max:255',
-                    Rule::unique('units')->ignore($request->unit_id)->where(function ($query) {
+                Rule::unique('units')->ignore($request->unit_id)->where(function ($query) {
                     return $query->where('is_active', 1);
                 }),
-            ]
+            ],
         ]);
 
-        $input = $request->all();
-        // if(!$input['base_unit']){
-        //     $input['operator'] = '*';
-        //     $input['operation_value'] = 1;
-        // }
-        $lims_unit_data = Unit::where('id',$input['unit_id'])->first();
-        $lims_unit_data->update($input);
+        $this->unitService->updateUnit($request->unit_id, $request->all());
+
         return redirect('unit');
     }
 
     public function importUnit(Request $request)
     {
-        //get file
-        $filename =  $request->file->getClientOriginalName();
-        $upload=$request->file('file');
-        $filePath=$upload->getRealPath();
-        //open and read
-        $file=fopen($filePath, 'r');
-        $header= fgetcsv($file);
-        $escapedHeader=[];
-        //validate
-        foreach ($header as $key => $value) {
-            $lheader=strtolower($value);
-            $escapedItem=preg_replace('/[^a-z]/', '', $lheader);
-            array_push($escapedHeader, $escapedItem);
-        }
-        //looping through othe columns
-        $lims_unit_data = [];
-        while($columns=fgetcsv($file))
-        {
-            if($columns[0]=="")
-                continue;
-            foreach ($columns as $key => $value) {
-                $value=preg_replace('/\D/','',$value);
-            }
-            $data= array_combine($escapedHeader, $columns);
+        $upload = $request->file('file');
+        $this->unitService->importUnits($upload);
 
-            $unit = Unit::firstOrNew(['unit_code' => $data['code'],'is_active' => true ]);
-            $unit->unit_code = $data['code'];
-            $unit->unit_name = $data['name'];
-            if($data['baseunit']==null)
-                $unit->base_unit = null;
-            else{
-                $base_unit = Unit::where('unit_code', $data['baseunit'])->first();
-                $unit->base_unit = $base_unit->id;
-            }
-            if($data['operator'] == null)
-                $unit->operator = '*';
-            else
-                $unit->operator = $data['operator'];
-            if($data['operationvalue'] == null)
-                $unit->operation_value = 1;
-            else
-                $unit->operation_value = $data['operationvalue'];
-            $unit->save();
-        }
         return redirect('unit')->with('message', 'Unit imported successfully');
-
     }
 
     public function deleteBySelection(Request $request)
     {
         $role = Role::find(Auth::user()->role_id);
-        if(!$role->hasPermissionTo('unit-delete'))
+        if (!$role->hasPermissionTo('unit-delete')) {
             return 'Sorry! You are not allowed to delete unit';
+        }
 
         $unit_id = $request['unitIdArray'];
-        foreach ($unit_id as $id) {
-            $lims_unit_data = Unit::findOrFail($id);
-            $lims_unit_data->is_active = false;
-            $lims_unit_data->save();
-        }
+        $this->unitService->deleteMultipleUnits($unit_id);
+
         return 'Unit deleted successfully!';
     }
 
     public function destroy($id)
     {
         $role = Role::find(Auth::user()->role_id);
-        if(!$role->hasPermissionTo('unit-delete'))
+        if (!$role->hasPermissionTo('unit-delete')) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete unit');
+        }
 
-        $lims_unit_data = Unit::findOrFail($id);
-        $lims_unit_data->is_active = false;
-        $lims_unit_data->save();
+        $this->unitService->deleteUnit($id);
+
         return redirect('unit');
     }
 }
