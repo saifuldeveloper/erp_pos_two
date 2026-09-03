@@ -11,6 +11,8 @@ use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Contracts\UnitRepositoryInterface;
 use App\Repositories\Eloquent\UnitRepository;
+use App\Repositories\Contracts\ProductRepositoryInterface;
+use App\Repositories\Eloquent\ProductRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -24,6 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider
         ColorRepositoryInterface::class    => ColorRepository::class,
         CategoryRepositoryInterface::class => CategoryRepository::class,
         UnitRepositoryInterface::class     => UnitRepository::class,
+        ProductRepositoryInterface::class  => ProductRepository::class,
     ];
 
     /**
