@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\TransferStatus;
 use App\Models\Product;
 use App\Models\ProductBatch;
 use App\Models\ProductTransfer;
@@ -82,13 +83,7 @@ class TransferService
             $nestedData['total_tax'] = number_format($transfer->total_tax, (int) (config('decimal') ?: 2));
             $nestedData['grand_total'] = number_format($transfer->grand_total, (int) (config('decimal') ?: 2));
 
-            if ($transfer->status == 1) {
-                $nestedData['status'] = '<div class="badge badge-success">' . trans('file.Completed') . '</div>';
-            } elseif ($transfer->status == 2) {
-                $nestedData['status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
-            } elseif ($transfer->status == 3) {
-                $nestedData['status'] = '<div class="badge badge-warning">' . trans('file.Sent') . '</div>';
-            }
+            $nestedData['status'] = TransferStatus::tryFrom((int) $transfer->status)?->badge() ?? '';
 
             $options = '<div class="btn-group">
                         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans("file.action") . '

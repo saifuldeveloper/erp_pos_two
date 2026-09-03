@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\DeliveryStatus;
 use App\Models\Courier;
 use App\Models\Customer;
 use App\Models\Delivery;
@@ -121,7 +122,7 @@ class DeliveryService
 
         $sale = Sale::find($data['sale_id']);
         if ($sale) {
-            $sale->delivery_status = $data['status'] ?? 1;
+            $sale->delivery_status = $data['status'] ?? DeliveryStatus::PACKING->value;
             $sale->save();
         }
 

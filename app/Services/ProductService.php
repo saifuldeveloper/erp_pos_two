@@ -2,7 +2,10 @@
 
 namespace App\Services;
 
+use App\Enums\PaymentStatus;
 use App\Enums\ProductType;
+use App\Enums\PurchaseStatus;
+use App\Enums\TaxMethod;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Color;
@@ -593,13 +596,13 @@ class ProductService
             'item'           => 1,
             'total_qty'      => $stock,
             'total_discount' => 0,
-            'status'         => 1,
-            'payment_status' => 2,
+            'status'         => PurchaseStatus::RECEIVED->value,
+            'payment_status' => PaymentStatus::DUE->value,
         ];
 
         if ($productData->tax_id) {
             $taxData = DB::table('taxes')->select('rate')->find($productData->tax_id);
-            if ($productData->tax_method == 1) {
+            if ($productData->tax_method == TaxMethod::EXCLUSIVE->value) {
                 $netUnitCost = number_format($productData->cost, 2, '.', '');
                 $tax = number_format($productData->cost * $stock * ($taxData->rate / 100), 2, '.', '');
                 $cost = number_format(($productData->cost * $stock) + $tax, 2, '.', '');

@@ -21,6 +21,9 @@ use App\Models\Tax;
 use App\Models\Unit;
 use App\Models\Variant;
 use App\Models\Warehouse;
+use App\Enums\PaymentMethod;
+use App\Enums\PaymentStatus;
+use App\Enums\PurchaseStatus;
 use App\Repositories\Contracts\PurchaseRepositoryInterface;
 use App\Traits\TenantInfo;
 use Illuminate\Database\Eloquent\Collection;
@@ -158,21 +161,8 @@ class PurchaseService
                 $nestedData['supplier'] = 'N/A';
             }
 
-            if ($purchase->status == 1) {
-                $nestedData['purchase_status'] = '<div class="badge badge-success">' . trans('file.Received') . '</div>';
-            } elseif ($purchase->status == 2) {
-                $nestedData['purchase_status'] = '<div class="badge badge-warning">' . trans('file.Partial') . '</div>';
-            } elseif ($purchase->status == 3) {
-                $nestedData['purchase_status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
-            } else {
-                $nestedData['purchase_status'] = '<div class="badge badge-danger">' . trans('file.Ordered') . '</div>';
-            }
-
-            if ($purchase->payment_status == 1) {
-                $nestedData['payment_status'] = '<div class="badge badge-danger">' . trans('file.Due') . '</div>';
-            } else {
-                $nestedData['payment_status'] = '<div class="badge badge-success">' . trans('file.Paid') . '</div>';
-            }
+            $nestedData['purchase_status'] = PurchaseStatus::tryFrom((int) $purchase->status)?->badge() ?? '';
+            $nestedData['payment_status'] = PaymentStatus::tryFrom((int) $purchase->payment_status)?->badge() ?? '';
 
             $nestedData['grand_total'] = number_format($purchase->grand_total, (int) (config('decimal') ?: 2));
             $nestedData['paid_amount'] = number_format($purchase->paid_amount, (int) (config('decimal') ?: 2));
@@ -712,9 +702,9 @@ class PurchaseService
 
         $balance = $purchase->grand_total - $purchase->paid_amount;
         if ($balance > 0 || $balance < 0) {
-            $purchase->payment_status = 1;
+            $purchase->payment_status = PaymentStatus::PENDING->value;
         } elseif ($balance == 0) {
-            $purchase->payment_status = 2;
+            $purchase->payment_status = PaymentStatus::DUE->value;
         }
         $purchase->save();
 
@@ -732,15 +722,17 @@ class PurchaseService
             $account->save();
         }
 
-        if ($data['paid_by_id'] == 2) {
+        $paymentMethod = PaymentMethod::tryFrom((int) $data['paid_by_id']);
+
+        if ($paymentMethod === PaymentMethod::CREDIT_CARD) {
             // Credit Card
             PaymentWithCreditCard::create([
-                'payment_id'      => $payment->id,
-                'customer_id'     => $purchase->supplier_id,
+                'payment_id'         => $payment->id,
+                'customer_id'        => $purchase->supplier_id,
                 'customer_stripe_id' => null,
-                'charge_id'       => null,
+                'charge_id'          => null,
             ]);
-        } elseif ($data['paid_by_id'] == 4 && $chequeFile) {
+        } elseif ($paymentMethod === PaymentMethod::CHEQUE && $chequeFile) {
             // Cheque
             $ext = pathinfo($chequeFile->getClientOriginalName(), PATHINFO_EXTENSION);
             $chequeName = date("Ymdhis") . '.' . $ext;

@@ -2,18 +2,18 @@
 
 namespace App\Enums;
 
-enum SaleStatus: int
+enum TransferStatus: int
 {
     case COMPLETED = 1;
-    case PENDING = 2;
-    case DRAFT = 3;
+    case PENDING   = 2;
+    case SENT      = 3;
 
     public function label(): string
     {
         return match ($this) {
             self::COMPLETED => trans('file.Completed'),
             self::PENDING   => trans('file.Pending'),
-            self::DRAFT     => trans('file.Draft'),
+            self::SENT      => trans('file.Sent'),
         };
     }
 
@@ -22,7 +22,7 @@ enum SaleStatus: int
         return match ($this) {
             self::COMPLETED => '<div class="badge badge-success">' . trans('file.Completed') . '</div>',
             self::PENDING   => '<div class="badge badge-danger">' . trans('file.Pending') . '</div>',
-            self::DRAFT     => '<div class="badge badge-warning">' . trans('file.Draft') . '</div>',
+            self::SENT      => '<div class="badge badge-warning">' . trans('file.Sent') . '</div>',
         };
     }
 }

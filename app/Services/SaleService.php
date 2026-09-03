@@ -31,6 +31,9 @@ use App\Models\Variant;
 use App\Models\Warehouse;
 use App\Repositories\Contracts\SaleRepositoryInterface;
 use App\Traits\TenantInfo;
+use App\Enums\PaymentMethod;
+use App\Enums\PaymentStatus;
+use App\Enums\SaleStatus;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -171,23 +174,8 @@ class SaleService
             $nestedData['biller'] = $sale->biller ? ($sale->biller->name . ' (' . $sale->biller->company_name . ')') : 'N/A';
             $nestedData['customer'] = $sale->customer ? ($sale->customer->name . ' (' . $sale->customer->phone_number . ')') : 'N/A';
 
-            if ($sale->sale_status == 1) {
-                $nestedData['sale_status'] = '<div class="badge badge-success">' . trans('file.Completed') . '</div>';
-            } elseif ($sale->sale_status == 2) {
-                $nestedData['sale_status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
-            } else {
-                $nestedData['sale_status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
-            }
-
-            if ($sale->payment_status == 1) {
-                $nestedData['payment_status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
-            } elseif ($sale->payment_status == 2) {
-                $nestedData['payment_status'] = '<div class="badge badge-danger">' . trans('file.Due') . '</div>';
-            } elseif ($sale->payment_status == 3) {
-                $nestedData['payment_status'] = '<div class="badge badge-warning">' . trans('file.Partial') . '</div>';
-            } else {
-                $nestedData['payment_status'] = '<div class="badge badge-success">' . trans('file.Paid') . '</div>';
-            }
+            $nestedData['sale_status'] = SaleStatus::tryFrom((int) $sale->sale_status)?->badge() ?? '';
+            $nestedData['payment_status'] = PaymentStatus::tryFrom((int) $sale->payment_status)?->badge() ?? '';
 
             $nestedData['grand_total'] = number_format($sale->grand_total, (int) (config('decimal') ?: 2));
             $nestedData['paid_amount'] = number_format($sale->paid_amount, (int) (config('decimal') ?: 2));
@@ -353,7 +341,7 @@ class SaleService
             // Payment Status
             if (!empty($data['pos'])) {
                 $balance = $data['grand_total'] - $data['paid_amount'];
-                $data['payment_status'] = ($balance == 0 ? 4 : 2);
+                $data['payment_status'] = ($balance == 0 ? PaymentStatus::PAID->value : PaymentStatus::DUE->value);
 
                 if (!empty($data['draft'])) {
                     Sale::where('id', $data['sale_id'])->delete();
@@ -536,15 +524,7 @@ class SaleService
 
     private function getPayMethod($id)
     {
-        return [
-            1 => 'Cash',
-            2 => 'Gift Card',
-            3 => 'Credit Card',
-            4 => 'Cheque',
-            5 => 'Paypal',
-            6 => 'Deposit',
-            7 => 'Points'
-        ][$id] ?? 'Cash';
+        return PaymentMethod::tryFrom((int) $id)?->label() ?? 'Cash';
     }
 
     private function mergeProductWarehouseDuplicates(int $product_id, ?int $variant_id)

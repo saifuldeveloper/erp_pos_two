@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\PaymentStatus;
 use App\Mail\CustomerCreate;
 use App\Mail\CustomerDeposit;
 use App\Mail\SupplierCreate;
@@ -96,7 +97,7 @@ class CustomerService
         $salesAggregates = DB::table('sales')
             ->select('customer_id', DB::raw('SUM(grand_total) as total_grand_total'), DB::raw('SUM(paid_amount) as total_paid_amount'))
             ->whereIn('customer_id', $customerIds)
-            ->where('payment_status', '!=', 4)
+            ->where('payment_status', '!=', PaymentStatus::PAID->value)
             ->groupBy('customer_id')
             ->get()
             ->keyBy('customer_id');
@@ -106,7 +107,7 @@ class CustomerService
             ->join('sales', 'sales.id', '=', 'returns.sale_id')
             ->select('sales.customer_id', DB::raw('SUM(returns.grand_total) as total_returned_amount'))
             ->whereIn('sales.customer_id', $customerIds)
-            ->where('sales.payment_status', '!=', 4)
+            ->where('sales.payment_status', '!=', PaymentStatus::PAID->value)
             ->groupBy('sales.customer_id')
             ->get()
             ->keyBy('customer_id');
@@ -215,7 +216,7 @@ class CustomerService
     {
         $dueSales = Sale::select('id', 'warehouse_id', 'grand_total', 'paid_amount', 'payment_status')
             ->where([
-                ['payment_status', '!=', 4],
+                ['payment_status', '!=', PaymentStatus::PAID->value],
                 ['customer_id', $customerId]
             ])->get();
 
@@ -238,10 +239,10 @@ class CustomerService
 
             if ($totalPaidAmount >= $dueAmount) {
                 $paidAmount = $dueAmount;
-                $paymentStatus = 4;
+                $paymentStatus = PaymentStatus::PAID->value;
             } else {
                 $paidAmount = $totalPaidAmount;
-                $paymentStatus = 2;
+                $paymentStatus = PaymentStatus::DUE->value;
             }
 
             Payment::create([

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\PaymentStatus;
 use App\Mail\CustomerCreate;
 use App\Mail\SupplierCreate;
 use App\Models\Account;
@@ -177,7 +178,7 @@ class SupplierService
 
         $duePurchases = Purchase::select('id', 'warehouse_id', 'grand_total', 'paid_amount', 'payment_status')
             ->where([
-                ['payment_status', 1],
+                ['payment_status', PaymentStatus::PENDING->value],
                 ['supplier_id', $supplierId]
             ])->get();
 
@@ -201,10 +202,10 @@ class SupplierService
 
             if ($totalPaidAmount >= $dueAmount) {
                 $paidAmount = $dueAmount;
-                $paymentStatus = 2;
+                $paymentStatus = PaymentStatus::DUE->value;
             } else {
                 $paidAmount = $totalPaidAmount;
-                $paymentStatus = 1;
+                $paymentStatus = PaymentStatus::PENDING->value;
             }
 
             $payment = new Payment();
@@ -320,7 +321,7 @@ class SupplierService
 
         $duePurchases = Purchase::select('id', 'warehouse_id', 'grand_total', 'paid_amount', 'payment_status')
             ->where([
-                ['payment_status', 1],
+                ['payment_status', PaymentStatus::PENDING->value],
                 ['supplier_id', $supplierDue->supplier_id]
             ])->get();
 
@@ -341,10 +342,10 @@ class SupplierService
 
             if ($totalPaidAmount >= $dueAmount) {
                 $paidAmount = $dueAmount;
-                $paymentStatus = 2;
+                $paymentStatus = PaymentStatus::DUE->value;
             } else {
                 $paidAmount = $totalPaidAmount;
-                $paymentStatus = 1;
+                $paymentStatus = PaymentStatus::PENDING->value;
             }
 
             $payment = new Payment();
