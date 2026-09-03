@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Role\StoreRoleRequest;
+use App\Http\Requests\Role\UpdateRoleRequest;
 use App\Models\Roles;
 use App\Services\RoleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -29,17 +30,8 @@ class RoleController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('roles')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->roleService->createRole($request->all());
 
         return redirect('role')->with('message', 'Data inserted successfully');
@@ -54,17 +46,8 @@ class RoleController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRoleRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('roles')->ignore($request->role_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->roleService->updateRole($request->role_id, $request->all());
 
         return redirect('role')->with('message', 'Data updated successfully');

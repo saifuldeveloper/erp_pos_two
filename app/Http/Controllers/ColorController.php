@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Color\StoreColorRequest;
+use App\Http\Requests\Color\UpdateColorRequest;
 use App\Services\ColorService;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -35,12 +37,8 @@ class ColorController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreColorRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:colors',
-        ]);
-
         $this->colorService->createColor($request->only('name', 'code'));
 
         return redirect()->route('color.index');
@@ -51,7 +49,7 @@ class ColorController extends Controller
         return $this->colorService->getColorById($id);
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateColorRequest $request, string $id)
     {
         $this->colorService->updateColor($request->color_id, $request->only('name', 'code'));
 

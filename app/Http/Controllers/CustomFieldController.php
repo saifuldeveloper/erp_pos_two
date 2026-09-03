@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomField\StoreCustomFieldRequest;
+use App\Http\Requests\CustomField\UpdateCustomFieldRequest;
 use App\Models\CustomField;
 use App\Services\CustomFieldService;
 use Illuminate\Http\Request;
@@ -38,7 +40,7 @@ class CustomFieldController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreCustomFieldRequest $request)
     {
         $this->customFieldService->createCustomField($request->all());
 
@@ -52,7 +54,7 @@ class CustomFieldController extends Controller
         return view('backend.custom_field.edit', compact('lims_custom_field_data'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCustomFieldRequest $request, $id)
     {
         $this->customFieldService->updateCustomField($id, $request->all());
 

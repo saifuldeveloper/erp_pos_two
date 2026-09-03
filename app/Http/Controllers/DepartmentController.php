@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Department\StoreDepartmentRequest;
+use App\Http\Requests\Department\UpdateDepartmentRequest;
 use App\Models\Department;
 use App\Services\DepartmentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class DepartmentController extends Controller
@@ -38,33 +39,15 @@ class DepartmentController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreDepartmentRequest $request)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('departments')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->departmentService->createDepartment($request->all());
 
         return redirect('departments')->with('message', 'Department created successfully');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateDepartmentRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('departments')->ignore($request->department_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->departmentService->updateDepartment($request->department_id, $request->all());
 
         return redirect('departments')->with('message', 'Department updated successfully');

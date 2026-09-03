@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Currency\StoreCurrencyRequest;
+use App\Http\Requests\Currency\UpdateCurrencyRequest;
 use App\Services\CurrencyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,14 +29,14 @@ class CurrencyController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreCurrencyRequest $request)
     {
         $this->currencyService->createCurrency($request->all());
 
         return redirect()->back()->with('message', 'Currency created successfully');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCurrencyRequest $request, $id)
     {
         $this->currencyService->updateCurrency($request->currency_id, $request->all());
 

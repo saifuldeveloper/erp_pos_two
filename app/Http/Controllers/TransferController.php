@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Transfer\StoreTransferRequest;
+use App\Http\Requests\Transfer\UpdateTransferRequest;
 use App\Models\Product;
 use App\Models\Product_Warehouse;
 use App\Models\ProductVariant;
@@ -228,7 +230,7 @@ class TransferController extends Controller
         return $this->transferRepository->getProductTransferDataByTransferId($id);
     }
 
-    public function store(Request $request)
+    public function store(StoreTransferRequest $request)
     {
         $this->transferService->createTransfer($request->all(), $request->file('document'));
 
@@ -246,7 +248,7 @@ class TransferController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateTransferRequest $request, $id)
     {
         $this->transferService->updateTransfer($id, $request->all(), $request->file('document'));
 

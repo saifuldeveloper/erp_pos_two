@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Brand\StoreBrandRequest;
+use App\Http\Requests\Brand\UpdateBrandRequest;
 use App\Services\BrandService;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Auth;
 
@@ -36,19 +37,8 @@ class BrandController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreBrandRequest $request)
     {
-        $request->title = preg_replace('/\s+/', ' ', $request->title);
-        $this->validate($request, [
-            'title' => [
-                'max:255',
-                Rule::unique('brands')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-        ]);
-
         $input = $request->except('image');
         $this->brandService->createBrand($input, $request->file('image'));
 
@@ -60,18 +50,8 @@ class BrandController extends Controller
         return $this->brandService->getBrandById($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateBrandRequest $request, $id)
     {
-        $this->validate($request, [
-            'title' => [
-                'max:255',
-                Rule::unique('brands')->ignore($request->brand_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-        ]);
-
         $data = ['title' => $request->title];
         $this->brandService->updateBrand($request->brand_id, $data, $request->file('image'));
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Attendance\StoreAttendanceRequest;
 use App\Models\Employee;
 use App\Models\HrmSetting;
 use App\Services\AttendanceService;
@@ -29,7 +30,7 @@ class AttendanceController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreAttendanceRequest $request)
     {
         $this->attendanceService->recordAttendance($request->all());
 

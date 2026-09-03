@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Auth;
 
@@ -49,21 +50,8 @@ class CategoryController extends Controller
         return response()->json($jsonData);
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $request->name = preg_replace('/\s+/', ' ', $request->name);
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('categories')->where(function ($query) use ($request) {
-                    return $query->where('is_active', 1)
-                        ->where('parent_id', $request->parent_id);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif',
-            'icon'  => 'mimetypes:text/plain,image/png,image/jpeg,image/svg',
-        ]);
-
         $this->categoryService->createCategory(
             $request->all(),
             $request->file('image'),
@@ -78,19 +66,8 @@ class CategoryController extends Controller
         return $this->categoryService->getCategoryById($id);
     }
 
-    public function update(Request $request)
+    public function update(UpdateCategoryRequest $request)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('categories')->ignore($request->category_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif',
-            'icon'  => 'mimetypes:text/plain,image/png,image/jpeg,image/svg',
-        ]);
-
         $input = $request->except('image', 'icon', '_method', '_token', 'category_id');
 
         $this->categoryService->updateCategory(

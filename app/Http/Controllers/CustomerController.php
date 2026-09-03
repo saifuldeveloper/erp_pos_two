@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Customer\StoreCustomerRequest;
+use App\Http\Requests\Customer\UpdateCustomerRequest;
 use App\Models\CustomField;
 use App\Models\CustomerGroup;
 use App\Services\CustomerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class CustomerController extends Controller
@@ -78,52 +79,8 @@ class CustomerController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreCustomerRequest $request)
     {
-        $this->validate($request, [
-            'phone_number' => [
-                'max:255',
-                Rule::unique('customers')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
-        if (isset($request->both)) {
-            $this->validate($request, [
-                'company_name' => [
-                    'max:255',
-                    Rule::unique('suppliers')->where(function ($query) {
-                        return $query->where('is_active', 1);
-                    }),
-                ],
-                'email' => [
-                    'max:255',
-                    Rule::unique('suppliers')->where(function ($query) {
-                        return $query->where('is_active', 1);
-                    }),
-                ],
-            ]);
-        }
-
-        if (isset($request->user)) {
-            $this->validate($request, [
-                'name' => [
-                    'max:255',
-                    Rule::unique('users')->where(function ($query) {
-                        return $query->where('is_deleted', false);
-                    }),
-                ],
-                'email' => [
-                    'email',
-                    'max:255',
-                    Rule::unique('users')->where(function ($query) {
-                        return $query->where('is_deleted', false);
-                    }),
-                ],
-            ]);
-        }
-
         $result = $this->customerService->createCustomer($request->all(), $request);
         $customer = $result['customer'];
         $message = $result['message'];
@@ -152,35 +109,8 @@ class CustomerController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCustomerRequest $request, $id)
     {
-        $this->validate($request, [
-            'phone_number' => [
-                'max:255',
-                Rule::unique('customers')->ignore($id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
-        if (isset($request->user)) {
-            $this->validate($request, [
-                'name' => [
-                    'max:255',
-                    Rule::unique('users')->where(function ($query) {
-                        return $query->where('is_deleted', false);
-                    }),
-                ],
-                'email' => [
-                    'email',
-                    'max:255',
-                    Rule::unique('users')->where(function ($query) {
-                        return $query->where('is_deleted', false);
-                    }),
-                ],
-            ]);
-        }
-
         $result = $this->customerService->updateCustomer($id, $request->all(), $request);
 
         return redirect('customer')->with('edit_message', $result['message']);

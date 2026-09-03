@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomerGroup\StoreCustomerGroupRequest;
+use App\Http\Requests\CustomerGroup\UpdateCustomerGroupRequest;
 use App\Services\CustomerGroupService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class CustomerGroupController extends Controller
@@ -28,17 +29,8 @@ class CustomerGroupController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreCustomerGroupRequest $request)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('customer_groups')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->customerGroupService->createCustomerGroup($request->all());
 
         return redirect('customer_group')->with('message', 'Data inserted successfully');
@@ -49,17 +41,8 @@ class CustomerGroupController extends Controller
         return $this->customerGroupService->getCustomerGroupById($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCustomerGroupRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('customer_groups')->ignore($request->customer_group_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->customerGroupService->updateCustomerGroup($request->customer_group_id, $request->all());
 
         return redirect('customer_group')->with('message', 'Data updated successfully');

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Unit\StoreUnitRequest;
+use App\Http\Requests\Unit\UpdateUnitRequest;
 use App\Services\UnitService;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 use Auth;
 
@@ -36,23 +37,8 @@ class UnitController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreUnitRequest $request)
     {
-        $this->validate($request, [
-            'unit_code' => [
-                'max:255',
-                Rule::unique('units')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'unit_name' => [
-                'max:255',
-                Rule::unique('units')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->unitService->createUnit($request->all());
 
         return redirect('unit');
@@ -72,23 +58,8 @@ class UnitController extends Controller
         return $this->unitService->getUnitById($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateUnitRequest $request, $id)
     {
-        $this->validate($request, [
-            'unit_code' => [
-                'max:255',
-                Rule::unique('units')->ignore($request->unit_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'unit_name' => [
-                'max:255',
-                Rule::unique('units')->ignore($request->unit_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->unitService->updateUnit($request->unit_id, $request->all());
 
         return redirect('unit');

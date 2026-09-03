@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Coupon\StoreCouponRequest;
+use App\Http\Requests\Coupon\UpdateCouponRequest;
 use App\Models\Coupon;
 use App\Services\CouponService;
 use Illuminate\Http\Request;
@@ -33,14 +35,14 @@ class CouponController extends Controller
         return $this->couponService->generateCode();
     }
 
-    public function store(Request $request)
+    public function store(StoreCouponRequest $request)
     {
         $this->couponService->createCoupon($request->all());
 
         return redirect('coupons')->with('message', 'Coupon created successfully');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCouponRequest $request, $id)
     {
         $this->couponService->updateCoupon($request->coupon_id, $request->all());
 

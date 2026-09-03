@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Tax\StoreTaxRequest;
+use App\Http\Requests\Tax\UpdateTaxRequest;
 use App\Services\TaxService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class TaxController extends Controller
@@ -28,18 +29,8 @@ class TaxController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreTaxRequest $request)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('taxes')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'rate' => 'numeric|min:0|max:100',
-        ]);
-
         $this->taxService->createTax($request->all());
 
         return redirect('tax')->with('message', 'Data inserted successfully');
@@ -59,18 +50,8 @@ class TaxController extends Controller
         return $this->taxService->getTaxById($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateTaxRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('taxes')->ignore($request->tax_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'rate' => 'numeric|min:0|max:100'
-        ]);
-
         $this->taxService->updateTax($request->tax_id, $request->all());
 
         return redirect('tax')->with('message', 'Data updated successfully');

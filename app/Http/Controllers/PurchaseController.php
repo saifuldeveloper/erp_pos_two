@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Purchase\StorePurchaseRequest;
+use App\Http\Requests\Purchase\UpdatePurchaseRequest;
 use App\Models\CustomField;
 use App\Models\PosSetting;
 use App\Models\Product;
@@ -182,7 +184,7 @@ class PurchaseController extends Controller
         return $product;
     }
 
-    public function store(Request $request)
+    public function store(StorePurchaseRequest $request)
     {
         $this->purchaseService->createPurchase($request->all(), $request->file('document'));
 
@@ -200,7 +202,7 @@ class PurchaseController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdatePurchaseRequest $request, $id)
     {
         $this->purchaseService->updatePurchase($id, $request->all(), $request->file('document'));
 

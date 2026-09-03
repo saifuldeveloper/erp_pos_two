@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Employee\StoreEmployeeRequest;
+use App\Http\Requests\Employee\UpdateEmployeeRequest;
 use App\Models\Biller;
 use App\Models\Department;
 use App\Models\Employee;
@@ -10,7 +12,6 @@ use App\Models\Warehouse;
 use App\Services\EmployeeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class EmployeeController extends Controller
@@ -57,55 +58,15 @@ class EmployeeController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreEmployeeRequest $request)
     {
-        $data = $request->except('image');
-        if (isset($data['user'])) {
-            $this->validate($request, [
-                'name' => [
-                    'max:255',
-                    Rule::unique('users')->where(function ($query) {
-                        return $query->where('is_deleted', false);
-                    }),
-                ],
-                'email' => [
-                    'email',
-                    'max:255',
-                    Rule::unique('users')->where(function ($query) {
-                        return $query->where('is_deleted', false);
-                    }),
-                ],
-            ]);
-        }
-
-        $this->validate($request, [
-            'email' => [
-                'max:255',
-                Rule::unique('employees')->where(function ($query) {
-                    return $query->where('is_active', true);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-        ]);
-
         $result = $this->employeeService->createEmployee($request->all(), $request->file('image'));
 
         return redirect('employees')->with('message', $result['message']);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateEmployeeRequest $request, $id)
     {
-        $this->validate($request, [
-            'email' => [
-                'email',
-                'max:255',
-                Rule::unique('employees')->ignore($request->employee_id)->where(function ($query) {
-                    return $query->where('is_active', true);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-        ]);
-
         $this->employeeService->updateEmployee($request->employee_id, $request->all(), $request->file('image'));
 
         return redirect('employees')->with('message', 'Employee updated successfully');

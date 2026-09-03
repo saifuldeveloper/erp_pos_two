@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Table\StoreTableRequest;
+use App\Http\Requests\Table\UpdateTableRequest;
 use App\Services\TableService;
 use Illuminate\Http\Request;
 
@@ -20,14 +22,14 @@ class TableController extends Controller
         return view('backend.table.index', compact('lims_table_all'));
     }
 
-    public function store(Request $request)
+    public function store(StoreTableRequest $request)
     {
         $this->tableService->createTable($request->all());
 
         return redirect()->back()->with('message', 'Table created successfully');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateTableRequest $request, $id)
     {
         $this->tableService->updateTable($request->table_id, $request->all());
 

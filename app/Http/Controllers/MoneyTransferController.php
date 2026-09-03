@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MoneyTransfer\StoreMoneyTransferRequest;
+use App\Http\Requests\MoneyTransfer\UpdateMoneyTransferRequest;
 use App\Models\Account;
 use App\Services\MoneyTransferService;
 use Illuminate\Http\Request;
@@ -29,14 +31,14 @@ class MoneyTransferController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreMoneyTransferRequest $request)
     {
         $this->moneyTransferService->createTransfer($request->all());
 
         return redirect()->back()->with('message', 'Money transfered successfully');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateMoneyTransferRequest $request, $id)
     {
         $this->moneyTransferService->updateTransfer($request->input('id'), $request->all());
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Adjustment\StoreAdjustmentRequest;
+use App\Http\Requests\Adjustment\UpdateAdjustmentRequest;
 use App\Models\Product;
 use App\Models\Product_Warehouse;
 use App\Models\ProductVariant;
@@ -86,7 +88,7 @@ class AdjustmentController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreAdjustmentRequest $request)
     {
         $this->adjustmentService->createAdjustment($request->all(), $request->file('document'));
 
@@ -104,7 +106,7 @@ class AdjustmentController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateAdjustmentRequest $request, $id)
     {
         $this->adjustmentService->updateAdjustment($id, $request->all(), $request->file('document'));
 

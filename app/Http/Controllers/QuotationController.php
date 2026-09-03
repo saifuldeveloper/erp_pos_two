@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ProductType;
+use App\Http\Requests\Quotation\StoreQuotationRequest;
+use App\Http\Requests\Quotation\UpdateQuotationRequest;
 use App\Models\Biller;
 use App\Models\Customer;
 use App\Models\PosSetting;
@@ -169,7 +171,7 @@ class QuotationController extends Controller
         return $this->quotationRepository->getProductQuotationDataByQuotationId($id);
     }
 
-    public function store(Request $request)
+    public function store(StoreQuotationRequest $request)
     {
         $this->quotationService->createQuotation($request->all(), $request->file('document'));
 
@@ -187,7 +189,7 @@ class QuotationController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateQuotationRequest $request, $id)
     {
         $this->quotationService->updateQuotation($id, $request->all(), $request->file('document'));
 

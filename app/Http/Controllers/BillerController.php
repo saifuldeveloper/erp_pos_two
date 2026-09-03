@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Biller\StoreBillerRequest;
+use App\Http\Requests\Biller\UpdateBillerRequest;
 use App\Services\BillerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class BillerController extends Controller
@@ -46,25 +47,8 @@ class BillerController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreBillerRequest $request)
     {
-        $this->validate($request, [
-            'company_name' => [
-                'max:255',
-                Rule::unique('billers')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'email' => [
-                'email',
-                'max:255',
-                Rule::unique('billers')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:10000',
-        ]);
-
         $result = $this->billerService->createBiller($request->all(), $request->file('image'));
 
         return redirect('biller')->with('message', $result['message']);
@@ -81,25 +65,8 @@ class BillerController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateBillerRequest $request, $id)
     {
-        $this->validate($request, [
-            'company_name' => [
-                'max:255',
-                Rule::unique('billers')->ignore($id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'email' => [
-                'email',
-                'max:255',
-                Rule::unique('billers')->ignore($id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-        ]);
-
         $this->billerService->updateBiller($id, $request->all(), $request->file('image'));
 
         return redirect('biller')->with('message', 'Data updated successfully');

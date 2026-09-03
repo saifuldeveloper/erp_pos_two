@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Courier\StoreCourierRequest;
+use App\Http\Requests\Courier\UpdateCourierRequest;
 use App\Services\CourierService;
 use Illuminate\Http\Request;
 
@@ -20,14 +22,14 @@ class CourierController extends Controller
         return view('backend.courier.index', compact('lims_courier_all'));
     }
 
-    public function store(Request $request)
+    public function store(StoreCourierRequest $request)
     {
         $this->courierService->createCourier($request->all());
 
         return redirect()->back()->with('message', 'Courier created successfully');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCourierRequest $request, $id)
     {
         $this->courierService->updateCourier($request->id, $request->all());
 

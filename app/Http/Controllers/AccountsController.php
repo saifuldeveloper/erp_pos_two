@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Account\StoreAccountRequest;
+use App\Http\Requests\Account\UpdateAccountRequest;
 use App\Services\AccountService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class AccountsController extends Controller
@@ -28,17 +29,8 @@ class AccountsController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreAccountRequest $request)
     {
-        $this->validate($request, [
-            'account_no' => [
-                'max:255',
-                Rule::unique('accounts')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->accountService->createAccount($request->all());
 
         return redirect('accounts')->with('message', 'Account created successfully');
@@ -51,17 +43,8 @@ class AccountsController extends Controller
         return 'Account set as default successfully';
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateAccountRequest $request, $id)
     {
-        $this->validate($request, [
-            'account_no' => [
-                'max:255',
-                Rule::unique('accounts')->ignore($request->account_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->accountService->updateAccount($request->account_id, $request->all());
 
         return redirect('accounts')->with('message', 'Account updated successfully');

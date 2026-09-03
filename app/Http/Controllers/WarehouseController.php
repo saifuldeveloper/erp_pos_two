@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Warehouse\StoreWarehouseRequest;
+use App\Http\Requests\Warehouse\UpdateWarehouseRequest;
 use App\Services\WarehouseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class WarehouseController extends Controller
@@ -38,21 +39,12 @@ class WarehouseController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreWarehouseRequest $request)
     {
         $role = Role::find(Auth::user()->role_id);
         if (!$role->hasPermissionTo('warehouse-add')) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to create warehouse');
         }
-
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('warehouses')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
 
         $this->warehouseService->createWarehouse($request->all());
 
@@ -69,21 +61,12 @@ class WarehouseController extends Controller
         return $this->warehouseService->getWarehouseById($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateWarehouseRequest $request, $id)
     {
         $role = Role::find(Auth::user()->role_id);
         if (!$role->hasPermissionTo('warehouse-edit')) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to edit warehouse');
         }
-
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('warehouses')->ignore($request->warehouse_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
 
         $this->warehouseService->updateWarehouse($request->warehouse_id, $request->all());
 

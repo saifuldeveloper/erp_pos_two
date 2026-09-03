@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Delivery\StoreDeliveryRequest;
+use App\Http\Requests\Delivery\UpdateDeliveryRequest;
 use App\Mail\DeliveryChallan;
 use App\Mail\DeliveryDetails;
 use App\Models\Customer;
@@ -44,7 +46,7 @@ class DeliveryController extends Controller
         return $this->deliveryService->getDeliveryDataForSale($id);
     }
 
-    public function store(Request $request)
+    public function store(StoreDeliveryRequest $request)
     {
         $delivery = $this->deliveryService->createDelivery($request->all(), $request->file('file'));
 
@@ -109,7 +111,7 @@ class DeliveryController extends Controller
         return $delivery_data;
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateDeliveryRequest $request, $id)
     {
         $this->deliveryService->updateDelivery($request->all(), $request->file('file'));
 

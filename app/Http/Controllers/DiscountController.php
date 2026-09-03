@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Discount\StoreDiscountRequest;
+use App\Http\Requests\Discount\UpdateDiscountRequest;
 use App\Models\Discount;
 use App\Models\DiscountPlan;
 use App\Models\DiscountPlanDiscount;
@@ -42,7 +44,7 @@ class DiscountController extends Controller
         return $this->discountService->searchProductByCode($code);
     }
 
-    public function store(Request $request)
+    public function store(StoreDiscountRequest $request)
     {
         $this->discountService->createDiscount($request->all());
 
@@ -56,7 +58,7 @@ class DiscountController extends Controller
         return view('backend.discount.edit', $formData);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateDiscountRequest $request, $id)
     {
         $this->discountService->updateDiscount($id, $request->all());
 

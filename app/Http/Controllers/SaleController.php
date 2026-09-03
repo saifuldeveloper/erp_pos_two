@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Sale\StoreSaleRequest;
+use App\Http\Requests\Sale\UpdateSaleRequest;
 use App\Mail\PaymentDetails;
 use App\Mail\SaleDetails;
 use App\Models\Account;
@@ -566,7 +568,7 @@ class SaleController extends Controller
         } else
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
-    public function store(Request $request, SaleService $saleService)
+    public function store(StoreSaleRequest $request, SaleService $saleService)
     {
         $result = $saleService->store($request->all());
         $sale = $result['sale'];
@@ -1559,7 +1561,7 @@ class SaleController extends Controller
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateSaleRequest $request, $id)
     {
 
         $data = $request->except('document');

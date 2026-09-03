@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReturnPurchase\StoreReturnPurchaseRequest;
+use App\Http\Requests\ReturnPurchase\UpdateReturnPurchaseRequest;
 use App\Models\Product;
 use App\Models\PurchaseProductReturn;
 use App\Models\ReturnPurchase;
@@ -155,7 +157,7 @@ class ReturnPurchaseController extends Controller
         return $this->returnPurchaseRepository->getProductReturnDataByReturnId($id);
     }
 
-    public function store(Request $request)
+    public function store(StoreReturnPurchaseRequest $request)
     {
         $this->returnPurchaseService->createReturnPurchase($request->all(), $request->file('document'));
 
@@ -173,7 +175,7 @@ class ReturnPurchaseController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateReturnPurchaseRequest $request, $id)
     {
         $this->returnPurchaseService->updateReturnPurchase($id, $request->all(), $request->file('document'));
 

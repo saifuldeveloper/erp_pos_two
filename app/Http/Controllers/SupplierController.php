@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Supplier\StoreSupplierRequest;
+use App\Http\Requests\Supplier\UpdateSupplierRequest;
 use App\Models\Account;
 use App\Models\CustomerGroup;
 use App\Services\SupplierService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class SupplierController extends Controller
@@ -90,35 +91,8 @@ class SupplierController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreSupplierRequest $request)
     {
-        $this->validate($request, [
-            'company_name' => [
-                'max:255',
-                Rule::unique('suppliers')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'email' => [
-                'max:255',
-                Rule::unique('suppliers')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-        ]);
-
-        if (isset($request->both)) {
-            $this->validate($request, [
-                'phone_number' => [
-                    'max:255',
-                    Rule::unique('customers')->where(function ($query) {
-                        return $query->where('is_active', 1);
-                    }),
-                ],
-            ]);
-        }
-
         $result = $this->supplierService->createSupplier($request->all(), $request->file('image'), $request);
 
         return redirect('supplier')->with('message', $result['message']);
@@ -135,24 +109,8 @@ class SupplierController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateSupplierRequest $request, $id)
     {
-        $this->validate($request, [
-            'company_name' => [
-                'max:255',
-                Rule::unique('suppliers')->ignore($id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'email' => [
-                'max:255',
-                Rule::unique('suppliers')->ignore($id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-        ]);
-
         $this->supplierService->updateSupplier($id, $request->all(), $request->file('image'));
 
         return redirect('supplier')->with('message', 'Data updated successfully');

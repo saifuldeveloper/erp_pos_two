@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Payroll\StorePayrollRequest;
+use App\Http\Requests\Payroll\UpdatePayrollRequest;
 use App\Models\Payroll;
 use App\Services\PayrollService;
 use Illuminate\Http\Request;
@@ -39,7 +41,7 @@ class PayrollController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StorePayrollRequest $request)
     {
         $result = $this->payrollService->createPayroll($request->all());
 
@@ -51,7 +53,7 @@ class PayrollController extends Controller
         return Payroll::find($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdatePayrollRequest $request, $id)
     {
         $this->payrollService->updatePayroll($request->payroll_id, $request->all());
 

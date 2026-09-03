@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GiftCard\StoreGiftCardRequest;
+use App\Http\Requests\GiftCard\UpdateGiftCardRequest;
 use App\Models\GiftCard;
 use App\Services\GiftCardService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class GiftCardController extends Controller
@@ -34,17 +35,8 @@ class GiftCardController extends Controller
         return $this->giftCardService->generateCode();
     }
 
-    public function store(Request $request)
+    public function store(StoreGiftCardRequest $request)
     {
-        $this->validate($request, [
-            'card_no' => [
-                'max:255',
-                Rule::unique('gift_cards')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ]
-        ]);
-
         $this->giftCardService->createGiftCard($request->all());
 
         return redirect('gift_cards')->with('message', 'GiftCard created successfully');
@@ -55,17 +47,8 @@ class GiftCardController extends Controller
         return GiftCard::find($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateGiftCardRequest $request, $id)
     {
-        $this->validate($request, [
-            'card_no' => [
-                'max:255',
-                Rule::unique('gift_cards')->ignore($request->gift_card_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ]
-        ]);
-
         $this->giftCardService->updateGiftCard($request->gift_card_id, $request->all());
 
         return redirect('gift_cards')->with('message', 'GiftCard updated successfully');

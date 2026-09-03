@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReturnSale\StoreReturnSaleRequest;
+use App\Http\Requests\ReturnSale\UpdateReturnSaleRequest;
 use App\Mail\ReturnDetails;
 use App\Models\Biller;
 use App\Models\Customer;
@@ -179,7 +181,7 @@ class ReturnController extends Controller
         return $this->returnRepository->getProductReturnDataByReturnId($id);
     }
 
-    public function store(Request $request)
+    public function store(StoreReturnSaleRequest $request)
     {
         $this->returnService->createReturn($request->all(), $request->file('document'));
 
@@ -228,7 +230,7 @@ class ReturnController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateReturnSaleRequest $request, $id)
     {
         $this->returnService->updateReturn($id, $request->all(), $request->file('document'));
 

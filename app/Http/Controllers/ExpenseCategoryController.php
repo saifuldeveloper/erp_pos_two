@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExpenseCategory\StoreExpenseCategoryRequest;
+use App\Http\Requests\ExpenseCategory\UpdateExpenseCategoryRequest;
 use App\Services\ExpenseCategoryService;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class ExpenseCategoryController extends Controller
 {
@@ -26,17 +27,8 @@ class ExpenseCategoryController extends Controller
         return $this->expenseCategoryService->generateCode();
     }
 
-    public function store(Request $request)
+    public function store(StoreExpenseCategoryRequest $request)
     {
-        $this->validate($request, [
-            'code' => [
-                'max:255',
-                Rule::unique('expense_categories')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ]
-        ]);
-
         $this->expenseCategoryService->createCategory($request->all());
 
         return redirect('expense_categories')->with('message', 'Data inserted successfully');
@@ -47,17 +39,8 @@ class ExpenseCategoryController extends Controller
         return $this->expenseCategoryService->getCategoryById($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateExpenseCategoryRequest $request, $id)
     {
-        $this->validate($request, [
-            'code' => [
-                'max:255',
-                Rule::unique('expense_categories')->ignore($request->expense_category_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ]
-        ]);
-
         $this->expenseCategoryService->updateCategory($request->expense_category_id, $request->all());
 
         return redirect('expense_categories')->with('message', 'Data updated successfully');

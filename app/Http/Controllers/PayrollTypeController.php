@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PayrollType\StorePayrollTypeRequest;
+use App\Http\Requests\PayrollType\UpdatePayrollTypeRequest;
 use App\Models\PayrollType;
 use App\Services\PayrollTypeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 
 class PayrollTypeController extends Controller
@@ -38,34 +39,15 @@ class PayrollTypeController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StorePayrollTypeRequest $request)
     {
-        $request->merge([
-            'slug' => Str::slug($request->name),
-        ]);
-        $request->validate([
-            'name'   => 'required|string|max:255|unique:payroll_types,name',
-            'slug'   => 'required|string|max:255|unique:payroll_types,slug',
-            'status' => 'required|in:Active,Inactive',
-        ]);
-
         $this->payrollTypeService->createPayrollType($request->all());
 
         return redirect()->route('payroll-types.index')->with('success', 'Payroll Type created successfully.');
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdatePayrollTypeRequest $request, string $id)
     {
-        $payrollType = PayrollType::findOrFail($id);
-        $request->merge([
-            'slug' => Str::slug($request->name),
-        ]);
-        $request->validate([
-            'name'   => 'required|string|max:255|unique:payroll_types,name,' . $payrollType->id,
-            'slug'   => 'required|string|max:255|unique:payroll_types,slug,' . $payrollType->id,
-            'status' => 'required|in:Active,Inactive',
-        ]);
-
         $this->payrollTypeService->updatePayrollType($id, $request->all());
 
         return redirect()->route('payroll-types.index')->with('success', 'Payroll Type updated successfully.');

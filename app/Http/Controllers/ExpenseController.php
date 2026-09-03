@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Expense\StoreExpenseRequest;
+use App\Http\Requests\Expense\UpdateExpenseRequest;
 use App\Models\Account;
 use App\Models\Warehouse;
 use App\Services\ExpenseService;
@@ -58,7 +60,7 @@ class ExpenseController extends Controller
         return response()->json($jsonData);
     }
 
-    public function store(Request $request)
+    public function store(StoreExpenseRequest $request)
     {
         $this->expenseService->createExpense($request->all());
 
@@ -77,7 +79,7 @@ class ExpenseController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateExpenseRequest $request, $id)
     {
         $this->expenseService->updateExpense($request->expense_id, $request->all());
 

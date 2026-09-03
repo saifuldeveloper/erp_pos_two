@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Waste\StoreWasteRequest;
 use App\Models\Biller;
 use App\Models\Customer;
 use App\Models\Employee;
@@ -150,7 +151,7 @@ class WasteController extends Controller
         return $product;
     }
 
-    public function store(Request $request)
+    public function store(StoreWasteRequest $request)
     {
         try {
             $this->wasteService->createWaste($request->all());

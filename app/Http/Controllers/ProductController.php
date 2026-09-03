@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\CustomField;
 use App\Models\Product;
 use App\Models\ProductBatch;
@@ -16,7 +18,6 @@ use DNS1D;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class ProductController extends Controller
@@ -119,17 +120,8 @@ class ProductController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        $this->validate($request, [
-            'code' => [
-                'max:255',
-                Rule::unique('products')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
-            ],
-        ]);
-
         $this->productService->createProduct(
             $request->all(),
             $request->file('image'),
@@ -151,7 +143,7 @@ class ProductController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function updateProduct(Request $request)
+    public function updateProduct(UpdateProductRequest $request)
     {
         $this->productService->updateProduct(
             $request->input('id'),

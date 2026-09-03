@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DiscountPlan\StoreDiscountPlanRequest;
+use App\Http\Requests\DiscountPlan\UpdateDiscountPlanRequest;
 use App\Models\Customer;
 use App\Models\DiscountPlan;
 use App\Models\DiscountPlanCustomer;
@@ -36,7 +38,7 @@ class DiscountPlanController extends Controller
         return view('backend.discount_plan.create', compact('lims_customer_list'));
     }
 
-    public function store(Request $request)
+    public function store(StoreDiscountPlanRequest $request)
     {
         $this->discountPlanService->createDiscountPlan($request->all());
 
@@ -50,7 +52,7 @@ class DiscountPlanController extends Controller
         return view('backend.discount_plan.edit', $formData);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateDiscountPlanRequest $request, $id)
     {
         $this->discountPlanService->updateDiscountPlan($id, $request->all());
 

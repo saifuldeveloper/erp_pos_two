@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Holiday\StoreHolidayRequest;
+use App\Http\Requests\Holiday\UpdateHolidayRequest;
 use App\Models\Holiday;
 use App\Services\HolidayService;
 use Illuminate\Http\Request;
@@ -24,7 +26,7 @@ class HolidayController extends Controller
         return view('backend.holiday.index', $indexData);
     }
 
-    public function store(Request $request)
+    public function store(StoreHolidayRequest $request)
     {
         $this->holidayService->createHoliday($request->all());
 
@@ -43,7 +45,7 @@ class HolidayController extends Controller
         return view('backend.holiday.my_holiday', compact('holidays', 'year', 'month'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateHolidayRequest $request, $id)
     {
         $this->holidayService->updateHoliday($request->id, $request->all());
 

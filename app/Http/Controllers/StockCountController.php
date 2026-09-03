@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StockCount\StoreStockCountRequest;
+use App\Http\Requests\StockCount\UpdateStockCountRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -78,7 +80,7 @@ class StockCountController extends Controller
             ->get();
     }
 
-    public function store(Request $request)
+    public function store(StoreStockCountRequest $request)
     {
         $stockCount = $this->stockCountService->createStockCount($request->all());
 
@@ -95,7 +97,7 @@ class StockCountController extends Controller
         return view('backend.stock_count.show', compact('stock_count', 'stock_count_items'));
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateStockCountRequest $request, $id)
     {
         $this->stockCountService->updateStockCount($id, $request->all());
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\Biller;
 use App\Models\Customer;
 use App\Models\CustomerGroup;
@@ -62,24 +64,8 @@ class UserController extends Controller
         return $this->userService->generatePassword();
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('users')->where(function ($query) {
-                    return $query->where('is_deleted', false);
-                }),
-            ],
-            'email' => [
-                'email',
-                'max:255',
-                Rule::unique('users')->where(function ($query) {
-                    return $query->where('is_deleted', false);
-                }),
-            ],
-        ]);
-
         $result = $this->userService->createUser($request->all());
 
         return redirect('user')->with('message1', $result['message']);
@@ -96,24 +82,8 @@ class UserController extends Controller
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        $this->validate($request, [
-            'name' => [
-                'max:255',
-                Rule::unique('users')->ignore($id)->where(function ($query) {
-                    return $query->where('is_deleted', false);
-                }),
-            ],
-            'email' => [
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($id)->where(function ($query) {
-                    return $query->where('is_deleted', false);
-                }),
-            ],
-        ]);
-
         $this->userService->updateUser($id, $request->all());
 
         return redirect('user')->with('message2', 'Data updated successfullly');
