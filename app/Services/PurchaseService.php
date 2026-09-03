@@ -28,8 +28,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Stripe\Charge;
-use Stripe\Stripe;
 
 class PurchaseService
 {
@@ -736,21 +734,11 @@ class PurchaseService
 
         if ($data['paid_by_id'] == 2) {
             // Credit Card
-            Stripe::setApiKey(config('stripe.secret_key'));
-            $token = $data['stripeToken'];
-            $amount = $data['amount'];
-
-            $charge = Charge::create([
-                'amount'   => $amount * 100,
-                'currency' => config('currency'),
-                'source'   => $token,
-            ]);
-
             PaymentWithCreditCard::create([
                 'payment_id'      => $payment->id,
                 'customer_id'     => $purchase->supplier_id,
-                'customer_stripe_id' => $charge->customer ?? null,
-                'charge_id'       => $charge->id,
+                'customer_stripe_id' => null,
+                'charge_id'       => null,
             ]);
         } elseif ($data['paid_by_id'] == 4 && $chequeFile) {
             // Cheque

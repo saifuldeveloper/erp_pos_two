@@ -38,8 +38,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
-use Stripe\Charge;
-use Stripe\Stripe;
 
 class SaleService
 {

@@ -16,7 +16,6 @@ use App\Models\HrmSetting;
 use App\Models\RewardPointSetting;
 use DB;
 use ZipArchive;
-use Twilio\Rest\Client;
 use Clickatell\Rest;
 use Clickatell\ClickatellException;
 
@@ -400,26 +399,7 @@ class SettingController extends Controller
         $numbers = explode(",", $data['mobile']);
 
         if( env('SMS_GATEWAY') == 'twilio') {
-            $account_sid = env('ACCOUNT_SID');
-            $auth_token = env('AUTH_TOKEN');
-            $twilio_phone_number = env('Twilio_Number');
-            try{
-                $client = new Client($account_sid, $auth_token);
-                foreach ($numbers as $number) {
-                    $client->messages->create(
-                        $number,
-                        array(
-                            "from" => $twilio_phone_number,
-                            "body" => $data['message']
-                        )
-                    );
-                }
-            }
-            catch(\Exception $e){
-                //return $e;
-                return redirect()->back()->with('not_permitted', 'Please setup your <a href="sms_setting">SMS Setting</a> to send SMS.');
-            }
-            $message = "SMS sent successfully";
+            return redirect()->back()->with('not_permitted', 'Twilio SDK is not enabled. Please setup a custom SMS Gateway in SMS Setting.');
         }
         elseif( env('SMS_GATEWAY') == 'clickatell') {
             try {

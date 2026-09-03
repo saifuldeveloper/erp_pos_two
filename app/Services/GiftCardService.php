@@ -10,7 +10,6 @@ use App\Repositories\Contracts\GiftCardRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Keygen\Keygen;
 
 class GiftCardService
 {
@@ -47,7 +46,7 @@ class GiftCardService
      */
     public function generateCode(): string
     {
-        return Keygen::numeric(16)->generate();
+        return (string) random_int(1000000000000000, 9999999999999999);
     }
 
     /**

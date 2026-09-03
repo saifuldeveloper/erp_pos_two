@@ -7,7 +7,6 @@ use App\Repositories\Contracts\ExpenseCategoryRepositoryInterface;
 use App\Traits\CacheForget;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\UploadedFile;
-use Keygen\Keygen;
 
 class ExpenseCategoryService
 {
@@ -42,7 +41,7 @@ class ExpenseCategoryService
      */
     public function generateCode(): string
     {
-        return \Keygen::numeric(8)->generate();
+        return (string) random_int(10000000, 99999999);
     }
 
     /**

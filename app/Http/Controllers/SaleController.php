@@ -63,9 +63,6 @@ use Salla\ZATCA\Tags\InvoiceTotalAmount;
 use Salla\ZATCA\Tags\Seller;
 use Salla\ZATCA\Tags\TaxNumber;
 use Spatie\Permission\Models\Role;
-use Srmklive\PayPal\Services\ExpressCheckout;
-use Stripe\Charge;
-use Stripe\Stripe;
 
 class SaleController extends Controller
 {
@@ -2129,63 +2126,17 @@ class SaleController extends Controller
             $lims_gift_card_data->save();
             PaymentWithGiftCard::create($data);
         } elseif ($paying_method == 'Credit Card') {
-            $lims_pos_setting_data = PosSetting::latest()->first();
-            Stripe::setApiKey($lims_pos_setting_data->stripe_secret_key);
-            $token = $data['stripeToken'];
-            $amount = $data['amount'];
-
-            $lims_payment_with_credit_card_data = PaymentWithCreditCard::where('customer_id', $lims_sale_data->customer_id)->first();
-
-            if (!$lims_payment_with_credit_card_data) {
-                // Create a Customer:
-                $customer = \Stripe\Customer::create([
-                    'source' => $token
-                ]);
-
-                // Charge the Customer instead of the card:
-                $charge = \Stripe\Charge::create([
-                    'amount' => $amount * 100,
-                    'currency' => 'usd',
-                    'customer' => $customer->id,
-                ]);
-                $data['customer_stripe_id'] = $customer->id;
-            } else {
-                $customer_id =
-                    $lims_payment_with_credit_card_data->customer_stripe_id;
-
-                $charge = \Stripe\Charge::create([
-                    'amount' => $amount * 100,
-                    'currency' => 'usd',
-                    'customer' => $customer_id, // Previously stored, then retrieved
-                ]);
-                $data['customer_stripe_id'] = $customer_id;
-            }
             $data['customer_id'] = $lims_sale_data->customer_id;
-            $data['charge_id'] = $charge->id;
+            $data['customer_stripe_id'] = null;
+            $data['charge_id'] = null;
             PaymentWithCreditCard::create($data);
         } elseif ($paying_method == 'Cheque') {
             PaymentWithCheque::create($data);
         } elseif ($paying_method == 'Paypal') {
-            $provider = new ExpressCheckout;
-            $paypal_data['items'] = [];
-            $paypal_data['items'][] = [
-                'name' => 'Paid Amount',
-                'price' => $data['amount'],
-                'qty' => 1
-            ];
-            $paypal_data['invoice_id'] = $lims_payment_data->payment_reference;
-            $paypal_data['invoice_description'] = "Reference: {$paypal_data['invoice_id']}";
-            $paypal_data['return_url'] = url('/sale/paypalPaymentSuccess/' . $lims_payment_data->id);
-            $paypal_data['cancel_url'] = url('/sale');
-
-            $total = 0;
-            foreach ($paypal_data['items'] as $item) {
-                $total += $item['price'] * $item['qty'];
-            }
-
-            $paypal_data['total'] = $total;
-            $response = $provider->setExpressCheckout($paypal_data);
-            return redirect($response['paypal_link']);
+            PaymentWithPaypal::create([
+                'payment_id'     => $lims_payment_data->id,
+                'transaction_id' => $lims_payment_data->payment_reference ?? 'PAYPAL-' . time(),
+            ]);
         } elseif ($paying_method == 'Deposit') {
             $lims_customer_data->expense += $data['amount'];
             $lims_customer_data->save();
@@ -2324,54 +2275,11 @@ class SaleController extends Controller
                 PaymentWithGiftCard::create($data);
             }
         } elseif ($data['edit_paid_by_id'] == 3) {
-            $lims_pos_setting_data = PosSetting::latest()->first();
-            Stripe::setApiKey($lims_pos_setting_data->stripe_secret_key);
-            if ($lims_payment_data->paying_method == 'Credit Card') {
-                $lims_payment_with_credit_card_data = PaymentWithCreditCard::where('payment_id', $lims_payment_data->id)->first();
-
-                \Stripe\Refund::create(array(
-                    "charge" => $lims_payment_with_credit_card_data->charge_id,
-                ));
-
-                $customer_id =
-                    $lims_payment_with_credit_card_data->customer_stripe_id;
-
-                $charge = \Stripe\Charge::create([
-                    'amount' => $data['edit_amount'] * 100,
-                    'currency' => 'usd',
-                    'customer' => $customer_id
-                ]);
-                $lims_payment_with_credit_card_data->charge_id = $charge->id;
-                $lims_payment_with_credit_card_data->save();
-            } else {
-                $token = $data['stripeToken'];
-                $amount = $data['edit_amount'];
-                $lims_payment_with_credit_card_data = PaymentWithCreditCard::where('customer_id', $lims_sale_data->customer_id)->first();
-
-                if (!$lims_payment_with_credit_card_data) {
-                    $customer = \Stripe\Customer::create([
-                        'source' => $token
-                    ]);
-
-                    $charge = \Stripe\Charge::create([
-                        'amount' => $amount * 100,
-                        'currency' => 'usd',
-                        'customer' => $customer->id,
-                    ]);
-                    $data['customer_stripe_id'] = $customer->id;
-                } else {
-                    $customer_id =
-                        $lims_payment_with_credit_card_data->customer_stripe_id;
-
-                    $charge = \Stripe\Charge::create([
-                        'amount' => $amount * 100,
-                        'currency' => 'usd',
-                        'customer' => $customer_id
-                    ]);
-                    $data['customer_stripe_id'] = $customer_id;
-                }
+            $lims_payment_with_credit_card_data = PaymentWithCreditCard::where('payment_id', $lims_payment_data->id)->first();
+            if (!$lims_payment_with_credit_card_data) {
                 $data['customer_id'] = $lims_sale_data->customer_id;
-                $data['charge_id'] = $charge->id;
+                $data['customer_stripe_id'] = null;
+                $data['charge_id'] = null;
                 PaymentWithCreditCard::create($data);
             }
             $lims_payment_data->paying_method = 'Credit Card';
@@ -2392,26 +2300,13 @@ class SaleController extends Controller
             $lims_payment_data->payment_note = $data['edit_payment_note'];
             $lims_payment_data->save();
 
-            $provider = new ExpressCheckout;
-            $paypal_data['items'] = [];
-            $paypal_data['items'][] = [
-                'name' => 'Paid Amount',
-                'price' => $data['edit_amount'],
-                'qty' => 1
-            ];
-            $paypal_data['invoice_id'] = $lims_payment_data->payment_reference;
-            $paypal_data['invoice_description'] = "Reference: {$paypal_data['invoice_id']}";
-            $paypal_data['return_url'] = url('/sale/paypalPaymentSuccess/' . $lims_payment_data->id);
-            $paypal_data['cancel_url'] = url('/sale');
-
-            $total = 0;
-            foreach ($paypal_data['items'] as $item) {
-                $total += $item['price'] * $item['qty'];
+            $lims_payment_paypal_data = PaymentWithPaypal::where('payment_id', $lims_payment_data->id)->first();
+            if (!$lims_payment_paypal_data) {
+                PaymentWithPaypal::create([
+                    'payment_id'     => $lims_payment_data->id,
+                    'transaction_id' => $lims_payment_data->payment_reference ?? 'PAYPAL-' . time(),
+                ]);
             }
-
-            $paypal_data['total'] = $total;
-            $response = $provider->setExpressCheckout($paypal_data);
-            return redirect($response['paypal_link']);
         } elseif ($data['edit_paid_by_id'] == 6) {
             $lims_payment_data->paying_method = 'Deposit';
             $lims_customer_data->expense += $data['edit_amount'];
@@ -2472,21 +2367,17 @@ class SaleController extends Controller
             $lims_payment_gift_card_data->delete();
         } elseif ($lims_payment_data->paying_method == 'Credit Card') {
             $lims_payment_with_credit_card_data = PaymentWithCreditCard::where('payment_id', $request['id'])->first();
-            $lims_pos_setting_data = PosSetting::latest()->first();
-            Stripe::setApiKey($lims_pos_setting_data->stripe_secret_key);
-            \Stripe\Refund::create(array(
-                "charge" => $lims_payment_with_credit_card_data->charge_id,
-            ));
-
-            $lims_payment_with_credit_card_data->delete();
+            if ($lims_payment_with_credit_card_data) {
+                $lims_payment_with_credit_card_data->delete();
+            }
         } elseif ($lims_payment_data->paying_method == 'Cheque') {
             $lims_payment_cheque_data = PaymentWithCheque::where('payment_id', $request['id'])->first();
-            $lims_payment_cheque_data->delete();
+            if ($lims_payment_cheque_data) {
+                $lims_payment_cheque_data->delete();
+            }
         } elseif ($lims_payment_data->paying_method == 'Paypal') {
             $lims_payment_paypal_data = PaymentWithPaypal::where('payment_id', $request['id'])->first();
             if ($lims_payment_paypal_data) {
-                $provider = new ExpressCheckout;
-                $response = $provider->refundTransaction($lims_payment_paypal_data->transaction_id);
                 $lims_payment_paypal_data->delete();
             }
         } elseif ($lims_payment_data->paying_method == 'Deposit') {

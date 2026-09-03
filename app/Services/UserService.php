@@ -16,7 +16,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Keygen\Keygen;
 
 class UserService
 {
@@ -69,7 +68,7 @@ class UserService
      */
     public function generatePassword(): string
     {
-        return Keygen::numeric(6)->generate();
+        return (string) random_int(100000, 999999);
     }
 
     /**

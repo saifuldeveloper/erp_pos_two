@@ -7,7 +7,7 @@ use App\Repositories\Contracts\CouponRepositoryInterface;
 use App\Traits\CacheForget;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
-use Keygen\Keygen;
+use Illuminate\Support\Str;
 
 class CouponService
 {
@@ -42,7 +42,7 @@ class CouponService
      */
     public function generateCode(): string
     {
-        return Keygen::alphanum(10)->generate();
+        return strtoupper(Str::random(10));
     }
 
     /**
