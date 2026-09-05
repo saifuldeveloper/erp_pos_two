@@ -107,6 +107,7 @@
                                         </li>
 
 
+                                        @if(Auth::user()->role_id <= 2)
                                         <li class="divider"></li>
                                         {{ Form::open(['route' => ['delivery.delete', $delivery->id], 'method' => 'post']) }}
                                         <li>
@@ -114,6 +115,7 @@
                                                     class="dripicons-trash"></i> {{ trans('file.delete') }}</button>
                                         </li>
                                         {{ Form::close() }}
+                                        @endif
                                     </ul>
                                 </div>
                             </td>
@@ -443,6 +445,7 @@
                         rows: ':visible'
                     },
                 },
+                @if(Auth::user()->role_id <= 2)
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
                     className: 'buttons-delete',
@@ -475,6 +478,7 @@
                             alert('This feature is disable for demo!');
                     }
                 },
+                @endif
                 {
                     extend: 'colvis',
                     text: '<i title="column visibility" class="fa fa-eye"></i>',

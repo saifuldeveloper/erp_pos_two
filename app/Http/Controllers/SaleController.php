@@ -2349,6 +2349,11 @@ class SaleController extends Controller
 
     public function deletePayment(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('sale-payment-delete')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete payment');
+        }
+
         $lims_payment_data = Payment::find($request['id']);
         $lims_sale_data = Sale::where('id', $lims_payment_data->sale_id)->first();
         $lims_sale_data->paid_amount -= $lims_payment_data->amount;
@@ -2491,6 +2496,11 @@ class SaleController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('sales-delete')) {
+            return 'Sorry! You are not allowed to delete sale';
+        }
+
         $sale_id = $request['saleIdArray'];
         foreach ($sale_id as $id) {
             $lims_sale_data = Sale::find($id);
@@ -2617,6 +2627,11 @@ class SaleController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('sales-delete')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete sale');
+        }
+
         $url = url()->previous();
         $lims_sale_data = Sale::find($id);
         $return_ids = Returns::where('sale_id', $id)->pluck('id')->toArray();

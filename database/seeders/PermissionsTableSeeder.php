@@ -18,6 +18,7 @@ class PermissionsTableSeeder extends Seeder
         $permissions = [
             'account-index',
             'account-statement',
+            'account-delete',
             'adjustment',
             'all_notification',
             'attendance',
@@ -74,6 +75,10 @@ class PermissionsTableSeeder extends Seeder
             'expenses-delete',
             'expenses-edit',
             'expenses-index',
+            'expense_category-add',
+            'expense_category-delete',
+            'expense_category-edit',
+            'expense_category-index',
             'general_setting',
             'gift_card',
             'holiday',

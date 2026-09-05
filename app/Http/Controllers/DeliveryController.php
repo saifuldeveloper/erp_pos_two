@@ -120,6 +120,10 @@ class DeliveryController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        if (Auth::user()->role_id > 2) {
+            return 'Sorry! You are not allowed to delete delivery';
+        }
+
         $delivery_ids = $request['deliveryIdArray'] ?? [];
         $this->deliveryService->deleteMultipleDeliveries($delivery_ids);
 
@@ -128,6 +132,10 @@ class DeliveryController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect('delivery')->with('not_permitted', 'Sorry! You are not allowed to delete delivery');
+        }
+
         $this->deliveryService->deleteDelivery($id);
 
         return redirect('delivery')->with('not_permitted', 'Delivery deleted successfully');

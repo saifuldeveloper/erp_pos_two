@@ -72,6 +72,10 @@ class TaxController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        if (Auth::user()->role_id > 2) {
+            return 'Sorry! You are not allowed to delete tax';
+        }
+
         $tax_id = $request['taxIdArray'];
         $this->taxService->deleteMultipleTaxes($tax_id);
 
@@ -80,6 +84,10 @@ class TaxController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect('tax')->with('not_permitted', 'Sorry! You are not allowed to delete tax');
+        }
+
         $this->taxService->deleteTax($id);
 
         return redirect('tax')->with('not_permitted', 'Data deleted successfully');

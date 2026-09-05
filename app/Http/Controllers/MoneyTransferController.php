@@ -47,6 +47,10 @@ class MoneyTransferController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete money transfer');
+        }
+
         $this->moneyTransferService->deleteTransfer($id);
 
         return redirect()->back()->with('not_permitted', 'Data deleted successfully');

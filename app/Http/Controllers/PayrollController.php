@@ -62,6 +62,11 @@ class PayrollController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('payroll-delete')) {
+            return 'Sorry! You are not allowed to delete payroll';
+        }
+
         $payroll_ids = $request['payrollIdArray'] ?? [];
         $this->payrollService->deleteMultiplePayrolls($payroll_ids);
 
@@ -70,6 +75,11 @@ class PayrollController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('payroll-delete')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete payroll');
+        }
+
         $this->payrollService->deletePayroll($id);
 
         return redirect('payroll')->with('not_permitted', 'Payroll deleted successfully');

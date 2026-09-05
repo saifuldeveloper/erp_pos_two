@@ -69,6 +69,10 @@ class CustomerGroupController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        if (Auth::user()->role_id > 2) {
+            return 'Sorry! You are not allowed to delete customer group';
+        }
+
         $customer_group_id = $request['customer_groupIdArray'] ?? [];
         $this->customerGroupService->deleteMultipleCustomerGroups($customer_group_id);
 
@@ -77,6 +81,10 @@ class CustomerGroupController extends Controller
 
     public function destroy($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect('customer_group')->with('not_permitted', 'Sorry! You are not allowed to delete customer group');
+        }
+
         $this->customerGroupService->deleteCustomerGroup($id);
 
         return redirect('customer_group')->with('not_permitted', 'Data deleted successfully');

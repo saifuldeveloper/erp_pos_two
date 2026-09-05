@@ -46,13 +46,14 @@
                                 <li>
                                     <button type="button" data-id="{{$tax->id}}" class="open-EdittaxDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}
                                 </button>
-                                </li>
+                                @if(Auth::user()->role_id <= 2)
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['tax.destroy', $tax->id], 'method' => 'DELETE'] ) }}
                                 <li>
                                     <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
                                 </li>
                                 {{ Form::close() }}
+                                @endif
                             </ul>
                         </div>
                     </td>
@@ -263,6 +264,7 @@ $(document).ready(function() {
                     rows: ':visible'
                 },
             },
+            @if(Auth::user()->role_id <= 2)
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
@@ -294,6 +296,7 @@ $(document).ready(function() {
                         alert('This feature is disable for demo!');
                 }
             },
+            @endif
             {
                 extend: 'colvis',
                 text: '<i title="column visibility" class="fa fa-eye"></i>',

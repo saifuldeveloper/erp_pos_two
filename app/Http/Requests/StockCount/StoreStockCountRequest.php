@@ -23,7 +23,7 @@ class StoreStockCountRequest extends FormRequest
     {
         return [
             'warehouse_id' => ['required'],
-            'type'         => ['required'],
+            'type'         => ['nullable'],
             'brand_id'     => ['nullable', 'array'],
             'category_id'  => ['nullable', 'array'],
         ];

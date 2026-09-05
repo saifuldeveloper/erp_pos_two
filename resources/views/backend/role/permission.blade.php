@@ -557,6 +557,58 @@
 						            </td>
 						        </tr>
 
+						        <tr class="expense-category-row">
+						            <td>{{trans('file.Expense Category')}}</td>
+						            <td class="text-center">
+						                <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false">
+							                <div class="checkbox">
+								                @if(in_array("expense_category-index", $all_permission))
+								                <input type="checkbox" value="1" id="expense_category-index" name="expense_category-index" checked />
+								                @else
+								                <input type="checkbox" value="1" id="expense_category-index" name="expense_category-index">
+								                @endif
+								                <label for="expense_category-index"></label>
+								            </div>
+						            	</div>
+						            </td>
+						            <td class="text-center">
+						                <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false">
+							                <div class="checkbox">
+								                @if(in_array("expense_category-add", $all_permission))
+								                <input type="checkbox" value="1" id="expense_category-add" name="expense_category-add" checked />
+								                @else
+								                <input type="checkbox" value="1" id="expense_category-add" name="expense_category-add">
+								                @endif
+								                <label for="expense_category-add"></label>
+								            </div>
+						            	</div>
+						            </td>
+						            <td class="text-center">
+						                <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false">
+							                <div class="checkbox">
+								                @if(in_array("expense_category-edit", $all_permission))
+								                <input type="checkbox" value="1" id="expense_category-edit" name="expense_category-edit" checked>
+								                @else
+								                <input type="checkbox" value="1" id="expense_category-edit" name="expense_category-edit">
+								                @endif
+								                <label for="expense_category-edit"></label>
+								            </div>
+						            	</div>
+						            </td>
+						            <td class="text-center">
+						                <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false">
+							                <div class="checkbox">
+								                @if(in_array("expense_category-delete", $all_permission))
+								                <input type="checkbox" value="1" id="expense_category-delete" name="expense_category-delete" checked>
+								                @else
+								                <input type="checkbox" value="1" id="expense_category-delete" name="expense_category-delete">
+								                @endif
+								                <label for="expense_category-delete"></label>
+								            </div>
+						            	</div>
+						            </td>
+						        </tr>
+
 						        <tr class="quotation-row">
 						            <td>{{trans('file.Quotation')}}</td>
 						            <td class="text-center">
@@ -1380,6 +1432,18 @@
 							                    	<input type="checkbox" value="1" id="account-statement-permission" name="account-statement">
 							                    	@endif
 								                    <label for="account-statement-permission" class="padding05">{{trans('file.Account Statement')}} &nbsp;&nbsp;</label>
+								                </div>
+								            </div>
+						                </span>
+						                <span>
+						                    <div aria-checked="false" aria-disabled="false">
+						                    	<div class="checkbox">
+							                    	@if(in_array("account-delete", $all_permission))
+							                    	<input type="checkbox" value="1" id="account-delete" name="account-delete" checked>
+							                    	@else
+							                    	<input type="checkbox" value="1" id="account-delete" name="account-delete">
+							                    	@endif
+								                    <label for="account-delete" class="padding05">Account Delete &nbsp;&nbsp;</label>
 								                </div>
 								            </div>
 						                </span>

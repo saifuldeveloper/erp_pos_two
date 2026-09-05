@@ -16,6 +16,35 @@ class UpdateGiftCardRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $mergeData = [];
+
+        if ($this->has('card_no_edit')) {
+            $mergeData['card_no'] = $this->input('card_no_edit');
+        }
+        if ($this->has('amount_edit')) {
+            $mergeData['amount'] = $this->input('amount_edit');
+        }
+        if ($this->has('expired_date_edit')) {
+            $mergeData['expired_date'] = $this->input('expired_date_edit');
+        }
+        if ($this->input('user_edit')) {
+            $mergeData['user_id'] = $this->input('user_id_edit');
+            $mergeData['customer_id'] = null;
+        } elseif ($this->has('customer_id_edit')) {
+            $mergeData['customer_id'] = $this->input('customer_id_edit');
+            $mergeData['user_id'] = null;
+        }
+
+        if (!empty($mergeData)) {
+            $this->merge($mergeData);
+        }
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -35,7 +64,7 @@ class UpdateGiftCardRequest extends FormRequest
             'amount'       => ['required', 'numeric', 'min:0'],
             'customer_id'  => ['nullable'],
             'user_id'      => ['nullable'],
-            'expired_date' => ['required', 'date'],
+            'expired_date' => ['nullable', 'date'],
         ];
     }
 }

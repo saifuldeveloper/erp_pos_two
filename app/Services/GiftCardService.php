@@ -127,10 +127,23 @@ class GiftCardService
     public function updateGiftCard($id, array $requestData): GiftCard
     {
         $data = $requestData;
-        if (!empty($data['user'])) {
+
+        if (isset($data['card_no_edit'])) {
+            $data['card_no'] = $data['card_no_edit'];
+        }
+        if (isset($data['amount_edit'])) {
+            $data['amount'] = $data['amount_edit'];
+        }
+        if (isset($data['expired_date_edit'])) {
+            $data['expired_date'] = $data['expired_date_edit'];
+        }
+
+        if (!empty($data['user_edit']) || !empty($data['user'])) {
+            $data['user_id'] = $data['user_id_edit'] ?? ($data['user_id'] ?? null);
             $data['customer_id'] = null;
         } else {
             $data['user_id'] = null;
+            $data['customer_id'] = $data['customer_id_edit'] ?? ($data['customer_id'] ?? null);
         }
 
         $giftCard = $this->giftCardRepository->findOrFail($id);

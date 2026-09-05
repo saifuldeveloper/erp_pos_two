@@ -153,6 +153,11 @@ class CustomerController extends Controller
 
     public function deleteDeposit(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('customers-delete')) {
+            return redirect('customer')->with('not_permitted', 'Sorry! You are not allowed to delete deposit');
+        }
+
         $this->customerService->deleteDeposit($request->id);
         return redirect('customer')->with('not_permitted', 'Data deleted successfully');
     }

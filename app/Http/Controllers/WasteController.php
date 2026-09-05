@@ -174,6 +174,11 @@ class WasteController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('waste-delete')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete waste');
+        }
+
         $this->wasteService->deleteWaste($id);
 
         return redirect('wastes')->with('not_permitted', 'Waste deleted successfully');

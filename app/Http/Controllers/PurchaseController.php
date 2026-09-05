@@ -230,6 +230,11 @@ class PurchaseController extends Controller
 
     public function deletePayment(Request $request)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('purchase-payment-delete')) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete purchase payment');
+        }
+
         $this->purchaseService->deletePayment($request->id);
 
         return redirect('purchases')->with('not_permitted', 'Payment deleted successfully');

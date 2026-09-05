@@ -101,6 +101,9 @@ class RoleHasPermissionsTableSeeder extends Seeder
                 'returns-add',
                 'expenses-index',
                 'expenses-add',
+                'expense_category-index',
+                'expense_category-add',
+                'expense_category-edit',
                 // Waste & Warehouse view
                 'waste-index',
                 'waste-add',

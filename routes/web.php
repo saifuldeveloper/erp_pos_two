@@ -546,6 +546,9 @@ Route::group(['middleware' => ['common', 'auth', 'active']], function () {
     });
     Route::resource('gift_cards', GiftCardController::class);
 
+    Route::controller(CourierController::class)->group(function () {
+        Route::post('couriers/deletebyselection', 'deleteBySelection');
+    });
     Route::resource('couriers', CourierController::class);
 
     Route::controller(CouponController::class)->group(function () {

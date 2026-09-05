@@ -42,13 +42,14 @@
                                 <li>
                                     <button type="button" data-id="{{$customer_group->id}}" class="open-EditCustomerGroupDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}
                                     </button>
-                                </li>
+                                @if(Auth::user()->role_id <= 2)
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['customer_group.destroy', $customer_group->id], 'method' => 'DELETE'] ) }}
                                 <li>
                                     <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
                                 </li>
                                 {{ Form::close() }}
+                                @endif
                             </ul>
                         </div>
                     </td>
@@ -256,6 +257,7 @@
                     rows: ':visible'
                 },
             },
+            @if(Auth::user()->role_id <= 2)
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
@@ -287,6 +289,7 @@
                         alert('This feature is disable for demo!');
                 }
             },
+            @endif
             {
                 extend: 'colvis',
                 text: '<i title="column visibility" class="fa fa-eye"></i>',

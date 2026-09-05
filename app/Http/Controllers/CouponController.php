@@ -51,9 +51,24 @@ class CouponController extends Controller
 
     public function deleteBySelection(Request $request)
     {
+        if (Auth::user()->role_id > 2) {
+            return 'Sorry! You are not allowed to delete coupon';
+        }
+
         $coupon_id = $request['couponIdArray'] ?? [];
         $this->couponService->deleteMultipleCoupons($coupon_id);
 
         return 'Coupon deleted successfully!';
+    }
+
+    public function destroy($id)
+    {
+        if (Auth::user()->role_id > 2) {
+            return redirect('coupons')->with('not_permitted', 'Sorry! You are not allowed to delete coupon');
+        }
+
+        $this->couponService->deleteCoupon($id);
+
+        return redirect('coupons')->with('not_permitted', 'Coupon deleted successfully');
     }
 }

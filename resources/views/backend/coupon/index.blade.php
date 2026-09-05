@@ -69,11 +69,13 @@
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
                                 <li><button type="button" data-id="{{$coupon->id}}" data-code="{{$coupon->code}}" data-type="{{$coupon->type}}" data-amount="{{$coupon->amount}}" data-minimum_amount="{{$coupon->minimum_amount}}" data-quantity="{{$coupon->quantity}}" data-expired_date="{{$coupon->expired_date}}" class="edit-btn btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}</button></li>
+                                @if(Auth::user()->role_id <= 2)
                                 {{ Form::open(['route' => ['coupons.destroy', $coupon->id], 'method' => 'DELETE'] ) }}
                                 <li>
                                     <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
                                 </li>
                                 {{ Form::close() }}
+                                @endif
                             </ul>
                         </div>
                     </td>
@@ -379,6 +381,7 @@ function confirmDelete() {
                     rows: ':visible'
                 }
             },
+            @if(Auth::user()->role_id <= 2)
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
@@ -410,6 +413,7 @@ function confirmDelete() {
                         alert('This feature is disable for demo!');
                 }
             },
+            @endif
             {
                 extend: 'colvis',
                 text: '<i title="column visibility" class="fa fa-eye"></i>',

@@ -6,6 +6,7 @@ use App\Http\Requests\Courier\StoreCourierRequest;
 use App\Http\Requests\Courier\UpdateCourierRequest;
 use App\Services\CourierService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourierController extends Controller
 {
@@ -36,8 +37,26 @@ class CourierController extends Controller
         return redirect()->back()->with('message', 'Courier updated successfully');
     }
 
+    public function deleteBySelection(Request $request)
+    {
+        if (Auth::user()->role_id > 2) {
+            return 'Sorry! You are not allowed to delete courier';
+        }
+
+        $courier_ids = $request['courierIdArray'] ?? [];
+        foreach ($courier_ids as $id) {
+            $this->courierService->deleteCourier($id);
+        }
+
+        return 'Courier deleted successfully!';
+    }
+
     public function destroy($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete courier');
+        }
+
         $this->courierService->deleteCourier($id);
 
         return redirect()->back()->with('not_permitted', 'Courier deleted successfully');

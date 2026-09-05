@@ -27,7 +27,7 @@ class StoreCouponRequest extends FormRequest
             'amount'       => ['required', 'numeric'],
             'minimum_amount' => ['nullable', 'numeric'],
             'quantity'     => ['required', 'integer'],
-            'expired_date' => ['required', 'date'],
+            'expired_date' => ['nullable', 'date'],
         ];
     }
 }

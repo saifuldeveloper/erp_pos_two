@@ -33,7 +33,7 @@ class StoreGiftCardRequest extends FormRequest
             'amount'       => ['required', 'numeric', 'min:0'],
             'customer_id'  => ['nullable'],
             'user_id'      => ['nullable'],
-            'expired_date' => ['required', 'date'],
+            'expired_date' => ['nullable', 'date'],
         ];
     }
 }

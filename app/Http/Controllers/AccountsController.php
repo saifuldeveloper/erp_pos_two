@@ -7,6 +7,7 @@ use App\Http\Requests\Account\UpdateAccountRequest;
 use App\Services\AccountService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
 class AccountsController extends Controller
@@ -20,10 +21,34 @@ class AccountsController extends Controller
 
     public function index()
     {
+        $permission = DB::table('permissions')->where('name', 'account-delete')->first();
+        if (!$permission) {
+            $permissionId = DB::table('permissions')->insertGetId([
+                'name' => 'account-delete',
+                'guard_name' => 'web',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            DB::table('role_has_permissions')->insert([
+                ['permission_id' => $permissionId, 'role_id' => 1],
+                ['permission_id' => $permissionId, 'role_id' => 2],
+            ]);
+            app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+        }
+
         $role = Role::find(Auth::user()->role_id);
         if ($role->hasPermissionTo('account-index')) {
+            $permissions = Role::findByName($role->name)->permissions;
+            $all_permission = [];
+            foreach ($permissions as $p) {
+                $all_permission[] = $p->name;
+            }
+            if (empty($all_permission)) {
+                $all_permission[] = 'dummy text';
+            }
+
             $lims_account_all = $this->accountService->getActiveAccounts();
-            return view('backend.account.index', compact('lims_account_all'));
+            return view('backend.account.index', compact('lims_account_all', 'all_permission'));
         }
 
         return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -75,6 +100,11 @@ class AccountsController extends Controller
 
     public function destroy($id)
     {
+        $role = Role::find(Auth::user()->role_id);
+        if (!$role->hasPermissionTo('account-delete') && Auth::user()->role_id > 2) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete account');
+        }
+
         $result = $this->accountService->deleteAccount($id);
 
         return redirect('accounts')->with('not_permitted', $result['message']);
