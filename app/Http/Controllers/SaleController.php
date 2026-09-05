@@ -961,7 +961,7 @@ class SaleController extends Controller
         $data = [];
         $warehouse_id = request()->input('warehouse_id');
         if (!$warehouse_id || $warehouse_id == 'undefined') {
-            $lims_pos_setting_data = DB::table('pos_settings')->latest()->first();
+            $lims_pos_setting_data = DB::table('pos_setting')->latest()->first();
             $warehouse_id = $lims_pos_setting_data->warehouse_id ?? 0;
         }
 
@@ -1037,7 +1037,7 @@ class SaleController extends Controller
         $data = [];
         $warehouse_id = request()->input('warehouse_id');
         if (!$warehouse_id || $warehouse_id == 'undefined') {
-            $lims_pos_setting_data = DB::table('pos_settings')->latest()->first();
+            $lims_pos_setting_data = DB::table('pos_setting')->latest()->first();
             $warehouse_id = $lims_pos_setting_data->warehouse_id ?? 0;
         }
 

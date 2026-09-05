@@ -18,12 +18,10 @@ class Common
             URL::forceScheme('https');
         }*/
         //get general setting value
-        $general_setting =  Cache::remember('general_setting', 60*60*24*365, function () {
-            return DB::table('general_settings')->latest()->first();
-        });
+        $general_setting = DB::table('general_settings')->latest()->first();
 
         $todayDate = date("Y-m-d");
-        if($general_setting->expiry_date) {
+        if($general_setting && $general_setting->expiry_date) {
             $expiry_date = date("Y-m-d", strtotime($general_setting->expiry_date));
             if($todayDate > $expiry_date) {
                 auth()->logout();
@@ -44,27 +42,34 @@ class Common
         else {
             View::share('theme', 'light');
         }
-        $currency = Cache::remember('currency', 60*60*24*365, function () {
-            $settingData = DB::table('general_settings')->select('currency')->latest()->first();
-            return \App\Models\Currency::find($settingData->currency);
-        });
 
-        $pos_setting = Cache::remember('pos_setting', 60*60*24*365, function () {
-            return DB::table('pos_settings')->latest()->first();
-        });
+        $currency = null;
+        if ($general_setting && $general_setting->currency) {
+            $currency = \App\Models\Currency::find($general_setting->currency);
+        }
 
-        $reward_point_setting = Cache::remember('reward_point_setting', 60*60*24*365, function () {
-            return DB::table('reward_point_settings')->latest()->first();
-        });
+        $pos_setting = DB::table('pos_setting')->latest()->first();
 
-        $mail_setting = Cache::remember('mail_setting', 60*60*24*365, function () {
-            return DB::table('mail_settings')->latest()->first();
-        });
+        $reward_point_setting = DB::table('reward_point_settings')->latest()->first();
+
+        $mail_setting = DB::table('mail_settings')->latest()->first();
 
         View::share('general_setting', $general_setting);
         View::share('currency', $currency);
         View::share('pos_setting', $pos_setting);
-        config(['staff_access' => $general_setting->staff_access, 'date_format' => $general_setting->date_format, 'currency' => $currency->code, 'currency_position' => $general_setting->currency_position, 'decimal' => $general_setting->decimal, 'is_zatca' => $general_setting->is_zatca, 'company_name' => $general_setting->company_name, 'vat_registration_number' => $general_setting->vat_registration_number, 'without_stock' => $general_setting->without_stock]);
+        if ($general_setting) {
+            config([
+                'staff_access' => $general_setting->staff_access,
+                'date_format' => $general_setting->date_format,
+                'currency' => $currency->code ?? '',
+                'currency_position' => $general_setting->currency_position,
+                'decimal' => $general_setting->decimal,
+                'is_zatca' => $general_setting->is_zatca,
+                'company_name' => $general_setting->company_name,
+                'vat_registration_number' => $general_setting->vat_registration_number,
+                'without_stock' => $general_setting->without_stock
+            ]);
+        }
 
         $alert_product = DB::table('products')->where('is_active', true)->whereColumn('alert_quantity', '>', 'qty')->count();
         $dso_alert_product = DB::table('dso_alerts')->select('number_of_products')->whereDate('created_at', date("Y-m-d"))->first();
