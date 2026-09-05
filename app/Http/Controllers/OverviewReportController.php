@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Enums\ProductType;
 use App\Models\ProductReturn;
 use App\Models\Unit;
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -41,43 +42,46 @@ class OverviewReportController extends Controller
             app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
         }
         if ($role->hasPermissionTo('overview-report')) {
-           $start_date = $request->input('start_date', date("Y-m-d", strtotime("-1 year")));
+            $start_date = $request->input('start_date', date("Y-m-d", strtotime("-1 year")));
             $end_date = $request->input('end_date', date("Y-m-d"));
             $stock_count_id = $request->input('stock_count_id');
+            $warehouse_id = $request->input('warehouse_id');
 
-            $stock_count_product_ids = [];
-            if ($stock_count_id) {
-                $stock_count_product_ids = DB::table('stock_count_items')
-                    ->where('stock_count_id', $stock_count_id)
-                    ->pluck('product_id')
-                    ->toArray();
+            // If a specific stock count is chosen and warehouse_id was not explicitly specified, align with stock count warehouse
+            if ($stock_count_id && !$warehouse_id) {
+                $selected_sc = DB::table('stock_counts')->where('id', $stock_count_id)->first();
+                if ($selected_sc && $selected_sc->warehouse_id) {
+                    $warehouse_id = $selected_sc->warehouse_id;
+                }
             }
 
             // 1. Calculate Average COGS for sold items, brand wise
-            config()->set('database.connections.mysql.strict', false);
-            DB::reconnect();
             $product_sales_query = Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
                 ->join('products', 'product_sales.product_id', '=', 'products.id')
                 ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
-                ->select(DB::raw('product_sales.product_id, product_sales.product_batch_id, product_sales.sale_unit_id, sum(product_sales.qty) as sold_qty, sum(product_sales.return_qty) as return_qty, sum(product_sales.total) as sold_amount, COALESCE(brands.title, "No Brand") as brand_name'))
+                ->select(DB::raw('product_sales.product_id, product_sales.product_batch_id, product_sales.variant_id, product_sales.sale_unit_id, sum(product_sales.qty) as sold_qty, sum(product_sales.return_qty) as return_qty, sum(product_sales.total) as sold_amount, COALESCE(brands.title, "No Brand") as brand_name'))
                 ->whereDate('sales.created_at', '>=', $start_date)
                 ->whereDate('sales.created_at', '<=', $end_date);
-            $product_sale_data = $product_sales_query->groupBy('product_sales.product_id', 'product_sales.product_batch_id', 'brand_name')->get();
-            config()->set('database.connections.mysql.strict', true);
-            DB::reconnect();
+
+            if ($warehouse_id) {
+                $product_sales_query->where('sales.warehouse_id', $warehouse_id);
+            }
+
+            $product_sale_data = $product_sales_query->groupBy('product_sales.product_id', 'product_sales.product_batch_id', 'product_sales.variant_id', 'product_sales.sale_unit_id', 'brand_name')->get();
 
             // Fetch sale returns items data early so we can do bulk preloading
-            config()->set('database.connections.mysql.strict', false);
-            DB::reconnect();
             $sale_returns_items = ProductReturn::join('returns', 'product_returns.return_id', '=', 'returns.id')
                 ->join('products', 'product_returns.product_id', '=', 'products.id')
                 ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
                 ->select(DB::raw('product_returns.product_id, product_returns.product_batch_id, product_returns.variant_id, sum(product_returns.qty) as sold_qty, 0 as return_qty, COALESCE(brands.title, "No Brand") as brand_name'))
                 ->whereDate('returns.created_at', '>=', $start_date)
                 ->whereDate('returns.created_at', '<=', $end_date);
-            $sale_returns_items_data = $sale_returns_items->groupBy('product_returns.product_id', 'product_returns.product_batch_id', 'brand_name')->get();
-            config()->set('database.connections.mysql.strict', true);
-            DB::reconnect();
+
+            if ($warehouse_id) {
+                $sale_returns_items->where('returns.warehouse_id', $warehouse_id);
+            }
+
+            $sale_returns_items_data = $sale_returns_items->groupBy('product_returns.product_id', 'product_returns.product_batch_id', 'product_returns.variant_id', 'brand_name')->get();
 
             // Preload products, units, and calculate average costs in bulk
             $products = $this->loadProductsAndCombos($product_sale_data, $sale_returns_items_data);
@@ -88,21 +92,21 @@ class OverviewReportController extends Controller
             $sales_cogs_by_brand = $this->calculateCogsByBrand($product_sale_data, $products, $units, $avg_costs);
 
             // Fetch purchases data
-            $purchases_data = $this->getGroupedPurchases($start_date, $end_date, $stock_count_id, $stock_count_product_ids);
+            $purchases_data = $this->getGroupedPurchases($start_date, $end_date, $warehouse_id);
             $purchases_by_brand = $purchases_data['purchases_by_brand'];
             $purchase_total_qty = $purchases_data['purchase_total_qty'];
             $purchase_total_cost = $purchases_data['purchase_total_cost'];
             $purchase_total_selling_price = $purchases_data['purchase_total_selling_price'];
 
             // Fetch sales data
-            $sales_data = $this->getGroupedSales($start_date, $end_date, $stock_count_id, $stock_count_product_ids, $sales_cogs_by_brand);
+            $sales_data = $this->getGroupedSales($start_date, $end_date, $warehouse_id, $sales_cogs_by_brand);
             $sales_by_brand = $sales_data['sales_by_brand'];
             $sales_total_qty = $sales_data['sales_total_qty'];
             $sales_total_cost = $sales_data['sales_total_cost'];
             $sales_total_revenue = $sales_data['sales_total_revenue'];
 
             // Fetch purchase returns data
-            $purchase_returns_data = $this->getGroupedPurchaseReturns($start_date, $end_date, $stock_count_id, $stock_count_product_ids);
+            $purchase_returns_data = $this->getGroupedPurchaseReturns($start_date, $end_date, $warehouse_id);
             $purchase_returns_by_brand = $purchase_returns_data['purchase_returns_by_brand'];
             $purchase_return_total_qty = $purchase_returns_data['purchase_return_total_qty'];
             $purchase_return_total_cost = $purchase_returns_data['purchase_return_total_cost'];
@@ -112,14 +116,14 @@ class OverviewReportController extends Controller
             $sale_returns_cogs_by_brand = $this->calculateCogsByBrand($sale_returns_items_data, $products, $units, $avg_costs);
 
             // Fetch sale returns data
-            $sale_returns_data = $this->getGroupedSaleReturns($start_date, $end_date, $stock_count_id, $stock_count_product_ids, $sale_returns_cogs_by_brand);
+            $sale_returns_data = $this->getGroupedSaleReturns($start_date, $end_date, $warehouse_id, $sale_returns_cogs_by_brand);
             $sale_returns_by_brand = $sale_returns_data['sale_returns_by_brand'];
             $sale_returns_total_qty = $sale_returns_data['sale_returns_total_qty'];
             $sale_returns_total_cost = $sale_returns_data['sale_returns_total_cost'];
             $sale_returns_total_revenue = $sale_returns_data['sale_returns_total_revenue'];
 
             // Fetch waste data
-            $waste_data = $this->getGroupedWastes($start_date, $end_date, $stock_count_id, $stock_count_product_ids);
+            $waste_data = $this->getGroupedWastes($start_date, $end_date, $warehouse_id);
             $wastes_by_brand = $waste_data['wastes_by_brand'];
             $waste_total_qty = $waste_data['waste_total_qty'];
             $waste_total_revenue = $waste_data['waste_total_revenue'];
@@ -134,46 +138,7 @@ class OverviewReportController extends Controller
             $stock_count_updated_revenue = $stock_count_metrics['stock_count_updated_revenue'];
             $stock_count_updated_cost = $stock_count_metrics['stock_count_updated_cost'];
 
-            $stock_counts = DB::table('stock_counts')
-                ->whereDate('created_at', '>=', $start_date)
-                ->whereDate('created_at', '<=', $end_date)
-                ->get();
-
-            $stock_count_ids = $stock_counts->pluck('id')->toArray();
-            
-            $all_items = DB::table('stock_count_items')
-                ->whereIn('stock_count_id', $stock_count_ids)
-                ->get()
-                ->groupBy('stock_count_id');
-
-            $stock_count_list = [];
-            foreach ($stock_counts as $sc) {
-                $items = $all_items->get($sc->id, collect());
-                $itemsGrouped = $items->groupBy('item_code');
-                $stock_find = $items->sum('updated_quantity');
-                $stock_increment = 0;
-                $stock_decrement = 0;
-                $current_stock = 0;
-                foreach ($itemsGrouped as $group) {
-                    $totalUpdated = $group->sum('updated_quantity');
-                    $currentQty = $group[0]->current_quantity;
-                    $current_stock += $currentQty;
-                    if ($totalUpdated > $currentQty) {
-                        $stock_increment += ($totalUpdated - $currentQty);
-                    } elseif ($totalUpdated < $currentQty) {
-                        $stock_decrement += ($currentQty - $totalUpdated);
-                    }
-                }
-                
-                $stock_count_list[] = (object)[
-                    'id' => $sc->id,
-                    'created_at' => $sc->created_at,
-                    'current_stock' => $current_stock,
-                    'stock_find' => $stock_find,
-                    'stock_increment' => $stock_increment,
-                    'stock_decrement' => $stock_decrement
-                ];
-            }
+            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
 
             $lims_stock_count_list = DB::table('stock_counts')
                 ->leftJoin('warehouses', 'stock_counts.warehouse_id', '=', 'warehouses.id')
@@ -183,7 +148,8 @@ class OverviewReportController extends Controller
                 ->get();
 
             return view('backend.report.overview_report', compact(
-                'start_date', 'end_date', 'stock_count_id',
+                'start_date', 'end_date', 'stock_count_id', 'warehouse_id',
+                'lims_warehouse_list',
                 'lims_stock_count_list',
                 'purchases_by_brand', 'purchase_total_qty', 'purchase_total_cost', 'purchase_total_selling_price',
                 'sales_by_brand', 'sales_total_qty', 'sales_total_cost', 'sales_total_revenue',
@@ -191,8 +157,7 @@ class OverviewReportController extends Controller
                 'sale_returns_by_brand', 'sale_returns_total_qty', 'sale_returns_total_cost', 'sale_returns_total_revenue',
                 'wastes_by_brand', 'waste_total_qty', 'waste_total_revenue', 'waste_total_cost',
                 'stock_count_current_qty', 'stock_count_current_revenue', 'stock_count_current_cost',
-                'stock_count_updated_qty', 'stock_count_updated_revenue', 'stock_count_updated_cost',
-                'stock_count_list'
+                'stock_count_updated_qty', 'stock_count_updated_revenue', 'stock_count_updated_cost'
             ));
         } else {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
@@ -360,6 +325,11 @@ class OverviewReportController extends Controller
                     $averageCost = $product_avg_cost[$sub_product_id] ?? 0.0;
                 }
 
+                if ($averageCost <= 0) {
+                    $subProduct = $products->get($sub_product_id);
+                    $averageCost = $subProduct ? (float)$subProduct->cost : 0.0;
+                }
+
                 $product_cost += $sold_qty * $averageCost;
             }
         } else {
@@ -385,6 +355,10 @@ class OverviewReportController extends Controller
                 $averageCost = $product_avg_cost[$product_sale->product_id] ?? 0.0;
             }
 
+            if ($averageCost <= 0 && $product_data) {
+                $averageCost = (float)$product_data->cost;
+            }
+
             $product_cost += $sold_qty * $averageCost;
         }
         return $product_cost;
@@ -393,9 +367,9 @@ class OverviewReportController extends Controller
     /**
      * Helper to load grouped purchases
      */
-    private function getGroupedPurchases($start_date, $end_date, $stock_count_id, $stock_count_product_ids)
+    private function getGroupedPurchases($start_date, $end_date, $warehouse_id)
     {
-        $purchases_by_brand = DB::table('product_purchases')
+        $purchases_query = DB::table('product_purchases')
             ->join('purchases', 'product_purchases.purchase_id', '=', 'purchases.id')
             ->join('products', 'product_purchases.product_id', '=', 'products.id')
             ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
@@ -407,7 +381,12 @@ class OverviewReportController extends Controller
             )
             ->whereDate('purchases.created_at', '>=', $start_date)
             ->whereDate('purchases.created_at', '<=', $end_date);
-        $purchases_by_brand = $purchases_by_brand->groupBy('brand_name')->get();
+
+        if ($warehouse_id) {
+            $purchases_query->where('purchases.warehouse_id', $warehouse_id);
+        }
+
+        $purchases_by_brand = $purchases_query->groupBy('brand_name')->get();
 
         $purchase_total_qty = 0;
         $purchase_total_cost = 0;
@@ -429,9 +408,9 @@ class OverviewReportController extends Controller
     /**
      * Helper to load grouped sales
      */
-    private function getGroupedSales($start_date, $end_date, $stock_count_id, $stock_count_product_ids, $sales_cogs_by_brand)
+    private function getGroupedSales($start_date, $end_date, $warehouse_id, $sales_cogs_by_brand)
     {
-        $sales_by_brand = DB::table('product_sales')
+        $sales_query = DB::table('product_sales')
             ->join('sales', 'product_sales.sale_id', '=', 'sales.id')
             ->join('products', 'product_sales.product_id', '=', 'products.id')
             ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
@@ -442,7 +421,12 @@ class OverviewReportController extends Controller
             )
             ->whereDate('sales.created_at', '>=', $start_date)
             ->whereDate('sales.created_at', '<=', $end_date);
-        $sales_by_brand = $sales_by_brand->groupBy('brand_name')->get();
+
+        if ($warehouse_id) {
+            $sales_query->where('sales.warehouse_id', $warehouse_id);
+        }
+
+        $sales_by_brand = $sales_query->groupBy('brand_name')->get();
 
         $sales_total_qty = 0;
         $sales_total_cost = 0;
@@ -465,9 +449,9 @@ class OverviewReportController extends Controller
     /**
      * Helper to load grouped purchase returns
      */
-    private function getGroupedPurchaseReturns($start_date, $end_date, $stock_count_id, $stock_count_product_ids)
+    private function getGroupedPurchaseReturns($start_date, $end_date, $warehouse_id)
     {
-        $purchase_returns_by_brand = DB::table('purchase_product_return')
+        $purchase_returns_query = DB::table('purchase_product_return')
             ->join('return_purchases', 'purchase_product_return.return_id', '=', 'return_purchases.id')
             ->join('products', 'purchase_product_return.product_id', '=', 'products.id')
             ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
@@ -479,7 +463,12 @@ class OverviewReportController extends Controller
             )
             ->whereDate('return_purchases.created_at', '>=', $start_date)
             ->whereDate('return_purchases.created_at', '<=', $end_date);
-        $purchase_returns_by_brand = $purchase_returns_by_brand->groupBy('brand_name')->get();
+
+        if ($warehouse_id) {
+            $purchase_returns_query->where('return_purchases.warehouse_id', $warehouse_id);
+        }
+
+        $purchase_returns_by_brand = $purchase_returns_query->groupBy('brand_name')->get();
 
         $purchase_return_total_qty = 0;
         $purchase_return_total_cost = 0;
@@ -501,9 +490,9 @@ class OverviewReportController extends Controller
     /**
      * Helper to load grouped sale returns
      */
-    private function getGroupedSaleReturns($start_date, $end_date, $stock_count_id, $stock_count_product_ids, $sale_returns_cogs_by_brand)
+    private function getGroupedSaleReturns($start_date, $end_date, $warehouse_id, $sale_returns_cogs_by_brand)
     {
-        $sale_returns_by_brand = DB::table('product_returns')
+        $sale_returns_query = DB::table('product_returns')
             ->join('returns', 'product_returns.return_id', '=', 'returns.id')
             ->join('products', 'product_returns.product_id', '=', 'products.id')
             ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
@@ -514,7 +503,12 @@ class OverviewReportController extends Controller
             )
             ->whereDate('returns.created_at', '>=', $start_date)
             ->whereDate('returns.created_at', '<=', $end_date);
-        $sale_returns_by_brand = $sale_returns_by_brand->groupBy('brand_name')->get();
+
+        if ($warehouse_id) {
+            $sale_returns_query->where('returns.warehouse_id', $warehouse_id);
+        }
+
+        $sale_returns_by_brand = $sale_returns_query->groupBy('brand_name')->get();
 
         $sale_returns_total_qty = 0;
         $sale_returns_total_cost = 0;
@@ -537,9 +531,9 @@ class OverviewReportController extends Controller
     /**
      * Helper to load grouped waste totals
      */
-    private function getGroupedWastes($start_date, $end_date, $stock_count_id, $stock_count_product_ids)
+    private function getGroupedWastes($start_date, $end_date, $warehouse_id)
     {
-        $wastes_by_brand = DB::table('waste_items')
+        $wastes_query = DB::table('waste_items')
             ->join('wastes', 'waste_items.waste_id', '=', 'wastes.id')
             ->join('products', 'waste_items.product_id', '=', 'products.id')
             ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
@@ -551,7 +545,12 @@ class OverviewReportController extends Controller
             )
             ->whereDate('wastes.created_at', '>=', $start_date)
             ->whereDate('wastes.created_at', '<=', $end_date);
-        $wastes_by_brand = $wastes_by_brand->groupBy('brand_name')->get();
+
+        if ($warehouse_id) {
+            $wastes_query->where('wastes.warehouse_id', $warehouse_id);
+        }
+
+        $wastes_by_brand = $wastes_query->groupBy('brand_name')->get();
 
         $waste_total_qty = 0;
         $waste_total_cost = 0;
@@ -585,30 +584,27 @@ class OverviewReportController extends Controller
 
         if ($stock_count_id) {
             $stock_count_data = DB::table('stock_count_items')
+                ->leftJoin('products', 'stock_count_items.product_id', '=', 'products.id')
                 ->leftJoin('product_variants', 'stock_count_items.item_code', '=', 'product_variants.item_code')
-                ->leftJoin('products', function($join) {
-                    $join->on('products.id', '=', 'product_variants.product_id')
-                         ->orOn('products.code', '=', 'stock_count_items.item_code');
-                })
                 ->select(
                     DB::raw('SUM(stock_count_items.current_quantity) as current_qty'),
-                    DB::raw('SUM(stock_count_items.current_quantity * COALESCE(products.price + product_variants.additional_price, products.price, 0)) as current_revenue'),
-                    DB::raw('SUM(stock_count_items.current_quantity * COALESCE(products.cost + product_variants.additional_cost, products.cost, 0)) as current_cost'),
+                    DB::raw('SUM(stock_count_items.current_quantity * COALESCE(products.price + COALESCE(product_variants.additional_price, 0), products.price, 0)) as current_revenue'),
+                    DB::raw('SUM(stock_count_items.current_quantity * COALESCE(products.cost + COALESCE(product_variants.additional_cost, 0), products.cost, 0)) as current_cost'),
                     DB::raw('SUM(stock_count_items.updated_quantity) as updated_qty'),
-                    DB::raw('SUM(stock_count_items.updated_quantity * COALESCE(products.price + product_variants.additional_price, products.price, 0)) as updated_revenue'),
-                    DB::raw('SUM(stock_count_items.updated_quantity * COALESCE(products.cost + product_variants.additional_cost, products.cost, 0)) as updated_cost')
+                    DB::raw('SUM(stock_count_items.updated_quantity * COALESCE(products.price + COALESCE(product_variants.additional_price, 0), products.price, 0)) as updated_revenue'),
+                    DB::raw('SUM(stock_count_items.updated_quantity * COALESCE(products.cost + COALESCE(product_variants.additional_cost, 0), products.cost, 0)) as updated_cost')
                 )
                 ->where('stock_count_items.stock_count_id', $stock_count_id)
                 ->first();
 
             if ($stock_count_data) {
-                $stock_count_current_qty = $stock_count_data->current_qty ?? 0;
-                $stock_count_current_revenue = $stock_count_data->current_revenue ?? 0;
-                $stock_count_current_cost = $stock_count_data->current_cost ?? 0;
+                $stock_count_current_qty = (float)($stock_count_data->current_qty ?? 0);
+                $stock_count_current_revenue = (float)($stock_count_data->current_revenue ?? 0);
+                $stock_count_current_cost = (float)($stock_count_data->current_cost ?? 0);
 
-                $stock_count_updated_qty = $stock_count_data->updated_qty ?? 0;
-                $stock_count_updated_revenue = $stock_count_data->updated_revenue ?? 0;
-                $stock_count_updated_cost = $stock_count_data->updated_cost ?? 0;
+                $stock_count_updated_qty = (float)($stock_count_data->updated_qty ?? 0);
+                $stock_count_updated_revenue = (float)($stock_count_data->updated_revenue ?? 0);
+                $stock_count_updated_cost = (float)($stock_count_data->updated_cost ?? 0);
             }
         }
 
