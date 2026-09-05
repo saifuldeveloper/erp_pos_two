@@ -919,6 +919,21 @@
 						            </td>
 						        </tr>
 						        <tr>
+						            <td>{{trans('file.Role Permission')}}</td>
+						            <td class="text-center" colspan="4">
+						                <div class="icheckbox_square-blue checked" aria-checked="false" aria-disabled="false">
+							                <div class="checkbox">
+								                @if(in_array("role-permission", $all_permission))
+								                <input type="checkbox" value="1" id="role-permission" name="role-permission" checked>
+								                @else
+								                <input type="checkbox" value="1" id="role-permission" name="role-permission">
+								                @endif
+								                <label for="role-permission"> {{trans('file.Role Permission')}}</label>
+								            </div>
+						            	</div>
+						            </td>
+						        </tr>
+						        <tr>
 						            <td>{{trans('file.customer')}}</td>
 						            <td class="text-center">
 						                <div class="icheckbox_square-blue checked" aria-checked="false" aria-disabled="false">

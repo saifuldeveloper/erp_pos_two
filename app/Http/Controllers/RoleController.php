@@ -18,11 +18,58 @@ class RoleController extends Controller
     public function __construct(RoleService $roleService)
     {
         $this->roleService = $roleService;
+        $this->ensureRolePermissionExists();
+    }
+
+    /**
+     * Ensure the Spatie permission for role management exists
+     */
+    protected function ensureRolePermissionExists(): void
+    {
+        try {
+            $perm = Permission::firstOrCreate(['name' => 'role-permission', 'guard_name' => 'web']);
+            $mgmtRole = Role::where('name', 'Management')->first();
+            if ($mgmtRole && !$mgmtRole->hasPermissionTo('role-permission')) {
+                $mgmtRole->givePermissionTo($perm);
+            }
+        } catch (\Throwable $e) {
+            // DB not ready or during migration
+        }
+    }
+
+    /**
+     * Determine if current user is authorized to manage roles and permissions
+     */
+    protected function canManageRoles(): bool
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return false;
+        }
+
+        // Super Admin (1) and Admin (2) always have access
+        if ($user->role_id <= 2) {
+            return true;
+        }
+
+        // Management role
+        $roleModel = Roles::find($user->role_id);
+        if ($roleModel && (strtolower($roleModel->name) === 'management' || $roleModel->id == 8)) {
+            return true;
+        }
+
+        // Check if role has 'role-permission' Spatie permission
+        $spatieRole = Role::find($user->role_id);
+        if ($spatieRole && $spatieRole->permissions->where('name', 'role-permission')->isNotEmpty()) {
+            return true;
+        }
+
+        return false;
     }
 
     public function index()
     {
-        if (Auth::user()->role_id <= 2) {
+        if ($this->canManageRoles()) {
             $lims_role_all = $this->roleService->getActiveRoles();
             return view('backend.role.create', compact('lims_role_all'));
         }
@@ -32,6 +79,10 @@ class RoleController extends Controller
 
     public function store(StoreRoleRequest $request)
     {
+        if (!$this->canManageRoles()) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+
         $this->roleService->createRole($request->all());
 
         return redirect('role')->with('message', 'Data inserted successfully');
@@ -39,7 +90,7 @@ class RoleController extends Controller
 
     public function edit($id)
     {
-        if (Auth::user()->role_id <= 2) {
+        if ($this->canManageRoles()) {
             return Roles::find($id);
         }
 
@@ -48,6 +99,15 @@ class RoleController extends Controller
 
     public function update(UpdateRoleRequest $request, $id)
     {
+        if (!$this->canManageRoles()) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+
+        // Prevent non-admins from modifying Admin or Owner roles
+        if (Auth::user()->role_id > 2 && in_array($request->role_id, [1, 2])) {
+            return redirect()->back()->with('not_permitted', 'You are not allowed to modify Admin roles');
+        }
+
         $this->roleService->updateRole($request->role_id, $request->all());
 
         return redirect('role')->with('message', 'Data updated successfully');
@@ -55,7 +115,12 @@ class RoleController extends Controller
 
     public function permission($id)
     {
-        if (Auth::user()->role_id <= 2) {
+        if ($this->canManageRoles()) {
+            // Prevent non-admins from editing Admin or Owner role permissions
+            if (Auth::user()->role_id > 2 && in_array($id, [1, 2])) {
+                return redirect()->back()->with('not_permitted', 'You cannot modify Admin role permissions');
+            }
+
             $data = $this->roleService->getRolePermissionsData($id);
             return view('backend.role.permission', $data);
         }
@@ -65,20 +130,28 @@ class RoleController extends Controller
 
     public function setPermission(Request $request)
     {
-        $role = Role::firstOrCreate(['id' => $request['role_id']]);
+        if (!$this->canManageRoles()) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        }
+
+        // Prevent non-admins from editing Admin or Owner role permissions
+        if (Auth::user()->role_id > 2 && in_array($request['role_id'], [1, 2])) {
+            return redirect()->back()->with('not_permitted', 'You cannot modify Admin role permissions');
+        }
+
+        $lims_role_data = Roles::findOrFail($request['role_id']);
+        $role = Role::firstOrCreate(['name' => $lims_role_data->name, 'guard_name' => 'web']);
         $allPermissions = Permission::all();
 
+        $permissionsToSync = [];
         foreach ($allPermissions as $p) {
             if ($request->has($p->name)) {
-                if (!$role->hasPermissionTo($p->name)) {
-                    $role->givePermissionTo($p);
-                }
-            } else {
-                if ($role->hasPermissionTo($p->name)) {
-                    $role->revokePermissionTo($p->name);
-                }
+                $permissionsToSync[] = $p->name;
             }
         }
+
+        $role->syncPermissions($permissionsToSync);
+        app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
 
         return redirect('role')->with('message', 'Permission updated successfully');
     }

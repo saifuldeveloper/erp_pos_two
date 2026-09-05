@@ -346,12 +346,23 @@
 
         $supplier_index_permission_active = $role_has_permissions_list->where('name', 'suppliers-index')->first();
 
+        $role_permission_active = $role_has_permissions_list->where('name', 'role-permission')->first();
+        $is_management = false;
+        if (Auth::check()) {
+            $user_role = \App\Models\Roles::find(Auth::user()->role_id);
+            if ($user_role && (strtolower($user_role->name) === 'management' || $user_role->id == 8)) {
+                $is_management = true;
+            }
+        }
         ?>
         @if (
             $user_index_permission_active ||
                 $customer_index_permission_active ||
                 $biller_index_permission_active ||
-                $supplier_index_permission_active)
+                $supplier_index_permission_active ||
+                $role_permission_active ||
+                $is_management ||
+                Auth::user()->role_id <= 2)
             <li><a href="#people" aria-expanded="false" data-toggle="collapse"> <i
                         class="dripicons-user"></i><span>{{ trans('file.People') }}</span></a>
                 <ul id="people" class="collapse list-unstyled ">
@@ -365,6 +376,11 @@
                         {{-- @if ($user_add_permission_active)
                 <li id="user-create-menu"><a href="{{route('user.create')}}">{{trans('file.Add User')}}</a></li>
                 @endif --}}
+                    @endif
+
+                    @if (Auth::user()->role_id <= 2 || $role_permission_active || $is_management)
+                        <li id="role-permission-menu"><a
+                                href="{{ route('role.index') }}">{{ trans('file.Role Permission') }}</a></li>
                     @endif
 
                     @if ($customer_index_permission_active)
@@ -709,12 +725,9 @@
 
                 $custom_field_permission_active = $role_has_permissions_list->where('name', 'custom_field')->first();
                 ?>
-                @if (Auth::user()->role_id <= 2)
+                @if (Auth::user()->role_id <= 2 || $role_permission_active || $is_management)
                     <li id="role-menu"><a href="{{ route('role.index') }}">{{ trans('file.Role Permission') }}</a>
                     </li>
-                    {{-- @if ($custom_field_permission_active)
-                    <li id="custom-field-list-menu"><a href="{{route('custom-fields.index')}}">{{trans('file.Custom Field List')}}</a></li>
-                    @endif --}}
                 @endif
                 @if ($discount_plan_permission_active)
                     <li id="discount-plan-list-menu"><a

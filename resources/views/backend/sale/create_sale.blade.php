@@ -344,6 +344,9 @@
               @if($add_permission_active)
               <li id="user-create-menu"><a href="{{route('user.create')}}">{{trans('file.Add User')}}</a></li>
               @endif
+              @if($role->id <= 2)
+              <li id="role-menu"><a href="{{route('role.index')}}">{{trans('file.Role Permission')}}</a></li>
+              @endif
               @endif
               <?php
                 $index_permission = DB::table('permissions')->where('name', 'customers-index')->first();
@@ -1666,7 +1669,6 @@ $('#currency').change(function(){
 
 
 if(role_id > 2 && role_id != 3) {
-    $('#biller_id').addClass('d-none');
     $('#warehouse_id').addClass('d-none');
 }
 

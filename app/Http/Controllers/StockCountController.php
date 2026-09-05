@@ -348,6 +348,8 @@ class StockCountController extends Controller
                 abort(404);
             }
 
+            $this->syncStockCountItemsProductIds($lims_stock_count);
+
             $lims_warehouse_list = Warehouse::where('is_active', true)->get();
 
             $itemsGrouped = collect($lims_stock_count->items)->groupBy('item_code');
@@ -461,15 +463,16 @@ class StockCountController extends Controller
 
             // 6. Waste Products Count & Qty
             $wasteItemsSubquery = DB::table('stock_count_items')
-                ->select('product_id', DB::raw('MAX(created_at) as last_counted_at'))
+                ->select('item_code', 'product_id', DB::raw('MAX(created_at) as last_counted_at'))
                 ->where('stock_count_id', $lims_stock_count->id)
-                ->groupBy('product_id');
+                ->groupBy('item_code', 'product_id');
 
             $wasteQuery = DB::table('waste_items')
                 ->join('wastes', 'waste_items.waste_id', '=', 'wastes.id')
                 ->join('products', 'waste_items.product_id', '=', 'products.id')
                 ->joinSub($wasteItemsSubquery, 'sci', function($join) {
-                    $join->on('waste_items.product_id', '=', 'sci.product_id');
+                    $join->on('waste_items.product_id', '=', 'sci.product_id')
+                         ->whereRaw('(waste_items.varient_code = sci.item_code OR (waste_items.varient_code IS NULL AND products.code = sci.item_code))');
                 })
                 ->where('wastes.created_at', '>=', $lims_stock_count->created_at)
                 ->whereColumn('wastes.created_at', '>=', 'sci.last_counted_at');
@@ -479,7 +482,7 @@ class StockCountController extends Controller
             }
 
             $wasteData = $wasteQuery->select(
-                DB::raw('COUNT(DISTINCT products.code) as waste_count'),
+                DB::raw('COUNT(DISTINCT COALESCE(waste_items.varient_code, products.code)) as waste_count'),
                 DB::raw('SUM(waste_items.qty) as waste_qty')
             )->first();
 
@@ -708,14 +711,15 @@ class StockCountController extends Controller
             $end_date = request()->input('end_date');
 
             $countedItemsSubquery = DB::table('stock_count_items')
-                ->select('product_id', DB::raw('MAX(created_at) as last_counted_at'))
+                ->select('item_code', 'product_id', DB::raw('MAX(created_at) as last_counted_at'))
                 ->where('stock_count_id', $lims_stock_count->id)
-                ->groupBy('product_id');
+                ->groupBy('item_code', 'product_id');
 
-            $query =WasteItem::join('wastes', 'waste_items.waste_id', '=', 'wastes.id')
+            $query = WasteItem::join('wastes', 'waste_items.waste_id', '=', 'wastes.id')
                 ->join('products', 'waste_items.product_id', '=', 'products.id')
                 ->joinSub($countedItemsSubquery, 'sci', function($join) {
-                    $join->on('waste_items.product_id', '=', 'sci.product_id');
+                    $join->on('waste_items.product_id', '=', 'sci.product_id')
+                         ->whereRaw('(waste_items.varient_code = sci.item_code OR (waste_items.varient_code IS NULL AND products.code = sci.item_code))');
                 })
                 ->where('wastes.created_at', '>=', $lims_stock_count->created_at)
                 ->whereColumn('wastes.created_at', '>=', 'sci.last_counted_at');
@@ -740,12 +744,12 @@ class StockCountController extends Controller
             $wasteProducts = $query->select(
                     'products.id',
                     'products.name',
-                    'products.code as code',
+                    DB::raw('COALESCE(waste_items.varient_code, products.code) as code'),
                     'products.price',
                     'products.cost',
                     DB::raw('SUM(waste_items.qty) as waste_qty')
                 )
-                ->groupBy('products.id', 'products.name', 'products.code', 'products.price', 'products.cost')
+                ->groupBy('products.id', 'products.name', DB::raw('COALESCE(waste_items.varient_code, products.code)'), 'products.price', 'products.cost')
                 ->get();
 
             $wasteCount = $wasteProducts->count();
@@ -910,56 +914,32 @@ class StockCountController extends Controller
     private function deductWasteProductsStock($stock_count)
     {
         $countedItemsSubquery = DB::table('stock_count_items')
-            ->select('product_id', DB::raw('MAX(created_at) as last_counted_at'))
+            ->select('item_code', 'product_id', DB::raw('MAX(created_at) as last_counted_at'))
             ->where('stock_count_id', $stock_count->id)
-            ->groupBy('product_id');
+            ->groupBy('item_code', 'product_id');
 
         $wasteProducts = WasteItem::join('wastes', 'waste_items.waste_id', '=', 'wastes.id')
             ->join('products', 'waste_items.product_id', '=', 'products.id')
             ->joinSub($countedItemsSubquery, 'sci', function($join) {
-                $join->on('waste_items.product_id', '=', 'sci.product_id');
+                $join->on('waste_items.product_id', '=', 'sci.product_id')
+                     ->whereRaw('(waste_items.varient_code = sci.item_code OR (waste_items.varient_code IS NULL AND products.code = sci.item_code))');
             })
             ->where('wastes.created_at', '>=', $stock_count->created_at)
             ->whereColumn('wastes.created_at', '>=', 'sci.last_counted_at')
             ->select(
-                'waste_items.product_id',
+                DB::raw('COALESCE(waste_items.varient_code, products.code) as item_code'),
                 DB::raw('SUM(waste_items.qty) as waste_qty')
             )
-            ->groupBy('waste_items.product_id')
+            ->groupBy('item_code')
             ->get();
 
         foreach ($wasteProducts as $waste) {
-            $qty_to_deduct = floatval($waste->waste_qty);
-
-            $counted_items = DB::table('stock_count_items')
+            DB::table('stock_count_items')
                 ->where('stock_count_id', $stock_count->id)
-                ->where('product_id', $waste->product_id)
-                ->orderBy('id', 'asc')
-                ->get();
-
-            foreach ($counted_items as $item) {
-                if ($qty_to_deduct <= 0) {
-                    break;
-                }
-                $current_qty = floatval($item->updated_quantity);
-                $deducted = min($current_qty, $qty_to_deduct);
-
-                DB::table('stock_count_items')
-                    ->where('id', $item->id)
-                    ->update([
-                        'updated_quantity' => $current_qty - $deducted
-                    ]);
-
-                $qty_to_deduct -= $deducted;
-            }
-
-            if ($qty_to_deduct > 0 && $counted_items->isNotEmpty()) {
-                DB::table('stock_count_items')
-                    ->where('id', $counted_items->first()->id)
-                    ->update([
-                        'updated_quantity' => 0
-                    ]);
-            }
+                ->where('item_code', $waste->item_code)
+                ->update([
+                    'updated_quantity' => DB::raw("GREATEST(0, updated_quantity - " . floatval($waste->waste_qty) . ")")
+                ]);
         }
     }
 

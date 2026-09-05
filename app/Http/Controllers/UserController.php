@@ -66,7 +66,14 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $result = $this->userService->createUser($request->all());
+        $data = $request->all();
+
+        // Non-admins cannot create Admin or Owner users
+        if (Auth::user()->role_id > 2 && isset($data['role_id']) && $data['role_id'] <= 2) {
+            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to create an Admin user');
+        }
+
+        $result = $this->userService->createUser($data);
 
         return redirect('user')->with('message1', $result['message']);
     }
@@ -84,7 +91,17 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, $id)
     {
-        $this->userService->updateUser($id, $request->all());
+        $targetUser = User::findOrFail($id);
+        $data = $request->all();
+
+        // Security Guardrail: Non-admin users (role_id > 2) cannot change their own role or assign Admin/Owner roles (role_id <= 2)
+        if (Auth::user()->role_id > 2) {
+            if (Auth::id() == $id || (isset($data['role_id']) && $data['role_id'] <= 2)) {
+                $data['role_id'] = $targetUser->role_id;
+            }
+        }
+
+        $this->userService->updateUser($id, $data);
 
         return redirect('user')->with('message2', 'Data updated successfullly');
     }

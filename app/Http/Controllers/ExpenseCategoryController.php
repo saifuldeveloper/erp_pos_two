@@ -135,7 +135,7 @@ class ExpenseCategoryController extends Controller
         $this->ensurePermissionsExist();
 
         $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('expense_category-delete')) {
+        if (!$role->hasPermissionTo('expense_category-delete') && Auth::user()->role_id > 2) {
             return 'Sorry! You are not allowed to delete expense category';
         }
 
@@ -150,7 +150,7 @@ class ExpenseCategoryController extends Controller
         $this->ensurePermissionsExist();
 
         $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('expense_category-delete')) {
+        if (!$role->hasPermissionTo('expense_category-delete') && Auth::user()->role_id > 2) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete expense category');
         }
 

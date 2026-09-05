@@ -101,7 +101,7 @@ class AccountsController extends Controller
     public function destroy($id)
     {
         $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('account-delete') && Auth::user()->role_id > 2) {
+        if (Auth::user()->role_id > 2 && !$role->hasPermissionTo('account-delete')) {
             return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete account');
         }
 

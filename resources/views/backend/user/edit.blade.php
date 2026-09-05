@@ -64,24 +64,30 @@
                                         <label><strong>{{trans('file.Company Name')}}</strong></label>
                                         <input type="text" name="company_name" class="form-control" value="{{$lims_user_data->company_name}}">
                                     </div>
-                                    <div class="form-group">
-                                        <label><strong>{{trans('file.Role')}} *</strong></label>
-                                        <input type="hidden" name="role_id_hidden" value="{{$lims_user_data->role_id}}">
-                                        <select name="role_id" required class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Role...">
-                                          @foreach($lims_role_list as $role)
-                                              <option value="{{$role->id}}">{{$role->name}}</option>
-                                          @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group" id="biller-id">
-                                        <label><strong>{{trans('file.Biller')}} *</strong></label>
-                                        <input type="hidden" name="biller_id_hidden" value="{{$lims_user_data->biller_id}}">
-                                        <select name="biller_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Biller...">
-                                          @foreach($lims_biller_list as $biller)
-                                              <option value="{{$biller->id}}" data-name="{{$biller->name}}" data-email="{{$biller->email}}" data-phone="{{$biller->phone_number}}">{{$biller->name}}</option>
-                                          @endforeach
-                                        </select>
-                                    </div>
+                                     <div class="form-group">
+                                         <label><strong>{{trans('file.Role')}} *</strong></label>
+                                         <input type="hidden" name="role_id_hidden" value="{{$lims_user_data->role_id}}">
+                                         <select name="role_id" required class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Role..." @if(Auth::user()->role_id > 2 && Auth::id() == $lims_user_data->id) disabled @endif>
+                                           @foreach($lims_role_list as $role)
+                                               @if(Auth::user()->role_id > 2 && $role->id <= 2)
+                                                   @continue
+                                               @endif
+                                               <option value="{{$role->id}}">{{$role->name}}</option>
+                                           @endforeach
+                                         </select>
+                                         @if(Auth::user()->role_id > 2 && Auth::id() == $lims_user_data->id)
+                                             <input type="hidden" name="role_id" value="{{$lims_user_data->role_id}}">
+                                         @endif
+                                     </div>
+                                     <div class="form-group" id="biller-id">
+                                         <label><strong>{{trans('file.Biller')}}</strong></label>
+                                         <input type="hidden" name="biller_id_hidden" value="{{$lims_user_data->biller_id}}">
+                                         <select name="biller_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Biller...">
+                                           @foreach($lims_biller_list as $biller)
+                                               <option value="{{$biller->id}}" data-name="{{$biller->name}}" data-email="{{$biller->email}}" data-phone="{{$biller->phone_number}}">{{$biller->name}}</option>
+                                           @endforeach
+                                         </select>
+                                     </div>
                                     <div class="form-group" id="warehouseId">
                                         <label><strong>{{trans('file.Warehouse')}} *</strong></label>
                                         <input type="hidden" name="warehouse_id_hidden" value="{{$lims_user_data->warehouse_id}}">
@@ -114,10 +120,10 @@
 
     var role_id = $("input[name='role_id_hidden']").val();
     $('select[name=role_id]').val(role_id);
-    if(role_id == 5 || role_id == 4) { // Biller
+    if(role_id == 5 || role_id == 4) { // Management / Biller
         $('#biller-id').show();
         $('select[name=biller_id]').val($("input[name='biller_id_hidden']").val());
-        $('select[name="biller_id"]').prop('required',true);
+        $('select[name="biller_id"]').prop('required',false);
         $('#warehouseId').hide();
         $('select[name="warehouse_id"]').prop('required',false);
     }
@@ -127,7 +133,7 @@
         $('select[name="warehouse_id"]').prop('required',true);
         $('#biller-id').show();
         $('select[name=biller_id]').val($("input[name='biller_id_hidden']").val());
-        $('select[name="biller_id"]').prop('required',true);
+        $('select[name="biller_id"]').prop('required',false);
     }
     else {
         $('#biller-id').hide();
@@ -138,15 +144,15 @@
     $('.selectpicker').selectpicker('refresh');
 
     $('select[name="role_id"]').on('change', function() {
-        if($(this).val() == 5 || $(this).val() == 4) { // Biller
+        if($(this).val() == 5 || $(this).val() == 4) { // Management / Biller
             $('select[name="warehouse_id"]').prop('required',false);
-            $('select[name="biller_id"]').prop('required',true);
+            $('select[name="biller_id"]').prop('required',false);
             $('#biller-id').show(300);
             $('#warehouseId').hide(300);
         }
         else if($(this).val() > 2 && $(this).val() != 3 && $(this).val() != 5){
             $('select[name="warehouse_id"]').prop('required',true);
-            $('select[name="biller_id"]').prop('required',true);
+            $('select[name="biller_id"]').prop('required',false);
             $('#biller-id').show(300);
             $('#warehouseId').show(300);
         }

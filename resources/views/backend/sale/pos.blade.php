@@ -1795,38 +1795,24 @@ $('#addCustomer').on('hidden.bs.modal', function () {
       $('#today-profit-modal').modal('show');
   }
 
-if(role_id > 2 && role_id != 3){
-    $('select[name=biller_id]').val(biller_id);
-    $('#biller_id').prop('disabled', true);
-    if ($('.biller-hidden-input').length === 0) {
-        $('.payment-form').append('<input type="hidden" class="biller-hidden-input" name="biller_id" value="' + biller_id + '">');
-    }
-
-    if(getSavedValue("warehouse_id")){
-      warehouse_id = getSavedValue("warehouse_id");
-    }
-    else if(!warehouse_id) {
-      warehouse_id = $("input[name='warehouse_id_hidden']").val();
-    }
-    $('select[name=warehouse_id]').val(warehouse_id);
-    isCashRegisterAvailable(warehouse_id);
+if(getSavedValue("warehouse_id")){
+  warehouse_id = getSavedValue("warehouse_id");
 }
-else {
-    if(getSavedValue("warehouse_id")){
-      warehouse_id = getSavedValue("warehouse_id");
-    }
-    else {
-      warehouse_id = $("input[name='warehouse_id_hidden']").val();
-    }
+else if(!warehouse_id) {
+  warehouse_id = $("input[name='warehouse_id_hidden']").val();
+}
+$('select[name=warehouse_id]').val(warehouse_id);
 
-    if(getSavedValue("biller_id")){
-      biller_id = getSavedValue("biller_id");
-    }
-    else {
-      biller_id = $("input[name='biller_id_hidden']").val();
-    }
-    $('select[name=warehouse_id]').val(warehouse_id);
-    $('select[name=biller_id]').val(biller_id);
+if(getSavedValue("biller_id")){
+  biller_id = getSavedValue("biller_id");
+}
+else if(!biller_id) {
+  biller_id = $("input[name='biller_id_hidden']").val();
+}
+$('select[name=biller_id]').val(biller_id);
+
+if(role_id > 2 && role_id != 3){
+  isCashRegisterAvailable(warehouse_id);
 }
 
   if(getSavedValue("biller_id")) {
