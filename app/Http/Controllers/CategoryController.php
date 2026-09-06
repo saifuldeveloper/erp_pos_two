@@ -7,7 +7,7 @@ use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -16,33 +16,27 @@ class CategoryController extends Controller
     public function __construct(CategoryService $categoryService)
     {
         $this->categoryService = $categoryService;
+        $this->middleware('check_permission:category-index|category')->only(['index', 'parentCategory']);
+        $this->middleware('check_permission:category-add')->only(['create', 'store', 'import']);
+        $this->middleware('check_permission:category-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:category-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
         $parents = $this->categoryService->getParentCategories();
-        if ($role->hasPermissionTo('category-index') || $role->hasPermissionTo('category')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            return view('backend.category.create', compact('parents', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.category.create', compact('parents'));
     }
 
     public function categoryData(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
+        $user = Auth::user();
+        $isSuperOrAdmin = $user && $user->role_id <= 2;
+        $role = $user ? Role::find($user->role_id) : null;
+
         $permissions = [
-            'can_edit'   => $role->hasPermissionTo('category-edit'),
-            'can_delete' => $role->hasPermissionTo('category-delete'),
+            'can_edit'   => $isSuperOrAdmin || ($role && $role->hasPermissionTo('category-edit')),
+            'can_delete' => $isSuperOrAdmin || ($role && $role->hasPermissionTo('category-delete')),
         ];
 
         $jsonData = $this->categoryService->getCategoryDataTable($request, $permissions);
@@ -82,21 +76,8 @@ class CategoryController extends Controller
 
     public function parentCategory()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('category-index') || $role->hasPermissionTo('category')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $parents = $this->categoryService->getParentCategories();
-            return view('backend.parent_category.create', compact('parents', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $parents = $this->categoryService->getParentCategories();
+        return view('backend.parent_category.create', compact('parents'));
     }
 
     public function import(Request $request)
@@ -114,12 +95,7 @@ class CategoryController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('category-delete')) {
-            return 'Sorry! You are not allowed to delete category';
-        }
-
-        $category_id = $request['categoryIdArray'];
+        $category_id = $request['categoryIdArray'] ?? [];
         $this->categoryService->deleteMultipleCategories($category_id);
 
         return 'Category deleted successfully!';
@@ -127,11 +103,6 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('category-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete category');
-        }
-
         $this->categoryService->deleteCategory($id);
 
         return redirect()->back()->with('not_permitted', 'Category deleted successfully');

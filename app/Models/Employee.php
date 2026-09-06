@@ -13,12 +13,12 @@ class Employee extends Model
 
     public function payroll()
     {
-    	return $this->hasMany('App\Models\Payroll');
+    	return $this->hasMany(Payroll::class);
     }
 
     public function department()
     {
-    	return $this->belongsTo('App\Models\Department');
+    	return $this->belongsTo(Department::class);
     }
 
 }

@@ -15,8 +15,6 @@ use App\Models\Waste;
 use App\Repositories\Contracts\WasteRepositoryInterface;
 use App\Services\WasteService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class WasteController extends Controller
 {
@@ -27,32 +25,22 @@ class WasteController extends Controller
     {
         $this->wasteService = $wasteService;
         $this->wasteRepository = $wasteRepository;
+        $this->middleware('check_permission:waste-index|sales-index|waste')->only(['index', 'wastedata']);
+        $this->middleware('check_permission:waste-add|sales-index|waste')->only(['create', 'store']);
+        $this->middleware('check_permission:waste-edit|sales-index|waste')->only(['edit', 'update']);
+        $this->middleware('check_permission:waste-delete')->only('destroy');
     }
 
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('waste-index') || $role->hasPermissionTo('sales-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
+        $start_date = $request->start_date ?? date('d-m-Y', strtotime('-30 days'));
+        $end_date = $request->end_date ?? date('d-m-Y');
+        $formatted_start_date = \Carbon\Carbon::createFromFormat('d-m-Y', $start_date)->format('Y-m-d');
+        $formatted_end_date = \Carbon\Carbon::createFromFormat('d-m-Y', $end_date)->format('Y-m-d');
 
-            $start_date = $request->start_date ?? date('d-m-Y', strtotime('-30 days'));
-            $end_date = $request->end_date ?? date('d-m-Y');
-            $formatted_start_date = \Carbon\Carbon::createFromFormat('d-m-Y', $start_date)->format('Y-m-d');
-            $formatted_end_date = \Carbon\Carbon::createFromFormat('d-m-Y', $end_date)->format('Y-m-d');
+        $wastes = $this->wasteService->getWastesByDateRange($formatted_start_date, $formatted_end_date);
 
-            $wastes = $this->wasteService->getWastesByDateRange($formatted_start_date, $formatted_end_date);
-
-            return view('backend.waste.index', compact('wastes', 'start_date', 'end_date', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.waste.index', compact('wastes', 'start_date', 'end_date'));
     }
 
     public function wastedata(Request $request)
@@ -64,13 +52,8 @@ class WasteController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('waste-add') || $role->hasPermissionTo('sales-index')) {
-            $products = $this->wasteService->getCreateProductsData();
-            return view('backend.waste.create', compact('products'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $products = $this->wasteService->getCreateProductsData();
+        return view('backend.waste.create', compact('products'));
     }
 
     public function getReceiverList($type)
@@ -85,7 +68,7 @@ class WasteController extends Controller
         $todayDate = date('Y-m-d');
         $product_code = explode("(", $request['data']);
         $product_info = explode("?", $request['data']);
-        $customer_id = $product_info[1];
+        $customer_id = $product_info[1] ?? null;
 
         $lims_product_data = Product::where([
             ['code', $product_code[0]],
@@ -163,22 +146,12 @@ class WasteController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-index')) {
-            $formData = $this->wasteService->getEditFormData($id);
-            return view('backend.waste.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->wasteService->getEditFormData($id);
+        return view('backend.waste.edit', $formData);
     }
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('waste-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete waste');
-        }
-
         $this->wasteService->deleteWaste($id);
 
         return redirect('wastes')->with('not_permitted', 'Waste deleted successfully');

@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'superadminauth' => \App\Http\Middleware\SuperAdminAuth::class,
         'cors' => \App\Http\Middleware\Cors::class,
         'retail.secret' => \App\Http\Middleware\CheckRetailSecretKey::class,
+        'check_permission' => \App\Http\Middleware\CheckPermission::class,
     ];
 
     /**

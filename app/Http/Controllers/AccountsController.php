@@ -6,9 +6,7 @@ use App\Http\Requests\Account\StoreAccountRequest;
 use App\Http\Requests\Account\UpdateAccountRequest;
 use App\Services\AccountService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 
 class AccountsController extends Controller
 {
@@ -17,6 +15,10 @@ class AccountsController extends Controller
     public function __construct(AccountService $accountService)
     {
         $this->accountService = $accountService;
+        $this->middleware('check_permission:account-index')->only('index');
+        $this->middleware('check_permission:balance-sheet')->only('balanceSheet');
+        $this->middleware('check_permission:account-statement')->only('accountStatement');
+        $this->middleware('check_permission:account-delete')->only('destroy');
     }
 
     public function index()
@@ -36,22 +38,8 @@ class AccountsController extends Controller
             app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
         }
 
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('account-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $p) {
-                $all_permission[] = $p->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-
-            $lims_account_all = $this->accountService->getActiveAccounts();
-            return view('backend.account.index', compact('lims_account_all', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_account_all = $this->accountService->getActiveAccounts();
+        return view('backend.account.index', compact('lims_account_all'));
     }
 
     public function store(StoreAccountRequest $request)
@@ -77,13 +65,8 @@ class AccountsController extends Controller
 
     public function balanceSheet()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('balance-sheet')) {
-            $balanceSheetData = $this->accountService->getBalanceSheetData();
-            return view('backend.account.balance_sheet', $balanceSheetData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $balanceSheetData = $this->accountService->getBalanceSheetData();
+        return view('backend.account.balance_sheet', $balanceSheetData);
     }
 
     public function accountStatement(Request $request)
@@ -100,11 +83,6 @@ class AccountsController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (Auth::user()->role_id > 2 && !$role->hasPermissionTo('account-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete account');
-        }
-
         $result = $this->accountService->deleteAccount($id);
 
         return redirect('accounts')->with('not_permitted', $result['message']);

@@ -28,11 +28,26 @@ class ProductPurchase extends Model
 
     public function purchase()
     {
-        return $this->belongsTo('App\Models\Purchase');
+        return $this->belongsTo(Purchase::class, 'purchase_id');
     }
 
     public function product()
     {
-        return $this->belongsTo('App\Models\Product');
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class, 'purchase_unit_id');
+    }
+
+    public function productBatch()
+    {
+        return $this->belongsTo(ProductBatch::class, 'product_batch_id');
+    }
+
+    public function variant()
+    {
+        return $this->belongsTo(Variant::class, 'variant_id');
     }
 }

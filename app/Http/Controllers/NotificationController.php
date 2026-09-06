@@ -12,15 +12,15 @@ use Spatie\Permission\Models\Role;
 
 class NotificationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('check_permission:all_notification')->only('index');
+    }
+
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if($role->hasPermissionTo('all_notification')) {
-            $lims_notification_all = DB::table('notifications')->get();
-            return view('backend.notification.index', compact('lims_notification_all'));
-        }
-        else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_notification_all = DB::table('notifications')->get();
+        return view('backend.notification.index', compact('lims_notification_all'));
     }
     public function store(Request $request)
     {

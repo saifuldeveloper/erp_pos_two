@@ -11,8 +11,6 @@ use App\Models\Warehouse;
 use App\Repositories\Contracts\AdjustmentRepositoryInterface;
 use App\Services\AdjustmentService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class AdjustmentController extends Controller
 {
@@ -23,17 +21,13 @@ class AdjustmentController extends Controller
     {
         $this->adjustmentService = $adjustmentService;
         $this->adjustmentRepository = $adjustmentRepository;
+        $this->middleware('check_permission:adjustment');
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('adjustment')) {
-            $lims_adjustment_all = $this->adjustmentService->getAllAdjustments();
-            return view('backend.adjustment.index', compact('lims_adjustment_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_adjustment_all = $this->adjustmentService->getAllAdjustments();
+        return view('backend.adjustment.index', compact('lims_adjustment_all'));
     }
 
     public function getProduct($id)
@@ -79,13 +73,8 @@ class AdjustmentController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('adjustment')) {
-            $formData = $this->adjustmentService->getCreateFormData();
-            return view('backend.adjustment.create', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->adjustmentService->getCreateFormData();
+        return view('backend.adjustment.create', $formData);
     }
 
     public function store(StoreAdjustmentRequest $request)
@@ -97,13 +86,8 @@ class AdjustmentController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('adjustment')) {
-            $formData = $this->adjustmentService->getEditFormData($id);
-            return view('backend.adjustment.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->adjustmentService->getEditFormData($id);
+        return view('backend.adjustment.edit', $formData);
     }
 
     public function update(UpdateAdjustmentRequest $request, $id)
@@ -115,11 +99,6 @@ class AdjustmentController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('adjustment')) {
-            return 'Sorry! You are not allowed to delete adjustment';
-        }
-
         $adjustment_ids = $request['adjustmentIdArray'] ?? [];
         $this->adjustmentService->deleteMultipleAdjustments($adjustment_ids);
 
@@ -128,11 +107,6 @@ class AdjustmentController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('adjustment')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete adjustment');
-        }
-
         $this->adjustmentService->deleteAdjustment($id);
 
         return redirect('qty_adjustment')->with('not_permitted', 'Data deleted successfully');

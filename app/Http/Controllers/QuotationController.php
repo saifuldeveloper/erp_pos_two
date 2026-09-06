@@ -19,8 +19,6 @@ use App\Models\Warehouse;
 use App\Repositories\Contracts\QuotationRepositoryInterface;
 use App\Services\QuotationService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class QuotationController extends Controller
 {
@@ -31,40 +29,30 @@ class QuotationController extends Controller
     {
         $this->quotationService = $quotationService;
         $this->quotationRepository = $quotationRepository;
+        $this->middleware('check_permission:quotes-index')->only(['index', 'quotationData', 'productQuotationData']);
+        $this->middleware('check_permission:quotes-add')->only(['create', 'store', 'createSale', 'createPurchase']);
+        $this->middleware('check_permission:quotes-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:quotes-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('quotes-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-
-            if ($request->input('warehouse_id')) {
-                $warehouse_id = $request->input('warehouse_id');
-            } else {
-                $warehouse_id = 0;
-            }
-
-            if ($request->input('starting_date')) {
-                $starting_date = $request->input('starting_date');
-                $ending_date = $request->input('ending_date');
-            } else {
-                $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
-                $ending_date = date("Y-m-d");
-            }
-
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            return view('backend.quotation.index', compact('starting_date', 'ending_date', 'warehouse_id', 'all_permission', 'lims_warehouse_list'));
+        if ($request->input('warehouse_id')) {
+            $warehouse_id = $request->input('warehouse_id');
+        } else {
+            $warehouse_id = 0;
         }
 
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        if ($request->input('starting_date')) {
+            $starting_date = $request->input('starting_date');
+            $ending_date = $request->input('ending_date');
+        } else {
+            $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
+            $ending_date = date("Y-m-d");
+        }
+
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        return view('backend.quotation.index', compact('starting_date', 'ending_date', 'warehouse_id', 'lims_warehouse_list'));
     }
 
     public function quotationData(Request $request)
@@ -77,13 +65,8 @@ class QuotationController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('quotes-add')) {
-            $formData = $this->quotationService->getCreateFormData();
-            return view('backend.quotation.create', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->quotationService->getCreateFormData();
+        return view('backend.quotation.create', $formData);
     }
 
     public function limsProductSearch(Request $request)
@@ -99,21 +82,19 @@ class QuotationController extends Controller
 
         $product_variant_id = null;
         if (!$lims_product_data) {
-            $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-                ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.item_code', 'product_variants.additional_price')
-                ->where([
-                    ['product_variants.item_code', $product_code[0]],
-                    ['products.is_active', true]
-                ])->first();
-            $product_variant_id = $lims_product_data->product_variant_id;
-            $lims_product_data->code = $lims_product_data->item_code;
-            $lims_product_data->price += $lims_product_data->additional_price;
+            $product_variant_data = ProductVariant::select('id', 'product_id', 'item_code')->where('item_code', $product_code[0])->first();
+            $lims_product_data = Product::find($product_variant_data->product_id);
+            $product_variant_id = $product_variant_data->id;
         }
 
-        $product = [];
         $product[] = $lims_product_data->name;
-        $product[] = $lims_product_data->code;
-        if ($lims_product_data->promotion && $todayDate <= $lims_product_data->last_date) {
+        if ($product_variant_id) {
+            $product[] = $product_variant_data->item_code;
+        } else {
+            $product[] = $lims_product_data->code;
+        }
+
+        if ($lims_product_data->promotion && $todayDate <= $lims_product_data->last_date && $todayDate >= $lims_product_data->starting_date) {
             $product[] = $lims_product_data->promotion_price;
         } else {
             $product[] = $lims_product_data->price;
@@ -121,14 +102,15 @@ class QuotationController extends Controller
 
         if ($lims_product_data->tax_id) {
             $lims_tax_data = Tax::find($lims_product_data->tax_id);
-            $product[] = $lims_tax_data ? $lims_tax_data->rate : 0;
-            $product[] = $lims_tax_data ? $lims_tax_data->name : 'No Tax';
+            $product[] = $lims_tax_data->rate;
+            $product[] = $lims_tax_data->name;
         } else {
             $product[] = 0;
             $product[] = 'No Tax';
         }
 
         $product[] = $lims_product_data->tax_method;
+
         if ($lims_product_data->isType(ProductType::STANDARD)) {
             $units = Unit::where("base_unit", $lims_product_data->unit_id)
                 ->orWhere('id', $lims_product_data->unit_id)
@@ -180,13 +162,8 @@ class QuotationController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('quotes-edit')) {
-            $formData = $this->quotationService->getEditFormData($id);
-            return view('backend.quotation.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->quotationService->getEditFormData($id);
+        return view('backend.quotation.edit', $formData);
     }
 
     public function update(UpdateQuotationRequest $request, $id)
@@ -228,11 +205,6 @@ class QuotationController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('quotes-delete')) {
-            return 'Sorry! You are not allowed to delete quotation';
-        }
-
         $quotation_ids = $request['quotationIdArray'] ?? [];
         $this->quotationService->deleteMultipleQuotations($quotation_ids);
 
@@ -241,11 +213,6 @@ class QuotationController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('quotes-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete quotation');
-        }
-
         $this->quotationService->deleteQuotation($id);
 
         return redirect('quotations')->with('not_permitted', 'Quotation deleted successfully');

@@ -6,8 +6,6 @@ use App\Http\Requests\Unit\StoreUnitRequest;
 use App\Http\Requests\Unit\UpdateUnitRequest;
 use App\Services\UnitService;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Auth;
 
 class UnitController extends Controller
 {
@@ -16,25 +14,16 @@ class UnitController extends Controller
     public function __construct(UnitService $unitService)
     {
         $this->unitService = $unitService;
+        $this->middleware('check_permission:unit-index|unit')->only(['index', 'limsUnitSearch']);
+        $this->middleware('check_permission:unit-add')->only(['create', 'store', 'importUnit']);
+        $this->middleware('check_permission:unit-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:unit-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('unit-index') || $role->hasPermissionTo('unit')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $lims_unit_all = $this->unitService->getActiveUnits();
-            return view('backend.unit.create', compact('lims_unit_all', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_unit_all = $this->unitService->getActiveUnits();
+        return view('backend.unit.create', compact('lims_unit_all'));
     }
 
     public function store(StoreUnitRequest $request)
@@ -44,9 +33,9 @@ class UnitController extends Controller
         return redirect('unit');
     }
 
-    public function limsUnitSearch()
+    public function limsUnitSearch(Request $request)
     {
-        $lims_unit_name = $_GET['lims_unitNameSearch'];
+        $lims_unit_name = $request->query('lims_unitNameSearch', '');
         $lims_unit_all = $this->unitService->searchUnitsByName($lims_unit_name, 5);
         $lims_unit_list = $this->unitService->getAllUnits();
 
@@ -75,12 +64,7 @@ class UnitController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('unit-delete')) {
-            return 'Sorry! You are not allowed to delete unit';
-        }
-
-        $unit_id = $request['unitIdArray'];
+        $unit_id = $request['unitIdArray'] ?? [];
         $this->unitService->deleteMultipleUnits($unit_id);
 
         return 'Unit deleted successfully!';
@@ -88,11 +72,6 @@ class UnitController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('unit-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete unit');
-        }
-
         $this->unitService->deleteUnit($id);
 
         return redirect('unit');

@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Attendance\StoreAttendanceRequest;
-use App\Models\Employee;
-use App\Models\HrmSetting;
 use App\Services\AttendanceService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class AttendanceController extends Controller
 {
@@ -17,17 +13,13 @@ class AttendanceController extends Controller
     public function __construct(AttendanceService $attendanceService)
     {
         $this->attendanceService = $attendanceService;
+        $this->middleware('check_permission:attendance');
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('attendance')) {
-            $indexData = $this->attendanceService->getIndexData();
-            return view('backend.attendance.index', $indexData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $indexData = $this->attendanceService->getIndexData();
+        return view('backend.attendance.index', $indexData);
     }
 
     public function store(StoreAttendanceRequest $request)

@@ -7,7 +7,6 @@ use App\Http\Requests\CustomerGroup\UpdateCustomerGroupRequest;
 use App\Services\CustomerGroupService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class CustomerGroupController extends Controller
 {
@@ -16,17 +15,13 @@ class CustomerGroupController extends Controller
     public function __construct(CustomerGroupService $customerGroupService)
     {
         $this->customerGroupService = $customerGroupService;
+        $this->middleware('check_permission:customer_group')->only(['index', 'create', 'store', 'edit', 'update', 'importCustomerGroup', 'exportCustomerGroup']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('customer_group')) {
-            $lims_customer_group_all = $this->customerGroupService->getActiveCustomerGroups();
-            return view('backend.customer_group.create', compact('lims_customer_group_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_customer_group_all = $this->customerGroupService->getActiveCustomerGroups();
+        return view('backend.customer_group.create', compact('lims_customer_group_all'));
     }
 
     public function store(StoreCustomerGroupRequest $request)

@@ -8,7 +8,6 @@ use App\Models\Account;
 use App\Services\MoneyTransferService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class MoneyTransferController extends Controller
 {
@@ -17,18 +16,14 @@ class MoneyTransferController extends Controller
     public function __construct(MoneyTransferService $moneyTransferService)
     {
         $this->moneyTransferService = $moneyTransferService;
+        $this->middleware('check_permission:money-transfer')->only(['index', 'create', 'store', 'edit', 'update']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('money-transfer')) {
-            $lims_money_transfer_all = $this->moneyTransferService->getAllTransfers();
-            $lims_account_list = Account::where('is_active', true)->get();
-            return view('backend.money_transfer.index', compact('lims_money_transfer_all', 'lims_account_list'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_money_transfer_all = $this->moneyTransferService->getAllTransfers();
+        $lims_account_list = Account::where('is_active', true)->get();
+        return view('backend.money_transfer.index', compact('lims_money_transfer_all', 'lims_account_list'));
     }
 
     public function store(StoreMoneyTransferRequest $request)

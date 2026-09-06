@@ -122,27 +122,22 @@ class TransferRepository extends BaseRepository implements TransferRepositoryInt
      */
     public function getProductTransferDataByTransferId($transferId): array
     {
-        $limsProductTransferData = ProductTransfer::where('transfer_id', $transferId)->get();
+        $limsProductTransferData = ProductTransfer::with(['product', 'unit', 'productBatch', 'variant'])
+            ->where('transfer_id', $transferId)
+            ->get();
         $productTransfer = [];
 
         foreach ($limsProductTransferData as $key => $productTransferData) {
-            $product = Product::find($productTransferData->product_id);
+            $product = $productTransferData->product;
             if (!$product) {
                 continue;
             }
 
-            $unit = Unit::find($productTransferData->purchase_unit_id);
+            $unit = $productTransferData->unit;
             $unitName = $unit ? $unit->unit_name : '';
 
-            $productBatch = null;
-            if ($productTransferData->product_batch_id) {
-                $productBatch = ProductBatch::select('batch_no')->find($productTransferData->product_batch_id);
-            }
-
-            $productVariant = null;
-            if ($productTransferData->variant_id) {
-                $productVariant = Variant::find($productTransferData->variant_id);
-            }
+            $productBatch = $productTransferData->productBatch;
+            $productVariant = $productTransferData->variant;
 
             $name = $product->name;
             $code = $product->code;

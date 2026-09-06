@@ -7,7 +7,6 @@ use App\Http\Requests\Tax\UpdateTaxRequest;
 use App\Services\TaxService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class TaxController extends Controller
 {
@@ -16,17 +15,13 @@ class TaxController extends Controller
     public function __construct(TaxService $taxService)
     {
         $this->taxService = $taxService;
+        $this->middleware('check_permission:tax')->only(['index', 'limsTaxSearch', 'create', 'store', 'edit', 'update', 'importTax']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('tax')) {
-            $lims_tax_all = $this->taxService->getActiveTaxes();
-            return view('backend.tax.create', compact('lims_tax_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_tax_all = $this->taxService->getActiveTaxes();
+        return view('backend.tax.create', compact('lims_tax_all'));
     }
 
     public function store(StoreTaxRequest $request)
@@ -36,9 +31,9 @@ class TaxController extends Controller
         return redirect('tax')->with('message', 'Data inserted successfully');
     }
 
-    public function limsTaxSearch()
+    public function limsTaxSearch(Request $request)
     {
-        $lims_tax_name = $_GET['lims_taxNameSearch'];
+        $lims_tax_name = $request->query('lims_taxNameSearch', '');
         $lims_tax_all = $this->taxService->searchTaxesByName($lims_tax_name, 5);
         $lims_tax_list = $this->taxService->getAllTaxes();
 
@@ -76,7 +71,7 @@ class TaxController extends Controller
             return 'Sorry! You are not allowed to delete tax';
         }
 
-        $tax_id = $request['taxIdArray'];
+        $tax_id = $request['taxIdArray'] ?? [];
         $this->taxService->deleteMultipleTaxes($tax_id);
 
         return 'Tax deleted successfully!';

@@ -13,21 +13,21 @@ class Returns extends Model
 
     public function biller()
     {
-    	return $this->belongsTo('App\Models\Biller');
+    	return $this->belongsTo(Biller::class);
     }
 
     public function customer()
     {
-    	return $this->belongsTo('App\Models\Customer');
+    	return $this->belongsTo(Customer::class);
     }
 
     public function warehouse()
     {
-    	return $this->belongsTo('App\Models\Warehouse');
+    	return $this->belongsTo(Warehouse::class);
     }
 
     public function user()
     {
-    	return $this->belongsTo('App\Models\User');
+    	return $this->belongsTo(User::class);
     }
 }

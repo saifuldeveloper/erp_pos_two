@@ -17,27 +17,18 @@ class CustomFieldController extends Controller
     public function __construct(CustomFieldService $customFieldService)
     {
         $this->customFieldService = $customFieldService;
+        $this->middleware('check_permission:custom_field')->only('index', 'create');
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('custom_field')) {
-            $lims_custom_field_all = $this->customFieldService->getAllCustomFields();
-            return view('backend.custom_field.index', compact('lims_custom_field_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_custom_field_all = $this->customFieldService->getAllCustomFields();
+        return view('backend.custom_field.index', compact('lims_custom_field_all'));
     }
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('custom_field')) {
-            return view('backend.custom_field.create');
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.custom_field.create');
     }
 
     public function store(StoreCustomFieldRequest $request)

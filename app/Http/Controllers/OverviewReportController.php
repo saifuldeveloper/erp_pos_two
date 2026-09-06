@@ -15,37 +15,17 @@ use Spatie\Permission\Models\Role;
 
 class OverviewReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('check_permission:overview-report')->only(['index']);
+    }
+
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        // Failsafe: dynamically register overview-report permission if not exists
-        $permission = DB::table('permissions')->where('name', 'overview-report')->first();
-        if (!$permission) {
-            $permissionId = DB::table('permissions')->insertGetId([
-                'name' => 'overview-report',
-                'guard_name' => 'web',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-            DB::table('role_has_permissions')->insert([
-                'permission_id' => $permissionId,
-                'role_id' => 1,
-            ]);
-            $role2Exists = DB::table('roles')->where('id', 2)->exists();
-            if ($role2Exists) {
-                DB::table('role_has_permissions')->insert([
-                    'permission_id' => $permissionId,
-                    'role_id' => 2,
-                ]);
-            }
-            // Clear spatie permission cache to recognize the new permission
-            app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
-        }
-        if ($role->hasPermissionTo('overview-report')) {
-            $start_date = $request->input('start_date', date("Y-m-d", strtotime("-1 year")));
-            $end_date = $request->input('end_date', date("Y-m-d"));
-            $stock_count_id = $request->input('stock_count_id');
-            $warehouse_id = $request->input('warehouse_id');
+        $start_date = $request->input('start_date', date("Y-m-d", strtotime("-1 year")));
+        $end_date = $request->input('end_date', date("Y-m-d"));
+        $stock_count_id = $request->input('stock_count_id');
+        $warehouse_id = $request->input('warehouse_id');
 
             // If a specific stock count is chosen and warehouse_id was not explicitly specified, align with stock count warehouse
             if ($stock_count_id && !$warehouse_id) {
@@ -147,21 +127,18 @@ class OverviewReportController extends Controller
                 ->limit(30)
                 ->get();
 
-            return view('backend.report.overview_report', compact(
-                'start_date', 'end_date', 'stock_count_id', 'warehouse_id',
-                'lims_warehouse_list',
-                'lims_stock_count_list',
-                'purchases_by_brand', 'purchase_total_qty', 'purchase_total_cost', 'purchase_total_selling_price',
-                'sales_by_brand', 'sales_total_qty', 'sales_total_cost', 'sales_total_revenue',
-                'purchase_returns_by_brand', 'purchase_return_total_qty', 'purchase_return_total_cost', 'purchase_return_total_selling_price',
-                'sale_returns_by_brand', 'sale_returns_total_qty', 'sale_returns_total_cost', 'sale_returns_total_revenue',
-                'wastes_by_brand', 'waste_total_qty', 'waste_total_revenue', 'waste_total_cost',
-                'stock_count_current_qty', 'stock_count_current_revenue', 'stock_count_current_cost',
-                'stock_count_updated_qty', 'stock_count_updated_revenue', 'stock_count_updated_cost'
-            ));
-        } else {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
-        }
+        return view('backend.report.overview_report', compact(
+            'start_date', 'end_date', 'stock_count_id', 'warehouse_id',
+            'lims_warehouse_list',
+            'lims_stock_count_list',
+            'purchases_by_brand', 'purchase_total_qty', 'purchase_total_cost', 'purchase_total_selling_price',
+            'sales_by_brand', 'sales_total_qty', 'sales_total_cost', 'sales_total_revenue',
+            'purchase_returns_by_brand', 'purchase_return_total_qty', 'purchase_return_total_cost', 'purchase_return_total_selling_price',
+            'sale_returns_by_brand', 'sale_returns_total_qty', 'sale_returns_total_cost', 'sale_returns_total_revenue',
+            'wastes_by_brand', 'waste_total_qty', 'waste_total_revenue', 'waste_total_cost',
+            'stock_count_current_qty', 'stock_count_current_revenue', 'stock_count_current_cost',
+            'stock_count_updated_qty', 'stock_count_updated_revenue', 'stock_count_updated_cost'
+        ));
     }
 
 

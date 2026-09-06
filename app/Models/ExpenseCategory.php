@@ -11,6 +11,6 @@ class ExpenseCategory extends Model
     ];
 
     public function expense() {
-    	return $this->hasMany('App\Models\Expense');
+    	return $this->hasMany(Expense::class);
     }
 }

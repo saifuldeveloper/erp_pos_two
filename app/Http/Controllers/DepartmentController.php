@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Department\StoreDepartmentRequest;
 use App\Http\Requests\Department\UpdateDepartmentRequest;
-use App\Models\Department;
 use App\Services\DepartmentService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class DepartmentController extends Controller
 {
@@ -17,26 +14,16 @@ class DepartmentController extends Controller
     public function __construct(DepartmentService $departmentService)
     {
         $this->departmentService = $departmentService;
+        $this->middleware('check_permission:department-index|department')->only('index');
+        $this->middleware('check_permission:department-add')->only(['create', 'store']);
+        $this->middleware('check_permission:department-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:department-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('department-index') || $role->hasPermissionTo('department')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-
-            $lims_department_all = $this->departmentService->getActiveDepartments();
-            return view('backend.department.index', compact('lims_department_all', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_department_all = $this->departmentService->getActiveDepartments();
+        return view('backend.department.index', compact('lims_department_all'));
     }
 
     public function store(StoreDepartmentRequest $request)
@@ -55,11 +42,6 @@ class DepartmentController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('department-delete')) {
-            return 'Sorry! You are not allowed to delete department';
-        }
-
         $department_ids = $request['departmentIdArray'] ?? [];
         $this->departmentService->deleteMultipleDepartments($department_ids);
 
@@ -68,11 +50,6 @@ class DepartmentController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('department-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete department');
-        }
-
         $this->departmentService->deleteDepartment($id);
 
         return redirect('departments')->with('message', 'Department deleted successfully');

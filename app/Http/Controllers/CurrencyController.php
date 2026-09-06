@@ -6,8 +6,6 @@ use App\Http\Requests\Currency\StoreCurrencyRequest;
 use App\Http\Requests\Currency\UpdateCurrencyRequest;
 use App\Services\CurrencyService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class CurrencyController extends Controller
 {
@@ -16,17 +14,13 @@ class CurrencyController extends Controller
     public function __construct(CurrencyService $currencyService)
     {
         $this->currencyService = $currencyService;
+        $this->middleware('check_permission:currency');
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('currency')) {
-            $lims_currency_all = $this->currencyService->getActiveCurrencies();
-            return view('backend.currency.index', compact('lims_currency_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_currency_all = $this->currencyService->getActiveCurrencies();
+        return view('backend.currency.index', compact('lims_currency_all'));
     }
 
     public function store(StoreCurrencyRequest $request)

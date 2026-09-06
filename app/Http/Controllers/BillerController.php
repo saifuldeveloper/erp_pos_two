@@ -6,8 +6,6 @@ use App\Http\Requests\Biller\StoreBillerRequest;
 use App\Http\Requests\Biller\UpdateBillerRequest;
 use App\Services\BillerService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class BillerController extends Controller
 {
@@ -16,35 +14,21 @@ class BillerController extends Controller
     public function __construct(BillerService $billerService)
     {
         $this->billerService = $billerService;
+        $this->middleware('check_permission:billers-index')->only('index');
+        $this->middleware('check_permission:billers-add')->only(['create', 'store', 'importBiller']);
+        $this->middleware('check_permission:billers-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:billers-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('billers-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $lims_biller_all = $this->billerService->getActiveBillers();
-            return view('backend.biller.index', compact('lims_biller_all', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_biller_all = $this->billerService->getActiveBillers();
+        return view('backend.biller.index', compact('lims_biller_all'));
     }
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('billers-add')) {
-            return view('backend.biller.create');
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.biller.create');
     }
 
     public function store(StoreBillerRequest $request)
@@ -56,13 +40,8 @@ class BillerController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('billers-edit')) {
-            $lims_biller_data = $this->billerService->getBillerById($id);
-            return view('backend.biller.edit', compact('lims_biller_data'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_biller_data = $this->billerService->getBillerById($id);
+        return view('backend.biller.edit', compact('lims_biller_data'));
     }
 
     public function update(UpdateBillerRequest $request, $id)
@@ -87,11 +66,6 @@ class BillerController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('billers-delete')) {
-            return 'Sorry! You are not allowed to delete biller';
-        }
-
         $biller_id = $request['billerIdArray'] ?? [];
         $this->billerService->deleteMultipleBillers($biller_id);
 
@@ -100,11 +74,6 @@ class BillerController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('billers-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete biller');
-        }
-
         $this->billerService->deleteBiller($id);
 
         return redirect('biller')->with('not_permitted', 'Data deleted successfully');

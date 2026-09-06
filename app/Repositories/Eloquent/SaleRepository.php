@@ -135,27 +135,22 @@ class SaleRepository extends BaseRepository implements SaleRepositoryInterface
      */
     public function getProductSaleDataBySaleId($saleId): array
     {
-        $limsProductSaleData = Product_Sale::where('sale_id', $saleId)->get();
+        $limsProductSaleData = Product_Sale::with(['product', 'unit', 'productBatch', 'variant'])
+            ->where('sale_id', $saleId)
+            ->get();
         $productSale = [];
 
         foreach ($limsProductSaleData as $key => $productSaleData) {
-            $product = Product::find($productSaleData->product_id);
+            $product = $productSaleData->product;
             if (!$product) {
                 continue;
             }
 
-            $unit = Unit::find($productSaleData->sale_unit_id);
+            $unit = $productSaleData->unit;
             $unitCode = $unit ? $unit->unit_code : '';
 
-            $productBatch = null;
-            if ($productSaleData->product_batch_id) {
-                $productBatch = ProductBatch::select('batch_no')->find($productSaleData->product_batch_id);
-            }
-
-            $productVariant = null;
-            if ($productSaleData->variant_id) {
-                $productVariant = Variant::find($productSaleData->variant_id);
-            }
+            $productBatch = $productSaleData->productBatch;
+            $productVariant = $productSaleData->variant;
 
             $name = $product->name;
             $code = $product->code;

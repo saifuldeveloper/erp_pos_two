@@ -19,17 +19,13 @@ class DiscountPlanController extends Controller
     public function __construct(DiscountPlanService $discountPlanService)
     {
         $this->discountPlanService = $discountPlanService;
+        $this->middleware('check_permission:discount_plan')->only('index');
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('discount_plan')) {
-            $lims_discount_plan_all = $this->discountPlanService->getAllDiscountPlans();
-            return view('backend.discount_plan.index', compact('lims_discount_plan_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_discount_plan_all = $this->discountPlanService->getAllDiscountPlans();
+        return view('backend.discount_plan.index', compact('lims_discount_plan_all'));
     }
 
     public function create()

@@ -29,6 +29,12 @@ class ProductController extends Controller
     {
         $this->productService = $productService;
         $this->productRepository = $productRepository;
+        $this->middleware('check_permission:products-index')->only(['index']);
+        $this->middleware('check_permission:products-add')->only(['create', 'store', 'importProduct']);
+        $this->middleware('check_permission:products-edit')->only(['edit', 'updateProduct']);
+        $this->middleware('check_permission:products-delete')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:product_history')->only(['history', 'saleHistoryData', 'purchaseHistoryData', 'saleReturnHistoryData', 'purchaseReturnHistoryData']);
+        $this->middleware('check_permission:print_barcode')->only(['printBarcode', 'printBarcodePage']);
     }
 
     public function index()
@@ -74,31 +80,17 @@ class ProductController extends Controller
             return response()->json($debug_info);
         }
 
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('products-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $role_id = $role->id;
+        $role_id = Auth::user()->role_id;
+        $summaryData = $this->productService->getIndexSummaryData();
+        $numberOfProduct = $summaryData['numberOfProduct'];
+        $custom_fields = $summaryData['customFields'];
+        $field_name = $summaryData['fieldNames'];
+        $count_data = $summaryData['countData'];
+        $brands = $summaryData['brands'];
+        $categories = $summaryData['categories'];
+        $units = $summaryData['units'];
 
-            $summaryData = $this->productService->getIndexSummaryData();
-            $numberOfProduct = $summaryData['numberOfProduct'];
-            $custom_fields = $summaryData['customFields'];
-            $field_name = $summaryData['fieldNames'];
-            $count_data = $summaryData['countData'];
-            $brands = $summaryData['brands'];
-            $categories = $summaryData['categories'];
-            $units = $summaryData['units'];
-
-            return view('backend.product.index', compact('all_permission', 'role_id', 'numberOfProduct', 'custom_fields', 'field_name', 'count_data', 'brands', 'categories', 'units'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.product.index', compact('role_id', 'numberOfProduct', 'custom_fields', 'field_name', 'count_data', 'brands', 'categories', 'units'));
     }
 
     public function productData(Request $request)
@@ -111,13 +103,8 @@ class ProductController extends Controller
 
     public function create()
     {
-        $role = Role::firstOrCreate(['id' => Auth::user()->role_id]);
-        if ($role->hasPermissionTo('products-add')) {
-            $formData = $this->productService->getCreateFormData();
-            return view('backend.product.create', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->productService->getCreateFormData();
+        return view('backend.product.create', $formData);
     }
 
     public function store(StoreProductRequest $request)
@@ -134,13 +121,8 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $role = Role::firstOrCreate(['id' => Auth::user()->role_id]);
-        if ($role->hasPermissionTo('products-edit')) {
-            $formData = $this->productService->getEditFormData($id);
-            return view('backend.product.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->productService->getEditFormData($id);
+        return view('backend.product.edit', $formData);
     }
 
     public function updateProduct(UpdateProductRequest $request)
@@ -159,25 +141,20 @@ class ProductController extends Controller
 
     public function history(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('product_history')) {
-            $warehouse_id = $request->input('warehouse_id', 0);
+        $warehouse_id = $request->input('warehouse_id', 0);
 
-            if ($request->input('starting_date')) {
-                $starting_date = $request->input('starting_date');
-                $ending_date = $request->input('ending_date');
-            } else {
-                $starting_date = date("Y-m-d", strtotime('-1 year'));
-                $ending_date = date("Y-m-d");
-            }
-            $product_id = $request->input('product_id');
-            $product_data = Product::select('id', 'name', 'code')->find($product_id);
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-
-            return view('backend.product.history', compact('starting_date', 'ending_date', 'warehouse_id', 'product_id', 'product_data', 'lims_warehouse_list'));
+        if ($request->input('starting_date')) {
+            $starting_date = $request->input('starting_date');
+            $ending_date = $request->input('ending_date');
+        } else {
+            $starting_date = date("Y-m-d", strtotime('-1 year'));
+            $ending_date = date("Y-m-d");
         }
+        $product_id = $request->input('product_id');
+        $product_data = Product::select('id', 'name', 'code')->find($product_id);
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
 
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.product.history', compact('starting_date', 'ending_date', 'warehouse_id', 'product_id', 'product_data', 'lims_warehouse_list'));
     }
 
     public function saleHistoryData(Request $request)
@@ -213,7 +190,8 @@ class ProductController extends Controller
 
         $q = $q->join('customers', 'sales.customer_id', '=', 'customers.id')
             ->join('warehouses', 'sales.warehouse_id', '=', 'warehouses.id')
-            ->select('sales.id', 'sales.reference_no', 'sales.created_at', 'customers.name as customer_name', 'customers.phone_number as customer_number', 'warehouses.name as warehouse_name', 'product_sales.qty', 'product_sales.sale_unit_id', 'product_sales.total')
+            ->leftJoin('units', 'product_sales.sale_unit_id', '=', 'units.id')
+            ->select('sales.id', 'sales.reference_no', 'sales.created_at', 'customers.name as customer_name', 'customers.phone_number as customer_number', 'warehouses.name as warehouse_name', 'product_sales.qty', 'product_sales.sale_unit_id', 'product_sales.total', 'units.unit_code')
             ->offset($start)
             ->limit($limit)
             ->orderBy($order, $dir);
@@ -248,9 +226,8 @@ class ProductController extends Controller
                 $nestedData['warehouse'] = $sale->warehouse_name;
                 $nestedData['customer'] = $sale->customer_name . ' [' . ($sale->customer_number) . ']';
                 $nestedData['qty'] = number_format($sale->qty, config('decimal'));
-                if ($sale->sale_unit_id) {
-                    $unit_data = DB::table('units')->select('unit_code')->find($sale->sale_unit_id);
-                    $nestedData['qty'] .= ' ' . ($unit_data->unit_code ?? '');
+                if (!empty($sale->unit_code)) {
+                    $nestedData['qty'] .= ' ' . $sale->unit_code;
                 }
                 $nestedData['unit_price'] = number_format(($sale->total / ($sale->qty ?: 1)), config('decimal'));
                 $nestedData['sub_total'] = number_format($sale->total, config('decimal'));
@@ -297,31 +274,44 @@ class ProductController extends Controller
         $order = 'purchases.' . ($columns[$request->input('order.0.column')] ?? 'created_at');
         $dir = $request->input('order.0.dir', 'desc');
 
+        $selectFields = [
+            'purchases.id',
+            'purchases.reference_no',
+            'purchases.created_at',
+            'purchases.supplier_id',
+            'suppliers.name as supplier_name',
+            'suppliers.phone_number as supplier_number',
+            'warehouses.name as warehouse_name',
+            'product_purchases.qty',
+            'product_purchases.purchase_unit_id',
+            'product_purchases.total',
+            'units.unit_code',
+        ];
+
         $q = $q->leftJoin('suppliers', 'purchases.supplier_id', '=', 'suppliers.id')
             ->join('warehouses', 'purchases.warehouse_id', '=', 'warehouses.id')
+            ->leftJoin('units', 'product_purchases.purchase_unit_id', '=', 'units.id')
+            ->select($selectFields)
             ->offset($start)
             ->limit($limit)
             ->orderBy($order, $dir);
 
         if (empty($request->input('search.value'))) {
-            $purchases = $q->select('purchases.id', 'purchases.reference_no', 'purchases.created_at', 'purchases.supplier_id', 'suppliers.name as supplier_name', 'suppliers.phone_number as supplier_number', 'warehouses.name as warehouse_name', 'product_purchases.qty', 'product_purchases.purchase_unit_id', 'product_purchases.total')->get();
+            $purchases = $q->get();
         } else {
             $search = $request->input('search.value');
             $q = $q->whereDate('purchases.created_at', '=', date('Y-m-d', strtotime(str_replace('/', '-', $search))));
             if (Auth::user()->role_id > 2 && config('staff_access') == 'own') {
-                $purchases = $q->select('purchases.id', 'purchases.reference_no', 'purchases.created_at', 'purchases.supplier_id', 'suppliers.name as supplier_name', 'suppliers.phone_number as supplier_number', 'warehouses.name as warehouse_name', 'product_purchases.qty', 'product_purchases.purchase_unit_id', 'product_purchases.total')
-                    ->orwhere([
-                        ['purchases.reference_no', 'LIKE', "%{$search}%"],
-                        ['purchases.user_id', Auth::id()]
-                    ])->get();
+                $purchases = $q->orwhere([
+                    ['purchases.reference_no', 'LIKE', "%{$search}%"],
+                    ['purchases.user_id', Auth::id()]
+                ])->get();
                 $totalFiltered = $q->orwhere([
                     ['purchases.reference_no', 'LIKE', "%{$search}%"],
                     ['purchases.user_id', Auth::id()]
                 ])->count();
             } else {
-                $purchases = $q->select('purchases.id', 'purchases.reference_no', 'purchases.created_at', 'purchases.supplier_id', 'suppliers.name as supplier_name', 'suppliers.phone_number as supplier_number', 'warehouses.name as warehouse_name', 'product_purchases.qty', 'product_purchases.purchase_unit_id', 'product_purchases.total')
-                    ->orwhere('purchases.reference_no', 'LIKE', "%{$search}%")
-                    ->get();
+                $purchases = $q->orwhere('purchases.reference_no', 'LIKE', "%{$search}%")->get();
                 $totalFiltered = $q->orwhere('purchases.reference_no', 'LIKE', "%{$search}%")->count();
             }
         }
@@ -336,9 +326,8 @@ class ProductController extends Controller
                 $nestedData['warehouse'] = $purchase->warehouse_name;
                 $nestedData['supplier'] = $purchase->supplier_id ? ($purchase->supplier_name . ' [' . $purchase->supplier_number . ']') : 'N/A';
                 $nestedData['qty'] = number_format($purchase->qty, config('decimal'));
-                if ($purchase->purchase_unit_id) {
-                    $unit_data = DB::table('units')->select('unit_code')->find($purchase->purchase_unit_id);
-                    $nestedData['qty'] .= ' ' . ($unit_data->unit_code ?? '');
+                if (!empty($purchase->unit_code)) {
+                    $nestedData['qty'] .= ' ' . $purchase->unit_code;
                 }
                 $nestedData['unit_cost'] = $purchase->qty > 0 ? number_format(($purchase->total / $purchase->qty), config('decimal')) : '0.00';
                 $nestedData['sub_total'] = number_format($purchase->total, config('decimal'));
@@ -385,31 +374,43 @@ class ProductController extends Controller
         $order = 'returns.' . ($columns[$request->input('order.0.column')] ?? 'created_at');
         $dir = $request->input('order.0.dir', 'desc');
 
+        $selectFields = [
+            'returns.id',
+            'returns.reference_no',
+            'returns.created_at',
+            'customers.name as customer_name',
+            'customers.phone_number as customer_number',
+            'warehouses.name as warehouse_name',
+            'product_returns.qty',
+            'product_returns.sale_unit_id',
+            'product_returns.total',
+            'units.unit_code',
+        ];
+
         $q = $q->join('customers', 'returns.customer_id', '=', 'customers.id')
             ->join('warehouses', 'returns.warehouse_id', '=', 'warehouses.id')
+            ->leftJoin('units', 'product_returns.sale_unit_id', '=', 'units.id')
+            ->select($selectFields)
             ->offset($start)
             ->limit($limit)
             ->orderBy($order, $dir);
 
         if (empty($request->input('search.value'))) {
-            $returnss = $q->select('returns.id', 'returns.reference_no', 'returns.created_at', 'customers.name as customer_name', 'customers.phone_number as customer_number', 'warehouses.name as warehouse_name', 'product_returns.qty', 'product_returns.sale_unit_id', 'product_returns.total')->get();
+            $returnss = $q->get();
         } else {
             $search = $request->input('search.value');
             $q = $q->whereDate('returns.created_at', '=', date('Y-m-d', strtotime(str_replace('/', '-', $search))));
             if (Auth::user()->role_id > 2 && config('staff_access') == 'own') {
-                $returnss = $q->select('returns.id', 'returns.reference_no', 'returns.created_at', 'customers.name as customer_name', 'customers.phone_number as customer_number', 'warehouses.name as warehouse_name', 'product_returns.qty', 'product_returns.sale_unit_id', 'product_returns.total')
-                    ->orwhere([
-                        ['returns.reference_no', 'LIKE', "%{$search}%"],
-                        ['returns.user_id', Auth::id()]
-                    ])->get();
+                $returnss = $q->orwhere([
+                    ['returns.reference_no', 'LIKE', "%{$search}%"],
+                    ['returns.user_id', Auth::id()]
+                ])->get();
                 $totalFiltered = $q->orwhere([
                     ['returns.reference_no', 'LIKE', "%{$search}%"],
                     ['returns.user_id', Auth::id()]
                 ])->count();
             } else {
-                $returnss = $q->select('returns.id', 'returns.reference_no', 'returns.created_at', 'customers.name as customer_name', 'customers.phone_number as customer_number', 'warehouses.name as warehouse_name', 'product_returns.qty', 'product_returns.sale_unit_id', 'product_returns.total')
-                    ->orwhere('returns.reference_no', 'LIKE', "%{$search}%")
-                    ->get();
+                $returnss = $q->orwhere('returns.reference_no', 'LIKE', "%{$search}%")->get();
                 $totalFiltered = $q->orwhere('returns.reference_no', 'LIKE', "%{$search}%")->count();
             }
         }
@@ -424,9 +425,8 @@ class ProductController extends Controller
                 $nestedData['warehouse'] = $returns->warehouse_name;
                 $nestedData['customer'] = $returns->customer_name . ' [' . ($returns->customer_number) . ']';
                 $nestedData['qty'] = number_format($returns->qty, config('decimal'));
-                if ($returns->sale_unit_id) {
-                    $unit_data = DB::table('units')->select('unit_code')->find($returns->sale_unit_id);
-                    $nestedData['qty'] .= ' ' . ($unit_data->unit_code ?? '');
+                if (!empty($returns->unit_code)) {
+                    $nestedData['qty'] .= ' ' . $returns->unit_code;
                 }
                 $nestedData['unit_price'] = number_format(($returns->total / ($returns->qty ?: 1)), config('decimal'));
                 $nestedData['sub_total'] = number_format($returns->total, config('decimal'));
@@ -473,9 +473,24 @@ class ProductController extends Controller
         $order = 'return_purchases.' . ($columns[$request->input('order.0.column')] ?? 'created_at');
         $dir = $request->input('order.0.dir', 'desc');
 
+        $selectFields = [
+            'return_purchases.id',
+            'return_purchases.reference_no',
+            'return_purchases.created_at',
+            'return_purchases.supplier_id',
+            'suppliers.name as supplier_name',
+            'suppliers.phone_number as supplier_number',
+            'warehouses.name as warehouse_name',
+            'purchase_product_return.qty',
+            'purchase_product_return.purchase_unit_id',
+            'purchase_product_return.total',
+            'units.unit_code',
+        ];
+
         $q = $q->leftJoin('suppliers', 'return_purchases.supplier_id', '=', 'suppliers.id')
             ->join('warehouses', 'return_purchases.warehouse_id', '=', 'warehouses.id')
-            ->select('return_purchases.id', 'return_purchases.reference_no', 'return_purchases.created_at', 'return_purchases.supplier_id', 'suppliers.name as supplier_name', 'suppliers.phone_number as supplier_number', 'warehouses.name as warehouse_name', 'purchase_product_return.qty', 'purchase_product_return.purchase_unit_id', 'purchase_product_return.total')
+            ->leftJoin('units', 'purchase_product_return.purchase_unit_id', '=', 'units.id')
+            ->select($selectFields)
             ->offset($start)
             ->limit($limit)
             ->orderBy($order, $dir);
@@ -511,9 +526,8 @@ class ProductController extends Controller
                 $nestedData['warehouse'] = $return_purchase->warehouse_name;
                 $nestedData['supplier'] = $return_purchase->supplier_id ? ($return_purchase->supplier_name . ' [' . $return_purchase->supplier_number . ']') : 'N/A';
                 $nestedData['qty'] = number_format($return_purchase->qty, config('decimal'));
-                if ($return_purchase->purchase_unit_id) {
-                    $unit_data = DB::table('units')->select('unit_code')->find($return_purchase->purchase_unit_id);
-                    $nestedData['qty'] .= ' ' . ($unit_data->unit_code ?? '');
+                if (!empty($return_purchase->unit_code)) {
+                    $nestedData['qty'] .= ' ' . $return_purchase->unit_code;
                 }
                 $nestedData['unit_cost'] = number_format(($return_purchase->total / ($return_purchase->qty ?: 1)), config('decimal'));
                 $nestedData['sub_total'] = number_format($return_purchase->total, config('decimal'));
@@ -772,11 +786,6 @@ class ProductController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('products-delete')) {
-            return 'Sorry! You are not allowed to delete product';
-        }
-
         $product_id = $request['productIdArray'];
         $this->productService->deleteMultipleProducts($product_id);
 
@@ -785,11 +794,6 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('products-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete product');
-        }
-
         $this->productService->deleteProduct($id);
 
         return redirect('products')->with('message', 'Product deleted successfully');

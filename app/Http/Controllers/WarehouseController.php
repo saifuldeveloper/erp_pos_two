@@ -7,7 +7,6 @@ use App\Http\Requests\Warehouse\UpdateWarehouseRequest;
 use App\Services\WarehouseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class WarehouseController extends Controller
 {
@@ -16,36 +15,22 @@ class WarehouseController extends Controller
     public function __construct(WarehouseService $warehouseService)
     {
         $this->warehouseService = $warehouseService;
+        $this->middleware('check_permission:warehouse-index|warehouse')->only('index');
+        $this->middleware('check_permission:warehouse-add')->only(['create', 'store', 'importWarehouse']);
+        $this->middleware('check_permission:warehouse-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:warehouse-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('warehouse-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $lims_warehouse_all = $this->warehouseService->getActiveWarehouses();
-            $numberOfWarehouse = $this->warehouseService->countActiveWarehouses();
+        $lims_warehouse_all = $this->warehouseService->getActiveWarehouses();
+        $numberOfWarehouse = $this->warehouseService->countActiveWarehouses();
 
-            return view('backend.warehouse.create', compact('lims_warehouse_all', 'numberOfWarehouse', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.warehouse.create', compact('lims_warehouse_all', 'numberOfWarehouse'));
     }
 
     public function store(StoreWarehouseRequest $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('warehouse-add')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to create warehouse');
-        }
-
         $this->warehouseService->createWarehouse($request->all());
 
         return redirect('warehouse')->with('message', 'Data inserted successfully');
@@ -53,21 +38,11 @@ class WarehouseController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('warehouse-edit')) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
-
         return $this->warehouseService->getWarehouseById($id);
     }
 
     public function update(UpdateWarehouseRequest $request, $id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('warehouse-edit')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to edit warehouse');
-        }
-
         $this->warehouseService->updateWarehouse($request->warehouse_id, $request->all());
 
         return redirect('warehouse')->with('message', 'Data updated successfully');
@@ -75,11 +50,6 @@ class WarehouseController extends Controller
 
     public function importWarehouse(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('warehouse-add')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to import warehouse');
-        }
-
         $upload = $request->file('file');
         $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
         if ($ext != 'csv') {
@@ -93,12 +63,7 @@ class WarehouseController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('warehouse-delete')) {
-            return 'You are not allowed to delete warehouse';
-        }
-
-        $warehouse_id = $request['warehouseIdArray'];
+        $warehouse_id = $request['warehouseIdArray'] ?? [];
         $this->warehouseService->deleteMultipleWarehouses($warehouse_id);
 
         return 'Warehouse deleted successfully!';
@@ -106,11 +71,6 @@ class WarehouseController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('warehouse-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete warehouse');
-        }
-
         $this->warehouseService->deleteWarehouse($id);
 
         return redirect('warehouse')->with('not_permitted', 'Data deleted successfully');

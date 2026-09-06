@@ -8,8 +8,6 @@ use App\Models\CustomField;
 use App\Models\CustomerGroup;
 use App\Services\CustomerService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class CustomerController extends Controller
 {
@@ -18,38 +16,24 @@ class CustomerController extends Controller
     public function __construct(CustomerService $customerService)
     {
         $this->customerService = $customerService;
+        $this->middleware('check_permission:customers-index')->only(['index', 'customerData']);
+        $this->middleware('check_permission:customers-add')->only(['create', 'store', 'importCustomer', 'addDeposit']);
+        $this->middleware('check_permission:customers-edit')->only(['edit', 'update', 'updateDeposit']);
+        $this->middleware('check_permission:customers-delete')->only(['destroy', 'deleteBySelection', 'deleteDeposit']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('customers-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $custom_fields = CustomField::where([
-                ['belongs_to', 'customer'],
-                ['is_table', true]
-            ])->pluck('name');
+        $custom_fields = CustomField::where([
+            ['belongs_to', 'customer'],
+            ['is_table', true]
+        ])->pluck('name');
 
-            return view('backend.customer.index', compact('all_permission', 'custom_fields'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.customer.index', compact('custom_fields'));
     }
 
     public function customerData(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('customers-index')) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
-
         $allPermissions = $request->input('all_permission', []);
         $jsonData = $this->customerService->getCustomerDataTable($request, $allPermissions);
 
@@ -69,14 +53,9 @@ class CustomerController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('customers-add')) {
-            $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
-            $custom_fields = CustomField::where('belongs_to', 'customer')->get();
-            return view('backend.customer.create', compact('lims_customer_group_all', 'custom_fields'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
+        $custom_fields = CustomField::where('belongs_to', 'customer')->get();
+        return view('backend.customer.create', compact('lims_customer_group_all', 'custom_fields'));
     }
 
     public function store(StoreCustomerRequest $request)
@@ -98,15 +77,10 @@ class CustomerController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('customers-edit')) {
-            $lims_customer_data = $this->customerService->getCustomerById($id);
-            $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
-            $custom_fields = CustomField::where('belongs_to', 'customer')->get();
-            return view('backend.customer.edit', compact('lims_customer_data', 'lims_customer_group_all', 'custom_fields'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_customer_data = $this->customerService->getCustomerById($id);
+        $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
+        $custom_fields = CustomField::where('belongs_to', 'customer')->get();
+        return view('backend.customer.edit', compact('lims_customer_data', 'lims_customer_group_all', 'custom_fields'));
     }
 
     public function update(UpdateCustomerRequest $request, $id)
@@ -118,20 +92,15 @@ class CustomerController extends Controller
 
     public function importCustomer(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('customers-add')) {
-            $upload = $request->file('file');
-            $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
-            if ($ext != 'csv') {
-                return redirect()->back()->with('not_permitted', 'Please upload a CSV file');
-            }
-
-            $message = $this->customerService->importCustomers($upload, $request);
-
-            return redirect('customer')->with('import_message', $message);
+        $upload = $request->file('file');
+        $ext = pathinfo($upload->getClientOriginalName(), PATHINFO_EXTENSION);
+        if ($ext != 'csv') {
+            return redirect()->back()->with('not_permitted', 'Please upload a CSV file');
         }
 
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $message = $this->customerService->importCustomers($upload, $request);
+
+        return redirect('customer')->with('import_message', $message);
     }
 
     public function getDeposit($id)
@@ -153,22 +122,12 @@ class CustomerController extends Controller
 
     public function deleteDeposit(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('customers-delete')) {
-            return redirect('customer')->with('not_permitted', 'Sorry! You are not allowed to delete deposit');
-        }
-
         $this->customerService->deleteDeposit($request->id);
         return redirect('customer')->with('not_permitted', 'Data deleted successfully');
     }
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('customers-delete')) {
-            return 'Sorry! You are not allowed to delete customer';
-        }
-
         $customer_id = $request['customerIdArray'] ?? [];
         $this->customerService->deleteMultipleCustomers($customer_id);
 
@@ -177,11 +136,6 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('customers-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete customer');
-        }
-
         $this->customerService->deleteCustomer($id);
 
         return redirect('customer')->with('not_permitted', 'Data deleted Successfully');

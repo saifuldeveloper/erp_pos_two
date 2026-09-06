@@ -14,9 +14,7 @@ use App\Models\Warehouse;
 use App\Repositories\Contracts\TransferRepositoryInterface;
 use App\Services\TransferService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 
 class TransferController extends Controller
 {
@@ -27,37 +25,27 @@ class TransferController extends Controller
     {
         $this->transferService = $transferService;
         $this->transferRepository = $transferRepository;
+        $this->middleware('check_permission:transfers-index')->only(['index', 'transferData', 'productTransferData']);
+        $this->middleware('check_permission:transfers-add')->only(['create', 'store', 'transferByCsv']);
+        $this->middleware('check_permission:transfers-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:transfers-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('transfers-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
+        $from_warehouse_id = $request->input('from_warehouse_id', 0);
+        $to_warehouse_id = $request->input('to_warehouse_id', 0);
 
-            $from_warehouse_id = $request->input('from_warehouse_id', 0);
-            $to_warehouse_id = $request->input('to_warehouse_id', 0);
-
-            if ($request->input('starting_date')) {
-                $starting_date = $request->input('starting_date');
-                $ending_date = $request->input('ending_date');
-            } else {
-                $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
-                $ending_date = date("Y-m-d");
-            }
-
-            $lims_warehouse_list = Warehouse::select('name', 'id')->where('is_active', true)->get();
-            return view('backend.transfer.index', compact('starting_date', 'ending_date', 'from_warehouse_id', 'to_warehouse_id', 'all_permission', 'lims_warehouse_list'));
+        if ($request->input('starting_date')) {
+            $starting_date = $request->input('starting_date');
+            $ending_date = $request->input('ending_date');
+        } else {
+            $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
+            $ending_date = date("Y-m-d");
         }
 
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_warehouse_list = Warehouse::select('name', 'id')->where('is_active', true)->get();
+        return view('backend.transfer.index', compact('starting_date', 'ending_date', 'from_warehouse_id', 'to_warehouse_id', 'lims_warehouse_list'));
     }
 
     public function transferData(Request $request)
@@ -70,13 +58,8 @@ class TransferController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('transfers-add')) {
-            $formData = $this->transferService->getCreateFormData();
-            return view('backend.transfer.create', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->transferService->getCreateFormData();
+        return view('backend.transfer.create', $formData);
     }
 
     public function getProduct($id)
@@ -98,14 +81,13 @@ class TransferController extends Controller
                 ['products.is_active', true],
                 ['product_warehouse.warehouse_id', $id]
             ])
-            ->select('products.name', 'product_warehouse.qty', 'product_warehouse.product_id', 'product_warehouse.variant_id')
+            ->select('products.name', 'product_warehouse.qty', 'product_warehouse.item_code')
             ->get();
 
         $product_code = [];
         $product_name = [];
         $product_qty = [];
         $product_data = [];
-
         foreach ($lims_product_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
             $product_code[] = $product_warehouse->code;
@@ -113,114 +95,84 @@ class TransferController extends Controller
         }
 
         foreach ($lims_product_withVariant_warehouse_data as $product_warehouse) {
-            $product_variant = ProductVariant::select('item_code')->FindExactProduct($product_warehouse->product_id, $product_warehouse->variant_id)->first();
-            if ($product_variant) {
-                $product_qty[] = $product_warehouse->qty;
-                $product_code[] = $product_variant->item_code;
-                $product_name[] = $product_warehouse->name;
-            }
+            $product_qty[] = $product_warehouse->qty;
+            $product_code[] = $product_warehouse->item_code;
+            $product_name[] = $product_warehouse->name;
         }
 
         $product_data[] = $product_code;
         $product_data[] = $product_name;
         $product_data[] = $product_qty;
-
         return $product_data;
     }
 
     public function limsProductSearch(Request $request)
     {
         $product_code = explode("(", $request['data']);
+        $product_info = explode("|", $request['data']);
         $product_code[0] = rtrim($product_code[0], " ");
-
-        [$lims_product_data, $lims_product_variant_data] = $this->transferRepository->searchProductsForTransfer($product_code[0], $request['from_warehouse_id']);
-
-        $product = [];
-        if ($lims_product_data) {
-            $product[] = $lims_product_data->name;
-            $product[] = $lims_product_data->code;
-            $product[] = $lims_product_data->cost;
-
-            if ($lims_product_data->tax_id) {
-                $tax = Tax::find($lims_product_data->tax_id);
-                $product[] = $tax ? $tax->rate : 0;
-                $product[] = $tax ? $tax->name : 'No Tax';
-            } else {
-                $product[] = 0;
-                $product[] = 'No Tax';
-            }
-
-            $product[] = $lims_product_data->tax_method;
-
-            $units = Unit::where("base_unit", $lims_product_data->unit_id)
-                ->orWhere('id', $lims_product_data->unit_id)
-                ->get();
-
-            $unit_name = [];
-            $unit_operator = [];
-            $unit_operation_value = [];
-            foreach ($units as $unit) {
-                if ($lims_product_data->purchase_unit_id == $unit->id) {
-                    array_unshift($unit_name, $unit->unit_name);
-                    array_unshift($unit_operator, $unit->operator);
-                    array_unshift($unit_operation_value, $unit->operation_value);
-                } else {
-                    $unit_name[] = $unit->unit_name;
-                    $unit_operator[] = $unit->operator;
-                    $unit_operation_value[] = $unit->operation_value;
-                }
-            }
-
-            $product[] = implode(",", $unit_name) . ',';
-            $product[] = implode(",", $unit_operator) . ',';
-            $product[] = implode(",", $unit_operation_value) . ',';
-            $product[] = $lims_product_data->id;
-            $product[] = null;
-            $product[] = $lims_product_data->is_batch;
-            $product[] = $lims_product_data->is_imei;
-        } elseif ($lims_product_variant_data) {
-            $product[] = $lims_product_variant_data->name;
-            $product[] = $lims_product_variant_data->item_code;
-            $product[] = $lims_product_variant_data->cost + $lims_product_variant_data->additional_cost;
-
-            if ($lims_product_variant_data->tax_id) {
-                $tax = Tax::find($lims_product_variant_data->tax_id);
-                $product[] = $tax ? $tax->rate : 0;
-                $product[] = $tax ? $tax->name : 'No Tax';
-            } else {
-                $product[] = 0;
-                $product[] = 'No Tax';
-            }
-
-            $product[] = $lims_product_variant_data->tax_method;
-
-            $units = Unit::where("base_unit", $lims_product_variant_data->unit_id)
-                ->orWhere('id', $lims_product_variant_data->unit_id)
-                ->get();
-
-            $unit_name = [];
-            $unit_operator = [];
-            $unit_operation_value = [];
-            foreach ($units as $unit) {
-                if ($lims_product_variant_data->purchase_unit_id == $unit->id) {
-                    array_unshift($unit_name, $unit->unit_name);
-                    array_unshift($unit_operator, $unit->operator);
-                    array_unshift($unit_operation_value, $unit->operation_value);
-                } else {
-                    $unit_name[] = $unit->unit_name;
-                    $unit_operator[] = $unit->operator;
-                    $unit_operation_value[] = $unit->operation_value;
-                }
-            }
-
-            $product[] = implode(",", $unit_name) . ',';
-            $product[] = implode(",", $unit_operator) . ',';
-            $product[] = implode(",", $unit_operation_value) . ',';
-            $product[] = $lims_product_variant_data->id;
-            $product[] = $lims_product_variant_data->variant_id;
-            $product[] = $lims_product_variant_data->is_batch;
-            $product[] = $lims_product_variant_data->is_imei;
+        if (count($product_info) > 1) {
+            $product_code[0] = $product_info[0];
+            $product_variant_id = $product_info[1];
         }
+
+        $lims_product_data = Product::where([
+            ['code', $product_code[0]],
+            ['is_active', true]
+        ])->first();
+
+        $product_variant_id = null;
+        if (!$lims_product_data) {
+            $product_variant_data = ProductVariant::select('id', 'product_id', 'item_code')->where('item_code', $product_code[0])->first();
+            $lims_product_data = Product::find($product_variant_data->product_id);
+            $product_variant_id = $product_variant_data->id;
+        }
+
+        $product[] = $lims_product_data->name;
+        if ($product_variant_id) {
+            $product[] = $product_variant_data->item_code;
+        } else {
+            $product[] = $lims_product_data->code;
+        }
+
+        $product[] = $lims_product_data->cost;
+
+        if ($lims_product_data->tax_id) {
+            $lims_tax_data = Tax::find($lims_product_data->tax_id);
+            $product[] = $lims_tax_data->rate;
+            $product[] = $lims_tax_data->name;
+        } else {
+            $product[] = 0;
+            $product[] = 'No Tax';
+        }
+
+        $product[] = $lims_product_data->tax_method;
+
+        $units = Unit::where("base_unit", $lims_product_data->unit_id)
+            ->orWhere('id', $lims_product_data->unit_id)
+            ->get();
+        $unit_name = [];
+        $unit_operator = [];
+        $unit_operation_value = [];
+        foreach ($units as $unit) {
+            if ($lims_product_data->purchase_unit_id == $unit->id) {
+                array_unshift($unit_name, $unit->unit_name);
+                array_unshift($unit_operator, $unit->operator);
+                array_unshift($unit_operation_value, $unit->operation_value);
+            } else {
+                $unit_name[] = $unit->unit_name;
+                $unit_operator[] = $unit->operator;
+                $unit_operation_value[] = $unit->operation_value;
+            }
+        }
+
+        $product[] = implode(",", $unit_name) . ',';
+        $product[] = implode(",", $unit_operator) . ',';
+        $product[] = implode(",", $unit_operation_value) . ',';
+        $product[] = $lims_product_data->id;
+        $product[] = $product_variant_id;
+        $product[] = $lims_product_data->is_batch;
+        $product[] = $lims_product_data->is_imei;
 
         return $product;
     }
@@ -239,13 +191,8 @@ class TransferController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('transfers-edit')) {
-            $formData = $this->transferService->getEditFormData($id);
-            return view('backend.transfer.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->transferService->getEditFormData($id);
+        return view('backend.transfer.edit', $formData);
     }
 
     public function update(UpdateTransferRequest $request, $id)
@@ -257,11 +204,6 @@ class TransferController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('transfers-delete')) {
-            return 'Sorry! You are not allowed to delete transfer';
-        }
-
         $transfer_ids = $request['transferIdArray'] ?? [];
         $this->transferService->deleteMultipleTransfers($transfer_ids);
 
@@ -270,11 +212,6 @@ class TransferController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('transfers-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete transfer');
-        }
-
         $this->transferService->deleteTransfer($id);
 
         return redirect('transfers')->with('not_permitted', 'Transfer deleted successfully');
@@ -282,12 +219,7 @@ class TransferController extends Controller
 
     public function transferByCsv()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('transfers-add')) {
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            return view('backend.transfer.import', compact('lims_warehouse_list'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        return view('backend.transfer.import', compact('lims_warehouse_list'));
     }
 }

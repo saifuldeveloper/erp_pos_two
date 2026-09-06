@@ -27,12 +27,27 @@ class Product_Sale extends Model
 
     public function product()
     {
-        return $this->belongsTo('App\Models\Product');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function sale()
     {
-        return $this->belongsTo('App\Models\Sale');
+        return $this->belongsTo(Sale::class, 'sale_id');
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class, 'sale_unit_id');
+    }
+
+    public function productBatch()
+    {
+        return $this->belongsTo(ProductBatch::class, 'product_batch_id');
+    }
+
+    public function variant()
+    {
+        return $this->belongsTo(Variant::class, 'variant_id');
     }
 
 

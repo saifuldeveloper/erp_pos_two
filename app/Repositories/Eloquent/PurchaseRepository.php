@@ -127,27 +127,22 @@ class PurchaseRepository extends BaseRepository implements PurchaseRepositoryInt
      */
     public function getProductPurchaseDataByPurchaseId($purchaseId): array
     {
-        $limsProductPurchaseData = ProductPurchase::where('purchase_id', $purchaseId)->get();
+        $limsProductPurchaseData = ProductPurchase::with(['product', 'unit', 'productBatch', 'variant'])
+            ->where('purchase_id', $purchaseId)
+            ->get();
         $productPurchase = [];
 
         foreach ($limsProductPurchaseData as $key => $productPurchaseData) {
-            $product = Product::find($productPurchaseData->product_id);
+            $product = $productPurchaseData->product;
             if (!$product) {
                 continue;
             }
 
-            $unit = Unit::find($productPurchaseData->purchase_unit_id);
+            $unit = $productPurchaseData->unit;
             $unitName = $unit ? $unit->unit_name : '';
 
-            $productBatch = null;
-            if ($productPurchaseData->product_batch_id) {
-                $productBatch = ProductBatch::select('batch_no')->find($productPurchaseData->product_batch_id);
-            }
-
-            $productVariant = null;
-            if ($productPurchaseData->variant_id) {
-                $productVariant = Variant::find($productPurchaseData->variant_id);
-            }
+            $productBatch = $productPurchaseData->productBatch;
+            $productVariant = $productPurchaseData->variant;
 
             $name = $product->name;
             $code = $product->code;

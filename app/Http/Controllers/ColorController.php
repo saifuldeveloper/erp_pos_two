@@ -6,8 +6,6 @@ use App\Http\Requests\Color\StoreColorRequest;
 use App\Http\Requests\Color\UpdateColorRequest;
 use App\Services\ColorService;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Auth;
 
 class ColorController extends Controller
 {
@@ -16,25 +14,16 @@ class ColorController extends Controller
     public function __construct(ColorService $colorService)
     {
         $this->colorService = $colorService;
+        $this->middleware('check_permission:color-index|color')->only('index');
+        $this->middleware('check_permission:color-add')->only(['create', 'store']);
+        $this->middleware('check_permission:color-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:color-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('color-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $colors = $this->colorService->getAllColors();
-            return view('backend.color.index', compact('colors', 'all_permission'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $colors = $this->colorService->getAllColors();
+        return view('backend.color.index', compact('colors'));
     }
 
     public function store(StoreColorRequest $request)
@@ -58,12 +47,7 @@ class ColorController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('color-delete')) {
-            return 'Sorry! You are not allowed to delete color';
-        }
-
-        $color_id = $request['colorIdArray'];
+        $color_id = $request['colorIdArray'] ?? [];
         $this->colorService->deleteMultipleColors($color_id);
 
         return 'Color deleted successfully!';
@@ -71,11 +55,6 @@ class ColorController extends Controller
 
     public function destroy(string $id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('color-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete color');
-        }
-
         $this->colorService->deleteColor($id);
 
         return redirect()->route('color.index');

@@ -17,7 +17,6 @@ use App\Traits\MailInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Spatie\Permission\Models\Role;
 
 class DeliveryController extends Controller
 {
@@ -28,17 +27,13 @@ class DeliveryController extends Controller
     public function __construct(DeliveryService $deliveryService)
     {
         $this->deliveryService = $deliveryService;
+        $this->middleware('check_permission:delivery')->only(['index', 'create', 'store', 'productDeliveryData', 'sendMail', 'edit', 'update']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('delivery')) {
-            $indexData = $this->deliveryService->getIndexData();
-            return view('backend.delivery.index', $indexData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $indexData = $this->deliveryService->getIndexData();
+        return view('backend.delivery.index', $indexData);
     }
 
     public function create($id)

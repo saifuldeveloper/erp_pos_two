@@ -21,16 +21,16 @@ class Payroll extends Model
 
     public function payrollType()
     {
-        return $this->belongsTo('App\Models\PayrollType');
+        return $this->belongsTo(PayrollType::class);
     }
 
     public function account()
     {
-        return $this->belongsTo('App\Models\Account');
+        return $this->belongsTo(Account::class);
     }
 
     public function employee()
     {
-        return $this->belongsTo('App\Models\Employee');
+        return $this->belongsTo(Employee::class);
     }
 }

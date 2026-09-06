@@ -17,17 +17,13 @@ class GiftCardController extends Controller
     public function __construct(GiftCardService $giftCardService)
     {
         $this->giftCardService = $giftCardService;
+        $this->middleware('check_permission:unit|gift_card')->only('index');
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('unit') || $role->hasPermissionTo('gift_card')) {
-            $indexData = $this->giftCardService->getIndexData();
-            return view('backend.gift_card.index', $indexData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $indexData = $this->giftCardService->getIndexData();
+        return view('backend.gift_card.index', $indexData);
     }
 
     public function generateCode()

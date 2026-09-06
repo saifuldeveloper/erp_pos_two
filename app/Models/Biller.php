@@ -14,6 +14,6 @@ class Biller extends Model
 
     public function sale()
     {
-    	return $this->hasMany('App\Models\Sale');
+    	return $this->hasMany(Sale::class);
     }
 }

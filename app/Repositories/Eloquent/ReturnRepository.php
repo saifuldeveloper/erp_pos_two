@@ -122,27 +122,22 @@ class ReturnRepository extends BaseRepository implements ReturnRepositoryInterfa
      */
     public function getProductReturnDataByReturnId($returnId): array
     {
-        $limsProductReturnData = ProductReturn::where('return_id', $returnId)->get();
+        $limsProductReturnData = ProductReturn::with(['product', 'unit', 'productBatch', 'variant'])
+            ->where('return_id', $returnId)
+            ->get();
         $productReturn = [];
 
         foreach ($limsProductReturnData as $key => $productReturnData) {
-            $product = Product::find($productReturnData->product_id);
+            $product = $productReturnData->product;
             if (!$product) {
                 continue;
             }
 
-            $unit = Unit::find($productReturnData->sale_unit_id);
+            $unit = $productReturnData->unit;
             $unitName = $unit ? $unit->unit_name : '';
 
-            $productBatch = null;
-            if ($productReturnData->product_batch_id) {
-                $productBatch = ProductBatch::select('batch_no')->find($productReturnData->product_batch_id);
-            }
-
-            $productVariant = null;
-            if ($productReturnData->variant_id) {
-                $productVariant = Variant::find($productReturnData->variant_id);
-            }
+            $productBatch = $productReturnData->productBatch;
+            $productVariant = $productReturnData->variant;
 
             $name = $product->name;
             $code = $product->code;

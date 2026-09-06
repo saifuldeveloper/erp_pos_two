@@ -14,8 +14,6 @@ use App\Models\Warehouse;
 use App\Repositories\Contracts\ReturnPurchaseRepositoryInterface;
 use App\Services\ReturnPurchaseService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class ReturnPurchaseController extends Controller
 {
@@ -26,36 +24,26 @@ class ReturnPurchaseController extends Controller
     {
         $this->returnPurchaseService = $returnPurchaseService;
         $this->returnPurchaseRepository = $returnPurchaseRepository;
+        $this->middleware('check_permission:returns-index|purchase-return-index')->only(['index', 'returnData', 'productReturnData']);
+        $this->middleware('check_permission:returns-add|purchase-return-add')->only(['create', 'store']);
+        $this->middleware('check_permission:returns-edit|purchase-return-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:returns-delete|purchase-return-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('returns-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
+        $warehouse_id = $request->input('warehouse_id', 0);
 
-            $warehouse_id = $request->input('warehouse_id', 0);
-
-            if ($request->input('starting_date')) {
-                $starting_date = $request->input('starting_date');
-                $ending_date = $request->input('ending_date');
-            } else {
-                $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
-                $ending_date = date("Y-m-d");
-            }
-
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            return view('backend.return_purchase.index', compact('starting_date', 'ending_date', 'warehouse_id', 'all_permission', 'lims_warehouse_list'));
+        if ($request->input('starting_date')) {
+            $starting_date = $request->input('starting_date');
+            $ending_date = $request->input('ending_date');
+        } else {
+            $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
+            $ending_date = date("Y-m-d");
         }
 
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        return view('backend.return_purchase.index', compact('starting_date', 'ending_date', 'warehouse_id', 'lims_warehouse_list'));
     }
 
     public function returnData(Request $request)
@@ -68,13 +56,8 @@ class ReturnPurchaseController extends Controller
 
     public function create(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('returns-add')) {
-            $formData = $this->returnPurchaseService->getCreateFormData();
-            return view('backend.return_purchase.create', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->returnPurchaseService->getCreateFormData();
+        return view('backend.return_purchase.create', $formData);
     }
 
     public function getSupplier($id)
@@ -101,7 +84,6 @@ class ReturnPurchaseController extends Controller
                 ])->first();
         }
 
-        $product = [];
         $product[] = $lims_product_data->name;
         if ($lims_product_data->is_variant) {
             $product[] = $lims_product_data->item_code;
@@ -166,13 +148,8 @@ class ReturnPurchaseController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('returns-edit')) {
-            $formData = $this->returnPurchaseService->getEditFormData($id);
-            return view('backend.return_purchase.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->returnPurchaseService->getEditFormData($id);
+        return view('backend.return_purchase.edit', $formData);
     }
 
     public function update(UpdateReturnPurchaseRequest $request, $id)
@@ -184,11 +161,6 @@ class ReturnPurchaseController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('returns-delete')) {
-            return 'Sorry! You are not allowed to delete return purchase';
-        }
-
         $return_ids = $request['returnIdArray'] ?? [];
         $this->returnPurchaseService->deleteMultipleReturnPurchases($return_ids);
 
@@ -197,11 +169,6 @@ class ReturnPurchaseController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('returns-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete return purchase');
-        }
-
         $this->returnPurchaseService->deleteReturnPurchase($id);
 
         return redirect('return-purchase')->with('not_permitted', 'Data deleted successfully');

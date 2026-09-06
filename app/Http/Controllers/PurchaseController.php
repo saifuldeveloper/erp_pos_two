@@ -27,28 +27,17 @@ class PurchaseController extends Controller
     {
         $this->purchaseService = $purchaseService;
         $this->purchaseRepository = $purchaseRepository;
+        $this->middleware('check_permission:purchases-index')->only(['index']);
+        $this->middleware('check_permission:purchases-add')->only(['create', 'store', 'purchaseByCsv']);
+        $this->middleware('check_permission:purchases-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:purchases-delete')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:purchase-payment-delete')->only(['deletePayment']);
     }
 
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('purchases-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-
-            $formData = $this->purchaseService->getIndexFormData($request);
-            $formData['all_permission'] = $all_permission;
-
-            return view('backend.purchase.index', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->purchaseService->getIndexFormData($request);
+        return view('backend.purchase.index', $formData);
     }
 
     public function purchaseData(Request $request)
@@ -61,13 +50,8 @@ class PurchaseController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('purchases-add')) {
-            $formData = $this->purchaseService->getCreateFormData();
-            return view('backend.purchase.create', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->purchaseService->getCreateFormData();
+        return view('backend.purchase.create', $formData);
     }
 
     public function getSupplier($id)
@@ -193,13 +177,8 @@ class PurchaseController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('purchases-edit')) {
-            $formData = $this->purchaseService->getEditFormData($id);
-            return view('backend.purchase.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->purchaseService->getEditFormData($id);
+        return view('backend.purchase.edit', $formData);
     }
 
     public function update(UpdatePurchaseRequest $request, $id)
@@ -230,11 +209,6 @@ class PurchaseController extends Controller
 
     public function deletePayment(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('purchase-payment-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete purchase payment');
-        }
-
         $this->purchaseService->deletePayment($request->id);
 
         return redirect('purchases')->with('not_permitted', 'Payment deleted successfully');
@@ -242,11 +216,6 @@ class PurchaseController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('purchases-delete')) {
-            return 'Sorry! You are not allowed to delete purchase';
-        }
-
         $purchase_ids = $request['purchaseIdArray'] ?? [];
         $this->purchaseService->deleteMultiplePurchases($purchase_ids);
 
@@ -255,11 +224,6 @@ class PurchaseController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('purchases-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete purchase');
-        }
-
         $this->purchaseService->deletePurchase($id);
 
         return redirect('purchases')->with('not_permitted', 'Purchase deleted successfully');
@@ -267,15 +231,10 @@ class PurchaseController extends Controller
 
     public function purchaseByCsv()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('purchases-add')) {
-            $lims_supplier_list = Supplier::where('is_active', true)->get();
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_tax_list = Tax::where('is_active', true)->get();
+        $lims_supplier_list = Supplier::where('is_active', true)->get();
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $lims_tax_list = Tax::where('is_active', true)->get();
 
-            return view('backend.purchase.import', compact('lims_supplier_list', 'lims_warehouse_list', 'lims_tax_list'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.purchase.import', compact('lims_supplier_list', 'lims_warehouse_list', 'lims_tax_list'));
     }
 }

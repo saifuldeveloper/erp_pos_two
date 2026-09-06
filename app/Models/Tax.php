@@ -12,6 +12,6 @@ class Tax extends Model
 
     public function product()
     {
-    	return $this->hasMany('App\ModelsProduct');
+    	return $this->hasMany(Product::class);
     }
 }

@@ -8,8 +8,6 @@ use App\Models\Account;
 use App\Models\CustomerGroup;
 use App\Services\SupplierService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class SupplierController extends Controller
 {
@@ -18,27 +16,18 @@ class SupplierController extends Controller
     public function __construct(SupplierService $supplierService)
     {
         $this->supplierService = $supplierService;
+        $this->middleware('check_permission:suppliers-index')->only(['index', 'dueClearList']);
+        $this->middleware('check_permission:suppliers-add')->only(['create', 'store', 'importSupplier', 'clearDue']);
+        $this->middleware('check_permission:suppliers-edit')->only(['edit', 'update', 'clearDueUpdate']);
+        $this->middleware('check_permission:suppliers-delete')->only(['destroy', 'deleteBySelection', 'clearDueDelete']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('suppliers-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-            $lims_supplier_all = $this->supplierService->getActiveSuppliers();
-            $lims_accounts = Account::where('is_active', true)->get();
+        $lims_supplier_all = $this->supplierService->getActiveSuppliers();
+        $lims_accounts = Account::where('is_active', true)->get();
 
-            return view('backend.supplier.index', compact('lims_supplier_all', 'all_permission', 'lims_accounts'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.supplier.index', compact('lims_supplier_all', 'lims_accounts'));
     }
 
     public function clearDue(Request $request)
@@ -82,13 +71,8 @@ class SupplierController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('suppliers-add')) {
-            $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
-            return view('backend.supplier.create', compact('lims_customer_group_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
+        return view('backend.supplier.create', compact('lims_customer_group_all'));
     }
 
     public function store(StoreSupplierRequest $request)
@@ -100,13 +84,8 @@ class SupplierController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('suppliers-edit')) {
-            $lims_supplier_data = $this->supplierService->getSupplierById($id);
-            return view('backend.supplier.edit', compact('lims_supplier_data'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_supplier_data = $this->supplierService->getSupplierById($id);
+        return view('backend.supplier.edit', compact('lims_supplier_data'));
     }
 
     public function update(UpdateSupplierRequest $request, $id)
@@ -118,11 +97,6 @@ class SupplierController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('suppliers-delete')) {
-            return 'Sorry! You are not allowed to delete supplier';
-        }
-
         $supplier_id = $request['supplierIdArray'] ?? [];
         $this->supplierService->deleteMultipleSuppliers($supplier_id);
 
@@ -131,11 +105,6 @@ class SupplierController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('suppliers-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete supplier');
-        }
-
         $this->supplierService->deleteSupplier($id);
 
         return redirect('supplier')->with('not_permitted', 'Data deleted successfully');

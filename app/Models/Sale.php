@@ -46,37 +46,37 @@ class Sale extends Model
 
     public function biller()
     {
-        return $this->belongsTo('App\Models\Biller');
+        return $this->belongsTo(Biller::class);
     }
 
     public function customer()
     {
-        return $this->belongsTo('App\Models\Customer');
+        return $this->belongsTo(Customer::class);
     }
 
     public function warehouse()
     {
-        return $this->belongsTo('App\Models\Warehouse');
+        return $this->belongsTo(Warehouse::class);
     }
 
     public function table()
     {
-        return $this->belongsTo('App\Models\Table');
+        return $this->belongsTo(Table::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function currency()
     {
-        return $this->belongsTo('App\Models\Currency');
+        return $this->belongsTo(Currency::class);
     }
 
     public function productSales()
     {
-        return $this->hasMany('App\Models\Product_Sale');
+        return $this->hasMany(Product_Sale::class);
     }
 
     public function isStatus(SaleStatus $status): bool

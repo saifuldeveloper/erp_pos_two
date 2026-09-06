@@ -12,10 +12,10 @@ class Expense extends Model
 
     public function warehouse()
     {
-    	return $this->belongsTo('App\Models\Warehouse');
+    	return $this->belongsTo(Warehouse::class);
     }
 
     public function expenseCategory() {
-    	return $this->belongsTo('App\Models\ExpenseCategory');
+    	return $this->belongsTo(ExpenseCategory::class);
     }
 }

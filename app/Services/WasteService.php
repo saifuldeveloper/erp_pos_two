@@ -71,8 +71,7 @@ class WasteService
             'wastes.receiver_type',
             'wastes.receiver_name',
             'wastes.total_price',
-            'wastes.status',
-            DB::raw('(SELECT SUM(qty) FROM waste_items WHERE waste_items.waste_id = wastes.id) as total_qty')
+            'wastes.status'
         )
             ->leftJoin('waste_items', 'wastes.id', '=', 'waste_items.waste_id')
             ->leftJoin('products', 'waste_items.product_id', '=', 'products.id')
@@ -111,15 +110,18 @@ class WasteService
         }
 
         $waste_ids = $wastes->pluck('id')->toArray();
-        $purchaseTotals = DB::table('waste_items as wi')
-            ->join('products as p', 'wi.product_id', '=', 'p.id')
+        $wasteAggregates = DB::table('waste_items as wi')
+            ->leftJoin('products as p', 'wi.product_id', '=', 'p.id')
             ->whereIn('wi.waste_id', $waste_ids)
-            ->selectRaw('wi.waste_id, SUM(wi.qty * COALESCE(p.cost, 0)) as total')
+            ->selectRaw('wi.waste_id, SUM(wi.qty) as total_qty, SUM(wi.qty * COALESCE(p.cost, 0)) as total_cost')
             ->groupBy('wi.waste_id')
-            ->pluck('total', 'wi.waste_id');
+            ->get()
+            ->keyBy('waste_id');
 
         foreach ($wastes as $waste) {
-            $waste->purchase_price = $purchaseTotals[$waste->id] ?? 0;
+            $agg = $wasteAggregates->get($waste->id);
+            $waste->total_qty = $agg ? $agg->total_qty : 0;
+            $waste->purchase_price = $agg ? $agg->total_cost : 0;
         }
 
         return [

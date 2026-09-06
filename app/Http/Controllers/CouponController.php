@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Coupon\StoreCouponRequest;
 use App\Http\Requests\Coupon\UpdateCouponRequest;
-use App\Models\Coupon;
 use App\Services\CouponService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class CouponController extends Controller
 {
@@ -17,17 +15,13 @@ class CouponController extends Controller
     public function __construct(CouponService $couponService)
     {
         $this->couponService = $couponService;
+        $this->middleware('check_permission:coupon-index|coupon|unit')->only(['index', 'generateCode', 'create', 'store', 'edit', 'update']);
     }
 
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('unit') || $role->hasPermissionTo('coupon-index')) {
-            $lims_coupon_all = $this->couponService->getActiveCoupons();
-            return view('backend.coupon.index', compact('lims_coupon_all'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_coupon_all = $this->couponService->getActiveCoupons();
+        return view('backend.coupon.index', compact('lims_coupon_all'));
     }
 
     public function generateCode()

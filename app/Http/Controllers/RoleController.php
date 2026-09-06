@@ -152,6 +152,9 @@ class RoleController extends Controller
 
         $role->syncPermissions($permissionsToSync);
         app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+        \Illuminate\Support\Facades\Cache::forget('role_permissions_list_' . $request['role_id']);
+        \Illuminate\Support\Facades\Cache::forget('role_has_permissions_raw_' . $request['role_id']);
+        \Illuminate\Support\Facades\Cache::forget('all_permissions_list');
 
         return redirect('role')->with('message', 'Permission updated successfully');
     }

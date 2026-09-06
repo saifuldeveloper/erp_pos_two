@@ -14,7 +14,6 @@ use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -23,40 +22,22 @@ class UserController extends Controller
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
+        $this->middleware('check_permission:users-index')->only('index');
+        $this->middleware('check_permission:users-add')->only(['create', 'store']);
+        $this->middleware('check_permission:users-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:users-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('users-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-
-            $indexData = $this->userService->getIndexData();
-            $lims_user_list = $indexData['lims_user_list'];
-            $numberOfUserAccount = $indexData['numberOfUserAccount'];
-
-            return view('backend.user.index', compact('lims_user_list', 'all_permission', 'numberOfUserAccount'));
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $indexData = $this->userService->getIndexData();
+        return view('backend.user.index', $indexData);
     }
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('users-add')) {
-            $formData = $this->userService->getCreateFormData();
-            return view('backend.user.create', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->userService->getCreateFormData();
+        return view('backend.user.create', $formData);
     }
 
     public function generatePassword()
@@ -80,13 +61,8 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('users-edit')) {
-            $formData = $this->userService->getEditFormData($id);
-            return view('backend.user.edit', $formData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $formData = $this->userService->getEditFormData($id);
+        return view('backend.user.edit', $formData);
     }
 
     public function update(UpdateUserRequest $request, $id)
@@ -147,11 +123,6 @@ class UserController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('users-delete')) {
-            return 'Sorry! You are not allowed to delete user';
-        }
-
         $user_ids = $request['userIdArray'] ?? [];
         $this->userService->deleteMultipleUsers($user_ids);
 
@@ -160,11 +131,6 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('users-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete user');
-        }
-
         $this->userService->deleteUser($id);
 
         return redirect('user')->with('message3', 'Data deleted successfullly');

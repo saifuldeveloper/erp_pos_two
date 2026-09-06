@@ -13,6 +13,6 @@ class Discount extends Model
 
     public function discountPlans()
     {
-        return $this->belongsToMany('App\Models\DiscountPlan', 'discount_plan_discounts');
+        return $this->belongsToMany(DiscountPlan::class, 'discount_plan_discounts');
     }
 }

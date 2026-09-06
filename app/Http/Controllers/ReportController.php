@@ -43,30 +43,37 @@ use Spatie\Permission\Models\Permission;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('check_permission:product-qty-alert')->only(['productQuantityAlert']);
+        $this->middleware('check_permission:dso-report')->only(['dailySaleObjective', 'dailySaleObjectiveData']);
+        $this->middleware('check_permission:warehouse-stock-report')->only(['warehouseStock']);
+        $this->middleware('check_permission:daily-sale')->only(['dailySale', 'dailySaleByWarehouse']);
+        $this->middleware('check_permission:daily-purchase')->only(['dailyPurchase', 'dailyPurchaseByWarehouse']);
+        $this->middleware('check_permission:monthly-sale')->only(['monthlySale', 'monthlySaleByWarehouse']);
+        $this->middleware('check_permission:monthly-purchase')->only(['monthlyPurchase', 'monthlyPurchaseByWarehouse']);
+        $this->middleware('check_permission:best-seller')->only(['bestSeller']);
+        $this->middleware('check_permission:expenses-index')->only(['expenseReport']);
+        $this->middleware('check_permission:salary-report')->only(['salaryReport']);
+        $this->middleware('check_permission:stock-count-report')->only(['stockCount', 'stockCountRemaining']);
+    }
+
     public function productQuantityAlert()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('product-qty-alert')) {
-            $lims_product_data = Product::select('name', 'code', 'image', 'qty', 'alert_quantity')->where('is_active', true)->whereColumn('alert_quantity', '>', 'qty')->get();
-            return view('backend.report.qty_alert_report', compact('lims_product_data'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_product_data = Product::select('name', 'code', 'image', 'qty', 'alert_quantity')->where('is_active', true)->whereColumn('alert_quantity', '>', 'qty')->get();
+        return view('backend.report.qty_alert_report', compact('lims_product_data'));
     }
 
     public function dailySaleObjective(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('dso-report')) {
-            if ($request->input('starting_date')) {
-                $starting_date = $request->input('starting_date');
-                $ending_date = $request->input('ending_date');
-            } else {
-                $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 month', strtotime(date('Y-m-d'))))));
-                $ending_date = date("Y-m-d");
-            }
-            return view('backend.report.daily_sale_objective', compact('starting_date', 'ending_date'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        if ($request->input('starting_date')) {
+            $starting_date = $request->input('starting_date');
+            $ending_date = $request->input('ending_date');
+        } else {
+            $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 month', strtotime(date('Y-m-d'))))));
+            $ending_date = date("Y-m-d");
+        }
+        return view('backend.report.daily_sale_objective', compact('starting_date', 'ending_date'));
     }
 
     public function dailySaleObjectiveData(Request $request)
@@ -148,116 +155,108 @@ class ReportController extends Controller
 
     public function warehouseStock(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('warehouse-stock-report')) {
-            if (isset($request->warehouse_id))
-                $warehouse_id = $request->warehouse_id;
-            else
-                $warehouse_id = 0;
-            if (!$warehouse_id) {
-                $total_item = DB::table('product_warehouse')
-                    ->join('products', 'product_warehouse.product_id', '=', 'products.id')
-                    ->where([
-                        ['products.is_active', true],
-                        ['product_warehouse.qty', '>', 0]
-                    ])->count();
+        if (isset($request->warehouse_id))
+            $warehouse_id = $request->warehouse_id;
+        else
+            $warehouse_id = 0;
+        if (!$warehouse_id) {
+            $total_item = DB::table('product_warehouse')
+                ->join('products', 'product_warehouse.product_id', '=', 'products.id')
+                ->where([
+                    ['products.is_active', true],
+                    ['product_warehouse.qty', '>', 0]
+                ])->count();
 
-                $total_qty = Product::where('is_active', true)->sum('qty');
-                $total_price = DB::table('products')->where('is_active', true)->sum(DB::raw('price * qty'));
-                $total_cost = DB::table('products')->where('is_active', true)->sum(DB::raw('cost * qty'));
-            } else {
-                $total_item = DB::table('product_warehouse')
-                    ->join('products', 'product_warehouse.product_id', '=', 'products.id')
-                    ->where([
-                        ['products.is_active', true],
-                        ['product_warehouse.qty', '>', 0],
-                        ['product_warehouse.warehouse_id', $warehouse_id]
-                    ])->count();
-                $total_qty = DB::table('product_warehouse')
-                    ->join('products', 'product_warehouse.product_id', '=', 'products.id')
-                    ->where([
-                        ['products.is_active', true],
-                        ['product_warehouse.warehouse_id', $warehouse_id]
-                    ])->sum('product_warehouse.qty');
-                $total_price = DB::table('product_warehouse')
-                    ->join('products', 'product_warehouse.product_id', '=', 'products.id')
-                    ->where([
-                        ['products.is_active', true],
-                        ['product_warehouse.warehouse_id', $warehouse_id]
-                    ])->sum(DB::raw('products.price * product_warehouse.qty'));
-                $total_cost = DB::table('product_warehouse')
-                    ->join('products', 'product_warehouse.product_id', '=', 'products.id')
-                    ->where([
-                        ['products.is_active', true],
-                        ['product_warehouse.warehouse_id', $warehouse_id]
-                    ])->sum(DB::raw('products.cost * product_warehouse.qty'));
-            }
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            return view('backend.report.warehouse_stock', compact('total_item', 'total_qty', 'total_price', 'total_cost', 'lims_warehouse_list', 'warehouse_id'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+            $total_qty = Product::where('is_active', true)->sum('qty');
+            $total_price = DB::table('products')->where('is_active', true)->sum(DB::raw('price * qty'));
+            $total_cost = DB::table('products')->where('is_active', true)->sum(DB::raw('cost * qty'));
+        } else {
+            $total_item = DB::table('product_warehouse')
+                ->join('products', 'product_warehouse.product_id', '=', 'products.id')
+                ->where([
+                    ['products.is_active', true],
+                    ['product_warehouse.qty', '>', 0],
+                    ['product_warehouse.warehouse_id', $warehouse_id]
+                ])->count();
+            $total_qty = DB::table('product_warehouse')
+                ->join('products', 'product_warehouse.product_id', '=', 'products.id')
+                ->where([
+                    ['products.is_active', true],
+                    ['product_warehouse.warehouse_id', $warehouse_id]
+                ])->sum('product_warehouse.qty');
+            $total_price = DB::table('product_warehouse')
+                ->join('products', 'product_warehouse.product_id', '=', 'products.id')
+                ->where([
+                    ['products.is_active', true],
+                    ['product_warehouse.warehouse_id', $warehouse_id]
+                ])->sum(DB::raw('products.price * product_warehouse.qty'));
+            $total_cost = DB::table('product_warehouse')
+                ->join('products', 'product_warehouse.product_id', '=', 'products.id')
+                ->where([
+                    ['products.is_active', true],
+                    ['product_warehouse.warehouse_id', $warehouse_id]
+                ])->sum(DB::raw('products.cost * product_warehouse.qty'));
+        }
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        return view('backend.report.warehouse_stock', compact('total_item', 'total_qty', 'total_price', 'total_cost', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function dailySale($year, $month)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('daily-sale')) {
-            $start = 1;
-            $number_of_day = date('t', mktime(0, 0, 0, $month, 1, $year));
-            while ($start <= $number_of_day) {
-                if ($start < 10)
-                    $date = $year . '-' . $month . '-0' . $start;
-                else
-                    $date = $year . '-' . $month . '-' . $start;
-                $sale_data = Sale::with('productSales.product.brand')
-                    ->whereDate('created_at', $date)
-                    ->get();
-                $return_data = Returns::whereDate('created_at', $date)->get();
+        $start = 1;
+        $number_of_day = date('t', mktime(0, 0, 0, $month, 1, $year));
+        while ($start <= $number_of_day) {
+            if ($start < 10)
+                $date = $year . '-' . $month . '-0' . $start;
+            else
+                $date = $year . '-' . $month . '-' . $start;
+            $sale_data = Sale::with('productSales.product.brand')
+                ->whereDate('created_at', $date)
+                ->get();
+            $return_data = Returns::whereDate('created_at', $date)->get();
 
-                $grand_total[$start] = 0;
-                $total_discount[$start] = 0;
-                $total_sale[$start] = 0;
-                $total_return[$start] = 0;
+            $grand_total[$start] = 0;
+            $total_discount[$start] = 0;
+            $total_sale[$start] = 0;
+            $total_return[$start] = 0;
 
-                $brand_total[$start] = [];
-                foreach ($sale_data as $sale) {
-                    $total_sale[$start] += $sale->total_price;
-                    $grand_total[$start] += $sale->grand_total;
-                    $total_discount[$start] += $sale->order_discount;
-                    foreach ($sale->productSales as $productSale) {
-                        $brand_name = $productSale->product->brand->title ?? 'Unknown';
-                        if (!isset($brand_total[$start][$brand_name])) {
-                            $brand_total[$start][$brand_name] = 0;
-                        }
-                        $brand_total[$start][$brand_name] += $productSale->total;
+            $brand_total[$start] = [];
+            foreach ($sale_data as $sale) {
+                $total_sale[$start] += $sale->total_price;
+                $grand_total[$start] += $sale->grand_total;
+                $total_discount[$start] += $sale->order_discount;
+                foreach ($sale->productSales as $productSale) {
+                    $brand_name = $productSale->product->brand->title ?? 'Unknown';
+                    if (!isset($brand_total[$start][$brand_name])) {
+                        $brand_total[$start][$brand_name] = 0;
                     }
+                    $brand_total[$start][$brand_name] += $productSale->total;
                 }
-                uksort($brand_total[$start], function ($a, $b) {
-                    $priority = ['Avijatry' => 1, 'China' => 2];
-                    return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
-                });
+            }
+            uksort($brand_total[$start], function ($a, $b) {
+                $priority = ['Avijatry' => 1, 'China' => 2];
+                return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
+            });
 
-                // --- NEW: Calculate Total Return ---
-                foreach ($return_data as $return) {
-                    $total_return[$start] += $return->grand_total;
-                }
-
-                // *** Grand Total ***
-                $grand_total[$start] = $grand_total[$start] - $total_return[$start];
-                $start++;
+            // --- NEW: Calculate Total Return ---
+            foreach ($return_data as $return) {
+                $total_return[$start] += $return->grand_total;
             }
 
-            $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
-            $prev_year = date('Y', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
-            $prev_month = date('m', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
-            $next_year = date('Y', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
-            $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $warehouse_id = 0;
+            // *** Grand Total ***
+            $grand_total[$start] = $grand_total[$start] - $total_return[$start];
+            $start++;
+        }
 
-            return view('backend.report.daily_sale', compact('total_sale', 'grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id', 'total_return'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
+        $prev_year = date('Y', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
+        $prev_month = date('m', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
+        $next_year = date('Y', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
+        $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $warehouse_id = 0;
+
+        return view('backend.report.daily_sale', compact('total_sale', 'grand_total', 'total_discount', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id', 'total_return'));
     }
 
     public function dailySaleByWarehouse(Request $request, $year, $month)
@@ -314,59 +313,55 @@ class ReportController extends Controller
 
     public function dailyPurchase($year, $month)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('daily-purchase')) {
-            $start = 1;
-            $number_of_day = date('t', mktime(0, 0, 0, $month, 1, $year));
-            $grand_total = [];
-            $total_purchase = [];
-            $total_return = [];
-            $brand_total = [];
+        $start = 1;
+        $number_of_day = date('t', mktime(0, 0, 0, $month, 1, $year));
+        $grand_total = [];
+        $total_purchase = [];
+        $total_return = [];
+        $brand_total = [];
 
-            while ($start <= $number_of_day) {
-                if ($start < 10)
-                    $date = $year . '-' . $month . '-0' . $start;
-                else
-                    $date = $year . '-' . $month . '-' . $start;
+        while ($start <= $number_of_day) {
+            if ($start < 10)
+                $date = $year . '-' . $month . '-0' . $start;
+            else
+                $date = $year . '-' . $month . '-' . $start;
 
-                $purchase_data = Purchase::with('productPurchases.product.brand')
-                    ->whereDate('created_at', $date)
-                    ->get();
-                $return_data = ReturnPurchase::whereDate('created_at', $date)->get();
+            $purchase_data = Purchase::with('productPurchases.product.brand')
+                ->whereDate('created_at', $date)
+                ->get();
+            $return_data = ReturnPurchase::whereDate('created_at', $date)->get();
 
-                $grand_total[$start] = 0;
-                $total_purchase[$start] = 0;
-                $total_return[$start] = 0;
-                $brand_total[$start] = [];
+            $grand_total[$start] = 0;
+            $total_purchase[$start] = 0;
+            $total_return[$start] = 0;
+            $brand_total[$start] = [];
 
-                foreach ($purchase_data as $purchase) {
-                    $total_purchase[$start] += $purchase->grand_total;
-                    $grand_total[$start] += $purchase->grand_total;
-                    foreach ($purchase->productPurchases as $productPurchase) {
-                        $brand_name = $productPurchase->product->brand->title ?? 'Unknown';
-                        if (!isset($brand_total[$start][$brand_name]))
-                            $brand_total[$start][$brand_name] = 0;
-                        $brand_total[$start][$brand_name] += $productPurchase->total;
-                    }
+            foreach ($purchase_data as $purchase) {
+                $total_purchase[$start] += $purchase->grand_total;
+                $grand_total[$start] += $purchase->grand_total;
+                foreach ($purchase->productPurchases as $productPurchase) {
+                    $brand_name = $productPurchase->product->brand->title ?? 'Unknown';
+                    if (!isset($brand_total[$start][$brand_name]))
+                        $brand_total[$start][$brand_name] = 0;
+                    $brand_total[$start][$brand_name] += $productPurchase->total;
                 }
-
-                foreach ($return_data as $return) {
-                    $total_return[$start] += $return->grand_total;
-                }
-
-                $grand_total[$start] = $grand_total[$start] - $total_return[$start];
-                $start++;
             }
-            $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
-            $prev_year = date('Y', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
-            $prev_month = date('m', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
-            $next_year = date('Y', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
-            $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $warehouse_id = 0;
-            return view('backend.report.daily_purchase', compact('grand_total', 'total_purchase', 'total_return', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+
+            foreach ($return_data as $return) {
+                $total_return[$start] += $return->grand_total;
+            }
+
+            $grand_total[$start] = $grand_total[$start] - $total_return[$start];
+            $start++;
+        }
+        $start_day = date('w', strtotime($year . '-' . $month . '-01')) + 1;
+        $prev_year = date('Y', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
+        $prev_month = date('m', strtotime('-1 month', strtotime($year . '-' . $month . '-01')));
+        $next_year = date('Y', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
+        $next_month = date('m', strtotime('+1 month', strtotime($year . '-' . $month . '-01')));
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $warehouse_id = 0;
+        return view('backend.report.daily_purchase', compact('grand_total', 'total_purchase', 'total_return', 'brand_total', 'start_day', 'year', 'month', 'number_of_day', 'prev_year', 'prev_month', 'next_year', 'next_month', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function dailyPurchaseByWarehouse(Request $request, $year, $month)
@@ -374,6 +369,7 @@ class ReportController extends Controller
         $data = $request->all();
         if ($data['warehouse_id'] == 0)
             return redirect('report/daily_purchase/' . $year . '/' . $month);
+
         $start = 1;
         $number_of_day = date('t', mktime(0, 0, 0, $month, 1, $year));
         $grand_total = [];
@@ -431,64 +427,59 @@ class ReportController extends Controller
 
     public function monthlySale($year)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('monthly-sale')) {
-            $start = strtotime($year . '-01-01');
-            $end = strtotime($year . '-12-31');
+        $start = strtotime($year . '-01-01');
+        $end = strtotime($year . '-12-31');
 
-            $total_sale = [];
-            $grand_total = [];
-            $total_discount = [];
-            $total_return = [];
-            $brand_total = [];
+        $total_sale = [];
+        $grand_total = [];
+        $total_discount = [];
+        $total_return = [];
+        $brand_total = [];
 
-            while ($start <= $end) {
-                $month_num = date('m', $start);
-                $month_index = (int) $month_num;
+        while ($start <= $end) {
+            $month_num = date('m', $start);
+            $month_index = (int) $month_num;
 
-                $start_date = $year . '-' . $month_num . '-01';
-                $end_date = $year . '-' . $month_num . '-' . date('t', $start);
+            $start_date = $year . '-' . $month_num . '-01';
+            $end_date = $year . '-' . $month_num . '-' . date('t', $start);
 
-                $sale_data = Sale::with('productSales.product.brand')
-                    ->whereDate('created_at', '>=', $start_date)
-                    ->whereDate('created_at', '<=', $end_date)
-                    ->get();
-                $return_data = Returns::whereDate('created_at', '>=', $start_date)
-                    ->whereDate('created_at', '<=', $end_date)
-                    ->get();
+            $sale_data = Sale::with('productSales.product.brand')
+                ->whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->get();
+            $return_data = Returns::whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->get();
 
-                $total_sale[$month_index] = $sale_data->sum('total_price');
-                $total_discount[$month_index] = $sale_data->sum('order_discount');
-                $total_return[$month_index] = $return_data->sum('grand_total');
-                $grand_total[$month_index] = $sale_data->sum('grand_total') - $total_return[$month_index];
+            $total_sale[$month_index] = $sale_data->sum('total_price');
+            $total_discount[$month_index] = $sale_data->sum('order_discount');
+            $total_return[$month_index] = $return_data->sum('grand_total');
+            $grand_total[$month_index] = $sale_data->sum('grand_total') - $total_return[$month_index];
 
-                $brand_total[$month_index] = [];
-                foreach ($sale_data as $sale) {
-                    foreach ($sale->productSales as $productSale) {
-                        $brand_name = $productSale->product->brand->title ?? 'Unknown';
+            $brand_total[$month_index] = [];
+            foreach ($sale_data as $sale) {
+                foreach ($sale->productSales as $productSale) {
+                    $brand_name = $productSale->product->brand->title ?? 'Unknown';
 
-                        if (!isset($brand_total[$month_index][$brand_name])) {
-                            $brand_total[$month_index][$brand_name] = 0;
-                        }
-                        $brand_total[$month_index][$brand_name] += $productSale->total;
+                    if (!isset($brand_total[$month_index][$brand_name])) {
+                        $brand_total[$month_index][$brand_name] = 0;
                     }
+                    $brand_total[$month_index][$brand_name] += $productSale->total;
                 }
-
-                uksort($brand_total[$month_index], function ($a, $b) {
-                    $priority = ['Avijatry' => 1, 'China' => 2];
-                    return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
-                });
-
-                $start = strtotime("+1 month", $start);
             }
 
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $warehouse_id = 0;
+            uksort($brand_total[$month_index], function ($a, $b) {
+                $priority = ['Avijatry' => 1, 'China' => 2];
+                return ($priority[$a] ?? 1000) <=> ($priority[$b] ?? 1000) ?: strcmp($a, $b);
+            });
 
-            return view('backend.report.monthly_sale', compact('year', 'total_sale', 'grand_total', 'total_discount', 'total_return', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
-        } else {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+            $start = strtotime("+1 month", $start);
         }
+
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $warehouse_id = 0;
+
+        return view('backend.report.monthly_sale', compact('year', 'total_sale', 'grand_total', 'total_discount', 'total_return', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function monthlySaleByWarehouse(Request $request, $year)
@@ -553,52 +544,48 @@ class ReportController extends Controller
 
     public function monthlyPurchase($year)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('monthly-purchase')) {
-            $start = strtotime($year . '-01-01');
-            $end = strtotime($year . '-12-31');
+        $start = strtotime($year . '-01-01');
+        $end = strtotime($year . '-12-31');
 
-            $total_purchase = [];
-            $total_return = [];
-            $grand_total = [];
-            $brand_total = [];
+        $total_purchase = [];
+        $total_return = [];
+        $grand_total = [];
+        $brand_total = [];
 
-            while ($start <= $end) {
-                $month_num = date('m', $start);
-                $month_index = (int) $month_num;
+        while ($start <= $end) {
+            $month_num = date('m', $start);
+            $month_index = (int) $month_num;
 
-                $start_date = $year . '-' . $month_num . '-01';
-                $end_date = $year . '-' . $month_num . '-' . date('t', $start);
+            $start_date = $year . '-' . $month_num . '-01';
+            $end_date = $year . '-' . $month_num . '-' . date('t', $start);
 
-                $purchase_data = Purchase::with('productPurchases.product.brand')
-                    ->whereDate('created_at', '>=', $start_date)
-                    ->whereDate('created_at', '<=', $end_date)
-                    ->get();
-                $return_data = ReturnPurchase::whereDate('created_at', '>=', $start_date)
-                    ->whereDate('created_at', '<=', $end_date)
-                    ->get();
+            $purchase_data = Purchase::with('productPurchases.product.brand')
+                ->whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->get();
+            $return_data = ReturnPurchase::whereDate('created_at', '>=', $start_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->get();
 
-                $total_purchase[$month_index] = $purchase_data->sum('grand_total');
-                $total_return[$month_index] = $return_data->sum('grand_total');
-                $grand_total[$month_index] = $total_purchase[$month_index] - $total_return[$month_index];
-                $brand_total[$month_index] = [];
+            $total_purchase[$month_index] = $purchase_data->sum('grand_total');
+            $total_return[$month_index] = $return_data->sum('grand_total');
+            $grand_total[$month_index] = $total_purchase[$month_index] - $total_return[$month_index];
+            $brand_total[$month_index] = [];
 
-                foreach ($purchase_data as $purchase) {
-                    foreach ($purchase->productPurchases as $productPurchase) {
-                        $brand_name = $productPurchase->product->brand->title ?? 'Unknown';
-                        if (!isset($brand_total[$month_index][$brand_name]))
-                            $brand_total[$month_index][$brand_name] = 0;
-                        $brand_total[$month_index][$brand_name] += $productPurchase->total;
-                    }
+            foreach ($purchase_data as $purchase) {
+                foreach ($purchase->productPurchases as $productPurchase) {
+                    $brand_name = $productPurchase->product->brand->title ?? 'Unknown';
+                    if (!isset($brand_total[$month_index][$brand_name]))
+                        $brand_total[$month_index][$brand_name] = 0;
+                    $brand_total[$month_index][$brand_name] += $productPurchase->total;
                 }
-
-                $start = strtotime("+1 month", $start);
             }
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $warehouse_id = 0;
-            return view('backend.report.monthly_purchase', compact('year', 'total_purchase', 'total_return', 'grand_total', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+
+            $start = strtotime("+1 month", $start);
+        }
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $warehouse_id = 0;
+        return view('backend.report.monthly_purchase', compact('year', 'total_purchase', 'total_return', 'grand_total', 'brand_total', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function monthlyPurchaseByWarehouse(Request $request, $year)
@@ -655,120 +642,115 @@ class ReportController extends Controller
 
     public function bestSeller(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('best-seller')) {
-            $warehouse_id = $request->input('warehouse_id', 0);
-            $brand_id = $request->input('brand_id', 0);
-            $start_date = $request->input('start_date', date("Y-m-01", strtotime("-2 months")));
-            $end_date = $request->input('end_date', date("Y-m-d"));
+        $warehouse_id = $request->input('warehouse_id', 0);
+        $brand_id = $request->input('brand_id', 0);
+        $start_date = $request->input('start_date', date("Y-m-01", strtotime("-2 months")));
+        $end_date = $request->input('end_date', date("Y-m-d"));
 
-            config()->set('database.connections.mysql.strict', false);
+        config()->set('database.connections.mysql.strict', false);
 
-            $aggQuery = Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
-                ->select(
-                    'product_sales.product_id',
-                    DB::raw('SUM(product_sales.qty) as sold_qty'),
-                    DB::raw('SUM(product_sales.total) as sold_amount')
-                )
-                ->where('sales.created_at', '>=', $start_date . ' 00:00:00')
-                ->where('sales.created_at', '<=', $end_date . ' 23:59:59');
+        $aggQuery = Product_Sale::join('sales', 'product_sales.sale_id', '=', 'sales.id')
+            ->select(
+                'product_sales.product_id',
+                DB::raw('SUM(product_sales.qty) as sold_qty'),
+                DB::raw('SUM(product_sales.total) as sold_amount')
+            )
+            ->where('sales.created_at', '>=', $start_date . ' 00:00:00')
+            ->where('sales.created_at', '<=', $end_date . ' 23:59:59');
 
-            if ($warehouse_id > 0) {
-                $aggQuery->where('sales.warehouse_id', $warehouse_id);
-            }
-
-            $aggQuery->groupBy('product_sales.product_id');
-
-            $query = DB::table(DB::raw("({$aggQuery->toSql()}) as ps_agg"))
-                ->mergeBindings($aggQuery->getQuery())
-                ->join('products', 'products.id', '=', 'ps_agg.product_id')
-                ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
-                ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
-                ->select(
-                    'products.id as product_id',
-                    'products.name as product_name',
-                    'products.code as product_code',
-                    'products.image as product_images',
-                    'products.price as product_price',
-                    'products.qty as in_stock',
-                    'products.brand_id as brand_id',
-                    'categories.name as category_name',
-                    'brands.title as brand_name',
-                    'ps_agg.sold_qty',
-                    'ps_agg.sold_amount'
-                );
-
-            if ($brand_id > 0) {
-                $query->where('products.brand_id', $brand_id);
-            }
-
-            $best_sellers = $query->orderBy('ps_agg.sold_qty', 'desc')->get();
-
-            // In-memory brand aggregation from $best_sellers (eliminates second heavy database scan)
-            $brand_sales = $best_sellers->groupBy(function($item) {
-                return $item->brand_name ?: 'No Brand';
-            })->map(function($items, $brand_name) {
-                return (object)[
-                    'brand_name' => $brand_name,
-                    'sold_qty' => $items->sum('sold_qty'),
-                    'sold_amount' => $items->sum('sold_amount'),
-                ];
-            })->sortByDesc('sold_qty')->values();
-
-            $lims_warehouse_list = Warehouse::where('is_active', true)->select('id', 'name')->get();
-            $lims_brand_list = Brand::where('is_active', true)->select('id', 'title')->get();
-
-            // Prepare Product Chart Data for Top 10
-            $top_10 = $best_sellers->take(10);
-            $product_chart_labels = [];
-            $product_chart_qty = [];
-            foreach ($top_10 as $item) {
-                $product_chart_labels[] = $item->product_name . ' (' . $item->product_code . ')';
-                $product_chart_qty[] = (float)$item->sold_qty;
-            }
-
-            // Prepare Brand Doughnut Chart Data (Top 7 + Others)
-            $brand_chart_labels = [];
-            $brand_chart_qty = [];
-            $brand_chart_amount = [];
-            $other_qty = 0;
-            $other_amount = 0;
-
-            foreach ($brand_sales as $index => $b) {
-                if ($index < 7) {
-                    $brand_chart_labels[] = $b->brand_name;
-                    $brand_chart_qty[] = (float)$b->sold_qty;
-                    $brand_chart_amount[] = (float)$b->sold_amount;
-                } else {
-                    $other_qty += (float)$b->sold_qty;
-                    $other_amount += (float)$b->sold_amount;
-                }
-            }
-
-            if ($other_qty > 0) {
-                $brand_chart_labels[] = 'Others';
-                $brand_chart_qty[] = $other_qty;
-                $brand_chart_amount[] = $other_amount;
-            }
-
-            return view('backend.report.best_seller', compact(
-                'best_sellers',
-                'brand_sales',
-                'start_date',
-                'end_date',
-                'lims_warehouse_list',
-                'lims_brand_list',
-                'warehouse_id',
-                'brand_id',
-                'product_chart_labels',
-                'product_chart_qty',
-                'brand_chart_labels',
-                'brand_chart_qty',
-                'brand_chart_amount'
-            ));
-        } else {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        if ($warehouse_id > 0) {
+            $aggQuery->where('sales.warehouse_id', $warehouse_id);
         }
+
+        $aggQuery->groupBy('product_sales.product_id');
+
+        $query = DB::table(DB::raw("({$aggQuery->toSql()}) as ps_agg"))
+            ->mergeBindings($aggQuery->getQuery())
+            ->join('products', 'products.id', '=', 'ps_agg.product_id')
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+            ->leftJoin('brands', 'products.brand_id', '=', 'brands.id')
+            ->select(
+                'products.id as product_id',
+                'products.name as product_name',
+                'products.code as product_code',
+                'products.image as product_images',
+                'products.price as product_price',
+                'products.qty as in_stock',
+                'products.brand_id as brand_id',
+                'categories.name as category_name',
+                'brands.title as brand_name',
+                'ps_agg.sold_qty',
+                'ps_agg.sold_amount'
+            );
+
+        if ($brand_id > 0) {
+            $query->where('products.brand_id', $brand_id);
+        }
+
+        $best_sellers = $query->orderBy('ps_agg.sold_qty', 'desc')->get();
+
+        // In-memory brand aggregation from $best_sellers (eliminates second heavy database scan)
+        $brand_sales = $best_sellers->groupBy(function($item) {
+            return $item->brand_name ?: 'No Brand';
+        })->map(function($items, $brand_name) {
+            return (object)[
+                'brand_name' => $brand_name,
+                'sold_qty' => $items->sum('sold_qty'),
+                'sold_amount' => $items->sum('sold_amount'),
+            ];
+        })->sortByDesc('sold_qty')->values();
+
+        $lims_warehouse_list = Warehouse::where('is_active', true)->select('id', 'name')->get();
+        $lims_brand_list = Brand::where('is_active', true)->select('id', 'title')->get();
+
+        // Prepare Product Chart Data for Top 10
+        $top_10 = $best_sellers->take(10);
+        $product_chart_labels = [];
+        $product_chart_qty = [];
+        foreach ($top_10 as $item) {
+            $product_chart_labels[] = $item->product_name . ' (' . $item->product_code . ')';
+            $product_chart_qty[] = (float)$item->sold_qty;
+        }
+
+        // Prepare Brand Doughnut Chart Data (Top 7 + Others)
+        $brand_chart_labels = [];
+        $brand_chart_qty = [];
+        $brand_chart_amount = [];
+        $other_qty = 0;
+        $other_amount = 0;
+
+        foreach ($brand_sales as $index => $b) {
+            if ($index < 7) {
+                $brand_chart_labels[] = $b->brand_name;
+                $brand_chart_qty[] = (float)$b->sold_qty;
+                $brand_chart_amount[] = (float)$b->sold_amount;
+            } else {
+                $other_qty += (float)$b->sold_qty;
+                $other_amount += (float)$b->sold_amount;
+            }
+        }
+
+        if ($other_qty > 0) {
+            $brand_chart_labels[] = 'Others';
+            $brand_chart_qty[] = $other_qty;
+            $brand_chart_amount[] = $other_amount;
+        }
+
+        return view('backend.report.best_seller', compact(
+            'best_sellers',
+            'brand_sales',
+            'start_date',
+            'end_date',
+            'lims_warehouse_list',
+            'lims_brand_list',
+            'warehouse_id',
+            'brand_id',
+            'product_chart_labels',
+            'product_chart_qty',
+            'brand_chart_labels',
+            'brand_chart_qty',
+            'brand_chart_amount'
+        ));
     }
 
     public function bestSellerByWarehouse(Request $request)
@@ -2154,83 +2136,69 @@ class ReportController extends Controller
 
     public function expenseReport(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('expenses-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
-                $all_permission[] = $permission->name;
-            if (empty($all_permission))
-                $all_permission[] = 'dummy text';
+        if ($request->starting_date) {
+            $starting_date = $request->starting_date;
+            $ending_date = $request->ending_date;
+        } else {
+            $starting_date = date('Y-m-01', strtotime('-1 year', strtotime(date('Y-m-d'))));
+            $ending_date = date("Y-m-d");
+        }
 
-            if ($request->starting_date) {
-                $starting_date = $request->starting_date;
-                $ending_date = $request->ending_date;
-            } else {
-                $starting_date = date('Y-m-01', strtotime('-1 year', strtotime(date('Y-m-d'))));
-                $ending_date = date("Y-m-d");
-            }
+        if ($request->input('expense_category_id'))
+            $expense_category_id = $request->input('expense_category_id');
+        else
+            $expense_category_id = 0;
 
-            if ($request->input('expense_category_id'))
-                $expense_category_id = $request->input('expense_category_id');
-            else
-                $expense_category_id = 0;
+        if ($request->input('warehouse_id'))
+            $warehouse_id = $request->input('warehouse_id');
+        else
+            $warehouse_id = 0;
 
-            if ($request->input('warehouse_id'))
-                $warehouse_id = $request->input('warehouse_id');
-            else
-                $warehouse_id = 0;
-
-            $lims_warehouse_list = Warehouse::select('name', 'id')->where('is_active', true)->get();
-            $lims_account_list = Account::where('is_active', true)->get();
-            $lims_expense_category_list = ExpenseCategory::where('is_active', true)->get();
-            return view('backend.report.expense_report', compact('lims_account_list', 'lims_warehouse_list', 'all_permission', 'starting_date', 'ending_date', 'warehouse_id', 'expense_category_id', 'lims_expense_category_list'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_warehouse_list = Warehouse::select('name', 'id')->where('is_active', true)->get();
+        $lims_account_list = Account::where('is_active', true)->get();
+        $lims_expense_category_list = ExpenseCategory::where('is_active', true)->get();
+        return view('backend.report.expense_report', compact('lims_account_list', 'lims_warehouse_list', 'starting_date', 'ending_date', 'warehouse_id', 'expense_category_id', 'lims_expense_category_list'));
     }
 
     public function salaryReport(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('salary-report')) {
-            if ($request->input('starting_date')) {
-                $starting_date = $request->input('starting_date');
-                $ending_date = $request->input('ending_date');
-            } else {
-                $payroll = Payroll::orderBy('created_at', 'asc')->get();
-                $starting_date = $payroll->isEmpty() ? date('Y-m-d') : $payroll->first()->created_at->format('Y-m-d');
-                $ending_date = $payroll->isEmpty() ? date('Y-m-d') : $payroll->last()->created_at->format('Y-m-d');
-            }
+        if ($request->input('starting_date')) {
+            $starting_date = $request->input('starting_date');
+            $ending_date = $request->input('ending_date');
+        } else {
+            $payroll = Payroll::orderBy('created_at', 'asc')->get();
+            $starting_date = $payroll->isEmpty() ? date('Y-m-d') : $payroll->first()->created_at->format('Y-m-d');
+            $ending_date = $payroll->isEmpty() ? date('Y-m-d') : $payroll->last()->created_at->format('Y-m-d');
+        }
 
-            if ($request->input('employee_id')) {
-                $employee_id = $request->input('employee_id');
-                $selected_employee = Employee::find($employee_id);
-            } else {
-                $employee_id = '';
-                $selected_employee = null;
-            }
+        if ($request->input('employee_id')) {
+            $employee_id = $request->input('employee_id');
+            $selected_employee = Employee::find($employee_id);
+        } else {
+            $employee_id = '';
+            $selected_employee = null;
+        }
 
 
-            $lims_account_list = Account::where('is_active', true)->get();
-            $lims_employee_list = Employee::where('is_active', true)->get();
-            $general_setting = DB::table('general_settings')->latest()->first();
-            if (Auth::user()->role_id > 2 && $general_setting->staff_access == 'own') {
-                $lims_payroll_all = Payroll::orderBy('id', 'desc')
-                    ->where('user_id', Auth::id())
-                    ->whereBetween('created_at', [$starting_date, $ending_date])
-                    ->get();
-            } else {
-                $lims_payroll_all = Payroll::orderBy('id', 'desc')
-                    ->whereDate('created_at', '>=', $starting_date)
-                    ->whereDate('created_at', '<=', $ending_date)
-                    ->when($employee_id, function ($query) use ($employee_id) {
-                        return $query->where('employee_id', $employee_id);
-                    })
-                    ->get();
-            }
+        $lims_account_list = Account::where('is_active', true)->get();
+        $lims_employee_list = Employee::where('is_active', true)->get();
+        $general_setting = DB::table('general_settings')->latest()->first();
+        if (Auth::user()->role_id > 2 && $general_setting->staff_access == 'own') {
+            $lims_payroll_all = Payroll::orderBy('id', 'desc')
+                ->where('user_id', Auth::id())
+                ->whereBetween('created_at', [$starting_date, $ending_date])
+                ->get();
+        } else {
+            $lims_payroll_all = Payroll::orderBy('id', 'desc')
+                ->whereDate('created_at', '>=', $starting_date)
+                ->whereDate('created_at', '<=', $ending_date)
+                ->when($employee_id, function ($query) use ($employee_id) {
+                    return $query->where('employee_id', $employee_id);
+                })
+                ->get();
+        }
 
-            return view('backend.report.salary_report', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id', 'selected_employee'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.report.salary_report', compact('lims_account_list', 'lims_employee_list', 'lims_payroll_all', 'starting_date', 'ending_date', 'employee_id', 'selected_employee'));
     }
 
     public function warehouseReport(Request $request)
@@ -5000,11 +4968,6 @@ class ReportController extends Controller
 
     public function stockCount(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('stock-count-report')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
-        }
-
         $countID = $request->input('countID');
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
@@ -5232,11 +5195,6 @@ class ReportController extends Controller
 
     public function stockCountRemaining(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('stock-count-report')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
-        }
-
         $countID = $request->input('countID');
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');

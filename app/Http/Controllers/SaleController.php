@@ -69,78 +69,77 @@ class SaleController extends Controller
     use \App\Traits\TenantInfo;
     use \App\Traits\MailInfo;
 
+    public function __construct()
+    {
+        $this->middleware('check_permission:sales-index')->only(['index']);
+        $this->middleware('check_permission:sales-add')->only(['create', 'store', 'posSale', 'saleByCsv', 'importSale']);
+        $this->middleware('check_permission:sales-edit')->only(['edit', 'update', 'createSale']);
+        $this->middleware('check_permission:sales-delete')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:sale-payment-delete')->only(['deletePayment']);
+    }
+
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-index')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
-                $all_permission[] = $permission->name;
-            if (empty($all_permission))
-                $all_permission[] = 'dummy text';
+        if ($request->input('warehouse_id'))
+            $warehouse_id = $request->input('warehouse_id');
+        else
+            $warehouse_id = 0;
 
-            if ($request->input('warehouse_id'))
-                $warehouse_id = $request->input('warehouse_id');
-            else
-                $warehouse_id = 0;
+        if ($request->input('sale_status'))
+            $sale_status = $request->input('sale_status');
+        else
+            $sale_status = 0;
 
-            if ($request->input('sale_status'))
-                $sale_status = $request->input('sale_status');
-            else
-                $sale_status = 0;
+        if ($request->input('payment_status'))
+            $payment_status = $request->input('payment_status');
+        else
+            $payment_status = 0;
 
-            if ($request->input('payment_status'))
-                $payment_status = $request->input('payment_status');
-            else
-                $payment_status = 0;
+        if ($request->input('brand_id'))
+            $brand_id = $request->input('brand_id');
+        else
+            $brand_id = 0;
+        if ($request->input('sale_type'))
+            $sale_type = $request->input('sale_type');
+        else
+            $sale_type = '';
 
-            if ($request->input('brand_id'))
-                $brand_id = $request->input('brand_id');
-            else
-                $brand_id = 0;
-            if ($request->input('sale_type'))
-                $sale_type = $request->input('sale_type');
-            else
-                $sale_type = '';
-
-            if ($request->input('starting_date')) {
-                $starting_date = $request->input('starting_date');
-                $ending_date = $request->input('ending_date');
-                if (preg_match('/^\d{2}-\d{2}-\d{4}$/', $starting_date)) {
-                    $starting_date = \Carbon\Carbon::createFromFormat('d-m-Y', $starting_date)->format('Y-m-d');
-                }
-                if (preg_match('/^\d{2}-\d{2}-\d{4}$/', $ending_date)) {
-                    $ending_date = \Carbon\Carbon::createFromFormat('d-m-Y', $ending_date)->format('Y-m-d');
-                }
-            } else {
-                $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
-                $ending_date = date("Y-m-d");
+        if ($request->input('starting_date')) {
+            $starting_date = $request->input('starting_date');
+            $ending_date = $request->input('ending_date');
+            if (preg_match('/^\d{2}-\d{2}-\d{4}$/', $starting_date)) {
+                $starting_date = \Carbon\Carbon::createFromFormat('d-m-Y', $starting_date)->format('Y-m-d');
             }
-
-            $lims_gift_card_list = GiftCard::where("is_active", true)->get();
-            $lims_pos_setting_data = PosSetting::latest()->first();
-            $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_account_list = Account::where('is_active', true)->get();
-            $lims_courier_list = Courier::where('is_active', true)->get();
-            if ($lims_pos_setting_data)
-                $options = explode(',', $lims_pos_setting_data->payment_options);
-            else
-                $options = [];
-            $numberOfInvoice = Sale::count();
-            $custom_fields = CustomField::where([
-                ['belongs_to', 'sale'],
-                ['is_table', true]
-            ])->pluck('name');
-            $field_name = [];
-            foreach ($custom_fields as $fieldName) {
-                $field_name[] = str_replace(" ", "_", strtolower($fieldName));
+            if (preg_match('/^\d{2}-\d{2}-\d{4}$/', $ending_date)) {
+                $ending_date = \Carbon\Carbon::createFromFormat('d-m-Y', $ending_date)->format('Y-m-d');
             }
+        } else {
+            $starting_date = date("Y-m-d", strtotime(date('Y-m-d', strtotime('-1 year', strtotime(date('Y-m-d'))))));
+            $ending_date = date("Y-m-d");
+        }
 
-            $lims_brand_list = Brand::where('is_active', true)->get();
-            return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'all_permission', 'options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list', 'lims_brand_list', 'brand_id', 'sale_type'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_gift_card_list = GiftCard::where("is_active", true)->get();
+        $lims_pos_setting_data = PosSetting::latest()->first();
+        $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $lims_account_list = Account::where('is_active', true)->get();
+        $lims_courier_list = Courier::where('is_active', true)->get();
+        if ($lims_pos_setting_data)
+            $options = explode(',', $lims_pos_setting_data->payment_options);
+        else
+            $options = [];
+        $numberOfInvoice = Sale::count();
+        $custom_fields = CustomField::where([
+            ['belongs_to', 'sale'],
+            ['is_table', true]
+        ])->pluck('name');
+        $field_name = [];
+        foreach ($custom_fields as $fieldName) {
+            $field_name[] = str_replace(" ", "_", strtolower($fieldName));
+        }
+
+        $lims_brand_list = Brand::where('is_active', true)->get();
+        return view('backend.sale.index', compact('starting_date', 'ending_date', 'warehouse_id', 'sale_status', 'payment_status', 'lims_gift_card_list', 'lims_pos_setting_data', 'lims_reward_point_setting_data', 'lims_account_list', 'lims_warehouse_list', 'options', 'numberOfInvoice', 'custom_fields', 'field_name', 'lims_courier_list', 'lims_brand_list', 'brand_id', 'sale_type'));
     }
     public function saleData(Request $request)
     {
@@ -523,47 +522,43 @@ class SaleController extends Controller
 
     public function create()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-add')) {
-            $lims_customer_list = Customer::where('is_active', true)->get();
-            if (Auth::user()->role_id > 2 && Auth::user()->role_id != 3) {
-                if (Auth::user()->warehouse_id) {
-                    $lims_warehouse_list = Warehouse::where([
-                        ['is_active', true],
-                        ['id', Auth::user()->warehouse_id]
-                    ])->get();
-                } else {
-                    $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-                }
-                if (Auth::user()->biller_id) {
-                    $lims_biller_list = Biller::where([
-                        ['is_active', true],
-                        ['id', Auth::user()->biller_id]
-                    ])->get();
-                } else {
-                    $lims_biller_list = Biller::where('is_active', true)->get();
-                }
+        $lims_customer_list = Customer::where('is_active', true)->get();
+        if (Auth::user()->role_id > 2 && Auth::user()->role_id != 3) {
+            if (Auth::user()->warehouse_id) {
+                $lims_warehouse_list = Warehouse::where([
+                    ['is_active', true],
+                    ['id', Auth::user()->warehouse_id]
+                ])->get();
             } else {
                 $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+            }
+            if (Auth::user()->biller_id) {
+                $lims_biller_list = Biller::where([
+                    ['is_active', true],
+                    ['id', Auth::user()->biller_id]
+                ])->get();
+            } else {
                 $lims_biller_list = Biller::where('is_active', true)->get();
             }
+        } else {
+            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+            $lims_biller_list = Biller::where('is_active', true)->get();
+        }
 
-            $lims_tax_list = Tax::where('is_active', true)->get();
-            $lims_pos_setting_data = PosSetting::latest()->first();
-            $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
-            if ($lims_pos_setting_data)
-                $options = explode(',', $lims_pos_setting_data->payment_options);
-            else
-                $options = [];
+        $lims_tax_list = Tax::where('is_active', true)->get();
+        $lims_pos_setting_data = PosSetting::latest()->first();
+        $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
+        if ($lims_pos_setting_data)
+            $options = explode(',', $lims_pos_setting_data->payment_options);
+        else
+            $options = [];
 
-            $currency_list = Currency::where('is_active', true)->get();
-            $numberOfInvoice = Sale::count();
-            $custom_fields = CustomField::where('belongs_to', 'sale')->get();
-            $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
-            $accounts = Account::where('is_active', true)->get();
-            return view('backend.sale.create', compact('currency_list', 'accounts', 'lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_tax_list', 'lims_reward_point_setting_data', 'options', 'numberOfInvoice', 'custom_fields', 'lims_customer_group_all'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $currency_list = Currency::where('is_active', true)->get();
+        $numberOfInvoice = Sale::count();
+        $custom_fields = CustomField::where('belongs_to', 'sale')->get();
+        $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
+        $accounts = Account::where('is_active', true)->get();
+        return view('backend.sale.create', compact('currency_list', 'accounts', 'lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_pos_setting_data', 'lims_tax_list', 'lims_reward_point_setting_data', 'options', 'numberOfInvoice', 'custom_fields', 'lims_customer_group_all'));
     }
     public function store(StoreSaleRequest $request, SaleService $saleService)
     {
@@ -784,176 +779,162 @@ class SaleController extends Controller
 
     public function posSale()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-add')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            foreach ($permissions as $permission)
-                $all_permission[] = $permission->name;
-            if (empty($all_permission))
-                $all_permission[] = 'dummy text';
+        $lims_customer_list = Cache::remember('customer_list', 60 * 60 * 24, function () {
+            return Customer::where('is_active', true)->get();
+        });
+        $lims_customer_group_all = Cache::remember('customer_group_list', 60 * 60 * 24, function () {
+            return CustomerGroup::where('is_active', true)->get();
+        });
+        $lims_warehouse_list = Cache::remember('warehouse_list', 60 * 60 * 24 * 365, function () {
+            return Warehouse::where('is_active', true)->get();
+        });
+        $lims_biller_list = Cache::remember('biller_list', 60 * 60 * 24 * 30, function () {
+            return Biller::where('is_active', true)->get();
+        });
+        $lims_pos_setting_data = Cache::remember('pos_setting', 60 * 60 * 24 * 30, function () {
+            return PosSetting::latest()->first();
+        });
+        $default_warehouse_id = $lims_pos_setting_data->warehouse_id ?? 0;
+        $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
+        $lims_tax_list = Cache::remember('tax_list', 60 * 60 * 24 * 30, function () {
+            return Tax::where('is_active', true)->get();
+        });
 
-            $lims_customer_list = Cache::remember('customer_list', 60 * 60 * 24, function () {
-                return Customer::where('is_active', true)->get();
-            });
-            $lims_customer_group_all = Cache::remember('customer_group_list', 60 * 60 * 24, function () {
-                return CustomerGroup::where('is_active', true)->get();
-            });
-            $lims_warehouse_list = Cache::remember('warehouse_list', 60 * 60 * 24 * 365, function () {
-                return Warehouse::where('is_active', true)->get();
-            });
-            $lims_biller_list = Cache::remember('biller_list', 60 * 60 * 24 * 30, function () {
-                return Biller::where('is_active', true)->get();
-            });
-            $lims_pos_setting_data = Cache::remember('pos_setting', 60 * 60 * 24 * 30, function () {
-                return PosSetting::latest()->first();
-            });
-            $default_warehouse_id = $lims_pos_setting_data->warehouse_id ?? 0;
-            $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
-            $lims_tax_list = Cache::remember('tax_list', 60 * 60 * 24 * 30, function () {
-                return Tax::where('is_active', true)->get();
-            });
+        // Fetch all quantities for this warehouse in a single query to prevent N+1 query performance bottleneck
+        $warehouse_products = DB::table('product_warehouse')
+            ->where('warehouse_id', $default_warehouse_id)
+            ->select('product_id', 'variant_id', 'qty')
+            ->get();
 
-            // Fetch all quantities for this warehouse in a single query to prevent N+1 query performance bottleneck
-            $warehouse_products = DB::table('product_warehouse')
-                ->where('warehouse_id', $default_warehouse_id)
-                ->select('product_id', 'variant_id', 'qty')
+        $qty_map = [];
+        foreach ($warehouse_products as $wp) {
+            $key = $wp->product_id . '-' . ($wp->variant_id ?? '0');
+            $qty_map[$key] = $wp->qty;
+        }
+
+        $lims_product_list = Cache::remember('product_list', 60 * 60 * 24, function () {
+            return Product::ActiveFeatured()
+                ->whereNull('is_variant')
+                ->select('id', 'name', 'code', 'image', 'is_variant')
                 ->get();
-
-            $qty_map = [];
-            foreach ($warehouse_products as $wp) {
-                $key = $wp->product_id . '-' . ($wp->variant_id ?? '0');
-                $qty_map[$key] = $wp->qty;
-            }
-
-            $lims_product_list = Cache::remember('product_list', 60 * 60 * 24, function () {
-                return Product::ActiveFeatured()
-                    ->whereNull('is_variant')
-                    ->select('id', 'name', 'code', 'image', 'is_variant')
-                    ->get();
-            });
-            foreach ($lims_product_list as $key => $product) {
-                $images = explode(",", $product->image);
-                if ($images[0])
-                    $product->base_image = $images[0];
-                else
-                    $product->base_image = 'zummXD2dvAtI.png';
-                
-                // Fetch quantity from memory map
-                $product->qty = $qty_map[$product->id . '-0'] ?? 0;
-            }
-            $lims_product_list_with_variant = Cache::remember('product_list_with_variant', 60 * 60 * 24, function () {
-                return Product::ActiveFeatured()
-                    ->whereNotNull('is_variant')
-                    ->with('variant')
-                    ->select('id', 'name', 'code', 'image', 'is_variant')
-                    ->get();
-            });
-
-            foreach ($lims_product_list_with_variant as $product) {
-                $images = explode(",", $product->image);
-                if ($images[0])
-                    $product->base_image = $images[0];
-                else
-                    $product->base_image = 'zummXD2dvAtI.png';
-                $lims_product_variant_data = $product->variant;
-                $main_name = $product->name;
-                $temp_arr = [];
-                foreach ($lims_product_variant_data as $key => $variant) {
-                    $cloned_product = clone ($product);
-                    $cloned_product->name = $main_name . ' [' . $variant->name . ']';
-                    $cloned_product->code = $variant->pivot['item_code'];
-                    // Fetch quantity from memory map
-                    $cloned_product->qty = $qty_map[$product->id . '-' . $variant->id] ?? 0;
-                    $lims_product_list[] = $cloned_product;
-                }
-            }
-
-            $product_number = count($lims_product_list);
-            if ($lims_pos_setting_data)
-                $options = explode(',', $lims_pos_setting_data->payment_options);
+        });
+        foreach ($lims_product_list as $key => $product) {
+            $images = explode(",", $product->image);
+            if ($images[0])
+                $product->base_image = $images[0];
             else
-                $options = [];
-            $lims_brand_list = Cache::remember('brand_list', 60 * 60 * 24 * 30, function () {
-                return Brand::where('is_active', true)->get();
-            });
-            // $lims_category_list = Cache::remember('category_list', 60*60*24*30, function () {
-            $lims_category_list = Category::where('is_active', 1)
-                ->whereNotNull('parent_id')
-                ->with('parent')
+                $product->base_image = 'zummXD2dvAtI.png';
+            
+            // Fetch quantity from memory map
+            $product->qty = $qty_map[$product->id . '-0'] ?? 0;
+        }
+        $lims_product_list_with_variant = Cache::remember('product_list_with_variant', 60 * 60 * 24, function () {
+            return Product::ActiveFeatured()
+                ->whereNotNull('is_variant')
+                ->with('variant')
+                ->select('id', 'name', 'code', 'image', 'is_variant')
                 ->get();
-            // });
+        });
 
-
-            $lims_table_list = Cache::remember('table_list', 60 * 60 * 24 * 30, function () {
-                return Table::where('is_active', true)->get();
-            });
-            //return $lims_category_list;
-            if (Auth::user()->role_id > 2 && config('staff_access') == 'own') {
-                $recent_sale = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
-                    ['sale_status', 1],
-                    ['user_id', Auth::id()]
-                ])->orderBy('id', 'desc')->take(10)->get();
-                $recent_draft = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
-                    ['sale_status', 3],
-                    ['user_id', Auth::id()]
-                ])->orderBy('id', 'desc')->take(10)->get();
-            } else {
-                $recent_sale = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 1)->orderBy('id', 'desc')->take(10)->get();
-                $recent_draft = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 3)->orderBy('id', 'desc')->take(10)->get();
+        foreach ($lims_product_list_with_variant as $product) {
+            $images = explode(",", $product->image);
+            if ($images[0])
+                $product->base_image = $images[0];
+            else
+                $product->base_image = 'zummXD2dvAtI.png';
+            $lims_product_variant_data = $product->variant;
+            $main_name = $product->name;
+            $temp_arr = [];
+            foreach ($lims_product_variant_data as $key => $variant) {
+                $cloned_product = clone ($product);
+                $cloned_product->name = $main_name . ' [' . $variant->name . ']';
+                $cloned_product->code = $variant->pivot['item_code'];
+                // Fetch quantity from memory map
+                $cloned_product->qty = $qty_map[$product->id . '-' . $variant->id] ?? 0;
+                $lims_product_list[] = $cloned_product;
             }
-            $lims_coupon_list = Cache::remember('coupon_list', 60 * 60 * 24 * 30, function () {
-                return Coupon::where('is_active', true)->get();
-            });
-            $flag = 0;
+        }
 
-            $currency_list = Currency::where('is_active', true)->get();
-            $numberOfInvoice = Sale::count();
-            $custom_fields = CustomField::where('belongs_to', 'sale')->get();
+        $product_number = count($lims_product_list);
+        if ($lims_pos_setting_data)
+            $options = explode(',', $lims_pos_setting_data->payment_options);
+        else
+            $options = [];
+        $lims_brand_list = Cache::remember('brand_list', 60 * 60 * 24 * 30, function () {
+            return Brand::where('is_active', true)->get();
+        });
+        // $lims_category_list = Cache::remember('category_list', 60*60*24*30, function () {
+        $lims_category_list = Category::where('is_active', 1)
+            ->whereNotNull('parent_id')
+            ->with('parent')
+            ->get();
+        // });
 
-            $accounts = Account::where('is_active', true)->get();
 
-            return view('backend.sale.pos', compact('accounts', 'currency_list', 'role', 'all_permission', 'lims_customer_list', 'lims_customer_group_all', 'lims_warehouse_list', 'lims_reward_point_setting_data', 'lims_product_list', 'product_number', 'lims_tax_list', 'lims_biller_list', 'lims_pos_setting_data', 'options', 'lims_brand_list', 'lims_category_list', 'lims_table_list', 'recent_sale', 'recent_draft', 'lims_coupon_list', 'flag', 'numberOfInvoice', 'custom_fields'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_table_list = Cache::remember('table_list', 60 * 60 * 24 * 30, function () {
+            return Table::where('is_active', true)->get();
+        });
+        //return $lims_category_list;
+        if (Auth::user()->role_id > 2 && config('staff_access') == 'own') {
+            $recent_sale = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
+                ['sale_status', 1],
+                ['user_id', Auth::id()]
+            ])->orderBy('id', 'desc')->take(10)->get();
+            $recent_draft = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
+                ['sale_status', 3],
+                ['user_id', Auth::id()]
+            ])->orderBy('id', 'desc')->take(10)->get();
+        } else {
+            $recent_sale = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 1)->orderBy('id', 'desc')->take(10)->get();
+            $recent_draft = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 3)->orderBy('id', 'desc')->take(10)->get();
+        }
+        $lims_coupon_list = Cache::remember('coupon_list', 60 * 60 * 24 * 30, function () {
+            return Coupon::where('is_active', true)->get();
+        });
+        $flag = 0;
+
+        $currency_list = Currency::where('is_active', true)->get();
+        $numberOfInvoice = Sale::count();
+        $custom_fields = CustomField::where('belongs_to', 'sale')->get();
+
+        $accounts = Account::where('is_active', true)->get();
+
+        return view('backend.sale.pos', compact('accounts', 'currency_list', 'role', 'lims_customer_list', 'lims_customer_group_all', 'lims_warehouse_list', 'lims_reward_point_setting_data', 'lims_product_list', 'product_number', 'lims_tax_list', 'lims_biller_list', 'lims_pos_setting_data', 'options', 'lims_brand_list', 'lims_category_list', 'lims_table_list', 'recent_sale', 'recent_draft', 'lims_coupon_list', 'flag', 'numberOfInvoice', 'custom_fields'));
     }
 
     public function createSale($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-edit')) {
-            $lims_biller_list = Biller::where('is_active', true)->get();
-            $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
-            $lims_customer_list = Customer::where('is_active', true)->get();
-            $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_tax_list = Tax::where('is_active', true)->get();
-            $lims_sale_data = Sale::find($id);
-            $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
-            $lims_product_list = Product::where([
-                ['featured', 1],
-                ['is_active', true]
-            ])->get();
-            foreach ($lims_product_list as $key => $product) {
-                $images = explode(",", $product->image);
-                if ($images[0])
-                    $product->base_image = $images[0];
-                else
-                    $product->base_image = 'zummXD2dvAtI.png';
-            }
-            $product_number = count($lims_product_list);
-            $lims_pos_setting_data = PosSetting::latest()->first();
-            $lims_brand_list = Brand::where('is_active', true)->get();
-            $lims_category_list = Category::where('is_active', 1)
-                ->whereNotNull('parent_id')
-                ->with('parent')
-                ->get();
-            $lims_coupon_list = Coupon::where('is_active', true)->get();
+        $lims_biller_list = Biller::where('is_active', true)->get();
+        $lims_reward_point_setting_data = RewardPointSetting::latest()->first();
+        $lims_customer_list = Customer::where('is_active', true)->get();
+        $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $lims_tax_list = Tax::where('is_active', true)->get();
+        $lims_sale_data = Sale::find($id);
+        $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
+        $lims_product_list = Product::where([
+            ['featured', 1],
+            ['is_active', true]
+        ])->get();
+        foreach ($lims_product_list as $key => $product) {
+            $images = explode(",", $product->image);
+            if ($images[0])
+                $product->base_image = $images[0];
+            else
+                $product->base_image = 'zummXD2dvAtI.png';
+        }
+        $product_number = count($lims_product_list);
+        $lims_pos_setting_data = PosSetting::latest()->first();
+        $lims_brand_list = Brand::where('is_active', true)->get();
+        $lims_category_list = Category::where('is_active', 1)
+            ->whereNotNull('parent_id')
+            ->with('parent')
+            ->get();
+        $lims_coupon_list = Coupon::where('is_active', true)->get();
 
-            $currency_list = Currency::where('is_active', true)->get();
+        $currency_list = Currency::where('is_active', true)->get();
 
-            return view('backend.sale.create_sale', compact('currency_list', 'lims_biller_list', 'lims_customer_list', 'lims_warehouse_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'lims_pos_setting_data', 'lims_brand_list', 'lims_category_list', 'lims_coupon_list', 'lims_product_list', 'product_number', 'lims_customer_group_all', 'lims_reward_point_setting_data'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        return view('backend.sale.create_sale', compact('currency_list', 'lims_biller_list', 'lims_customer_list', 'lims_warehouse_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'lims_pos_setting_data', 'lims_brand_list', 'lims_category_list', 'lims_coupon_list', 'lims_product_list', 'product_number', 'lims_customer_group_all', 'lims_reward_point_setting_data'));
     }
 
     public function getProductByFilter($category_id, $brand_id)
@@ -1371,16 +1352,12 @@ class SaleController extends Controller
 
     public function saleByCsv()
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-add')) {
-            $lims_customer_list = Customer::where('is_active', true)->get();
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_biller_list = Biller::where('is_active', true)->get();
-            $lims_tax_list = Tax::where('is_active', true)->get();
-            $numberOfInvoice = Sale::count();
-            return view('backend.sale.import', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'numberOfInvoice'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_customer_list = Customer::where('is_active', true)->get();
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $lims_biller_list = Biller::where('is_active', true)->get();
+        $lims_tax_list = Tax::where('is_active', true)->get();
+        $numberOfInvoice = Sale::count();
+        return view('backend.sale.import', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'numberOfInvoice'));
     }
 
     public function importSale(Request $request)
@@ -1540,22 +1517,18 @@ class SaleController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-edit')) {
-            $lims_customer_list = Customer::where('is_active', true)->get();
-            $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-            $lims_biller_list = Biller::where('is_active', true)->get();
-            $lims_tax_list = Tax::where('is_active', true)->get();
-            $lims_sale_data = Sale::find($id);
-            $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
-            if ($lims_sale_data->exchange_rate)
-                $currency_exchange_rate = $lims_sale_data->exchange_rate;
-            else
-                $currency_exchange_rate = 1;
-            $custom_fields = CustomField::where('belongs_to', 'sale')->get();
-            return view('backend.sale.edit', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'currency_exchange_rate', 'custom_fields'));
-        } else
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $lims_customer_list = Customer::where('is_active', true)->get();
+        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $lims_biller_list = Biller::where('is_active', true)->get();
+        $lims_tax_list = Tax::where('is_active', true)->get();
+        $lims_sale_data = Sale::find($id);
+        $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
+        if ($lims_sale_data->exchange_rate)
+            $currency_exchange_rate = $lims_sale_data->exchange_rate;
+        else
+            $currency_exchange_rate = 1;
+        $custom_fields = CustomField::where('belongs_to', 'sale')->get();
+        return view('backend.sale.edit', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'currency_exchange_rate', 'custom_fields'));
     }
 
     public function update(UpdateSaleRequest $request, $id)
@@ -2349,11 +2322,6 @@ class SaleController extends Controller
 
     public function deletePayment(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('sale-payment-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete payment');
-        }
-
         $lims_payment_data = Payment::find($request['id']);
         $lims_sale_data = Sale::where('id', $lims_payment_data->sale_id)->first();
         $lims_sale_data->paid_amount -= $lims_payment_data->amount;
@@ -2496,11 +2464,6 @@ class SaleController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('sales-delete')) {
-            return 'Sorry! You are not allowed to delete sale';
-        }
-
         $sale_id = $request['saleIdArray'];
         foreach ($sale_id as $id) {
             $lims_sale_data = Sale::find($id);
@@ -2511,10 +2474,6 @@ class SaleController extends Controller
             }
             $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
             $lims_delivery_data = Delivery::where('sale_id', $id)->first();
-            if ($lims_sale_data->sale_status == 3)
-                $message = 'Draft deleted successfully';
-            else
-                $message = 'Sale deleted successfully';
             foreach ($lims_product_sale_data as $product_sale) {
                 $lims_product_data = Product::find($product_sale->product_id);
                 //adjust product quantity
@@ -2627,11 +2586,6 @@ class SaleController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('sales-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete sale');
-        }
-
         $url = url()->previous();
         $lims_sale_data = Sale::find($id);
         $return_ids = Returns::where('sale_id', $id)->pluck('id')->toArray();

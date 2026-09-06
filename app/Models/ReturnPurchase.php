@@ -13,16 +13,16 @@ class ReturnPurchase extends Model
 
     public function supplier()
     {
-    	return $this->belongsTo('App\Models\Supplier');
+    	return $this->belongsTo(Supplier::class);
     }
 
     public function warehouse()
     {
-    	return $this->belongsTo('App\Models\Warehouse');
+    	return $this->belongsTo(Warehouse::class);
     }
 
     public function user()
     {
-    	return $this->belongsTo('App\Models\User');
+    	return $this->belongsTo(User::class);
     }
 }

@@ -7,8 +7,6 @@ use App\Http\Requests\Payroll\UpdatePayrollRequest;
 use App\Models\Payroll;
 use App\Services\PayrollService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class PayrollController extends Controller
 {
@@ -17,28 +15,16 @@ class PayrollController extends Controller
     public function __construct(PayrollService $payrollService)
     {
         $this->payrollService = $payrollService;
+        $this->middleware('check_permission:payroll-index|payroll')->only('index');
+        $this->middleware('check_permission:payroll-add')->only(['create', 'store']);
+        $this->middleware('check_permission:payroll-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:payroll-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('payroll-index') || $role->hasPermissionTo('payroll')) {
-            $permissions = Role::findByName($role->name)->permissions;
-            $all_permission = [];
-            foreach ($permissions as $permission) {
-                $all_permission[] = $permission->name;
-            }
-            if (empty($all_permission)) {
-                $all_permission[] = 'dummy text';
-            }
-
-            $indexData = $this->payrollService->getIndexData($request);
-            $indexData['all_permission'] = $all_permission;
-
-            return view('backend.payroll.index', $indexData);
-        }
-
-        return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to access this module');
+        $indexData = $this->payrollService->getIndexData($request);
+        return view('backend.payroll.index', $indexData);
     }
 
     public function store(StorePayrollRequest $request)
@@ -62,11 +48,6 @@ class PayrollController extends Controller
 
     public function deleteBySelection(Request $request)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('payroll-delete')) {
-            return 'Sorry! You are not allowed to delete payroll';
-        }
-
         $payroll_ids = $request['payrollIdArray'] ?? [];
         $this->payrollService->deleteMultiplePayrolls($payroll_ids);
 
@@ -75,11 +56,6 @@ class PayrollController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::find(Auth::user()->role_id);
-        if (!$role->hasPermissionTo('payroll-delete')) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete payroll');
-        }
-
         $this->payrollService->deletePayroll($id);
 
         return redirect('payroll')->with('not_permitted', 'Payroll deleted successfully');

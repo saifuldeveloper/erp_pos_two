@@ -122,27 +122,22 @@ class QuotationRepository extends BaseRepository implements QuotationRepositoryI
      */
     public function getProductQuotationDataByQuotationId($quotationId): array
     {
-        $limsProductQuotationData = ProductQuotation::where('quotation_id', $quotationId)->get();
+        $limsProductQuotationData = ProductQuotation::with(['product', 'unit', 'productBatch', 'variant'])
+            ->where('quotation_id', $quotationId)
+            ->get();
         $productQuotation = [];
 
         foreach ($limsProductQuotationData as $key => $productQuotationData) {
-            $product = Product::find($productQuotationData->product_id);
+            $product = $productQuotationData->product;
             if (!$product) {
                 continue;
             }
 
-            $unit = Unit::find($productQuotationData->sale_unit_id);
+            $unit = $productQuotationData->unit;
             $unitName = $unit ? $unit->unit_name : '';
 
-            $productBatch = null;
-            if ($productQuotationData->product_batch_id) {
-                $productBatch = ProductBatch::select('batch_no')->find($productQuotationData->product_batch_id);
-            }
-
-            $productVariant = null;
-            if ($productQuotationData->variant_id) {
-                $productVariant = Variant::find($productQuotationData->variant_id);
-            }
+            $productBatch = $productQuotationData->productBatch;
+            $productVariant = $productQuotationData->variant;
 
             $name = $product->name;
             $code = $product->code;
