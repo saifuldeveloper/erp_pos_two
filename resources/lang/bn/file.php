@@ -1,6 +1,7 @@
 <?php
 
 return [
+	'Summary' => 'সারসংক্ষেপ',
 	'Stock Count List' => 'স্টক গণনার তালিকা',
 	'Stock Count ID' => 'স্টক গণনা আইডি',
 	'Current Stock' => 'বর্তমান স্টক',
@@ -1412,7 +1413,9 @@ return [
 	"total liabilities" => "সমস্ত দায়",
 	"total cashin" => "সমস্ত ক্যাশ ইন",
 	"total cashout" => "সমস্ত ক্যাশ আউট",
-	"current balance" > "বর্তমান হিসাব",
+	"current balance" => "বর্তমান হিসাব",
+	"Sale Due" => "বিক্রয় বকেয়া",
+	"Purchase Due" => "ক্রয় বকেয়া",
 	'Avijatry Product' => 'অভিযাত্রী প্রোডাক্ট',
 	"Waste" => "জোলাপ",
 	"Waste List" => "জোলাপ তালিকা",

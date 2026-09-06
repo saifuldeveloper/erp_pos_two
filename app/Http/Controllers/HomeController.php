@@ -118,11 +118,11 @@ class HomeController extends Controller
         $product_sale_data = $ps_query->groupBy('product_sales.product_id', 'product_sales.product_batch_id', 'product_sales.variant_id', 'product_sales.sale_unit_id')->get();
         $product_cost = $this->calculateAverageCOGS($product_sale_data);
 
-        $sale_sums = Sale::where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
+        $sale_sums = Sale::where('sale_status', '!=', 3)->where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
         if ($is_staff_own) $sale_sums->where('user_id', $auth_user_id);
         $sale_result = $sale_sums->selectRaw('
             SUM(grand_total - shipping_cost) as revenue,
-            SUM(grand_total - paid_amount) as sale_due,
+            SUM(CASE WHEN grand_total > paid_amount THEN (grand_total - paid_amount) ELSE 0 END) as sale_due,
             SUM(paid_amount) as sale_paid
         ')->first();
 
@@ -135,7 +135,7 @@ class HomeController extends Controller
         $purchase_result = $purchase_sums->selectRaw('
             SUM(grand_total) as purchase,
             SUM(paid_amount) as purchase_paid,
-            SUM(grand_total - paid_amount) as purchase_due
+            SUM(CASE WHEN grand_total > paid_amount THEN (grand_total - paid_amount) ELSE 0 END) as purchase_due
         ')->first();
 
         $purchase = (float)($purchase_result->purchase ?? 0);
@@ -236,7 +236,8 @@ class HomeController extends Controller
         $y_start_date = date("Y") . '-01-01';
         $y_end_date = date("Y") . '-12-31';
 
-        $y_sales = Sale::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(grand_total) as total")
+        $y_sales = Sale::where('sale_status', '!=', 3)
+            ->selectRaw("DATE_FORMAT(created_at, '%Y-%m') as ym, sum(grand_total) as total")
             ->where('created_at', '>=', $y_start_date . ' 00:00:00')->where('created_at', '<=', $y_end_date . ' 23:59:59');
         if ($is_staff_own) $y_sales->where('user_id', $auth_user_id);
         $y_sales_data = $y_sales->groupBy('ym')->pluck('total', 'ym');
@@ -473,11 +474,11 @@ class HomeController extends Controller
         $product_sale_data = $ps_query->groupBy('product_sales.product_id', 'product_sales.product_batch_id', 'product_sales.variant_id', 'product_sales.sale_unit_id')->get();
         $product_cost = $this->calculateAverageCOGS($product_sale_data);
 
-        $sale_sums = Sale::where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
+        $sale_sums = Sale::where('sale_status', '!=', 3)->where('created_at', '>=', $start_dt)->where('created_at', '<=', $end_dt);
         if ($is_staff_own) $sale_sums->where('user_id', $auth_user_id);
         $sale_result = $sale_sums->selectRaw('
             SUM(grand_total - shipping_cost) as revenue,
-            SUM(grand_total - paid_amount) as sale_due,
+            SUM(CASE WHEN grand_total > paid_amount THEN (grand_total - paid_amount) ELSE 0 END) as sale_due,
             SUM(paid_amount) as sale_paid
         ')->first();
 
@@ -490,7 +491,7 @@ class HomeController extends Controller
         $purchase_result = $purchase_sums->selectRaw('
             SUM(grand_total) as purchase,
             SUM(paid_amount) as purchase_paid,
-            SUM(grand_total - paid_amount) as purchase_due
+            SUM(CASE WHEN grand_total > paid_amount THEN (grand_total - paid_amount) ELSE 0 END) as purchase_due
         ')->first();
 
         $purchase = (float)($purchase_result->purchase ?? 0);

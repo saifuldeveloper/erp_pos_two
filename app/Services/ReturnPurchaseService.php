@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Models\Account;
+use App\Models\Currency;
 use App\Models\Product;
 use App\Models\ProductBatch;
 use App\Models\ProductVariant;
 use App\Models\Product_Warehouse;
+use App\Models\Purchase;
 use App\Models\PurchaseProductReturn;
 use App\Models\ReturnPurchase;
 use App\Models\Supplier;
@@ -66,24 +68,58 @@ class ReturnPurchaseService
         $returns = $this->returnPurchaseRepository->getFilteredReturnsForDataTable($start, $limit, $order, $dir, $warehouseId, $startDate, $endDate, $searchValue);
         $totalFiltered = $this->returnPurchaseRepository->countFilteredReturnsForDataTable($warehouseId, $startDate, $endDate, $searchValue);
 
+        $returnIds = $returns->pluck('id')->toArray();
+        $purchaseIds = $returns->pluck('purchase_id')->filter()->unique()->toArray();
+        $purchases = Purchase::whereIn('id', $purchaseIds)->pluck('reference_no', 'id');
+
+        $saleTotals = DB::table('purchase_product_return as ppr')
+            ->join('products as p', 'ppr.product_id', '=', 'p.id')
+            ->leftJoin('product_variants as pv', function ($join) {
+                $join->on('ppr.product_id', '=', 'pv.product_id')
+                    ->on('ppr.variant_id', '=', 'pv.variant_id');
+            })
+            ->whereIn('ppr.return_id', $returnIds)
+            ->selectRaw('ppr.return_id, SUM(ppr.qty * (COALESCE(p.price, 0) + COALESCE(pv.additional_price, 0))) as total')
+            ->groupBy('ppr.return_id')
+            ->pluck('total', 'ppr.return_id');
+
+        $returnQties = DB::table('purchase_product_return')
+            ->whereIn('return_id', $returnIds)
+            ->groupBy('return_id')
+            ->pluck(DB::raw('SUM(qty)'), 'return_id');
+
+        $currencyIds = $returns->pluck('currency_id')->filter()->unique()->toArray();
+        $currencies = Currency::whereIn('id', $currencyIds)->pluck('code', 'id');
+
+        $decimal = (int) (config('decimal') ?: 2);
+        $dateFormat = config('date_format') ?: 'd-m-Y';
         $data = [];
+
         foreach ($returns as $key => $return) {
+            $saleTotal = $saleTotals[$return->id] ?? 0;
+            $qty = $returnQties[$return->id] ?? 0;
+            $purchaseReference = $return->purchase_id ? ($purchases[$return->purchase_id] ?? 'N/A') : 'N/A';
+            $currencyCode = $return->currency_id ? ($currencies[$return->currency_id] ?? 'N/A') : 'N/A';
+
             $nestedData = [];
             $nestedData['id'] = $return->id;
             $nestedData['key'] = $key;
-            $dateFormat = config('date_format') ?: 'd-m-Y';
             $nestedData['date'] = date($dateFormat, strtotime($return->created_at));
             $nestedData['reference_no'] = $return->reference_no;
+            $nestedData['purchase_reference'] = $purchaseReference;
             $nestedData['warehouse'] = $return->warehouse ? $return->warehouse->name : 'N/A';
 
             if ($return->supplier_id) {
                 $supplier = $return->supplier;
                 $nestedData['supplier'] = $supplier ? ($supplier->name . ' (' . $supplier->company_name . ')') : 'N/A';
             } else {
+                $supplier = null;
                 $nestedData['supplier'] = 'N/A';
             }
 
-            $nestedData['grand_total'] = number_format($return->grand_total, (int) (config('decimal') ?: 2));
+            $nestedData['qty'] = number_format((float) $qty, $decimal);
+            $nestedData['sale_total'] = number_format((float) $saleTotal, $decimal);
+            $nestedData['grand_total'] = number_format((float) $return->grand_total, $decimal);
 
             $options = '<div class="btn-group">
                         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans("file.action") . '
@@ -110,32 +146,33 @@ class ReturnPurchaseService
             $options .= '</ul></div>';
             $nestedData['options'] = $options;
 
-            $account = Account::find($return->account_id);
             $nestedData['return'] = [
                 '[ "' . date($dateFormat, strtotime($return->created_at)) . '"',
                 ' "' . $return->reference_no . '"',
                 ' "' . ($return->warehouse ? $return->warehouse->name : 'N/A') . '"',
-                ' "' . ($return->supplier ? $return->supplier->name : 'N/A') . '"',
-                ' "' . ($return->supplier ? $return->supplier->company_name : 'N/A') . '"',
-                ' "' . ($return->supplier ? $return->supplier->email : 'N/A') . '"',
-                ' "' . ($return->supplier ? $return->supplier->phone_number : 'N/A') . '"',
-                ' "' . ($return->supplier ? $return->supplier->address : 'N/A') . '"',
-                ' "' . ($return->supplier ? $return->supplier->city : 'N/A') . '"',
+                ' "' . ($return->warehouse ? $return->warehouse->phone : 'N/A') . '"',
+                ' "' . ($return->warehouse ? preg_replace('/\s+/S', " ", (string) $return->warehouse->address) : 'N/A') . '"',
+                ' "' . ($supplier ? $supplier->name : 'N/A') . '"',
+                ' "' . ($supplier ? $supplier->company_name : 'N/A') . '"',
+                ' "' . ($supplier ? $supplier->email : 'N/A') . '"',
+                ' "' . ($supplier ? $supplier->phone_number : 'N/A') . '"',
+                ' "' . ($supplier ? $supplier->address : 'N/A') . '"',
+                ' "' . ($supplier ? $supplier->city : 'N/A') . '"',
                 ' "' . $return->id . '"',
                 ' "' . $return->total_tax . '"',
                 ' "' . $return->total_discount . '"',
                 ' "' . $return->total_cost . '"',
                 ' "' . $return->order_tax . '"',
                 ' "' . $return->order_tax_rate . '"',
-                ' "' . $return->order_discount . '"',
-                ' "' . $return->shipping_cost . '"',
                 ' "' . $return->grand_total . '"',
                 ' "' . preg_replace('/\s+/S', " ", (string) $return->return_note) . '"',
                 ' "' . preg_replace('/\s+/S', " ", (string) $return->staff_note) . '"',
                 ' "' . ($return->user ? $return->user->name : 'N/A') . '"',
                 ' "' . ($return->user ? $return->user->email : 'N/A') . '"',
+                ' "' . $purchaseReference . '"',
                 ' "' . $return->document . '"',
-                ' "' . ($account ? $account->name : 'N/A') . '" ]'
+                ' "' . $currencyCode . '"',
+                ' "' . $return->exchange_rate . '" ]'
             ];
 
             $data[] = $nestedData;

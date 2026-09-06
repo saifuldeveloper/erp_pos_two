@@ -620,12 +620,6 @@
 
     //stock count table
     $('#stock-count-table').DataTable({
-        "columns": [
-            {"data": "date"},
-            {"data": "warehouse"},
-            {"data": "current_qty"},
-            {"data": "qty"}
-        ],
         'language': {
 
             'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
@@ -636,11 +630,11 @@
                     'next': '<i class="dripicons-chevron-right"></i>'
             }
         },
-        order:[['1', 'desc']],
+        order:[['0', 'desc']],
         'columnDefs': [
             {
                 "orderable": false,
-                'targets': [0, 1, 2, 3]
+                'targets': [1, 2, 3]
             },
         ],
         'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, "All"]],
@@ -651,7 +645,7 @@
                 extend: 'pdf',
                 text: '<i title="export to pdf" class="fa fa-file-pdf-o"></i>',
                 exportOptions: {
-                    columns: ':visible:Not(.not-exported-purchase-return)',
+                    columns: ':visible',
                     rows: ':visible'
                 }
             },
@@ -659,7 +653,7 @@
                 extend: 'csv',
                 text: '<i title="export to csv" class="fa fa-file-text-o"></i>',
                 exportOptions: {
-                    columns: ':visible:Not(.not-exported-purchase-return)',
+                    columns: ':visible',
                     rows: ':visible'
                 }
             },
@@ -667,7 +661,7 @@
                 extend: 'print',
                 text: '<i title="print" class="fa fa-print"></i>',
                 exportOptions: {
-                    columns: ':visible:Not(.not-exported-purchase-return)',
+                    columns: ':visible',
                     rows: ':visible'
                 }
             },

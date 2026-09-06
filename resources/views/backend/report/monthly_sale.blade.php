@@ -4,9 +4,10 @@
     .report-link {
         text-decoration: none;
         transition: color 0.3s ease;
+        color: inherit;
     }
     .report-link:hover {
-        color: green !important;
+        color: #ff8366 !important;
         text-decoration: underline;
     }
     .filter-card {
@@ -23,6 +24,104 @@
         border: 1px solid #e2e8f0;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    /* Dark Mode Overrides */
+    .dark-mode .filter-card {
+        background-color: #212837 !important;
+        border: 1px solid #3b4253 !important;
+    }
+    .dark-mode #year_picker {
+        background-color: #343d55 !important;
+        border-color: #404656 !important;
+        color: #eaeaea !important;
+    }
+    .dark-mode .table thead tr.bg-light,
+    .dark-mode tr.bg-light {
+        background-color: #1e2538 !important;
+    }
+    .dark-mode .table thead th {
+        color: #ffffff !important;
+        border-color: #3b4253 !important;
+    }
+    .dark-mode tr.text-center.bg-light td {
+        background-color: #1e2538 !important;
+        color: #d0d2d6 !important;
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .table-bordered {
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .table-bordered td,
+    .dark-mode .table-bordered th {
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .table td {
+        background-color: #283046;
+        color: #d0d2d6;
+    }
+    .dark-mode .report-link {
+        color: #d0d2d6 !important;
+    }
+    .dark-mode .report-link:hover {
+        color: #ff8366 !important;
+    }
+    .dark-mode .report-link strong {
+        color: #ffffff !important;
+    }
+    .dark-mode .report-link strong[style*="color:red"] {
+        color: #f87171 !important;
+    }
+    .dark-mode .report-link .text-success {
+        color: #4ade80 !important;
+    }
+    .dark-mode .summary-card {
+        background: #283046 !important;
+        border-color: #3b4253 !important;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.25) !important;
+    }
+    .dark-mode .summary-card .card-header {
+        background-color: #1e2538 !important;
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .summary-card .card-header h5,
+    .dark-mode .summary-card .card-header .text-dark {
+        color: #ffffff !important;
+    }
+    .dark-mode .summary-card .bg-light.border {
+        background-color: #1e2538 !important;
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .summary-card .bg-light.border .text-dark {
+        color: #ffffff !important;
+    }
+    .dark-mode .summary-card .text-secondary {
+        color: #a0aec0 !important;
+    }
+    .dark-mode .summary-card table th.bg-light {
+        background-color: #1e2538 !important;
+        color: #eaeaea !important;
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .summary-card table td {
+        background-color: #283046 !important;
+        color: #eaeaea !important;
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .summary-card table tr.table-success,
+    .dark-mode .summary-card table tr.table-success th,
+    .dark-mode .summary-card table tr.table-success td {
+        background-color: rgba(34, 197, 94, 0.18) !important;
+        color: #4ade80 !important;
+        border-color: #3b4253 !important;
+    }
+    .dark-mode .summary-card table td.text-danger,
+    .dark-mode .summary-card table th.text-danger {
+        color: #f87171 !important;
+    }
+    .dark-mode .summary-card table td.text-warning,
+    .dark-mode .summary-card table th.text-warning {
+        color: #fbbf24 !important;
     }
 </style>
 <section>
@@ -47,7 +146,7 @@
                             <div class="col-md-4 col-sm-6 mb-2">
                                 <label class="font-weight-bold">Select Year:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="year_picker" value="{{ $year }}" readonly style="background-color: #fff; cursor: pointer;">
+                                    <input type="text" class="form-control" id="year_picker" value="{{ $year }}" readonly style="cursor: pointer;">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                     </div>

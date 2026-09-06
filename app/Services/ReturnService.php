@@ -13,6 +13,7 @@ use App\Models\ProductVariant;
 use App\Models\Product_Warehouse;
 use App\Models\Returns;
 use App\Models\RewardPointSetting;
+use App\Models\Sale;
 use App\Models\Tax;
 use App\Models\Unit;
 use App\Models\Warehouse;
@@ -69,19 +70,55 @@ class ReturnService
         $returns = $this->returnRepository->getFilteredReturnsForDataTable($start, $limit, $order, $dir, $warehouseId, $startDate, $endDate, $searchValue);
         $totalFiltered = $this->returnRepository->countFilteredReturnsForDataTable($warehouseId, $startDate, $endDate, $searchValue);
 
+        $returnIds = $returns->pluck('id')->toArray();
+        $saleIds = $returns->pluck('sale_id')->filter()->unique()->toArray();
+        $sales = Sale::whereIn('id', $saleIds)->pluck('reference_no', 'id');
+
+        $purchaseTotals = DB::table('product_returns as pr')
+            ->leftJoin(
+                DB::raw('(SELECT product_id, variant_id, AVG(net_unit_cost) as net_unit_cost FROM product_purchases GROUP BY product_id, variant_id) as pp'),
+                function ($join) {
+                    $join->on('pr.product_id', '=', 'pp.product_id')
+                        ->on(function ($q) {
+                            $q->on('pr.variant_id', '=', 'pp.variant_id')
+                                ->orWhere(function ($q) {
+                                    $q->whereNull('pr.variant_id')
+                                        ->whereNull('pp.variant_id');
+                                });
+                        });
+                }
+            )
+            ->whereIn('pr.return_id', $returnIds)
+            ->selectRaw('pr.return_id, SUM(pr.qty * COALESCE(pp.net_unit_cost, 0)) as total')
+            ->groupBy('pr.return_id')
+            ->pluck('total', 'pr.return_id');
+
+        $returnQties = DB::table('product_returns')
+            ->whereIn('return_id', $returnIds)
+            ->groupBy('return_id')
+            ->pluck(DB::raw('SUM(qty)'), 'return_id');
+
+        $decimal = (int) (config('decimal') ?: 2);
         $data = [];
         $dateFormat = config('date_format') ?: 'd-m-Y';
 
         foreach ($returns as $key => $return) {
+            $purchaseTotal = $purchaseTotals[$return->id] ?? 0;
+            $qty = $returnQties[$return->id] ?? 0;
+            $saleReference = $return->sale_id ? ($sales[$return->sale_id] ?? 'N/A') : 'N/A';
+
             $nestedData = [];
             $nestedData['id'] = $return->id;
             $nestedData['key'] = $key;
             $nestedData['date'] = date($dateFormat, strtotime($return->created_at));
             $nestedData['reference_no'] = $return->reference_no;
+            $nestedData['sale_reference'] = $saleReference;
             $nestedData['warehouse'] = $return->warehouse ? $return->warehouse->name : 'N/A';
             $nestedData['biller'] = $return->biller ? ($return->biller->name . ' (' . $return->biller->company_name . ')') : 'N/A';
             $nestedData['customer'] = $return->customer ? ($return->customer->name . ' (' . $return->customer->phone_number . ')') : 'N/A';
-            $nestedData['grand_total'] = number_format($return->grand_total, (int) (config('decimal') ?: 2));
+            $nestedData['qty'] = number_format((float) $qty, $decimal);
+            $nestedData['purchase_total'] = number_format((float) $purchaseTotal, $decimal);
+            $nestedData['grand_total'] = number_format((float) $return->grand_total, $decimal);
 
             $options = '<div class="btn-group">
                         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . trans("file.action") . '

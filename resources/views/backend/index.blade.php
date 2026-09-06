@@ -51,7 +51,280 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
 
-  /* Comprehensive Dark Mode Typography & Styling */
+  /* Modern Dashboard 8 Metric Cards (SalePro Style) */
+  .modern-stat-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    margin-bottom: 20px;
+  }
+  .modern-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    border-color: #e2e8f0;
+  }
+  .stat-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-right: 18px;
+  }
+  .stat-info-box {
+    flex-grow: 1;
+    min-width: 0;
+  }
+  .stat-info-title {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .stat-info-amount {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .stat-currency-sym {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 3px;
+    color: #475569;
+  }
+
+  /* Specific color themes matching Image 2 */
+  .stat-card-sale .stat-icon-box {
+    background-color: #f3effe;
+    color: #854fff;
+  }
+  .stat-card-sale-due .stat-icon-box {
+    background-color: #e0f7fa;
+    color: #00bcd4;
+  }
+  .stat-card-sale-return .stat-icon-box {
+    background-color: #fff2ea;
+    color: #ff7849;
+  }
+  .stat-card-expense .stat-icon-box {
+    background-color: #ffebee;
+    color: #f44336;
+  }
+  .stat-card-purchase .stat-icon-box {
+    background-color: #fff9db;
+    color: #f59e0b;
+  }
+  .stat-card-purchase-due .stat-icon-box {
+    background-color: #fefce8;
+    color: #ca8a04;
+  }
+  .stat-card-purchase-return .stat-icon-box {
+    background-color: #e8f8f5;
+    color: #10b981;
+  }
+  .stat-card-profit .stat-icon-box {
+    background-color: #e3f2fd;
+    color: #2196f3;
+  }
+
+  /* ============================================================
+     Comprehensive Dark Mode Typography & Styling
+     Applies whenever body has .dark-mode or theme is dark.css
+     ============================================================ */
+  body.dark-mode,
+  .dark-mode .page,
+  .dark-mode .dashboard-counts,
+  .dark-mode .card,
+  .dark-mode .card-header,
+  .dark-mode .card-body,
+  .dark-mode .brand-text h3,
+  .dark-mode .brand-text span,
+  .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6,
+  .dark-mode table,
+  .dark-mode thead th,
+  .dark-mode tbody td,
+  .dark-mode tfoot th,
+  .dark-mode tfoot td,
+  .dark-mode .count-title .name strong,
+  .dark-mode .count-number,
+  .dark-mode .nav-tabs .nav-link.active,
+  .dark-mode .badge,
+  .dark-mode .table-responsive,
+  .dark-mode .card-header h4 {
+    color: #ffffff !important;
+  }
+
+  .dark-mode .card {
+    background-color: #1e2430 !important;
+    border: 1px solid #2d3748 !important;
+  }
+
+  .dark-mode .card-header {
+    background-color: #1e2430 !important;
+    border-bottom: 1px solid #2d3748 !important;
+  }
+
+  .dark-mode .table thead th {
+    background-color: #262e3d !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+  }
+
+  .dark-mode .table td,
+  .dark-mode .table th {
+    color: #e2e8f0 !important;
+    border-color: #2d3748 !important;
+  }
+
+  .dark-mode .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+  }
+
+  .dark-mode .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .dark-mode .best-seller-scroll table thead th {
+    background-color: #262e3d !important;
+    color: #ffffff !important;
+  }
+
+  .dark-mode .best-seller-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .dark-mode .nav-tabs {
+    border-bottom: 1px solid #334155 !important;
+  }
+
+  .dark-mode .nav-tabs .nav-link {
+    color: #94a3b8 !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+  }
+
+  .dark-mode .nav-tabs .nav-link.active {
+    color: #ffffff !important;
+    background-color: #262e3d !important;
+    border-color: #334155 #334155 #262e3d !important;
+    font-weight: 600;
+  }
+
+  .dark-mode .nav-tabs .nav-link:hover:not(.active) {
+    color: #ffffff !important;
+    border-color: transparent !important;
+  }
+
+  .dark-mode .badge-light {
+    background-color: #334155 !important;
+    color: #ffffff !important;
+    border: 1px solid #475569 !important;
+  }
+
+  /* 8 Metric Cards in Dark Mode */
+  .dark-mode .modern-stat-card,
+  body.dark-mode .modern-stat-card {
+    background-color: #1e2430 !important;
+    border: 1px solid #2d3748 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  .dark-mode .modern-stat-card:hover,
+  body.dark-mode .modern-stat-card:hover {
+    transform: translateY(-3px);
+    background-color: #252d3d !important;
+    border-color: #3b4559 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .dark-mode .modern-stat-card .stat-info-title,
+  body.dark-mode .modern-stat-card .stat-info-title {
+    color: #94a3b8 !important;
+  }
+
+  .dark-mode .modern-stat-card .stat-info-amount,
+  body.dark-mode .modern-stat-card .stat-info-amount {
+    color: #ffffff !important;
+  }
+
+  .dark-mode .modern-stat-card .stat-currency-sym,
+  body.dark-mode .modern-stat-card .stat-currency-sym {
+    color: #cbd5e1 !important;
+  }
+
+  /* 8 Metric Card Glowing Dark Mode Icon Boxes */
+  .dark-mode .stat-card-sale .stat-icon-box,
+  body.dark-mode .stat-card-sale .stat-icon-box {
+    background-color: rgba(133, 79, 255, 0.18) !important;
+    color: #a78bfa !important;
+    border: 1px solid rgba(133, 79, 255, 0.3) !important;
+  }
+
+  .dark-mode .stat-card-sale-due .stat-icon-box,
+  body.dark-mode .stat-card-sale-due .stat-icon-box {
+    background-color: rgba(0, 188, 212, 0.18) !important;
+    color: #22d3ee !important;
+    border: 1px solid rgba(0, 188, 212, 0.3) !important;
+  }
+
+  .dark-mode .stat-card-sale-return .stat-icon-box,
+  body.dark-mode .stat-card-sale-return .stat-icon-box {
+    background-color: rgba(255, 120, 73, 0.18) !important;
+    color: #fb923c !important;
+    border: 1px solid rgba(255, 120, 73, 0.3) !important;
+  }
+
+  .dark-mode .stat-card-expense .stat-icon-box,
+  body.dark-mode .stat-card-expense .stat-icon-box {
+    background-color: rgba(244, 67, 54, 0.18) !important;
+    color: #f87171 !important;
+    border: 1px solid rgba(244, 67, 54, 0.3) !important;
+  }
+
+  .dark-mode .stat-card-purchase .stat-icon-box,
+  body.dark-mode .stat-card-purchase .stat-icon-box {
+    background-color: rgba(245, 158, 11, 0.18) !important;
+    color: #fbbf24 !important;
+    border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  }
+
+  .dark-mode .stat-card-purchase-due .stat-icon-box,
+  body.dark-mode .stat-card-purchase-due .stat-icon-box {
+    background-color: rgba(234, 179, 8, 0.18) !important;
+    color: #fde047 !important;
+    border: 1px solid rgba(234, 179, 8, 0.3) !important;
+  }
+
+  .dark-mode .stat-card-purchase-return .stat-icon-box,
+  body.dark-mode .stat-card-purchase-return .stat-icon-box {
+    background-color: rgba(16, 185, 129, 0.18) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  }
+
+  .dark-mode .stat-card-profit .stat-icon-box,
+  body.dark-mode .stat-card-profit .stat-icon-box {
+    background-color: rgba(33, 150, 243, 0.18) !important;
+    color: #60a5fa !important;
+    border: 1px solid rgba(33, 150, 243, 0.3) !important;
+  }
+
   @if($general_setting->theme == 'dark.css')
   body, .page, .dashboard-counts, .card, .card-header, .card-body,
   .brand-text h3, .brand-text span, h1, h2, h3, h4, h5, h6,
@@ -61,116 +334,22 @@
   .badge, .table-responsive, p, span, strong {
     color: #ffffff;
   }
-
-  .card {
+  .modern-stat-card {
     background-color: #1e2430 !important;
-    border: 1px solid #2d3748 !important;
-  }
-
-  .card-header {
-    background-color: #1e2430 !important;
-    border-bottom: 1px solid #2d3748 !important;
-  }
-
-  .card-header h4 {
-    color: #ffffff !important;
-    font-weight: 600;
-  }
-
-  .table thead th {
-    background-color: #262e3d !important;
-    color: #ffffff !important;
-    border-color: #334155 !important;
-  }
-
-  .table td, .table th {
-    color: #e2e8f0 !important;
     border-color: #2d3748 !important;
   }
-
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(255, 255, 255, 0.02) !important;
-  }
-
-  .table-hover tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-  }
-
-  .best-seller-scroll table thead th {
-    background-color: #262e3d !important;
-    color: #ffffff !important;
-  }
-
-  .best-seller-scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  .nav-tabs {
-    border-bottom: 1px solid #334155 !important;
-  }
-
-  .nav-tabs .nav-link {
-    color: #94a3b8 !important;
-    background: transparent !important;
-    border: 1px solid transparent !important;
-  }
-
-  .nav-tabs .nav-link.active {
-    color: #ffffff !important;
-    background-color: #262e3d !important;
-    border-color: #334155 #334155 #262e3d !important;
-    font-weight: 600;
-  }
-
-  .nav-tabs .nav-link:hover:not(.active) {
-    color: #ffffff !important;
-    border-color: transparent !important;
-  }
-
-  .badge-light {
-    background-color: #334155 !important;
-    color: #ffffff !important;
-    border: 1px solid #475569 !important;
-  }
-
-  .count-title .name strong {
-    filter: brightness(1.2);
-  }
+  .modern-stat-card .stat-info-title { color: #94a3b8 !important; }
+  .modern-stat-card .stat-info-amount { color: #ffffff !important; }
+  .modern-stat-card .stat-currency-sym { color: #cbd5e1 !important; }
+  .stat-card-sale .stat-icon-box { background-color: rgba(133, 79, 255, 0.18) !important; color: #a78bfa !important; border: 1px solid rgba(133, 79, 255, 0.3) !important; }
+  .stat-card-sale-due .stat-icon-box { background-color: rgba(0, 188, 212, 0.18) !important; color: #22d3ee !important; border: 1px solid rgba(0, 188, 212, 0.3) !important; }
+  .stat-card-sale-return .stat-icon-box { background-color: rgba(255, 120, 73, 0.18) !important; color: #fb923c !important; border: 1px solid rgba(255, 120, 73, 0.3) !important; }
+  .stat-card-expense .stat-icon-box { background-color: rgba(244, 67, 54, 0.18) !important; color: #f87171 !important; border: 1px solid rgba(244, 67, 54, 0.3) !important; }
+  .stat-card-purchase .stat-icon-box { background-color: rgba(245, 158, 11, 0.18) !important; color: #fbbf24 !important; border: 1px solid rgba(245, 158, 11, 0.3) !important; }
+  .stat-card-purchase-due .stat-icon-box { background-color: rgba(234, 179, 8, 0.18) !important; color: #fde047 !important; border: 1px solid rgba(234, 179, 8, 0.3) !important; }
+  .stat-card-purchase-return .stat-icon-box { background-color: rgba(16, 185, 129, 0.18) !important; color: #34d399 !important; border: 1px solid rgba(16, 185, 129, 0.3) !important; }
+  .stat-card-profit .stat-icon-box { background-color: rgba(33, 150, 243, 0.18) !important; color: #60a5fa !important; border: 1px solid rgba(33, 150, 243, 0.3) !important; }
   @endif
-
-  /* Dark mode class fallback */
-  .dark-mode .card,
-  .dark-mode .card-header,
-  .dark-mode .card-body,
-  .dark-mode table,
-  .dark-mode thead th,
-  .dark-mode tbody td,
-  .dark-mode .card-header h4 {
-    color: #ffffff !important;
-  }
-
-  .dark-mode .card {
-    background-color: #1e2430 !important;
-    border-color: #2d3748 !important;
-  }
-
-  .dark-mode .table thead th {
-    background-color: #262e3d !important;
-    color: #ffffff !important;
-  }
-
-  .dark-mode .table td {
-    color: #e2e8f0 !important;
-  }
-
-  .dark-mode .nav-tabs .nav-link {
-    color: #94a3b8 !important;
-  }
-
-  .dark-mode .nav-tabs .nav-link.active {
-    color: #ffffff !important;
-    background-color: #262e3d !important;
-  }
 </style>
 
       <div class="row">
@@ -211,6 +390,141 @@
           <div class="row">
             @if($revenue_profit_summary)
             <div class="col-md-12 form-group">
+              <!-- Modern 8 Metric Cards (SalePro Style) -->
+              <div class="row">
+                <!-- 1. Sale (বিক্রয়) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-sale">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-cart"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Sale') ?? 'বিক্রয়' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="revenue-data">{{ number_format((float)$revenue, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Sale Due (বিক্রয় বকেয়া) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-sale-due">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-document-edit"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Sale Due') ?? 'বিক্রয় বকেয়া' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="sale_due-data">{{ number_format((float)$sale_due, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Sale Return (বিক্রয় রিটার্ন) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-sale-return">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-return"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Sale Return') ?? 'বিক্রয় রিটার্ন' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="return-data">{{ number_format((float)$return, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. Expense (ব্যয়) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-expense">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-wallet"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Expense') ?? 'ব্যয়' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="expense-data">{{ number_format((float)$expense, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5. Purchase (ক্রয়) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-purchase">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-download"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Purchase') ?? 'ক্রয়' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="purchase-data">{{ number_format((float)$purchase, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 6. Purchase Due (ক্রয় বকেয়া) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-purchase-due">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-card"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Purchase Due') ?? 'ক্রয় বকেয়া' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="purchase_due">{{ number_format((float)$purchase_due, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 7. Purchase Return (ক্রয় রিটার্ন) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-purchase-return">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-return"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Purchase Return') ?? 'ক্রয় রিটার্ন' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="purchase_return-data">{{ number_format((float)$purchase_return, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 8. Profit (লাভ) -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-profit">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-trophy"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Profit') ?? 'লাভ' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span class="profit-data">{{ number_format((float)$profit, $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+{{-- 
+=============================================================================================
+ORIGINAL 12 CARDS SECTION (COMMENTED OUT - UNCOMMENT THIS IF YOU EVER WANT TO SWITCH BACK)
+=============================================================================================
               <div class="row">
                <!-- Count item widget-->
                 <div class="col-sm-2">
@@ -340,6 +654,10 @@
                   </div>
                 </div>
               </div>
+=============================================================================================
+END OF ORIGINAL 12 CARDS SECTION
+=============================================================================================
+--}}
               <div class="row">
                 <div class="col-md-4 mt-4">
               <div class="card">

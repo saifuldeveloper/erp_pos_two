@@ -165,6 +165,48 @@ class SaleService
         $sales = $this->saleRepository->getFilteredSalesForDataTable($start, $limit, $order, $dir, $filters, $searchValue, $fieldNames);
         $totalFiltered = $this->saleRepository->countFilteredSalesForDataTable($filters, $searchValue);
 
+        $saleIds = $sales->pluck('id')->toArray();
+        $brandId = $request->input('brand_id');
+
+        $returnedAmounts = DB::table('returns')
+            ->whereIn('sale_id', $saleIds)
+            ->selectRaw('sale_id, SUM(grand_total) as total')
+            ->groupBy('sale_id')
+            ->pluck('total', 'sale_id');
+
+        $purchaseTotalsQuery = DB::table('product_sales as ps')
+            ->leftJoin(
+                DB::raw('(SELECT product_id, variant_id, AVG(net_unit_cost) as net_unit_cost FROM product_purchases GROUP BY product_id, variant_id) as pp'),
+                function ($join) {
+                    $join->on('ps.product_id', '=', 'pp.product_id')
+                        ->on(function ($q) {
+                            $q->on('ps.variant_id', '=', 'pp.variant_id')
+                                ->orWhere(function ($q) {
+                                    $q->whereNull('ps.variant_id')
+                                        ->whereNull('pp.variant_id');
+                                });
+                        });
+                }
+            );
+
+        if ($brandId) {
+            $purchaseTotalsQuery->join('products as p', 'ps.product_id', '=', 'p.id')
+                ->where('p.brand_id', $brandId);
+        }
+
+        $purchaseTotals = $purchaseTotalsQuery->whereIn('ps.sale_id', $saleIds)
+            ->selectRaw('ps.sale_id, SUM(ps.qty * COALESCE(pp.net_unit_cost, 0)) as total')
+            ->groupBy('ps.sale_id')
+            ->pluck('total', 'ps.sale_id');
+
+        $productSalesData = DB::table('product_sales as ps')
+            ->join('products as p', 'ps.product_id', '=', 'p.id')
+            ->whereIn('ps.sale_id', $saleIds)
+            ->select('ps.sale_id', 'ps.qty', 'ps.total', 'p.brand_id')
+            ->get()
+            ->groupBy('sale_id');
+
+        $decimal = (int) (config('decimal') ?: 2);
         $data = [];
         $dateFormat = config('date_format') ?: 'd-m-Y';
 
@@ -175,14 +217,50 @@ class SaleService
             $nestedData['date'] = date($dateFormat, strtotime($sale->created_at));
             $nestedData['reference_no'] = $sale->reference_no;
             $nestedData['biller'] = $sale->biller ? ($sale->biller->name . ' (' . $sale->biller->company_name . ')') : 'N/A';
-            $nestedData['customer'] = $sale->customer ? ($sale->customer->name . ' (' . $sale->customer->phone_number . ')') : 'N/A';
+
+            $customerName = $sale->customer ? $sale->customer->name : 'N/A';
+            $customerPhone = $sale->customer ? $sale->customer->phone_number : '';
+            $customerDeposit = $sale->customer ? ($sale->customer->deposit - $sale->customer->expense) : 0;
+            $customerPoints = $sale->customer ? $sale->customer->points : 0;
+            $nestedData['customer'] = $customerName . '<br>' . $customerPhone
+                . '<input type="hidden" class="deposit" value="' . $customerDeposit . '" />'
+                . '<input type="hidden" class="points" value="' . $customerPoints . '" />';
 
             $nestedData['sale_status'] = SaleStatus::tryFrom((int) $sale->sale_status)?->badge() ?? '';
             $nestedData['payment_status'] = PaymentStatus::tryFrom((int) $sale->payment_status)?->badge() ?? '';
 
-            $nestedData['grand_total'] = number_format($sale->grand_total, (int) (config('decimal') ?: 2));
-            $nestedData['paid_amount'] = number_format($sale->paid_amount, (int) (config('decimal') ?: 2));
-            $nestedData['due'] = number_format($sale->grand_total - $sale->paid_amount, (int) (config('decimal') ?: 2));
+            $returnedAmount = $returnedAmounts[$sale->id] ?? 0;
+            $purchaseTotal = $purchaseTotals[$sale->id] ?? 0;
+
+            $ratio = 1.0;
+            $brandQty = 0;
+            $items = $productSalesData[$sale->id] ?? collect();
+            if ($brandId) {
+                $invoiceProductTotal = 0;
+                $brandProductTotal = 0;
+                foreach ($items as $ps) {
+                    $invoiceProductTotal += $ps->total;
+                    if ($ps->brand_id == $brandId) {
+                        $brandProductTotal += $ps->total;
+                        $brandQty += $ps->qty;
+                    }
+                }
+                $ratio = $invoiceProductTotal > 0 ? ($brandProductTotal / $invoiceProductTotal) : 0;
+            } else {
+                $brandQty = $items->sum('qty');
+            }
+
+            $apportionedGrandTotal = $sale->grand_total * $ratio;
+            $apportionedReturnedAmount = $returnedAmount * $ratio;
+            $apportionedPaidAmount = $sale->paid_amount * $ratio;
+            $apportionedDue = $apportionedGrandTotal - $apportionedReturnedAmount - $apportionedPaidAmount;
+
+            $nestedData['total_quantity'] = $brandQty;
+            $nestedData['purchase_total'] = number_format((float) $purchaseTotal, $decimal);
+            $nestedData['grand_total'] = number_format((float) $apportionedGrandTotal, $decimal);
+            $nestedData['returned_amount'] = number_format((float) $apportionedReturnedAmount, $decimal);
+            $nestedData['paid_amount'] = number_format((float) $apportionedPaidAmount, $decimal);
+            $nestedData['due'] = number_format((float) $apportionedDue, $decimal);
 
             foreach ($fieldNames as $fieldName) {
                 $nestedData[$fieldName] = $sale->$fieldName;

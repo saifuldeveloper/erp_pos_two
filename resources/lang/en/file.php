@@ -1,5 +1,6 @@
 <?php
 return [
+	'Summary' => 'Summary',
 	'Stock Count List' => 'Stock Count List',
 	'Stock Count ID' => 'Stock Count ID',
 	'Current Stock' => 'Current Stock',
@@ -1470,6 +1471,8 @@ return [
 	"total liabilities" => "Total Liabilities",
 	"total cashin" => "Total Cash in",
 	"total cashout" => "Total Cash Out",
+	"Sale Due" => "Sale Due",
+	"Purchase Due" => "Purchase Due",
 	"Waste" => "Waste",
 	"Waste List" => "Waste List",
 	"Add Waste" => "Add Waste",

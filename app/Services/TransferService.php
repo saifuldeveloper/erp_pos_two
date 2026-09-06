@@ -79,6 +79,7 @@ class TransferService
             $nestedData['reference_no'] = $transfer->reference_no;
             $nestedData['from_warehouse'] = $transfer->fromWarehouse ? $transfer->fromWarehouse->name : 'N/A';
             $nestedData['to_warehouse'] = $transfer->toWarehouse ? $transfer->toWarehouse->name : 'N/A';
+            $nestedData['total_qty'] = $transfer->total_qty;
             $nestedData['total_cost'] = number_format($transfer->total_cost, (int) (config('decimal') ?: 2));
             $nestedData['total_tax'] = number_format($transfer->total_tax, (int) (config('decimal') ?: 2));
             $nestedData['grand_total'] = number_format($transfer->grand_total, (int) (config('decimal') ?: 2));

@@ -145,6 +145,21 @@ class PurchaseService
         $purchases = $this->purchaseRepository->getFilteredPurchasesForDataTable($start, $limit, $order, $dir, $filters, $searchValue, $fieldNames);
         $totalFiltered = $this->purchaseRepository->countFilteredPurchasesForDataTable($filters, $searchValue);
 
+        $purchaseIds = $purchases->pluck('id')->toArray();
+        $productPurchases = DB::table('product_purchases')
+            ->whereIn('purchase_id', $purchaseIds)
+            ->selectRaw('purchase_id, SUM(qty) as total_qty, SUM(qty * selling_price) as selling_price')
+            ->groupBy('purchase_id')
+            ->get()
+            ->keyBy('purchase_id');
+
+        $returnedAmounts = DB::table('return_purchases')
+            ->whereIn('purchase_id', $purchaseIds)
+            ->selectRaw('purchase_id, SUM(grand_total) as returned_amount')
+            ->groupBy('purchase_id')
+            ->pluck('returned_amount', 'purchase_id');
+
+        $decimal = (int) (config('decimal') ?: 2);
         $data = [];
         foreach ($purchases as $key => $purchase) {
             $nestedData = [];
@@ -164,9 +179,16 @@ class PurchaseService
             $nestedData['purchase_status'] = PurchaseStatus::tryFrom((int) $purchase->status)?->badge() ?? '';
             $nestedData['payment_status'] = PaymentStatus::tryFrom((int) $purchase->payment_status)?->badge() ?? '';
 
-            $nestedData['grand_total'] = number_format($purchase->grand_total, (int) (config('decimal') ?: 2));
-            $nestedData['paid_amount'] = number_format($purchase->paid_amount, (int) (config('decimal') ?: 2));
-            $nestedData['due'] = number_format($purchase->grand_total - $purchase->paid_amount, (int) (config('decimal') ?: 2));
+            $totalQty = $productPurchases[$purchase->id]->total_qty ?? 0;
+            $sellingPrice = $productPurchases[$purchase->id]->selling_price ?? 0;
+            $returnedAmount = $returnedAmounts[$purchase->id] ?? 0;
+
+            $nestedData['total_qty'] = number_format((float) $totalQty, $decimal, '.', '');
+            $nestedData['selling_price'] = number_format((float) $sellingPrice, $decimal);
+            $nestedData['grand_total'] = number_format((float) $purchase->grand_total, $decimal);
+            $nestedData['returned_amount'] = number_format((float) $returnedAmount, $decimal);
+            $nestedData['paid_amount'] = number_format((float) $purchase->paid_amount, $decimal);
+            $nestedData['due'] = number_format((float) ($purchase->grand_total - $returnedAmount - $purchase->paid_amount), $decimal);
 
             foreach ($fieldNames as $fieldName) {
                 $nestedData[$fieldName] = $purchase->$fieldName;

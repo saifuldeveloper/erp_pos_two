@@ -2336,10 +2336,10 @@ class ReportController extends Controller
                     $nestedData['status'] = '<div class="badge badge-success">' . trans('file.Completed') . '</div>';
                     $sale_status = trans('file.Completed');
                 } elseif ($sale->sale_status == 2) {
-                    $nestedData['sale_status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
                     $sale_status = trans('file.Pending');
                 } else {
-                    $nestedData['sale_status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
                     $sale_status = trans('file.Draft');
                 }
                 $data[] = $nestedData;
@@ -2875,10 +2875,10 @@ class ReportController extends Controller
                     $nestedData['status'] = '<div class="badge badge-success">' . trans('file.Completed') . '</div>';
                     $sale_status = trans('file.Completed');
                 } elseif ($sale->sale_status == 2) {
-                    $nestedData['sale_status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
                     $sale_status = trans('file.Pending');
                 } else {
-                    $nestedData['sale_status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
                     $sale_status = trans('file.Draft');
                 }
                 $data[] = $nestedData;
@@ -3575,10 +3575,10 @@ class ReportController extends Controller
                     $nestedData['status'] = '<div class="badge badge-success">' . trans('file.Completed') . '</div>';
                     $sale_status = trans('file.Completed');
                 } elseif ($sale->sale_status == 2) {
-                    $nestedData['sale_status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
                     $sale_status = trans('file.Pending');
                 } else {
-                    $nestedData['sale_status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
                     $sale_status = trans('file.Draft');
                 }
                 $data[] = $nestedData;
@@ -3980,10 +3980,10 @@ class ReportController extends Controller
                     $nestedData['status'] = '<div class="badge badge-success">' . trans('file.Completed') . '</div>';
                     $sale_status = trans('file.Completed');
                 } elseif ($sale->sale_status == 2) {
-                    $nestedData['sale_status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-danger">' . trans('file.Pending') . '</div>';
                     $sale_status = trans('file.Pending');
                 } else {
-                    $nestedData['sale_status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
+                    $nestedData['status'] = '<div class="badge badge-warning">' . trans('file.Draft') . '</div>';
                     $sale_status = trans('file.Draft');
                 }
                 $data[] = $nestedData;

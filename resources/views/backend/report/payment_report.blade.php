@@ -7,6 +7,15 @@
         padding: 15px;
         margin-bottom: 20px;
     }
+    .dark-mode .filter-card {
+        background-color: #212837 !important;
+        border: 1px solid #3b4253 !important;
+    }
+    .dark-mode .date-picker {
+        background-color: #343d55 !important;
+        border-color: #404656 !important;
+        color: #eaeaea !important;
+    }
 </style>
 <section class="forms">
     <div class="container-fluid">
@@ -20,7 +29,7 @@
                         <div class="col-md-3 col-sm-5 mb-2">
                             <label class="font-weight-bold">Start Date:</label>
                             <div class="input-group">
-                                <input type="text" class="form-control date-picker" id="start_date" name="start_date" value="{{ $start_date }}" readonly style="background-color: #fff; cursor: pointer;" required />
+                                <input type="text" class="form-control date-picker" id="start_date" name="start_date" value="{{ $start_date }}" readonly style="cursor: pointer;" required />
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                 </div>
@@ -29,7 +38,7 @@
                         <div class="col-md-3 col-sm-5 mb-2">
                             <label class="font-weight-bold">End Date:</label>
                             <div class="input-group">
-                                <input type="text" class="form-control date-picker" id="end_date" name="end_date" value="{{ $end_date }}" readonly style="background-color: #fff; cursor: pointer;" required />
+                                <input type="text" class="form-control date-picker" id="end_date" name="end_date" value="{{ $end_date }}" readonly style="cursor: pointer;" required />
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                 </div>
