@@ -16,10 +16,11 @@ class CreateCashRegistersTable extends Migration
         Schema::create('cash_registers', function (Blueprint $table) {
             $table->increments('id');
             $table->double('cash_in_hand');
-            $table->integer('user_id');
-            $table->integer('warehouse_id');
-            $table->boolean('status');
+            $table->integer('user_id')->index();
+            $table->integer('warehouse_id')->index();
+            $table->boolean('status')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

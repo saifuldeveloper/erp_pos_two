@@ -30,10 +30,10 @@ class CreateQuotationTable extends Migration
             $table->double('order_discount')->nullable();
             $table->double('shipping_cost')->nullable();
             $table->double('grand_total');
-            $table->integer('quotation_status');
+            $table->integer('quotation_status')->index();
             $table->string('document')->nullable();
             $table->text('note')->nullable();
-            $table->integer('user_id')->index(); // From 2018_06_23_061058_add_user_id_to_quotations_table.php
+            $table->integer('user_id')->index();
 
             $table->timestamps();
             $table->index('created_at');

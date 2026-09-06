@@ -15,13 +15,14 @@ class CreateAdjustmentsTable extends Migration
     {
         Schema::create('adjustments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('warehouse_id');
+            $table->string('reference_no')->index();
+            $table->integer('warehouse_id')->index();
             $table->string('document')->nullable();
             $table->double('total_qty');
             $table->integer('item');
             $table->text('note')->nullable();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

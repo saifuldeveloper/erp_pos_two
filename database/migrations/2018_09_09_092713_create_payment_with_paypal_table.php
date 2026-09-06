@@ -15,9 +15,10 @@ class CreatePaymentWithPaypalTable extends Migration
     {
         Schema::create('payment_with_paypal', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('payment_id');
+            $table->integer('payment_id')->index();
             $table->string('transaction_id');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

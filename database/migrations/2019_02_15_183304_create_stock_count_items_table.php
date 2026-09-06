@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('current_quantity');
             $table->integer('updated_quantity');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

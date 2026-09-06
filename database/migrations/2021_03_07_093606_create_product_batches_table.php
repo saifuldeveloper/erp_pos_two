@@ -15,11 +15,12 @@ class CreateProductBatchesTable extends Migration
     {
         Schema::create('product_batches', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('product_id');
+            $table->integer('product_id')->index();
             $table->string('batch_no');
             $table->date('expired_date');
             $table->double('qty');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

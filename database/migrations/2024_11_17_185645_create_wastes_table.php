@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('wastes', function (Blueprint $table) {
             $table->id();
             $table->string('receiver_type');
-            $table->integer('receiver_id');
+            $table->integer('receiver_id')->index();
             $table->string('receiver_name')->nullable();
             $table->string('note')->nullable();
             $table->decimal('total_price', 10, 2);
-            $table->boolean('status')->default(true);
+            $table->boolean('status')->default(true)->index();
             $table->timestamps();
             $table->index('created_at');
         });

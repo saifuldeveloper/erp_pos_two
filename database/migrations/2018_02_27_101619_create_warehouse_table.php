@@ -14,10 +14,11 @@ class CreateWarehouseTable extends Migration
             $table->string('phone')->nullable(); 
             $table->string('email')->nullable(); 
             $table->text('address');
-            $table->boolean('is_active')->nullable();
-            $table->boolean('is_default')->default(true); // From 2024_11_16_181754_add_is_default_to_warehouses_table.php
+            $table->boolean('is_active')->nullable()->index();
+            $table->boolean('is_default')->default(true);
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

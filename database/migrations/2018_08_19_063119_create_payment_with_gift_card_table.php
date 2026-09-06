@@ -15,9 +15,10 @@ class CreatePaymentWithGiftCardTable extends Migration
     {
         Schema::create('payment_with_gift_card', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('payment_id');
-            $table->integer('gift_card_id');
+            $table->integer('payment_id')->index();
+            $table->integer('gift_card_id')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

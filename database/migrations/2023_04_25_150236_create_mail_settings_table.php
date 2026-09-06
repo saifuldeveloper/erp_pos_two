@@ -24,6 +24,7 @@ class CreateMailSettingsTable extends Migration
             $table->string('password');
             $table->string('encryption');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

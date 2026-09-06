@@ -16,14 +16,15 @@ class CreateAttendancesTable extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
-            $table->integer('employee_id');
-            $table->integer('user_id');
+            $table->integer('employee_id')->index();
+            $table->integer('user_id')->index();
             $table->string('checkin');
             $table->string('checkout')->nullable();
             $table->unique(['date', 'employee_id', 'checkin']);
-            $table->integer('status');
+            $table->integer('status')->index();
             $table->text('note')->nullable();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

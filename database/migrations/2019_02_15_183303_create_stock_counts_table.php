@@ -15,12 +15,13 @@ class CreateStockCountsTable extends Migration
     {
         Schema::create('stock_counts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('warehouse_id')->unsigned()->nullable();
+            $table->integer('warehouse_id')->unsigned()->nullable()->index();
             $table->boolean('is_completed')->default(false);
             $table->boolean('is_resolved')->default(false);
             $table->integer('completed_by')->unsigned()->nullable();
             $table->integer('resolved_by')->unsigned()->nullable();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

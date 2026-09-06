@@ -10,10 +10,11 @@ class CreateGiftCardRechargesTable extends Migration
     {
         Schema::create('gift_card_recharges', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('gift_card_id');
+            $table->integer('gift_card_id')->index();
             $table->double('amount');
-            $table->integer('user_id');
+            $table->integer('user_id')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

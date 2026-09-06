@@ -13,6 +13,7 @@ class CreateVariantsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

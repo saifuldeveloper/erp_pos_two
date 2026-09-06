@@ -15,9 +15,10 @@ class CreateDiscountPlanDiscountsTable extends Migration
     {
         Schema::create('discount_plan_discounts', function (Blueprint $table) {
             $table->id();
-            $table->integer('discount_id');
-            $table->integer('discount_plan_id');
+            $table->integer('discount_id')->index();
+            $table->integer('discount_plan_id')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

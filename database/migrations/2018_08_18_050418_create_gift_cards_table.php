@@ -18,12 +18,13 @@ class CreateGiftCardsTable extends Migration
             $table->string('card_no');
             $table->double('amount');
             $table->double('expense');
-            $table->integer('customer_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->integer('customer_id')->nullable()->index();
+            $table->integer('user_id')->nullable()->index();
             $table->date('expired_date')->nullable();
             $table->integer('created_by');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

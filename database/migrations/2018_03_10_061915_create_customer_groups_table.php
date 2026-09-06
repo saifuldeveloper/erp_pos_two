@@ -17,8 +17,9 @@ class CreateCustomerGroupsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('percentage');
-            $table->boolean('is_active')->nullable();
+            $table->boolean('is_active')->nullable()->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

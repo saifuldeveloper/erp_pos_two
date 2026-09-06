@@ -19,8 +19,9 @@ class CreateRewardPointSettingsTable extends Migration
             $table->double('minimum_amount');
             $table->integer('duration')->nullable();
             $table->string('type')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

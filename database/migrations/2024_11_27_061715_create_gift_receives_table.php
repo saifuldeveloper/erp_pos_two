@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('gift_receives', function (Blueprint $table) {
             $table->id();
-            $table->string('purchase_id')->nullable();
-            $table->string('gift_transaction_id')->nullable();
+            $table->string('purchase_id')->nullable()->index();
+            $table->string('gift_transaction_id')->nullable()->index();
             $table->string('name')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('quantity_received')->nullable();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

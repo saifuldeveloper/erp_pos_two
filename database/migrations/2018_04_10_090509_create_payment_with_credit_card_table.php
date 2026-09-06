@@ -15,11 +15,12 @@ class CreatePaymentWithCreditCardTable extends Migration
     {
         Schema::create('payment_with_credit_card', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('payment_id');
-            $table->integer('customer_id')->nullable();
+            $table->integer('payment_id')->index();
+            $table->integer('customer_id')->nullable()->index();
             $table->string('customer_stripe_id')->nullable();
             $table->string('charge_id');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

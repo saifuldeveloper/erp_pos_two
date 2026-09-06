@@ -15,10 +15,10 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('status');
-            $table->integer('from_warehouse_id');
-            $table->integer('to_warehouse_id');
+            $table->string('reference_no')->index();
+            $table->integer('status')->index();
+            $table->integer('from_warehouse_id')->index();
+            $table->integer('to_warehouse_id')->index();
             $table->integer('item');
             $table->double('total_qty');
             $table->double('total_tax');
@@ -27,9 +27,10 @@ class CreateTransfersTable extends Migration
             $table->double('grand_total');
             $table->string('document')->nullable();
             $table->text('note')->nullable();
-            $table->integer('user_id'); // From 2018_06_21_103512_add_user_id_to_transfers_table.php
+            $table->integer('user_id')->index();
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

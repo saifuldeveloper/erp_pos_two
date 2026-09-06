@@ -18,8 +18,9 @@ class CreateTablesTable extends Migration
             $table->string('name');
             $table->integer('number_of_person')->nullable();
             $table->text('description')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

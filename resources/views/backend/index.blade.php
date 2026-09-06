@@ -1335,20 +1335,6 @@ END OF ORIGINAL 12 CARDS SECTION
         return format;
     }
 
-
-    $(document).ready(function(){
-      $.ajax({
-        url: '{{url("/")}}',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            $('#userShowModal').modal('show');
-            $('#user-id').text(data.id);
-            $('#user-name').text(data.name);
-            $('#user-email').text(data.email);
-        }
-      });
-    })
     // Show and hide color-switcher
     $(".color-switcher .switcher-button").on('click', function() {
         $(".color-switcher").toggleClass("show-color-switcher", "hide-color-switcher", 300);

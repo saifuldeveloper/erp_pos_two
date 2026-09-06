@@ -16,11 +16,12 @@ class CreateCurrenciesTable extends Migration
         Schema::create('currencies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('code');
+            $table->string('code')->index();
             $table->double('exchange_rate');
-            $table->boolean('is_active')->default(1); // From 2023_08_14_142608_add_is_active_to_currencies_table.php
+            $table->boolean('is_active')->default(1)->index();
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

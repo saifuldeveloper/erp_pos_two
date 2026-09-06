@@ -20,8 +20,9 @@ class CreateUnitsTable extends Migration
             $table->integer('base_unit')->nullable();
             $table->string('operator')->nullable();
             $table->double('operation_value')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->boolean('is_active')->nullable()->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

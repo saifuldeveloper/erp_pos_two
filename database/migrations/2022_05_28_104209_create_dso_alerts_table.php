@@ -18,6 +18,7 @@ class CreateDsoAlertsTable extends Migration
             $table->longText('product_info');
             $table->integer('number_of_products');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

@@ -27,6 +27,7 @@ class CreateCustomFieldsTable extends Migration
             $table->boolean('is_admin');
             $table->boolean('is_disable');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

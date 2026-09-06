@@ -18,6 +18,7 @@ class CreateHrmSettingsTable extends Migration
             $table->string('checkin');
             $table->string('checkout');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

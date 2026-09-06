@@ -15,21 +15,22 @@ class CreatePosSettingTable extends Migration
     {
         Schema::create('pos_setting', function (Blueprint $table) {
             $table->integer('id')->unique();
-            $table->integer('customer_id');
-            $table->integer('warehouse_id');
-            $table->integer('biller_id');
+            $table->integer('customer_id')->index();
+            $table->integer('warehouse_id')->index();
+            $table->integer('biller_id')->index();
             $table->integer('product_number');
             $table->string('stripe_public_key')->nullable();
             $table->string('stripe_secret_key')->nullable();
-            $table->boolean('keybord_active'); // From 2018_09_02_044042_add_keybord_active_to_pos_setting_table.php
-            $table->string('paypal_live_api_username')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
-            $table->string('paypal_live_api_password')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
-            $table->string('paypal_live_api_secret')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
-            $table->text('payment_options')->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
-            $table->string('invoice_option',10)->nullable()->default(null); // From 2023_01_18_133701_alter_table_pos_setting.php
-            $table->boolean('is_table')->default(0); // From 2023_05_29_115039_add_is_table_to_pos_setting_table.php
+            $table->boolean('keybord_active');
+            $table->string('paypal_live_api_username')->nullable()->default(null);
+            $table->string('paypal_live_api_password')->nullable()->default(null);
+            $table->string('paypal_live_api_secret')->nullable()->default(null);
+            $table->text('payment_options')->nullable()->default(null);
+            $table->string('invoice_option',10)->nullable()->default(null);
+            $table->boolean('is_table')->default(0);
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

@@ -15,7 +15,7 @@ class CreatePayrollsTable extends Migration
     {
         Schema::create('payrolls', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('payroll_type_id');
+            $table->string('payroll_type_id')->index();
             $table->string('reference_no')->index();
             $table->integer('employee_id')->index();
             $table->integer('account_id')->index();

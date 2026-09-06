@@ -15,9 +15,10 @@ class CreatePaymentWithChequeTable extends Migration
     {
         Schema::create('payment_with_cheque', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('payment_id');
+            $table->integer('payment_id')->index();
             $table->string('cheque_no');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

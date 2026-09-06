@@ -16,11 +16,12 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('parent_id')->nullable();
-            $table->boolean('is_active')->nullable();
-            $table->string('image')->nullable(); // From 2020_07_01_193151_add_image_to_categories_table.php
+            $table->integer('parent_id')->nullable()->index();
+            $table->boolean('is_active')->nullable()->index();
+            $table->string('image')->nullable();
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

@@ -15,13 +15,14 @@ class CreateProductAdjustmentsTable extends Migration
     {
         Schema::create('product_adjustments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('adjustment_id');
-            $table->integer('product_id');
+            $table->integer('adjustment_id')->index();
+            $table->integer('product_id')->index();
             $table->double('qty');
             $table->string('action');
-            $table->integer('variant_id')->nullable(); // From 2021_02_10_074859_add_variant_id_to_product_adjustments_table.php
+            $table->integer('variant_id')->nullable()->index();
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

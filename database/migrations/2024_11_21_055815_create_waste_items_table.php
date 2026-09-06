@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('unit_price');
             $table->double('subtotal');
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

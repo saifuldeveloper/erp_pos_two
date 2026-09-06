@@ -18,13 +18,14 @@ class CreateCouriersTable extends Migration
             $table->string('name');
             $table->string('phone_number')->nullable();
             $table->text('address')->nullable();
-            $table->string('client_id')->nullable();
+            $table->string('client_id')->nullable()->index();
             $table->string('client_secret')->nullable();
-            $table->string('store_id')->nullable();
+            $table->string('store_id')->nullable()->index();
             $table->string('username')->nullable();
             $table->string('password')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

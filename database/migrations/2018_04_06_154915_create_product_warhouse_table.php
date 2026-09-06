@@ -15,21 +15,19 @@ return new class extends Migration
     {
         Schema::create('product_warehouse', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $table->integer('product_batch_id')->nullable();
-            $table->integer('warehouse_id')->unsigned();
-            $table->integer('variant_id')->nullable()->unsigned();
+            $table->integer('product_id')->unsigned()->index();
+            $table->integer('product_batch_id')->nullable()->index();
+            $table->integer('warehouse_id')->unsigned()->index();
+            $table->integer('variant_id')->nullable()->unsigned()->index();
             $table->text('imei_number')->nullable();
             $table->double('qty', 15, 2)->default(0);
             $table->double('price', 15, 2)->nullable();
             $table->timestamps();
+            $table->index('created_at');
 
             // Laravel 11 standard virtual stored generated column
             $table->string('unique_key')->storedAs("CONCAT(product_id, '-', warehouse_id, '-', COALESCE(variant_id, 0), '-', COALESCE(product_batch_id, 0))");
 
-            $table->index('product_id');
-            $table->index('variant_id');
-            $table->index('warehouse_id');
             $table->unique('unique_key', 'unique_stock_index');
         });
     }

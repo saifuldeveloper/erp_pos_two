@@ -15,19 +15,20 @@ class CreateProductTransferTable extends Migration
     {
         Schema::create('product_transfer', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transfer_id');
-            $table->integer('product_id');
+            $table->integer('transfer_id')->index();
+            $table->integer('product_id')->index();
             $table->double('qty');
-            $table->integer('purchase_unit_id');
+            $table->integer('purchase_unit_id')->index();
             $table->double('net_unit_cost');
             $table->double('tax_rate');
             $table->double('tax');
             $table->double('total');
-            $table->integer('variant_id')->nullable(); // From 2019_12_05_123802_add_variant_id_to_product_transfer_table.php
-            $table->integer('product_batch_id')->nullable(); // From 2021_05_23_124848_add_product_batch_id_to_product_transfer_table.php
-            $table->text('imei_number')->nullable(); // From 2021_10_11_104504_add_imei_number_to_product_transfer_table.php
+            $table->integer('variant_id')->nullable()->index();
+            $table->integer('product_batch_id')->nullable()->index();
+            $table->text('imei_number')->nullable();
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

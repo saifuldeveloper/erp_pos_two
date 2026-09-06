@@ -26,8 +26,9 @@ class CreateBillersTable extends Migration
             $table->string('state')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->boolean('is_active')->nullable()->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

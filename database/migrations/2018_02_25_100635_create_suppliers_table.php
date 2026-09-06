@@ -28,6 +28,7 @@ class CreateSuppliersTable extends Migration
             $table->string('country')->nullable();
             $table->boolean('is_active')->nullable()->index();
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 

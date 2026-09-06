@@ -18,16 +18,16 @@ class CreateProductSalesTable extends Migration
             $table->integer('sale_id')->index();
             $table->integer('product_id')->index();
             $table->double('qty');
-            $table->integer('sale_unit_id');
+            $table->integer('sale_unit_id')->index();
             $table->double('net_unit_price');
             $table->double('discount');
             $table->double('tax_rate');
             $table->double('tax');
             $table->double('total');
-            $table->integer('variant_id')->nullable()->index(); // From 2019_11_29_182201_add_variant_id_to_product_sales_table.php
-            $table->integer('product_batch_id')->nullable()->index(); // From 2021_03_11_132603_add_product_batch_id_to_product_sales_table.php
-            $table->text('imei_number')->nullable(); // From 2021_10_03_170652_add_imei_number_to_product_sales_table.php
-            $table->double('return_qty')->default(0); // From 2023_10_15_124306_add_return_qty_to_product_sales_table.php
+            $table->integer('variant_id')->nullable()->index();
+            $table->integer('product_batch_id')->nullable()->index();
+            $table->text('imei_number')->nullable();
+            $table->double('return_qty')->default(0);
 
             $table->timestamps();
             $table->index('created_at');

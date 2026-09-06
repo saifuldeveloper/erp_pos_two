@@ -321,13 +321,26 @@ class HomeController extends Controller
     public function yearlyBestSellingPrice()
     {
         config()->set('database.connections.mysql.strict', false);
-        $yearly_best_selling_price = Product_Sale::join('products', 'products.id', '=', 'product_sales.product_id')
-            ->select(DB::raw('products.name as product_name, products.code as product_code, products.image as product_images, sum(total) as total_price'))
-            ->whereDate('product_sales.created_at', '>=', date("Y") . '-01-01')
-            ->whereDate('product_sales.created_at', '<=', date("Y") . '-12-31')
-            ->groupBy('products.code')
+        $start_dt = date("Y") . '-01-01 00:00:00';
+        $end_dt = date("Y") . '-12-31 23:59:59';
+
+        $aggQuery = Product_Sale::select('product_id', DB::raw('SUM(total) as total_price'))
+            ->where('created_at', '>=', $start_dt)
+            ->where('created_at', '<=', $end_dt)
+            ->groupBy('product_id')
             ->orderBy('total_price', 'desc')
-            ->take(20)
+            ->take(20);
+
+        $yearly_best_selling_price = DB::table(DB::raw("({$aggQuery->toSql()}) as ps_agg"))
+            ->mergeBindings($aggQuery->getQuery())
+            ->join('products', 'products.id', '=', 'ps_agg.product_id')
+            ->select(
+                'products.name as product_name',
+                'products.code as product_code',
+                'products.image as product_images',
+                'ps_agg.total_price'
+            )
+            ->orderBy('ps_agg.total_price', 'desc')
             ->get();
 
         return response()->json($yearly_best_selling_price);
@@ -336,13 +349,26 @@ class HomeController extends Controller
     public function yearlyBestSellingQty()
     {
         config()->set('database.connections.mysql.strict', false);
-        $yearly_best_selling_qty = Product_Sale::join('products', 'products.id', '=', 'product_sales.product_id')
-            ->select(DB::raw('products.name as product_name, products.code as product_code, products.image as product_images, sum(product_sales.qty) as sold_qty'))
-            ->whereDate('product_sales.created_at', '>=', date("Y") . '-01-01')
-            ->whereDate('product_sales.created_at', '<=', date("Y") . '-12-31')
-            ->groupBy('products.code')
+        $start_dt = date("Y") . '-01-01 00:00:00';
+        $end_dt = date("Y") . '-12-31 23:59:59';
+
+        $aggQuery = Product_Sale::select('product_id', DB::raw('SUM(qty) as sold_qty'))
+            ->where('created_at', '>=', $start_dt)
+            ->where('created_at', '<=', $end_dt)
+            ->groupBy('product_id')
             ->orderBy('sold_qty', 'desc')
-            ->take(20)
+            ->take(20);
+
+        $yearly_best_selling_qty = DB::table(DB::raw("({$aggQuery->toSql()}) as ps_agg"))
+            ->mergeBindings($aggQuery->getQuery())
+            ->join('products', 'products.id', '=', 'ps_agg.product_id')
+            ->select(
+                'products.name as product_name',
+                'products.code as product_code',
+                'products.image as product_images',
+                'ps_agg.sold_qty'
+            )
+            ->orderBy('ps_agg.sold_qty', 'desc')
             ->get();
 
         return response()->json($yearly_best_selling_qty);
@@ -393,46 +419,57 @@ class HomeController extends Controller
 
     public function recentSale()
     {
+        $query = Sale::join('customers', 'customers.id', '=', 'sales.customer_id')
+            ->select('sales.id', 'sales.reference_no', 'sales.sale_status', 'sales.created_at', 'sales.grand_total', 'sales.user_id', 'customers.name')
+            ->orderBy('sales.id', 'desc');
+
         if (Auth::user()->role_id > 2 && cache()->get('general_setting')->staff_access == 'own') {
-            $recent_sale = Sale::join('customers', 'customers.id', '=', 'sales.customer_id')->select('sales.id', 'sales.reference_no', 'sales.sale_status', 'sales.created_at', 'sales.grand_total', 'sales.user_id', 'customers.name')->orderBy('id', 'desc')->where('sales.user_id', Auth::id())->take(5)->get();
-            return response()->json($recent_sale);
-        } else {
-            $recent_sale = Sale::join('customers', 'customers.id', '=', 'sales.customer_id')->select('sales.id', 'sales.reference_no', 'sales.sale_status', 'sales.created_at', 'sales.grand_total', 'customers.name')->orderBy('id', 'desc')->take(5)->get();
-            return response()->json($recent_sale);
+            $query->where('sales.user_id', Auth::id());
         }
+
+        $recent_sale = $query->take(5)->get();
+        return response()->json($recent_sale);
     }
 
     public function recentPurchase()
     {
+        $query = Purchase::join('suppliers', 'suppliers.id', '=', 'purchases.supplier_id')
+            ->select('purchases.id', 'purchases.reference_no', 'purchases.payment_status', 'purchases.created_at', 'purchases.grand_total', 'purchases.user_id', 'suppliers.name')
+            ->orderBy('purchases.id', 'desc');
+
         if (Auth::user()->role_id > 2 && cache()->get('general_setting')->staff_access == 'own') {
-            $recent_purchase = Purchase::join('suppliers', 'suppliers.id', '=', 'purchases.supplier_id')->select('purchases.id', 'purchases.reference_no', 'purchases.payment_status', 'purchases.created_at', 'purchases.grand_total', 'purchases.user_id', 'suppliers.name')->orderBy('id', 'desc')->where('purchases.user_id', Auth::id())->take(5)->get();
-            return response()->json($recent_purchase);
-        } else {
-            $recent_purchase = Purchase::join('suppliers', 'suppliers.id', '=', 'purchases.supplier_id')->select('purchases.id', 'purchases.reference_no', 'purchases.payment_status', 'purchases.created_at', 'purchases.grand_total', 'suppliers.name')->orderBy('id', 'desc')->take(5)->get();
-            return response()->json($recent_purchase);
+            $query->where('purchases.user_id', Auth::id());
         }
+
+        $recent_purchase = $query->take(5)->get();
+        return response()->json($recent_purchase);
     }
 
     public function recentQuotation()
     {
+        $query = Quotation::join('customers', 'customers.id', '=', 'quotations.customer_id')
+            ->select('quotations.id', 'quotations.reference_no', 'quotations.quotation_status', 'quotations.created_at', 'quotations.grand_total', 'quotations.user_id', 'customers.name')
+            ->orderBy('quotations.id', 'desc');
+
         if (Auth::user()->role_id > 2 && cache()->get('general_setting')->staff_access == 'own') {
-            $recent_quotation = Quotation::join('customers', 'customers.id', '=', 'quotations.customer_id')->select('quotations.id', 'quotations.reference_no', 'quotations.quotation_status', 'quotations.created_at', 'quotations.grand_total', 'quotations.user_id', 'customers.name')->orderBy('id', 'desc')->where('quotations.user_id', Auth::id())->take(5)->get();
-            return response()->json($recent_quotation);
-        } else {
-            $recent_quotation = Quotation::join('customers', 'customers.id', '=', 'quotations.customer_id')->select('quotations.id', 'quotations.reference_no', 'quotations.quotation_status', 'quotations.created_at', 'quotations.grand_total', 'customers.name')->orderBy('id', 'desc')->take(5)->get();
-            return response()->json($recent_quotation);
+            $query->where('quotations.user_id', Auth::id());
         }
+
+        $recent_quotation = $query->take(5)->get();
+        return response()->json($recent_quotation);
     }
 
     public function recentPayment()
     {
+        $query = Payment::select('id', 'payment_reference', 'amount', 'paying_method', 'created_at', 'user_id')
+            ->orderBy('payments.id', 'desc');
+
         if (Auth::user()->role_id > 2 && cache()->get('general_setting')->staff_access == 'own') {
-            $recent_payment = Payment::select('id', 'payment_reference', 'amount', 'paying_method', 'created_at', 'user_id')->orderBy('id', 'desc')->where('user_id', Auth::id())->take(5)->get();
-            return response()->json($recent_payment);
-        } else {
-            $recent_payment = Payment::select('id', 'payment_reference', 'amount', 'paying_method', 'created_at')->orderBy('id', 'desc')->take(5)->get();
-            return response()->json($recent_payment);
+            $query->where('user_id', Auth::id());
         }
+
+        $recent_payment = $query->take(5)->get();
+        return response()->json($recent_payment);
     }
 
     public function dashboardFilter($start_date, $end_date)

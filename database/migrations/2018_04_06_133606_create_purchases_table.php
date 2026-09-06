@@ -33,9 +33,9 @@ class CreatePurchasesTable extends Migration
             $table->integer('payment_status')->index();
             $table->string('document')->nullable();
             $table->text('note')->nullable();
-            $table->integer('user_id')->index(); // From 2018_06_21_101529_add_user_id_to_purchases_table.php
-            $table->integer('currency_id')->nullable(); // From 2023_03_27_114320_add_currency_id_and_exchange_rate_to_purchases_table.php
-            $table->double('exchange_rate')->nullable(); // From 2023_03_27_114320_add_currency_id_and_exchange_rate_to_purchases_table.php
+            $table->integer('user_id')->index();
+            $table->integer('currency_id')->nullable()->index();
+            $table->double('exchange_rate')->nullable();
 
             $table->timestamps();
             $table->index('created_at');

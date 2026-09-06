@@ -10,19 +10,20 @@ class CreateDeliveriesTable extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference_no');
-            $table->integer('sale_id');
+            $table->string('reference_no')->index();
+            $table->integer('sale_id')->index();
             $table->text('address');
             $table->string('delivered_by')->nullable();
             $table->string('recieved_by')->nullable();
             $table->string('file')->nullable();
             $table->string('note')->nullable();
-            $table->string('courier_tracking_id')->nullable();
-            $table->string('status');
-            $table->integer('user_id')->nullable(); // From 2020_09_26_130426_add_user_id_to_deliveries_table.php
-            $table->integer('courier_id')->nullable(); // From 2023_07_23_174343_add_courier_id_to_deliveries_table.php
+            $table->string('courier_tracking_id')->nullable()->index();
+            $table->string('status')->index();
+            $table->integer('user_id')->nullable()->index();
+            $table->integer('courier_id')->nullable()->index();
 
             $table->timestamps();
+            $table->index('created_at');
         });
     }
 
