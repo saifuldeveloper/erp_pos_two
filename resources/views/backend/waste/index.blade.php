@@ -1,6 +1,10 @@
-@extends('backend.layout.main') @section('content')
+@extends('backend.layout.main')
 
 @section('content')
+    @if (session()->has('message'))
+        <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert"
+                aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div>
+    @endif
     @if (session()->has('not_permitted'))
         <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert"
                 aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
@@ -38,6 +42,9 @@
                     </div>
                 </div>
             </div>
+            @if (in_array('waste-add', $all_permission))
+                <a href="{{ route('waste.create') }}" class="btn btn-info mb-3"><i class="dripicons-plus"></i> {{ trans('file.Add Waste') }}</a>
+            @endif
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
@@ -121,9 +128,7 @@
 
 @push('scripts')
     <script type="text/javascript">
-        $("ul#waste").siblings('a').attr('aria-expanded', 'true');
-        $("ul#waste").addClass("show");
-        $("ul#waste #waste-list-menu").addClass("active");
+        $("#waste-menu").addClass("active");
 
         var start_date = <?php echo json_encode($start_date); ?>;
         var end_date = <?php echo json_encode($end_date); ?>;

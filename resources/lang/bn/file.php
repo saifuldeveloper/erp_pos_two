@@ -1528,4 +1528,8 @@ return [
 	"Salary" => "বেতন",
 	"Method" => "পদ্ধতি",
 	"Employee" => "কর্মচারী",
+	"Waste" => "অপচয়",
+	"Waste List" => "অপচয় তালিকা",
+	"Add Waste" => "অপচয় যোগ করুন",
+	"Waste Details" => "অপচয়ের বিস্তারিত",
 ];

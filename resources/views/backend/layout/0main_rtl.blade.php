@@ -488,7 +488,7 @@
                         ])->first();
               ?>
               @if($user_index_permission_active || $customer_index_permission_active || $biller_index_permission_active || $supplier_index_permission_active)
-              <li><a href="#people" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-user"></i><span>{{trans('file.People')}}</span></a>
+              <li><a href="#people" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-user"></i><span>{{trans('file.User')}}</span></a>
                 <ul id="people" class="collapse list-unstyled ">
 
                   @if($user_index_permission_active)

@@ -65,7 +65,7 @@ class WasteController extends Controller
     public function create()
     {
         $role = Role::find(Auth::user()->role_id);
-        if ($role->hasPermissionTo('sales-index')) {
+        if ($role->hasPermissionTo('waste-add') || $role->hasPermissionTo('sales-index')) {
             $products = $this->wasteService->getCreateProductsData();
             return view('backend.waste.create', compact('products'));
         }

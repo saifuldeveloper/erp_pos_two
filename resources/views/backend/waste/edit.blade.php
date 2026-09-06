@@ -157,9 +157,7 @@
 
 @push('scripts')
     <script type="text/javascript">
-        $("ul#waste").siblings('a').attr('aria-expanded', 'true');
-        $("ul#waste").addClass("show");
-        $("ul#waste #waste-list-menu").addClass("active");
+        $("#waste-menu").addClass("active");
         $('#receiver_type').on('change', function() {
             var type = $(this).val();
             $.get('{{ route('waste.getReceiverList', ':type') }}'.replace(':type', type), function(data) {

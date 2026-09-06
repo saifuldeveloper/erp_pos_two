@@ -1574,4 +1574,6 @@ return [
 	"Salary" => "Salary",
 	"Method" => "Method",
 	"Employee" => "Employee",
+	"Waste List" => "Waste List",
+	"Add Waste" => "Add Waste",
 ];

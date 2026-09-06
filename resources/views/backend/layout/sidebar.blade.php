@@ -149,22 +149,8 @@
             $waste_permission_active = $role_has_permissions_list->where('name', 'waste-index')->first() ?: $role_has_permissions_list->where('name', 'waste')->first();
             ?>
             @if ($waste_permission_active)
-            <li>
-                <a href="#waste" aria-expanded="false" data-toggle="collapse">
-                    <i class="dripicons-trash"></i>
-                    <span>{{ trans('file.Waste') }}</span>
-                </a>
-                <ul id="waste" class="collapse list-unstyled ">
-                    <li id="waste-list-menu">
-                        <a href="{{ route('waste.index') }}">{{ trans('file.Waste List') }}</a>
-                    </li>
-                    @if ($role_has_permissions_list->where('name', 'waste-add')->first())
-                    <li id="waste-create-menu">
-                        <a href="{{ route('waste.create') }}">{{ trans('file.Add Waste') }}</a>
-                    </li>
-                    @endif
-                </ul>
-            </li>
+                <li id="waste-menu"><a href="{{ route('waste.index') }}"> <i
+                            class="dripicons-trash"></i><span>{{ trans('file.Waste') }}</span></a></li>
             @endif
             <?php
             $index_permission_active = $role_has_permissions_list->where('name', 'expenses-index')->first();
@@ -364,7 +350,7 @@
                 $is_management ||
                 Auth::user()->role_id <= 2)
             <li><a href="#people" aria-expanded="false" data-toggle="collapse"> <i
-                        class="dripicons-user"></i><span>{{ trans('file.People') }}</span></a>
+                        class="dripicons-user"></i><span>{{ trans('file.User') }}</span></a>
                 <ul id="people" class="collapse list-unstyled ">
 
                     @if ($user_index_permission_active)
