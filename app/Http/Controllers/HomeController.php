@@ -259,38 +259,60 @@ class HomeController extends Controller
             $curr = strtotime("+1 month", $curr);
         }
 
-        $initial_balance = Account::where('is_active', true)->sum('initial_balance');
-        $pmt_totals = Payment::selectRaw('
-            SUM(CASE WHEN sale_id IS NOT NULL THEN amount ELSE 0 END) as total_cashin,
-            SUM(CASE WHEN purchase_id IS NOT NULL THEN amount ELSE 0 END) as total_cashout
-        ')->first();
-        $dep_sum = (float)(Deposit::sum('amount') ?? 0);
-        $ret_pur_sum = (float)(ReturnPurchase::sum('grand_total') ?? 0);
-        $exp_sum = (float)(Expense::sum('amount') ?? 0);
-        $ret_sale_sum = (float)(Returns::sum('grand_total') ?? 0);
-        $pay_sum = (float)(Payroll::sum('amount') ?? 0);
+        $active_accounts = Account::where('is_active', true)->get();
+        $active_account_ids = $active_accounts->pluck('id')->toArray();
 
-        $cashin = (float)($pmt_totals->total_cashin ?? 0) + $dep_sum + $ret_pur_sum;
-        $cashout = (float)($pmt_totals->total_cashout ?? 0) + $exp_sum + $ret_sale_sum + $pay_sum;
+        $pmt_totals = Payment::whereIn('account_id', $active_account_ids)
+            ->selectRaw('
+                SUM(CASE WHEN sale_id IS NOT NULL THEN amount ELSE 0 END) as total_cashin,
+                SUM(CASE WHEN purchase_id IS NOT NULL THEN amount ELSE 0 END) as total_cashout
+            ')->first();
+
+        $ret_pur_sum = (float) ReturnPurchase::whereIn('account_id', $active_account_ids)->sum('grand_total');
+        $exp_sum = (float) Expense::whereIn('account_id', $active_account_ids)->sum('amount');
+        $ret_sale_sum = (float) Returns::whereIn('account_id', $active_account_ids)->sum('grand_total');
+        $pay_sum = (float) Payroll::whereIn('account_id', $active_account_ids)->sum('amount');
+
+        // Inter-account transfer leakages if an account is inactive/external
+        $mt_in = (float) MoneyTransfer::whereIn('to_account_id', $active_account_ids)
+            ->whereNotIn('from_account_id', $active_account_ids)
+            ->sum('amount');
+        $mt_out = (float) MoneyTransfer::whereIn('from_account_id', $active_account_ids)
+            ->whereNotIn('to_account_id', $active_account_ids)
+            ->sum('amount');
+
+        $initial_balance = (float) $active_accounts->sum('initial_balance');
+        $cashin = (float) ($pmt_totals->total_cashin ?? 0) + $ret_pur_sum + $mt_in;
+        $cashout = (float) ($pmt_totals->total_cashout ?? 0) + $exp_sum + $ret_sale_sum + $pay_sum + $mt_out;
         $total_current_balance = $initial_balance + $cashin - $cashout;
         $cash = collect(['in' => $cashin, 'out' => $cashout, 'initial_balance' => $initial_balance, 'balance' => $total_current_balance]);
 
-        $stock_calc = Product::selectRaw('sum(COALESCE(qty, 0) * COALESCE(cost, 0)) as total_stock_value, sum(COALESCE(qty, 0) * COALESCE(price, 0)) as total_stock_price')
-            ->where('is_active', true)->first();
+        $stock_calc = Product::selectRaw('
+            SUM(CASE WHEN type NOT IN ("combo", "service", "digital") AND qty > 0 THEN qty * cost ELSE 0 END) as total_stock_value,
+            SUM(CASE WHEN type NOT IN ("combo", "service", "digital") AND qty > 0 THEN qty * price ELSE 0 END) as total_stock_price
+        ')->where('is_active', true)->first();
 
-        $sale_tot_due = Sale::selectRaw('sum(grand_total - paid_amount) as total_due_from_sale')->first()->total_due_from_sale ?? 0;
-        $pur_tot_due = Purchase::selectRaw('sum(grand_total - paid_amount) as total_due_from_purchase')->first()->total_due_from_purchase ?? 0;
+        $sale_tot_due = (float) (Sale::where('sale_status', 1)
+            ->selectRaw('SUM(CASE WHEN grand_total > paid_amount THEN (grand_total - paid_amount) ELSE 0 END) as total_due_from_sale')
+            ->first()->total_due_from_sale ?? 0);
+
+        $pur_tot_due = (float) (Purchase::whereIn('status', [1, 2])
+            ->selectRaw('SUM(CASE WHEN grand_total > paid_amount THEN (grand_total - paid_amount) ELSE 0 END) as total_due_from_purchase')
+            ->first()->total_due_from_purchase ?? 0);
+
+        $customer_advance = (float) Customer::where('is_active', true)
+            ->sum(DB::raw('GREATEST(deposit - expense, 0)'));
 
         $assets = collect([
-            'total_stock_value' => $stock_calc->total_stock_value ?? 0,
-            'total_stock_price' => $stock_calc->total_stock_price ?? 0,
+            'total_stock_value' => (float) ($stock_calc->total_stock_value ?? 0),
+            'total_stock_price' => (float) ($stock_calc->total_stock_price ?? 0),
             'total_due' => $sale_tot_due,
             'total_current_balance' => $total_current_balance
         ]);
 
         $liability = collect([
             'total_due' => $pur_tot_due,
-            'customer_advance' => $dep_sum,
+            'customer_advance' => $customer_advance,
         ]);
         return view('backend.index', compact('purchase_paid', 'purchase_due', 'due_payment_received', 'sale_due', 'sale_paid', 'salary', 'customers', 'suppliers', 'cash', 'liability', 'assets', 'revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'sale_chart_labels'));
     }
