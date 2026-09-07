@@ -125,6 +125,11 @@ class ProductController extends Controller
         return view('backend.product.edit', $formData);
     }
 
+    public function update(UpdateProductRequest $request, $id = null)
+    {
+        return $this->updateProduct($request);
+    }
+
     public function updateProduct(UpdateProductRequest $request)
     {
         $this->productService->updateProduct(
@@ -137,6 +142,11 @@ class ProductController extends Controller
         );
 
         return redirect('products')->with('edit_message', 'Product updated successfully');
+    }
+
+    public function exportProduct(Request $request)
+    {
+        return redirect()->back();
     }
 
     public function history(Request $request)

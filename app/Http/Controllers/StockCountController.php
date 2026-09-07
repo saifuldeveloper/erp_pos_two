@@ -23,8 +23,13 @@ class StockCountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('check_permission:stock_count|purchases-add')->only('create');
+        $this->middleware('check_permission:stock_count|purchases-add')->only('create', 'index');
         $this->middleware('check_permission:stock_count')->only('show', 'remainingProducts', 'soldProducts', 'wasteProducts', 'markAsIncomplete');
+    }
+
+    public function index()
+    {
+        return $this->create();
     }
 
     public function create()

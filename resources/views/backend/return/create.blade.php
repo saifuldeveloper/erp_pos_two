@@ -22,7 +22,7 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="hidden" name="sale_id" value="{{$lims_sale_data->id}}">
+                                        <input type="hidden" name="sale_id" value="{{$lims_sale_data->id ?? ''}}">
                                         <h5>{{trans('file.Order Table')}} *</h5>
                                         <div class="table-responsive mt-3">
                                             <table id="myTable" class="table table-hover order-list">
@@ -181,7 +181,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label>Order Discount</label>
-                                                <input type="text"  name="order_discount" value="{{ $lims_sale_data->order_discount }}" class="form-control order_discount" />
+                                                <input type="text"  name="order_discount" value="{{ $lims_sale_data->order_discount ?? 0 }}" class="form-control order_discount" />
                                             </div>
                                         </div>
                                     </div>

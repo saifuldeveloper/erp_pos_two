@@ -21,7 +21,7 @@
                         <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
 
                         {!! Form::open(['route' => 'return-purchase.store', 'method' => 'post', 'files' => true, 'class' => 'payment-form']) !!}
-                        <input type="hidden" name="purchase_id" value="{{$lims_purchase_data->id}}">
+                        <input type="hidden" name="purchase_id" value="{{$lims_purchase_data->id ?? ''}}">
 
                         <div class="table-responsive mt-3">
                             <table id="myTable" class="table table-hover order-list">
@@ -83,10 +83,10 @@
                                             <input type="hidden" name="actual_qty[]" class="actual-qty" value="{{ $product_variant_data->qty ?? 0 }}">
                                             <input type="number" class="form-control qty" name="qty[]" value="{{ $product_variant_data->qty ?? 0 }}" required step="any" max="{{ $product_variant_data->qty ?? 0 }}" min="0" />
                                         </td>
-                                        <td class="net_unit_cost">{{ number_format((float)$product_purchase->net_unit_cost, $general_setting->decimal, '.', '')}}</td>
-                                        <td class="discount">{{ number_format((float)$product_purchase->discount, $general_setting->decimal, '.', '')}}</td>
-                                        <td class="tax">{{ number_format((float)$product_purchase->tax, $general_setting->decimal, '.', '')}}</td>
-                                        <td class="sub-total">{{ number_format((float)$product_purchase->total, $general_setting->decimal, '.', '')}}</td>
+                                        <td class="net_unit_cost">{{ number_format((float)$product_purchase->net_unit_cost, $general_setting->decimal ?? 2, '.', '')}}</td>
+                                        <td class="discount">{{ number_format((float)$product_purchase->discount, $general_setting->decimal ?? 2, '.', '')}}</td>
+                                        <td class="tax">{{ number_format((float)$product_purchase->tax, $general_setting->decimal ?? 2, '.', '')}}</td>
+                                        <td class="sub-total">{{ number_format((float)$product_purchase->total, $general_setting->decimal ?? 2, '.', '')}}</td>
                                         <td><input type="checkbox" class="is-return" name="is_return[{{$key}}]" value="{{$product_data->id}}"></td>
 
                                         <!-- Hidden inputs -->
@@ -215,17 +215,17 @@ $(document).ready(function(){
                 total += unit_cost * qty;
 
                 row.find('.subtotal-value').val(unit_cost * qty);
-                row.find('.sub-total').text((unit_cost * qty).toFixed({{$general_setting->decimal}}));
-                row.find('.tax-value').val(tax.toFixed({{$general_setting->decimal}}));
-                row.find('.tax').text(tax.toFixed({{$general_setting->decimal}}));
+                row.find('.sub-total').text((unit_cost * qty).toFixed({{$general_setting->decimal ?? 2}}));
+                row.find('.tax-value').val(tax.toFixed({{$general_setting->decimal ?? 2}}));
+                row.find('.tax').text(tax.toFixed({{$general_setting->decimal ?? 2}}));
                 item++;
             }
         });
 
         $('.total_qty').val(total_qty);
-        $('.total_discount').val(total_discount.toFixed({{$general_setting->decimal}}));
-        $('.total_tax').val(total_tax.toFixed({{$general_setting->decimal}}));
-        $('.total_cost').val(total.toFixed({{$general_setting->decimal}}));
+        $('.total_discount').val(total_discount.toFixed({{$general_setting->decimal ?? 2}}));
+        $('.total_tax').val(total_tax.toFixed({{$general_setting->decimal ?? 2}}));
+        $('.total_cost').val(total.toFixed({{$general_setting->decimal ?? 2}}));
         $('.item').val(item);
         calculateGrandTotal();
     }
@@ -236,8 +236,8 @@ $(document).ready(function(){
         var order_tax = subtotal * (order_tax_rate / 100);
         var grand_total = subtotal + order_tax;
 
-        $('.order_tax').val(order_tax.toFixed({{$general_setting->decimal}}));
-        $('.grand_total').val(grand_total.toFixed({{$general_setting->decimal}}));
+        $('.order_tax').val(order_tax.toFixed({{$general_setting->decimal ?? 2}}));
+        $('.grand_total').val(grand_total.toFixed({{$general_setting->decimal ?? 2}}));
     }
 
     $("#myTable").on("change", ".is-return", calculateTotal);

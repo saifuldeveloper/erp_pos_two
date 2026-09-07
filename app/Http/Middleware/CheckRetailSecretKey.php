@@ -15,9 +15,9 @@ class CheckRetailSecretKey
      */
     public function handle($request, Closure $next)
     {
-        $secret = $request->input('secret_key');
+        $secret = $request->header('secret_key') ?? $request->header('secret-key') ?? $request->input('secret_key');
 
-        if ($secret !== env('RETAIL_SECRET_KEY')) {
+        if ($secret !== env('RETAIL_SECRET_KEY') && $secret !== config('services.avijatry.secret_key')) {
             return response()->json([
                 'status' => false,
                 'message' => 'Invalid secret key'

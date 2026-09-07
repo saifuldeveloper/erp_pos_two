@@ -121,14 +121,19 @@
                                                         $pCode = 'A-' . $entry['shoe']['code'];
                                                         $product = $products[$pCode] ?? App\Models\Product::where('code', $pCode)->first();
                                                         if ($product) {
-                                                            $expectedItemCode = $shoe_to_size['size']['name'] . '-' . $product->code;
+                                                            $colorName = $entry['shoe']['color']['name'] ?? '';
+                                                            $expectedItemCode = $colorName ? ($colorName . '/' . $shoe_to_size['size']['name'] . '-' . $product->code) : ($shoe_to_size['size']['name'] . '-' . $product->code);
                                                             $productVariant = $product->productVariants ? $product->productVariants->where('item_code', $expectedItemCode)->first() : null;
                                                             if (!$productVariant) {
                                                                 $productVariant = App\Models\ProductVariant::where('item_code', $expectedItemCode)->first();
                                                             }
+                                                            if (!$productVariant) {
+                                                                $fallbackCode = $shoe_to_size['size']['name'] . '-' . $product->code;
+                                                                $productVariant = App\Models\ProductVariant::where('item_code', $fallbackCode)->first();
+                                                            }
                                                             if ($productVariant && $productPurchase) {
                                                                 $proPurchase = $productPurchase
-                                                                    ->where('variant_id', $productVariant->id)
+                                                                    ->where('variant_id', $productVariant->variant_id)
                                                                     ->where('purchase_id', $purchase->id)
                                                                     ->first();
                                                             } else {

@@ -14,6 +14,12 @@ use App\Models\Tax;
 use App\Models\Unit;
 use App\Models\Warehouse;
 use App\Repositories\Contracts\QuotationRepositoryInterface;
+use App\Repositories\Contracts\BillerRepositoryInterface;
+use App\Repositories\Contracts\WarehouseRepositoryInterface;
+use App\Repositories\Contracts\CustomerRepositoryInterface;
+use App\Repositories\Contracts\SupplierRepositoryInterface;
+use App\Repositories\Contracts\TaxRepositoryInterface;
+use App\Repositories\Contracts\UnitRepositoryInterface;
 use App\Traits\TenantInfo;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -25,15 +31,40 @@ class QuotationService
     use TenantInfo;
 
     protected QuotationRepositoryInterface $quotationRepository;
+    protected BillerRepositoryInterface $billerRepository;
+    protected WarehouseRepositoryInterface $warehouseRepository;
+    protected CustomerRepositoryInterface $customerRepository;
+    protected SupplierRepositoryInterface $supplierRepository;
+    protected TaxRepositoryInterface $taxRepository;
+    protected UnitRepositoryInterface $unitRepository;
 
     /**
      * QuotationService constructor.
      *
      * @param QuotationRepositoryInterface $quotationRepository
+     * @param BillerRepositoryInterface $billerRepository
+     * @param WarehouseRepositoryInterface $warehouseRepository
+     * @param CustomerRepositoryInterface $customerRepository
+     * @param SupplierRepositoryInterface $supplierRepository
+     * @param TaxRepositoryInterface $taxRepository
+     * @param UnitRepositoryInterface $unitRepository
      */
-    public function __construct(QuotationRepositoryInterface $quotationRepository)
-    {
+    public function __construct(
+        QuotationRepositoryInterface $quotationRepository,
+        BillerRepositoryInterface $billerRepository,
+        WarehouseRepositoryInterface $warehouseRepository,
+        CustomerRepositoryInterface $customerRepository,
+        SupplierRepositoryInterface $supplierRepository,
+        TaxRepositoryInterface $taxRepository,
+        UnitRepositoryInterface $unitRepository
+    ) {
         $this->quotationRepository = $quotationRepository;
+        $this->billerRepository = $billerRepository;
+        $this->warehouseRepository = $warehouseRepository;
+        $this->customerRepository = $customerRepository;
+        $this->supplierRepository = $supplierRepository;
+        $this->taxRepository = $taxRepository;
+        $this->unitRepository = $unitRepository;
     }
 
     /**
@@ -166,11 +197,11 @@ class QuotationService
      */
     public function getCreateFormData(): array
     {
-        $lims_biller_list = Biller::where('is_active', true)->get();
-        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-        $lims_customer_list = Customer::where('is_active', true)->get();
-        $lims_supplier_list = Supplier::where('is_active', true)->get();
-        $lims_tax_list = Tax::where('is_active', true)->get();
+        $lims_biller_list = $this->billerRepository->getActiveBillers();
+        $lims_warehouse_list = $this->warehouseRepository->getActiveWarehouses();
+        $lims_customer_list = $this->customerRepository->getActiveCustomers();
+        $lims_supplier_list = $this->supplierRepository->getActiveSuppliers();
+        $lims_tax_list = $this->taxRepository->getActiveTaxes();
 
         return compact(
             'lims_biller_list',
@@ -272,14 +303,14 @@ class QuotationService
      */
     public function getEditFormData($id): array
     {
-        $lims_biller_list = Biller::where('is_active', true)->get();
-        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-        $lims_customer_list = Customer::where('is_active', true)->get();
-        $lims_supplier_list = Supplier::where('is_active', true)->get();
-        $lims_tax_list = Tax::where('is_active', true)->get();
-        $lims_quotation_data = Quotation::find($id);
+        $lims_biller_list = $this->billerRepository->getActiveBillers();
+        $lims_warehouse_list = $this->warehouseRepository->getActiveWarehouses();
+        $lims_customer_list = $this->customerRepository->getActiveCustomers();
+        $lims_supplier_list = $this->supplierRepository->getActiveSuppliers();
+        $lims_tax_list = $this->taxRepository->getActiveTaxes();
+        $lims_quotation_data = $this->quotationRepository->find($id);
         $lims_product_quotation_data = ProductQuotation::with(['product.productVariants', 'unit', 'variant', 'productBatch'])->where('quotation_id', $id)->get();
-        $all_units = Unit::all();
+        $all_units = $this->unitRepository->getActiveUnits();
         $all_taxes = $lims_tax_list;
 
         return compact(

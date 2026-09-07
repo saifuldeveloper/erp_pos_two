@@ -135,42 +135,49 @@ class SaleRepository extends BaseRepository implements SaleRepositoryInterface
      */
     public function getProductSaleDataBySaleId($saleId): array
     {
-        $limsProductSaleData = Product_Sale::with(['product', 'unit', 'productBatch', 'variant'])
-            ->where('sale_id', $saleId)
-            ->get();
+        $limsProductSaleData = Product_Sale::where('sale_id', $saleId)->get();
         $productSale = [];
 
         foreach ($limsProductSaleData as $key => $productSaleData) {
-            $product = $productSaleData->product;
+            $product = Product::find($productSaleData->product_id);
             if (!$product) {
                 continue;
             }
 
-            $unit = $productSaleData->unit;
-            $unitCode = $unit ? $unit->unit_code : '';
-
-            $productBatch = $productSaleData->productBatch;
-            $productVariant = $productSaleData->variant;
-
-            $name = $product->name;
-            $code = $product->code;
-            if ($productVariant) {
-                $name .= ' [' . $productVariant->name . ']';
+            if ($productSaleData->variant_id) {
+                $limsProductVariantData = ProductVariant::select('item_code')
+                    ->FindExactProduct($productSaleData->product_id, $productSaleData->variant_id)
+                    ->first();
+                if ($limsProductVariantData) {
+                    $product->code = $limsProductVariantData->item_code;
+                }
             }
+
+            $unitData = Unit::find($productSaleData->sale_unit_id);
+            $unit = $unitData ? $unitData->unit_code : '';
+
+            if ($productSaleData->product_batch_id) {
+                $productBatchData = ProductBatch::select('batch_no')->find($productSaleData->product_batch_id);
+                $batchNo = $productBatchData ? $productBatchData->batch_no : 'N/A';
+            } else {
+                $batchNo = 'N/A';
+            }
+
+            $name = $product->name . ' [' . $product->code . ']';
             if ($productSaleData->imei_number) {
-                $name .= '<br>IMEI or Serial Numbers: ' . $productSaleData->imei_number;
+                $name .= '<br>IMEI or Serial Number: ' . $productSaleData->imei_number;
             }
 
             $productSale[0][$key] = $name;
-            $productSale[1][$key] = $code;
-            $productSale[2][$key] = $productSaleData->qty;
-            $productSale[3][$key] = $unitCode;
-            $productSale[4][$key] = $productSaleData->tax;
-            $productSale[5][$key] = $productSaleData->tax_rate;
-            $productSale[6][$key] = $productSaleData->discount;
-            $productSale[7][$key] = $productSaleData->net_unit_price;
-            $productSale[8][$key] = $productSaleData->total;
-            $productSale[9][$key] = $productBatch ? $productBatch->batch_no : '';
+            $productSale[1][$key] = $productSaleData->qty;
+            $productSale[2][$key] = $unit;
+            $productSale[3][$key] = $productSaleData->tax;
+            $productSale[4][$key] = $productSaleData->tax_rate;
+            $productSale[5][$key] = $productSaleData->discount;
+            $productSale[6][$key] = $productSaleData->total;
+            $productSale[7][$key] = $batchNo;
+            $productSale[8][$key] = $productSaleData->return_qty ?? 0;
+            $productSale[9][$key] = $productSaleData->net_unit_price;
         }
 
         return $productSale;
@@ -184,8 +191,8 @@ class SaleRepository extends BaseRepository implements SaleRepositoryInterface
      */
     public function getPaymentsBySaleId($saleId): array
     {
-        $payments = Payment::where('sale_id', $saleId)->get();
-        $paymentDate = [];
+        $limsPaymentList = Payment::where('sale_id', $saleId)->get();
+        $date = [];
         $paymentReference = [];
         $paidAmount = [];
         $payingMethod = [];
@@ -195,46 +202,40 @@ class SaleRepository extends BaseRepository implements SaleRepositoryInterface
         $giftCardId = [];
         $change = [];
         $payingAmount = [];
+        $accountName = [];
         $accountId = [];
-        $account = [];
-        $customerStripeId = [];
 
-        foreach ($payments as $payment) {
-            $paymentDate[] = date(config('date_format') ?: 'd-m-Y', strtotime($payment->created_at));
+        foreach ($limsPaymentList as $payment) {
+            $date[] = date(config('date_format'), strtotime($payment->created_at->toDateString())) . ' ' . $payment->created_at->toTimeString();
             $paymentReference[] = $payment->payment_reference;
             $paidAmount[] = $payment->amount;
             $change[] = $payment->change;
             $payingMethod[] = $payment->paying_method;
             $payingAmount[] = $payment->amount + $payment->change;
-            $paymentId[] = $payment->id;
-            $paymentNote[] = $payment->payment_note;
-            $accountId[] = $payment->account_id;
-            $account[] = $payment->account ? $payment->account->name : 'N/A';
-
-            if ($payment->paying_method == 'Cheque') {
-                $cheque = PaymentWithCheque::where('payment_id', $payment->id)->first();
-                $chequeNo[] = $cheque ? $cheque->cheque_no : '';
-            } else {
-                $chequeNo[] = '';
-            }
 
             if ($payment->paying_method == 'Gift Card') {
                 $giftCard = PaymentWithGiftCard::where('payment_id', $payment->id)->first();
-                $giftCardId[] = $giftCard ? $giftCard->gift_card_id : '';
+                $giftCardId[] = $giftCard ? $giftCard->gift_card_id : null;
+                $chequeNo[] = null;
+            } elseif ($payment->paying_method == 'Cheque') {
+                $cheque = PaymentWithCheque::where('payment_id', $payment->id)->first();
+                $chequeNo[] = $cheque ? $cheque->cheque_no : null;
+                $giftCardId[] = null;
             } else {
-                $giftCardId[] = '';
+                $chequeNo[] = null;
+                $giftCardId[] = null;
             }
 
-            if ($payment->paying_method == 'Credit Card') {
-                $creditCard = PaymentWithCreditCard::where('payment_id', $payment->id)->first();
-                $customerStripeId[] = $creditCard ? $creditCard->customer_stripe_id : '';
-            } else {
-                $customerStripeId[] = '';
-            }
+            $paymentId[] = $payment->id;
+            $paymentNote[] = $payment->payment_note;
+
+            $account = Account::find($payment->account_id);
+            $accountName[] = $account ? $account->name : 'N/A';
+            $accountId[] = $account ? $account->id : null;
         }
 
         return [
-            $paymentDate,
+            $date,
             $paymentReference,
             $paidAmount,
             $payingMethod,
@@ -244,9 +245,8 @@ class SaleRepository extends BaseRepository implements SaleRepositoryInterface
             $giftCardId,
             $change,
             $payingAmount,
+            $accountName,
             $accountId,
-            $account,
-            $customerStripeId
         ];
     }
 }

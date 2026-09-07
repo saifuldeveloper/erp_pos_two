@@ -11,6 +11,11 @@ use App\Models\Roles;
 use App\Models\User;
 use App\Models\Warehouse;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Repositories\Contracts\RoleRepositoryInterface;
+use App\Repositories\Contracts\BillerRepositoryInterface;
+use App\Repositories\Contracts\WarehouseRepositoryInterface;
+use App\Repositories\Contracts\CustomerGroupRepositoryInterface;
+use App\Repositories\Contracts\CustomerRepositoryInterface;
 use App\Traits\MailInfo;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -22,15 +27,36 @@ class UserService
     use MailInfo;
 
     protected UserRepositoryInterface $userRepository;
+    protected RoleRepositoryInterface $roleRepository;
+    protected BillerRepositoryInterface $billerRepository;
+    protected WarehouseRepositoryInterface $warehouseRepository;
+    protected CustomerGroupRepositoryInterface $customerGroupRepository;
+    protected CustomerRepositoryInterface $customerRepository;
 
     /**
      * UserService constructor.
      *
      * @param UserRepositoryInterface $userRepository
+     * @param RoleRepositoryInterface $roleRepository
+     * @param BillerRepositoryInterface $billerRepository
+     * @param WarehouseRepositoryInterface $warehouseRepository
+     * @param CustomerGroupRepositoryInterface $customerGroupRepository
+     * @param CustomerRepositoryInterface $customerRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository)
-    {
+    public function __construct(
+        UserRepositoryInterface $userRepository,
+        RoleRepositoryInterface $roleRepository,
+        BillerRepositoryInterface $billerRepository,
+        WarehouseRepositoryInterface $warehouseRepository,
+        CustomerGroupRepositoryInterface $customerGroupRepository,
+        CustomerRepositoryInterface $customerRepository
+    ) {
         $this->userRepository = $userRepository;
+        $this->roleRepository = $roleRepository;
+        $this->billerRepository = $billerRepository;
+        $this->warehouseRepository = $warehouseRepository;
+        $this->customerGroupRepository = $customerGroupRepository;
+        $this->customerRepository = $customerRepository;
     }
 
     /**
@@ -53,9 +79,9 @@ class UserService
      */
     public function getCreateFormData(): array
     {
-        $lims_role_list = Roles::where('is_active', true)->get();
-        $lims_biller_list = Biller::where('is_active', true)->get();
-        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
+        $lims_role_list = $this->roleRepository->getActiveRoles();
+        $lims_biller_list = $this->billerRepository->getActiveBillers();
+        $lims_warehouse_list = $this->warehouseRepository->getActiveWarehouses();
         $numberOfUserAccount = $this->userRepository->countActiveUsers();
 
         return compact('lims_role_list', 'lims_biller_list', 'lims_warehouse_list', 'numberOfUserAccount');
@@ -113,11 +139,11 @@ class UserService
     public function getEditFormData($id): array
     {
         $lims_user_data = $this->userRepository->findOrFail($id);
-        $lims_role_list = Roles::where('is_active', true)->get();
-        $lims_biller_list = Biller::where('is_active', true)->get();
-        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-        $lims_customer_group_list = CustomerGroup::where('is_active', true)->get();
-        $lims_customer_list = Customer::where('is_active', true)->get();
+        $lims_role_list = $this->roleRepository->getActiveRoles();
+        $lims_biller_list = $this->billerRepository->getActiveBillers();
+        $lims_warehouse_list = $this->warehouseRepository->getActiveWarehouses();
+        $lims_customer_group_list = $this->customerGroupRepository->getActiveCustomerGroups();
+        $lims_customer_list = $this->customerRepository->getActiveCustomers();
 
         return compact(
             'lims_user_data',

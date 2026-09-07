@@ -13,6 +13,10 @@ use App\Models\MailSetting;
 use App\Models\PosSetting;
 use App\Models\RewardPointSetting;
 use App\Models\Warehouse;
+use App\Repositories\Contracts\AccountRepositoryInterface;
+use App\Repositories\Contracts\CustomerRepositoryInterface;
+use App\Repositories\Contracts\WarehouseRepositoryInterface;
+use App\Repositories\Contracts\BillerRepositoryInterface;
 use App\Traits\CacheForget;
 use App\Traits\TenantInfo;
 use Illuminate\Http\UploadedFile;
@@ -22,6 +26,23 @@ class SettingService
 {
     use CacheForget;
     use TenantInfo;
+
+    protected AccountRepositoryInterface $accountRepository;
+    protected CustomerRepositoryInterface $customerRepository;
+    protected WarehouseRepositoryInterface $warehouseRepository;
+    protected BillerRepositoryInterface $billerRepository;
+
+    public function __construct(
+        AccountRepositoryInterface $accountRepository,
+        CustomerRepositoryInterface $customerRepository,
+        WarehouseRepositoryInterface $warehouseRepository,
+        BillerRepositoryInterface $billerRepository
+    ) {
+        $this->accountRepository = $accountRepository;
+        $this->customerRepository = $customerRepository;
+        $this->warehouseRepository = $warehouseRepository;
+        $this->billerRepository = $billerRepository;
+    }
 
     /**
      * Clear application cached data.
@@ -55,7 +76,7 @@ class SettingService
     public function getGeneralSettingData(): array
     {
         $lims_general_setting_data = GeneralSetting::latest()->first();
-        $lims_account_list = Account::where('is_active', true)->get();
+        $lims_account_list = $this->accountRepository->getActiveAccounts();
         $lims_currency_list = Currency::all();
         $zones_array = [];
         $timestamp = time();
@@ -128,9 +149,9 @@ class SettingService
      */
     public function getPosSettingData(): array
     {
-        $lims_customer_list = Customer::where('is_active', true)->get();
-        $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-        $lims_biller_list = Biller::where('is_active', true)->get();
+        $lims_customer_list = $this->customerRepository->getActiveCustomers();
+        $lims_warehouse_list = $this->warehouseRepository->getActiveWarehouses();
+        $lims_biller_list = $this->billerRepository->getActiveBillers();
         $lims_pos_setting_data = PosSetting::latest()->first();
 
         return compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_pos_setting_data');

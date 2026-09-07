@@ -1,6 +1,8 @@
 @php
     $userPerms = isset($role_has_permissions_list)
-        ? $role_has_permissions_list->pluck('name')->flip()->toArray()
+        ? (is_array($role_has_permissions_list)
+            ? array_flip($role_has_permissions_list)
+            : $role_has_permissions_list->pluck('name')->flip()->toArray())
         : [];
     $hasPerm = fn($perm) => isset($userPerms[$perm]);
     $hasAny  = fn(...$perms) => (bool) array_intersect_key(array_flip($perms), $userPerms);
