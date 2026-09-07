@@ -15,9 +15,9 @@ class BrandController extends Controller
     {
         $this->brandService = $brandService;
         $this->middleware('check_permission:brand-index|brand')->only('index');
-        $this->middleware('check_permission:brand-add')->only(['create', 'store', 'importBrand']);
-        $this->middleware('check_permission:brand-edit')->only(['edit', 'update']);
-        $this->middleware('check_permission:brand-delete')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:brand-add|brand')->only(['create', 'store', 'importBrand']);
+        $this->middleware('check_permission:brand-edit|brand')->only(['edit', 'update']);
+        $this->middleware('check_permission:brand-delete|brand')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
@@ -31,7 +31,7 @@ class BrandController extends Controller
         $input = $request->except('image');
         $this->brandService->createBrand($input, $request->file('image'));
 
-        return redirect('brand');
+        return redirect('brand')->with('message', 'Brand created successfully');
     }
 
     public function edit($id)
@@ -44,7 +44,7 @@ class BrandController extends Controller
         $data = ['title' => $request->title];
         $this->brandService->updateBrand($request->brand_id, $data, $request->file('image'));
 
-        return redirect('brand');
+        return redirect('brand')->with('message', 'Brand updated successfully');
     }
 
     public function importBrand(Request $request)

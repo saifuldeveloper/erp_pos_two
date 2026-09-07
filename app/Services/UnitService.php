@@ -67,6 +67,9 @@ class UnitService
     public function createUnit(array $data): Unit
     {
         $data['is_active'] = true;
+        if (empty($data['unit_code']) && !empty($data['unit_name'])) {
+            $data['unit_code'] = $data['unit_name'];
+        }
         $unit = $this->unitRepository->create($data);
         $this->cacheForget('unit_list');
 
@@ -82,6 +85,9 @@ class UnitService
      */
     public function updateUnit($id, array $data): Unit
     {
+        if (empty($data['unit_code']) && !empty($data['unit_name'])) {
+            $data['unit_code'] = $data['unit_name'];
+        }
         $unit = $this->unitRepository->update($id, $data);
         $this->cacheForget('unit_list');
 

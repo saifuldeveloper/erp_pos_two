@@ -24,12 +24,9 @@ class StoreUnitRequest extends FormRequest
     {
         return [
             'unit_code' => [
-                'required',
+                'nullable',
                 'string',
                 'max:255',
-                Rule::unique('units')->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
             ],
             'unit_name' => [
                 'required',

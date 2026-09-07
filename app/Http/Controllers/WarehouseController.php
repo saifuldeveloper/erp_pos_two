@@ -16,9 +16,9 @@ class WarehouseController extends Controller
     {
         $this->warehouseService = $warehouseService;
         $this->middleware('check_permission:warehouse-index|warehouse')->only('index');
-        $this->middleware('check_permission:warehouse-add')->only(['create', 'store', 'importWarehouse']);
-        $this->middleware('check_permission:warehouse-edit')->only(['edit', 'update']);
-        $this->middleware('check_permission:warehouse-delete')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:warehouse-add|warehouse')->only(['create', 'store', 'importWarehouse']);
+        $this->middleware('check_permission:warehouse-edit|warehouse')->only(['edit', 'update']);
+        $this->middleware('check_permission:warehouse-delete|warehouse')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()

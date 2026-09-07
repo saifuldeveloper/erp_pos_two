@@ -15,9 +15,9 @@ class UnitController extends Controller
     {
         $this->unitService = $unitService;
         $this->middleware('check_permission:unit-index|unit')->only(['index', 'limsUnitSearch']);
-        $this->middleware('check_permission:unit-add')->only(['create', 'store', 'importUnit']);
-        $this->middleware('check_permission:unit-edit')->only(['edit', 'update']);
-        $this->middleware('check_permission:unit-delete')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:unit-add|unit')->only(['create', 'store', 'importUnit']);
+        $this->middleware('check_permission:unit-edit|unit')->only(['edit', 'update']);
+        $this->middleware('check_permission:unit-delete|unit')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
@@ -30,7 +30,7 @@ class UnitController extends Controller
     {
         $this->unitService->createUnit($request->all());
 
-        return redirect('unit');
+        return redirect('unit')->with('message', 'Unit created successfully');
     }
 
     public function limsUnitSearch(Request $request)
@@ -51,7 +51,7 @@ class UnitController extends Controller
     {
         $this->unitService->updateUnit($request->unit_id, $request->all());
 
-        return redirect('unit');
+        return redirect('unit')->with('message', 'Unit updated successfully');
     }
 
     public function importUnit(Request $request)
@@ -74,6 +74,6 @@ class UnitController extends Controller
     {
         $this->unitService->deleteUnit($id);
 
-        return redirect('unit');
+        return redirect('unit')->with('not_permitted', 'Unit deleted successfully');
     }
 }

@@ -12,7 +12,7 @@
 
 <section>
     <div class="container-fluid">
-        @if(in_array("department-add", $all_permission))
+        @if(in_array("department-add", $all_permission) || in_array("department", $all_permission))
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i> {{trans('file.Add Department')}}</button>
         @endif
     </div>
@@ -37,12 +37,12 @@
                               <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                @if(in_array("department-edit", $all_permission))
+                                @if(in_array("department-edit", $all_permission) || in_array("department", $all_permission))
                                 <li>
                                     <button type="button" data-id="{{$department->id}}" data-name="{{$department->name}}" class="edit-btn btn btn-link" data-toggle="modal" data-target="#editModal" ><i class="dripicons-document-edit"></i>  {{trans('file.edit')}}</button>
                                 </li>
                                 @endif
-                                @if(in_array("department-delete", $all_permission))
+                                @if(in_array("department-delete", $all_permission) || in_array("department", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['departments.destroy', $department->id], 'method' => 'DELETE'] ) }}
                                 <li>
@@ -212,7 +212,7 @@ $(document).ready(function() {
                 },
                 footer:true
             },
-            @if(in_array("department-delete", $all_permission))
+            @if(in_array("department-delete", $all_permission) || in_array("department", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',

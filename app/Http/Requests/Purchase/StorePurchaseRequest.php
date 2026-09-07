@@ -23,7 +23,7 @@ class StorePurchaseRequest extends FormRequest
     {
         return [
             'warehouse_id'   => ['nullable'],
-            'supplier_id'    => ['nullable'],
+            'supplier_id'    => ['required', 'integer', 'exists:suppliers,id'],
             'status'         => ['nullable'],
             'document'       => ['nullable', 'file', 'max:10000'],
             'order_tax'      => ['nullable'],

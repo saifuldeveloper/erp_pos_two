@@ -390,8 +390,7 @@
 
 @push('scripts')
 <script type="text/javascript">
-    $("ul#quotation").siblings('a').attr('aria-expanded','true');
-    $("ul#quotation").addClass("show");
+    $("#quotation-menu").addClass("active");
 
 // array data depend on warehouse
 var lims_product_array = [];

@@ -25,12 +25,9 @@ class UpdateUnitRequest extends FormRequest
         return [
             'unit_id'   => ['required'],
             'unit_code' => [
-                'required',
+                'nullable',
                 'string',
                 'max:255',
-                Rule::unique('units')->ignore($this->unit_id)->where(function ($query) {
-                    return $query->where('is_active', 1);
-                }),
             ],
             'unit_name' => [
                 'required',

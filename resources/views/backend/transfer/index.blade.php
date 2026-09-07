@@ -150,9 +150,7 @@
 
 @push('scripts')
 <script type="text/javascript">
-    $("ul#transfer").siblings('a').attr('aria-expanded','true');
-    $("ul#transfer").addClass("show");
-    $("ul#transfer #transfer-list-menu").addClass("active");
+    $("#transfer-menu").addClass("active");
 
     $(".daterangepicker-field").daterangepicker({
       callback: function(startDate, endDate, period){

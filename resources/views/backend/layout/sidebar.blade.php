@@ -76,7 +76,7 @@
                 @if ($hasPerm('sales-add'))
                     <li id="sale-list-menu"><a href="{{ route('sales.index') }}">{{ trans('file.Sale List') }}</a></li>
                     <li><a href="{{ route('sale.pos') }}">POS</a></li>
-                    <li id="sale-create-menu"><a href="{{ route('sales.create') }}">{{ trans('file.Add Sale') }}</a></li>
+                    {{-- <li id="sale-create-menu"><a href="{{ route('sales.create') }}">{{ trans('file.Add Sale') }}</a></li> --}}
                 @endif
                 @if ($hasPerm('coupon'))
                     <li id="coupon-menu"><a href="{{ route('coupons.index') }}">{{ trans('file.Coupon List') }}</a></li>
@@ -85,52 +85,6 @@
                 @if ($hasPerm('delivery'))
                     <li id="delivery-menu"><a href="{{ route('delivery.index') }}">{{ trans('file.Delivery List') }}</a></li>
                 @endif
-            </ul>
-        </li>
-    @endif
-
-    {{-- Waste Menu --}}
-    @if ($hasPerm('waste-index') || $hasPerm('waste'))
-        <li id="waste-menu">
-            <a href="{{ route('waste.index') }}">
-                <i class="dripicons-trash"></i><span>{{ trans('file.Waste') }}</span>
-            </a>
-        </li>
-    @endif
-
-    {{-- Expense Menu --}}
-    @if ($hasPerm('expenses-index'))
-        <li>
-            <a href="#expense" aria-expanded="false" data-toggle="collapse">
-                <i class="dripicons-wallet"></i><span>{{ trans('file.Expense') }}</span>
-            </a>
-            <ul id="expense" class="collapse list-unstyled ">
-                <li id="exp-cat-menu"><a href="{{ route('expense_categories.index') }}">{{ trans('file.Expense Category') }}</a></li>
-                <li id="exp-list-menu"><a href="{{ route('expenses.index') }}">{{ trans('file.Expense List') }}</a></li>
-            </ul>
-        </li>
-    @endif
-
-    {{-- Quotation Menu --}}
-    @if ($hasPerm('quotes-index'))
-        <li>
-            <a href="#quotation" aria-expanded="false" data-toggle="collapse">
-                <i class="dripicons-document"></i><span>{{ trans('file.Quotation') }}</span>
-            </a>
-            <ul id="quotation" class="collapse list-unstyled ">
-                <li id="quotation-list-menu"><a href="{{ route('quotations.index') }}">{{ trans('file.Quotation List') }}</a></li>
-            </ul>
-        </li>
-    @endif
-
-    {{-- Transfer Menu --}}
-    @if ($hasPerm('transfers-index'))
-        <li>
-            <a href="#transfer" aria-expanded="false" data-toggle="collapse">
-                <i class="dripicons-export"></i><span>{{ trans('file.Transfer') }}</span>
-            </a>
-            <ul id="transfer" class="collapse list-unstyled ">
-                <li id="transfer-list-menu"><a href="{{ route('transfers.index') }}">{{ trans('file.Transfer List') }}</a></li>
             </ul>
         </li>
     @endif
@@ -149,6 +103,46 @@
                     <li id="purchase-return-menu"><a href="{{ route('return-purchase.index') }}">{{ trans('file.Purchase') }}</a></li>
                 @endif
             </ul>
+        </li>
+    @endif
+
+    {{-- Expense Menu --}}
+    @if ($hasPerm('expenses-index'))
+        <li>
+            <a href="#expense" aria-expanded="false" data-toggle="collapse">
+                <i class="dripicons-wallet"></i><span>{{ trans('file.Expense') }}</span>
+            </a>
+            <ul id="expense" class="collapse list-unstyled ">
+                <li id="exp-cat-menu"><a href="{{ route('expense_categories.index') }}">{{ trans('file.Expense Category') }}</a></li>
+                <li id="exp-list-menu"><a href="{{ route('expenses.index') }}">{{ trans('file.Expense List') }}</a></li>
+            </ul>
+        </li>
+    @endif
+
+    {{-- Waste Menu --}}
+    @if ($hasPerm('waste-index') || $hasPerm('waste'))
+        <li id="waste-menu">
+            <a href="{{ route('waste.index') }}">
+                <i class="dripicons-trash"></i><span>{{ trans('file.Waste') }}</span>
+            </a>
+        </li>
+    @endif
+
+    {{-- Quotation Menu --}}
+    @if ($hasPerm('quotes-index'))
+        <li id="quotation-menu">
+            <a href="{{ route('quotations.index') }}">
+                <i class="dripicons-document"></i><span>{{ trans('file.Quotation') }}</span>
+            </a>
+        </li>
+    @endif
+
+    {{-- Transfer Menu --}}
+    @if ($hasPerm('transfers-index'))
+        <li id="transfer-menu">
+            <a href="{{ route('transfers.index') }}">
+                <i class="dripicons-export"></i><span>{{ trans('file.Transfer') }}</span>
+            </a>
         </li>
     @endif
 
@@ -191,12 +185,18 @@
                 @if ($hasPerm('employees-index'))
                     <li id="employee-menu"><a href="{{ route('employees.index') }}">{{ trans('file.Employee') }}</a></li>
                 @endif
+                {{-- @if ($hasPerm('attendance'))
+                    <li id="attendance-menu"><a href="{{ route('attendance.index') }}">{{ trans('file.Attendance') }}</a></li>
+                @endif --}}
                 @if ($hasPerm('payroll-index') || $hasPerm('payroll'))
                     <li id="payroll-menu"><a href="{{ route('payroll.index') }}">{{ trans('file.Payroll') }}</a></li>
                 @endif
                 @if ($hasPerm('payroll-type-index') || $hasPerm('payroll'))
                     <li id="payroll-type-menu"><a href="{{ route('payroll-types.index') }}">{{ trans('file.Payroll Type') }}</a></li>
                 @endif
+                {{-- @if ($hasPerm('holiday'))
+                    <li id="holiday-menu"><a href="{{ route('holidays.index') }}">{{ trans('file.Holiday') }}</a></li>
+                @endif --}}
             </ul>
         </li>
     @endif

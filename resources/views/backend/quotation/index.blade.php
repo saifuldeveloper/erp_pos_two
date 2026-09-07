@@ -139,9 +139,7 @@
 @push('scripts')
 <script type="text/javascript">
 
-    $("ul#quotation").siblings('a').attr('aria-expanded','true');
-    $("ul#quotation").addClass("show");
-    $("ul#quotation #quotation-list-menu").addClass("active");
+    $("#quotation-menu").addClass("active");
 
     $(".daterangepicker-field").daterangepicker({
       callback: function(startDate, endDate, period){

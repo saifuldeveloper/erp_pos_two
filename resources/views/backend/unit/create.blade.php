@@ -1,12 +1,12 @@
 @extends('backend.layout.main') @section('content')
 
-@if($errors->has('unit_code'))
+@if($errors->any())
 <div class="alert alert-danger alert-dismissible text-center">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('unit_code') }}</div>
-@endif
-@if($errors->has('unit_name'))
-<div class="alert alert-danger alert-dismissible text-center">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('unit_name') }}</div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    @foreach ($errors->all() as $error)
+        <div>{{ $error }}</div>
+    @endforeach
+</div>
 @endif
 @if(session()->has('message'))
   <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div>
@@ -17,7 +17,7 @@
 
 <section>
     <div class="container-fluid">
-        @if(in_array("unit-add", $all_permission))
+        @if(in_array("unit-add", $all_permission) || in_array("unit", $all_permission))
         <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-primary"><i class="dripicons-plus"></i> {{trans('file.Add Unit')}}</a>&nbsp;
         @endif
         {{-- <a href="#" data-toggle="modal" data-target="#importUnit" class="btn btn-primary"><i class="dripicons-copy"></i> {{trans('file.Import Unit')}}</a> --}}
@@ -63,13 +63,13 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                @if(in_array("unit-edit", $all_permission))
+                                @if(in_array("unit-edit", $all_permission) || in_array("unit", $all_permission))
                                 <li>
                                     <button type="button" data-id="{{$unit->id}}" class="open-EditUnitDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}
                                 </button>
                                 </li>
                                 @endif
-                                @if(in_array("unit-delete", $all_permission))
+                                @if(in_array("unit-delete", $all_permission) || in_array("unit", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['unit.destroy', $unit->id], 'method' => 'DELETE'] ) }}
                                 <li>
@@ -393,7 +393,7 @@
                     rows: ':visible'
                 },
             },
-            @if(in_array("unit-delete", $all_permission))
+            @if(in_array("unit-delete", $all_permission) || in_array("unit", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',

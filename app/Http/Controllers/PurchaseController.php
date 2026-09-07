@@ -66,104 +66,96 @@ class PurchaseController extends Controller
 
     public function limsProductSearch(Request $request)
     {
-        $product_code = explode("(", $request['data']);
-        $product_code[0] = rtrim($product_code[0], " ");
+        $data = $request['data'] ?? '';
+        if (strpos($data, '|') !== false) {
+            $product_code = explode('|', $data);
+        } elseif (strpos($data, '(') !== false) {
+            $product_code = explode('(', $data);
+        } else {
+            $product_code = [$data];
+        }
+        $code = trim($product_code[0]);
         $brand_id = $request->input('brand_id');
 
-        [$lims_product_data, $lims_product_variant_data] = $this->purchaseRepository->searchProductsForPurchase($product_code[0], $brand_id);
+        [$lims_product_data, $lims_product_variant_data] = $this->purchaseRepository->searchProductsForPurchase($code, $brand_id);
 
-        $product = [];
+        $all_products = [];
+
         if (count($lims_product_data) > 0) {
-            foreach ($lims_product_data as $key => $product_data) {
-                $product[] = $product_data->name;
-                $product[] = $product_data->code;
-                $product[] = $product_data->cost;
+            foreach ($lims_product_data as $product_data) {
+                if ($product_data->is_variant) {
+                    $variants = Product::join('product_variants', 'products.id', '=', 'product_variants.product_id')
+                        ->where('products.id', $product_data->id)
+                        ->where('products.is_active', true)
+                        ->select('products.*', 'product_variants.item_code', 'product_variants.additional_cost', 'product_variants.variant_id')
+                        ->orderBy('product_variants.position')
+                        ->get();
 
-                if ($product_data->tax_id) {
-                    $tax = Tax::find($product_data->tax_id);
-                    $product[] = $tax ? $tax->rate : 0;
-                    $product[] = $tax ? $tax->name : 'No Tax';
-                } else {
-                    $product[] = 0;
-                    $product[] = 'No Tax';
-                }
-
-                $product[] = $product_data->tax_method;
-
-                $units = Unit::where("base_unit", $product_data->unit_id)
-                    ->orWhere('id', $product_data->unit_id)
-                    ->get();
-
-                $unit_name = [];
-                $unit_operator = [];
-                $unit_operation_value = [];
-                foreach ($units as $unit) {
-                    if ($product_data->purchase_unit_id == $unit->id) {
-                        array_unshift($unit_name, $unit->unit_name);
-                        array_unshift($unit_operator, $unit->operator);
-                        array_unshift($unit_operation_value, $unit->operation_value);
+                    if (count($variants) > 0) {
+                        foreach ($variants as $variant_data) {
+                            $all_products[] = $this->formatProductPurchaseRow($variant_data, true);
+                        }
                     } else {
-                        $unit_name[] = $unit->unit_name;
-                        $unit_operator[] = $unit->operator;
-                        $unit_operation_value[] = $unit->operation_value;
+                        $all_products[] = $this->formatProductPurchaseRow($product_data, false);
                     }
+                } else {
+                    $all_products[] = $this->formatProductPurchaseRow($product_data, false);
                 }
-
-                $product[] = implode(",", $unit_name) . ',';
-                $product[] = implode(",", $unit_operator) . ',';
-                $product[] = implode(",", $unit_operation_value) . ',';
-                $product[] = $product_data->id;
-                $product[] = null;
-                $product[] = $product_data->is_batch;
-                $product[] = $product_data->is_imei;
-                $product[] = $product_data->price;
             }
         } elseif (count($lims_product_variant_data) > 0) {
-            foreach ($lims_product_variant_data as $key => $product_data) {
-                $product[] = $product_data->name;
-                $product[] = $product_data->item_code;
-                $product[] = $product_data->cost + $product_data->additional_cost;
-
-                if ($product_data->tax_id) {
-                    $tax = Tax::find($product_data->tax_id);
-                    $product[] = $tax ? $tax->rate : 0;
-                    $product[] = $tax ? $tax->name : 'No Tax';
-                } else {
-                    $product[] = 0;
-                    $product[] = 'No Tax';
-                }
-
-                $product[] = $product_data->tax_method;
-
-                $units = Unit::where("base_unit", $product_data->unit_id)
-                    ->orWhere('id', $product_data->unit_id)
-                    ->get();
-
-                $unit_name = [];
-                $unit_operator = [];
-                $unit_operation_value = [];
-                foreach ($units as $unit) {
-                    if ($product_data->purchase_unit_id == $unit->id) {
-                        array_unshift($unit_name, $unit->unit_name);
-                        array_unshift($unit_operator, $unit->operator);
-                        array_unshift($unit_operation_value, $unit->operation_value);
-                    } else {
-                        $unit_name[] = $unit->unit_name;
-                        $unit_operator[] = $unit->operator;
-                        $unit_operation_value[] = $unit->operation_value;
-                    }
-                }
-
-                $product[] = implode(",", $unit_name) . ',';
-                $product[] = implode(",", $unit_operator) . ',';
-                $product[] = implode(",", $unit_operation_value) . ',';
-                $product[] = $product_data->id;
-                $product[] = $product_data->variant_id;
-                $product[] = $product_data->is_batch;
-                $product[] = $product_data->is_imei;
-                $product[] = $product_data->price;
+            foreach ($lims_product_variant_data as $variant_data) {
+                $all_products[] = $this->formatProductPurchaseRow($variant_data, true);
             }
         }
+
+        return $all_products;
+    }
+
+    protected function formatProductPurchaseRow($product_data, bool $is_variant): array
+    {
+        $product = [];
+        $product[] = $product_data->name;
+        $product[] = $is_variant ? $product_data->item_code : $product_data->code;
+        $product[] = $is_variant ? ($product_data->cost + ($product_data->additional_cost ?? 0)) : $product_data->cost;
+
+        if ($product_data->tax_id) {
+            $tax = Tax::find($product_data->tax_id);
+            $product[] = $tax ? $tax->rate : 0;
+            $product[] = $tax ? $tax->name : 'No Tax';
+        } else {
+            $product[] = 0;
+            $product[] = 'No Tax';
+        }
+
+        $product[] = $product_data->tax_method;
+
+        $units = Unit::where("base_unit", $product_data->unit_id)
+            ->orWhere('id', $product_data->unit_id)
+            ->get();
+
+        $unit_name = [];
+        $unit_operator = [];
+        $unit_operation_value = [];
+        foreach ($units as $unit) {
+            if ($product_data->purchase_unit_id == $unit->id) {
+                array_unshift($unit_name, $unit->unit_name);
+                array_unshift($unit_operator, $unit->operator);
+                array_unshift($unit_operation_value, $unit->operation_value);
+            } else {
+                $unit_name[] = $unit->unit_name;
+                $unit_operator[] = $unit->operator;
+                $unit_operation_value[] = $unit->operation_value;
+            }
+        }
+
+        $product[] = implode(",", $unit_name) . ',';
+        $product[] = implode(",", $unit_operator) . ',';
+        $product[] = implode(",", $unit_operation_value) . ',';
+        $product[] = $product_data->id;
+        $product[] = $is_variant ? $product_data->variant_id : null;
+        $product[] = $product_data->is_batch;
+        $product[] = $product_data->is_imei;
+        $product[] = $product_data->price;
 
         return $product;
     }

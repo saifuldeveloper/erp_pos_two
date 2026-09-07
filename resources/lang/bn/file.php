@@ -1532,4 +1532,7 @@ return [
 	"Waste List" => "অপচয় তালিকা",
 	"Add Waste" => "অপচয় যোগ করুন",
 	"Waste Details" => "অপচয়ের বিস্তারিত",
+	"Yes" => "হ্যাঁ",
+	"No" => "না",
+	"is already added to the cart. Do you want to increase the quantity?" => "ইতিমধ্যে কার্টে যোগ করা হয়েছে। আপনি কি পরিমাণ বাড়াতে চান?",
 ];

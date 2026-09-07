@@ -220,9 +220,7 @@
 
 @push('scripts')
 <script type="text/javascript">
-    $("ul#transfer").siblings('a').attr('aria-expanded','true');
-    $("ul#transfer").addClass("show");
-    $("ul#transfer #transfer-create-menu").addClass("active");
+    $("#transfer-menu").addClass("active");
 // array data depend on warehouse
 var lims_product_array = [];
 var product_code = [];

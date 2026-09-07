@@ -1,11 +1,11 @@
 @extends('backend.layout.main') @section('content')
-    @if ($errors->has('name'))
+    @if ($errors->any())
         <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert"
-                aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('name') }}</div>
-    @endif
-    @if ($errors->has('image'))
-        <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert"
-                aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('image') }}</div>
+                aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+            @endforeach
+        </div>
     @endif
     @if (session()->has('message'))
         <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close"
@@ -21,7 +21,7 @@
     <section>
         <div class="container-fluid">
             <!-- Trigger the modal with a button -->
-            @if(in_array("category-add", $all_permission))
+            @if(in_array("category-add", $all_permission) || in_array("category", $all_permission))
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#category-modal"><i
                     class="dripicons-plus"></i> {{ trans('file.Add Category') }}</button>&nbsp;
             @endif
@@ -289,7 +289,7 @@
                     },
                     footer: true
                 },
-                @if(in_array("category-delete", $all_permission))
+                @if(in_array("category-delete", $all_permission) || in_array("category", $all_permission))
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
                     className: 'buttons-delete',

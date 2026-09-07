@@ -1574,6 +1574,8 @@ return [
 	"Salary" => "Salary",
 	"Method" => "Method",
 	"Employee" => "Employee",
+	"Waste" => "Waste",
 	"Waste List" => "Waste List",
 	"Add Waste" => "Add Waste",
+	"is already added to the cart. Do you want to increase the quantity?" => "is already added to the cart. Do you want to increase the quantity?",
 ];

@@ -254,13 +254,16 @@ class PurchaseService
                 '[ "' . date($dateFormat, strtotime($purchase->created_at)) . '"',
                 ' "' . $purchase->reference_no . '"',
                 ' "' . $purchase->status . '"',
+                ' "' . $purchase->id . '"',
                 ' "' . ($purchase->supplier ? $purchase->supplier->name : 'N/A') . '"',
                 ' "' . ($purchase->supplier ? $purchase->supplier->company_name : 'N/A') . '"',
-                ' "' . ($purchase->supplier ? $purchase->supplier->email : 'N/A') . '"',
-                ' "' . ($purchase->supplier ? $purchase->supplier->phone_number : 'N/A') . '"',
-                ' "' . ($purchase->supplier ? $purchase->supplier->address : 'N/A') . '"',
-                ' "' . ($purchase->supplier ? $purchase->supplier->city : 'N/A') . '"',
-                ' "' . $purchase->id . '"',
+                ' "' . ($purchase->supplier ? ($purchase->supplier->email . '<br>' . $purchase->supplier->phone_number . '<br>' . $purchase->supplier->address . ', ' . $purchase->supplier->city) : 'N/A') . '"',
+                ' "' . ($purchase->warehouse ? $purchase->warehouse->name : 'N/A') . '"',
+                ' "' . ($purchase->warehouse ? $purchase->warehouse->phone : 'N/A') . '"',
+                ' "' . preg_replace('/\s+/S', " ", (string) ($purchase->warehouse ? $purchase->warehouse->address : 'N/A')) . '"',
+                ' ""',
+                ' ""',
+                ' ""',
                 ' "' . $purchase->total_tax . '"',
                 ' "' . $purchase->total_discount . '"',
                 ' "' . $purchase->total_cost . '"',
@@ -273,7 +276,7 @@ class PurchaseService
                 ' "' . preg_replace('/\s+/S', " ", (string) $purchase->note) . '"',
                 ' "' . ($purchase->user ? $purchase->user->name : 'N/A') . '"',
                 ' "' . ($purchase->user ? $purchase->user->email : 'N/A') . '"',
-                ' "' . $purchase->document . '" ]'
+                ' "' . ($purchase->document ?: '') . '" ]'
             ];
 
             $data[] = $nestedData;
@@ -298,13 +301,30 @@ class PurchaseService
         $lims_warehouse_list = $this->warehouseRepository->getActiveWarehouses();
         $lims_tax_list = $this->taxRepository->getActiveTaxes();
         $custom_fields = CustomField::where('belongs_to', 'purchase')->get();
-        $lims_product_list = Product::where('is_active', true)->select('id', 'name', 'code')->get();
+        $lims_product_list_without_variant = Product::ActiveStandard()->select('id', 'name', 'code')->whereNull('is_variant')->get();
+        $lims_product_list_parent_variant = Product::ActiveStandard()->select('id', 'name', 'code')->whereNotNull('is_variant')->get();
+        $lims_product_list_with_variant = Product::join('product_variants', 'products.id', '=', 'product_variants.product_id')
+            ->ActiveStandard()
+            ->whereNotNull('is_variant')
+            ->select('products.id', 'products.name', 'product_variants.item_code')
+            ->orderBy('position')
+            ->get();
         $currency = Currency::where('is_active', true)->where('exchange_rate', 1)->first()
             ?? Currency::where('is_active', true)->first()
             ?? Currency::first();
         $currency_list = Currency::where('is_active', true)->get();
 
-        return compact('lims_supplier_list', 'lims_warehouse_list', 'lims_tax_list', 'custom_fields', 'lims_product_list', 'currency', 'currency_list');
+        return compact(
+            'lims_supplier_list',
+            'lims_warehouse_list',
+            'lims_tax_list',
+            'custom_fields',
+            'lims_product_list_without_variant',
+            'lims_product_list_parent_variant',
+            'lims_product_list_with_variant',
+            'currency',
+            'currency_list'
+        );
     }
 
     /**
@@ -441,10 +461,10 @@ class PurchaseService
                 }
 
                 if ($product->is_diffPrice && isset($data['warehouse_id'])) {
-                    $productWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['warehouse_id']]
-                    ])->first();
+                    $productWarehouse = Product_Warehouse::where('product_id', $id)
+                        ->where('warehouse_id', $data['warehouse_id'])
+                        ->where('variant_id', $productVariantId)
+                        ->first();
                     if ($productWarehouse && ($sellingPrices[$i] ?? 0) > 0) {
                         $productWarehouse->price = $sellingPrices[$i];
                         $productWarehouse->save();
@@ -455,10 +475,11 @@ class PurchaseService
                     $product->qty += $quantity;
                     $product->save();
 
-                    $productWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['warehouse_id']]
-                    ])->first();
+                    $productWarehouse = Product_Warehouse::where('product_id', $id)
+                        ->where('warehouse_id', $data['warehouse_id'])
+                        ->where('variant_id', $productVariantId)
+                        ->where('product_batch_id', $productBatchId)
+                        ->first();
 
                     if ($productWarehouse) {
                         $productWarehouse->qty += $quantity;
@@ -467,14 +488,10 @@ class PurchaseService
                         $productWarehouse->product_id = $id;
                         $productWarehouse->warehouse_id = $data['warehouse_id'];
                         $productWarehouse->qty = $quantity;
-                    }
-
-                    if ($productBatchId) {
                         $productWarehouse->product_batch_id = $productBatchId;
-                    }
-                    if ($productVariantId) {
                         $productWarehouse->variant_id = $productVariantId;
                     }
+
                     if (!empty($imeiNumbers[$i])) {
                         $productWarehouse->imei_number = $imeiNumbers[$i];
                     }
@@ -521,6 +538,7 @@ class PurchaseService
         $all_units = $this->unitRepository->getActiveUnits();
         $all_taxes = $lims_tax_list;
         $lims_product_list_without_variant = Product::ActiveStandard()->select('id', 'name', 'code')->whereNull('is_variant')->get();
+        $lims_product_list_parent_variant = Product::ActiveStandard()->select('id', 'name', 'code')->whereNotNull('is_variant')->get();
         $lims_product_list_with_variant = Product::join('product_variants', 'products.id', '=', 'product_variants.product_id')
             ->ActiveStandard()
             ->whereNotNull('is_variant')
@@ -538,6 +556,7 @@ class PurchaseService
             'all_units',
             'all_taxes',
             'lims_product_list_without_variant',
+            'lims_product_list_parent_variant',
             'lims_product_list_with_variant'
         );
     }
@@ -592,10 +611,11 @@ class PurchaseService
                     $product->qty -= $oldQty;
                     $product->save();
 
-                    $productWarehouse = Product_Warehouse::where([
-                        ['product_id', $oldItem->product_id],
-                        ['warehouse_id', $purchase->warehouse_id]
-                    ])->first();
+                    $productWarehouse = Product_Warehouse::where('product_id', $oldItem->product_id)
+                        ->where('warehouse_id', $purchase->warehouse_id)
+                        ->where('variant_id', $oldItem->variant_id)
+                        ->where('product_batch_id', $oldItem->product_batch_id)
+                        ->first();
 
                     if ($productWarehouse) {
                         $productWarehouse->qty -= $oldQty;
@@ -727,10 +747,11 @@ class PurchaseService
                     $product->qty += $quantity;
                     $product->save();
 
-                    $productWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['warehouse_id']]
-                    ])->first();
+                    $productWarehouse = Product_Warehouse::where('product_id', $id)
+                        ->where('warehouse_id', $data['warehouse_id'])
+                        ->where('variant_id', $productVariantId)
+                        ->where('product_batch_id', $productBatchId)
+                        ->first();
 
                     if ($productWarehouse) {
                         $productWarehouse->qty += $quantity;
@@ -739,14 +760,10 @@ class PurchaseService
                         $productWarehouse->product_id = $id;
                         $productWarehouse->warehouse_id = $data['warehouse_id'];
                         $productWarehouse->qty = $quantity;
-                    }
-
-                    if ($productBatchId) {
                         $productWarehouse->product_batch_id = $productBatchId;
-                    }
-                    if ($productVariantId) {
                         $productWarehouse->variant_id = $productVariantId;
                     }
+
                     if (!empty($imeiNumbers[$i])) {
                         $productWarehouse->imei_number = $imeiNumbers[$i];
                     }
@@ -1040,10 +1057,11 @@ class PurchaseService
                     $product->qty -= $quantity;
                     $product->save();
 
-                    $productWarehouse = Product_Warehouse::where([
-                        ['product_id', $item->product_id],
-                        ['warehouse_id', $purchase->warehouse_id]
-                    ])->first();
+                    $productWarehouse = Product_Warehouse::where('product_id', $item->product_id)
+                        ->where('warehouse_id', $purchase->warehouse_id)
+                        ->where('variant_id', $item->variant_id)
+                        ->where('product_batch_id', $item->product_batch_id)
+                        ->first();
 
                     if ($productWarehouse) {
                         $productWarehouse->qty -= $quantity;

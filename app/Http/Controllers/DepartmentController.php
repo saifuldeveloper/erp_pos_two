@@ -15,9 +15,9 @@ class DepartmentController extends Controller
     {
         $this->departmentService = $departmentService;
         $this->middleware('check_permission:department-index|department')->only('index');
-        $this->middleware('check_permission:department-add')->only(['create', 'store']);
-        $this->middleware('check_permission:department-edit')->only(['edit', 'update']);
-        $this->middleware('check_permission:department-delete')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:department-add|department')->only(['create', 'store']);
+        $this->middleware('check_permission:department-edit|department')->only(['edit', 'update']);
+        $this->middleware('check_permission:department-delete|department')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()

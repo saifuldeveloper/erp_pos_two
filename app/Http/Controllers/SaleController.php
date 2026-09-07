@@ -42,6 +42,7 @@ use App\Services\SaleService;
 use App\Traits\MailInfo;
 use App\Traits\TenantInfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -598,21 +599,28 @@ class SaleController extends Controller
         $product_code[0] = rtrim($product_code[0], " ");
         $parent_variant_id = null;
 
-        $search_code = $product_code[0];
-        $normalized_code = str_replace(' ', '-', $search_code);
+        $search_code = trim($product_code[0]);
+        $clean_code = preg_replace('/\s*([\/\-])\s*/', '$1', $search_code);
+        $normalized_code = str_replace(' ', '-', $clean_code);
+        $clean_no_space = str_replace(' ', '', $clean_code);
 
-        $lims_product_data = Product::where(function ($q) use ($search_code, $normalized_code) {
+        $lims_product_data = Product::where(function ($q) use ($search_code, $clean_code, $normalized_code, $clean_no_space) {
             $q->where('code', $search_code)
-                ->orWhere('code', $normalized_code);
+                ->orWhere('code', $clean_code)
+                ->orWhere('code', $normalized_code)
+                ->orWhere('code', $clean_no_space);
         })->where('is_active', true)->first();
 
         if (!$lims_product_data) {
             $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
                 ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.variant_id', 'product_variants.item_code', 'product_variants.additional_price')
                 ->where('products.is_active', true)
-                ->where(function ($q) use ($search_code, $normalized_code) {
+                ->where(function ($q) use ($search_code, $clean_code, $normalized_code, $clean_no_space) {
                     $q->where('product_variants.item_code', $search_code)
-                        ->orWhere('product_variants.item_code', $normalized_code);
+                        ->orWhere('product_variants.item_code', $clean_code)
+                        ->orWhere('product_variants.item_code', $normalized_code)
+                        ->orWhere('product_variants.item_code', $clean_no_space)
+                        ->orWhere('product_variants.item_code', 'like', '%' . $clean_code);
                 })->first();
 
             if ($lims_product_data) {
@@ -627,9 +635,12 @@ class SaleController extends Controller
         if ($lims_product_data && $lims_product_data->is_variant && !$parent_variant_id) {
             $pv = DB::table('product_variants')
                 ->where('product_id', $lims_product_data->id)
-                ->where(function ($q) use ($search_code, $normalized_code) {
+                ->where(function ($q) use ($search_code, $clean_code, $normalized_code, $clean_no_space) {
                     $q->where('item_code', $search_code)
-                        ->orWhere('item_code', $normalized_code);
+                        ->orWhere('item_code', $clean_code)
+                        ->orWhere('item_code', $normalized_code)
+                        ->orWhere('item_code', $clean_no_space)
+                        ->orWhere('item_code', 'like', '%' . $clean_code);
                 })
                 ->first();
             if ($pv) {
@@ -690,10 +701,23 @@ class SaleController extends Controller
         $product[] = $lims_product_data->is_batch;
         $product[] = $lims_product_data->is_imei;
         $product[] = $lims_product_data->is_variant;
-        $product[] = $lims_product_data->wholesale_price;
+        $product[] = $qty ?: 1;
+        $warehouse_id = $request->warehouse_id ?? $request->input('warehouse_id');
+        $stock = 0;
+        if ($warehouse_id) {
+            $pwQuery = Product_Warehouse::where('product_id', $lims_product_data->id)
+                ->where('warehouse_id', $warehouse_id);
+            if ($parent_variant_id) {
+                $pwQuery->where('variant_id', $parent_variant_id);
+            }
+            $stock = (float) $pwQuery->sum('qty');
+        } elseif (!$lims_product_data->is_variant) {
+            $stock = (float) $lims_product_data->qty;
+        }
+
         $product[] = $lims_product_data->cost;
         $product[] = $lims_product_data->product_list;
-        $product[] = $lims_product_data->qty_list;
+        $product[] = $stock;
         $product[] = $lims_product_data->type;
 
         return $product;
@@ -788,9 +812,15 @@ class SaleController extends Controller
 
         $lims_payment_data = Payment::where('sale_id', $id)->get();
 
-        $numberToWords = new NumberToWords();
-        $numberTransformer = $numberToWords->getNumberTransformer(App::getLocale() ?: 'en');
-        $numberInWords = $numberTransformer->toWords($lims_sale_data->grand_total);
+        $numberInWords = '';
+        try {
+            $numberToWords = new NumberToWords();
+            $locale = in_array(app()->getLocale(), ['en', 'fr', 'de', 'es', 'pt', 'it', 'ru']) ? app()->getLocale() : 'en';
+            $numberTransformer = $numberToWords->getNumberTransformer($locale);
+            $numberInWords = $numberTransformer->toWords($lims_sale_data->grand_total);
+        } catch (\Throwable $e) {
+            $numberInWords = (string) $lims_sale_data->grand_total;
+        }
 
         $lims_pos_setting_data = PosSetting::latest()->first();
         $currency_code = Currency::where('id', $lims_sale_data->currency_id)->value('code') ?? 'BDT';

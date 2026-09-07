@@ -1,11 +1,11 @@
 @extends('backend.layout.main') @section('content')
-@if($errors->has('title'))
+@if($errors->any())
 <div class="alert alert-danger alert-dismissible text-center">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('title') }}</div>
-@endif
-@if($errors->has('image'))
-<div class="alert alert-danger alert-dismissible text-center">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('image') }}</div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    @foreach ($errors->all() as $error)
+        <div>{{ $error }}</div>
+    @endforeach
+</div>
 @endif
 @if(session()->has('message'))
   <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div>
@@ -16,7 +16,7 @@
 
 <section>
     <div class="container-fluid">
-        @if(in_array("brand-add", $all_permission))
+        @if(in_array("brand-add", $all_permission) || in_array("brand", $all_permission))
         <button class="btn btn-primary" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i> {{trans('file.Add Brand')}} </button>&nbsp;
         @endif
         {{-- <button class="btn btn-info" data-toggle="modal" data-target="#importBrand"><i class="dripicons-copy"></i> {{trans('file.Import Brand')}}</button> --}}
@@ -49,10 +49,10 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                @if(in_array("brand-edit", $all_permission))
+                                @if(in_array("brand-edit", $all_permission) || in_array("brand", $all_permission))
                                 <li><button type="button" data-id="{{$brand->id}}" class="open-EditbrandDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}</button></li>
                                 @endif
-                                @if(in_array("brand-delete", $all_permission))
+                                @if(in_array("brand-delete", $all_permission) || in_array("brand", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['brand.destroy', $brand->id], 'method' => 'DELETE'] ) }}
                                 <li>
@@ -328,7 +328,7 @@
                     stripHtml: false
                 },
             },
-            @if(in_array("brand-delete", $all_permission))
+            @if(in_array("brand-delete", $all_permission) || in_array("brand", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',

@@ -316,8 +316,7 @@
 
 @push('scripts')
 <script type="text/javascript">
-    $("ul#transfer").siblings('a').attr('aria-expanded','true');
-    $("ul#transfer").addClass("show");
+    $("#transfer-menu").addClass("active");
 // array data depend on warehouse
 var lims_product_array = [];
 var product_code = [];

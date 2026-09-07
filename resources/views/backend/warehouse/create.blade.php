@@ -13,7 +13,7 @@
 
 <section>
     <div class="container-fluid">
-        @if(in_array("warehouse-add", $all_permission))
+        @if(in_array("warehouse-add", $all_permission) || in_array("warehouse", $all_permission))
         <a href="#" data-toggle="modal" data-target="#createModal" class="btn btn-info add-warehouse-btn"><i class="dripicons-plus"></i> {{trans('file.Add Warehouse')}}</a>
         {{-- <a href="#" data-toggle="modal" data-target="#importWarehouse" class="btn btn-primary add-warehouse-btn"><i class="dripicons-copy"></i> {{trans('file.Import Warehouse')}}</a> --}}
         @endif
@@ -49,13 +49,13 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                @if(in_array("warehouse-edit", $all_permission))
+                                @if(in_array("warehouse-edit", $all_permission) || in_array("warehouse", $all_permission))
                                 <li>
                                     <button type="button" data-id="{{$warehouse->id}}" class="open-EditWarehouseDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}
                                     </button>
                                 </li>
                                 @endif
-                                @if(in_array("warehouse-delete", $all_permission))
+                                @if(in_array("warehouse-delete", $all_permission) || in_array("warehouse", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['warehouse.destroy', $warehouse->id], 'method' => 'DELETE'] ) }}
                                 <li>
@@ -297,7 +297,7 @@
                     rows: ':visible'
                 },
             },
-            @if(in_array("warehouse-delete", $all_permission))
+            @if(in_array("warehouse-delete", $all_permission) || in_array("warehouse", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',

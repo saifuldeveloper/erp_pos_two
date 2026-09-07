@@ -127,7 +127,7 @@ class PurchaseRepository extends BaseRepository implements PurchaseRepositoryInt
      */
     public function getProductPurchaseDataByPurchaseId($purchaseId): array
     {
-        $limsProductPurchaseData = ProductPurchase::with(['product', 'unit', 'productBatch', 'variant'])
+        $limsProductPurchaseData = ProductPurchase::with(['product', 'unit', 'productBatch'])
             ->where('purchase_id', $purchaseId)
             ->get();
         $productPurchase = [];
@@ -139,30 +139,32 @@ class PurchaseRepository extends BaseRepository implements PurchaseRepositoryInt
             }
 
             $unit = $productPurchaseData->unit;
-            $unitName = $unit ? $unit->unit_name : '';
-
+            $unitCode = $unit ? ($unit->unit_code ?? $unit->unit_name) : 'N/A';
             $productBatch = $productPurchaseData->productBatch;
-            $productVariant = $productPurchaseData->variant;
 
-            $name = $product->name;
             $code = $product->code;
-            if ($productVariant) {
-                $name .= ' [' . $productVariant->name . ']';
+            if ($productPurchaseData->variant_id) {
+                $variant = ProductVariant::where('product_id', $product->id)
+                    ->where('variant_id', $productPurchaseData->variant_id)
+                    ->first();
+                if ($variant && $variant->item_code) {
+                    $code = $variant->item_code;
+                }
             }
+
+            $name = $product->name . ' [' . $code . ']';
             if ($productPurchaseData->imei_number) {
-                $name .= '<br>IMEI or Serial Numbers: ' . $productPurchaseData->imei_number;
+                $name .= '<br>IMEI or Serial Number: ' . $productPurchaseData->imei_number;
             }
 
             $productPurchase[0][$key] = $name;
-            $productPurchase[1][$key] = $code;
-            $productPurchase[2][$key] = $productPurchaseData->qty;
-            $productPurchase[3][$key] = $unitName;
-            $productPurchase[4][$key] = $productPurchaseData->tax;
-            $productPurchase[5][$key] = $productPurchaseData->tax_rate;
-            $productPurchase[6][$key] = $productPurchaseData->discount;
-            $productPurchase[7][$key] = $productPurchaseData->net_unit_cost;
-            $productPurchase[8][$key] = $productPurchaseData->total;
-            $productPurchase[9][$key] = $productBatch ? $productBatch->batch_no : '';
+            $productPurchase[1][$key] = $productPurchaseData->qty;
+            $productPurchase[2][$key] = $unitCode;
+            $productPurchase[3][$key] = $productPurchaseData->tax;
+            $productPurchase[4][$key] = $productPurchaseData->tax_rate;
+            $productPurchase[5][$key] = $productPurchaseData->discount;
+            $productPurchase[6][$key] = $productPurchaseData->total;
+            $productPurchase[7][$key] = $productBatch ? $productBatch->batch_no : 'N/A';
         }
 
         return $productPurchase;

@@ -41,8 +41,8 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>{{ trans('file.Supplier') }}</label>
-                                                <select name="supplier_id" class="selectpicker form-control"
+                                                <label>{{ trans('file.Supplier') }} *</label>
+                                                <select required name="supplier_id" class="selectpicker form-control"
                                                     data-live-search="true" title="Select supplier...">
                                                     @foreach ($lims_supplier_list as $supplier)
                                                         <option value="{{ $supplier->id }}">
@@ -482,9 +482,19 @@
 
         <?php $productArray = []; ?>
         var lims_product_code = [
-            @foreach ($lims_product_list as $product)
+            @foreach ($lims_product_list_without_variant as $product)
                 <?php
                 $productArray[] = htmlspecialchars($product->code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($product->name));
+                ?>
+            @endforeach
+            @foreach ($lims_product_list_parent_variant as $product)
+                <?php
+                $productArray[] = htmlspecialchars($product->code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($product->name));
+                ?>
+            @endforeach
+            @foreach ($lims_product_list_with_variant as $product)
+                <?php
+                $productArray[] = htmlspecialchars($product->item_code) . '|' . preg_replace('/[\n\r]/', '<br>', htmlspecialchars($product->name));
                 ?>
             @endforeach
             <?php
@@ -506,11 +516,34 @@
                     var data = ui.content[0].value;
                     $(this).autocomplete("close");
                     productSearch(data);
-                };
+                } else if (ui.content.length > 1) {
+                    var searchTerm = $('#lims_productcodeSearch').val().trim().toLowerCase();
+                    var exactMatches = ui.content.filter(function(item) {
+                        return item.value.split('|')[0].trim().toLowerCase() === searchTerm;
+                    });
+                    if (exactMatches.length === 1) {
+                        var data = exactMatches[0].value;
+                        $(this).autocomplete("close");
+                        productSearch(data);
+                    }
+                }
             },
             select: function(event, ui) {
                 var data = ui.item.value;
                 productSearch(data);
+            }
+        });
+
+        lims_productcodeSearch.on('keydown', function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                e.stopPropagation();
+                var val = $(this).val().trim();
+                if (val !== '') {
+                    $(this).autocomplete("close");
+                    productSearch(val);
+                }
+                return false;
             }
         });
 
@@ -674,32 +707,31 @@
                     data: data
                 },
                 success: function(datas) {
-                    var flag = 1;
+                    if (!datas || datas.length === 0) {
+                        return;
+                    }
+                    if (!Array.isArray(datas[0])) {
+                        datas = [datas];
+                    }
                     var product_code = [];
                     $(".product-code").each(function(i) {
                         product_code.push($(this).val());
                     });
-                    //loop through the datas
+
                     datas.forEach(function(data) {
+                        var flag = 1;
                         if (product_code.includes(data[1])) {
                             rowindex = product_code.indexOf(data[1]);
-                            var qty = parseFloat($('table.order-list tbody tr:nth-child(' + (rowindex +
-                                1) + ') .qty').val()) + 1;
-                            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(
-                                qty);
-                            if ($('select[name="status"]').val() == 1 || $('select[name="status"]')
-                                .val() == 1) {
-                                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) +
-                                    ') .recieved').val(qty);
+                            var qty = parseFloat($('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val()) + 1;
+                            $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(qty);
+                            if ($('select[name="status"]').val() == 1 || $('select[name="status"]').val() == 2) {
+                                $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .recieved').val(qty);
                             }
                             calculateRowProductData(qty);
                             flag = 0;
                         }
-                    });
 
-                    $("input[name='product_code_name']").val('');
-                    if (flag) {
-                        datas.forEach(function(data) {
+                        if (flag) {
                             var newRow = $("<tr>");
                             var cols = '';
                             temp_unit_name = (data[6]).split(',');
@@ -717,14 +749,6 @@
                             else
                                 cols +=
                                 '<td class="recieved-product-qty d-none"><input type="number" class="form-control recieved" name="recieved[]" value="0" step="any"/></td>';
-                            // if(data[10]) {
-                            //     cols += '<td><input type="text" class="form-control batch-no" name="batch_no[]" required/></td>';
-                            //     cols += '<td><input type="text" class="form-control expired-date" name="expired_date[]" required/></td>';
-                            // }
-                            // else {
-                            //     cols += '<td><input type="text" class="form-control batch-no" readonly name="batch_no[]"/></td>';
-                            //     cols += '<td><input type="text" class="form-control expired-date" readonly name="expired_date[]"/></td>';
-                            // }
 
                             cols += '<td class="net_unit_cost">' + data[2] + '</td>';
                             cols +=
@@ -746,7 +770,7 @@
                                 '<input type="hidden" class="buying_price" name="net_unit_cost[]" />';
                             cols +=
                                 '<input type="hidden" class="selling_price" name="selling_price[]" value="' +
-                                data[12] + '" />';
+                                data[13] + '" />';
                             cols += '<input type="hidden" class="discount-value" name="discount[]" />';
                             cols += '<input type="hidden" class="tax-rate" name="tax_rate[]" value="' +
                                 data[3] + '"/>';
@@ -769,14 +793,17 @@
                             unit_name.splice(rowindex, 0, data[6]);
                             unit_operator.splice(rowindex, 0, data[7]);
                             unit_operation_value.splice(rowindex, 0, data[8]);
-                            is_imei.splice(rowindex, 0, data[11]);
+                            is_imei.splice(rowindex, 0, data[12]);
                             checkQuantity(1, true);
-                            if (data[11]) {
+                            if (data[12]) {
                                 $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find(
                                     '.edit-product').click();
                             }
-                        });
-                    }
+                            product_code.push(data[1]);
+                        }
+                    });
+
+                    $("input[name='product_code_name']").val('');
                 }
             });
         }
@@ -971,6 +998,11 @@
         });
 
         $('#purchase-form').on('submit', function(e) {
+            if (!$('select[name="supplier_id"]').val()) {
+                alert("Please select Supplier!");
+                e.preventDefault();
+                return false;
+            }
             var rownumber = $('table.order-list tbody tr:last').index();
             if (rownumber < 0) {
                 alert("Please insert product to order table!")
