@@ -144,6 +144,246 @@
   }
 
   /* ============================================================
+     Modern Financial Summary Cards (Assets, Liabilities, Cash)
+     ============================================================ */
+  .modern-fin-card {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .modern-fin-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    border-color: #e2e8f0;
+  }
+  .fin-card-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+  }
+  .fin-header-left {
+    display: flex;
+    align-items: center;
+  }
+  .fin-header-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  .fin-header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .fin-header-badge {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .fin-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  .fin-item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+  .fin-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed #f1f5f9;
+    font-size: 15.5px;
+  }
+  .fin-item-row:last-child {
+    border-bottom: none;
+  }
+  .fin-item-label {
+    color: #334155;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+  }
+  .fin-item-label i {
+    width: 22px;
+    font-size: 16px;
+    margin-right: 10px;
+    text-align: center;
+  }
+  .fin-item-val {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 16.5px;
+    white-space: nowrap;
+  }
+  .fin-insight-box {
+    background: #f8fafc;
+    border: 1px dashed #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+  .fin-progress-wrap {
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
+  .fin-total-box {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .fin-total-pill {
+    padding: 14px 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .fin-total-label {
+    font-size: 14.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .fin-total-amount {
+    font-size: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  /* Themes */
+  /* Assets - Green/Emerald */
+  .fin-theme-assets .fin-header-icon {
+    background: #ecfdf5;
+    color: #059669;
+  }
+  .fin-theme-assets .fin-header-badge {
+    background: #ecfdf5;
+    color: #059669;
+  }
+  .fin-theme-assets .fin-total-pill {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #047857;
+  }
+
+  /* Liabilities - Amber/Rose */
+  .fin-theme-liabilities .fin-header-icon {
+    background: #fffbeb;
+    color: #d97706;
+  }
+  .fin-theme-liabilities .fin-header-badge {
+    background: #fffbeb;
+    color: #d97706;
+  }
+  .fin-theme-liabilities .fin-total-pill {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #b45309;
+  }
+
+  /* Cash - Blue/Indigo */
+  .fin-theme-cash .fin-header-icon {
+    background: #eff6ff;
+    color: #2563eb;
+  }
+  .fin-theme-cash .fin-header-badge {
+    background: #eff6ff;
+    color: #2563eb;
+  }
+  .fin-theme-cash .fin-total-pill {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+  }
+
+  /* Dark mode overrides for financial cards */
+  .dark-mode .modern-fin-card {
+    background: #1e2430 !important;
+    border-color: #2d3748 !important;
+  }
+  .dark-mode .fin-card-header {
+    background: #1e2430 !important;
+    border-bottom-color: #2d3748 !important;
+  }
+  .dark-mode .fin-header-title {
+    color: #f1f5f9 !important;
+  }
+  .dark-mode .fin-item-row {
+    border-bottom-color: #2d3748 !important;
+  }
+  .dark-mode .fin-item-label {
+    color: #94a3b8 !important;
+  }
+  .dark-mode .fin-item-val {
+    color: #f8fafc !important;
+  }
+  .dark-mode .fin-insight-box,
+  .dark-mode .fin-progress-wrap {
+    background: #181d27 !important;
+    border-color: #2d3748 !important;
+  }
+  .dark-mode .fin-theme-assets .fin-header-icon,
+  .dark-mode .fin-theme-assets .fin-header-badge {
+    background: rgba(5, 150, 105, 0.15) !important;
+    color: #34d399 !important;
+  }
+  .dark-mode .fin-theme-assets .fin-total-pill {
+    background: rgba(5, 150, 105, 0.15) !important;
+    border-color: rgba(52, 211, 153, 0.3) !important;
+    color: #34d399 !important;
+  }
+  .dark-mode .fin-theme-liabilities .fin-header-icon,
+  .dark-mode .fin-theme-liabilities .fin-header-badge {
+    background: rgba(217, 119, 6, 0.15) !important;
+    color: #fbbf24 !important;
+  }
+  .dark-mode .fin-theme-liabilities .fin-total-pill {
+    background: rgba(217, 119, 6, 0.15) !important;
+    border-color: rgba(251, 191, 36, 0.3) !important;
+    color: #fbbf24 !important;
+  }
+  .dark-mode .fin-theme-cash .fin-header-icon,
+  .dark-mode .fin-theme-cash .fin-header-badge {
+    background: rgba(37, 99, 235, 0.15) !important;
+    color: #60a5fa !important;
+  }
+  .dark-mode .fin-theme-cash .fin-total-pill {
+    background: rgba(37, 99, 235, 0.15) !important;
+    border-color: rgba(96, 165, 250, 0.3) !important;
+    color: #60a5fa !important;
+  }
+
+  /* ============================================================
      Comprehensive Dark Mode Typography & Styling
      Applies whenever body has .dark-mode or theme is dark.css
      ============================================================ */
@@ -659,134 +899,178 @@ END OF ORIGINAL 12 CARDS SECTION
 =============================================================================================
 --}}
               <div class="row">
-                <div class="col-md-4 mt-4">
-              <div class="card">
-                <div class="card-header d-flex align-items-center">
-                  <h4>{{trans('file.Assets')}}</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                      <tbody>
-                        <tr>
-                          <th>{{trans('file.item stock value')}} ({{trans('file.Cost') ?? 'Cost'}})</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$assets['total_stock_value'], 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>{{trans('file.item stock value')}} ({{trans('file.Price') ?? 'Price'}})</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$assets['total_stock_price'], 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>{{trans('file.receiveable customer due')}}</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$assets['total_due'], 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>{{trans('file.total accounts balance')}}</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$assets['total_current_balance'], 2, '.', '') }}</th>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>{{trans('file.total assets')}}</th>
-                          <th>:</th>
-                          <th class="text-right text-success">{{ number_format((float)($assets['total_stock_value'] + $assets['total_due'] + $assets['total_current_balance']), 2, '.', '') }}</th>
-                        </tr>
-                      </tfoot>
-                    </table>
+                <!-- 1. Assets Card -->
+                <div class="col-lg-4 col-md-12 mt-4">
+                  <div class="modern-fin-card fin-theme-assets">
+                    <div class="fin-card-header">
+                      <div class="fin-header-left">
+                        <div class="fin-header-icon">
+                          <i class="fa fa-cubes"></i>
+                        </div>
+                        <h4 class="fin-header-title">{{trans('file.Assets')}}</h4>
+                      </div>
+                      <span class="fin-header-badge">Assets</span>
+                    </div>
+                    <div class="fin-card-body">
+                      <ul class="fin-item-list">
+                        <li class="fin-item-row">
+                          <span class="fin-item-label">
+                            <i class="fa fa-archive"></i> {{trans('file.item stock value')}} (Cost)
+                          </span>
+                          <span class="fin-item-val">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$assets['total_stock_value'], 2, '.', '') }}
+                          </span>
+                        </li>
+                        <li class="fin-item-row">
+                          <span class="fin-item-label">
+                            <i class="fa fa-tags"></i> {{trans('file.item stock value')}} (Price)
+                          </span>
+                          <span class="fin-item-val">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$assets['total_stock_price'], 2, '.', '') }}
+                          </span>
+                        </li>
+                        <li class="fin-item-row">
+                          <span class="fin-item-label">
+                            <i class="fa fa-users"></i> {{trans('file.receiveable customer due')}}
+                          </span>
+                          <span class="fin-item-val">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$assets['total_due'], 2, '.', '') }}
+                          </span>
+                        </li>
+                        <li class="fin-item-row">
+                          <span class="fin-item-label">
+                            <i class="fa fa-university"></i> {{trans('file.total accounts balance')}}
+                          </span>
+                          <span class="fin-item-val">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$assets['total_current_balance'], 2, '.', '') }}
+                          </span>
+                        </li>
+                      </ul>
+                      <div class="fin-total-box">
+                        <div class="fin-total-pill">
+                          <span class="fin-total-label">{{trans('file.total assets')}}</span>
+                          <span class="fin-total-amount">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)($assets['total_stock_value'] + $assets['total_due'] + $assets['total_current_balance']), 2, '.', '') }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
 
-            <div class="col-md-4 mt-4">
-              <div class="card">
-                <div class="card-header d-flex align-items-center">
-                  <h4>{{trans('file.Liabilities')}}</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                      <tbody>
-                        <tr>
-                          <th>{{trans('file.supplier due')}}</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$liability['total_due'], 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>{{trans('file.customer advance')}}</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$liability['customer_advance'], 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>&nbsp;</th>
-                          <th></th>
-                          <th class="text-right"></th>
-                        </tr>
-                        <tr>
-                          <th>&nbsp;</th>
-                          <th></th>
-                          <th class="text-right"></th>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>{{trans('file.total liabilities')}}</th>
-                          <th>:</th>
-                          <th class="text-right text-warning">{{ number_format((float)array_sum($liability->toArray()), 2, '.', '') }}</th>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+                <!-- 2. Liabilities Card -->
+                <div class="col-lg-4 col-md-12 mt-4">
+                  <div class="modern-fin-card fin-theme-liabilities">
+                    <div class="fin-card-header">
+                      <div class="fin-header-left">
+                        <div class="fin-header-icon">
+                          <i class="fa fa-file-text-o"></i>
+                        </div>
+                        <h4 class="fin-header-title">{{trans('file.Liabilities')}}</h4>
+                      </div>
+                      <span class="fin-header-badge">Payables</span>
+                    </div>
+                    <div class="fin-card-body">
+                      <ul class="fin-item-list">
+                        <li class="fin-item-row">
+                          <span class="fin-item-label">
+                            <i class="fa fa-truck"></i> {{trans('file.supplier due')}}
+                          </span>
+                          <span class="fin-item-val text-danger">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$liability['total_due'], 2, '.', '') }}
+                          </span>
+                        </li>
+                      </ul>
 
-            <div class="col-md-4 mt-4">
-              <div class="card">
-                <div class="card-header d-flex align-items-center">
-                  <h4>{{trans('file.Cash In/Out')}}</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
-                      <tbody>
-                        <tr>
-                          <th>{{trans('file.total cashin')}}</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$cash['in'], 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>{{trans('file.total cashout')}}</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)$cash['out'], 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>{{trans('file.Initial Balance')}}</th>
-                          <th>:</th>
-                          <th class="text-right">{{ number_format((float)($cash['initial_balance'] ?? 0), 2, '.', '') }}</th>
-                        </tr>
-                        <tr>
-                          <th>&nbsp;</th>
-                          <th></th>
-                          <th class="text-right"></th>
-                        </tr>
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>{{trans('file.Current Balance')}}</th>
-                          <th>:</th>
-                          <th class="text-right text-success">{{ number_format((float)($cash['balance'] ?? ($cash['in'] - $cash['out'])), 2, '.', '') }}</th>
-                        </tr>
-                      </tfoot>
-                    </table>
+                      <!-- Supplier Payable Status Overview -->
+                      <div class="fin-insight-box">
+                        <div class="d-flex align-items-center mb-1">
+                          <i class="fa fa-info-circle text-warning mr-2" style="font-size: 16px;"></i>
+                          <span class="font-weight-bold" style="font-size: 15px;">Supplier Payable Status</span>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted mt-2" style="font-size: 14px;">
+                          <span>Total Unsettled Due</span>
+                          <span class="font-weight-bold text-danger">{{ $currency->code ?? '' }} {{ number_format((float)$liability['total_due'], 2, '.', '') }}</span>
+                        </div>
+                      </div>
+
+                      <div class="fin-total-box">
+                        <div class="fin-total-pill">
+                          <span class="fin-total-label">{{trans('file.total liabilities')}}</span>
+                          <span class="fin-total-amount">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$liability['total_due'], 2, '.', '') }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+
+                <!-- 3. Cash In/Out Card -->
+                <div class="col-lg-4 col-md-12 mt-4">
+                  <div class="modern-fin-card fin-theme-cash">
+                    <div class="fin-card-header">
+                      <div class="fin-header-left">
+                        <div class="fin-header-icon">
+                          <i class="fa fa-exchange"></i>
+                        </div>
+                        <h4 class="fin-header-title">{{trans('file.Cash In/Out')}}</h4>
+                      </div>
+                      <span class="fin-header-badge">Cash Flow</span>
+                    </div>
+                    <div class="fin-card-body">
+                      <ul class="fin-item-list">
+                        <li class="fin-item-row">
+                          <span class="fin-item-label text-success">
+                            <i class="fa fa-arrow-circle-down text-success"></i> {{trans('file.total cashin')}}
+                          </span>
+                          <span class="fin-item-val text-success">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$cash['in'], 2, '.', '') }}
+                          </span>
+                        </li>
+                        <li class="fin-item-row">
+                          <span class="fin-item-label text-danger">
+                            <i class="fa fa-arrow-circle-up text-danger"></i> {{trans('file.total cashout')}}
+                          </span>
+                          <span class="fin-item-val text-danger">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)$cash['out'], 2, '.', '') }}
+                          </span>
+                        </li>
+                        <li class="fin-item-row">
+                          <span class="fin-item-label">
+                            <i class="fa fa-history"></i> {{trans('file.Initial Balance')}}
+                          </span>
+                          <span class="fin-item-val">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)($cash['initial_balance'] ?? 0), 2, '.', '') }}
+                          </span>
+                        </li>
+                      </ul>
+
+                      @php
+                        $total_cash_vol = (float)$cash['in'] + (float)$cash['out'];
+                        $cash_out_pct = $total_cash_vol > 0 ? min(100, round(((float)$cash['out'] / $total_cash_vol) * 100)) : 0;
+                      @endphp
+                      <div class="fin-progress-wrap">
+                        <div class="d-flex justify-content-between mb-2 font-weight-bold" style="font-size: 14px; color: #475569;">
+                          <span>Outflow Ratio (ক্যাশ আউট হার)</span>
+                          <span>{{ $cash_out_pct }}%</span>
+                        </div>
+                        <div class="progress" style="height: 8px; border-radius: 6px; background-color: #e2e8f0;">
+                          <div class="progress-bar" role="progressbar" style="width: {{ $cash_out_pct }}%; background: linear-gradient(90deg, #3b82f6, #ef4444); border-radius: 6px;" aria-valuenow="{{ $cash_out_pct }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+
+                      <div class="fin-total-box">
+                        <div class="fin-total-pill">
+                          <span class="fin-total-label">{{trans('file.Current Balance')}}</span>
+                          <span class="fin-total-amount">
+                            <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>{{ number_format((float)($cash['balance'] ?? ($cash['in'] - $cash['out'])), 2, '.', '') }}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             @endif
