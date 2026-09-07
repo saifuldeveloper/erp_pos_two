@@ -56,7 +56,11 @@ class ReturnPurchaseController extends Controller
 
     public function create(Request $request)
     {
-        $formData = $this->returnPurchaseService->getCreateFormData();
+        $referenceNo = $request->input('reference_no');
+        $formData = $this->returnPurchaseService->getCreateFormData($referenceNo);
+        if ($referenceNo && empty($formData['lims_purchase_data'])) {
+            return redirect()->back()->with('not_permitted', 'This reference no does not exist!');
+        }
         return view('backend.return_purchase.create', $formData);
     }
 

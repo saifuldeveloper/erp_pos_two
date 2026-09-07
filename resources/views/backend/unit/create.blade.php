@@ -42,8 +42,7 @@
                     {{-- <td>{{ $unit->unit_code }}</td> --}}
                     <td>{{ $unit->unit_name }}</td>
                     {{-- @if($unit->base_unit)
-                        <?php $base_unit = DB::table('units')->where('id', $unit->base_unit)->first(); ?>
-                        <td>{{ $base_unit->unit_name }}</td>
+                        <td>{{ $unit->baseUnit->unit_name ?? 'N/A' }}</td>
                     @else
                         <td>N/A</td>
                     @endif

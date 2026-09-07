@@ -25,7 +25,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function getNonDeletedUsers(): Collection
     {
-        return $this->model->where('is_deleted', false)->get();
+        return $this->model->with('role')->where('is_deleted', false)->get();
     }
 
     /**

@@ -98,12 +98,21 @@ class AvijatryController extends Controller
     public function invoice($id)
     {
         try {
-            $purchase = Purchase::where('reference_no', 'avijatry-' . $id)->first();
+            $purchase = Purchase::with('productPurchases')->where('reference_no', 'avijatry-' . $id)->first();
             $response = $this->avijatryService->invoice($id);
 
             if ($response->status() == 200) {
                 $invoice = $response->json()['invoice'];
-                return view('backend.avijatry.invoice', compact('invoice', 'purchase'));
+                $warehouse = Warehouse::first();
+                $shoeCodes = collect($invoice['invoice_entries'] ?? [])->map(function ($e) {
+                    return 'A-' . ($e['shoe']['code'] ?? '');
+                })->filter()->all();
+                $products = Product::with('productVariants')->whereIn('code', $shoeCodes)->get()->keyBy('code');
+                $gifts = collect();
+                if ($purchase) {
+                    $gifts = GiftReceive::where('purchase_id', $purchase->id)->get()->keyBy('gift_transaction_id');
+                }
+                return view('backend.avijatry.invoice', compact('invoice', 'purchase', 'warehouse', 'products', 'gifts'));
             } else {
                 abort(404);
             }

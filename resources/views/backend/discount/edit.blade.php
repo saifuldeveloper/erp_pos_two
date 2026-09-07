@@ -65,20 +65,18 @@
                                                     <th><i class="dripicons-trash"></i></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                            @if($lims_discount_data->applicable_for == 'Specific')
-                                                <?php $product_ids = explode(",", $lims_discount_data->product_list); ?>
-                                                @foreach($product_ids as $key => $product_id)
-                                                <?php $product_data = \App\Models\Product::select('id', 'name', 'code')->find($product_id); ?>
-                                                    <tr>
-                                                        <td><input type="hidden" name="product_list[]" value="{{$product_data->id}}" />{{$key+1}}</td>
-                                                        <td>{{$product_data->name}}</td>
-                                                        <td>{{$product_data->code}}</td>
-                                                        <td><button type="button" class="pbtnDel btn btn-sm btn-danger">X</button></td>
-                                                    </tr>
-                                                @endforeach
-                                            @endif
-                                            </tbody>
+                                             <tbody>
+                                             @if($lims_discount_data->applicable_for == 'Specific' && isset($discount_products))
+                                                 @foreach($discount_products as $key => $product_data)
+                                                     <tr>
+                                                         <td><input type="hidden" name="product_list[]" value="{{$product_data->id}}" />{{$key+1}}</td>
+                                                         <td>{{$product_data->name}}</td>
+                                                         <td>{{$product_data->code}}</td>
+                                                         <td><button type="button" class="pbtnDel btn btn-sm btn-danger">X</button></td>
+                                                     </tr>
+                                                 @endforeach
+                                             @endif
+                                             </tbody>
                                         </table>
                                     </div>
                                 </div>

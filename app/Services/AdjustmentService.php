@@ -240,7 +240,7 @@ class AdjustmentService
     public function getEditFormData($id): array
     {
         $lims_adjustment_data = Adjustment::find($id);
-        $lims_product_adjustment_data = ProductAdjustment::where('adjustment_id', $id)->get();
+        $lims_product_adjustment_data = ProductAdjustment::with(['product.productVariants'])->where('adjustment_id', $id)->get();
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
 
         return compact('lims_adjustment_data', 'lims_product_adjustment_data', 'lims_warehouse_list');

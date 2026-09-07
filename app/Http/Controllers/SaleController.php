@@ -876,17 +876,17 @@ class SaleController extends Controller
         });
         //return $lims_category_list;
         if (Auth::user()->role_id > 2 && config('staff_access') == 'own') {
-            $recent_sale = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
+            $recent_sale = Sale::with('customer')->select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
                 ['sale_status', 1],
                 ['user_id', Auth::id()]
             ])->orderBy('id', 'desc')->take(10)->get();
-            $recent_draft = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
+            $recent_draft = Sale::with('customer')->select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where([
                 ['sale_status', 3],
                 ['user_id', Auth::id()]
             ])->orderBy('id', 'desc')->take(10)->get();
         } else {
-            $recent_sale = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 1)->orderBy('id', 'desc')->take(10)->get();
-            $recent_draft = Sale::select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 3)->orderBy('id', 'desc')->take(10)->get();
+            $recent_sale = Sale::with('customer')->select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 1)->orderBy('id', 'desc')->take(10)->get();
+            $recent_draft = Sale::with('customer')->select('id', 'reference_no', 'customer_id', 'grand_total', 'created_at')->where('sale_status', 3)->orderBy('id', 'desc')->take(10)->get();
         }
         $lims_coupon_list = Cache::remember('coupon_list', 60 * 60 * 24 * 30, function () {
             return Coupon::where('is_active', true)->get();
@@ -910,8 +910,8 @@ class SaleController extends Controller
         $lims_customer_group_all = CustomerGroup::where('is_active', true)->get();
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $lims_tax_list = Tax::where('is_active', true)->get();
-        $lims_sale_data = Sale::find($id);
-        $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
+        $lims_sale_data = Sale::with('coupon')->find($id);
+        $lims_product_sale_data = Product_Sale::with(['product.productVariants', 'productBatch'])->where('sale_id', $id)->get();
         $lims_product_list = Product::where([
             ['featured', 1],
             ['is_active', true]
@@ -933,8 +933,10 @@ class SaleController extends Controller
         $lims_coupon_list = Coupon::where('is_active', true)->get();
 
         $currency_list = Currency::where('is_active', true)->get();
+        $all_units = Unit::where('is_active', true)->get();
+        $all_taxes = $lims_tax_list;
 
-        return view('backend.sale.create_sale', compact('currency_list', 'lims_biller_list', 'lims_customer_list', 'lims_warehouse_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'lims_pos_setting_data', 'lims_brand_list', 'lims_category_list', 'lims_coupon_list', 'lims_product_list', 'product_number', 'lims_customer_group_all', 'lims_reward_point_setting_data'));
+        return view('backend.sale.create_sale', compact('currency_list', 'lims_biller_list', 'lims_customer_list', 'lims_warehouse_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'lims_pos_setting_data', 'lims_brand_list', 'lims_category_list', 'lims_coupon_list', 'lims_product_list', 'product_number', 'lims_customer_group_all', 'lims_reward_point_setting_data', 'all_units', 'all_taxes'));
     }
 
     public function getProductByFilter($category_id, $brand_id)
@@ -1521,14 +1523,16 @@ class SaleController extends Controller
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $lims_biller_list = Biller::where('is_active', true)->get();
         $lims_tax_list = Tax::where('is_active', true)->get();
-        $lims_sale_data = Sale::find($id);
-        $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
+        $lims_sale_data = Sale::with('coupon')->find($id);
+        $lims_product_sale_data = Product_Sale::with(['product.productVariants', 'productBatch'])->where('sale_id', $id)->get();
         if ($lims_sale_data->exchange_rate)
             $currency_exchange_rate = $lims_sale_data->exchange_rate;
         else
             $currency_exchange_rate = 1;
         $custom_fields = CustomField::where('belongs_to', 'sale')->get();
-        return view('backend.sale.edit', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'currency_exchange_rate', 'custom_fields'));
+        $all_units = Unit::where('is_active', true)->get();
+        $all_taxes = $lims_tax_list;
+        return view('backend.sale.edit', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'lims_sale_data', 'lims_product_sale_data', 'currency_exchange_rate', 'custom_fields', 'all_units', 'all_taxes'));
     }
 
     public function update(UpdateSaleRequest $request, $id)
@@ -1921,7 +1925,7 @@ class SaleController extends Controller
 
 
         $lims_sale_data = Sale::find($id);
-        $lims_product_sale_data = Product_Sale::where('sale_id', $id)->get();
+        $lims_product_sale_data = Product_Sale::with(['product', 'unit', 'variant', 'productBatch'])->where('sale_id', $id)->get();
         if (cache()->has('biller_list')) {
             $lims_biller_data = cache()->get('biller_list')->find($lims_sale_data->biller_id);
         } else {

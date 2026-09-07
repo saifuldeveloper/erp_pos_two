@@ -30,7 +30,25 @@ class DiscountService
      */
     public function getAllDiscounts(): Collection
     {
-        return $this->discountRepository->getAllWithPlans();
+        $discounts = $this->discountRepository->getAllWithPlans();
+        $allProductIds = [];
+        foreach ($discounts as $discount) {
+            if ($discount->product_list) {
+                $allProductIds = array_merge($allProductIds, explode(',', $discount->product_list));
+            }
+        }
+        $products = Product::select('id', 'name', 'code')->whereIn('id', array_unique(array_filter($allProductIds)))->get()->keyBy('id');
+
+        foreach ($discounts as $discount) {
+            if ($discount->product_list) {
+                $ids = explode(',', $discount->product_list);
+                $discount->products_data = collect($ids)->map(fn($id) => $products->get($id))->filter();
+            } else {
+                $discount->products_data = collect();
+            }
+        }
+
+        return $discounts;
     }
 
     /**
@@ -107,7 +125,13 @@ class DiscountService
         $discount_plan_ids = DiscountPlanDiscount::where('discount_id', $id)->pluck('discount_plan_id')->toArray();
         $lims_discount_plan_list = DiscountPlan::where('is_active', true)->get();
 
-        return compact('lims_discount_data', 'discount_plan_ids', 'lims_discount_plan_list');
+        $discount_products = collect();
+        if ($lims_discount_data->applicable_for == 'Specific' && $lims_discount_data->product_list) {
+            $product_ids = explode(',', $lims_discount_data->product_list);
+            $discount_products = Product::select('id', 'name', 'code')->whereIn('id', $product_ids)->get();
+        }
+
+        return compact('lims_discount_data', 'discount_plan_ids', 'lims_discount_plan_list', 'discount_products');
     }
 
     /**

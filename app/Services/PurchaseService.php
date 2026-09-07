@@ -475,9 +475,11 @@ class PurchaseService
         $lims_supplier_list = Supplier::where('is_active', true)->get();
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $lims_tax_list = Tax::where('is_active', true)->get();
-        $lims_product_purchase_data = ProductPurchase::where('purchase_id', $id)->get();
+        $lims_product_purchase_data = ProductPurchase::with(['product.productVariants', 'unit', 'variant', 'productBatch'])->where('purchase_id', $id)->get();
         $lims_purchase_data = Purchase::find($id);
         $custom_fields = CustomField::where('belongs_to', 'purchase')->get();
+        $all_units = Unit::all();
+        $all_taxes = $lims_tax_list;
 
         return compact(
             'lims_supplier_list',
@@ -485,7 +487,9 @@ class PurchaseService
             'lims_tax_list',
             'lims_product_purchase_data',
             'lims_purchase_data',
-            'custom_fields'
+            'custom_fields',
+            'all_units',
+            'all_taxes'
         );
     }
 

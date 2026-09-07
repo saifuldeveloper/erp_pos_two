@@ -5,9 +5,14 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
-use DB;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Services\AvijatryService;
+use App\Models\User;
+use App\Models\Customer;
+use App\Models\CustomerGroup;
+use App\Models\Supplier;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,5 +37,20 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Schema::defaultStringLength(191);
+        View::composer(['backend.layouts.app', 'backend.auth.*'], function ($view) {
+            $general_setting = Cache::remember('general_setting', 60 * 60 * 24, function () {
+                return DB::table('general_settings')->latest()->first();
+            });
+            $view->with('general_setting', $general_setting);
+        });
+
+        View::composer(['backend.layout.top-head', 'backend.layout.top-head-rtl'], function ($view) {
+            $view->with([
+                'top_head_users' => User::where('is_active', true)->select('id', 'name', 'email', 'phone')->get(),
+                'top_head_customers' => Customer::where('is_active', true)->select('id', 'name', 'phone_number')->get(),
+                'top_head_customer_groups' => CustomerGroup::where('is_active', true)->select('id', 'name')->get(),
+                'top_head_suppliers' => Supplier::where('is_active', true)->select('id', 'name', 'phone_number')->get(),
+            ]);
+        });
     }
 }

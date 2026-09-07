@@ -99,21 +99,28 @@
                                                     ?>
                                                     @foreach($lims_product_quotation_data as $product_quotation)
                                                     <?php
-                                                        $product_data = DB::table('products')->find($product_quotation->product_id);
+                                                        $product_data = $product_quotation->product ? clone $product_quotation->product : null;
 
-                                                        if($product_quotation->variant_id) {
-                                                            $product_variant_data = \App\Models\ProductVariant::select('item_code', 'additional_cost')->FindExactProduct($product_quotation->product_id, $product_quotation->variant_id)->first();
+                                                        if($product_quotation->variant_id && $product_data) {
+                                                            $product_variant_data = $product_data->productVariants ? $product_data->productVariants->where('variant_id', $product_quotation->variant_id)->first() : null;
+                                                            if(!$product_variant_data && $product_quotation->variant) {
+                                                                $product_variant_data = $product_quotation->variant;
+                                                            }
 
-                                                            $product_data->code = $product_variant_data->item_code;
-                                                            $product_data->cost += $product_variant_data->additional_cost;
+                                                            if($product_variant_data) {
+                                                                $product_data->code = $product_variant_data->item_code;
+                                                                $product_data->cost += $product_variant_data->additional_cost;
+                                                            }
                                                         }
                                                     ?>
-                                                    @if($product_data->type == 'standard')
+                                                    @if($product_data && $product_data->type == 'standard')
                                                     <tr>
                                                         <?php
                                                             $product_cost = $product_data->cost;
-                                                            $tax_data = DB::table('taxes')->where('rate', $product_quotation->tax_rate)->first();
-                                                            $units = DB::table('units')->where('base_unit', $product_data->unit_id)->orWhere('id', $product_data->unit_id)->get();
+                                                            $tax_data = $all_taxes->where('rate', $product_quotation->tax_rate)->first();
+                                                            $units = $all_units->filter(function($u) use ($product_data) {
+                                                                return $product_data && ($u->base_unit == $product_data->unit_id || $u->id == $product_data->unit_id);
+                                                            });
 
                                                             $unit_name = array();
                                                             $unit_operator = array();
@@ -131,18 +138,22 @@
                                                                     $unit_operation_value[] = $unit->operation_value;
                                                                 }
                                                             }
-                                                            if ($unit_operator[0] == '*') {
+                                                            if (isset($unit_operator[0]) && $unit_operator[0] == '*') {
                                                                 $row_product_cost = $product_cost * $unit_operation_value[0];
-                                                            } else {
+                                                            } elseif (isset($unit_operation_value[0]) && $unit_operation_value[0] != 0) {
                                                                 $row_product_cost = $product_cost / $unit_operation_value[0];
+                                                            } else {
+                                                                $row_product_cost = $product_cost;
                                                             }
+                                                            $op_val = $unit_operation_value[0] ?? 1;
+                                                            $p_qty = $product_quotation->qty ?: 1;
                                                             if($product_data->tax_method == 1){
-                                                                $net_unit_cost = ($product_data->cost * $unit_operation_value[0]) - ($product_quotation->discount / $product_quotation->qty);
+                                                                $net_unit_cost = ($product_data->cost * $op_val) - ($product_quotation->discount / $p_qty);
                                                                 $tax = $net_unit_cost * $product_quotation->qty * ($product_quotation->tax_rate / 100);
                                                                 $sub_total = ($net_unit_cost * $product_quotation->qty) + $tax;
                                                             }
                                                             else{
-                                                                $sub_total_unit = ($product_data->cost * $unit_operation_value[0]) - ($product_quotation->discount / $product_quotation->qty);
+                                                                $sub_total_unit = ($product_data->cost * $op_val) - ($product_quotation->discount / $p_qty);
                                                                 $net_unit_cost = (100 / (100 + $product_quotation->tax_rate)) * $sub_total_unit;
                                                                 $tax = ($sub_total_unit - $net_unit_cost) * $product_quotation->qty;
                                                                 $sub_total = $sub_total_unit * $product_quotation->qty;
@@ -153,7 +164,7 @@
                                                             $temp_unit_operator = $unit_operator = implode(",",$unit_operator) .',';
 
                                                             $temp_unit_operation_value = $unit_operation_value =  implode(",",$unit_operation_value) . ',';
-                                                            $product_batch_data = \App\Models\ProductBatch::select('batch_no', 'expired_date')->find($product_quotation->product_batch_id);
+                                                            $product_batch_data = $product_quotation->productBatch;
                                                         ?>
                                                         <td>{{$product_data->name}} <button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button> </td>
                                                         <td>{{$product_data->code}}</td>

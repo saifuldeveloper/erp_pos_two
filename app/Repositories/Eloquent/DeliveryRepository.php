@@ -26,7 +26,7 @@ class DeliveryRepository extends BaseRepository implements DeliveryRepositoryInt
      */
     public function getAllDeliveries(): Collection
     {
-        $q = $this->model->orderBy('id', 'desc');
+        $q = $this->model->with(['sale.customer', 'user', 'courier'])->orderBy('id', 'desc');
         if (Auth::user() && Auth::user()->role_id > 2 && config('staff_access') == 'own') {
             $q->where('user_id', Auth::id());
         }

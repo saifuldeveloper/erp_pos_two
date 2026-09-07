@@ -43,30 +43,33 @@
                                                     @foreach($lims_product_sale_data as $product_sale)
                                                     <tr>
                                                     <?php
-                                                        $product_data = DB::table('products')->find($product_sale->product_id);
-                                                        if($product_sale->variant_id) {
-                                                            $product_variant_data = \App\Models\ProductVariant::select('id', 'item_code')->FindExactProduct($product_data->id, $product_sale->variant_id)->first();
-                                                            $product_variant_id = $product_variant_data->id;
-                                                            $product_data->code = $product_variant_data->item_code;
+                                                        $product_data = $product_sale->product;
+                                                        $product_variant_id = null;
+                                                        if($product_sale->variant_id && $product_data) {
+                                                            $product_variant_data = $product_data->productVariants->where('variant_id', $product_sale->variant_id)->first();
+                                                            if($product_variant_data) {
+                                                                $product_variant_id = $product_variant_data->id;
+                                                                $product_data->code = $product_variant_data->item_code;
+                                                            }
                                                         }
-                                                        else
-                                                            $product_variant_id = null;
-                                                        if($product_data->tax_method == 1){
-                                                            $product_price = $product_sale->net_unit_price + ($product_sale->discount / $product_sale->qty);
+                                                        if($product_data && $product_data->tax_method == 1){
+                                                            $product_price = $product_sale->qty != 0 ? ($product_sale->net_unit_price + ($product_sale->discount / $product_sale->qty)) : 0;
                                                         }
-                                                        elseif ($product_data->tax_method == 2) {
-                                                            $product_price =($product_sale->total / $product_sale->qty) + ($product_sale->discount / $product_sale->qty);
+                                                        elseif ($product_data && $product_data->tax_method == 2) {
+                                                            $product_price = $product_sale->qty != 0 ? (($product_sale->total / $product_sale->qty) + ($product_sale->discount / $product_sale->qty)) : 0;
+                                                        } else {
+                                                            $product_price = 0;
                                                         }
 
-                                                        $tax = DB::table('taxes')->where('rate',$product_sale->tax_rate)->first();
-                                                        if($product_data->type == 'standard'){
-                                                            $unit = DB::table('units')->select('unit_name')->find($product_sale->sale_unit_id);
-                                                           $unit_name = $unit->unit_name;
+                                                        $tax = $lims_tax_list->where('rate', $product_sale->tax_rate)->first();
+                                                        if($product_data && $product_data->type == 'standard'){
+                                                            $unit = $product_sale->unit;
+                                                            $unit_name = $unit ? $unit->unit_name : 'n/a';
                                                         }
                                                         else {
                                                             $unit_name = 'n/a';
                                                         }
-                                                        $product_batch_data = \App\Models\ProductBatch::select('batch_no')->find($product_sale->product_batch_id);
+                                                        $product_batch_data = $product_sale->productBatch;
                                                     ?>
                                                         <td>{{$product_data->name}}</td>
                                                         <td>{{$product_data->code}}</td>

@@ -48,6 +48,11 @@ class Purchase extends Model
         return $this->belongsTo(Warehouse::class);
     }
 
+    public function returnPurchases()
+    {
+        return $this->hasMany(ReturnPurchase::class);
+    }
+
     public function isStatus(PurchaseStatus $status): bool
     {
         return (int) $this->status === $status->value;

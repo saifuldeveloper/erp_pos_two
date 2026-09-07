@@ -23,11 +23,7 @@
             <tbody>
                 @foreach($all_transaction_list as $key => $data)
                 <?php
-                    $transaction = '';
-                    if($data->sale_id)
-                        $transaction = App\Models\Sale::select('reference_no')->find($data->sale_id);
-                    elseif($data->purchase_id)
-                        $transaction = App\Models\Purchase::select('reference_no')->find($data->purchase_id);
+                    $related_reference = $data->related_reference ?? '';
                     if(str_contains($data->reference_no, 'spr') || str_contains($data->reference_no, 'prr') || (str_contains($data->reference_no, 'mtr') && $data->to_account_id == $lims_account_data->id) ) {
                         $balance += $data->amount;
                         $credit = $data->amount;
@@ -43,11 +39,7 @@
                     <td>{{$key}}</td>
                     <td data-sort="{{date('Y-m-d', strtotime($data->created_at->toDateString()))}}">{{date($general_setting->date_format, strtotime($data->created_at->toDateString()))}}</td>
                     <td>{{$data->reference_no}}</td>
-                    @if($transaction)
-                        <td>{{$transaction->reference_no}}</td>
-                    @else
-                        <td></td>
-                    @endif
+                    <td>{{$related_reference}}</td>
                     <td>{{number_format((float)$credit, $general_setting->decimal, '.', '')}}</td>
                     <td>{{number_format((float)$debit, $general_setting->decimal, '.', '')}}</td>
                     <td>{{number_format((float)$balance, $general_setting->decimal, '.', '')}}</td>

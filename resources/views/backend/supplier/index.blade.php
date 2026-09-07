@@ -30,15 +30,6 @@
                 </thead>
                 <tbody>
                     @foreach ($lims_supplier_all as $key => $supplier)
-                        <?php
-                        $returned_amount = DB::table('purchases')
-                            ->join('return_purchases', 'purchases.id', '=', 'return_purchases.purchase_id')
-                            ->where([['purchases.supplier_id', $supplier->id], ['purchases.payment_status', 1]])
-                            ->sum('return_purchases.grand_total');
-                        $purchaseData = App\Models\Purchase::where([['supplier_id', $supplier->id], ['payment_status', 1]])
-                            ->selectRaw('SUM(grand_total) as grand_total,SUM(paid_amount) as paid_amount')
-                            ->first();
-                        ?>
                         <tr data-id="{{ $supplier->id }}">
                             <td>{{ $key }}</td>
                             @if ($supplier->image)
@@ -68,7 +59,7 @@
                                     {{ ',' . $supplier->country }}
                                 @endif
                             </td>
-                            <td>{{ number_format($purchaseData->grand_total - $returned_amount - $purchaseData->paid_amount, 2) }}
+                            <td>{{ number_format($supplier->due_balance ?? 0, 2) }}
                             </td>
                             <td>
                                 <div class="btn-group">

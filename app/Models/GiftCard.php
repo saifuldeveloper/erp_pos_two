@@ -9,4 +9,19 @@ class GiftCard extends Model
      protected $fillable =[
         "card_no", "amount", "expense", "customer_id", "user_id", "expired_date", "created_by", "is_active"
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

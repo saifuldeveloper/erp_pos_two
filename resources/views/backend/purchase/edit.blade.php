@@ -169,16 +169,18 @@
                                                     @foreach($lims_product_purchase_data as $product_purchase)
                                                     <tr>
                                                     <?php
-                                                        $product_data = DB::table('products')->find($product_purchase->product_id);
-                                                        if($product_purchase->variant_id) {
-                                                            $product_variant_data = \App\Models\ProductVariant::FindExactProduct($product_data->id, $product_purchase->variant_id)->select('item_code')->first();
+                                                        $product_data = $product_purchase->product;
+                                                        if($product_purchase->variant_id && $product_data) {
+                                                            $product_variant_data = $product_data->productVariants->where('variant_id', $product_purchase->variant_id)->first();
                                                             if($product_variant_data)
                                                                 $product_data->code = $product_variant_data->item_code;
                                                         }
 
-                                                        $tax = DB::table('taxes')->where('rate', $product_purchase->tax_rate)->first();
+                                                        $tax = $all_taxes->where('rate', $product_purchase->tax_rate)->first();
 
-                                                        $units = DB::table('units')->where('base_unit', $product_data->unit_id)->orWhere('id', $product_data->unit_id)->get();
+                                                        $units = $all_units->filter(function($u) use ($product_data) {
+                                                            return $product_data && ($u->base_unit == $product_data->unit_id || $u->id == $product_data->unit_id);
+                                                        });
 
                                                         $unit_name = array();
                                                         $unit_operator = array();
@@ -196,14 +198,12 @@
                                                                 $unit_operation_value[] = $unit->operation_value;
                                                             }
                                                         }
-                                                        if($product_data->tax_method == 1){
-                                                            // $product_cost = ($product_purchase->net_unit_cost + ($product_purchase->discount / $product_purchase->qty)) / $unit_operation_value[0];
+                                                        if($product_data && $product_data->tax_method == 1){
                                                             $product_cost = $product_purchase->qty != 0 && !empty($unit_operation_value[0]) ? ($product_purchase->net_unit_cost + $product_purchase->discount / $product_purchase->qty) / $unit_operation_value[0] : 0;
                                                         }
                                                         else{
-                                                            $product_cost = (($product_purchase->total + ($product_purchase->discount / $product_purchase->qty)) / $product_purchase->qty) / $unit_operation_value[0];
+                                                            $product_cost = (($product_purchase->total + ($product_purchase->discount / $product_purchase->qty)) / $product_purchase->qty) / ($unit_operation_value[0] ?? 1);
                                                         }
-
 
                                                         $temp_unit_name = $unit_name = implode(",",$unit_name) . ',';
 
@@ -211,7 +211,7 @@
 
                                                         $temp_unit_operation_value = $unit_operation_value =  implode(",",$unit_operation_value) . ',';
 
-                                                        $product_batch_data = \App\Models\ProductBatch::select('batch_no', 'expired_date')->find($product_purchase->product_batch_id);
+                                                        $product_batch_data = $product_purchase->productBatch;
                                                     ?>
                                                         <td>{{$product_data->name}} <button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button> </td>
                                                         <td>{{$product_data->code}}</td>

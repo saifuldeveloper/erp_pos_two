@@ -81,12 +81,7 @@
                                         <tbody>
                                             @foreach ($lims_sale_data as $key => $sale)
                                                 <?php
-                                                $coupon = \App\Models\Coupon::find($sale->coupon_id);
-                                                if ($coupon) {
-                                                    $coupon_code = $coupon->code;
-                                                } else {
-                                                    $coupon_code = null;
-                                                }
+                                                $coupon_code = $sale->coupon ? $sale->coupon->code : null;
                                                 
                                                 if ($sale->sale_status == 1) {
                                                     $status = trans('file.Completed');

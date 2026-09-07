@@ -62,37 +62,40 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                	@foreach($lims_product_adjustment_data as $product_adjustment_data)
-                                                	<tr>
-                                                	<?php
-                                                	   $product = DB::table('products')->find($product_adjustment_data->product_id);
-                                                       if($product_adjustment_data->variant_id) {
-                                                            $product_variant = \App\Models\ProductVariant::select('id', 'item_code')->FindExactProduct($product_adjustment_data->product_id, $product_adjustment_data->variant_id)->first();
-                                                            $product->code = $product_variant->item_code;
-                                                            $product_variant_id = $product_variant->id;
+                                                 	@foreach($lims_product_adjustment_data as $product_adjustment_data)
+                                                 	<tr>
+                                                 	@php
+                                                 	   $product = $product_adjustment_data->product;
+                                                       $product_code = $product ? $product->code : '';
+                                                       $product_name = $product ? $product->name : '';
+                                                       $product_variant_id = null;
+                                                       if($product_adjustment_data->variant_id && $product) {
+                                                            $product_variant = $product->productVariants->where('variant_id', $product_adjustment_data->variant_id)->first();
+                                                            if ($product_variant) {
+                                                                $product_code = $product_variant->item_code;
+                                                                $product_variant_id = $product_variant->id;
+                                                            }
                                                        }
-                                                       else
-                                                            $product_variant_id = null;
-                                                	?>
-                                                	<td>{{$product->name}}</td>
-                                                	<td>{{$product->code}}</td>
-                                                	<td><input type="number" class="form-control qty" name="qty[]" value="{{$product_adjustment_data->qty}}" required step="any" /></td>
-                                                	<td class="action">
-                                                		<select name="action[]" class="form-control act-val">
-                                                			@if($product_adjustment_data->action == '+')
-                                                			<option value="+">{{trans("file.Addition")}}</option>
-                                                			<option value="-">{{trans("file.Subtraction")}}</option>
-                                                			@else
-                                                			<option value="-">{{trans("file.Subtraction")}}</option><option value="+">{{trans("file.Addition")}}</option>
-                                                			@endif
-                                                		</select>
-                                                	</td>
-                                                	<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{trans("file.delete")}}</button>
-                                                	<input type="hidden" name="product_code[]" class="product-code" value="{{$product->code}}" />
-                                                	<input type="hidden" class="product-id" name="product_id[]" value="{{$product->id}}" />
-                                                    <input type="hidden" name="product_variant_id[]" value="{{$product_variant_id}}" />
-                                                	</td>
-                                                	@endforeach
+                                                 	@endphp
+                                                 	<td>{{$product_name}}</td>
+                                                 	<td>{{$product_code}}</td>
+                                                 	<td><input type="number" class="form-control qty" name="qty[]" value="{{$product_adjustment_data->qty}}" required step="any" /></td>
+                                                 	<td class="action">
+                                                 		<select name="action[]" class="form-control act-val">
+                                                 			@if($product_adjustment_data->action == '+')
+                                                 			<option value="+">{{trans("file.Addition")}}</option>
+                                                 			<option value="-">{{trans("file.Subtraction")}}</option>
+                                                 			@else
+                                                 			<option value="-">{{trans("file.Subtraction")}}</option><option value="+">{{trans("file.Addition")}}</option>
+                                                 			@endif
+                                                 		</select>
+                                                 	</td>
+                                                 	<td><button type="button" class="ibtnDel btn btn-md btn-danger">{{trans("file.delete")}}</button>
+                                                 	<input type="hidden" name="product_code[]" class="product-code" value="{{$product_code}}" />
+                                                 	<input type="hidden" class="product-id" name="product_id[]" value="{{$product ? $product->id : $product_adjustment_data->product_id}}" />
+                                                     <input type="hidden" name="product_variant_id[]" value="{{$product_variant_id}}" />
+                                                 	</td>
+                                                 	@endforeach
                                                 	</tr>
                                                 </tbody>
                                                 <tfoot class="tfoot active">

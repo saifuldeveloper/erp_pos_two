@@ -96,17 +96,13 @@
                   <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                     {!! Form::open(['route' => 'notifications.store', 'method' => 'post']) !!}
                       <div class="row">
-                          <?php
-                              $lims_user_list = DB::table('users')->where([
-                                ['is_active', true],
-                                ['id', '!=', \Auth::user()->id]
-                              ])->get();
-                          ?>
                           <div class="col-md-6 form-group">
                               <label>{{trans('file.User')}} *</label>
                               <select name="user_id" class="selectpicker form-control" required data-live-search="true" data-live-search-style="begins" title="Select user...">
-                                  @foreach($lims_user_list as $user)
+                                  @foreach($top_head_users as $user)
+                                  @if($user->id != \Auth::id())
                                   <option value="{{$user->id}}">{{$user->name . ' (' . $user->email. ')'}}</option>
+                                  @endif
                                   @endforeach
                               </select>
                           </div>
@@ -136,18 +132,6 @@
                 <div class="modal-body">
                   <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                     {!! Form::open(['route' => 'expenses.store', 'method' => 'post']) !!}
-                    <?php
-                      $lims_expense_category_list = DB::table('expense_categories')->where('is_active', true)->get();
-                      if(Auth::user()->role_id > 2)
-                        $lims_warehouse_list = DB::table('warehouses')->where([
-                          ['is_active', true],
-                          ['id', Auth::user()->warehouse_id]
-                        ])->get();
-                      else
-                        $lims_warehouse_list = DB::table('warehouses')->where('is_active', true)->get();
-                      $lims_account_list = \App\Models\Account::where('is_active', true)->get();
-
-                    ?>
                       <div class="row">
                         <div class="col-md-6 form-group">
                             <label>{{trans('file.Expense Category')}} *</label>
@@ -207,9 +191,6 @@
                 <div class="modal-body">
                   <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                     {!! Form::open(['route' => 'report.warehouse', 'method' => 'post']) !!}
-                    <?php
-                      $lims_warehouse_list = DB::table('warehouses')->where('is_active', true)->get();
-                    ?>
                       <div class="form-group">
                           <label>{{trans('file.Warehouse')}} *</label>
                           <select name="warehouse_id" class="selectpicker form-control" required data-live-search="true" id="warehouse-id" data-live-search-style="begins" title="Select warehouse...">
@@ -243,13 +224,10 @@
                 <div class="modal-body">
                   <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                     {!! Form::open(['route' => 'report.user', 'method' => 'post']) !!}
-                    <?php
-                      $lims_user_list = DB::table('users')->where('is_active', true)->get();
-                    ?>
                       <div class="form-group">
                           <label>{{trans('file.User')}} *</label>
                           <select name="user_id" class="selectpicker form-control" required data-live-search="true" id="user-id" data-live-search-style="begins" title="Select user...">
-                              @foreach($lims_user_list as $user)
+                              @foreach($top_head_users as $user)
                               <option value="{{$user->id}}">{{$user->name . ' (' . $user->phone. ')'}}</option>
                               @endforeach
                           </select>
@@ -279,13 +257,10 @@
                 <div class="modal-body">
                   <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                     {!! Form::open(['route' => 'report.customer', 'method' => 'post']) !!}
-                    <?php
-                      $lims_customer_list = DB::table('customers')->where('is_active', true)->get();
-                    ?>
                       <div class="form-group">
                           <label>{{trans('file.customer')}} *</label>
                           <select name="customer_id" class="selectpicker form-control" required data-live-search="true" id="customer-id" data-live-search-style="begins" title="Select customer...">
-                              @foreach($lims_customer_list as $customer)
+                              @foreach($top_head_customers as $customer)
                               <option value="{{$customer->id}}">{{$customer->name . ' (' . $customer->phone_number. ')'}}</option>
                               @endforeach
                           </select>
@@ -315,13 +290,10 @@
                 <div class="modal-body">
                   <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                     {!! Form::open(['route' => 'report.supplier', 'method' => 'post']) !!}
-                    <?php
-                      $lims_supplier_list = DB::table('suppliers')->where('is_active', true)->get();
-                    ?>
                       <div class="form-group">
                           <label>{{trans('file.Supplier')}} *</label>
                           <select name="supplier_id" class="selectpicker form-control" required data-live-search="true" id="supplier-id" data-live-search-style="begins" title="Select Supplier...">
-                              @foreach($lims_supplier_list as $supplier)
+                              @foreach($top_head_suppliers as $supplier)
                               <option value="{{$supplier->id}}">{{$supplier->name . ' (' . $supplier->phone_number. ')'}}</option>
                               @endforeach
                           </select>

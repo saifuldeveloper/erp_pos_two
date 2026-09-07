@@ -30,29 +30,24 @@
                     <td>{{$key}}</td>
                     <td>{{ date('d-m-Y', strtotime($adjustment->created_at->toDateString())) . ' '. $adjustment->created_at->toTimeString() }}</td>
                     <td>{{ $adjustment->reference_no }}</td>
-                    <?php $warehouse = DB::table('warehouses')->find($adjustment->warehouse_id) ?>
-                    <td>{{ $warehouse->name }}</td>
+                    <td>{{ $adjustment->warehouse->name ?? '' }}</td>
                     <td>
                     <?php
-                    	$product_adjustment_data = DB::table('product_adjustments')->where('adjustment_id', $adjustment->id)->get();
-                    	foreach ($product_adjustment_data as $key => $product_adjustment) {
-                            if($product_adjustment->variant_id) {
-                                $product = DB::table('products')
-                                        ->join('product_variants', 'products.id', '=', 'product_variants.product_id')
-                                        ->select('products.name','product_variants.item_code as code')
-                                        ->where([
-                                            ['product_id', $product_adjustment->product_id],
-                                            ['variant_id', $product_adjustment->variant_id]
-                                        ])->first();
+                    	foreach ($adjustment->productAdjustments as $itemKey => $product_adjustment) {
+                            $product = $product_adjustment->product;
+                            if ($product) {
+                                if ($product_adjustment->variant_id) {
+                                    $variant = $product->productVariants->firstWhere('variant_id', $product_adjustment->variant_id);
+                                    $code = $variant ? $variant->item_code : $product->code;
+                                } else {
+                                    $code = $product->code;
+                                }
+                                if ($itemKey) {
+                                    echo '<br>';
+                                }
+                                echo $product->name . ' [' . $code . ']';
                             }
-                            else {
-                                $product = DB::table('products')->select('name','code')->find($product_adjustment->product_id);
-                            }
-
-                    	 	if($key)
-                    	 		echo '<br>';
-                    	 	echo $product->name.' ['.$product->code.']';
-                    	 }
+                    	}
                     ?>
                     </td>
                     <td>{{$adjustment->note}}</td>

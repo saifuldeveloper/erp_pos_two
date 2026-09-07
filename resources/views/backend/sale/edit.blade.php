@@ -99,27 +99,34 @@
                                                     @foreach($lims_product_sale_data as $product_sale)
                                                     <tr>
                                                     <?php
-                                                        $product_data = DB::table('products')->find($product_sale->product_id);
-                                                        if($product_sale->variant_id){
-                                                            $product_variant_data = \App\Models\ProductVariant::select('id', 'item_code')->FindExactProduct($product_data->id, $product_sale->variant_id)->first();
-                                                            $product_variant_id = $product_variant_data->id;
-                                                            $product_data->code = $product_variant_data->item_code;
+                                                        $product_data = $product_sale->product;
+                                                        if($product_sale->variant_id && $product_data){
+                                                            $product_variant_data = $product_data->productVariants->firstWhere('variant_id', $product_sale->variant_id);
+                                                            $product_variant_id = $product_variant_data ? $product_variant_data->id : null;
+                                                            if($product_variant_data) {
+                                                                $product_data->code = $product_variant_data->item_code;
+                                                            }
                                                         }
-                                                        else
+                                                        else {
                                                             $product_variant_id = null;
-                                                        if($product_data->tax_method == 1){
+                                                        }
+                                                        if($product_data && $product_data->tax_method == 1){
                                                             $product_price = $product_sale->net_unit_price + ($product_sale->discount / $product_sale->qty);
                                                         }
-                                                        elseif ($product_data->tax_method == 2) {
+                                                        elseif ($product_data && $product_data->tax_method == 2) {
                                                             $product_price =($product_sale->total / $product_sale->qty) + ($product_sale->discount / $product_sale->qty);
+                                                        } else {
+                                                            $product_price = $product_sale->net_unit_price;
                                                         }
 
-                                                        $tax = DB::table('taxes')->where('rate',$product_sale->tax_rate)->first();
+                                                        $tax = isset($all_taxes) ? $all_taxes->firstWhere('rate', $product_sale->tax_rate) : null;
                                                         $unit_name = array();
                                                         $unit_operator = array();
                                                         $unit_operation_value = array();
-                                                        if($product_data->type == 'standard'){
-                                                            $units = DB::table('units')->where('base_unit', $product_data->unit_id)->orWhere('id', $product_data->unit_id)->get();
+                                                        if($product_data && $product_data->type == 'standard'){
+                                                            $units = isset($all_units) ? $all_units->filter(function($u) use ($product_data) {
+                                                                return $u->base_unit == $product_data->unit_id || $u->id == $product_data->unit_id;
+                                                            }) : collect();
 
                                                             foreach($units as $unit) {
                                                                 if($product_sale->sale_unit_id == $unit->id) {
@@ -133,11 +140,11 @@
                                                                     $unit_operation_value[] = $unit->operation_value;
                                                                 }
                                                             }
-                                                            if($unit_operator[0] == '*'){
-                                                                $product_price = $product_price / $unit_operation_value[0];
+                                                            if(isset($unit_operator[0]) && $unit_operator[0] == '*'){
+                                                                $product_price = $product_price / ($unit_operation_value[0] ?: 1);
                                                             }
-                                                            elseif($unit_operator[0] == '/'){
-                                                                $product_price = $product_price * $unit_operation_value[0];
+                                                            elseif(isset($unit_operator[0]) && $unit_operator[0] == '/'){
+                                                                $product_price = $product_price * ($unit_operation_value[0] ?: 1);
                                                             }
                                                         }
                                                         else {
@@ -151,7 +158,7 @@
 
                                                         $temp_unit_operation_value = $unit_operation_value =  implode(",",$unit_operation_value) . ',';
 
-                                                        $product_batch_data = \App\Models\ProductBatch::select('batch_no', 'expired_date')->find($product_sale->product_batch_id);
+                                                        $product_batch_data = $product_sale->productBatch;
                                                     ?>
                                                         <td>{{$product_data->name}} <button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button> <input type="hidden" class="product-type" value="{{$product_data->type}}" /></td>
                                                         <td>{{$product_data->code}}</td>
@@ -239,16 +246,12 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        @if($lims_sale_data->coupon_id)
-                                            @php
-                                                $coupon_data = DB::table('coupons')->find($lims_sale_data->coupon_id);
-                                            @endphp
+                                        @if($lims_sale_data->coupon_id && $lims_sale_data->coupon)
                                             <input type="hidden" name="coupon_active" value="1" />
-                                            <input type="hidden" name="coupon_type" value="{{$coupon_data->type}}" />
-                                            <input type="hidden" name="coupon_amount" value="{{$coupon_data->amount}}" />
-                                            <input type="hidden" name="coupon_minimum_amount" value="{{$coupon_data->minimum_amount}}" />
+                                            <input type="hidden" name="coupon_type" value="{{$lims_sale_data->coupon->type}}" />
+                                            <input type="hidden" name="coupon_amount" value="{{$lims_sale_data->coupon->amount}}" />
+                                            <input type="hidden" name="coupon_minimum_amount" value="{{$lims_sale_data->coupon->minimum_amount}}" />
                                             <input type="hidden" name="coupon_discount" value="{{$lims_sale_data->coupon_discount}}">
-
                                         @else
                                             <input type="hidden" name="coupon_active" value="0" />
                                         @endif

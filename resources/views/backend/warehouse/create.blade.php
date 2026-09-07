@@ -34,27 +34,14 @@
             </thead>
             <tbody>
                 @foreach($lims_warehouse_all as $key=>$warehouse)
-                <?php
-                    $number_of_product = App\Models\Product_Warehouse::
-                    join('products', 'product_warehouse.product_id', '=', 'products.id')
-                    ->where([ ['product_warehouse.warehouse_id', $warehouse->id],
-                              ['products.is_active', true]
-                    ])->count();
-
-                    $stock_qty = App\Models\Product_Warehouse::
-                    join('products', 'product_warehouse.product_id', '=', 'products.id')
-                    ->where([ ['product_warehouse.warehouse_id', $warehouse->id],
-                              ['products.is_active', true]
-                    ])->sum('product_warehouse.qty');
-                ?>
                 <tr data-id="{{$warehouse->id}}">
                     <td>{{$key}}</td>
                     <td>{{ $warehouse->name }}</td>
                     <td>{{ $warehouse->phone}}</td>
                     <td>{{ $warehouse->email}}</td>
                     <td>{{ $warehouse->address}}</td>
-                    <td>{{$number_of_product}}</td>
-                    <td>{{$stock_qty}}</td>
+                    <td>{{$warehouse->number_of_product ?? 0}}</td>
+                    <td>{{$warehouse->stock_qty ?? 0}}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}

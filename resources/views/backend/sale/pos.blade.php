@@ -687,40 +687,10 @@
                             </div>
                             <li class="nav-item ml-4"><a id="btnFullscreen" data-toggle="tooltip" title="Full Screen"><i class="dripicons-expand"></i></a></li>
                             <?php
-                                $general_setting_permission = $permission_list->where('name', 'general_setting')->first();
-                                $general_setting_permission_active = DB::table('role_has_permissions')->where([
-                                            ['permission_id', $general_setting_permission->id],
-                                            ['role_id', Auth::user()->role_id]
-                                        ])->first();
-
-                                $pos_setting_permission = $permission_list->where('name', 'pos_setting')->first();
-
-                                $pos_setting_permission_active = DB::table('role_has_permissions')->where([
-                                    ['permission_id', $pos_setting_permission->id],
-                                    ['role_id', Auth::user()->role_id]
-                                ])->first();
-                            ?>
-                            @if($pos_setting_permission_active)
-                            <li class="nav-item"><a class="dropdown-item" data-toggle="tooltip" href="{{route('setting.pos')}}" title="{{trans('file.POS Setting')}}"><i class="dripicons-gear"></i></a> </li>
-                            @endif
-                            <li class="nav-item">
-                                <a href="{{route('sales.printLastReciept')}}" data-toggle="tooltip" title="{{trans('file.Print Last Reciept')}}"><i class="dripicons-print"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" id="register-details-btn" data-toggle="tooltip" title="{{trans('file.Cash Register Details')}}"><i class="dripicons-briefcase"></i></a>
-                            </li>
-                            <?php
-                                $today_sale_permission = $permission_list->where('name', 'today_sale')->first();
-                                $today_sale_permission_active = DB::table('role_has_permissions')->where([
-                                            ['permission_id', $today_sale_permission->id],
-                                            ['role_id', Auth::user()->role_id]
-                                        ])->first();
-
-                                $today_profit_permission = $permission_list->where('name', 'today_profit')->first();
-                                $today_profit_permission_active = DB::table('role_has_permissions')->where([
-                                            ['permission_id', $today_profit_permission->id],
-                                            ['role_id', Auth::user()->role_id]
-                                        ])->first();
+                                $general_setting_permission_active = in_array('general_setting', $all_permission);
+                                $pos_setting_permission_active = in_array('pos_setting', $all_permission);
+                                $today_sale_permission_active = in_array('today_sale', $all_permission);
+                                $today_profit_permission_active = in_array('today_profit', $all_permission);
                             ?>
 
                             @if($today_sale_permission_active)
@@ -1038,11 +1008,10 @@
                                   </thead>
                                   <tbody>
                                     @foreach($recent_sale as $sale)
-                                    <?php $customer = DB::table('customers')->find($sale->customer_id); ?>
                                     <tr>
                                       <td>{{date('d-m-Y', strtotime($sale->created_at))}}</td>
                                       <td>{{$sale->reference_no}}</td>
-                                      <td>{{$customer->name}}</td>
+                                      <td>{{$sale->customer->name ?? 'N/A'}}</td>
                                       <td>{{$sale->grand_total}}</td>
                                       <td>
                                         <div class="btn-group">
@@ -1097,11 +1066,10 @@
                                   </thead>
                                   <tbody>
                                     @foreach($recent_draft as $draft)
-                                    <?php $customer = DB::table('customers')->find($draft->customer_id); ?>
                                     <tr>
                                       <td>{{date('d-m-Y', strtotime($draft->created_at))}}</td>
                                       <td>{{$draft->reference_no}}</td>
-                                      <td>{{$customer->name}}</td>
+                                      <td>{{$draft->customer->name ?? 'N/A'}}</td>
                                       <td>{{$draft->grand_total}}</td>
                                       <td>
                                         <div class="btn-group">

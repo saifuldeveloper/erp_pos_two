@@ -124,17 +124,22 @@
                                                         @foreach ($product_list as $key => $id)
                                                             <tr>
                                                                 <?php
-                                                                $product = App\Models\Product::find($id);
-                                                                if ($lims_product_data->variant_list && $variant_list[$key]) {
-                                                                    $product_variant_data = App\Models\ProductVariant::select('item_code')
-                                                                        ->FindExactProduct($id, $variant_list[$key])
-                                                                        ->first();
-                                                                    $product->code = $product_variant_data->item_code;
+                                                                $product = isset($combo_products[$id]) ? clone $combo_products[$id] : App\Models\Product::find($id);
+                                                                if ($product && $lims_product_data->variant_list && !empty($variant_list[$key])) {
+                                                                    $product_variant_data = $product->productVariants ? $product->productVariants->where('variant_id', $variant_list[$key])->first() : null;
+                                                                    if (!$product_variant_data) {
+                                                                        $product_variant_data = App\Models\ProductVariant::select('item_code')
+                                                                            ->FindExactProduct($id, $variant_list[$key])
+                                                                            ->first();
+                                                                    }
+                                                                    if ($product_variant_data) {
+                                                                        $product->code = $product_variant_data->item_code;
+                                                                    }
                                                                 } else {
                                                                     $variant_list[$key] = '';
                                                                 }
                                                                 ?>
-                                                                <td>{{ $product->name }} [{{ $product->code }}]</td>
+                                                                <td>{{ $product ? $product->name : '' }} [{{ $product ? $product->code : '' }}]</td>
                                                                 <td><input type="number" class="form-control qty"
                                                                         name="product_qty[]" value="{{ $qty_list[$key] }}"
                                                                         step="any"></td>
@@ -456,7 +461,7 @@
                                                             </td>
                                                             <td>
                                                                 <?php
-                                                                $product_warehouse = \App\Models\Product_Warehouse::FindProductWithoutVariant($lims_product_data->id, $warehouse->id)->first();
+                                                                $product_warehouse = $product_warehouses[$warehouse->id] ?? null;
                                                                 ?>
                                                                 @if ($product_warehouse)
                                                                     <input type="number" name="diff_price[]"

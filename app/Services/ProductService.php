@@ -703,6 +703,19 @@ class ProductService
         $colors = Color::all();
         $lims_product_colors = $lims_product_data->colors()->pluck('name')->toArray();
 
+        $combo_products = collect();
+        if ($lims_product_data->type == 'combo' && $lims_product_data->product_list) {
+            $combo_ids = array_filter(explode(',', $lims_product_data->product_list));
+            if (!empty($combo_ids)) {
+                $combo_products = Product::with('productVariants')->whereIn('id', $combo_ids)->get()->keyBy('id');
+            }
+        }
+
+        $product_warehouses = Product_Warehouse::where('product_id', $id)
+            ->whereNull('variant_id')
+            ->get()
+            ->keyBy('warehouse_id');
+
         return compact(
             'lims_product_list_without_variant',
             'lims_product_list_with_variant',
@@ -716,7 +729,9 @@ class ProductService
             'noOfVariantValue',
             'custom_fields',
             'colors',
-            'lims_product_colors'
+            'lims_product_colors',
+            'combo_products',
+            'product_warehouses'
         );
     }
 

@@ -31,27 +31,18 @@
             </thead>
             <tbody>
                 @foreach($lims_gift_card_all as $key=>$gift_card)
-                <?php
-                    $created_by = DB::table('users')->find($gift_card->created_by);
-                ?>
                 <tr data-id="{{$gift_card->id}}">
                     <td>{{$key}}</td>
                     <td>{{ $gift_card->card_no }}</td>
                     @if($gift_card->customer_id)
-                    <?php $customer = DB::table('customers')->find($gift_card->customer_id);
-                      $client = $customer->name;
-                    ?>
-                    <td>{{$client}}</td>
+                    <td>{{ $gift_card->customer->name ?? 'N/A' }}</td>
                     @else
-                    <?php $user = DB::table('users')->find($gift_card->user_id);
-                          $client = $user->name;
-                     ?>
-                    <td>{{$client}}</td>
+                    <td>{{ $gift_card->user->name ?? 'N/A' }}</td>
                     @endif
                     <td>{{ $gift_card->amount }}</td>
                     <td>{{ $gift_card->expense }}</td>
                     <td>{{ $gift_card->amount - $gift_card->expense }}</td>
-                    <td>{{ $created_by->name }}</td>
+                    <td>{{ $gift_card->creator->name ?? 'N/A' }}</td>
                     @if($gift_card->expired_date >= date("Y-m-d"))
                       <td><div class="badge badge-success">{{date('d-m-Y', strtotime($gift_card->expired_date))}}</div></td>
                     @else
@@ -135,9 +126,6 @@
             <div class="modal-body">
               <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
                 {!! Form::open(['route' => 'gift_cards.store', 'method' => 'post']) !!}
-                <?php
-                  $lims_warehouse_list = DB::table('warehouses')->where('is_active', true)->get();
-                ?>
                   <div class="form-group">
                       <label>{{trans('file.Card No')}} *</label>
                       <div class="input-group">
@@ -194,9 +182,6 @@
           <div class="modal-body">
             <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
               {!! Form::open(['route' => ['gift_cards.update', 1], 'method' => 'put']) !!}
-              <?php
-                $lims_warehouse_list = DB::table('warehouses')->where('is_active', true)->get();
-              ?>
                 <div class="form-group">
                     <input type="hidden" name="gift_card_id">
                     <label>{{trans('file.Card No')}} *</label>

@@ -32,29 +32,28 @@
                 <tbody>
                     @foreach ($lims_delivery_all as $key => $delivery)
                         <?php
-                        $customer_sale = DB::table('sales')->join('customers', 'sales.customer_id', '=', 'customers.id')->where('sales.id', $delivery->sale_id)->select('sales.reference_no', 'customers.name', 'customers.phone_number', 'customers.city', 'sales.grand_total')->get();
-                        
-                        $product_names = DB::table('sales')->join('product_sales', 'sales.id', '=', 'product_sales.sale_id')->join('products', 'products.id', '=', 'product_sales.product_id')->where('sales.id', $delivery->sale_id)->pluck('products.name')->toArray();
-                        
                         if ($delivery->status == 1) {
                             $status = trans('file.Packing');
                         } elseif ($delivery->status == 2) {
                             $status = trans('file.Delivering');
-                        }elseif ($delivery->status == 3) {
+                        } elseif ($delivery->status == 3) {
                             $status = trans('file.Send Courier');
                         } else {
                             $status = trans('file.Delivered');
                         }
                         
                         $barcode = \DNS2D::getBarcodePNG($delivery->reference_no, 'QRCODE');
+                        $customerName = $delivery->sale->customer->name ?? 'N/A';
+                        $customerPhone = $delivery->sale->customer->phone_number ?? '';
+                        $saleRef = $delivery->sale->reference_no ?? 'N/A';
                         ?>
                         <tr class="delivery-link" data-barcode="{{ $barcode }}"
-                            data-delivery='["{{ date($general_setting->date_format, strtotime($delivery->created_at->toDateString())) }}", "{{ $delivery->reference_no }}", "{{ $delivery->sale->reference_no }}", "{{ $status }}", "{{ $delivery->id }}", "{{ $delivery->sale->customer->name }}", "{{ $delivery->sale->customer->phone_number }}", "{{ $delivery->sale->customer->address }}", "{{ $delivery->sale->customer->city }}", "{{ $delivery->note }}", "{{ $delivery->user->name }}", "{{ $delivery->delivered_by }}", "{{ $delivery->recieved_by }}"]'>
+                            data-delivery='["{{ date($general_setting->date_format, strtotime($delivery->created_at->toDateString())) }}", "{{ $delivery->reference_no }}", "{{ $saleRef }}", "{{ $status }}", "{{ $delivery->id }}", "{{ $customerName }}", "{{ $customerPhone }}", "{{ $delivery->sale->customer->address ?? '' }}", "{{ $delivery->sale->customer->city ?? '' }}", "{{ $delivery->note }}", "{{ $delivery->user->name ?? '' }}", "{{ $delivery->delivered_by }}", "{{ $delivery->recieved_by }}"]'>
                             <td>{{ $key }}</td>
                             <td>{{ $delivery->reference_no }}</td>
-                            <td>{{ $customer_sale[0]->reference_no }}</td>
+                            <td>{{ $saleRef }}</td>
                             <td>{{ @$delivery->courier_tracking_id }}</td>
-                            <td>{!! $customer_sale[0]->name . '<br>' . $customer_sale[0]->phone_number !!}</td>
+                            <td>{!! $customerName . '<br>' . $customerPhone !!}</td>
                             @if ($delivery->courier_id)
                                 <td>{{ $delivery->courier->name }}</td>
                             @else

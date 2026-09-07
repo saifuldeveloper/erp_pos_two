@@ -42,9 +42,8 @@
                     <td>{{date($general_setting->date_format, strtotime($discount->valid_from)).'-'.date($general_setting->date_format, strtotime($discount->valid_till))}}</td>
                     <td>{{ $discount->days }}</td>
                     <td>
-                        @if($discount->product_list)
-                            <?php $products = \App\Models\Product::select('name', 'code')->whereIn('id', explode(",", $discount->product_list))->get(); ?>
-                            @foreach($products as $index => $product)
+                        @if($discount->product_list && !empty($discount->products_data))
+                            @foreach($discount->products_data as $index => $product)
                                 @if($index)
                                     {{', '.$product->name.'['.$product->code.']'}}
                                 @else

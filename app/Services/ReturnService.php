@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\ProductBatch;
 use App\Models\ProductReturn;
+use App\Models\Product_Sale;
 use App\Models\ProductVariant;
 use App\Models\Product_Warehouse;
 use App\Models\Returns;
@@ -193,20 +194,37 @@ class ReturnService
      *
      * @return array
      */
-    public function getCreateFormData(): array
+    public function getCreateFormData(?string $referenceNo = null): array
     {
         $lims_customer_list = Customer::where('is_active', true)->get();
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $lims_biller_list = Biller::where('is_active', true)->get();
         $lims_tax_list = Tax::where('is_active', true)->get();
         $lims_account_list = Account::where('is_active', true)->get();
+        $lims_sale_data = null;
+        $lims_product_sale_data = collect();
+
+        if ($referenceNo) {
+            $lims_sale_data = Sale::where([
+                ['reference_no', $referenceNo],
+                ['sale_status', 1]
+            ])->first();
+
+            if ($lims_sale_data) {
+                $lims_product_sale_data = Product_Sale::with(['product.productVariants', 'unit', 'productBatch'])
+                    ->where('sale_id', $lims_sale_data->id)
+                    ->get();
+            }
+        }
 
         return compact(
             'lims_customer_list',
             'lims_warehouse_list',
             'lims_biller_list',
             'lims_tax_list',
-            'lims_account_list'
+            'lims_account_list',
+            'lims_sale_data',
+            'lims_product_sale_data'
         );
     }
 
@@ -380,7 +398,9 @@ class ReturnService
         $lims_tax_list = Tax::where('is_active', true)->get();
         $lims_account_list = Account::where('is_active', true)->get();
         $lims_return_data = Returns::find($id);
-        $lims_product_return_data = ProductReturn::where('return_id', $id)->get();
+        $lims_product_return_data = ProductReturn::with(['product.productVariants', 'unit', 'variant', 'productBatch'])->where('return_id', $id)->get();
+        $all_units = Unit::all();
+        $all_taxes = $lims_tax_list;
 
         return compact(
             'lims_customer_list',
@@ -389,7 +409,9 @@ class ReturnService
             'lims_tax_list',
             'lims_account_list',
             'lims_return_data',
-            'lims_product_return_data'
+            'lims_product_return_data',
+            'all_units',
+            'all_taxes'
         );
     }
 

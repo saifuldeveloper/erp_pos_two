@@ -30,14 +30,14 @@
                 @foreach($lims_notification_all as $key=>$notification)
                 <?php 
                     $data = json_decode($notification->data);
-                    $from_user = \DB::table('users')->select('name')->where('id', $data->sender_id)->first();
-                    $to_user = \DB::table('users')->select('name')->where('id', $data->receiver_id)->first();
+                    $from_name = $users[$data->sender_id] ?? 'N/A';
+                    $to_name = $users[$data->receiver_id] ?? 'N/A';
                 ?>
                 <tr data-id="{{$notification->id}}">
                     <td>{{$key}}</td>
                     <td>{{ date($general_setting->date_format, strtotime($notification->created_at)) }}</td>
-                    <td>{{$from_user->name}}</td>
-                    <td>{{$to_user->name}}</td>
+                    <td>{{$from_name}}</td>
+                    <td>{{$to_name}}</td>
                     @if($data->document_name)
                     <td><a target="_blank" href="{{url('public/documents/notification', $data->document_name)}}">Open</a>
                     </td>

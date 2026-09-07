@@ -1947,6 +1947,10 @@ class ReportController extends Controller
         $variant_id = [];
         $product_name = [];
         $product_qty = [];
+        $product_purchased_cost = [];
+        $product_purchased_qty = [];
+        $all_units = Unit::all()->keyBy('id');
+
         $lims_product_all = Product::select('id', 'name', 'qty', 'is_variant')->where('is_active', true)->get();
         foreach ($lims_product_all as $product) {
             $lims_product_purchase_data = null;
@@ -1983,11 +1987,40 @@ class ReportController extends Controller
                 $variant_id[] = null;
                 if ($warehouse_id == 0)
                     $product_qty[] = $product->qty;
-                else
+                else {
                     $product_qty[] = Product_Warehouse::where([
                         ['product_id', $product->id],
                         ['warehouse_id', $warehouse_id]
                     ])->sum('qty');
+                }
+
+                if ($warehouse_id == 0) {
+                    $p_purchases = ProductPurchase::where('product_id', $product->id)
+                        ->whereDate('created_at', '>=', $start_date)
+                        ->whereDate('created_at', '<=', $end_date)
+                        ->get();
+                } else {
+                    $p_purchases = ProductPurchase::join('purchases', 'purchases.id', '=', 'product_purchases.purchase_id')
+                        ->where([
+                            ['product_purchases.product_id', $product->id],
+                            ['purchases.warehouse_id', $warehouse_id]
+                        ])->whereDate('purchases.created_at', '>=', $start_date)
+                        ->whereDate('purchases.created_at', '<=', $end_date)
+                        ->select('product_purchases.*')
+                        ->get();
+                }
+                $product_purchased_cost[] = $p_purchases->sum('total');
+                $p_qty = 0;
+                foreach ($p_purchases as $p_item) {
+                    $unit = $all_units->get($p_item->purchase_unit_id);
+                    if ($unit && $unit->operator == '*')
+                        $p_qty += $p_item->qty * $unit->operation_value;
+                    elseif ($unit && $unit->operator == '/')
+                        $p_qty += $p_item->qty / ($unit->operation_value ?: 1);
+                    else
+                        $p_qty += $p_item->qty;
+                }
+                $product_purchased_qty[] = $p_qty;
             } elseif (count($variant_id_all)) {
                 foreach ($variant_id_all as $key => $variantId) {
                     $variant_data = Variant::find($variantId);
@@ -2002,11 +2035,42 @@ class ReportController extends Controller
                             ['variant_id', $variant_data->id],
                             ['warehouse_id', $warehouse_id]
                         ])->first()->qty;
+
+                    if ($warehouse_id == 0) {
+                        $p_purchases = ProductPurchase::where([
+                            ['product_id', $product->id],
+                            ['variant_id', $variant_data->id]
+                        ])->whereDate('created_at', '>=', $start_date)
+                        ->whereDate('created_at', '<=', $end_date)
+                        ->get();
+                    } else {
+                        $p_purchases = ProductPurchase::join('purchases', 'purchases.id', '=', 'product_purchases.purchase_id')
+                            ->where([
+                                ['product_purchases.product_id', $product->id],
+                                ['product_purchases.variant_id', $variant_data->id],
+                                ['purchases.warehouse_id', $warehouse_id]
+                            ])->whereDate('purchases.created_at', '>=', $start_date)
+                            ->whereDate('purchases.created_at', '<=', $end_date)
+                            ->select('product_purchases.*')
+                            ->get();
+                    }
+                    $product_purchased_cost[] = $p_purchases->sum('total');
+                    $p_qty = 0;
+                    foreach ($p_purchases as $p_item) {
+                        $unit = $all_units->get($p_item->purchase_unit_id);
+                        if ($unit && $unit->operator == '*')
+                            $p_qty += $p_item->qty * $unit->operation_value;
+                        elseif ($unit && $unit->operator == '/')
+                            $p_qty += $p_item->qty / ($unit->operation_value ?: 1);
+                        else
+                            $p_qty += $p_item->qty;
+                    }
+                    $product_purchased_qty[] = $p_qty;
                 }
             }
         }
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-        return view('backend.report.purchase_report', compact('product_id', 'variant_id', 'product_name', 'product_qty', 'start_date', 'end_date', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.purchase_report', compact('product_id', 'variant_id', 'product_name', 'product_qty', 'product_purchased_cost', 'product_purchased_qty', 'start_date', 'end_date', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function saleReport(Request $request)
@@ -2019,6 +2083,10 @@ class ReportController extends Controller
         $variant_id = [];
         $product_name = [];
         $product_qty = [];
+        $product_sold_price = [];
+        $product_sold_qty = [];
+        $all_units = Unit::all()->keyBy('id');
+
         $lims_product_all = Product::select('id', 'name', 'qty', 'is_variant')->where('is_active', true)->get();
 
         foreach ($lims_product_all as $product) {
@@ -2061,6 +2129,34 @@ class ReportController extends Controller
                         ['warehouse_id', $warehouse_id]
                     ])->sum('qty');
                 }
+
+                if ($warehouse_id == 0) {
+                    $p_sales = Product_Sale::where('product_id', $product->id)
+                        ->whereDate('created_at', '>=', $start_date)
+                        ->whereDate('created_at', '<=', $end_date)
+                        ->get();
+                } else {
+                    $p_sales = Product_Sale::join('sales', 'sales.id', '=', 'product_sales.sale_id')
+                        ->where([
+                            ['product_sales.product_id', $product->id],
+                            ['sales.warehouse_id', $warehouse_id]
+                        ])->whereDate('sales.created_at', '>=', $start_date)
+                        ->whereDate('sales.created_at', '<=', $end_date)
+                        ->select('product_sales.*')
+                        ->get();
+                }
+                $product_sold_price[] = $p_sales->sum('total');
+                $s_qty = 0;
+                foreach ($p_sales as $p_item) {
+                    $unit = $all_units->get($p_item->sale_unit_id);
+                    if ($unit && $unit->operator == '*')
+                        $s_qty += $p_item->qty * $unit->operation_value;
+                    elseif ($unit && $unit->operator == '/')
+                        $s_qty += $p_item->qty / ($unit->operation_value ?: 1);
+                    else
+                        $s_qty += $p_item->qty;
+                }
+                $product_sold_qty[] = $s_qty;
             } elseif (count($variant_id_all)) {
                 foreach ($variant_id_all as $key => $variantId) {
                     $variant_data = Variant::find($variantId);
@@ -2075,11 +2171,42 @@ class ReportController extends Controller
                             ['variant_id', $variant_data->id],
                             ['warehouse_id', $warehouse_id]
                         ])->first()->qty;
+
+                    if ($warehouse_id == 0) {
+                        $p_sales = Product_Sale::where([
+                            ['product_id', $product->id],
+                            ['variant_id', $variant_data->id]
+                        ])->whereDate('created_at', '>=', $start_date)
+                        ->whereDate('created_at', '<=', $end_date)
+                        ->get();
+                    } else {
+                        $p_sales = Product_Sale::join('sales', 'sales.id', '=', 'product_sales.sale_id')
+                            ->where([
+                                ['product_sales.product_id', $product->id],
+                                ['variant_id', $variant_data->id],
+                                ['sales.warehouse_id', $warehouse_id]
+                            ])->whereDate('sales.created_at', '>=', $start_date)
+                            ->whereDate('sales.created_at', '<=', $end_date)
+                            ->select('product_sales.*')
+                            ->get();
+                    }
+                    $product_sold_price[] = $p_sales->sum('total');
+                    $s_qty = 0;
+                    foreach ($p_sales as $p_item) {
+                        $unit = $all_units->get($p_item->sale_unit_id);
+                        if ($unit && $unit->operator == '*')
+                            $s_qty += $p_item->qty * $unit->operation_value;
+                        elseif ($unit && $unit->operator == '/')
+                            $s_qty += $p_item->qty / ($unit->operation_value ?: 1);
+                        else
+                            $s_qty += $p_item->qty;
+                    }
+                    $product_sold_qty[] = $s_qty;
                 }
             }
         }
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
-        return view('backend.report.sale_report', compact('product_id', 'variant_id', 'product_name', 'product_qty', 'start_date', 'end_date', 'lims_warehouse_list', 'warehouse_id'));
+        return view('backend.report.sale_report', compact('product_id', 'variant_id', 'product_name', 'product_qty', 'product_sold_price', 'product_sold_qty', 'start_date', 'end_date', 'lims_warehouse_list', 'warehouse_id'));
     }
 
     public function saleReportChart(Request $request)
@@ -2126,7 +2253,8 @@ class ReportController extends Controller
         $start_date = $data['start_date'];
         $end_date = $data['end_date'];
 
-        $lims_payment_data = Payment::whereDate('created_at', '>=', $start_date)
+        $lims_payment_data = Payment::with(['sale', 'purchase', 'user'])
+            ->whereDate('created_at', '>=', $start_date)
             ->whereDate('created_at', '<=', $end_date)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -2173,7 +2301,7 @@ class ReportController extends Controller
 
         if ($request->input('employee_id')) {
             $employee_id = $request->input('employee_id');
-            $selected_employee = Employee::find($employee_id);
+            $selected_employee = Employee::with('department')->find($employee_id);
         } else {
             $employee_id = '';
             $selected_employee = null;
@@ -2184,12 +2312,12 @@ class ReportController extends Controller
         $lims_employee_list = Employee::where('is_active', true)->get();
         $general_setting = DB::table('general_settings')->latest()->first();
         if (Auth::user()->role_id > 2 && $general_setting->staff_access == 'own') {
-            $lims_payroll_all = Payroll::orderBy('id', 'desc')
+            $lims_payroll_all = Payroll::with(['employee', 'account'])->orderBy('id', 'desc')
                 ->where('user_id', Auth::id())
                 ->whereBetween('created_at', [$starting_date, $ending_date])
                 ->get();
         } else {
-            $lims_payroll_all = Payroll::orderBy('id', 'desc')
+            $lims_payroll_all = Payroll::with(['employee', 'account'])->orderBy('id', 'desc')
                 ->whereDate('created_at', '>=', $starting_date)
                 ->whereDate('created_at', '<=', $ending_date)
                 ->when($employee_id, function ($query) use ($employee_id) {
@@ -4957,7 +5085,8 @@ class ReportController extends Controller
         $data = $request->all();
         $start_date = $data['start_date'];
         $end_date = $data['end_date'];
-        $q = Purchase::where('payment_status', 1)
+        $q = Purchase::with(['supplier', 'returnPurchases'])
+            ->where('payment_status', 1)
             ->whereDate('created_at', '>=', $start_date)
             ->whereDate('created_at', '<=', $end_date);
         if ($request->supplier_id)

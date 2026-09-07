@@ -43,13 +43,48 @@ class SupplierService
     }
 
     /**
-     * Get all active suppliers.
+     * Get all active suppliers with due balance.
      *
      * @return Collection
      */
     public function getActiveSuppliers(): Collection
     {
-        return $this->supplierRepository->getActiveSuppliers();
+        $suppliers = $this->supplierRepository->getActiveSuppliers();
+
+        $purchases = \Illuminate\Support\Facades\DB::table('purchases')
+            ->where('payment_status', 1)
+            ->groupBy('supplier_id')
+            ->select(
+                'supplier_id',
+                \Illuminate\Support\Facades\DB::raw('SUM(grand_total) as grand_total'),
+                \Illuminate\Support\Facades\DB::raw('SUM(paid_amount) as paid_amount')
+            )
+            ->get()
+            ->keyBy('supplier_id');
+
+        $returns = \Illuminate\Support\Facades\DB::table('purchases')
+            ->join('return_purchases', 'purchases.id', '=', 'return_purchases.purchase_id')
+            ->where('purchases.payment_status', 1)
+            ->groupBy('purchases.supplier_id')
+            ->select(
+                'purchases.supplier_id',
+                \Illuminate\Support\Facades\DB::raw('SUM(return_purchases.grand_total) as returned_amount')
+            )
+            ->get()
+            ->keyBy('supplier_id');
+
+        foreach ($suppliers as $supplier) {
+            $pData = $purchases->get($supplier->id);
+            $rData = $returns->get($supplier->id);
+
+            $grandTotal = $pData ? (float) $pData->grand_total : 0.0;
+            $paidAmount = $pData ? (float) $pData->paid_amount : 0.0;
+            $returnedAmount = $rData ? (float) $rData->returned_amount : 0.0;
+
+            $supplier->due_balance = $grandTotal - $returnedAmount - $paidAmount;
+        }
+
+        return $suppliers;
     }
 
     /**

@@ -99,31 +99,28 @@
                                                     @foreach($lims_product_transfer_data as $product_transfer)
                                                     <tr>
                                                     <?php
-                                                        $product_data = DB::table('products')->find($product_transfer->product_id);
+                                                        $product_data = $product_transfer->product;
 
-                                                        if($product_transfer->variant_id) {
-                                                            $product_variant_data = \App\Models\ProductVariant::select('id', 'item_code')->FindExactProduct($product_data->id, $product_transfer->variant_id)->first();
-                                                            $product_variant_id = $product_variant_data->id;
-                                                            $product_data->code = $product_variant_data->item_code;
-                                                            $warehouse_qty = \DB::table('product_warehouse')
-                                                                ->where([
-                                                                    ['product_id', $product_data->id],
-                                                                    ['variant_id', $product_transfer->variant_id],
-                                                                    ['warehouse_id', $lims_transfer_data->from_warehouse_id]
-                                                                ])->value('qty') ?? 0;
+                                                        if($product_transfer->variant_id && $product_data) {
+                                                            $product_variant_data = $product_data->productVariants->where('variant_id', $product_transfer->variant_id)->first();
+                                                            $product_variant_id = $product_variant_data ? $product_variant_data->id : null;
+                                                            if($product_variant_data) {
+                                                                $product_data->code = $product_variant_data->item_code;
+                                                            }
+                                                            $pw = $product_warehouses->where('product_id', $product_data->id)->where('variant_id', $product_transfer->variant_id)->first();
+                                                            $warehouse_qty = $pw ? $pw->qty : 0;
                                                         }
                                                         else {
                                                             $product_variant_id = null;
-                                                            $warehouse_qty = \DB::table('product_warehouse')
-                                                                ->where([
-                                                                    ['product_id', $product_data->id],
-                                                                    ['warehouse_id', $lims_transfer_data->from_warehouse_id]
-                                                                ])->whereNull('variant_id')->value('qty') ?? 0;
+                                                            $pw = $product_data ? $product_warehouses->where('product_id', $product_data->id)->whereNull('variant_id')->first() : null;
+                                                            $warehouse_qty = $pw ? $pw->qty : 0;
                                                         }
 
-                                                        $tax = DB::table('taxes')->where('rate', $product_transfer->tax_rate)->first();
+                                                        $tax = $all_taxes->where('rate', $product_transfer->tax_rate)->first();
 
-                                                        $units = DB::table('units')->where('base_unit', $product_data->unit_id)->orWhere('id', $product_data->unit_id)->get();
+                                                        $units = $all_units->filter(function($u) use ($product_data) {
+                                                            return $product_data && ($u->base_unit == $product_data->unit_id || $u->id == $product_data->unit_id);
+                                                        });
 
                                                         $unit_name = array();
                                                         $unit_operator = array();
@@ -141,21 +138,19 @@
                                                                 $unit_operation_value[] = $unit->operation_value;
                                                             }
                                                         }
-                                                        if($product_data->tax_method == 1){
-
-                                                            $product_cost = $product_transfer->net_unit_cost / $unit_operation_value[0];
+                                                        if($product_data && $product_data->tax_method == 1){
+                                                            $product_cost = !empty($unit_operation_value[0]) ? $product_transfer->net_unit_cost / $unit_operation_value[0] : $product_transfer->net_unit_cost;
                                                         }
                                                         else{
-                                                           $product_cost = ($product_transfer->total / $product_transfer->qty) / $unit_operation_value[0];
+                                                            $product_cost = ($product_transfer->qty != 0 && !empty($unit_operation_value[0])) ? ($product_transfer->total / $product_transfer->qty) / $unit_operation_value[0] : 0;
                                                         }
-
 
                                                         $temp_unit_name = $unit_name = implode(",",$unit_name) . ',';
 
                                                         $temp_unit_operator = $unit_operator = implode(",",$unit_operator) .',';
 
                                                         $temp_unit_operation_value = $unit_operation_value =  implode(",",$unit_operation_value) . ',';
-                                                        $product_batch_data = \App\Models\ProductBatch::select('batch_no')->find($product_transfer->product_batch_id);
+                                                        $product_batch_data = $product_transfer->productBatch;
                                                     ?>
                                                         <td>{{$product_data->name}} <button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button> </td>
                                                         <td>{{$product_data->code}}</td>

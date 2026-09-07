@@ -25,6 +25,6 @@ class AdjustmentRepository extends BaseRepository implements AdjustmentRepositor
      */
     public function getAllAdjustmentsWithWarehouse(): Collection
     {
-        return $this->model->with('warehouse')->orderBy('id', 'desc')->get();
+        return $this->model->with(['warehouse', 'productAdjustments.product.productVariants'])->orderBy('id', 'desc')->get();
     }
 }

@@ -5,10 +5,11 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
+use App\Models\Currency;
 use DB;
 use Auth;
 use Cache;
-use Illuminate\Support\Facades\URL;
 
 class Common
 {
@@ -46,7 +47,7 @@ class Common
         $currency = null;
         if ($general_setting && $general_setting->currency) {
             $currency = Cache::remember('currency_' . $general_setting->currency, 60 * 60 * 24, function () use ($general_setting) {
-                return \App\Models\Currency::find($general_setting->currency);
+                return Currency::find($general_setting->currency);
             });
         }
 
@@ -125,6 +126,10 @@ class Common
                 $all_permission = ['dummy text'];
             }
             View::share('all_permission', $all_permission);
+            $isManagement = ($role && (strtolower($role->name) === 'management' || $role->id == 8));
+            View::share('isManagement', $isManagement);
+        } else {
+            View::share('isManagement', false);
         }
 
         // 8. Root categories list (Cached for 24h)
@@ -136,6 +141,29 @@ class Common
                 ->get();
         });
         View::share('categories_list', $categories_list);
+
+        // 9. Global Modal Data (Expense Categories, Warehouses, Accounts - Cached)
+        $lims_expense_category_list = Cache::remember('active_expense_categories', 3600, function () {
+            return DB::table('expense_categories')->where('is_active', true)->get();
+        });
+        View::share('lims_expense_category_list', $lims_expense_category_list);
+
+        if (Auth::check() && Auth::user()->role_id > 2) {
+            $lims_warehouse_list = DB::table('warehouses')->where([
+                ['is_active', true],
+                ['id', Auth::user()->warehouse_id]
+            ])->get();
+        } else {
+            $lims_warehouse_list = Cache::remember('active_warehouses_list', 3600, function () {
+                return DB::table('warehouses')->where('is_active', true)->get();
+            });
+        }
+        View::share('lims_warehouse_list', $lims_warehouse_list);
+
+        $lims_account_list = Cache::remember('active_accounts_list', 3600, function () {
+            return DB::table('accounts')->where('is_active', true)->get();
+        });
+        View::share('lims_account_list', $lims_account_list);
 
         return $next($request);
     }

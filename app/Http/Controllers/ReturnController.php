@@ -69,7 +69,11 @@ class ReturnController extends Controller
 
     public function create(Request $request)
     {
-        $formData = $this->returnService->getCreateFormData();
+        $referenceNo = $request->input('reference_no');
+        $formData = $this->returnService->getCreateFormData($referenceNo);
+        if ($referenceNo && empty($formData['lims_sale_data'])) {
+            return redirect()->back()->with('not_permitted', 'This reference either does not exist or status not completed!');
+        }
         return view('backend.return.create', $formData);
     }
 

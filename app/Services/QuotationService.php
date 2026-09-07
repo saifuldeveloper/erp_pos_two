@@ -278,7 +278,9 @@ class QuotationService
         $lims_supplier_list = Supplier::where('is_active', true)->get();
         $lims_tax_list = Tax::where('is_active', true)->get();
         $lims_quotation_data = Quotation::find($id);
-        $lims_product_quotation_data = ProductQuotation::where('quotation_id', $id)->get();
+        $lims_product_quotation_data = ProductQuotation::with(['product.productVariants', 'unit', 'variant', 'productBatch'])->where('quotation_id', $id)->get();
+        $all_units = Unit::all();
+        $all_taxes = $lims_tax_list;
 
         return compact(
             'lims_biller_list',
@@ -287,7 +289,9 @@ class QuotationService
             'lims_supplier_list',
             'lims_tax_list',
             'lims_quotation_data',
-            'lims_product_quotation_data'
+            'lims_product_quotation_data',
+            'all_units',
+            'all_taxes'
         );
     }
 

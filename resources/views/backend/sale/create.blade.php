@@ -42,11 +42,7 @@
                                                 <?php
                                                   $deposit = [];
                                                   $points = [];
-                                                  $customer_active = DB::table('permissions')
-                                                  ->join('role_has_permissions', 'permissions.id', '=', 'role_has_permissions.permission_id')
-                                                  ->where([
-                                                    ['permissions.name', 'customers-add'],
-                                                    ['role_id', \Auth::user()->role_id] ])->first();
+                                                  $customer_active = in_array('customers-add', $all_permission);
                                                 ?>
                                                 @if($customer_active)
                                                 <select required name="customer_id" id="customer_id" class="selectpicker form-control" data-live-search="true" title="Select customer..." style="width: 100px">

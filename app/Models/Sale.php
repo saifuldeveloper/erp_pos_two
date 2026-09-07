@@ -64,6 +64,11 @@ class Sale extends Model
         return $this->belongsTo(Table::class);
     }
 
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

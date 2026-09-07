@@ -22,10 +22,9 @@
                 <div class="row">
                     <div class="col-md-6">
                         <strong>From:</strong>
-                        @php
-                            $warehouse = \App\Models\Warehouse::first();
-                        @endphp
-                        <br>{{ $warehouse->name }}<br>{{ $warehouse->phone }}<br>{{ $warehouse->address }}
+                        @if ($warehouse)
+                            <br>{{ $warehouse->name }}<br>{{ $warehouse->phone }}<br>{{ $warehouse->address }}
+                        @endif
                     </div>
                 </div>
             </div>
@@ -53,8 +52,9 @@
                         @forelse ($invoice['invoice_entries'] as $key => $entry)
                             @if ($purchase)
                                 @php
-                                    $product = App\Models\Product::where('code', 'A-' . $entry['shoe']['code'])->first();
-                                    $productPurchase = $purchase->productPurchases->where('product_id', $product->id);
+                                    $pCode = 'A-' . $entry['shoe']['code'];
+                                    $product = $products[$pCode] ?? App\Models\Product::where('code', $pCode)->first();
+                                    $productPurchase = ($product && $purchase->productPurchases) ? $purchase->productPurchases->where('product_id', $product->id) : collect();
                                 @endphp
                             @else
                                 @php
@@ -118,15 +118,14 @@
                                                         $shoe_to_size['type'] == 'sale' &&
                                                         strtolower($shoe_to_size['shoe_id']) == strtolower($entry['shoe']['id']))
                                                     @php
-                                                        $product = App\Models\Product::where(
-                                                            'code',
-                                                            'A-' . $entry['shoe']['code'],
-                                                        )->first();
+                                                        $pCode = 'A-' . $entry['shoe']['code'];
+                                                        $product = $products[$pCode] ?? App\Models\Product::where('code', $pCode)->first();
                                                         if ($product) {
-                                                            $productVariant = App\Models\ProductVariant::where(
-                                                                'item_code',
-                                                                $shoe_to_size['size']['name'] . '-' . $product->code,
-                                                            )->first();
+                                                            $expectedItemCode = $shoe_to_size['size']['name'] . '-' . $product->code;
+                                                            $productVariant = $product->productVariants ? $product->productVariants->where('item_code', $expectedItemCode)->first() : null;
+                                                            if (!$productVariant) {
+                                                                $productVariant = App\Models\ProductVariant::where('item_code', $expectedItemCode)->first();
+                                                            }
                                                             if ($productVariant && $productPurchase) {
                                                                 $proPurchase = $productPurchase
                                                                     ->where('variant_id', $productVariant->id)
@@ -234,13 +233,7 @@
                             </tr>
                             @foreach ($invoice['gift_transactions'] as $gift_transaction)
                                 @php
-                                    if ($purchase) {
-                                        $gift = \App\Models\GiftReceive::where('purchase_id', $purchase->id)
-                                            ->where('gift_transaction_id', $gift_transaction['id'])
-                                            ->first();
-                                    } else {
-                                        $gift = null;
-                                    }
+                                    $gift = isset($gifts[$gift_transaction['id']]) ? $gifts[$gift_transaction['id']] : null;
                                 @endphp
                                 <tr>
                                     <td colspan="6">{{ $gift_transaction['gift']['name'] }}</td>

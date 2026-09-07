@@ -70,9 +70,9 @@
                         <tbody>
                             @foreach($lims_payment_data as $payment)
                             <?php
-                                $sale = DB::table('sales')->find($payment->sale_id);
-                                $purchase = DB::table('purchases')->find($payment->purchase_id);
-                                $user = DB::table('users')->find($payment->user_id);
+                                $sale = $payment->sale;
+                                $purchase = $payment->purchase;
+                                $user = $payment->user;
                             ?>
                             <tr>
                                 <td></td>

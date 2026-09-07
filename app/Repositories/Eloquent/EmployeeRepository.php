@@ -25,7 +25,7 @@ class EmployeeRepository extends BaseRepository implements EmployeeRepositoryInt
      */
     public function getActiveEmployees(): Collection
     {
-        return $this->model->where('is_active', true)->get();
+        return $this->model->with('department')->where('is_active', true)->get();
     }
 
     /**

@@ -10,4 +10,9 @@ class ProductAdjustment extends Model
     protected $fillable =[
         "adjustment_id", "product_id", "variant_id", "qty", "action"
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

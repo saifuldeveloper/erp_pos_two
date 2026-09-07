@@ -64,7 +64,7 @@ class HomeController extends Controller
         if (Auth::user()->role_id == 5) {
             $customer = Customer::select('id', 'points')->where('user_id', Auth::id())->first();
             if ($customer) {
-                $lims_sale_data = Sale::with('warehouse')
+                $lims_sale_data = Sale::with(['warehouse', 'biller', 'customer', 'user', 'coupon'])
                     ->where('customer_id', $customer->id)
                     ->orderBy('created_at', 'desc')
                     ->get();
@@ -81,7 +81,7 @@ class HomeController extends Controller
                     ->orderBy('created_at', 'desc')
                     ->get();
 
-                $lims_return_data = Returns::with('warehouse', 'customer', 'biller')
+                $lims_return_data = Returns::with(['warehouse', 'customer', 'biller', 'user'])
                     ->where('customer_id', $customer->id)
                     ->orderBy('created_at', 'desc')
                     ->get();

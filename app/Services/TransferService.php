@@ -311,9 +311,15 @@ class TransferService
     {
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $lims_transfer_data = Transfer::find($id);
-        $lims_product_transfer_data = ProductTransfer::where('transfer_id', $id)->get();
+        $lims_product_transfer_data = ProductTransfer::with(['product.productVariants', 'unit', 'variant', 'productBatch'])->where('transfer_id', $id)->get();
+        $all_units = Unit::all();
+        $all_taxes = Tax::where('is_active', true)->get();
+        $product_ids = $lims_product_transfer_data->pluck('product_id')->unique()->toArray();
+        $product_warehouses = Product_Warehouse::where('warehouse_id', $lims_transfer_data->from_warehouse_id)
+            ->whereIn('product_id', $product_ids)
+            ->get();
 
-        return compact('lims_warehouse_list', 'lims_transfer_data', 'lims_product_transfer_data');
+        return compact('lims_warehouse_list', 'lims_transfer_data', 'lims_product_transfer_data', 'all_units', 'all_taxes', 'product_warehouses');
     }
 
     /**

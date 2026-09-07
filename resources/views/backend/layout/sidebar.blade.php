@@ -6,13 +6,7 @@
     $hasAny  = fn(...$perms) => (bool) array_intersect_key(array_flip($perms), $userPerms);
     $roleId  = Auth::user()->role_id ?? 0;
 
-    $isManagement = false;
-    if (Auth::check()) {
-        $user_role = \App\Models\Roles::find($roleId);
-        if ($user_role && (strtolower($user_role->name) === 'management' || $user_role->id == 8)) {
-            $isManagement = true;
-        }
-    }
+    $isManagement = $isManagement ?? false;
 @endphp
 
 <ul id="side-main-menu" class="side-menu list-unstyled">

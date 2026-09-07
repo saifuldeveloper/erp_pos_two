@@ -95,27 +95,35 @@
                                                     @foreach($lims_product_quotation_data as $product_quotation)
                                                     <tr>
                                                     <?php
-                                                        $product_data = DB::table('products')->find($product_quotation->product_id);
-                                                        if($product_quotation->variant_id) {
-                                                            $product_variant_data = \App\Models\ProductVariant::select('item_code')->FindExactProduct($product_quotation->product_id, $product_quotation->variant_id)->first();
-                                                            $product_data->code = $product_variant_data->item_code;
+                                                        $product_data = $product_quotation->product;
+                                                        $product_variant_id = null;
+                                                        if($product_quotation->variant_id && $product_data) {
+                                                            $product_variant_data = $product_data->productVariants->where('variant_id', $product_quotation->variant_id)->first();
+                                                            if($product_variant_data) {
+                                                                $product_data->code = $product_variant_data->item_code;
+                                                                $product_variant_id = $product_variant_data->id;
+                                                            }
                                                         }
 
-                                                        if($product_data->tax_method == 1){
-                                                            $product_price = $product_quotation->net_unit_price + ($product_quotation->discount / $product_quotation->qty);
+                                                        if($product_data && $product_data->tax_method == 1){
+                                                            $product_price = $product_quotation->qty != 0 ? ($product_quotation->net_unit_price + ($product_quotation->discount / $product_quotation->qty)) : 0;
                                                         }
-                                                        elseif ($product_data->tax_method == 2) {
-                                                            $product_price =($product_quotation->total / $product_quotation->qty) + ($product_quotation->discount / $product_quotation->qty);
+                                                        elseif ($product_data && $product_data->tax_method == 2) {
+                                                            $product_price = $product_quotation->qty != 0 ? (($product_quotation->total / $product_quotation->qty) + ($product_quotation->discount / $product_quotation->qty)) : 0;
+                                                        } else {
+                                                            $product_price = 0;
                                                         }
 
-                                                        $tax = DB::table('taxes')->where('rate',$product_quotation->tax_rate)->first();
+                                                        $tax = $all_taxes->where('rate', $product_quotation->tax_rate)->first();
 
                                                         $unit_name = array();
                                                         $unit_operator = array();
                                                         $unit_operation_value = array();
 
-                                                        if($product_data->type == 'standard'){
-                                                            $units = DB::table('units')->where('base_unit', $product_data->unit_id)->orWhere('id', $product_data->unit_id)->get();
+                                                        if($product_data && $product_data->type == 'standard'){
+                                                            $units = $all_units->filter(function($u) use ($product_data) {
+                                                                return $product_data && ($u->base_unit == $product_data->unit_id || $u->id == $product_data->unit_id);
+                                                            });
 
                                                             foreach($units as $unit) {
                                                                 if($product_quotation->sale_unit_id == $unit->id) {
@@ -129,11 +137,11 @@
                                                                     $unit_operation_value[] = $unit->operation_value;
                                                                 }
                                                             }
-                                                            if($unit_operator[0] == '*'){
-                                                                $product_price = $product_price / $unit_operation_value[0];
+                                                            if(isset($unit_operator[0]) && $unit_operator[0] == '*'){
+                                                                $product_price = !empty($unit_operation_value[0]) ? $product_price / $unit_operation_value[0] : $product_price;
                                                             }
-                                                            elseif($unit_operator[0] == '/'){
-                                                                $product_price = $product_price * $unit_operation_value[0];
+                                                            elseif(isset($unit_operator[0]) && $unit_operator[0] == '/'){
+                                                                $product_price = !empty($unit_operation_value[0]) ? $product_price * $unit_operation_value[0] : $product_price;
                                                             }
                                                         }
                                                         else {
@@ -145,7 +153,7 @@
                                                         $temp_unit_operator = $unit_operator = implode(",",$unit_operator) .',';
 
                                                         $temp_unit_operation_value = $unit_operation_value =  implode(",",$unit_operation_value) . ',';
-                                                        $product_batch_data = \App\Models\ProductBatch::select('batch_no')->find($product_quotation->product_batch_id);
+                                                        $product_batch_data = $product_quotation->productBatch;
                                                     ?>
                                                         <td>{{$product_data->name}} <button type="button" class="edit-product btn btn-link" data-toggle="modal" data-target="#editModal"> <i class="dripicons-document-edit"></i></button> </td>
                                                         <td>{{$product_data->code}}</td>

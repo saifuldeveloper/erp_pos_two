@@ -64,70 +64,8 @@
                 <tr>
                     <td>{{$key}}</td>
                     <td>{{$product_name[$key]}}</td>
-                    <?php
-                        if($warehouse_id == 0) {
-                            if($variant_id[$key]) {
-                                $purchased_cost = DB::table('product_purchases')->where([
-                                    ['product_id', $pro_id],
-                                    ['variant_id', $variant_id[$key] ]
-                                ])->whereDate('created_at', '>=', $start_date)
-                                  ->whereDate('created_at', '<=' , $end_date)
-                                  ->sum('total');
-
-                                $product_purchase_data = DB::table('product_purchases')->where([
-                                    ['product_id', $pro_id],
-                                    ['variant_id', $variant_id[$key] ]
-                                ])->whereDate('created_at','>=', $start_date)
-                                  ->whereDate('created_at','<=', $end_date)
-                                  ->get();
-                            }
-                            else {
-                                $purchased_cost = DB::table('product_purchases')->where('product_id', $pro_id)->whereDate('created_at', '>=', $start_date)->whereDate('created_at', '<=' , $end_date)->sum('total');
-
-                                $product_purchase_data = DB::table('product_purchases')->where('product_id', $pro_id)->whereDate('created_at','>=', $start_date)->whereDate('created_at','<=', $end_date)->get();
-                            }
-                        }
-                        else {
-                            if($variant_id[$key]) {
-                                $purchased_cost = DB::table('purchases')
-                                    ->join('product_purchases', 'purchases.id', '=', 'product_purchases.purchase_id')->where([
-                                        ['product_purchases.product_id', $pro_id],
-                                        ['product_purchases.variant_id', $variant_id[$key] ],
-                                        ['purchases.warehouse_id', $warehouse_id]
-                                    ])->whereDate('purchases.created_at','>=', $start_date)->whereDate('purchases.created_at','<=', $end_date)->sum('total');
-                                $product_purchase_data = DB::table('purchases')
-                                    ->join('product_purchases', 'purchases.id', '=', 'product_purchases.purchase_id')->where([
-                                        ['product_purchases.product_id', $pro_id],
-                                        ['product_purchases.variant_id', $variant_id[$key] ],
-                                        ['purchases.warehouse_id', $warehouse_id]
-                                    ])->whereDate('purchases.created_at','>=', $start_date)->whereDate('purchases.created_at','<=', $end_date)->get();
-                            }
-                            else {
-                                $purchased_cost = DB::table('purchases')
-                                    ->join('product_purchases', 'purchases.id', '=', 'product_purchases.purchase_id')->where([
-                                        ['product_purchases.product_id', $pro_id],
-                                        ['purchases.warehouse_id', $warehouse_id]
-                                    ])->whereDate('purchases.created_at','>=', $start_date)->whereDate('purchases.created_at','<=', $end_date)->sum('total');
-                                $product_purchase_data = DB::table('purchases')
-                                    ->join('product_purchases', 'purchases.id', '=', 'product_purchases.purchase_id')->where([
-                                        ['product_purchases.product_id', $pro_id],
-                                        ['purchases.warehouse_id', $warehouse_id]
-                                    ])->whereDate('purchases.created_at','>=', $start_date)->whereDate('purchases.created_at','<=', $end_date)->get();
-                            }
-                        }
-                        $purchased_qty = 0;
-                        foreach ($product_purchase_data as $product_purchase) {
-                            $unit = DB::table('units')->find($product_purchase->purchase_unit_id);
-                            if($unit->operator == '*'){
-                                $purchased_qty += $product_purchase->qty * $unit->operation_value;
-                            }
-                            elseif($unit->operator == '/'){
-                                $purchased_qty += $product_purchase->qty / $unit->operation_value;
-                            }
-                        }
-                    ?>
-                    <td>{{number_format((float)$purchased_cost, $general_setting->decimal, '.', '')}}</td>
-                    <td>{{$purchased_qty}}</td>
+                    <td>{{number_format((float)($product_purchased_cost[$key] ?? 0), $general_setting->decimal, '.', '')}}</td>
+                    <td>{{$product_purchased_qty[$key] ?? 0}}</td>
                     <td>{{$product_qty[$key]}}</td>
                 </tr>
                 @endforeach

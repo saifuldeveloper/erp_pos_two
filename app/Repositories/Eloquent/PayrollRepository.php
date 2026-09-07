@@ -32,7 +32,7 @@ class PayrollRepository extends BaseRepository implements PayrollRepositoryInter
     {
         $general_setting = DB::table('general_settings')->latest()->first();
 
-        $query = $this->model->orderBy('id', 'desc');
+        $query = $this->model->with(['employee', 'account', 'payrollType'])->orderBy('id', 'desc');
 
         if (Auth::user() && Auth::user()->role_id > 2 && $general_setting && $general_setting->staff_access == 'own') {
             $query->where('user_id', Auth::id())

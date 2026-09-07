@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Cache;
 use DB;
 
@@ -65,7 +66,7 @@ class LoginController extends Controller
                 return DB::table('general_settings')->latest()->first();
             });
         }
-        $numberOfUserAccount = \App\Models\User::where('is_active', true)->count();
+        $numberOfUserAccount = User::where('is_active', true)->count();
         return view('backend.auth.login', compact('theme', 'general_setting', 'numberOfUserAccount'));
     }
 

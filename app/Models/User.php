@@ -27,4 +27,9 @@ class User extends Authenticatable
     public function holiday() {
         return $this->hasMany(Holiday::class);
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Roles::class, 'role_id');
+    }
 }

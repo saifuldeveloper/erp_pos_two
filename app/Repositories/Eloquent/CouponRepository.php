@@ -25,6 +25,6 @@ class CouponRepository extends BaseRepository implements CouponRepositoryInterfa
      */
     public function getActiveCoupons(): Collection
     {
-        return $this->model->where('is_active', true)->orderBy('id', 'desc')->get();
+        return $this->model->with('user')->where('is_active', true)->orderBy('id', 'desc')->get();
     }
 }

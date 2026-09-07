@@ -444,20 +444,6 @@
                             <input type="datetime-local" name="created_at" class="form-control futureDateBlock"  placeholder="Choose date"/>
                         </div>
                         <div class="col-md-6 form-group">
-
-                          @php
-                          $lims_expense_category_list = DB::table('expense_categories')->where('is_active', true)->get();
-                          if(Auth::user()->role_id > 2)
-                            $lims_warehouse_list = DB::table('warehouses')->where([
-                              ['is_active', true],
-                              ['id', Auth::user()->warehouse_id]
-                            ])->get();
-                          else
-                            $lims_warehouse_list = DB::table('warehouses')->where('is_active', true)->get();
-                          $lims_account_list = \App\Models\Account::where('is_active', true)->get();
-
-                          @endphp
-   
                             <label>{{trans('file.Expense Category')}} *</label>
                             <select name="expense_category_id" id="expense_category_modal_id" class="selectpicker form-control" required data-live-search="true" data-live-search-style="begins" title="Select Expense Category...">
                               @foreach($lims_expense_category_list as $expense_category)

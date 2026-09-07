@@ -121,20 +121,9 @@
             ?>
             @foreach($lims_product_sale_data as $key => $product_sale_data)
             <?php
-                $lims_product_data = \App\Models\Product::find($product_sale_data->product_id);
-                if($product_sale_data->sale_unit_id) {
-                    $unit = \App\Models\Unit::select('unit_code')->find($product_sale_data->sale_unit_id);
-                    $unit_code = $unit->unit_code;
-                }
-                else
-                    $unit_code = '';
-
-                if($product_sale_data->variant_id) {
-                    $variant = \App\Models\Variant::select('name')->find($product_sale_data->variant_id);
-                    $variant_name = $variant->name;
-                }
-                else
-                    $variant_name = '';
+                $lims_product_data = $product_sale_data->product;
+                $unit_code = $product_sale_data->unit ? $product_sale_data->unit->unit_code : '';
+                $variant_name = $product_sale_data->variant ? $product_sale_data->variant->name : '';
                 $totalPrice += $product_sale_data->net_unit_price * $product_sale_data->qty;
             ?>
             <tr>

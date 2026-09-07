@@ -25,6 +25,6 @@ class GiftCardRepository extends BaseRepository implements GiftCardRepositoryInt
      */
     public function getActiveGiftCards(): Collection
     {
-        return $this->model->where('is_active', true)->orderBy('id', 'desc')->get();
+        return $this->model->with(['customer', 'user', 'creator'])->where('is_active', true)->orderBy('id', 'desc')->get();
     }
 }

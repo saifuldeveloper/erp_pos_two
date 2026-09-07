@@ -180,10 +180,12 @@ class QuotationController extends Controller
         $lims_biller_list = Biller::where('is_active', true)->get();
         $lims_tax_list = Tax::where('is_active', true)->get();
         $lims_quotation_data = Quotation::find($id);
-        $lims_product_quotation_data = ProductQuotation::where('quotation_id', $id)->get();
+        $lims_product_quotation_data = ProductQuotation::with(['product.productVariants', 'unit', 'variant', 'productBatch'])->where('quotation_id', $id)->get();
         $lims_pos_setting_data = PosSetting::latest()->first();
+        $all_units = Unit::all();
+        $all_taxes = $lims_tax_list;
 
-        return view('backend.quotation.create_sale', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'lims_quotation_data', 'lims_product_quotation_data', 'lims_pos_setting_data'));
+        return view('backend.quotation.create_sale', compact('lims_customer_list', 'lims_warehouse_list', 'lims_biller_list', 'lims_tax_list', 'lims_quotation_data', 'lims_product_quotation_data', 'lims_pos_setting_data', 'all_units', 'all_taxes'));
     }
 
     public function createPurchase($id)
@@ -192,15 +194,17 @@ class QuotationController extends Controller
         $lims_warehouse_list = Warehouse::where('is_active', true)->get();
         $lims_tax_list = Tax::where('is_active', true)->get();
         $lims_quotation_data = Quotation::find($id);
-        $lims_product_quotation_data = ProductQuotation::where('quotation_id', $id)->get();
+        $lims_product_quotation_data = ProductQuotation::with(['product.productVariants', 'unit', 'variant', 'productBatch'])->where('quotation_id', $id)->get();
         $lims_product_list_without_variant = Product::ActiveStandard()->select('id', 'name', 'code')->whereNull('is_variant')->get();
         $lims_product_list_with_variant = Product::join('product_variants', 'products.id', 'product_variants.product_id')
             ->ActiveStandard()
             ->whereNotNull('is_variant')
             ->select('products.id', 'products.name', 'product_variants.item_code')
             ->orderBy('position')->get();
+        $all_units = Unit::all();
+        $all_taxes = $lims_tax_list;
 
-        return view('backend.quotation.create_purchase', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'lims_supplier_list', 'lims_warehouse_list', 'lims_tax_list', 'lims_quotation_data', 'lims_product_quotation_data'));
+        return view('backend.quotation.create_purchase', compact('lims_product_list_without_variant', 'lims_product_list_with_variant', 'lims_supplier_list', 'lims_warehouse_list', 'lims_tax_list', 'lims_quotation_data', 'lims_product_quotation_data', 'all_units', 'all_taxes'));
     }
 
     public function deleteBySelection(Request $request)

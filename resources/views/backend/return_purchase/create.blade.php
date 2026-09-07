@@ -41,18 +41,19 @@
                                 <tbody>
                                     @foreach($lims_product_purchase_data as $key=> $product_purchase)
                                     @php
-                                        $product_data = DB::table('products')->find($product_purchase->product_id);
+                                        $product_data = $product_purchase->product;
 
-                                        if($product_purchase->variant_id) {
-                                            $product_variant_data = \App\Models\ProductVariant::select('id', 'item_code','qty')->FindExactProduct($product_data->id, $product_purchase->variant_id)->first();
-                                            $product_variant_id = $product_variant_data->id;
-                                            $product_data->code = $product_variant_data->item_code;
-                                        } else {
-                                            $product_variant_id = null;
+                                        $product_variant_id = null;
+                                        if($product_purchase->variant_id && $product_data) {
+                                            $product_variant_data = $product_data->productVariants->where('variant_id', $product_purchase->variant_id)->first();
+                                            if($product_variant_data) {
+                                                $product_variant_id = $product_variant_data->id;
+                                                $product_data->code = $product_variant_data->item_code;
+                                            }
                                         }
 
                                         $product_cost = 0;
-                                        if($product_purchase->qty != 0) {
+                                        if($product_purchase->qty != 0 && $product_data) {
                                             if($product_data->tax_method == 1){
                                                 $product_cost = $product_purchase->net_unit_cost + ($product_purchase->discount / $product_purchase->qty);
                                             } elseif ($product_data->tax_method == 2) {
@@ -60,16 +61,16 @@
                                             }
                                         }
 
-                                        $tax = DB::table('taxes')->where('rate',$product_purchase->tax_rate)->first();
+                                        $tax = $lims_tax_list->where('rate', $product_purchase->tax_rate)->first();
 
-                                        if($product_data->type == 'standard'){
-                                            $unit = DB::table('units')->select('unit_name')->find($product_data->unit_id);
+                                        if($product_data && $product_data->type == 'standard'){
+                                            $unit = $product_purchase->unit;
                                             $unit_name = $unit ? $unit->unit_name : 'n/a';
                                         } else {
                                             $unit_name = 'n/a';
                                         }
 
-                                        $product_batch_data = \App\Models\ProductBatch::select('batch_no')->find($product_purchase->product_batch_id);
+                                        $product_batch_data = $product_purchase->productBatch;
                                     @endphp
                                     <tr>
                                         <td>{{$product_data->name}}</td>

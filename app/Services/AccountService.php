@@ -184,12 +184,17 @@ class AccountService
         $sentMoneyTransferList = new Collection();
 
         if ($type == '0' || $type == '2') {
-            $creditList = Payment::whereNotNull('sale_id')
+            $creditList = Payment::with('sale:id,reference_no')
+                ->whereNotNull('sale_id')
                 ->where('account_id', $accountId)
                 ->whereDate('created_at', '>=', $startDate)
                 ->whereDate('created_at', '<=', $endDate)
-                ->select('payment_reference as reference_no', 'sale_id', 'amount', 'created_at')
+                ->select('id', 'payment_reference as reference_no', 'sale_id', 'amount', 'created_at')
                 ->get();
+
+            foreach ($creditList as $item) {
+                $item->related_reference = $item->sale->reference_no ?? '';
+            }
 
             $recievedMoneyTransferList = MoneyTransfer::where('to_account_id', $accountId)
                 ->whereDate('created_at', '>=', $startDate)
@@ -205,12 +210,17 @@ class AccountService
         }
 
         if ($type == '0' || $type == '1') {
-            $debitList = Payment::whereNotNull('purchase_id')
+            $debitList = Payment::with('purchase:id,reference_no')
+                ->whereNotNull('purchase_id')
                 ->where('account_id', $accountId)
                 ->whereDate('created_at', '>=', $startDate)
                 ->whereDate('created_at', '<=', $endDate)
-                ->select('payment_reference as reference_no', 'purchase_id', 'amount', 'created_at')
+                ->select('id', 'payment_reference as reference_no', 'purchase_id', 'amount', 'created_at')
                 ->get();
+
+            foreach ($debitList as $item) {
+                $item->related_reference = $item->purchase->reference_no ?? '';
+            }
 
             $expenseList = Expense::where('account_id', $accountId)
                 ->whereDate('created_at', '>=', $startDate)

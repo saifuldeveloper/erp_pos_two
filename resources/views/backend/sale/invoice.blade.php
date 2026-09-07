@@ -181,15 +181,13 @@
                     </tr>
                     @foreach ($lims_product_sale_data as $key => $product_sale_data)
                         <?php
-                        $lims_product_data = \App\Models\Product::find($product_sale_data->product_id);
-                        if ($product_sale_data->variant_id) {
-                            $variant_data = \App\Models\Variant::find($product_sale_data->variant_id);
-                            $product_name = $lims_product_data->name . ' [' . $variant_data->name . ']';
-                        } elseif ($product_sale_data->product_batch_id) {
-                            $product_batch_data = \App\Models\ProductBatch::select('batch_no')->find($product_sale_data->product_batch_id);
-                            $product_name = $lims_product_data->name . ' [' . trans('file.Batch No') . ':' . $product_batch_data->batch_no . ']';
+                        $lims_product_data = $product_sale_data->product;
+                        if ($product_sale_data->variant_id && $product_sale_data->variant) {
+                            $product_name = ($lims_product_data ? $lims_product_data->name : '') . ' [' . $product_sale_data->variant->name . ']';
+                        } elseif ($product_sale_data->product_batch_id && $product_sale_data->productBatch) {
+                            $product_name = ($lims_product_data ? $lims_product_data->name : '') . ' [' . trans('file.Batch No') . ':' . $product_sale_data->productBatch->batch_no . ']';
                         } else {
-                            $product_name = $lims_product_data->name;
+                            $product_name = $lims_product_data ? $lims_product_data->name : '';
                         }
                         
                         if ($product_sale_data->imei_number) {

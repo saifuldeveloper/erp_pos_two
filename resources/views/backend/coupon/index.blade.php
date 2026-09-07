@@ -32,9 +32,6 @@
             </thead>
             <tbody>
                 @foreach($lims_coupon_all as $key=>$coupon)
-                <?php
-                    $created_by = DB::table('users')->find($coupon->user_id);
-                ?>
                 <tr data-id="{{$coupon->id}}">
                     <td>{{$key}}</td>
                     <td>{{ $coupon->code }}</td>
@@ -60,7 +57,7 @@
                     @else
                       <td><div class="badge badge-danger">{{date('d-m-Y', strtotime($coupon->expired_date))}}</div></td>
                     @endif
-                    <td>{{ $created_by->name }}</td>
+                    <td>{{ $coupon->user->name ?? 'N/A' }}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}

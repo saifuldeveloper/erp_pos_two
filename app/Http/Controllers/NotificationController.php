@@ -19,8 +19,9 @@ class NotificationController extends Controller
 
     public function index()
     {
-        $lims_notification_all = DB::table('notifications')->get();
-        return view('backend.notification.index', compact('lims_notification_all'));
+        $lims_notification_all = DB::table('notifications')->latest()->get();
+        $users = User::pluck('name', 'id')->toArray();
+        return view('backend.notification.index', compact('lims_notification_all', 'users'));
     }
     public function store(Request $request)
     {

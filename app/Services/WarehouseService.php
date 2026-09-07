@@ -8,6 +8,8 @@ use App\Traits\CacheForget;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\UploadedFile;
 
+use Illuminate\Support\Facades\DB;
+
 class WarehouseService
 {
     use CacheForget;
@@ -31,7 +33,25 @@ class WarehouseService
      */
     public function getActiveWarehouses(): Collection
     {
-        return $this->warehouseRepository->getActiveWarehouses();
+        $warehouses = $this->warehouseRepository->getActiveWarehouses();
+        $stats = DB::table('product_warehouse')
+            ->join('products', 'product_warehouse.product_id', '=', 'products.id')
+            ->where('products.is_active', true)
+            ->groupBy('product_warehouse.warehouse_id')
+            ->select(
+                'product_warehouse.warehouse_id',
+                DB::raw('COUNT(product_warehouse.id) as number_of_product'),
+                DB::raw('SUM(product_warehouse.qty) as stock_qty')
+            )
+            ->get()
+            ->keyBy('warehouse_id');
+
+        foreach ($warehouses as $warehouse) {
+            $warehouse->number_of_product = $stats[$warehouse->id]->number_of_product ?? 0;
+            $warehouse->stock_qty = $stats[$warehouse->id]->stock_qty ?? 0;
+        }
+
+        return $warehouses;
     }
 
     /**
