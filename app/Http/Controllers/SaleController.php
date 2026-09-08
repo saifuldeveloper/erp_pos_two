@@ -297,57 +297,45 @@ class SaleController extends Controller
      */
     public function getProduct($id)
     {
-        $query = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id');
-        if (config('without_stock') == 'no') {
-            $query = $query->where([
-                ['products.is_active', true],
-                ['product_warehouse.qty', '>', 0]
-            ]);
-        } else {
-            $query = $query->where([
-                ['products.is_active', true]
-            ]);
-        }
+        $warehouse_id = (int)$id;
 
-        $lims_product_warehouse_data = $query->whereNull('product_warehouse.variant_id')
+        $baseQuery = function () {
+            $query = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id');
+            if (config('without_stock') == 'no') {
+                return $query->where([
+                    ['products.is_active', true],
+                    ['product_warehouse.qty', '>', 0]
+                ]);
+            }
+            return $query->where('products.is_active', true);
+        };
+
+        // 1. Standard products without variant & without batch
+        $lims_product_warehouse_data = $baseQuery()
+            ->whereNull('product_warehouse.variant_id')
             ->whereNull('product_warehouse.product_batch_id')
-            ->selectRaw('product_warehouse.product_id, products.is_embeded, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . (int)$id . ' THEN product_warehouse.price ELSE NULL END) as price')
-            ->groupBy('product_warehouse.product_id', 'products.is_embeded')
+            ->selectRaw('products.id as product_id, products.code, products.name, products.type, products.product_list, products.qty_list, products.is_embeded, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . $warehouse_id . ' THEN product_warehouse.price ELSE NULL END) as price')
+            ->groupBy('products.id', 'products.code', 'products.name', 'products.type', 'products.product_list', 'products.qty_list', 'products.is_embeded')
             ->get();
 
-        $query2 = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id');
-        if (config('without_stock') == 'no') {
-            $query2 = $query2->where([
-                ['products.is_active', true],
-                ['product_warehouse.qty', '>', 0]
-            ]);
-        } else {
-            $query2 = $query2->where([
-                ['products.is_active', true]
-            ]);
-        }
-
-        $lims_product_with_batch_warehouse_data = $query2->whereNull('product_warehouse.variant_id')
+        // 2. Products with batch
+        $lims_product_with_batch_warehouse_data = $baseQuery()
+            ->leftJoin('product_batches', 'product_warehouse.product_batch_id', '=', 'product_batches.id')
+            ->whereNull('product_warehouse.variant_id')
             ->whereNotNull('product_warehouse.product_batch_id')
-            ->selectRaw('product_warehouse.product_id, products.is_embeded, product_warehouse.product_batch_id, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . (int)$id . ' THEN product_warehouse.price ELSE NULL END) as price')
-            ->groupBy('product_warehouse.product_id', 'product_warehouse.product_batch_id', 'products.is_embeded')
+            ->selectRaw('products.id as product_id, products.code, products.name, products.type, products.product_list, products.qty_list, products.is_embeded, product_warehouse.product_batch_id, product_batches.batch_no, product_batches.expired_date, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . $warehouse_id . ' THEN product_warehouse.price ELSE NULL END) as price')
+            ->groupBy('products.id', 'products.code', 'products.name', 'products.type', 'products.product_list', 'products.qty_list', 'products.is_embeded', 'product_warehouse.product_batch_id', 'product_batches.batch_no', 'product_batches.expired_date')
             ->get();
 
-        $query3 = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id');
-        if (config('without_stock') == 'no') {
-            $query3 = $query3->where([
-                ['products.is_active', true],
-                ['product_warehouse.qty', '>', 0]
-            ]);
-        } else {
-            $query3 = $query3->where([
-                ['products.is_active', true]
-            ]);
-        }
-
-        $lims_product_with_variant_warehouse_data = $query3->whereNotNull('product_warehouse.variant_id')
-            ->selectRaw('product_warehouse.product_id, products.is_embeded, product_warehouse.variant_id, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . (int)$id . ' THEN product_warehouse.price ELSE NULL END) as price')
-            ->groupBy('product_warehouse.product_id', 'product_warehouse.variant_id', 'products.is_embeded')
+        // 3. Products with variant
+        $lims_product_with_variant_warehouse_data = $baseQuery()
+            ->leftJoin('product_variants', function ($join) {
+                $join->on('product_warehouse.product_id', '=', 'product_variants.product_id')
+                    ->on('product_warehouse.variant_id', '=', 'product_variants.variant_id');
+            })
+            ->whereNotNull('product_warehouse.variant_id')
+            ->selectRaw('products.id as product_id, products.code, products.name, products.type, products.product_list, products.qty_list, products.is_embeded, product_warehouse.variant_id, product_variants.item_code, product_variants.additional_price, SUM(product_warehouse.qty) as qty, MAX(CASE WHEN product_warehouse.warehouse_id = ' . $warehouse_id . ' THEN product_warehouse.price ELSE NULL END) as price')
+            ->groupBy('products.id', 'products.code', 'products.name', 'products.type', 'products.product_list', 'products.qty_list', 'products.is_embeded', 'product_warehouse.variant_id', 'product_variants.item_code', 'product_variants.additional_price')
             ->get();
 
         $product_code = [];
@@ -366,13 +354,12 @@ class SaleController extends Controller
         foreach ($lims_product_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
             $product_price[] = $product_warehouse->price;
-            $lims_product_data = Product::find($product_warehouse->product_id);
-            $product_code[] = $lims_product_data->code;
-            $product_name[] = htmlspecialchars($lims_product_data->name);
-            $product_type[] = $lims_product_data->type;
-            $product_id[] = $lims_product_data->id;
-            $product_list[] = $lims_product_data->product_list;
-            $qty_list[] = $lims_product_data->qty_list;
+            $product_code[] = $product_warehouse->code;
+            $product_name[] = htmlspecialchars($product_warehouse->name);
+            $product_type[] = $product_warehouse->type;
+            $product_id[] = $product_warehouse->product_id;
+            $product_list[] = $product_warehouse->product_list;
+            $qty_list[] = $product_warehouse->qty_list;
             $batch_no[] = null;
             $product_batch_id[] = null;
             $expired_date[] = null;
@@ -382,39 +369,34 @@ class SaleController extends Controller
         foreach ($lims_product_with_batch_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
             $product_price[] = $product_warehouse->price;
-            $lims_product_data = Product::find($product_warehouse->product_id);
-            $product_code[] = $lims_product_data->code;
-            $product_name[] = htmlspecialchars($lims_product_data->name);
-            $product_type[] = $lims_product_data->type;
-            $product_id[] = $lims_product_data->id;
-            $product_list[] = $lims_product_data->product_list;
-            $qty_list[] = $lims_product_data->qty_list;
-            $product_batch_data = ProductBatch::find($product_warehouse->product_batch_id);
-            $batch_no[] = $product_batch_data ? $product_batch_data->batch_no : null;
+            $product_code[] = $product_warehouse->code;
+            $product_name[] = htmlspecialchars($product_warehouse->name);
+            $product_type[] = $product_warehouse->type;
+            $product_id[] = $product_warehouse->product_id;
+            $product_list[] = $product_warehouse->product_list;
+            $qty_list[] = $product_warehouse->qty_list;
+            $batch_no[] = $product_warehouse->batch_no;
             $product_batch_id[] = $product_warehouse->product_batch_id;
-            $expired_date[] = $product_batch_data ? $product_batch_data->expired_date : null;
+            $expired_date[] = $product_warehouse->expired_date;
             $is_embeded[] = $product_warehouse->is_embeded;
         }
 
         foreach ($lims_product_with_variant_warehouse_data as $product_warehouse) {
             $product_qty[] = $product_warehouse->qty;
-            $lims_product_data = Product::find($product_warehouse->product_id);
-            $lims_product_variant_data = ProductVariant::select('item_code', 'additional_price')
-                ->FindExactProduct($product_warehouse->product_id, $product_warehouse->variant_id)->first();
-            $product_code[] = $lims_product_variant_data ? $lims_product_variant_data->item_code : $lims_product_data->code;
-            $product_name[] = htmlspecialchars($lims_product_data->name);
-            $product_type[] = $lims_product_data->type;
-            $product_id[] = $lims_product_data->id;
-            $product_list[] = $lims_product_data->product_list;
-            $qty_list[] = $lims_product_data->qty_list;
+            $product_code[] = $product_warehouse->item_code ?: $product_warehouse->code;
+            $product_name[] = htmlspecialchars($product_warehouse->name);
+            $product_type[] = $product_warehouse->type;
+            $product_id[] = $product_warehouse->product_id;
+            $product_list[] = $product_warehouse->product_list;
+            $qty_list[] = $product_warehouse->qty_list;
             $batch_no[] = null;
             $product_batch_id[] = null;
             $expired_date[] = null;
             $is_embeded[] = $product_warehouse->is_embeded;
-            $product_price[] = $product_warehouse->price + ($lims_product_variant_data ? $lims_product_variant_data->additional_price : 0);
+            $product_price[] = $product_warehouse->price + ($product_warehouse->additional_price ?? 0);
         }
 
-        $lims_product_data = Product::whereNotIn('type', [ProductType::STANDARD->value])->where('is_active', true)->get();
+        $lims_product_data = Product::whereNotIn('type', [ProductType::STANDARD->value])->where('is_active', true)->select('id', 'name', 'code', 'type', 'qty', 'price', 'product_list', 'qty_list')->get();
         foreach ($lims_product_data as $product) {
             $product_qty[] = $product->qty;
             $product_price[] = $product->price;
@@ -459,8 +441,7 @@ class SaleController extends Controller
         }
 
         if (($category_id != 0) && ($brand_id != 0)) {
-            $lims_product_list = DB::table('products')
-                ->join('categories', 'products.category_id', '=', 'categories.id')
+            $lims_product_list = Product::join('categories', 'products.category_id', '=', 'categories.id')
                 ->where([
                     ['products.is_active', true],
                     ['products.category_id', $category_id],
@@ -469,44 +450,60 @@ class SaleController extends Controller
                     ['categories.parent_id', $category_id],
                     ['products.is_active', true],
                     ['brand_id', $brand_id]
-                ])->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')->get();
+                ])->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')
+                ->with(['variant' => function ($q) {
+                    $q->orderBy('product_variants.position');
+                }])->get();
         } elseif (($category_id != 0) && ($brand_id == 0)) {
-            $lims_product_list = DB::table('products')
-                ->join('categories', 'products.category_id', '=', 'categories.id')
+            $lims_product_list = Product::join('categories', 'products.category_id', '=', 'categories.id')
                 ->where([
                     ['products.is_active', true],
                     ['products.category_id', $category_id],
                 ])->orWhere([
                     ['categories.parent_id', $category_id],
                     ['products.is_active', true]
-                ])->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')->get();
+                ])->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')
+                ->with(['variant' => function ($q) {
+                    $q->orderBy('product_variants.position');
+                }])->get();
         } elseif (($category_id == 0) && ($brand_id != 0)) {
             $lims_product_list = Product::where([
                 ['brand_id', $brand_id],
                 ['is_active', true]
             ])
                 ->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')
-                ->get();
+                ->with(['variant' => function ($q) {
+                    $q->orderBy('product_variants.position');
+                }])->get();
         } else {
-            $lims_product_list = Product::where('is_active', true)->get();
+            $lims_product_list = Product::where('is_active', true)
+                ->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')
+                ->with(['variant' => function ($q) {
+                    $q->orderBy('product_variants.position');
+                }])->get();
+        }
+
+        $product_ids = $lims_product_list->pluck('id')->toArray();
+        $warehouse_stocks = DB::table('product_warehouse')
+            ->whereIn('product_id', $product_ids)
+            ->select('product_id', 'variant_id', DB::raw('SUM(qty) as qty'))
+            ->groupBy('product_id', 'variant_id')
+            ->get();
+        $stock_map = [];
+        foreach ($warehouse_stocks as $st) {
+            $key = $st->product_id . '_' . ($st->variant_id ?? 0);
+            $stock_map[$key] = $st->qty;
         }
 
         $index = 0;
         foreach ($lims_product_list as $product) {
             if ($product->is_variant) {
-                $lims_product_data = Product::select('id')->find($product->id);
-                $lims_product_variant_data = $lims_product_data->variant()->orderBy('position')->get();
-                foreach ($lims_product_variant_data as $variant) {
+                foreach ($product->variant as $variant) {
                     $data['name'][$index] = $product->name . ' [' . $variant->name . ']';
                     $data['code'][$index] = $variant->pivot['item_code'];
                     $images = explode(",", $product->image);
                     $data['image'][$index] = $images[0];
-                    $data['qty'][$index] = DB::table('product_warehouse')
-                        ->where([
-                            ['product_id', $product->id],
-                            ['variant_id', $variant->id],
-                            ['warehouse_id', $warehouse_id]
-                        ])->value('qty') ?? 0;
+                    $data['qty'][$index] = $stock_map[$product->id . '_' . $variant->id] ?? 0;
                     $index++;
                 }
             } else {
@@ -514,12 +511,7 @@ class SaleController extends Controller
                 $data['code'][$index] = $product->code;
                 $images = explode(",", $product->image);
                 $data['image'][$index] = $images[0];
-                $data['qty'][$index] = DB::table('product_warehouse')
-                    ->where([
-                        ['product_id', $product->id],
-                        ['warehouse_id', $warehouse_id]
-                    ])->whereNull('variant_id')
-                    ->value('qty') ?? 0;
+                $data['qty'][$index] = $stock_map[$product->id . '_0'] ?? 0;
                 $index++;
             }
         }
@@ -541,24 +533,32 @@ class SaleController extends Controller
         $lims_product_list = Product::where([
             ['is_active', true],
             ['featured', true]
-        ])->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')->get();
+        ])->select('products.id', 'products.name', 'products.code', 'products.image', 'products.is_variant')
+            ->with(['variant' => function ($q) {
+                $q->orderBy('product_variants.position');
+            }])->get();
+
+        $product_ids = $lims_product_list->pluck('id')->toArray();
+        $warehouse_stocks = DB::table('product_warehouse')
+            ->whereIn('product_id', $product_ids)
+            ->select('product_id', 'variant_id', DB::raw('SUM(qty) as qty'))
+            ->groupBy('product_id', 'variant_id')
+            ->get();
+        $stock_map = [];
+        foreach ($warehouse_stocks as $st) {
+            $key = $st->product_id . '_' . ($st->variant_id ?? 0);
+            $stock_map[$key] = $st->qty;
+        }
 
         $index = 0;
         foreach ($lims_product_list as $product) {
             if ($product->is_variant) {
-                $lims_product_data = Product::select('id')->find($product->id);
-                $lims_product_variant_data = $lims_product_data->variant()->orderBy('position')->get();
-                foreach ($lims_product_variant_data as $variant) {
+                foreach ($product->variant as $variant) {
                     $data['name'][$index] = $product->name . ' [' . $variant->name . ']';
                     $data['code'][$index] = $variant->pivot['item_code'];
                     $images = explode(",", $product->image);
                     $data['image'][$index] = $images[0];
-                    $data['qty'][$index] = DB::table('product_warehouse')
-                        ->where([
-                            ['product_id', $product->id],
-                            ['variant_id', $variant->id],
-                            ['warehouse_id', $warehouse_id]
-                        ])->value('qty') ?? 0;
+                    $data['qty'][$index] = $stock_map[$product->id . '_' . $variant->id] ?? 0;
                     $index++;
                 }
             } else {
@@ -566,12 +566,7 @@ class SaleController extends Controller
                 $data['code'][$index] = $product->code;
                 $images = explode(",", $product->image);
                 $data['image'][$index] = $images[0];
-                $data['qty'][$index] = DB::table('product_warehouse')
-                    ->where([
-                        ['product_id', $product->id],
-                        ['warehouse_id', $warehouse_id]
-                    ])->whereNull('variant_id')
-                    ->value('qty') ?? 0;
+                $data['qty'][$index] = $stock_map[$product->id . '_0'] ?? 0;
                 $index++;
             }
         }
@@ -619,8 +614,7 @@ class SaleController extends Controller
                     $q->where('product_variants.item_code', $search_code)
                         ->orWhere('product_variants.item_code', $clean_code)
                         ->orWhere('product_variants.item_code', $normalized_code)
-                        ->orWhere('product_variants.item_code', $clean_no_space)
-                        ->orWhere('product_variants.item_code', 'like', '%' . $clean_code);
+                        ->orWhere('product_variants.item_code', $clean_no_space);
                 })->first();
 
             if ($lims_product_data) {
@@ -639,13 +633,50 @@ class SaleController extends Controller
                     $q->where('item_code', $search_code)
                         ->orWhere('item_code', $clean_code)
                         ->orWhere('item_code', $normalized_code)
-                        ->orWhere('item_code', $clean_no_space)
-                        ->orWhere('item_code', 'like', '%' . $clean_code);
+                        ->orWhere('item_code', $clean_no_space);
                 })
                 ->first();
             if ($pv) {
                 $parent_variant_id = $pv->variant_id;
+                $lims_product_data->item_code = $pv->item_code;
                 $lims_product_data->additional_price = $pv->additional_price;
+            } else {
+                // Main code was entered for a variant product -> return variant suggestions list
+                $warehouse_id = $request->warehouse_id ?? $request->input('warehouse_id');
+                $variants = DB::table('product_variants')
+                    ->leftJoin('variants', 'product_variants.variant_id', '=', 'variants.id')
+                    ->leftJoin('product_warehouse', function ($join) {
+                        $join->on('product_variants.product_id', '=', 'product_warehouse.product_id')
+                            ->on('product_variants.variant_id', '=', 'product_warehouse.variant_id');
+                    })
+                    ->where('product_variants.product_id', $lims_product_data->id)
+                    ->select(
+                        'product_variants.id as product_variant_id',
+                        'product_variants.variant_id',
+                        'product_variants.item_code',
+                        'product_variants.additional_price',
+                        'variants.name as variant_name',
+                        DB::raw('COALESCE(SUM(product_warehouse.qty), 0) as stock')
+                    )
+                    ->groupBy(
+                        'product_variants.id',
+                        'product_variants.variant_id',
+                        'product_variants.item_code',
+                        'product_variants.additional_price',
+                        'variants.name',
+                        'product_variants.position'
+                    )
+                    ->orderBy('product_variants.position')
+                    ->get();
+
+                return response()->json([
+                    'is_variant_list' => true,
+                    'product_id' => $lims_product_data->id,
+                    'product_name' => $lims_product_data->name,
+                    'product_code' => $lims_product_data->code,
+                    'base_price' => $lims_product_data->price,
+                    'variants' => $variants
+                ]);
             }
         }
 
@@ -702,17 +733,14 @@ class SaleController extends Controller
         $product[] = $lims_product_data->is_imei;
         $product[] = $lims_product_data->is_variant;
         $product[] = $qty ?: 1;
-        $warehouse_id = $request->warehouse_id ?? $request->input('warehouse_id');
-        $stock = 0;
-        if ($warehouse_id) {
-            $pwQuery = Product_Warehouse::where('product_id', $lims_product_data->id)
-                ->where('warehouse_id', $warehouse_id);
-            if ($parent_variant_id) {
-                $pwQuery->where('variant_id', $parent_variant_id);
-            }
-            $stock = (float) $pwQuery->sum('qty');
-        } elseif (!$lims_product_data->is_variant) {
-            $stock = (float) $lims_product_data->qty;
+
+        $pwQuery = Product_Warehouse::where('product_id', $lims_product_data->id);
+        if ($parent_variant_id) {
+            $pwQuery->where('variant_id', $parent_variant_id);
+        }
+        $stock = (float) $pwQuery->sum('qty');
+        if ($stock == 0 && !$lims_product_data->is_variant) {
+            $stock = (float) ($lims_product_data->qty ?? 0);
         }
 
         $product[] = $lims_product_data->cost;

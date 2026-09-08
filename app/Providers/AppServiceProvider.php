@@ -46,10 +46,18 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer(['backend.layout.top-head', 'backend.layout.top-head-rtl'], function ($view) {
             $view->with([
-                'top_head_users' => User::where('is_active', true)->select('id', 'name', 'email', 'phone')->get(),
-                'top_head_customers' => Customer::where('is_active', true)->select('id', 'name', 'phone_number')->get(),
-                'top_head_customer_groups' => CustomerGroup::where('is_active', true)->select('id', 'name')->get(),
-                'top_head_suppliers' => Supplier::where('is_active', true)->select('id', 'name', 'phone_number')->get(),
+                'top_head_users' => Cache::remember('top_head_users', 60 * 60, function () {
+                    return User::where('is_active', true)->select('id', 'name', 'email', 'phone')->get();
+                }),
+                'top_head_customers' => Cache::remember('top_head_customers', 60 * 60, function () {
+                    return Customer::where('is_active', true)->select('id', 'name', 'phone_number')->get();
+                }),
+                'top_head_customer_groups' => Cache::remember('top_head_customer_groups', 60 * 60 * 24, function () {
+                    return CustomerGroup::where('is_active', true)->select('id', 'name')->get();
+                }),
+                'top_head_suppliers' => Cache::remember('top_head_suppliers', 60 * 60, function () {
+                    return Supplier::where('is_active', true)->select('id', 'name', 'phone_number')->get();
+                }),
             ]);
         });
     }

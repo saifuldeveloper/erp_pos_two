@@ -794,12 +794,12 @@
                             @foreach($lims_brand_list as $brand)
                             @if($brand->image)
                                 <div class="col-md-3 brand-img text-center" data-brand="{{$brand->id}}">
-                                    <img  src="{{url('public/images/brand',$brand->image)}}" />
+                                    <img loading="lazy" src="{{url('public/images/brand',$brand->image)}}" />
                                     <p class="text-center">{{$brand->title}}</p>
                                 </div>
                             @else
                                 <div class="col-md-3 brand-img" data-brand="{{$brand->id}}">
-                                    <img  src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
+                                    <img loading="lazy" src="{{url('public/images/product/zummXD2dvAtI.png')}}" />
                                     <p class="text-center">{{$brand->title}}</p>
                                 </div>
                             @endif
@@ -831,13 +831,13 @@
                             <tbody>
                             @for ($i=0; $i < ceil($product_number/5); $i++)
                                 <tr>
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[0+$i*5]->name}}" data-product ="{{$lims_product_list[0+$i*5]->code . ' (' . $lims_product_list[0+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[0+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[0+$i*5]->name}}" data-product ="{{$lims_product_list[0+$i*5]->code . ' (' . $lims_product_list[0+$i*5]->name . ')'}}"><img loading="lazy" src="{{url('images/product',$lims_product_list[0+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[0+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[0+$i*5]->code}}</span>
                                         <span class="product-qty">Qty: {{$lims_product_list[0+$i*5]->qty}}</span>
                                     </td>
                                     @if(!empty($lims_product_list[1+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[1+$i*5]->name}}" data-product ="{{$lims_product_list[1+$i*5]->code . ' (' . $lims_product_list[1+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[1+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[1+$i*5]->name}}" data-product ="{{$lims_product_list[1+$i*5]->code . ' (' . $lims_product_list[1+$i*5]->name . ')'}}"><img loading="lazy" src="{{url('images/product',$lims_product_list[1+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[1+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[1+$i*5]->code}}</span>
                                         <span class="product-qty">Qty: {{$lims_product_list[1+$i*5]->qty}}</span>
@@ -846,7 +846,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[2+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[2+$i*5]->name}}" data-product ="{{$lims_product_list[2+$i*5]->code . ' (' . $lims_product_list[2+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[2+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[2+$i*5]->name}}" data-product ="{{$lims_product_list[2+$i*5]->code . ' (' . $lims_product_list[2+$i*5]->name . ')'}}"><img loading="lazy" src="{{url('images/product',$lims_product_list[2+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[2+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[2+$i*5]->code}}</span>
                                         <span class="product-qty">Qty: {{$lims_product_list[2+$i*5]->qty}}</span>
@@ -855,7 +855,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[3+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[3+$i*5]->name}}" data-product ="{{$lims_product_list[3+$i*5]->code . ' (' . $lims_product_list[3+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[3+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[3+$i*5]->name}}" data-product ="{{$lims_product_list[3+$i*5]->code . ' (' . $lims_product_list[3+$i*5]->name . ')'}}"><img loading="lazy" src="{{url('images/product',$lims_product_list[3+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[3+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[3+$i*5]->code}}</span>
                                         <span class="product-qty">Qty: {{$lims_product_list[3+$i*5]->qty}}</span>
@@ -864,7 +864,7 @@
                                     <td style="border:none;"></td>
                                     @endif
                                     @if(!empty($lims_product_list[4+$i*5]))
-                                    <td class="product-img sound-btn" title="{{$lims_product_list[4+$i*5]->name}}" data-product ="{{$lims_product_list[4+$i*5]->code . ' (' . $lims_product_list[4+$i*5]->name . ')'}}"><img  src="{{url('images/product',$lims_product_list[4+$i*5]->base_image)}}" width="100%" />
+                                    <td class="product-img sound-btn" title="{{$lims_product_list[4+$i*5]->name}}" data-product ="{{$lims_product_list[4+$i*5]->code . ' (' . $lims_product_list[4+$i*5]->name . ')'}}"><img loading="lazy" src="{{url('images/product',$lims_product_list[4+$i*5]->base_image)}}" width="100%" />
                                         <p>{{$lims_product_list[4+$i*5]->name}}</p>
                                         <span>{{$lims_product_list[4+$i*5]->code}}</span>
                                         <span class="product-qty">Qty: {{$lims_product_list[4+$i*5]->qty}}</span>
@@ -1094,6 +1094,20 @@
                   </div>
                 </div>
             </div>
+            <!-- select variant modal -->
+            <div id="select-variant-modal" tabindex="-1" role="dialog" aria-labelledby="selectVariantModalLabel" aria-hidden="true" class="modal fade text-left">
+                <div role="document" class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 id="selectVariantModalLabel" class="modal-title">{{trans('file.Select Variant')}} - <span id="variant-modal-product-name" class="text-primary font-weight-bold"></span></h5>
+                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
+                        </div>
+                        <div class="modal-body" id="variant-modal-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- add cash register modal -->
             <div id="cash-register-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                 <div role="document" class="modal-dialog">
@@ -1389,6 +1403,7 @@ var product_warehouse_price = [];
 var batch_no = [];
 var product_batch_id = [];
 var global_product_qty = {};
+var posFilterCache = {};
 
 // array data with selection
 var product_price = [];
@@ -1815,6 +1830,12 @@ $.get('sales/getproduct/' + id, function(data) {
     });
 });
 
+if (id) {
+    $.get('sales/getfeatured?warehouse_id=' + id, function(data) {
+        posFilterCache['featured_w_' + id] = data;
+    });
+}
+
 function isCashRegisterAvailable(warehouse_id) {
     $.ajax({
         url: 'cash-register/check-availability/'+warehouse_id,
@@ -1894,9 +1915,16 @@ $('.category-img').on('click', function(){
     var category_id = $(this).data('category');
     var brand_id = 0;
     var warehouse_id = $('select[name="warehouse_id"]').val();
+    var cacheKey = 'cat_' + category_id + '_w_' + warehouse_id;
 
-    $(".table-container").children().remove();
+    if (posFilterCache[cacheKey]) {
+        populateProduct(posFilterCache[cacheKey]);
+        return;
+    }
+
+    $(".table-container").html('<div class="text-center p-4 text-muted"><i class="fa fa-spinner fa-spin fa-2x"></i></div>');
     $.get('sales/getproduct/' + category_id + '/' + brand_id + '?warehouse_id=' + warehouse_id, function(data) {
+        posFilterCache[cacheKey] = data;
         populateProduct(data);
     });
 });
@@ -1912,67 +1940,82 @@ $('.brand-img').on('click', function(){
     var brand_id = $(this).data('brand');
     var category_id = 0;
     var warehouse_id = $('select[name="warehouse_id"]').val();
+    var cacheKey = 'brand_' + brand_id + '_w_' + warehouse_id;
 
-    $(".table-container").children().remove();
+    if (posFilterCache[cacheKey]) {
+        populateProduct(posFilterCache[cacheKey]);
+        return;
+    }
+
+    $(".table-container").html('<div class="text-center p-4 text-muted"><i class="fa fa-spinner fa-spin fa-2x"></i></div>');
     $.get('sales/getproduct/' + category_id + '/' + brand_id + '?warehouse_id=' + warehouse_id, function(data) {
+        posFilterCache[cacheKey] = data;
         populateProduct(data);
     });
 });
 
 $('#featured-filter').on('click', function(){
     var warehouse_id = $('select[name="warehouse_id"]').val();
-    $(".table-container").children().remove();
+    var cacheKey = 'featured_w_' + warehouse_id;
+
+    if (posFilterCache[cacheKey]) {
+        populateProduct(posFilterCache[cacheKey]);
+        return;
+    }
+
+    $(".table-container").html('<div class="text-center p-4 text-muted"><i class="fa fa-spinner fa-spin fa-2x"></i></div>');
     $.get('sales/getfeatured?warehouse_id=' + warehouse_id, function(data) {
+        posFilterCache[cacheKey] = data;
         populateProduct(data);
     });
 });
 
 function populateProduct(data) {
+    if (!data || Object.keys(data).length == 0 || !data['name'] || data['name'].length == 0) {
+        $(".table-container").html('<table id="product-table" class="table no-shadow product-list"><tbody><tr><td class="text-center p-4 text-muted">No data available in table</td></tr></tbody></table>');
+        return;
+    }
+
     var tableData = '<table id="product-table" class="table no-shadow product-list"> <thead class="d-none"> <tr> <th></th> <th></th> <th></th> <th></th> <th></th> </tr></thead> <tbody><tr>';
+    var count = data['name'].length;
 
-    if (Object.keys(data).length != 0) {
-        $.each(data['name'], function(index) {
-            var product_info = data['code'][index]+' (' + data['name'][index] + ')';
-            if(data['image'][index])
-                image = data['image'][index];
-            else
-                image = 'zummXD2dvAtI.png';
-            if(index % 5 == 0 && index != 0) {
-                tableData += '</tr><tr><td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span><span class="product-qty">Qty: '+data['qty'][index]+'</span></td>';
-            }
-            else
-                tableData += '<td class="product-img sound-btn" title="'+data['name'][index]+'" data-product = "'+product_info+'"><img  src="public/images/product/'+image+'" width="100%" /><p>'+data['name'][index]+'</p><span>'+data['code'][index]+'</span><span class="product-qty">Qty: '+data['qty'][index]+'</span></td>';
-        });
+    for (var index = 0; index < count; index++) {
+        var product_info = data['code'][index] + ' (' + data['name'][index] + ')';
+        var image = data['image'][index] ? data['image'][index] : 'zummXD2dvAtI.png';
+        var qty = data['qty'][index] !== undefined ? data['qty'][index] : 0;
 
-        if(data['name'].length % 5){
-            var number = 5 - (data['name'].length % 5);
-            while(number > 0)
-            {
-                tableData += '<td style="border:none;"></td>';
-                number--;
-            }
+        if (index % 5 == 0 && index != 0) {
+            tableData += '</tr><tr>';
         }
+        tableData += '<td class="product-img sound-btn" title="' + data['name'][index] + '" data-product="' + product_info + '">';
+        tableData += '<img loading="lazy" src="public/images/product/' + image + '" width="100%" />';
+        tableData += '<p>' + data['name'][index] + '</p>';
+        tableData += '<span>' + data['code'][index] + '</span>';
+        tableData += '<span class="product-qty">Qty: ' + qty + '</span>';
+        tableData += '</td>';
+    }
 
-        tableData += '</tr></tbody></table>';
-        $(".table-container").html(tableData);
-        $('#product-table').DataTable( {
-          "order": [],
-          'pageLength': product_row_number,
-           'language': {
-              'paginate': {
-                  'previous': '<i class="fa fa-angle-left"></i>',
-                  'next': '<i class="fa fa-angle-right"></i>'
-              }
-          },
-          dom: 'tp'
-        });
-        $('table.product-list').hide();
-        $('table.product-list').show(500);
+    if (count % 5) {
+        var remaining = 5 - (count % 5);
+        for (var k = 0; k < remaining; k++) {
+            tableData += '<td style="border:none;"></td>';
+        }
     }
-    else{
-        tableData += '<td class="text-center">No data avaialable</td></tr></tbody></table>'
-        $(".table-container").html(tableData);
-    }
+
+    tableData += '</tr></tbody></table>';
+    $(".table-container").html(tableData);
+
+    $('#product-table').DataTable({
+        "order": [],
+        'pageLength': product_row_number,
+        'language': {
+            'paginate': {
+                'previous': '<i class="fa fa-angle-left"></i>',
+                'next': '<i class="fa fa-angle-right"></i>'
+            }
+        },
+        dom: 'tp'
+    });
 }
 
 $('select[name="customer_id"]').on('change', function() {
@@ -1989,6 +2032,7 @@ $('select[name="biller_id"]').on('change', function() {
 
 $('select[name="warehouse_id"]').on('change', function() {
     saveValue(this);
+    posFilterCache = {}; // Invalidate client cache on warehouse change
     warehouse_id = $(this).val();
     $.get('sales/getproduct/' + warehouse_id, function(data) {
         lims_product_array = [];
@@ -2010,8 +2054,9 @@ $('select[name="warehouse_id"]').on('change', function() {
     isCashRegisterAvailable(warehouse_id);
 
     // Update the product grid dynamically to show quantity of the newly selected warehouse
-    $(".table-container").children().remove();
+    $(".table-container").html('<div class="text-center p-4 text-muted"><i class="fa fa-spinner fa-spin fa-2x"></i></div>');
     $.get('sales/getfeatured?warehouse_id=' + warehouse_id, function(data) {
+        posFilterCache['featured_w_' + warehouse_id] = data;
         populateProduct(data);
     });
 });
@@ -2542,6 +2587,10 @@ function productSearch(data) {
                 alert('Product does not exist!');
                 return;
             }
+            if (data && data.is_variant_list) {
+                showVariantSelectionModal(data);
+                return;
+            }
             // Check if the product code is in the global product_code array
             var global_pos = window.product_code.indexOf(data[1]);
             var globalStock = parseFloat(data[18]);
@@ -2707,6 +2756,40 @@ function addNewProduct(data){
         $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.edit-product').click();
     }
 }
+
+function showVariantSelectionModal(data) {
+    $('#variant-modal-product-name').text(data.product_name + (data.product_code ? ' (' + data.product_code + ')' : ''));
+    var html = '<div class="row">';
+    if (data.variants && data.variants.length > 0) {
+        $.each(data.variants, function(index, v) {
+            var stockVal = parseFloat(v.stock);
+            var stockBadgeClass = stockVal > 0 ? 'badge-success' : 'badge-danger';
+            var price = (parseFloat(data.base_price) + (v.additional_price ? parseFloat(v.additional_price) : 0)) * currency['exchange_rate'];
+            var vName = v.variant_name ? v.variant_name : v.item_code;
+            html += '<div class="col-md-4 col-sm-6 mb-3">';
+            html += '<button type="button" class="btn btn-outline-primary btn-block select-variant-item p-3 text-left" data-itemcode="' + v.item_code + '" style="border: 2px solid #0984e3; border-radius: 8px; font-size: 14px; background: #fff; cursor: pointer; transition: all 0.2s;">';
+            html += '<div class="d-flex justify-content-between align-items-center mb-1">';
+            html += '<strong style="font-size: 15px; color: #2d3436;">' + vName + '</strong>';
+            html += '<span class="badge ' + stockBadgeClass + '">Stock: ' + stockVal + '</span>';
+            html += '</div>';
+            html += '<div class="text-muted" style="font-size: 12px; margin-bottom: 4px;">Code: ' + v.item_code + '</div>';
+            html += '<div class="font-weight-bold text-success" style="font-size: 14px;">' + currency['code'] + ' ' + price.toFixed({{$general_setting->decimal}}) + '</div>';
+            html += '</button>';
+            html += '</div>';
+        });
+    } else {
+        html += '<div class="col-md-12 text-center text-muted p-4">No variants available for this product.</div>';
+    }
+    html += '</div>';
+    $('#variant-modal-body').html(html);
+    $('#select-variant-modal').modal('show');
+}
+
+$(document).on('click', '.select-variant-item', function() {
+    var itemCode = $(this).data('itemcode');
+    $('#select-variant-modal').modal('hide');
+    productSearch(itemCode);
+});
 
 function edit(){
     $(".imei-section").remove();
