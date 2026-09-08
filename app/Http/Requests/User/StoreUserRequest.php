@@ -41,6 +41,7 @@ class StoreUserRequest extends FormRequest
             'password'     => ['required', 'string', 'min:4'],
             'role_id'      => ['required'],
             'phone'        => ['nullable', 'string', 'max:255'],
+            'phone_number' => ['nullable', 'string', 'max:255'],
             'company_name' => ['nullable', 'string', 'max:255'],
             'biller_id'    => ['nullable'],
             'warehouse_id' => ['nullable'],

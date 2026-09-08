@@ -288,7 +288,7 @@ class CustomerService
             $prefixMessage .= ', User';
         }
 
-        $customerData['name'] = $customerData['customer_name'];
+        $customerData['name'] = $customerData['customer_name'] ?? ($customerData['name'] ?? null);
 
         if (isset($requestData['both'])) {
             Supplier::create($customerData);
@@ -352,7 +352,7 @@ class CustomerService
             $message = 'Customer updated successfully';
         }
 
-        $input['name'] = $input['customer_name'];
+        $input['name'] = $input['customer_name'] ?? ($input['name'] ?? null);
         $customer->update($input);
 
         // Custom fields

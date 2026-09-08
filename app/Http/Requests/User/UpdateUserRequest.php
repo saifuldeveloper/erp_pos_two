@@ -42,6 +42,7 @@ class UpdateUserRequest extends FormRequest
             ],
             'role_id'      => ['nullable'],
             'phone'        => ['nullable', 'string', 'max:255'],
+            'phone_number' => ['nullable', 'string', 'max:255'],
             'company_name' => ['nullable', 'string', 'max:255'],
             'biller_id'    => ['nullable'],
             'warehouse_id' => ['nullable'],

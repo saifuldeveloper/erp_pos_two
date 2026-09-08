@@ -33,6 +33,7 @@ class UpdateCustomerRequest extends FormRequest
             ],
             'customer_group_id' => ['nullable'],
             'name'              => ['nullable', 'string', 'max:255'],
+            'customer_name'     => ['nullable', 'string', 'max:255'],
             'company_name'      => ['nullable', 'string', 'max:255'],
             'email'             => ['nullable', 'string', 'max:255'],
             'tax_no'            => ['nullable', 'string', 'max:255'],
@@ -41,6 +42,7 @@ class UpdateCustomerRequest extends FormRequest
             'state'             => ['nullable', 'string', 'max:255'],
             'postal_code'       => ['nullable', 'string', 'max:255'],
             'country'           => ['nullable', 'string', 'max:255'],
+            'pos'               => ['nullable'],
         ];
 
         if ($this->has('user')) {

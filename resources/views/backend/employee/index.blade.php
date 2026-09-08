@@ -56,7 +56,7 @@
                             <td>{{ $key }}</td>
                             @if ($employee->image)
                                 <td>
-                                    <img src="{{ url('public/images/employee', $employee->image) }}" height="80"
+                                    <img src="{{ asset('images/employee/' . $employee->image) }}" height="80"
                                         width="80">
                                 </td>
                             @else
@@ -183,8 +183,8 @@
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label>{{ trans('file.Email') }} *</label>
-                            <input type="email" name="email" required class="form-control">
+                            <label>{{ trans('file.Email') }}</label>
+                            <input type="email" name="email" class="form-control">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Phone Number') }} *</label>
@@ -208,8 +208,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>{{ trans('file.Salary') }}</label>
-                            <input type="number" name="salary" class="form-control" step="0.01" min="0"
-                                required>
+                            <input type="number" name="salary" class="form-control" step="0.01" min="0">
                         </div>
                     </div>
                     <div class="form-group">

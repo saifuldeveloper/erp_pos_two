@@ -33,11 +33,11 @@
                         <tr data-id="{{ $supplier->id }}">
                             <td>{{ $key }}</td>
                             @if ($supplier->image)
-                                <td> <img src="{{ url('public/images/supplier', $supplier->image) }}" height="80"
+                                <td> <img src="{{ asset('images/supplier/' . $supplier->image) }}" height="80"
                                         width="80">
                                 </td>
                             @else
-                                <td><img src="{{ url('public/images/product/zummXD2dvAtI.png') }}" height="80"
+                                <td><img src="{{ asset('images/product/zummXD2dvAtI.png') }}" height="80"
                                         width="80"></td>
                             @endif
                             <td>

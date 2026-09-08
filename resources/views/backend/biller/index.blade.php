@@ -33,7 +33,7 @@
                 <tr data-id="{{$biller->id}}">
                     <td>{{$key}}</td>
                     @if($biller->image)
-                    <td> <img src="{{url('public/images/biller',$biller->image)}}" height="80" width="80">
+                    <td> <img src="{{ asset('images/biller/' . $biller->image) }}" height="80" width="80">
                     </td>
                     @else
                     <td>No Image</td>

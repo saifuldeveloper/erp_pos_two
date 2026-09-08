@@ -13,8 +13,13 @@
                             <div class="row">
                                 <div class="col-md-8 mx-auto">
                                     <div class="form-group">
-                                        <label>{{ trans('file.name') }} *</strong> </label>
-                                        <input type="text" name="employee_name" required class="form-control">
+                                        <label>{{ trans('file.name') }} *</label>
+                                        <input type="text" name="name" value="{{ old('name') }}" required class="form-control">
+                                        @if ($errors->has('name'))
+                                            <span>
+                                                <strong>{{ $errors->first('name') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label>{{ trans('file.Image') }}</label>
@@ -29,9 +34,14 @@
                                         <label>{{ trans('file.Department') }} *</label>
                                         <select class="form-control selectpicker" name="department_id" required>
                                             @foreach ($lims_department_list as $department)
-                                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                                <option value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>{{ $department->name }}</option>
                                             @endforeach
                                         </select>
+                                        @if ($errors->has('department_id'))
+                                            <span>
+                                                <strong>{{ $errors->first('department_id') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                     {{-- <div class="form-group">
                                         <label>{{ trans('file.Email') }} *</label>
@@ -45,11 +55,21 @@
                                     </div> --}}
                                     <div class="form-group">
                                         <label>{{ trans('file.Phone Number') }} *</label>
-                                        <input type="text" name="phone_number" required class="form-control">
+                                        <input type="text" name="phone_number" value="{{ old('phone_number') }}" required class="form-control">
+                                        @if ($errors->has('phone_number'))
+                                            <span>
+                                                <strong>{{ $errors->first('phone_number') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label>{{ trans('file.Address') }}</label>
-                                        <input type="text" name="address" class="form-control">
+                                        <input type="text" name="address" value="{{ old('address') }}" class="form-control">
+                                        @if ($errors->has('address'))
+                                            <span>
+                                                <strong>{{ $errors->first('address') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                     {{-- <div class="form-group">
                                         <label>{{ trans('file.City') }}</label>
@@ -61,11 +81,21 @@
                                 </div> --}}
                                     <div class="form-group">
                                         <label>{{ trans('file.Staff Id') }}</label>
-                                        <input type="text" name="staff_id" class="form-control">
+                                        <input type="text" name="staff_id" value="{{ old('staff_id') }}" class="form-control">
+                                        @if ($errors->has('staff_id'))
+                                            <span>
+                                                <strong>{{ $errors->first('staff_id') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label>{{ trans('file.Salary') }}</label>
-                                        <input type="number" name="salary" class="form-control" step="0.01" min="0" required>
+                                        <input type="number" name="salary" value="{{ old('salary') }}" class="form-control" step="0.01" min="0">
+                                        @if ($errors->has('salary'))
+                                            <span>
+                                                <strong>{{ $errors->first('salary') }}</strong>
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-6">

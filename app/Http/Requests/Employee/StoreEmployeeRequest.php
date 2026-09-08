@@ -24,22 +24,28 @@ class StoreEmployeeRequest extends FormRequest
     {
         $rules = [
             'name'          => ['required', 'string', 'max:255'],
-            'email'         => [
-                'required',
+            'department_id' => ['required'],
+            'phone_number'  => ['required', 'string', 'max:255'],
+            'image'         => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif', 'max:100000'],
+            'address'       => ['nullable', 'string'],
+            'staff_id'      => ['nullable', 'string', 'max:191'],
+            'salary'        => ['nullable', 'numeric', 'min:0'],
+            'email'         => ['nullable', 'email', 'max:255'],
+            'city'          => ['nullable', 'string'],
+            'country'       => ['nullable', 'string'],
+            'user'          => ['nullable'],
+        ];
+
+        if ($this->filled('email')) {
+            $rules['email'] = [
+                'nullable',
                 'email',
                 'max:255',
                 Rule::unique('employees')->where(function ($query) {
                     return $query->where('is_active', true);
                 }),
-            ],
-            'phone_number'  => ['required', 'string', 'max:255'],
-            'department_id' => ['required'],
-            'image'         => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif', 'max:100000'],
-            'address'       => ['nullable', 'string'],
-            'city'          => ['nullable', 'string'],
-            'country'       => ['nullable', 'string'],
-            'user'          => ['nullable'],
-        ];
+            ];
+        }
 
         if ($this->has('user')) {
             $rules['user_name'] = [

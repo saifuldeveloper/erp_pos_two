@@ -62,7 +62,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <img src="{{ url('public/images/employee', $selected_employee->image) }}"
+                                            <img src="{{ asset('images/employee/' . $selected_employee->image) }}"
                                                 class="img-fluid" alt="Employee Image" height="300" width="300">
                                         </div>
                                     </div>
