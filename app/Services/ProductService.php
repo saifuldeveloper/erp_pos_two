@@ -141,9 +141,9 @@ class ProductService
         $totalData = $this->productRepository->countTotalActiveProducts();
         $limit = ($request->input('length') != -1) ? (int) $request->input('length') : $totalData;
         $start = (int) $request->input('start');
-        $orderColumn = $columns[$request->input('order.0.column')] ?? 'name';
+        $orderColumn = $columns[$request->input('order.0.column')] ?? 'created_at';
         $order = 'products.' . $orderColumn;
-        $dir = $request->input('order.0.dir') ?? 'asc';
+        $dir = $request->input('order.0.dir') ?? 'desc';
 
         $customFields = CustomField::where([
             ['belongs_to', 'product'],

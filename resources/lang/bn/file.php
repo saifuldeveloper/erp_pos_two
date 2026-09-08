@@ -1179,9 +1179,13 @@ return [
 
 	"Item Code" => "আইটেম কোড",
 
+	"Additional Cost" => "অতিরিক্ত খরচ",
+
 	"Additional Price" => "অতিরিক্ত মূল্য",
 
 	"Variant" => "ভিন্নতা",
+
+	"Product Variant Information" => "পণ্যের ভিন্নতা তথ্য",
 
 	"Warehouse Quantity" => "গোডাউন পরিমাণ",
 

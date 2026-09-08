@@ -299,7 +299,7 @@
         <div role="document" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 id="exampleModalLabel" class="modal-title">{{ trans('Product Details') }}</h5>
+                    <h5 id="exampleModalLabel" class="modal-title">{{ trans('file.Product Details') }}</h5>
                     <button id="print-btn" type="button" class="btn btn-default btn-sm ml-3"><i
                             class="dripicons-print"></i> {{ trans('file.Print') }}</button>
                     <button type="button" id="close-btn" data-dismiss="modal" aria-label="Close" class="close"><span
@@ -613,7 +613,8 @@
                             var newBody = $("<tbody>");
                             var newRow = $("<tr>");
                             newRow.append(
-                                '<th>{{ trans('file.Warehouse') }}</th><th>{{ trans('file.Quantity') }}</th><th>{{ trans('file.IMEI or Serial Numbers') }}</th>'
+                                '<th>{{ trans('file.Warehouse') }}</th><th>{{ trans('file.Quantity') }}</th>'
+                                // + '<th>{{ trans('file.IMEI or Serial Numbers') }}</th>'
                             );
                             newHead.append(newRow);
                             $.each(warehouse, function(index) {
@@ -623,7 +624,7 @@
                                 //cols += '<td>' + batch[index] + '</td>';
                                 // += '<td>' + expired_date[index] + '</td>';
                                 cols += '<td>' + qty[index] + '</td>';
-                                cols += '<td>' + imei_numbers[index] + '</td>';
+                                // cols += '<td>' + imei_numbers[index] + '</td>';
 
                                 newRow.append(cols);
                                 newBody.append(newRow);
@@ -767,9 +768,7 @@
                         'next': '<i class="dripicons-chevron-right"></i>'
                     }
                 },
-                order: [
-                    ['2', 'asc']
-                ],
+                order: [],
                 'columnDefs': [{
                         "orderable": false,
                         'targets': [0, 1, 9, 10, 11]

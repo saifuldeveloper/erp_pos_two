@@ -29,7 +29,7 @@
                 </div>
             </div>
             <br>
-            <form action={{ route('invoice.approve', $invoice['id']) }} method="POST">
+            <form id="invoiceApproveForm" action="{{ route('invoice.approve', $invoice['id']) }}" method="POST">
                 @csrf
                 <table class="table table-bordered product-purchase-list">
                     <thead>
@@ -219,13 +219,13 @@
                             <td>
                                 <input type="number" step="any" name="paid_amount" class="form-control" required
                                     min="0"
-                                    value="{{ $purchase ? $purchase->paid_amount : $invoice['total_receivable'] }}"
+                                    value="{{ $purchase ? $purchase->paid_amount : 0 }}"
                                     onkeyup="dueCalculation()" onchange="dueCalculation()">
                             </td>
                         </tr>
                         <tr>
                             <td colspan="7"><strong>Due:</strong></td>
-                            <td class="total_due">{{ $invoice['total_receivable'] - $invoice['total_payment'] }}</td>
+                            <td class="total_due">{{ $purchase ? ($invoice['total_receivable'] - $purchase->paid_amount) : $invoice['total_receivable'] }}</td>
                         </tr>
                         @if ($invoice['gift_transactions'])
                             <tr class="text-center">
@@ -276,6 +276,32 @@
             </form>
         </div>
     </section>
+
+    <!-- Progress Modal -->
+    <div class="modal fade" id="approveProgressModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); border: none;">
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="fa fa-spinner fa-spin fa-3x text-primary" id="progressIcon"></i>
+                    </div>
+                    <h4 class="mb-2 font-weight-bold" id="progressTitle">ইনভয়েস অনুমোদন হচ্ছে...</h4>
+                    <p class="text-muted mb-3" id="progressSubtitle" style="font-size: 14px;">অনুগ্রহ করে অপেক্ষা করুন</p>
+                    
+                    <div class="progress" style="height: 24px; border-radius: 12px; background-color: #e9ecef; overflow: hidden;">
+                        <div id="approveProgressBar" class="progress-bar progress-bar-striped progress-bar-animated bg-success font-weight-bold" 
+                             role="progressbar" style="width: 0%; font-size: 13px; line-height: 24px; transition: width 0.3s ease;">
+                            0%
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 text-secondary font-italic" id="progressStep" style="font-size: 13px;">
+                        ১/৩: Avijatry সার্ভারের সাথে সংযোগ ও ডাটা যাচাই...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script>
@@ -355,16 +381,93 @@
 
             $('.grand_total').text(grandTotal);
             $('input[name="grand_total"]').val(grandTotal);
-            var paid_amount = parseFloat("{{ $purchase ? $purchase->paid_amount : 0 }}");
-            parseFloat($('input[name="paid_amount"]').val(paid_amount > 0 ? paid_amount : grandTotal));
             $('input[name="paid_amount"]').attr('max', grandTotal);
+            dueCalculation();
         }
 
         function dueCalculation() {
-            let grandTotal = parseFloat($('.grand_total').text());
-            let paidAmount = parseFloat($('input[name="paid_amount"]').val());
+            let grandTotal = parseFloat($('.grand_total').text()) || 0;
+            let paidAmount = parseFloat($('input[name="paid_amount"]').val()) || 0;
+            if (paidAmount < 0) {
+                paidAmount = 0;
+                $('input[name="paid_amount"]').val(0);
+            }
             let due = grandTotal - paidAmount;
             $('.total_due').text(due);
         }
+
+        $('#invoiceApproveForm').on('submit', function(e) {
+            e.preventDefault();
+            
+            var form = $(this);
+            var submitBtn = form.find('button[type="submit"]');
+            var formData = new FormData(this);
+            
+            submitBtn.prop('disabled', true);
+            $('#approveProgressModal').modal('show');
+            
+            var progress = 10;
+            var $progressBar = $('#approveProgressBar');
+            var $progressStep = $('#progressStep');
+            var $progressTitle = $('#progressTitle');
+            var $progressSubtitle = $('#progressSubtitle');
+            var $progressIcon = $('#progressIcon');
+            
+            function updateProgress(percent, stepText) {
+                $progressBar.css('width', percent + '%').text(percent + '%');
+                if (stepText) {
+                    $progressStep.text(stepText);
+                }
+            }
+            
+            updateProgress(15, '১/৩: Avijatry সার্ভারের সাথে সংযোগ ও ডাটা যাচাই...');
+            
+            var progressTimer = setInterval(function() {
+                if (progress < 40) {
+                    progress += 5;
+                    updateProgress(progress, '১/৩: Avijatry সার্ভারের সাথে সংযোগ ও ডাটা যাচাই...');
+                } else if (progress < 70) {
+                    progress += 3;
+                    updateProgress(progress, '২/৩: প্রডাক্ট, ইমেজ ও স্টক ডাটাবেজে সংরক্ষণ...');
+                } else if (progress < 90) {
+                    progress += 1;
+                    updateProgress(progress, '৩/৩: চূড়ান্ত অনুমোদন নিশ্চিত করা হচ্ছে...');
+                }
+            }, 300);
+            
+            $.ajax({
+                url: form.attr('action'),
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'Accept': 'application/json'
+                },
+                success: function(response) {
+                    clearInterval(progressTimer);
+                    updateProgress(100, 'সম্পন্ন হয়েছে!');
+                    $progressIcon.removeClass('fa-spinner fa-spin text-primary').addClass('fa-check-circle text-success');
+                    $progressTitle.text('ইনভয়েস সফলভাবে অনুমোদিত হয়েছে!');
+                    $progressSubtitle.text('রিডাইরেক্ট করা হচ্ছে...');
+                    
+                    setTimeout(function() {
+                        window.location.href = response.redirect || "{{ route('invoices.index') }}";
+                    }, 800);
+                },
+                error: function(xhr) {
+                    clearInterval(progressTimer);
+                    submitBtn.prop('disabled', false);
+                    $('#approveProgressModal').modal('hide');
+                    
+                    var errorMsg = 'An error occurred during approval.';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMsg = xhr.responseJSON.message;
+                    }
+                    alert(errorMsg);
+                }
+            });
+        });
     </script>
 @endpush

@@ -16,8 +16,10 @@ use App\Models\Variant;
 use App\Models\Warehouse;
 use App\Services\AvijatryService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 class AvijatryController extends Controller
 {
@@ -106,41 +108,172 @@ class AvijatryController extends Controller
         }
     }
 
+    protected function downloadShoeImagesConcurrently(array $imagesToDownload)
+    {
+        $downloadedImages = [];
+        if (empty($imagesToDownload)) {
+            return $downloadedImages;
+        }
+
+        $directory = public_path('images/product');
+        if (!File::exists($directory)) {
+            File::makeDirectory($directory, 0755, true);
+        }
+
+        $pendingDownloads = [];
+
+        foreach ($imagesToDownload as $shoeCode => $imageUrl) {
+            if (empty($imageUrl)) {
+                continue;
+            }
+            $imageName = basename(parse_url($imageUrl, PHP_URL_PATH) ?: 'shoe_' . time() . '_' . $shoeCode . '.jpg');
+            $filePath = $directory . '/' . $imageName;
+
+            // If already on local disk, use it directly
+            if (File::exists($filePath) && filesize($filePath) > 0) {
+                $downloadedImages[$shoeCode] = $imageName;
+            } else {
+                $pendingDownloads[$shoeCode] = [
+                    'url' => $imageUrl,
+                    'name' => $imageName,
+                    'path' => $filePath,
+                ];
+            }
+        }
+
+        if (!empty($pendingDownloads)) {
+            // Download in concurrent chunks of 15 to avoid socket saturation
+            $chunks = array_chunk($pendingDownloads, 15, true);
+            foreach ($chunks as $chunk) {
+                try {
+                    $responses = Http::pool(function (Pool $pool) use ($chunk) {
+                        $poolReqs = [];
+                        foreach ($chunk as $shoeCode => $info) {
+                            $poolReqs[$shoeCode] = $pool->as($shoeCode)->timeout(10)->connectTimeout(3)->get($info['url']);
+                        }
+                        return $poolReqs;
+                    });
+
+                    foreach ($chunk as $shoeCode => $info) {
+                        $res = $responses[$shoeCode] ?? null;
+                        if ($res && !($res instanceof \Exception) && $res->successful() && strlen($res->body()) > 0) {
+                            @file_put_contents($info['path'], $res->body());
+                            $downloadedImages[$shoeCode] = $info['name'];
+                        }
+                    }
+                } catch (\Exception $e) {
+                    // Gracefully continue without failing
+                }
+            }
+        }
+
+        return $downloadedImages;
+    }
+
+    protected function downloadShoeImage($imageUrl)
+    {
+        if (empty($imageUrl)) {
+            return null;
+        }
+
+        try {
+            $imageName = basename(parse_url($imageUrl, PHP_URL_PATH) ?: 'shoe_' . time() . '.jpg');
+            $directory = public_path('images/product');
+            $filePath = $directory . '/' . $imageName;
+
+            if (File::exists($filePath) && filesize($filePath) > 0) {
+                return $imageName;
+            }
+
+            if (!File::exists($directory)) {
+                File::makeDirectory($directory, 0755, true);
+            }
+
+            $response = Http::timeout(5)->connectTimeout(2)->get($imageUrl);
+            if ($response->successful() && strlen($response->body()) > 0) {
+                file_put_contents($filePath, $response->body());
+                return $imageName;
+            }
+        } catch (\Exception $e) {
+            // Silently catch and proceed if image download fails
+        }
+
+        return null;
+    }
+
     public function invoiceApprove(Request $request, $id)
     {
+        // Support large invoices with many products
+        @set_time_limit(300);
+        @ini_set('memory_limit', '512M');
+
         try {
             $response = $this->avijatryService->invoice($id);
             if ($response->status() == 200) {
                 $invoice = $response->json('invoice') ?? [];
                 if (empty($invoice)) {
+                    if ($request->ajax() || $request->wantsJson()) {
+                        return response()->json(['success' => false, 'message' => 'Invoice data is empty.'], 422);
+                    }
                     return redirect()->route('invoices.index')->with('not_permitted', 'Invoice data is empty.');
                 }
 
-                $ret = DB::transaction(function () use ($invoice, $request) {
+                // 1. Pre-process and download missing product images in parallel outside DB transaction
+                $imagesToDownload = [];
+                foreach ($invoice['invoice_entries'] ?? [] as $entry) {
+                    $shoe = $entry['shoe'] ?? [];
+                    $shoeCode = 'A-' . ($shoe['code'] ?? '');
+                    if (!Product::where('code', $shoeCode)->exists() && !empty($shoe['image_url'])) {
+                        $imagesToDownload[$shoe['code']] = $shoe['image_url'];
+                    }
+                }
+
+                $downloadedImages = $this->downloadShoeImagesConcurrently($imagesToDownload);
+
+                // 2. Pure database writes inside atomic transaction
+                $ret = DB::transaction(function () use ($invoice, $request, $downloadedImages) {
                     foreach ($invoice['invoice_entries'] ?? [] as $entry) {
-                        $shoeCode = 'A-' . ($entry['shoe']['code'] ?? '');
+                        $shoe = $entry['shoe'] ?? [];
+                        $shoeCode = 'A-' . ($shoe['code'] ?? '');
                         if (!Product::where('code', $shoeCode)->first()) {
-                            $this->productStore($entry['shoe'], $invoice['commission'] ?? 0);
+                            $imageName = $downloadedImages[$shoe['code']] ?? null;
+                            $this->productStore($shoe, $invoice['commission'] ?? 0, $imageName);
                         }
                     }
                     return $this->invoiceStore($invoice, $request);
                 });
             } else {
+                if ($request->ajax() || $request->wantsJson()) {
+                    return response()->json(['success' => false, 'message' => "Avijatry invoice fetch failed. Status: " . $response->status()], 422);
+                }
                 return redirect()->route('invoices.index')->with('not_permitted', "Avijatry invoice fetch failed. Status: " . $response->status());
             }
 
+            // 3. Remote approval confirmation
             $approveResponse = $this->avijatryService->approveInvoice($id, $ret);
-            if ($approveResponse->status() == 200) {
-                return redirect()->route('invoices.index')->with('message', 'Invoice approved and purchase recorded successfully.');
-            } else {
-                return redirect()->route('invoices.index')->with('message', 'Invoice recorded locally, but Avijatry remote confirmation returned status: ' . $approveResponse->status());
+            $isRemoteApproved = $approveResponse->status() == 200;
+            $msg = $isRemoteApproved
+                ? 'Invoice approved and purchase recorded successfully.'
+                : 'Invoice recorded locally, but Avijatry remote confirmation returned status: ' . $approveResponse->status();
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => $msg,
+                    'redirect' => route('invoices.index'),
+                ]);
             }
+
+            return redirect()->route('invoices.index')->with('message', $msg);
         } catch (\Exception $e) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json(['success' => false, 'message' => 'Error: ' . $e->getMessage()], 500);
+            }
             return redirect()->back()->with('not_permitted', 'Error: ' . $e->getMessage());
         }
     }
 
-    public function productStore($shoe, $commission = 0)
+    public function productStore($shoe, $commission = 0, $preloadedImageName = null)
     {
         $brand = Brand::firstOrCreate(['title' => 'Avijatry'], ['is_active' => 1]);
         $brand_id = $brand->id;
@@ -160,23 +293,9 @@ class AvijatryController extends Controller
 
         $color = !empty($shoe['color']) ? $this->colorStore($shoe['color']) : null;
 
-        $image_name = null;
-        if (!empty($shoe['image_url'])) {
-            try {
-                $imageUrl = $shoe['image_url'];
-                $imageName = basename(parse_url($imageUrl, PHP_URL_PATH) ?: 'shoe_' . time() . '.jpg');
-                $directory = public_path('images/product');
-                if (!File::exists($directory)) {
-                    File::makeDirectory($directory, 0755, true);
-                }
-                $imageContent = @file_get_contents($imageUrl);
-                if ($imageContent !== false) {
-                    file_put_contents($directory . '/' . $imageName, $imageContent);
-                    $image_name = $imageName;
-                }
-            } catch (\Exception $e) {
-                // Proceed without image if fetch fails
-            }
+        $image_name = $preloadedImageName;
+        if (!$image_name && !empty($shoe['image_url'])) {
+            $image_name = $this->downloadShoeImage($shoe['image_url']);
         }
 
         $variant_value = [];
@@ -361,7 +480,6 @@ class AvijatryController extends Controller
 
                         $this->variantStore($shoeToSize, $receivedQtyArr, $previous_received_qty, $entry['shoe']['color'] ?? $colorName, $product);
                         $product->is_variant = 1;
-                        $product->save();
                     }
                 }
             }

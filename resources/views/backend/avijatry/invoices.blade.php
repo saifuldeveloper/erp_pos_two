@@ -29,6 +29,7 @@
                                 <tbody>
                                     @php
                                         $total_receivable = 0;
+                                        $total_commission = 0;
                                         $total_payment = 0;
                                         $total_due = 0;
                                         // API theke asha main data array
@@ -37,30 +38,25 @@
                                     @endphp
 
                                     @forelse ($invoiceList as $invoice)
+                                        @php
+                                            $total_amount = $invoice['total_amount'] ?? 0;
+                                            $commission = $invoice['total_commission'] ?? 0;
+                                            $total_payment_item = $invoice['total_payment'] ?? 0;
+                                            $due = $total_amount - $total_payment_item - $commission;
+                                        @endphp
                                         <tr>
                                             <td>{{ \Carbon\Carbon::parse($invoice['created_at'])->format('Y-m-d') }}</td>
                                             <td>
                                                 {{ $invoice['id'] }}
-
                                             </td>
                                             <td>
                                                 <span class="badge badge-info">{{ $invoice['retail_store_status'] }}</span>
                                             </td>
                                             {{-- API response e total_amount ba total_receivable check korun --}}
-                                            <td>{{ number_format($invoice['total_amount'] ?? 0, 2) }}</td>
-                                            <td>
-
-                                                {{ $invoice['total_commission'] }}
-
-                                            </td>
-                                            <td>{{ number_format($invoice['total_payment'] ?? 0, 2) }}</td>
-
-                                            <td>
-                                                {{ number_format(
-                                                    ($invoice['total_amount'] ?? 0) - ($invoice['total_payment'] ?? 0) - $invoice['total_commission'],
-                                                    2,
-                                                ) }}
-                                            </td>
+                                            <td>{{ number_format($total_amount, 2) }}</td>
+                                            <td>{{ number_format($commission, 2) }}</td>
+                                            <td>{{ number_format($total_payment_item, 2) }}</td>
+                                            <td>{{ number_format($due, 2) }}</td>
                                             <td>
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-default btn-sm dropdown-toggle"
@@ -79,23 +75,22 @@
                                             </td>
                                         </tr>
                                         @php
-                                            $total_receivable += $invoice['total_amount'] ?? 0;
-                                            $total_payment += $invoice['total_payment'] ?? 0;
-                                            $total_due +=
-                                                ($invoice['total_amount'] ?? 0) - ($invoice['total_payment'] ?? 0);
+                                            $total_receivable += $total_amount;
+                                            $total_commission += $commission;
+                                            $total_payment += $total_payment_item;
+                                            $total_due += $due;
                                         @endphp
                                     @empty
                                         <tr>
-                                            <td colspan="6" class="text-center">No Invoices Found</td>
+                                            <td colspan="8" class="text-center">No Invoices Found</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
                                 <tfoot class="tfoot active">
                                     <tr>
-                                        
                                         <th colspan="3"></th>
                                         <th>{{ number_format($total_receivable, 2) }}</th>
-                                        <th></th>
+                                        <th>{{ number_format($total_commission, 2) }}</th>
                                         <th>{{ number_format($total_payment, 2) }}</th>
                                         <th>{{ number_format($total_due, 2) }}</th>
                                         <th></th>
