@@ -13,6 +13,7 @@ class Waste extends Model
         'receiver_id',
         'receiver_name',
         'note',
+        'total_price',
         'status'
     ];
 

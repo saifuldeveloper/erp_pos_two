@@ -7,8 +7,10 @@ use App\Http\Requests\Quotation\StoreQuotationRequest;
 use App\Http\Requests\Quotation\UpdateQuotationRequest;
 use App\Models\Biller;
 use App\Models\Customer;
+use App\Models\CustomerGroup;
 use App\Models\PosSetting;
 use App\Models\Product;
+use App\Models\ProductBatch;
 use App\Models\ProductQuotation;
 use App\Models\ProductVariant;
 use App\Models\Quotation;
@@ -69,6 +71,132 @@ class QuotationController extends Controller
         return view('backend.quotation.create', $formData);
     }
 
+    public function getCustomerGroup($id)
+    {
+        $lims_customer_data = Customer::find($id);
+        if (!$lims_customer_data) {
+            return 0;
+        }
+        $lims_customer_group_data = CustomerGroup::find($lims_customer_data->customer_group_id);
+        return $lims_customer_group_data ? $lims_customer_group_data->percentage : 0;
+    }
+
+    public function getProduct($id)
+    {
+        $product_code = [];
+        $product_name = [];
+        $product_qty = [];
+        $product_price = [];
+        $product_type = [];
+        $product_id = [];
+        $product_list = [];
+        $qty_list = [];
+        $batch_no = [];
+        $product_batch_id = [];
+        $product_data = [];
+
+        // retrieve data of product without variant
+        $lims_product_warehouse_data = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
+            ->where([
+                ['products.is_active', true],
+                ['product_warehouse.warehouse_id', $id],
+            ])
+            ->whereNull('product_warehouse.variant_id')
+            ->whereNull('product_warehouse.product_batch_id')
+            ->select('product_warehouse.*')
+            ->get();
+
+        foreach ($lims_product_warehouse_data as $product_warehouse) {
+            $product_qty[] = $product_warehouse->qty;
+            $product_price[] = $product_warehouse->price;
+            $lims_product_data = Product::find($product_warehouse->product_id);
+            $product_code[] = $lims_product_data->code;
+            $product_name[] = $lims_product_data->name;
+            $product_type[] = $lims_product_data->type;
+            $product_id[] = $lims_product_data->id;
+            $product_list[] = null;
+            $qty_list[] = null;
+            $batch_no[] = null;
+            $product_batch_id[] = null;
+        }
+
+        config()->set('database.connections.mysql.strict', false);
+        \DB::reconnect();
+
+        $lims_product_with_batch_warehouse_data = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
+            ->where([
+                ['products.is_active', true],
+                ['product_warehouse.warehouse_id', $id],
+            ])
+            ->whereNull('product_warehouse.variant_id')
+            ->whereNotNull('product_warehouse.product_batch_id')
+            ->select('product_warehouse.*')
+            ->groupBy('product_warehouse.product_id')
+            ->get();
+
+        config()->set('database.connections.mysql.strict', true);
+        \DB::reconnect();
+
+        foreach ($lims_product_with_batch_warehouse_data as $product_warehouse) {
+            $product_qty[] = $product_warehouse->qty;
+            $product_price[] = $product_warehouse->price;
+            $lims_product_data = Product::find($product_warehouse->product_id);
+            $product_code[] = $lims_product_data->code;
+            $product_name[] = $lims_product_data->name;
+            $product_type[] = $lims_product_data->type;
+            $product_id[] = $lims_product_data->id;
+            $product_list[] = null;
+            $qty_list[] = null;
+            $product_batch_data = ProductBatch::select('id', 'batch_no')->find($product_warehouse->product_batch_id);
+            $batch_no[] = $product_batch_data ? $product_batch_data->batch_no : null;
+            $product_batch_id[] = $product_batch_data ? $product_batch_data->id : null;
+        }
+
+        // retrieve data of product with variant
+        $lims_product_warehouse_data = Product::join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
+            ->where([
+                ['products.is_active', true],
+                ['product_warehouse.warehouse_id', $id],
+            ])
+            ->whereNotNull('product_warehouse.variant_id')
+            ->select('product_warehouse.*')
+            ->get();
+
+        foreach ($lims_product_warehouse_data as $product_warehouse) {
+            $product_qty[] = $product_warehouse->qty;
+            $lims_product_data = Product::find($product_warehouse->product_id);
+            $lims_product_variant_data = ProductVariant::select('item_code')->FindExactProduct($product_warehouse->product_id, $product_warehouse->variant_id)->first();
+            if ($lims_product_variant_data) {
+                $product_code[] = $lims_product_variant_data->item_code;
+                $product_name[] = $lims_product_data->name;
+                $product_type[] = $lims_product_data->type;
+                $product_id[] = $lims_product_data->id;
+                $product_list[] = null;
+                $qty_list[] = null;
+                $batch_no[] = null;
+                $product_batch_id[] = null;
+            }
+        }
+
+        // retrieve product data of digital and combo
+        $lims_product_data = Product::whereNotIn('type', [ProductType::STANDARD->value])->where('is_active', true)->get();
+        foreach ($lims_product_data as $product) {
+            $product_qty[] = $product->qty;
+            $product_code[] = $product->code;
+            $product_name[] = $product->name;
+            $product_type[] = $product->type;
+            $product_id[] = $product->id;
+            $product_list[] = $product->product_list;
+            $qty_list[] = $product->qty_list;
+            $product_price[] = $product->price;
+            $batch_no[] = null;
+            $product_batch_id[] = null;
+        }
+
+        $product_data = [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id];
+        return $product_data;
+    }
+
     public function limsProductSearch(Request $request)
     {
         $todayDate = date('Y-m-d');
@@ -81,14 +209,22 @@ class QuotationController extends Controller
         ])->first();
 
         $product_variant_id = null;
+        $product_variant_data = null;
         if (!$lims_product_data) {
-            $product_variant_data = ProductVariant::select('id', 'product_id', 'item_code')->where('item_code', $product_code[0])->first();
-            $lims_product_data = Product::find($product_variant_data->product_id);
-            $product_variant_id = $product_variant_data->id;
+            $product_variant_data = ProductVariant::select('id', 'product_id', 'item_code', 'additional_price')->where('item_code', $product_code[0])->first();
+            if ($product_variant_data) {
+                $lims_product_data = Product::find($product_variant_data->product_id);
+                $product_variant_id = $product_variant_data->id;
+            }
         }
 
+        if (!$lims_product_data) {
+            return [];
+        }
+
+        $product = [];
         $product[] = $lims_product_data->name;
-        if ($product_variant_id) {
+        if ($product_variant_id && $product_variant_data) {
             $product[] = $product_variant_data->item_code;
         } else {
             $product[] = $lims_product_data->code;
@@ -97,13 +233,17 @@ class QuotationController extends Controller
         if ($lims_product_data->promotion && $todayDate <= $lims_product_data->last_date && $todayDate >= $lims_product_data->starting_date) {
             $product[] = $lims_product_data->promotion_price;
         } else {
-            $product[] = $lims_product_data->price;
+            $product_price = $lims_product_data->price;
+            if ($product_variant_id && $product_variant_data && isset($product_variant_data->additional_price)) {
+                $product_price += $product_variant_data->additional_price;
+            }
+            $product[] = $product_price;
         }
 
         if ($lims_product_data->tax_id) {
             $lims_tax_data = Tax::find($lims_product_data->tax_id);
-            $product[] = $lims_tax_data->rate;
-            $product[] = $lims_tax_data->name;
+            $product[] = $lims_tax_data ? $lims_tax_data->rate : 0;
+            $product[] = $lims_tax_data ? $lims_tax_data->name : 'No Tax';
         } else {
             $product[] = 0;
             $product[] = 'No Tax';

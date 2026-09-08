@@ -201,6 +201,10 @@ class TransferService
             $data['document'] = $documentName;
         }
 
+        if (!isset($data['item'])) {
+            $data['item'] = isset($data['product_id']) ? count($data['product_id']) : 0;
+        }
+
         if (!isset($data['reference_no'])) {
             $data['reference_no'] = 'tr-' . date("Ymd") . '-' . date("his");
         }
@@ -219,7 +223,13 @@ class TransferService
             $batchNos = $data['batch_no'] ?? [];
 
             foreach ($productIds as $i => $id) {
-                $purchaseUnit = Unit::find($purchaseUnitIds[$i] ?? 0);
+                $purchaseUnit = null;
+                if (!empty($purchaseUnitIds[$i])) {
+                    $purchaseUnit = Unit::find($purchaseUnitIds[$i]);
+                } elseif (!empty($data['purchase_unit'][$i])) {
+                    $purchaseUnit = Unit::where('unit_name', $data['purchase_unit'][$i])->first();
+                }
+
                 $qty = $qtys[$i] ?? 0;
 
                 if ($purchaseUnit) {
@@ -261,20 +271,14 @@ class TransferService
 
                 if ($data['status'] == 1) {
                     // Completed: deduct from from_warehouse, add to to_warehouse
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['from_warehouse_id']]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($id, $data['from_warehouse_id'], $productVariantId, $productBatchId);
 
                     if ($fromWarehouse) {
                         $fromWarehouse->qty -= $quantity;
                         $fromWarehouse->save();
                     }
 
-                    $toWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['to_warehouse_id']]
-                    ])->first();
+                    $toWarehouse = $this->findProductWarehouse($id, $data['to_warehouse_id'], $productVariantId, $productBatchId);
 
                     if ($toWarehouse) {
                         $toWarehouse->qty += $quantity;
@@ -290,10 +294,7 @@ class TransferService
                     }
                 } elseif ($data['status'] == 3) {
                     // Sent: deduct from from_warehouse only
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['from_warehouse_id']]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($id, $data['from_warehouse_id'], $productVariantId, $productBatchId);
 
                     if ($fromWarehouse) {
                         $fromWarehouse->qty -= $quantity;
@@ -306,12 +307,13 @@ class TransferService
                     'product_id'       => $id,
                     'product_batch_id' => $productBatchId,
                     'variant_id'       => $productVariantId,
+                    'imei_number'      => $data['imei_number'][$i] ?? null,
                     'qty'              => $qty,
-                    'purchase_unit_id' => $purchaseUnitIds[$i] ?? null,
+                    'purchase_unit_id' => $purchaseUnit ? $purchaseUnit->id : ($purchaseUnitIds[$i] ?? null),
                     'net_unit_cost'    => $netUnitCosts[$i] ?? 0,
                     'tax_rate'         => $taxRates[$i] ?? 0,
                     'tax'              => $taxes[$i] ?? 0,
-                    'subtotal'         => $subtotals[$i] ?? 0,
+                    'total'            => $subtotals[$i] ?? ($data['total'][$i] ?? 0),
                 ]);
             }
 
@@ -370,6 +372,10 @@ class TransferService
             $data['document'] = $documentName;
         }
 
+        if (!isset($data['item']) && isset($data['product_id'])) {
+            $data['item'] = count($data['product_id']);
+        }
+
         return DB::transaction(function () use ($id, $transfer, $data) {
             // Revert previous transfer quantities
             $oldTransfers = ProductTransfer::where('transfer_id', $id)->get();
@@ -386,28 +392,19 @@ class TransferService
                 }
 
                 if ($transfer->status == 1) {
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $oldItem->product_id],
-                        ['warehouse_id', $transfer->from_warehouse_id]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($oldItem->product_id, $transfer->from_warehouse_id, $oldItem->variant_id, $oldItem->product_batch_id);
                     if ($fromWarehouse) {
                         $fromWarehouse->qty += $oldQty;
                         $fromWarehouse->save();
                     }
 
-                    $toWarehouse = Product_Warehouse::where([
-                        ['product_id', $oldItem->product_id],
-                        ['warehouse_id', $transfer->to_warehouse_id]
-                    ])->first();
+                    $toWarehouse = $this->findProductWarehouse($oldItem->product_id, $transfer->to_warehouse_id, $oldItem->variant_id, $oldItem->product_batch_id);
                     if ($toWarehouse) {
                         $toWarehouse->qty -= $oldQty;
                         $toWarehouse->save();
                     }
                 } elseif ($transfer->status == 3) {
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $oldItem->product_id],
-                        ['warehouse_id', $transfer->from_warehouse_id]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($oldItem->product_id, $transfer->from_warehouse_id, $oldItem->variant_id, $oldItem->product_batch_id);
                     if ($fromWarehouse) {
                         $fromWarehouse->qty += $oldQty;
                         $fromWarehouse->save();
@@ -431,7 +428,13 @@ class TransferService
             $batchNos = $data['batch_no'] ?? [];
 
             foreach ($productIds as $i => $id) {
-                $purchaseUnit = Unit::find($purchaseUnitIds[$i] ?? 0);
+                $purchaseUnit = null;
+                if (!empty($purchaseUnitIds[$i])) {
+                    $purchaseUnit = Unit::find($purchaseUnitIds[$i]);
+                } elseif (!empty($data['purchase_unit'][$i])) {
+                    $purchaseUnit = Unit::where('unit_name', $data['purchase_unit'][$i])->first();
+                }
+
                 $qty = $qtys[$i] ?? 0;
 
                 if ($purchaseUnit) {
@@ -472,19 +475,13 @@ class TransferService
                 }
 
                 if ($data['status'] == 1) {
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['from_warehouse_id']]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($id, $data['from_warehouse_id'], $productVariantId, $productBatchId);
                     if ($fromWarehouse) {
                         $fromWarehouse->qty -= $quantity;
                         $fromWarehouse->save();
                     }
 
-                    $toWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['to_warehouse_id']]
-                    ])->first();
+                    $toWarehouse = $this->findProductWarehouse($id, $data['to_warehouse_id'], $productVariantId, $productBatchId);
                     if ($toWarehouse) {
                         $toWarehouse->qty += $quantity;
                         $toWarehouse->save();
@@ -498,10 +495,7 @@ class TransferService
                         ]);
                     }
                 } elseif ($data['status'] == 3) {
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $id],
-                        ['warehouse_id', $data['from_warehouse_id']]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($id, $data['from_warehouse_id'], $productVariantId, $productBatchId);
                     if ($fromWarehouse) {
                         $fromWarehouse->qty -= $quantity;
                         $fromWarehouse->save();
@@ -513,12 +507,13 @@ class TransferService
                     'product_id'       => $id,
                     'product_batch_id' => $productBatchId,
                     'variant_id'       => $productVariantId,
+                    'imei_number'      => $data['imei_number'][$i] ?? null,
                     'qty'              => $qty,
-                    'purchase_unit_id' => $purchaseUnitIds[$i] ?? null,
+                    'purchase_unit_id' => $purchaseUnit ? $purchaseUnit->id : ($purchaseUnitIds[$i] ?? null),
                     'net_unit_cost'    => $netUnitCosts[$i] ?? 0,
                     'tax_rate'         => $taxRates[$i] ?? 0,
                     'tax'              => $taxes[$i] ?? 0,
-                    'subtotal'         => $subtotals[$i] ?? 0,
+                    'total'            => $subtotals[$i] ?? ($data['total'][$i] ?? 0),
                 ]);
             }
 
@@ -551,28 +546,19 @@ class TransferService
                 }
 
                 if ($transfer->status == 1) {
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $item->product_id],
-                        ['warehouse_id', $transfer->from_warehouse_id]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($item->product_id, $transfer->from_warehouse_id, $item->variant_id, $item->product_batch_id);
                     if ($fromWarehouse) {
                         $fromWarehouse->qty += $quantity;
                         $fromWarehouse->save();
                     }
 
-                    $toWarehouse = Product_Warehouse::where([
-                        ['product_id', $item->product_id],
-                        ['warehouse_id', $transfer->to_warehouse_id]
-                    ])->first();
+                    $toWarehouse = $this->findProductWarehouse($item->product_id, $transfer->to_warehouse_id, $item->variant_id, $item->product_batch_id);
                     if ($toWarehouse) {
                         $toWarehouse->qty -= $quantity;
                         $toWarehouse->save();
                     }
                 } elseif ($transfer->status == 3) {
-                    $fromWarehouse = Product_Warehouse::where([
-                        ['product_id', $item->product_id],
-                        ['warehouse_id', $transfer->from_warehouse_id]
-                    ])->first();
+                    $fromWarehouse = $this->findProductWarehouse($item->product_id, $transfer->from_warehouse_id, $item->variant_id, $item->product_batch_id);
                     if ($fromWarehouse) {
                         $fromWarehouse->qty += $quantity;
                         $fromWarehouse->save();
@@ -588,6 +574,20 @@ class TransferService
 
             return (bool) $transfer->delete();
         });
+    }
+
+    /**
+     * Helper to find Product_Warehouse matching variant and batch accurately.
+     */
+    protected function findProductWarehouse($productId, $warehouseId, $variantId = null, $batchId = null)
+    {
+        return Product_Warehouse::where([
+            ['product_id', $productId],
+            ['warehouse_id', $warehouseId]
+        ])
+        ->when($variantId, fn($q) => $q->where('variant_id', $variantId), fn($q) => $q->whereNull('variant_id'))
+        ->when($batchId, fn($q) => $q->where('product_batch_id', $batchId), fn($q) => $q->whereNull('product_batch_id'))
+        ->first();
     }
 
     /**

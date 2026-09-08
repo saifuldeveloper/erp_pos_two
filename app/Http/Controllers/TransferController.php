@@ -76,12 +76,16 @@ class TransferController extends Controller
 
         $lims_product_withVariant_warehouse_data = DB::table('products')
             ->join('product_warehouse', 'products.id', '=', 'product_warehouse.product_id')
+            ->join('product_variants', function ($join) {
+                $join->on('product_warehouse.product_id', '=', 'product_variants.product_id')
+                    ->on('product_warehouse.variant_id', '=', 'product_variants.variant_id');
+            })
             ->whereNotNull('products.is_variant')
             ->where([
                 ['products.is_active', true],
                 ['product_warehouse.warehouse_id', $id]
             ])
-            ->select('products.name', 'product_warehouse.qty', 'product_warehouse.item_code')
+            ->select('products.name', 'product_warehouse.qty', 'product_variants.item_code')
             ->get();
 
         $product_code = [];
@@ -110,37 +114,105 @@ class TransferController extends Controller
     {
         $product_code = explode("(", $request['data']);
         $product_info = explode("|", $request['data']);
-        $product_code[0] = rtrim($product_code[0], " ");
+        $code = rtrim($product_code[0], " ");
+        $variant_id_from_pipe = null;
         if (count($product_info) > 1) {
-            $product_code[0] = $product_info[0];
-            $product_variant_id = $product_info[1];
+            $code = $product_info[0];
+            $variant_id_from_pipe = $product_info[1];
         }
 
+        $from_warehouse_id = $request->from_warehouse_id ?? $request->input('from_warehouse_id');
+        $results = [];
+
         $lims_product_data = Product::where([
-            ['code', $product_code[0]],
+            ['code', $code],
             ['is_active', true]
         ])->first();
 
-        $product_variant_id = null;
         if (!$lims_product_data) {
-            $product_variant_data = ProductVariant::select('id', 'product_id', 'item_code')->where('item_code', $product_code[0])->first();
-            $lims_product_data = Product::find($product_variant_data->product_id);
-            $product_variant_id = $product_variant_data->id;
+            $product_variant_data = ProductVariant::select('id', 'product_id', 'item_code', 'additional_cost', 'variant_id')
+                ->where('item_code', $code)
+                ->first();
+            if ($product_variant_data) {
+                $lims_product_data = Product::find($product_variant_data->product_id);
+                if ($lims_product_data) {
+                    $pw = Product_Warehouse::where([
+                        ['product_id', $lims_product_data->id],
+                        ['variant_id', $product_variant_data->variant_id],
+                        ['warehouse_id', $from_warehouse_id]
+                    ])->first();
+                    $qty = $pw ? $pw->qty : 0;
+                    $results[] = $this->getProductSearchDetails($lims_product_data, $product_variant_data, $qty);
+                    return $results;
+                }
+            }
+            return [];
         }
 
-        $product[] = $lims_product_data->name;
-        if ($product_variant_id) {
-            $product[] = $product_variant_data->item_code;
+        if ($lims_product_data->is_variant) {
+            $variantsQuery = ProductVariant::join('variants', 'product_variants.variant_id', '=', 'variants.id')
+                ->leftJoin('product_warehouse', function ($join) use ($from_warehouse_id) {
+                    $join->on('product_variants.product_id', '=', 'product_warehouse.product_id')
+                        ->on('product_variants.variant_id', '=', 'product_warehouse.variant_id')
+                        ->where('product_warehouse.warehouse_id', $from_warehouse_id);
+                })
+                ->where('product_variants.product_id', $lims_product_data->id)
+                ->select('product_variants.*', 'variants.name as variant_name', DB::raw('COALESCE(product_warehouse.qty, 0) as warehouse_qty'))
+                ->orderBy('product_variants.position');
+
+            if ($variant_id_from_pipe) {
+                $variantsQuery->where('product_variants.variant_id', $variant_id_from_pipe);
+            }
+
+            $variants = $variantsQuery->get();
+
+            if (count($variants) > 0) {
+                foreach ($variants as $variant) {
+                    $results[] = $this->getProductSearchDetails($lims_product_data, $variant, $variant->warehouse_qty);
+                }
+            } else {
+                $pw = Product_Warehouse::where([
+                    ['product_id', $lims_product_data->id],
+                    ['warehouse_id', $from_warehouse_id]
+                ])->first();
+                $qty = $pw ? $pw->qty : 0;
+                $results[] = $this->getProductSearchDetails($lims_product_data, null, $qty);
+            }
         } else {
-            $product[] = $lims_product_data->code;
+            $pw = Product_Warehouse::where([
+                ['product_id', $lims_product_data->id],
+                ['warehouse_id', $from_warehouse_id]
+            ])->first();
+            $qty = $pw ? $pw->qty : 0;
+            $results[] = $this->getProductSearchDetails($lims_product_data, null, $qty);
         }
 
-        $product[] = $lims_product_data->cost;
+        return $results;
+    }
+
+    private function getProductSearchDetails($lims_product_data, $variant = null, $warehouse_qty = 0)
+    {
+        $product = [];
+        $product_variant_id = null;
+        $cost = $lims_product_data->cost;
+        $code = $lims_product_data->code;
+
+        if ($variant) {
+            $product[] = $lims_product_data->name;
+            $code = $variant->item_code;
+            $cost += ($variant->additional_cost ?? 0);
+            $product_variant_id = $variant->variant_id ?? $variant->id;
+        } else {
+            $product[] = $lims_product_data->name;
+        }
+
+        $product[] = $code;
+        $product[] = $cost;
 
         if ($lims_product_data->tax_id) {
             $lims_tax_data = Tax::find($lims_product_data->tax_id);
-            $product[] = $lims_tax_data->rate;
-            $product[] = $lims_tax_data->name;
+            $product[] = $lims_tax_data ? $lims_tax_data->rate : 0;
+            $product[] = $lims_tax_data ? $lims_tax_data->name : 'No Tax';
         } else {
             $product[] = 0;
             $product[] = 'No Tax';
@@ -173,6 +245,7 @@ class TransferController extends Controller
         $product[] = $product_variant_id;
         $product[] = $lims_product_data->is_batch;
         $product[] = $lims_product_data->is_imei;
+        $product[] = (float) $warehouse_qty;
 
         return $product;
     }

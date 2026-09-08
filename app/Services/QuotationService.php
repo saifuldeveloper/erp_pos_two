@@ -243,6 +243,10 @@ class QuotationService
             $data['document'] = $documentName;
         }
 
+        if (!isset($data['item'])) {
+            $data['item'] = isset($data['product_id']) ? count($data['product_id']) : 0;
+        }
+
         if (!isset($data['reference_no'])) {
             $data['reference_no'] = 'qr-' . date("Ymd") . '-' . date("his");
         }
@@ -277,13 +281,21 @@ class QuotationService
                 }
             }
 
+            $saleUnitId = $saleUnitIds[$i] ?? null;
+            if (!$saleUnitId && !empty($data['sale_unit'][$i])) {
+                if ($data['sale_unit'][$i] != 'n/a') {
+                    $unit = Unit::where('unit_name', $data['sale_unit'][$i])->first();
+                    $saleUnitId = $unit ? $unit->id : null;
+                }
+            }
+
             ProductQuotation::create([
                 'quotation_id'     => $quotation->id,
                 'product_id'       => $id,
                 'product_batch_id' => $productBatchIds[$i] ?? null,
                 'variant_id'       => $productVariantId,
                 'qty'              => $qtys[$i] ?? 0,
-                'sale_unit_id'     => $saleUnitIds[$i] ?? null,
+                'sale_unit_id'     => $saleUnitId,
                 'net_unit_price'   => $netUnitPrices[$i] ?? 0,
                 'discount'         => $discounts[$i] ?? 0,
                 'tax_rate'         => $taxRates[$i] ?? 0,
@@ -356,6 +368,10 @@ class QuotationService
             $data['document'] = $documentName;
         }
 
+        if (!isset($data['item']) && isset($data['product_id'])) {
+            $data['item'] = count($data['product_id']);
+        }
+
         ProductQuotation::where('quotation_id', $id)->delete();
         $quotation->update($data);
 
@@ -387,13 +403,21 @@ class QuotationService
                 }
             }
 
+            $saleUnitId = $saleUnitIds[$i] ?? null;
+            if (!$saleUnitId && !empty($data['sale_unit'][$i])) {
+                if ($data['sale_unit'][$i] != 'n/a') {
+                    $unit = Unit::where('unit_name', $data['sale_unit'][$i])->first();
+                    $saleUnitId = $unit ? $unit->id : null;
+                }
+            }
+
             ProductQuotation::create([
                 'quotation_id'     => $quotation->id,
                 'product_id'       => $proId,
                 'product_batch_id' => $productBatchIds[$i] ?? null,
                 'variant_id'       => $productVariantId,
                 'qty'              => $qtys[$i] ?? 0,
-                'sale_unit_id'     => $saleUnitIds[$i] ?? null,
+                'sale_unit_id'     => $saleUnitId,
                 'net_unit_price'   => $netUnitPrices[$i] ?? 0,
                 'discount'         => $discounts[$i] ?? 0,
                 'tax_rate'         => $taxRates[$i] ?? 0,

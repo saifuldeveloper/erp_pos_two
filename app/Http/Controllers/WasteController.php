@@ -65,36 +65,70 @@ class WasteController extends Controller
 
     public function limsProductSearch(Request $request)
     {
-        $todayDate = date('Y-m-d');
-        $product_code = explode("(", $request['data']);
-        $product_info = explode("?", $request['data']);
-        $customer_id = $product_info[1] ?? null;
+        $data = $request['data'] ?? '';
+        if (strpos($data, '|') !== false) {
+            $product_code = explode('|', $data);
+        } elseif (strpos($data, '(') !== false) {
+            $product_code = explode('(', $data);
+        } else {
+            $product_code = [$data];
+        }
+        $code = trim($product_code[0]);
 
         $lims_product_data = Product::where([
-            ['code', $product_code[0]],
+            ['code', $code],
             ['is_active', true]
-        ])->first();
+        ])->get();
 
-        if (!$lims_product_data) {
-            $lims_product_data = Product::join('product_variants', 'products.id', 'product_variants.product_id')
-                ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.item_code', 'product_variants.additional_price')
-                ->where([
-                    ['product_variants.item_code', $product_code[0]],
-                    ['products.is_active', true]
-                ])->first();
+        $lims_product_variant_data = Product::join('product_variants', 'products.id', '=', 'product_variants.product_id')
+            ->where([
+                ['product_variants.item_code', $code],
+                ['products.is_active', true]
+            ])
+            ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.item_code', 'product_variants.additional_price', 'product_variants.variant_id')
+            ->get();
+
+        $all_products = [];
+
+        if (count($lims_product_data) > 0) {
+            foreach ($lims_product_data as $product_data) {
+                if ($product_data->is_variant) {
+                    $variants = Product::join('product_variants', 'products.id', '=', 'product_variants.product_id')
+                        ->where('products.id', $product_data->id)
+                        ->where('products.is_active', true)
+                        ->select('products.*', 'product_variants.id as product_variant_id', 'product_variants.item_code', 'product_variants.additional_price', 'product_variants.variant_id')
+                        ->orderBy('product_variants.position')
+                        ->get();
+
+                    if (count($variants) > 0) {
+                        foreach ($variants as $variant_data) {
+                            $all_products[] = $this->formatProductWasteRow($variant_data, true);
+                        }
+                    } else {
+                        $all_products[] = $this->formatProductWasteRow($product_data, false);
+                    }
+                } else {
+                    $all_products[] = $this->formatProductWasteRow($product_data, false);
+                }
+            }
+        } elseif (count($lims_product_variant_data) > 0) {
+            foreach ($lims_product_variant_data as $variant_data) {
+                $all_products[] = $this->formatProductWasteRow($variant_data, true);
+            }
         }
 
-        $product[] = $lims_product_data->name;
-        if ($lims_product_data->is_variant) {
-            $product[] = $lims_product_data->item_code;
-            $product[] = $lims_product_data->price + $lims_product_data->additional_price;
-        } else {
-            $product[] = $lims_product_data->code;
-            $product[] = $lims_product_data->price;
-        }
+        return response()->json($all_products);
+    }
 
-        if ($lims_product_data->tax_id) {
-            $tax = Tax::find($lims_product_data->tax_id);
+    protected function formatProductWasteRow($product_data, bool $is_variant): array
+    {
+        $product = [];
+        $product[] = $product_data->name;
+        $product[] = $is_variant ? $product_data->item_code : $product_data->code;
+        $product[] = $is_variant ? ($product_data->price + ($product_data->additional_price ?? 0)) : $product_data->price;
+
+        if ($product_data->tax_id) {
+            $tax = Tax::find($product_data->tax_id);
             $product[] = $tax ? $tax->rate : 0;
             $product[] = $tax ? $tax->name : 'No Tax';
         } else {
@@ -102,17 +136,17 @@ class WasteController extends Controller
             $product[] = 'No Tax';
         }
 
-        $product[] = $lims_product_data->tax_method;
+        $product[] = $product_data->tax_method;
 
-        $units = Unit::where("base_unit", $lims_product_data->unit_id)
-            ->orWhere('id', $lims_product_data->unit_id)
+        $units = Unit::where("base_unit", $product_data->unit_id)
+            ->orWhere('id', $product_data->unit_id)
             ->get();
 
         $unit_name = [];
         $unit_operator = [];
         $unit_operation_value = [];
         foreach ($units as $unit) {
-            if ($lims_product_data->sale_unit_id == $unit->id) {
+            if ($product_data->sale_unit_id == $unit->id) {
                 array_unshift($unit_name, $unit->unit_name);
                 array_unshift($unit_operator, $unit->operator);
                 array_unshift($unit_operation_value, $unit->operation_value);
@@ -126,10 +160,12 @@ class WasteController extends Controller
         $product[] = implode(",", $unit_name) . ',';
         $product[] = implode(",", $unit_operator) . ',';
         $product[] = implode(",", $unit_operation_value) . ',';
-        $product[] = $lims_product_data->id;
-        $product[] = $lims_product_data->is_variant ? $lims_product_data->product_variant_id : null;
-        $product[] = $lims_product_data->is_batch;
-        $product[] = $lims_product_data->is_imei;
+        $product[] = $product_data->id;
+        $product[] = $is_variant ? ($product_data->variant_id ?? $product_data->product_variant_id) : null;
+        $product[] = $product_data->is_batch;
+        $product[] = $product_data->is_imei;
+        $product[] = $product_data->cost;
+        $product[] = $is_variant ? 1 : 0;
 
         return $product;
     }

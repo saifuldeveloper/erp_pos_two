@@ -22,6 +22,10 @@
 
                         {!! Form::open(['route' => 'return-purchase.store', 'method' => 'post', 'files' => true, 'class' => 'payment-form']) !!}
                         <input type="hidden" name="purchase_id" value="{{$lims_purchase_data->id ?? ''}}">
+                        <input type="hidden" name="warehouse_id" value="{{$lims_purchase_data->warehouse_id ?? ''}}">
+                        <input type="hidden" name="supplier_id" value="{{$lims_purchase_data->supplier_id ?? ''}}">
+                        <input type="hidden" name="currency_id" value="{{$lims_purchase_data->currency_id ?? ''}}">
+                        <input type="hidden" name="exchange_rate" value="{{$lims_purchase_data->exchange_rate ?? ''}}">
 
                         <div class="table-responsive mt-3">
                             <table id="myTable" class="table table-hover order-list">

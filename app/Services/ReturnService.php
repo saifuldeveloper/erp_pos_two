@@ -271,14 +271,32 @@ class ReturnService
         $data = $requestData;
         $data['user_id'] = Auth::id();
 
-        $cashRegister = CashRegister::where([
-            ['user_id', $data['user_id']],
-            ['warehouse_id', $data['warehouse_id']],
-            ['status', true]
-        ])->first();
+        if (!empty($data['sale_id'])) {
+            $sale = Sale::select('warehouse_id', 'customer_id', 'biller_id', 'currency_id', 'exchange_rate')->find($data['sale_id']);
+            if ($sale) {
+                $data['warehouse_id']  = $data['warehouse_id'] ?? $sale->warehouse_id;
+                $data['customer_id']   = $data['customer_id'] ?? $sale->customer_id;
+                $data['biller_id']     = $data['biller_id'] ?? $sale->biller_id;
+                $data['currency_id']   = $data['currency_id'] ?? $sale->currency_id;
+                $data['exchange_rate'] = $data['exchange_rate'] ?? $sale->exchange_rate;
+            }
+        }
 
-        if ($cashRegister) {
-            $data['cash_register_id'] = $cashRegister->id;
+        if (empty($data['account_id'])) {
+            $defaultAccount = Account::where('is_default', true)->first();
+            $data['account_id'] = $defaultAccount ? $defaultAccount->id : 1;
+        }
+
+        if (!empty($data['warehouse_id'])) {
+            $cashRegister = CashRegister::where([
+                ['user_id', $data['user_id']],
+                ['warehouse_id', $data['warehouse_id']],
+                ['status', true]
+            ])->first();
+
+            if ($cashRegister) {
+                $data['cash_register_id'] = $cashRegister->id;
+            }
         }
 
         if (isset($data['created_at'])) {
@@ -321,7 +339,30 @@ class ReturnService
                 $customer->save();
             }
 
-            $productIds = $data['product_id'] ?? [];
+            $productIds = [];
+            if (!empty($data['is_return'])) {
+                $isIndexed = false;
+                foreach (array_keys($data['is_return']) as $k) {
+                    if (isset($data['product_id'][$k])) {
+                        $isIndexed = true;
+                        break;
+                    }
+                }
+
+                if ($isIndexed) {
+                    $productIds = $data['is_return'];
+                } else {
+                    foreach ($data['is_return'] as $proId) {
+                        $key = array_search($proId, $data['product_id'] ?? []);
+                        if ($key !== false) {
+                            $productIds[$key] = $proId;
+                        }
+                    }
+                }
+            } else {
+                $productIds = $data['product_id'] ?? [];
+            }
+
             $imeiNumbers = $data['imei_number'] ?? [];
             $productCodes = $data['product_code'] ?? [];
             $qtys = $data['qty'] ?? [];
@@ -332,7 +373,7 @@ class ReturnService
             $taxRates = $data['tax_rate'] ?? [];
             $taxes = $data['tax'] ?? [];
             $totals = $data['subtotal'] ?? [];
-            $batchNos = $data['batch_no'] ?? [];
+            $productBatchIds = $data['product_batch_id'] ?? ($data['batch_no'] ?? []);
 
             foreach ($productIds as $i => $id) {
                 $product = Product::find($id);
@@ -343,7 +384,7 @@ class ReturnService
                 $saleUnit = null;
                 if (!empty($saleUnitIds[$i])) {
                     $saleUnit = Unit::find($saleUnitIds[$i]);
-                } elseif (!empty($saleUnits[$i])) {
+                } elseif (!empty($saleUnits[$i]) && $saleUnits[$i] != 'n/a') {
                     $saleUnit = Unit::where('unit_name', $saleUnits[$i])->first();
                 }
                 if (!$saleUnit) {
@@ -365,11 +406,13 @@ class ReturnService
                 }
 
                 $productBatchId = null;
-                if ($product->is_batch && !empty($batchNos[$i])) {
-                    $productBatch = ProductBatch::where([
-                        ['product_id', $id],
-                        ['batch_no', $batchNos[$i]]
-                    ])->first();
+                if ($product->is_batch && !empty($productBatchIds[$i])) {
+                    $productBatch = is_numeric($productBatchIds[$i])
+                        ? ProductBatch::find($productBatchIds[$i])
+                        : ProductBatch::where([
+                            ['product_id', $id],
+                            ['batch_no', $productBatchIds[$i]]
+                        ])->first();
                     if ($productBatch) {
                         $productBatch->qty += $quantity;
                         $productBatch->save();
@@ -378,7 +421,7 @@ class ReturnService
                 }
 
                 $productVariantId = null;
-                if ($product->is_variant) {
+                if ($product->is_variant && !empty($productCodes[$i])) {
                     $productVariant = ProductVariant::where([
                         ['product_id', $id],
                         ['item_code', $productCodes[$i]]
@@ -393,19 +436,36 @@ class ReturnService
                 $product->qty += $quantity;
                 $product->save();
 
-                $productWarehouse = Product_Warehouse::where([
-                    ['product_id', $id],
-                    ['warehouse_id', $data['warehouse_id']]
-                ])->first();
+                $productWarehouse = null;
+                if ($productVariantId) {
+                    $productWarehouse = Product_Warehouse::where([
+                        ['product_id', $id],
+                        ['variant_id', $productVariantId],
+                        ['warehouse_id', $data['warehouse_id']]
+                    ])->first();
+                } elseif ($productBatchId) {
+                    $productWarehouse = Product_Warehouse::where([
+                        ['product_id', $id],
+                        ['product_batch_id', $productBatchId],
+                        ['warehouse_id', $data['warehouse_id']]
+                    ])->first();
+                } else {
+                    $productWarehouse = Product_Warehouse::where([
+                        ['product_id', $id],
+                        ['warehouse_id', $data['warehouse_id']]
+                    ])->first();
+                }
 
                 if ($productWarehouse) {
                     $productWarehouse->qty += $quantity;
                     $productWarehouse->save();
                 } else {
                     Product_Warehouse::create([
-                        'product_id'   => $id,
-                        'warehouse_id' => $data['warehouse_id'],
-                        'qty'          => $quantity,
+                        'product_id'       => $id,
+                        'warehouse_id'     => $data['warehouse_id'],
+                        'qty'              => $quantity,
+                        'variant_id'       => $productVariantId,
+                        'product_batch_id' => $productBatchId,
                     ]);
                 }
 
@@ -423,6 +483,34 @@ class ReturnService
                     'tax'              => $taxes[$i] ?? 0,
                     'total'            => $totals[$i] ?? 0,
                 ]);
+
+                if (!empty($data['sale_id'])) {
+                    $productSaleQuery = Product_Sale::where([
+                        ['product_id', $id],
+                        ['sale_id', $data['sale_id']],
+                    ]);
+                    if ($productVariantId) {
+                        $productSaleQuery->where('variant_id', $productVariantId);
+                    }
+                    if ($productBatchId) {
+                        $productSaleQuery->where('product_batch_id', $productBatchId);
+                    }
+                    $productSaleData = $productSaleQuery->first();
+                    if (!$productSaleData) {
+                        $productSaleData = Product_Sale::where([
+                            ['product_id', $id],
+                            ['sale_id', $data['sale_id']],
+                        ])->first();
+                    }
+                    if ($productSaleData) {
+                        $productSaleData->return_qty += $qty;
+                        $productSaleData->save();
+                    }
+                }
+            }
+
+            if (!empty($data['change_sale_status']) && !empty($data['sale_id'])) {
+                Sale::where('id', $data['sale_id'])->update(['sale_status' => 4]);
             }
 
             return $return;

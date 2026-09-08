@@ -168,6 +168,28 @@ class WasteService
             $is_embeded[] = 0;
         }
 
+        $variants = Product::join('product_variants', 'products.id', '=', 'product_variants.product_id')
+            ->where('products.is_active', true)
+            ->whereNotNull('products.is_variant')
+            ->select('products.*', 'product_variants.item_code', 'product_variants.variant_id', 'product_variants.qty as variant_qty', 'product_variants.additional_price')
+            ->orderBy('product_variants.position')
+            ->get();
+
+        foreach ($variants as $variant) {
+            $product_qty[] = $variant->variant_qty;
+            $product_code[] = $variant->item_code;
+            $product_name[] = $variant->name;
+            $product_type[] = $variant->type;
+            $product_id[] = $variant->id;
+            $product_list[] = $variant->product_list;
+            $qty_list[] = $variant->qty_list;
+            $product_price[] = $variant->price + ($variant->additional_price ?? 0);
+            $batch_no[] = null;
+            $product_batch_id[] = null;
+            $expired_date[] = null;
+            $is_embeded[] = 0;
+        }
+
         return [$product_code, $product_name, $product_qty, $product_type, $product_id, $product_list, $qty_list, $product_price, $batch_no, $product_batch_id, $expired_date, $is_embeded];
     }
 
@@ -216,35 +238,43 @@ class WasteService
 
         return DB::transaction(function () use ($requestData, $filtered_products) {
             $receiverName = '';
-            if (!empty($requestData['receiver_id'])) {
-                switch ($requestData['receiver_type'] ?? '') {
-                    case 'employee':
-                        $r = Employee::find($requestData['receiver_id']);
-                        $receiverName = $r ? $r->name : '';
-                        break;
-                    case 'customer':
-                        $r = Customer::find($requestData['receiver_id']);
-                        $receiverName = $r ? $r->name : '';
-                        break;
-                    case 'supplier':
-                        $r = Supplier::find($requestData['receiver_id']);
-                        $receiverName = $r ? $r->name : '';
-                        break;
-                    case 'biller':
-                        $r = Biller::find($requestData['receiver_id']);
-                        $receiverName = $r ? $r->name : '';
-                        break;
+            $receiverId = $requestData['receiver_id'] ?? null;
+            if (!empty($receiverId)) {
+                if (is_string($receiverId) && str_contains($receiverId, '-')) {
+                    $parts = explode('-', $receiverId, 2);
+                    $receiverId = (int) $parts[0];
+                    $receiverName = $parts[1];
+                } else {
+                    $receiverId = (int) $receiverId;
+                    switch ($requestData['receiver_type'] ?? '') {
+                        case 'employee':
+                            $r = Employee::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                        case 'customer':
+                            $r = Customer::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                        case 'supplier':
+                            $r = Supplier::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                        case 'biller':
+                            $r = Biller::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                    }
                 }
             }
 
             $waste = $this->wasteRepository->create([
                 'user_id'       => Auth::id(),
                 'receiver_type' => $requestData['receiver_type'] ?? null,
-                'receiver_id'   => $requestData['receiver_id'] ?? null,
+                'receiver_id'   => $receiverId,
                 'receiver_name' => $receiverName,
                 'note'          => $requestData['note'] ?? null,
-                'status'        => $requestData['status'] ?? 'pending',
-                'total_price'   => $requestData['grand_total'] ?? 0,
+                'status'        => true,
+                'total_price'   => $requestData['total'] ?? ($requestData['grand_total'] ?? 0),
             ]);
 
             foreach ($filtered_products as $data) {
@@ -267,14 +297,12 @@ class WasteService
                 $product->save();
 
                 WasteItem::create([
-                    'waste_id'         => $waste->id,
-                    'product_id'       => $data['product_id'],
-                    'variant_id'       => $productVariantId,
-                    'qty'              => $data['qty'],
-                    'price'            => $data['unit_price'] ?? 0,
-                    'subtotal'         => $data['subtotal'] ?? 0,
-                    'varient_code'     => $data['varient_code'] ?? null,
-                    'purchase_unit_id' => $data['purchase_unit_id'] ?? null,
+                    'waste_id'     => $waste->id,
+                    'product_id'   => $data['product_id'],
+                    'qty'          => $data['qty'],
+                    'unit_price'   => $data['unit_price'] ?? 0,
+                    'subtotal'     => $data['subtotal'] ?? 0,
+                    'varient_code' => $data['varient_code'] ?? null,
                 ]);
             }
 

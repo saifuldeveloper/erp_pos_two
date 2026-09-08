@@ -23,6 +23,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <input type="hidden" name="sale_id" value="{{$lims_sale_data->id ?? ''}}">
+                                        <input type="hidden" name="warehouse_id" value="{{$lims_sale_data->warehouse_id ?? ''}}">
+                                        <input type="hidden" name="customer_id" value="{{$lims_sale_data->customer_id ?? ''}}">
+                                        <input type="hidden" name="biller_id" value="{{$lims_sale_data->biller_id ?? ''}}">
+                                        <input type="hidden" name="currency_id" value="{{$lims_sale_data->currency_id ?? ''}}">
+                                        <input type="hidden" name="exchange_rate" value="{{$lims_sale_data->exchange_rate ?? ''}}">
                                         <h5>{{trans('file.Order Table')}} *</h5>
                                         <div class="table-responsive mt-3">
                                             <table id="myTable" class="table table-hover order-list">
@@ -40,7 +45,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($lims_product_sale_data as $product_sale)
+                                                    @foreach($lims_product_sale_data as $key => $product_sale)
                                                     <tr>
                                                     <?php
                                                         $product_data = $product_sale->product;
@@ -92,7 +97,7 @@
                                                         <td class="discount">{{ number_format((float)$product_sale->discount, $general_setting->decimal, '.', '')}}</td>
                                                         <td class="tax">{{ number_format((float)$product_sale->tax, $general_setting->decimal, '.', '')}}</td>
                                                         <td class="sub-total">{{ number_format((float)$product_sale->total, $general_setting->decimal, '.', '')}}</td>
-                                                        <td><input type="checkbox" class="is-return" name="is_return[]" value="{{$product_data->id}}"></td>
+                                                        <td><input type="checkbox" class="is-return" name="is_return[{{$key}}]" value="{{$product_data->id}}"></td>
                                                         <input type="hidden" class="product-code" name="product_code[]" value="{{$product_data->code}}"/>
                                                         <input type="hidden" name="product_id[]" class="product-id" value="{{$product_data->id}}"/>
                                                         <input type="hidden" class="unit-price" value="{{$product_sale->total/$product_sale->qty}}">

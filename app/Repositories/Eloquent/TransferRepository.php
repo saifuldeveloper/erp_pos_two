@@ -134,26 +134,36 @@ class TransferRepository extends BaseRepository implements TransferRepositoryInt
             }
 
             $unit = $productTransferData->unit;
-            $unitName = $unit ? $unit->unit_name : '';
+            if (!$unit || !$unit->unit_code) {
+                $unit = Unit::find($product->unit_id);
+            }
+            $unit_code = ($unit && $unit->unit_code) ? $unit->unit_code : 'pair';
 
-            $productBatch = $productTransferData->productBatch;
-            $productVariant = $productTransferData->variant;
-
-            $name = $product->name;
             $code = $product->code;
-            if ($productVariant) {
-                $name .= ' [' . $productVariant->name . ']';
+            if ($productTransferData->variant_id) {
+                $lims_product_variant_data = ProductVariant::select('item_code')->where([
+                    ['product_id', $product->id],
+                    ['variant_id', $productTransferData->variant_id]
+                ])->first();
+                if ($lims_product_variant_data) {
+                    $code = $lims_product_variant_data->item_code;
+                }
             }
 
-            $productTransfer[0][$key] = $name;
-            $productTransfer[1][$key] = $code;
-            $productTransfer[2][$key] = $productTransferData->qty;
-            $productTransfer[3][$key] = $unitName;
-            $productTransfer[4][$key] = $productTransferData->tax;
-            $productTransfer[5][$key] = $productTransferData->tax_rate;
-            $productTransfer[6][$key] = $productTransferData->subtotal;
-            $productTransfer[7][$key] = $productBatch ? $productBatch->batch_no : '';
-            $productTransfer[8][$key] = $productTransferData->net_unit_cost;
+            $name_code = $product->name . ' [' . $code . ']';
+            if ($productTransferData->imei_number) {
+                $name_code .= '<br>IMEI or Serial Number: ' . $productTransferData->imei_number;
+            }
+
+            $productBatch = $productTransferData->productBatch;
+
+            $productTransfer[0][$key] = $name_code;
+            $productTransfer[1][$key] = $productTransferData->qty;
+            $productTransfer[2][$key] = $unit_code;
+            $productTransfer[3][$key] = $productTransferData->tax;
+            $productTransfer[4][$key] = $productTransferData->tax_rate;
+            $productTransfer[5][$key] = $productTransferData->total;
+            $productTransfer[6][$key] = $productBatch ? $productBatch->batch_no : 'N/A';
         }
 
         return $productTransfer;

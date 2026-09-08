@@ -217,6 +217,16 @@
                     var data = ui.content[0].value;
                     $(this).autocomplete("close");
                     productSearch(data);
+                } else if (ui.content.length > 1) {
+                    var searchTerm = $('#lims_productcodeSearch').val().trim().toLowerCase();
+                    var exactMatches = ui.content.filter(function(item) {
+                        return item.value.split(' ')[0].trim().toLowerCase() === searchTerm || item.value.split('|')[0].trim().toLowerCase() === searchTerm;
+                    });
+                    if (exactMatches.length === 1) {
+                        var data = exactMatches[0].value;
+                        $(this).autocomplete("close");
+                        productSearch(data);
+                    }
                 } else if (ui.content.length == 0 && $('#lims_productcodeSearch').val().length == 13) {
                     productSearch($('#lims_productcodeSearch').val() + '|' + 1);
                 }
@@ -224,6 +234,19 @@
             select: function(event, ui) {
                 var data = ui.item.value;
                 productSearch(data);
+            }
+        });
+
+        lims_productcodeSearch.on('keydown', function(e) {
+            if (e.which == 13) {
+                e.preventDefault();
+                e.stopPropagation();
+                var val = $(this).val().trim();
+                if (val !== '') {
+                    $(this).autocomplete("close");
+                    productSearch(val);
+                }
+                return false;
             }
         });
 
@@ -236,10 +259,14 @@
                     data: data
                 },
                 success: function(response) {
-                    if (Array.isArray(response)) {
-                        response.forEach(function(item) {
-                            addProductRow(item);
-                        });
+                    if (Array.isArray(response) && response.length > 0) {
+                        if (Array.isArray(response[0])) {
+                            response.forEach(function(item) {
+                                addProductRow(item);
+                            });
+                        } else {
+                            addProductRow(response);
+                        }
                     }
                 }
             });
@@ -284,7 +311,7 @@
                 cols += '<input type="hidden" class="subtotal-value" name="product[' + index + '][subtotal]" value="' + data[2] + '"/>';
 
                 newRow.append(cols);
-                $("table.order-list tbody").prepend(newRow);
+                $("table.order-list tbody").append(newRow);
                 
                 calculateTotal();
                 index++;

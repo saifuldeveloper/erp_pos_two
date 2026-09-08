@@ -133,28 +133,35 @@ class QuotationRepository extends BaseRepository implements QuotationRepositoryI
                 continue;
             }
 
-            $unit = $productQuotationData->unit;
-            $unitName = $unit ? $unit->unit_name : '';
-
-            $productBatch = $productQuotationData->productBatch;
-            $productVariant = $productQuotationData->variant;
-
-            $name = $product->name;
             $code = $product->code;
-            if ($productVariant) {
-                $name .= ' [' . $productVariant->name . ']';
+            if ($productQuotationData->variant_id) {
+                $lims_product_variant_data = ProductVariant::select('item_code')->where([
+                    ['product_id', $product->id],
+                    ['variant_id', $productQuotationData->variant_id]
+                ])->first();
+                if ($lims_product_variant_data) {
+                    $code = $lims_product_variant_data->item_code;
+                }
             }
 
-            $productQuotation[0][$key] = $name;
-            $productQuotation[1][$key] = $code;
-            $productQuotation[2][$key] = $productQuotationData->qty;
-            $productQuotation[3][$key] = $unitName;
-            $productQuotation[4][$key] = $productQuotationData->tax;
-            $productQuotation[5][$key] = $productQuotationData->tax_rate;
-            $productQuotation[6][$key] = $productQuotationData->discount;
-            $productQuotation[7][$key] = $productQuotationData->net_unit_price;
-            $productQuotation[8][$key] = $productQuotationData->total;
-            $productQuotation[9][$key] = $productBatch ? $productBatch->batch_no : '';
+            $unit = $productQuotationData->unit;
+            if ($unit && $unit->unit_code) {
+                $unit_code = $unit->unit_code;
+            } else {
+                $unit_data = Unit::find($product->unit_id);
+                $unit_code = $unit_data ? $unit_data->unit_code : '';
+            }
+
+            $productBatch = $productQuotationData->productBatch;
+
+            $productQuotation[0][$key] = $product->name . ' [' . $code . ']';
+            $productQuotation[1][$key] = $productQuotationData->qty;
+            $productQuotation[2][$key] = $unit_code;
+            $productQuotation[3][$key] = $productQuotationData->tax;
+            $productQuotation[4][$key] = $productQuotationData->tax_rate;
+            $productQuotation[5][$key] = $productQuotationData->discount;
+            $productQuotation[6][$key] = $productQuotationData->total;
+            $productQuotation[7][$key] = $productBatch ? $productBatch->batch_no : 'N/A';
         }
 
         return $productQuotation;
