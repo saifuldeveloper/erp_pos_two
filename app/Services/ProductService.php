@@ -1110,7 +1110,9 @@ class ProductService
                 $unit->save();
             }
 
-            $product = Product::firstOrNew(['name' => $data['name'], 'is_active' => true]);
+            $product = Product::where('code', $data['code'])->first()
+                ?? Product::where('name', $data['name'])->where('is_active', true)->first()
+                ?? new Product();
             $product->image = !empty($data['image']) ? $data['image'] : 'zummXD2dvAtI.png';
             $product->name = htmlspecialchars(trim($data['name']));
             $product->code = $data['code'];
@@ -1143,6 +1145,11 @@ class ProductService
                 $product->variant_value = json_encode($variantValue);
                 $product->is_variant = true;
                 $product->save();
+
+                ProductVariant::where('product_id', $product->id)->delete();
+                if (config('without_stock') == 'yes') {
+                    Product_Warehouse::where('product_id', $product->id)->delete();
+                }
 
                 $variantNames = explode(",", $data['variantname']);
                 $itemCodes = explode(",", $data['itemcode']);

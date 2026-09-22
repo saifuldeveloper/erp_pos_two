@@ -281,7 +281,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label> {{ trans('file.Sample File') }}</label>
-                                <a href="sample_file/sample_products.csv" class="btn btn-info btn-block btn-md"><i
+                                <a href="{{ asset('sample_file/sample_products.csv') }}" download="sample_products.csv" class="btn btn-info btn-block btn-md"><i
                                         class="dripicons-download"></i> {{ trans('file.Download') }}</a>
                             </div>
                         </div>
