@@ -33,11 +33,19 @@ class CustomerGroupController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return response('Sorry! You are not allowed to edit customer group', 403);
+        }
+
         return $this->customerGroupService->getCustomerGroupById($id);
     }
 
     public function update(UpdateCustomerGroupRequest $request, $id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect('customer_group')->with('not_permitted', 'Sorry! You are not allowed to edit customer group');
+        }
+
         $this->customerGroupService->updateCustomerGroup($request->customer_group_id, $request->all());
 
         return redirect('customer_group')->with('message', 'Data updated successfully');

@@ -11,7 +11,7 @@ class UpdateDiscountPlanRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return \Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role_id <= 2;
     }
 
     /**

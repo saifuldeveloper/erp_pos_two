@@ -16,7 +16,9 @@ class MoneyTransferController extends Controller
     public function __construct(MoneyTransferService $moneyTransferService)
     {
         $this->moneyTransferService = $moneyTransferService;
-        $this->middleware('check_permission:money-transfer')->only(['index', 'create', 'store', 'edit', 'update']);
+        $this->middleware('check_permission:money-transfer')->only(['index', 'create', 'store']);
+        $this->middleware('check_permission:money-transfer-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:money-transfer-delete')->only('destroy');
     }
 
     public function index()
@@ -42,10 +44,6 @@ class MoneyTransferController extends Controller
 
     public function destroy($id)
     {
-        if (Auth::user()->role_id > 2) {
-            return redirect()->back()->with('not_permitted', 'Sorry! You are not allowed to delete money transfer');
-        }
-
         $this->moneyTransferService->deleteTransfer($id);
 
         return redirect()->back()->with('not_permitted', 'Data deleted successfully');

@@ -1,4 +1,13 @@
 @extends('backend.layout.main') @section('content')
+@if($errors->any())
+<div class="alert alert-danger alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    @foreach ($errors->all() as $error)
+        <div>{{ $error }}</div>
+    @endforeach
+</div>
+@endif
+
 @if(session()->has('not_permitted'))
   <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
@@ -313,7 +322,7 @@ $("#myTable").on('input', '.qty', function() {
     rowindex = $(this).closest('tr').index();
     if($(this).val() < 1 && $(this).val() != '') {
       $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(1);
-      alert("Quantity can't be less than 1");
+      showModalAlert("Quantity can't be less than 1", 'warning', 'Attention');
     }
     calculateTotal();
 });
@@ -342,7 +351,7 @@ function calculateTotal() {
                 changeSaleStatus = 0;
             }
             if(qty > actual_qty) {
-                alert('Quantity can not be bigger than the actual quantity!');
+                showModalAlert('Quantity cannot be bigger than the actual quantity!', 'warning', 'Attention');
                 qty = actual_qty;
                 $('table.order-list tbody tr:nth-child(' + (i + 1) + ') .qty').val(actual_qty);
             }
@@ -414,13 +423,71 @@ $(window).keydown(function(e){
     }
 });
 
-$('.sale-return-form').on('submit',function(e){
+$('.sale-return-form').on('submit', function(e) {
     var rownumber = $('table.order-list tbody tr:last').index();
     if (rownumber < 0) {
-        alert("Please insert product to order table!")
+        showModalAlert("Please insert product to order table!", 'warning', 'Attention');
         e.preventDefault();
+        return false;
     }
+
+    var checkedBoxes = $(".is-return:checked");
+    if (checkedBoxes.length === 0) {
+        showModalAlert("Please select at least one product to return!", 'warning', 'Attention');
+        e.preventDefault();
+        return false;
+    }
+
+    calculateTotal();
+
+    var total_qty = parseFloat($('input[name="total_qty"]').val());
+    if (isNaN(total_qty) || total_qty <= 0) {
+        showModalAlert("Total return quantity must be greater than 0!", 'warning', 'Attention');
+        e.preventDefault();
+        return false;
+    }
+
+    var hasInvalidQty = false;
+    checkedBoxes.each(function() {
+        var row = $(this).closest('tr');
+        var qty = parseFloat(row.find('.qty').val());
+        var actualQty = parseFloat(row.find('.actual-qty').val());
+        if (isNaN(qty) || qty <= 0) {
+            showModalAlert("Quantity must be greater than 0 for selected products!", 'warning', 'Attention');
+            hasInvalidQty = true;
+            return false;
+        }
+        if (qty > actualQty) {
+            showModalAlert("Return quantity cannot be bigger than the actual quantity!", 'warning', 'Attention');
+            hasInvalidQty = true;
+            return false;
+        }
+    });
+
+    if (hasInvalidQty) {
+        e.preventDefault();
+        return false;
+    }
+
+    $("#submit-button").prop('disabled', true);
 });
 
+calculateTotal();
+
+$(document).ready(function() {
+    @if($errors->any())
+        var errors = {!! json_encode($errors->all()) !!};
+        var msg = '<div style="text-align: left;"><ul style="margin: 0; padding-left: 20px;">';
+        errors.forEach(function(err) {
+            msg += '<li>' + err + '</li>';
+        });
+        msg += '</ul></div>';
+        showModalAlert(msg, 'error', 'Validation Error');
+    @endif
+
+    @if(session()->has('not_permitted'))
+        showModalAlert("{!! addslashes(session()->get('not_permitted')) !!}", 'warning', 'Attention');
+    @endif
+});
 </script>
 @endpush

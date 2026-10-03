@@ -17,7 +17,7 @@ class ExpenseCategoryController extends Controller
         $this->expenseCategoryService = $expenseCategoryService;
         $this->middleware('check_permission:expense_category-index|expenses-index')->only(['index', 'generateCode', 'expenseCategoriesAll']);
         $this->middleware('check_permission:expense_category-add|expenses-add')->only(['create', 'store', 'import']);
-        $this->middleware('check_permission:expense_category-edit|expenses-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:expense_category-edit')->only(['edit', 'update']);
         $this->middleware('check_permission:expense_category-delete')->only(['destroy', 'deleteBySelection']);
     }
 
@@ -26,7 +26,7 @@ class ExpenseCategoryController extends Controller
         $permissions = [
             'expense_category-index' => [1, 2, 3, 5],
             'expense_category-add'   => [1, 2, 3, 5],
-            'expense_category-edit'  => [1, 2, 3, 5],
+            'expense_category-edit'  => [1, 2, 3],
             'expense_category-delete'=> [1, 2],
         ];
 

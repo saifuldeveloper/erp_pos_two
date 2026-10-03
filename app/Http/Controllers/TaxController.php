@@ -42,11 +42,19 @@ class TaxController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return response('Sorry! You are not allowed to edit tax', 403);
+        }
+
         return $this->taxService->getTaxById($id);
     }
 
     public function update(UpdateTaxRequest $request, $id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect('tax')->with('not_permitted', 'Sorry! You are not allowed to edit tax');
+        }
+
         $this->taxService->updateTax($request->tax_id, $request->all());
 
         return redirect('tax')->with('message', 'Data updated successfully');

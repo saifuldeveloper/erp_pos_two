@@ -48,7 +48,7 @@
                                                 <select name="receiver_id" id="receiver_id"
                                                     class="selectpicker form-control" data-live-search="true"
                                                     data-live-search-style="begins" title="Select receiver...">
-                                                    @foreach ($receivers as $receiver)
+                                                    @foreach ($receivers ?? [] as $receiver)
                                                         <option value="{{ $receiver->id }}-{{ $receiver->name }}"
                                                             {{ $waste->receiver_id == $receiver->id ? 'selected' : '' }}>
                                                             {{ $receiver->name }}</option>
@@ -94,20 +94,20 @@
                                                     <tbody>
                                                         @foreach ($waste->items as $item)
                                                             <tr>
-                                                                <td>{{ $item->product->name }}</td>
-                                                                <td>{{ $item->varient_code ? $item->varient_code : $item->product->code }}</td>
+                                                                <td>{{ $item->product->name ?? 'N/A' }}</td>
+                                                                <td>{{ $item->varient_code ? $item->varient_code : ($item->product->code ?? '') }}</td>
                                                                 <td><input type="number" class="form-control qty"
                                                                         name="product[{{ $loop->index }}][qty]"
                                                                         min="0" value="{{ $item->qty }}" /></td>
-                                                                <td class="unit_price">{{ $item->product->price }}</td>
+                                                                <td class="unit_price">{{ $item->product->price ?? $item->unit_price }}</td>
                                                                 <td class="sub-total">
-                                                                    {{ $item->qty * $item->product->price }}</td>
+                                                                    {{ $item->qty * ($item->product->price ?? $item->unit_price) }}</td>
                                                                 <td><button type="button"
                                                                         class="ibtnDel btn btn-md btn-danger">{{ trans('file.delete') }}</button>
                                                                 </td>
                                                                 <input type="hidden" class="product-code"
                                                                     name="product[{{ $loop->index }}][code]"
-                                                                    value="{{ $item->varient_code ? $item->varient_code : $item->product->code }}" />
+                                                                    value="{{ $item->varient_code ? $item->varient_code : ($item->product->code ?? '') }}" />
                                                                 @if($item->varient_code)
                                                                 <input type="hidden" class="varient-code"
                                                                     name="product[{{ $loop->index }}][varient_code]"
@@ -115,13 +115,13 @@
                                                                 @endif
                                                                 <input type="hidden" class="product-id"
                                                                     name="product[{{ $loop->index }}][product_id]"
-                                                                    value="{{ $item->product->id }}" />
+                                                                    value="{{ $item->product->id ?? $item->product_id }}" />
                                                                 <input type="hidden" class="unit_price"
                                                                     name="product[{{ $loop->index }}][unit_price]"
-                                                                    value="{{ $item->product->price }}" />
+                                                                    value="{{ $item->product->price ?? $item->unit_price }}" />
                                                                 <input type="hidden" class="subtotal-value"
                                                                     name="product[{{ $loop->index }}][subtotal]"
-                                                                    value="{{ $item->qty * $item->product->price }}" />
+                                                                    value="{{ $item->qty * ($item->product->price ?? $item->unit_price) }}" />
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

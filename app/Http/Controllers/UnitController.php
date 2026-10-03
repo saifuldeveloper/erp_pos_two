@@ -16,8 +16,8 @@ class UnitController extends Controller
         $this->unitService = $unitService;
         $this->middleware('check_permission:unit-index|unit')->only(['index', 'limsUnitSearch']);
         $this->middleware('check_permission:unit-add|unit')->only(['create', 'store', 'importUnit']);
-        $this->middleware('check_permission:unit-edit|unit')->only(['edit', 'update']);
-        $this->middleware('check_permission:unit-delete|unit')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:unit-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:unit-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()

@@ -6,6 +6,7 @@ use App\Http\Requests\Account\StoreAccountRequest;
 use App\Http\Requests\Account\UpdateAccountRequest;
 use App\Services\AccountService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AccountsController extends Controller
@@ -51,6 +52,10 @@ class AccountsController extends Controller
 
     public function makeDefault($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return response('Sorry! You are not allowed to modify accounts', 403);
+        }
+
         $this->accountService->makeDefault($id);
 
         return 'Account set as default successfully';
@@ -58,6 +63,10 @@ class AccountsController extends Controller
 
     public function update(UpdateAccountRequest $request, $id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect('accounts')->with('not_permitted', 'Sorry! You are not allowed to edit accounts');
+        }
+
         $this->accountService->updateAccount($request->account_id, $request->all());
 
         return redirect('accounts')->with('message', 'Account updated successfully');

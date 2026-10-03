@@ -47,14 +47,18 @@ class RoleHasPermissionsTableSeeder extends Seeder
         }
 
         // ----------------------------------------------------
-        // 3. Manager (ID: 3) - All permissions EXCEPT any DELETE & system configs
+        // 3. Manager (ID: 3) - All permissions EXCEPT any DELETE, specific edits & system configs
         // ----------------------------------------------------
         $managerRole = Role::find(3);
         if ($managerRole) {
-            // Filter out any permission containing "-delete" or sensitive system configs
+            // Filter out any permission containing "-delete" or sensitive system configs / master edits
             $managerPermissions = array_filter($allPermissionNames, function ($permission) {
                 // Strictly exclude any delete action
                 if (str_contains($permission, '-delete') || str_contains($permission, 'delete_')) {
+                    return false;
+                }
+                // Exclude specific master data edits
+                if (in_array($permission, ['unit-edit', 'brand-edit', 'warehouse-edit', 'money-transfer-edit'])) {
                     return false;
                 }
                 // Exclude system dangerous permissions
@@ -103,7 +107,6 @@ class RoleHasPermissionsTableSeeder extends Seeder
                 'expenses-add',
                 'expense_category-index',
                 'expense_category-add',
-                'expense_category-edit',
                 // Waste & Warehouse view
                 'waste-index',
                 'waste-add',
@@ -114,9 +117,9 @@ class RoleHasPermissionsTableSeeder extends Seeder
                 'due-report',
             ];
 
-            // Ensure no delete permissions in biller list
+            // Ensure no delete or restricted edit permissions in biller list
             $billerPermissions = array_filter($billerPermissions, function ($p) {
-                return !str_contains($p, 'delete');
+                return !str_contains($p, 'delete') && !in_array($p, ['expense_category-edit', 'category-edit', 'brand-edit', 'unit-edit']);
             });
 
             $billerRole->syncPermissions(array_values($billerPermissions));

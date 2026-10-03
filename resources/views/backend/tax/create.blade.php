@@ -43,9 +43,12 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+                                @if(Auth::user()->role_id <= 2)
                                 <li>
                                     <button type="button" data-id="{{$tax->id}}" class="open-EdittaxDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}
-                                </button>
+                                    </button>
+                                </li>
+                                @endif
                                 @if(Auth::user()->role_id <= 2)
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['tax.destroy', $tax->id], 'method' => 'DELETE'] ) }}

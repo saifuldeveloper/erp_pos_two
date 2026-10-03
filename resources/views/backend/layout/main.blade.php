@@ -517,6 +517,28 @@
       </div>
       <!-- end sale return modal -->
 
+      <!-- App Notification Modal -->
+      <div id="app-notification-modal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade text-left">
+          <div role="document" class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 12px; overflow: hidden; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+              <div id="app-modal-header" class="modal-header text-white" style="background-color: #7c5cc4; padding: 12px 20px;">
+                <h5 id="app-modal-title" class="modal-title font-weight-bold" style="font-size: 16px;">Attention</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close text-white" style="opacity: 0.9;"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
+              </div>
+              <div class="modal-body text-center" style="padding: 25px 20px;">
+                <div id="app-modal-icon" style="font-size: 44px; margin-bottom: 12px; color: #ffc107;">
+                    <i class="dripicons-warning"></i>
+                </div>
+                <div id="app-modal-message" style="font-size: 15px; color: #333; line-height: 1.6;"></div>
+              </div>
+              <div class="modal-footer justify-content-center" style="border: none; padding-bottom: 20px;">
+                <button type="button" class="btn btn-primary px-4 py-2" data-dismiss="modal" style="min-width: 100px; border-radius: 6px;">OK</button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- end app notification modal -->
+
       <!-- purchase return modal -->
       <div id="add-purchase-return" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
           <div role="document" class="modal-dialog">
@@ -839,6 +861,44 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
       
         @endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        function showModalAlert(message, type, title) {
+            type = type || 'warning';
+            if (!title) {
+                if (type === 'error') title = "{{trans('file.Error') ?? 'Error'}}";
+                else if (type === 'success') title = "{{trans('file.Success') ?? 'Success'}}";
+                else if (type === 'info') title = "{{trans('file.Info') ?? 'Info'}}";
+                else title = "{{trans('file.Attention') ?? 'Attention'}}";
+            }
+
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    icon: type,
+                    title: title,
+                    html: message,
+                    confirmButtonColor: '#7c5cc4',
+                    confirmButtonText: 'OK'
+                });
+            } else if ($('#app-notification-modal').length) {
+                $('#app-modal-title').text(title);
+                $('#app-modal-message').html(message);
+                if (type === 'error') {
+                    $('#app-modal-header').css('background-color', '#dc3545');
+                    $('#app-modal-icon').css('color', '#dc3545').html('<i class="dripicons-wrong"></i>');
+                } else if (type === 'success') {
+                    $('#app-modal-header').css('background-color', '#28a745');
+                    $('#app-modal-icon').css('color', '#28a745').html('<i class="dripicons-checkmark"></i>');
+                } else {
+                    $('#app-modal-header').css('background-color', '#7c5cc4');
+                    $('#app-modal-icon').css('color', '#ffc107').html('<i class="dripicons-warning"></i>');
+                }
+                $('#app-notification-modal').modal('show');
+            } else {
+                alert(message);
+            }
+        }
+    </script>
     @stack('scripts')
     <script>
         if ('serviceWorker' in navigator ) {

@@ -350,10 +350,10 @@
                             });
                         }
                         else if(!return_id.length)
-                            alert('Nothing is selected!');
+                            showModalAlert('Nothing is selected!', 'warning', 'Attention');
                     }
                     else
-                        alert('This feature is disable for demo!');
+                        showModalAlert('This feature is disable for demo!', 'warning', 'Attention');
                 }
             },
             @endif
@@ -462,6 +462,14 @@
     if(all_permission.indexOf("returns-delete") == -1)
         $('.buttons-delete').addClass('d-none');
 
+    $(document).ready(function() {
+        @if(session()->has('message'))
+            showModalAlert("{!! addslashes(session()->get('message')) !!}", 'success', 'Success');
+        @endif
+        @if(session()->has('not_permitted'))
+            showModalAlert("{!! addslashes(session()->get('not_permitted')) !!}", 'warning', 'Attention');
+        @endif
+    });
 </script>
 <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 @endpush

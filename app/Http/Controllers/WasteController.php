@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Waste\StoreWasteRequest;
+use App\Http\Requests\Waste\UpdateWasteRequest;
 use App\Models\Biller;
 use App\Models\Customer;
 use App\Models\Employee;
@@ -184,6 +185,16 @@ class WasteController extends Controller
     {
         $formData = $this->wasteService->getEditFormData($id);
         return view('backend.waste.edit', $formData);
+    }
+
+    public function update(UpdateWasteRequest $request, $id)
+    {
+        try {
+            $this->wasteService->updateWaste($id, $request->all());
+            return redirect('wastes')->with('message', 'Waste updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('not_permitted', $e->getMessage());
+        }
     }
 
     public function destroy($id)

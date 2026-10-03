@@ -70,9 +70,13 @@ class ReturnController extends Controller
     public function create(Request $request)
     {
         $referenceNo = $request->input('reference_no');
+        if (!$referenceNo) {
+            return redirect()->route('return-sale.index')->with('not_permitted', 'Please provide a valid sale reference number!');
+        }
+
         $formData = $this->returnService->getCreateFormData($referenceNo);
-        if ($referenceNo && empty($formData['lims_sale_data'])) {
-            return redirect()->back()->with('not_permitted', 'This reference either does not exist or status not completed!');
+        if (empty($formData['lims_sale_data'])) {
+            return redirect()->route('return-sale.index')->with('not_permitted', 'This reference either does not exist or status not completed!');
         }
         return view('backend.return.create', $formData);
     }
@@ -193,9 +197,12 @@ class ReturnController extends Controller
 
     public function store(StoreReturnSaleRequest $request)
     {
-        $this->returnService->createReturn($request->all(), $request->file('document'));
-
-        return redirect('return-sale')->with('message', 'Return created successfully');
+        try {
+            $this->returnService->createReturn($request->all(), $request->file('document'));
+            return redirect('return-sale')->with('message', 'Return created successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('not_permitted', 'Error creating return: ' . $e->getMessage())->withInput();
+        }
     }
 
     public function sendMail(Request $request)
@@ -237,9 +244,12 @@ class ReturnController extends Controller
 
     public function update(UpdateReturnSaleRequest $request, $id)
     {
-        $this->returnService->updateReturn($id, $request->all(), $request->file('document'));
-
-        return redirect('return-sale')->with('message', 'Return updated successfully');
+        try {
+            $this->returnService->updateReturn($id, $request->all(), $request->file('document'));
+            return redirect('return-sale')->with('message', 'Return updated successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('not_permitted', 'Error updating return: ' . $e->getMessage())->withInput();
+        }
     }
 
     public function deleteBySelection(Request $request)

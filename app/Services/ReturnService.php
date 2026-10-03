@@ -322,6 +322,18 @@ class ReturnService
             $data['reference_no'] = 'rr-' . date("Ymd") . '-' . date("his");
         }
 
+        // Defensive defaults for non-nullable fields in returns table
+        $data['item']           = isset($data['item']) && is_numeric($data['item']) ? (int)$data['item'] : (!empty($data['is_return']) ? count($data['is_return']) : (!empty($data['product_id']) ? count($data['product_id']) : 0));
+        $data['total_qty']      = isset($data['total_qty']) && is_numeric($data['total_qty']) ? (float)$data['total_qty'] : 0;
+        $data['total_discount'] = isset($data['total_discount']) && is_numeric($data['total_discount']) ? (float)$data['total_discount'] : 0;
+        $data['total_tax']      = isset($data['total_tax']) && is_numeric($data['total_tax']) ? (float)$data['total_tax'] : 0;
+        $data['total_price']    = isset($data['total_price']) && is_numeric($data['total_price']) ? (float)$data['total_price'] : 0;
+        $data['grand_total']    = isset($data['grand_total']) && is_numeric($data['grand_total']) ? (float)$data['grand_total'] : 0;
+        $data['order_tax_rate'] = isset($data['order_tax_rate']) && is_numeric($data['order_tax_rate']) ? (float)$data['order_tax_rate'] : 0;
+        $data['order_tax']      = isset($data['order_tax']) && is_numeric($data['order_tax']) ? (float)$data['order_tax'] : 0;
+        $data['order_discount'] = isset($data['order_discount']) && is_numeric($data['order_discount']) ? (float)$data['order_discount'] : 0;
+        $data['shipping_cost']  = isset($data['shipping_cost']) && is_numeric($data['shipping_cost']) ? (float)$data['shipping_cost'] : 0;
+
         return DB::transaction(function () use ($data) {
             $return = $this->returnRepository->create($data);
 
@@ -636,6 +648,26 @@ class ReturnService
             if ($oldAccount) {
                 $oldAccount->total_balance += $return->grand_total;
                 $oldAccount->save();
+            }
+
+            // Defensive defaults for non-nullable fields
+            if (isset($data['total_qty']) && !is_numeric($data['total_qty'])) {
+                $data['total_qty'] = $return->total_qty;
+            }
+            if (isset($data['total_discount']) && !is_numeric($data['total_discount'])) {
+                $data['total_discount'] = $return->total_discount;
+            }
+            if (isset($data['total_tax']) && !is_numeric($data['total_tax'])) {
+                $data['total_tax'] = $return->total_tax;
+            }
+            if (isset($data['total_price']) && !is_numeric($data['total_price'])) {
+                $data['total_price'] = $return->total_price;
+            }
+            if (isset($data['grand_total']) && !is_numeric($data['grand_total'])) {
+                $data['grand_total'] = $return->grand_total;
+            }
+            if (!isset($data['item']) || !is_numeric($data['item'])) {
+                $data['item'] = !empty($data['product_id']) ? count($data['product_id']) : $return->item;
             }
 
             $return->update($data);

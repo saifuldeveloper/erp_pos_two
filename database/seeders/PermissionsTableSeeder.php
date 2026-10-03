@@ -85,6 +85,8 @@ class PermissionsTableSeeder extends Seeder
             'hrm_setting',
             'mail_setting',
             'money-transfer',
+            'money-transfer-edit',
+            'money-transfer-delete',
             'monthly-purchase',
             'monthly-sale',
             'monthly_summary',

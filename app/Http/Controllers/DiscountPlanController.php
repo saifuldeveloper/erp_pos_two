@@ -43,6 +43,10 @@ class DiscountPlanController extends Controller
 
     public function edit($id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect()->route('discount-plans.index')->with('not_permitted', 'Sorry! You are not allowed to edit discount plans');
+        }
+
         $formData = $this->discountPlanService->getEditFormData($id);
 
         return view('backend.discount_plan.edit', $formData);
@@ -50,6 +54,10 @@ class DiscountPlanController extends Controller
 
     public function update(UpdateDiscountPlanRequest $request, $id)
     {
+        if (Auth::user()->role_id > 2) {
+            return redirect()->route('discount-plans.index')->with('not_permitted', 'Sorry! You are not allowed to edit discount plans');
+        }
+
         $this->discountPlanService->updateDiscountPlan($id, $request->all());
 
         return redirect()->route('discount-plans.index')->with('message', 'DiscountPlan updated successfully');

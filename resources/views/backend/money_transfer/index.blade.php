@@ -39,8 +39,10 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+                                @if(in_array("money-transfer-edit", $all_permission))
                                 <li><button type="button" id="edit-btn" data-id="{{$money_transfer->id}}" data-from_id="{{$money_transfer->from_account_id}}" data-to_id="{{$money_transfer->to_account_id}}" data-amount="{{$money_transfer->amount}}"  class=" btn btn-link" data-toggle="modal" data-target="#edit-money-transfer-modal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}</button></li>
-                                @if(Auth::user()->role_id <= 2)
+                                @endif
+                                @if(in_array("money-transfer-delete", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['money-transfers.destroy', $money_transfer->id], 'method' => 'DELETE'] ) }}
                                 <li>

@@ -49,10 +49,10 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                @if(in_array("brand-edit", $all_permission) || in_array("brand", $all_permission))
+                                @if(in_array("brand-edit", $all_permission))
                                 <li><button type="button" data-id="{{$brand->id}}" class="open-EditbrandDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}</button></li>
                                 @endif
-                                @if(in_array("brand-delete", $all_permission) || in_array("brand", $all_permission))
+                                @if(in_array("brand-delete", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['brand.destroy', $brand->id], 'method' => 'DELETE'] ) }}
                                 <li>
@@ -328,7 +328,7 @@
                     stripHtml: false
                 },
             },
-            @if(in_array("brand-delete", $all_permission) || in_array("brand", $all_permission))
+            @if(in_array("brand-delete", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',

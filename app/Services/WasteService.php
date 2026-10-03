@@ -320,8 +320,160 @@ class WasteService
     {
         $waste = Waste::with(['items.product'])->findOrFail($id);
         $products = $this->getCreateProductsData();
+        $receivers = $waste->receiver_type ? $this->getReceiverList(strtolower($waste->receiver_type)) : collect();
 
-        return compact('waste', 'products');
+        return compact('waste', 'products', 'receivers');
+    }
+
+    /**
+     * Update an existing waste record and adjust stock.
+     *
+     * @param int|string $id
+     * @param array $requestData
+     * @return Waste
+     */
+    public function updateWaste($id, array $requestData): Waste
+    {
+        $filtered_products = [];
+        if (!empty($requestData['product'])) {
+            foreach ($requestData['product'] as $prod) {
+                if (isset($prod['qty']) && (float) $prod['qty'] > 0) {
+                    $filtered_products[] = $prod;
+                }
+            }
+        }
+
+        if (empty($filtered_products)) {
+            throw new \Exception('Please enter quantity for at least one item.');
+        }
+
+        $waste = Waste::with('items')->findOrFail($id);
+
+        return DB::transaction(function () use ($waste, $requestData, $filtered_products) {
+            // 1. Revert previous stock deduction
+            foreach ($waste->items as $item) {
+                $product = Product::find($item->product_id);
+                if ($product) {
+                    $product->qty += $item->qty;
+                    $product->save();
+                }
+
+                if ($item->varient_code) {
+                    $variant = ProductVariant::where([
+                        ['product_id', $item->product_id],
+                        ['item_code', $item->varient_code]
+                    ])->first();
+                    if ($variant) {
+                        $variant->qty += $item->qty;
+                        $variant->save();
+                    }
+                }
+            }
+
+            // 2. Validate new stock availability
+            $newProductQtys = [];
+            $newVariantQtys = [];
+            foreach ($filtered_products as $data) {
+                $pId = $data['product_id'];
+                $newProductQtys[$pId] = ($newProductQtys[$pId] ?? 0) + $data['qty'];
+
+                if (!empty($data['varient_code'])) {
+                    $vKey = $pId . '_' . $data['varient_code'];
+                    $newVariantQtys[$vKey] = ($newVariantQtys[$vKey] ?? 0) + $data['qty'];
+                }
+            }
+
+            foreach ($newProductQtys as $pId => $neededQty) {
+                $product = Product::findOrFail($pId);
+                if ($product->qty < $neededQty) {
+                    throw new \Exception("Cannot update waste. Product '{$product->name}' does not have enough stock.");
+                }
+            }
+
+            foreach ($newVariantQtys as $vKey => $neededQty) {
+                [$pId, $vCode] = explode('_', $vKey, 2);
+                $variant = ProductVariant::where([
+                    ['product_id', $pId],
+                    ['item_code', $vCode]
+                ])->first();
+                if (!$variant || $variant->qty < $neededQty) {
+                    $product = Product::find($pId);
+                    $name = $product ? $product->name : $vCode;
+                    throw new \Exception("Cannot update waste. Product variant '{$name}' does not have enough stock.");
+                }
+            }
+
+            // 3. Parse receiver information
+            $receiverName = '';
+            $receiverId = $requestData['receiver_id'] ?? null;
+            if (!empty($receiverId)) {
+                if (is_string($receiverId) && str_contains($receiverId, '-')) {
+                    $parts = explode('-', $receiverId, 2);
+                    $receiverId = (int) $parts[0];
+                    $receiverName = $parts[1];
+                } else {
+                    $receiverId = (int) $receiverId;
+                    switch ($requestData['receiver_type'] ?? '') {
+                        case 'employee':
+                            $r = Employee::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                        case 'customer':
+                            $r = Customer::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                        case 'supplier':
+                            $r = Supplier::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                        case 'biller':
+                            $r = Biller::find($receiverId);
+                            $receiverName = $r ? $r->name : '';
+                            break;
+                    }
+                }
+            }
+
+            // 4. Update waste record
+            $waste->update([
+                'receiver_type' => $requestData['receiver_type'] ?? null,
+                'receiver_id'   => $receiverId,
+                'receiver_name' => $receiverName,
+                'note'          => $requestData['note'] ?? null,
+                'total_price'   => $requestData['total'] ?? ($requestData['grand_total'] ?? 0),
+            ]);
+
+            // 5. Delete old items and re-create with deductions
+            $waste->items()->delete();
+
+            foreach ($filtered_products as $data) {
+                $product = Product::findOrFail($data['product_id']);
+                if (!empty($data['varient_code'])) {
+                    $variant = ProductVariant::where([
+                        ['product_id', $data['product_id']],
+                        ['item_code', $data['varient_code']]
+                    ])->first();
+                    if ($variant) {
+                        $variant->qty -= $data['qty'];
+                        $variant->save();
+                    }
+                }
+
+                $product->qty -= $data['qty'];
+                $product->save();
+
+                WasteItem::create([
+                    'waste_id'     => $waste->id,
+                    'product_id'   => $data['product_id'],
+                    'qty'          => $data['qty'],
+                    'unit_price'   => $data['unit_price'] ?? 0,
+                    'subtotal'     => $data['subtotal'] ?? 0,
+                    'varient_code' => $data['varient_code'] ?? null,
+                ]);
+            }
+
+            return $waste;
+        });
     }
 
     /**

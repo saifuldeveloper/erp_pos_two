@@ -594,15 +594,15 @@
 
       <div class="row">
         <div class="container-fluid">
-          <div class="col-md-12">
-            <div class="brand-text float-left mt-4">
-                <h3>{{trans('file.welcome')}} <span>{{Auth::user()->name}}</span></h3>
+          <div class="col-md-12 d-flex flex-wrap justify-content-between align-items-center mt-3 mb-2">
+            <div class="brand-text">
+                <h3 class="mb-0">{{trans('file.welcome')}} <span>{{Auth::user()->name}}</span></h3>
             </div>
             @php
               $revenue_profit_summary = $role_has_permissions_list->where('name', 'revenue_profit_summary')->first();
             @endphp
             @if($revenue_profit_summary)
-            <div class="filter-toggle btn-group">
+            <div class="filter-toggle btn-group mt-2 mt-md-0">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" id="customDateDropdown" style="border-radius-top-right: 0; border-radius-bottom-right: 0; " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{trans('file.Select Custom Date')}}
@@ -620,6 +620,32 @@
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y').'-01'.'-01'}}" data-end_date="{{date('Y').'-12'.'-31'}}">{{trans('file.This Year')}}</button>
             </div>
             <input type="text" id="custom-date-range" style="display: none;">
+            @else
+            <div class="biller-quick-actions mt-2 mt-md-0 d-flex flex-wrap align-items-center">
+                <a href="{{ route('sale.pos') }}" class="btn btn-primary font-weight-bold shadow-sm mr-2 mb-1" style="border-radius: 8px; padding: 7px 16px;">
+                    <i class="dripicons-shopping-bag mr-1"></i> {{ trans('file.POS') ?? 'POS' }}
+                </a>
+                @if($role_has_permissions_list->where('name', 'sales-add')->first())
+                <a href="{{ route('sales.create') }}" class="btn btn-outline-primary font-weight-bold shadow-sm mr-2 mb-1" style="border-radius: 8px; padding: 7px 16px;">
+                    <i class="dripicons-plus mr-1"></i> {{ trans('file.Add Sale') ?? 'Add Sale' }}
+                </a>
+                @endif
+                @if($role_has_permissions_list->where('name', 'customers-add')->first() || $role_has_permissions_list->where('name', 'customers-index')->first())
+                <a href="{{ route('customer.create') }}" class="btn btn-outline-info font-weight-bold shadow-sm mr-2 mb-1" style="border-radius: 8px; padding: 7px 16px;">
+                    <i class="dripicons-user mr-1"></i> {{ trans('file.Add Customer') ?? 'Add Customer' }}
+                </a>
+                @endif
+                @if($role_has_permissions_list->where('name', 'returns-index')->first() || $role_has_permissions_list->where('name', 'returns-add')->first())
+                <a href="{{ route('return-sale.index') }}" class="btn btn-outline-secondary font-weight-bold shadow-sm mr-2 mb-1" style="border-radius: 8px; padding: 7px 16px;">
+                    <i class="dripicons-return mr-1"></i> {{ trans('file.Sale Return') ?? 'Sale Return' }}
+                </a>
+                @endif
+                @if($role_has_permissions_list->where('name', 'sales-index')->first())
+                <a href="{{ route('sales.index') }}" class="btn btn-outline-dark font-weight-bold shadow-sm mb-1" style="border-radius: 8px; padding: 7px 16px;">
+                    <i class="dripicons-list mr-1"></i> {{ trans('file.Sale List') ?? 'Sale List' }}
+                </a>
+                @endif
+            </div>
             @endif
           </div>
         </div>
@@ -1073,9 +1099,79 @@ END OF ORIGINAL 12 CARDS SECTION
                 </div>
               </div>
             </div>
+            @else
+            <!-- Biller / Staff 4 Metric Cards -->
+            <div class="col-md-12 form-group">
+              <div class="row">
+                <!-- 1. Today's Sale -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-sale">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-cart"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Today') }} {{ trans('file.Sale') }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span>{{ number_format((float)($today_sale ?? 0), $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Today's Collection -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-purchase-return">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-wallet"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Today') }} {{ trans('file.Payment Received') ?? trans('file.Payment Recieved') ?? 'Collection' }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span>{{ number_format((float)($today_received ?? 0), $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Today's Invoices -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-sale-due">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-checklist"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.Today') }} {{ trans('file.Invoice') ?? 'Invoices' }}</div>
+                      <div class="stat-info-amount">
+                        <span>{{ (int)($today_sale_count ?? 0) }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. This Month's Sale -->
+                <div class="col-lg-3 col-sm-6 mb-3">
+                  <div class="modern-stat-card stat-card-profit">
+                    <div class="stat-icon-box">
+                      <i class="dripicons-graph-line"></i>
+                    </div>
+                    <div class="stat-info-box">
+                      <div class="stat-info-title">{{ trans('file.This Month') }} {{ trans('file.Sale') }}</div>
+                      <div class="stat-info-amount">
+                        <span class="stat-currency-sym">{{ $currency->code ?? '' }}</span>
+                        <span>{{ number_format((float)($this_month_sale ?? 0), $general_setting->decimal, '.', '') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             @endif
+
             @php
               $cash_flow = $role_has_permissions_list->where('name', 'cash_flow')->first();
+              $purchases_permission = $role_has_permissions_list->where('name', 'purchases-index')->first();
             @endphp
             @if($cash_flow)
             <div class="col-md-6 mt-4">
@@ -1095,17 +1191,17 @@ END OF ORIGINAL 12 CARDS SECTION
             </div>
             @endif
 
-            <div class="col-md-6 mt-4">
+            <div class="{{ $cash_flow ? 'col-md-6' : 'col-md-12' }} mt-4">
               <div class="card h-100">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                  <h4>{{trans('file.Sales vs Purchase') ?? 'Sales vs Purchase'}}</h4>
+                  <h4>{{ $purchases_permission ? (trans('file.Sales vs Purchase') ?? 'Sales vs Purchase') : (trans('file.Monthly Sale') ?? 'Monthly Sales') }}</h4>
                   <div class="right-column">
                     <span id="saleChartPeriod" class="badge badge-primary">{{date("Y")}}</span>
                   </div>
                 </div>
                 <div class="card-body">
                   <div style="height: 310px; position: relative;">
-                    <canvas id="saleChart" data-sale_chart_value = "{{json_encode($yearly_sale_amount)}}" data-purchase_chart_value = "{{json_encode($yearly_purchase_amount)}}" data-chart_labels = "{{json_encode($sale_chart_labels)}}" data-label1="{{trans('file.Purchased Amount') ?? 'Purchased Amount'}}" data-label2="{{trans('file.Sold Amount') ?? 'Sold Amount'}}"></canvas>
+                    <canvas id="saleChart" data-sale_chart_value="{{json_encode($yearly_sale_amount)}}" data-purchase_chart_value="{{json_encode($purchases_permission ? $yearly_purchase_amount : [])}}" data-chart_labels="{{json_encode($sale_chart_labels)}}" data-label1="{{trans('file.Purchased Amount') ?? 'Purchased Amount'}}" data-label2="{{trans('file.Sold Amount') ?? 'Sold Amount'}}" data-has_purchase="{{ $purchases_permission ? '1' : '0' }}"></canvas>
                   </div>
                 </div>
               </div>
@@ -1127,15 +1223,21 @@ END OF ORIGINAL 12 CARDS SECTION
                   <li class="nav-item">
                     <a class="nav-link active" href="#sale-latest" role="tab" data-toggle="tab">{{trans('file.Sale')}}</a>
                   </li>
+                  @if($role_has_permissions_list->where('name', 'purchases-index')->first())
                   <li class="nav-item">
                     <a class="nav-link" href="#purchase-latest" role="tab" data-toggle="tab">{{trans('file.Purchase')}}</a>
                   </li>
+                  @endif
+                  @if($role_has_permissions_list->where('name', 'quotes-index')->first())
                   <li class="nav-item">
                     <a class="nav-link" href="#quotation-latest" role="tab" data-toggle="tab">{{trans('file.Quotation')}}</a>
                   </li>
+                  @endif
+                  @if($role_has_permissions_list->where('name', 'payment-index')->first() || $role_has_permissions_list->where('name', 'sale-payment-index')->first())
                   <li class="nav-item">
                     <a class="nav-link" href="#payment-latest" role="tab" data-toggle="tab">{{trans('file.Payment')}}</a>
                   </li>
+                  @endif
                 </ul>
 
                 <div class="tab-content">
@@ -1386,9 +1488,14 @@ END OF ORIGINAL 12 CARDS SECTION
         });
     }
 
-    function renderSaleChart(labels, purchaseData, saleData, label1, label2) {
+    function renderSaleChart(labels, purchaseData, saleData, label1, label2, hasPurchase) {
         var canvas = document.getElementById('saleChart');
         if (!canvas) return;
+
+        if (hasPurchase === undefined) {
+            var $chartEl = $('#saleChart');
+            hasPurchase = $chartEl.length ? $chartEl.data('has_purchase') : 1;
+        }
 
         var isDark = isDarkThemeActive();
         var tickColor = isDark ? '#ffffff' : '#64748b';
@@ -1396,12 +1503,30 @@ END OF ORIGINAL 12 CARDS SECTION
         var gridColor = isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.06)';
         var zeroLineColor = isDark ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.2)';
 
+        var brandPrimary = isDark ? '#a855f7' : ('{{$color ?? "#733686"}}');
+        var brandPrimaryRgba = isDark ? 'rgba(168, 85, 247, 0.85)' : ('{{$color_rgba ?? "rgba(115, 54, 134, 0.8)"}}');
+
+        var datasets = [];
+        if (hasPurchase !== 0 && hasPurchase !== '0' && purchaseData && purchaseData.length > 0) {
+            datasets.push({
+                label: label1 || '{{trans("file.Purchased Amount") ?? "Purchased Amount"}}',
+                backgroundColor: brandPrimaryRgba,
+                borderColor: brandPrimary,
+                borderWidth: 1,
+                data: purchaseData
+            });
+        }
+        datasets.push({
+            label: label2 || '{{trans("file.Sold Amount") ?? "Sold Amount"}}',
+            backgroundColor: 'rgba(255, 137, 82, 0.85)',
+            borderColor: '#ff8952',
+            borderWidth: 1,
+            data: saleData
+        });
+
         if (window.saleChartInstance) {
             window.saleChartInstance.data.labels = labels;
-            window.saleChartInstance.data.datasets[0].data = purchaseData;
-            window.saleChartInstance.data.datasets[1].data = saleData;
-            if (label1) window.saleChartInstance.data.datasets[0].label = label1;
-            if (label2) window.saleChartInstance.data.datasets[1].label = label2;
+            window.saleChartInstance.data.datasets = datasets;
             window.saleChartInstance.options.legend.labels.fontColor = legendColor;
             window.saleChartInstance.options.scales.xAxes[0].ticks.fontColor = tickColor;
             window.saleChartInstance.options.scales.yAxes[0].ticks.fontColor = tickColor;
@@ -1411,29 +1536,11 @@ END OF ORIGINAL 12 CARDS SECTION
             return;
         }
 
-        var brandPrimary = isDark ? '#a855f7' : ('{{$color ?? "#733686"}}');
-        var brandPrimaryRgba = isDark ? 'rgba(168, 85, 247, 0.85)' : ('{{$color_rgba ?? "rgba(115, 54, 134, 0.8)"}}');
-
         window.saleChartInstance = new Chart(canvas, {
             type: 'bar',
             data: {
                 labels: labels,
-                datasets: [
-                    {
-                        label: label1 || '{{trans("file.Purchased Amount") ?? "Purchased Amount"}}',
-                        backgroundColor: brandPrimaryRgba,
-                        borderColor: brandPrimary,
-                        borderWidth: 1,
-                        data: purchaseData
-                    },
-                    {
-                        label: label2 || '{{trans("file.Sold Amount") ?? "Sold Amount"}}',
-                        backgroundColor: 'rgba(255, 137, 82, 0.85)',
-                        borderColor: '#ff8952',
-                        borderWidth: 1,
-                        data: saleData
-                    }
-                ]
+                datasets: datasets
             },
             options: {
                 responsive: true,
@@ -1492,7 +1599,8 @@ END OF ORIGINAL 12 CARDS SECTION
             var cLabels = $elem.data('chart_labels') || ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             var l1 = $elem.data('label1') || '{{trans("file.Purchased Amount") ?? "Purchased Amount"}}';
             var l2 = $elem.data('label2') || '{{trans("file.Sold Amount") ?? "Sold Amount"}}';
-            renderSaleChart(cLabels, pVal, sVal, l1, l2);
+            var hasP = $elem.data('has_purchase');
+            renderSaleChart(cLabels, pVal, sVal, l1, l2, hasP);
         }
 
         $.ajax({
@@ -1528,80 +1636,108 @@ END OF ORIGINAL 12 CARDS SECTION
     }
 
     $(document).ready(function(){
-      $.ajax({
-        url: '{{url("/recent-sale")}}',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            data.forEach(function(item){
-              var sale_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
-              if(item.sale_status == 1){
-                var status = '<div class="badge badge-success">{{trans("file.Completed")}}</div>';
-              } else if(item.sale_status == 2) {
-                var status = '<div class="badge badge-danger">{{trans("file.Pending")}}</div>';
+      if ($('#recent-sale').length > 0) {
+        $.ajax({
+          url: '{{url("/recent-sale")}}',
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+              $('#recent-sale').find('tbody').empty();
+              if(!data || data.length === 0){
+                $('#recent-sale').find('tbody').append('<tr><td colspan="5" class="text-center text-muted py-3">No sales found</td></tr>');
               } else {
-                var status = '<div class="badge badge-warning">{{trans("file.Draft")}}</div>';
+                data.forEach(function(item){
+                  var sale_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
+                  if(item.sale_status == 1){
+                    var status = '<div class="badge badge-success">{{trans("file.Completed")}}</div>';
+                  } else if(item.sale_status == 2) {
+                    var status = '<div class="badge badge-danger">{{trans("file.Pending")}}</div>';
+                  } else {
+                    var status = '<div class="badge badge-warning">{{trans("file.Draft")}}</div>';
+                  }
+                  $('#recent-sale').find('tbody').append('<tr><td>'+sale_date+'</td><td>'+item.reference_no+'</td><td>'+(item.name || '-')+'</td><td>'+status+'</td><td>'+item.grand_total+'</td></tr>');
+                });
               }
-              $('#recent-sale').find('tbody').append('<tr><td>'+sale_date+'</td><td>'+item.reference_no+'</td><td>'+item.name+'</td><td>'+status+'</td><td>'+item.grand_total+'</td></tr>');
-            })
-        }
-      });
+          }
+        });
+      }
     });
 
     $(document).ready(function(){
-      $.ajax({
-        url: '{{url("/recent-purchase")}}',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            data.forEach(function(item){
-              var payment_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
-              if(item.payment_status == 1){
-                var status = '<div class="badge badge-success">{{trans("file.Completed")}}</div>';
-              } else if(item.payment_status == 2) {
-                var status = '<div class="badge badge-danger">{{trans("file.Pending")}}</div>';
+      if ($('#recent-purchase').length > 0) {
+        $.ajax({
+          url: '{{url("/recent-purchase")}}',
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+              $('#recent-purchase').find('tbody').empty();
+              if(!data || data.length === 0){
+                $('#recent-purchase').find('tbody').append('<tr><td colspan="5" class="text-center text-muted py-3">No purchases found</td></tr>');
               } else {
-                var status = '<div class="badge badge-warning">{{trans("file.Draft")}}</div>';
+                data.forEach(function(item){
+                  var payment_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
+                  if(item.payment_status == 1){
+                    var status = '<div class="badge badge-success">{{trans("file.Completed")}}</div>';
+                  } else if(item.payment_status == 2) {
+                    var status = '<div class="badge badge-danger">{{trans("file.Pending")}}</div>';
+                  } else {
+                    var status = '<div class="badge badge-warning">{{trans("file.Draft")}}</div>';
+                  }
+                  $('#recent-purchase').find('tbody').append('<tr><td>'+payment_date+'</td><td>'+item.reference_no+'</td><td>'+(item.name || '-')+'</td><td>'+status+'</td><td>'+item.grand_total+'</td></tr>');
+                });
               }
-              $('#recent-purchase').find('tbody').append('<tr><td>'+payment_date+'</td><td>'+item.reference_no+'</td><td>'+item.name+'</td><td>'+status+'</td><td>'+item.grand_total+'</td></tr>');
-            })
-        }
-      });
+          }
+        });
+      }
     });
 
     $(document).ready(function(){
-      $.ajax({
-        url: '{{url("/recent-quotation")}}',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            data.forEach(function(item){
-              var quotation_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
-              if(item.quotation_status == 1){
-                var status = '<div class="badge badge-success">{{trans("file.Completed")}}</div>';
-              } else if(item.quotation_status == 2) {
-                var status = '<div class="badge badge-danger">{{trans("file.Pending")}}</div>';
+      if ($('#recent-quotation').length > 0) {
+        $.ajax({
+          url: '{{url("/recent-quotation")}}',
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+              $('#recent-quotation').find('tbody').empty();
+              if(!data || data.length === 0){
+                $('#recent-quotation').find('tbody').append('<tr><td colspan="5" class="text-center text-muted py-3">No quotations found</td></tr>');
               } else {
-                var status = '<div class="badge badge-warning">{{trans("file.Draft")}}</div>';
+                data.forEach(function(item){
+                  var quotation_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
+                  if(item.quotation_status == 1){
+                    var status = '<div class="badge badge-success">{{trans("file.Completed")}}</div>';
+                  } else if(item.quotation_status == 2) {
+                    var status = '<div class="badge badge-danger">{{trans("file.Pending")}}</div>';
+                  } else {
+                    var status = '<div class="badge badge-warning">{{trans("file.Draft")}}</div>';
+                  }
+                  $('#recent-quotation').find('tbody').append('<tr><td>'+quotation_date+'</td><td>'+item.reference_no+'</td><td>'+(item.name || '-')+'</td><td>'+status+'</td><td>'+item.grand_total+'</td></tr>');
+                });
               }
-              $('#recent-quotation').find('tbody').append('<tr><td>'+quotation_date+'</td><td>'+item.reference_no+'</td><td>'+item.name+'</td><td>'+status+'</td><td>'+item.grand_total+'</td></tr>');
-            })
-        }
-      });
+          }
+        });
+      }
     });
 
     $(document).ready(function(){
-      $.ajax({
-        url: '{{url("/recent-payment")}}',
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            data.forEach(function(item){
-              var payment_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
-              $('#recent-payment').find('tbody').append('<tr><td>'+payment_date+'</td><td>'+item.payment_reference+'</td><td>'+item.amount+'</td><td>'+item.paying_method+'</td></tr>');
-            })
-        }
-      });
+      if ($('#recent-payment').length > 0) {
+        $.ajax({
+          url: '{{url("/recent-payment")}}',
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+              $('#recent-payment').find('tbody').empty();
+              if(!data || data.length === 0){
+                $('#recent-payment').find('tbody').append('<tr><td colspan="4" class="text-center text-muted py-3">No payments found</td></tr>');
+              } else {
+                data.forEach(function(item){
+                  var payment_date = dateFormat(item.created_at.split('T')[0], '{{$general_setting->date_format}}')
+                  $('#recent-payment').find('tbody').append('<tr><td>'+payment_date+'</td><td>'+item.payment_reference+'</td><td>'+item.amount+'</td><td>'+item.paying_method+'</td></tr>');
+                });
+              }
+          }
+        });
+      }
     });
 
     function dateFormat(inputDate, format) {

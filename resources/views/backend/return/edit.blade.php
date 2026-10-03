@@ -1,4 +1,13 @@
 @extends('backend.layout.main') @section('content')
+@if($errors->any())
+<div class="alert alert-danger alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    @foreach ($errors->all() as $error)
+        <div>{{ $error }}</div>
+    @endforeach
+</div>
+@endif
+
 @if(session()->has('not_permitted'))
   <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
@@ -544,7 +553,7 @@ $("#myTable").on('input', '.qty', function() {
     rowindex = $(this).closest('tr').index();
     if($(this).val() < 1 && $(this).val() != '') {
       $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ') .qty').val(1);
-      alert("Quantity can't be less than 1");
+      showModalAlert("Quantity can't be less than 1", 'warning', 'Attention');
     }
     calculateRowProductData($(this).val());
 });
@@ -556,7 +565,7 @@ $("#myTable").on("change", ".batch-no", function () {
     var warehouse_id = $('#warehouse_id').val();
     $.get('../../check-batch-availability/' + product_id + '/' + $(this).val() + '/' + warehouse_id, function(data) {
         if(data['message'] != 'ok') {
-            alert(data['message']);
+            showModalAlert(data['message'], 'warning', 'Attention');
             $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.batch-no').val('');
             $('table.order-list tbody tr:nth-child(' + (rowindex + 1) + ')').find('.product-batch-id').val('');
         }
@@ -640,14 +649,14 @@ $('button[name="update_btn"]').on("click", function() {
     var edit_unit_price = $('input[name="edit_unit_price"]').val();
 
     if (parseFloat(edit_discount) > parseFloat(edit_unit_price)) {
-        alert('Invalid Discount Input!');
+        showModalAlert('Invalid Discount Input!', 'warning', 'Attention');
         return;
     }
 
     if(edit_qty < 1) {
         $('input[name="edit_qty"]').val(1);
         edit_qty = 1;
-        alert("Quantity can't be less than 1");
+        showModalAlert("Quantity can't be less than 1", 'warning', 'Attention');
     }
 
     var tax_rate_all = <?php echo json_encode($tax_rate_all) ?>;
@@ -920,15 +929,55 @@ $(window).keydown(function(e){
     }
 });
 
-$('#payment-form').on('submit',function(e){
+$('#payment-form').on('submit', function(e) {
     var rownumber = $('table.order-list tbody tr:last').index();
     if (rownumber < 0) {
-        alert("Please insert product to order table!")
+        showModalAlert("Please insert product to order table!", 'warning', 'Attention');
         e.preventDefault();
+        return false;
     }
-    else {
-        $("#submit-button").prop('disabled', true);
+
+    calculateTotal();
+
+    var total_qty = parseFloat($('input[name="total_qty"]').val());
+    if (isNaN(total_qty) || total_qty <= 0) {
+        showModalAlert("Total return quantity must be greater than 0!", 'warning', 'Attention');
+        e.preventDefault();
+        return false;
     }
+
+    var hasInvalidQty = false;
+    $('.qty').each(function() {
+        var qty = parseFloat($(this).val());
+        if (isNaN(qty) || qty <= 0) {
+            showModalAlert("Quantity must be greater than 0 for all products!", 'warning', 'Attention');
+            hasInvalidQty = true;
+            return false;
+        }
+    });
+
+    if (hasInvalidQty) {
+        e.preventDefault();
+        return false;
+    }
+
+    $("#submit-button").prop('disabled', true);
+});
+
+$(document).ready(function() {
+    @if($errors->any())
+        var errors = {!! json_encode($errors->all()) !!};
+        var msg = '<div style="text-align: left;"><ul style="margin: 0; padding-left: 20px;">';
+        errors.forEach(function(err) {
+            msg += '<li>' + err + '</li>';
+        });
+        msg += '</ul></div>';
+        showModalAlert(msg, 'error', 'Validation Error');
+    @endif
+
+    @if(session()->has('not_permitted'))
+        showModalAlert("{!! addslashes(session()->get('not_permitted')) !!}", 'warning', 'Attention');
+    @endif
 });
 </script>
 @endpush

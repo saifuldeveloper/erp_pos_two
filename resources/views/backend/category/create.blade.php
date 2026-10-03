@@ -289,7 +289,7 @@
                     },
                     footer: true
                 },
-                @if(in_array("category-delete", $all_permission) || in_array("category", $all_permission))
+                @if(in_array("category-delete", $all_permission))
                 {
                     text: '<i title="delete" class="dripicons-cross"></i>',
                     className: 'buttons-delete',

@@ -1429,6 +1429,30 @@
 						                <span>
 						                    <div aria-checked="false" aria-disabled="false">
 								                <div class="checkbox">
+							                    	@if(in_array("money-transfer-edit", $all_permission))
+							                    	<input type="checkbox" value="1" id="money-transfer-edit" name="money-transfer-edit" checked>
+							                    	@else
+							                    	<input type="checkbox" value="1" id="money-transfer-edit" name="money-transfer-edit">
+							                    	@endif
+								                    <label for="money-transfer-edit" class="padding05">{{trans('file.Money Transfer')}} {{trans('file.edit')}} &nbsp;&nbsp;</label>
+								                </div>
+								            </div>
+						                </span>
+						                <span>
+						                    <div aria-checked="false" aria-disabled="false">
+								                <div class="checkbox">
+							                    	@if(in_array("money-transfer-delete", $all_permission))
+							                    	<input type="checkbox" value="1" id="money-transfer-delete" name="money-transfer-delete" checked>
+							                    	@else
+							                    	<input type="checkbox" value="1" id="money-transfer-delete" name="money-transfer-delete">
+							                    	@endif
+								                    <label for="money-transfer-delete" class="padding05">{{trans('file.Money Transfer')}} {{trans('file.delete')}} &nbsp;&nbsp;</label>
+								                </div>
+								            </div>
+						                </span>
+						                <span>
+						                    <div aria-checked="false" aria-disabled="false">
+								                <div class="checkbox">
 							                    	@if(in_array("balance-sheet", $all_permission))
 							                    	<input type="checkbox" value="1" id="balance-sheet" name="balance-sheet" checked>
 							                    	@else

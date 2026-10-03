@@ -46,9 +46,11 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+                                @if(Auth::user()->role_id <= 2)
                                 <li>
                                     <a href="{{ route('discount-plans.edit', $discount_plan->id) }}" class="btn btn-link"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}</a>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                     </td>

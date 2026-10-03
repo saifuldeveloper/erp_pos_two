@@ -18,8 +18,8 @@ class CategoryController extends Controller
         $this->categoryService = $categoryService;
         $this->middleware('check_permission:category-index|category')->only(['index', 'parentCategory']);
         $this->middleware('check_permission:category-add|category')->only(['create', 'store', 'import']);
-        $this->middleware('check_permission:category-edit|category')->only(['edit', 'update']);
-        $this->middleware('check_permission:category-delete|category')->only(['destroy', 'deleteBySelection']);
+        $this->middleware('check_permission:category-edit')->only(['edit', 'update']);
+        $this->middleware('check_permission:category-delete')->only(['destroy', 'deleteBySelection']);
     }
 
     public function index()
@@ -38,10 +38,10 @@ class CategoryController extends Controller
         $canDelete = $isSuperOrAdmin;
         if (!$isSuperOrAdmin && $role) {
             try {
-                $canEdit = $role->hasPermissionTo('category-edit') || $role->hasPermissionTo('category');
+                $canEdit = $role->hasPermissionTo('category-edit');
             } catch (\Throwable $e) {}
             try {
-                $canDelete = $role->hasPermissionTo('category-delete') || $role->hasPermissionTo('category');
+                $canDelete = $role->hasPermissionTo('category-delete');
             } catch (\Throwable $e) {}
         }
 

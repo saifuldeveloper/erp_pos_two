@@ -11,7 +11,15 @@ class UpdateMoneyTransferRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $user = \Illuminate\Support\Facades\Auth::user();
+        if (!$user) {
+            return false;
+        }
+        if ($user->role_id <= 2) {
+            return true;
+        }
+        $role = \Spatie\Permission\Models\Role::find($user->role_id);
+        return $role ? $role->hasPermissionTo('money-transfer-edit') : false;
     }
 
     /**

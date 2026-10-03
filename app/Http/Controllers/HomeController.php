@@ -315,7 +315,42 @@ class HomeController extends Controller
             'total_due' => $pur_tot_due,
             'customer_advance' => $customer_advance,
         ]);
-        return view('backend.index', compact('purchase_paid', 'purchase_due', 'due_payment_received', 'sale_due', 'sale_paid', 'salary', 'customers', 'suppliers', 'cash', 'liability', 'assets', 'revenue', 'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'sale_chart_labels'));
+
+        // Daily and monthly metrics for Biller / Staff dashboard
+        $today_start = date("Y-m-d 00:00:00");
+        $today_end = date("Y-m-d 23:59:59");
+
+        $today_sales_q = Sale::where('sale_status', '!=', 3)
+            ->where('created_at', '>=', $today_start)
+            ->where('created_at', '<=', $today_end);
+        if ($is_staff_own) {
+            $today_sales_q->where('user_id', $auth_user_id);
+        }
+        $today_sale = (float) $today_sales_q->sum('grand_total');
+        $today_sale_count = (int) $today_sales_q->count();
+
+        $today_pmt_q = Payment::where('created_at', '>=', $today_start)
+            ->where('created_at', '<=', $today_end);
+        if ($is_staff_own) {
+            $today_pmt_q->where('user_id', $auth_user_id);
+        }
+        $today_received = (float) $today_pmt_q->sum('amount');
+
+        $month_sales_q = Sale::where('sale_status', '!=', 3)
+            ->where('created_at', '>=', $start_dt)
+            ->where('created_at', '<=', $end_dt);
+        if ($is_staff_own) {
+            $month_sales_q->where('user_id', $auth_user_id);
+        }
+        $this_month_sale = (float) $month_sales_q->sum('grand_total');
+
+        return view('backend.index', compact(
+            'purchase_paid', 'purchase_due', 'due_payment_received', 'sale_due', 'sale_paid', 
+            'salary', 'customers', 'suppliers', 'cash', 'liability', 'assets', 'revenue', 
+            'purchase', 'expense', 'return', 'purchase_return', 'profit', 'payment_recieved', 
+            'payment_sent', 'month', 'yearly_sale_amount', 'yearly_purchase_amount', 'sale_chart_labels',
+            'today_sale', 'today_sale_count', 'today_received', 'this_month_sale'
+        ));
     }
 
     public function yearlyBestSellingPrice()

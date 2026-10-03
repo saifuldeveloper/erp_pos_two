@@ -49,13 +49,13 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                @if(in_array("warehouse-edit", $all_permission) || in_array("warehouse", $all_permission))
+                                @if(in_array("warehouse-edit", $all_permission))
                                 <li>
                                     <button type="button" data-id="{{$warehouse->id}}" class="open-EditWarehouseDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> {{trans('file.edit')}}
                                     </button>
                                 </li>
                                 @endif
-                                @if(in_array("warehouse-delete", $all_permission) || in_array("warehouse", $all_permission))
+                                @if(in_array("warehouse-delete", $all_permission))
                                 <li class="divider"></li>
                                 {{ Form::open(['route' => ['warehouse.destroy', $warehouse->id], 'method' => 'DELETE'] ) }}
                                 <li>
@@ -297,7 +297,7 @@
                     rows: ':visible'
                 },
             },
-            @if(in_array("warehouse-delete", $all_permission) || in_array("warehouse", $all_permission))
+            @if(in_array("warehouse-delete", $all_permission))
             {
                 text: '<i title="delete" class="dripicons-cross"></i>',
                 className: 'buttons-delete',
